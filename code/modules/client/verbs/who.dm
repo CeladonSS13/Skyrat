@@ -1,5 +1,5 @@
 #define DEFAULT_WHO_CELLS_PER_ROW 4
-#define NO_ADMINS_ONLINE_MESSAGE "Adminhelps are also sent through TGS to services like IRC and Discord. If no admins are available in game, sending an adminhelp might still be noticed and responded to."
+#define NO_ADMINS_ONLINE_MESSAGE "Однако вы по прежнему можете создавать тикеты." //SS1984 EDIT
 
 /client/verb/who()
 	set name = "Who"
@@ -19,25 +19,25 @@
 			for(var/client/client in GLOB.clients)
 				var/entry = "\t[client.key]"
 				if(client.holder && client.holder.fakekey)
-					entry += " <i>(as [client.holder.fakekey])</i>"
+					entry += " <i>(как [client.holder.fakekey])</i>" //SS1984 EDIT
 				if (isnewplayer(client.mob))
-					entry += " - <font color='darkgray'><b>In Lobby</b></font>"
+					entry += " - <font color='darkgray'><b>В лобби</b></font>" //SS1984 EDIT
 				else
-					entry += " - Playing as [client.mob.real_name]"
+					entry += " - Играет за [client.mob.real_name]" //SS1984 EDIT
 					switch(client.mob.stat)
 						if(UNCONSCIOUS, HARD_CRIT)
-							entry += " - <font color='darkgray'><b>Unconscious</b></font>"
+							entry += " - <font color='darkgray'><b>Без сознания</b></font>" //SS1984 EDIT
 						if(DEAD)
 							if(isobserver(client.mob))
 								var/mob/dead/observer/O = client.mob
 								if(O.started_as_observer)
-									entry += " - <font color='gray'>Observing</font>"
+									entry += " - <font color='gray'>Наблюдает</font>" //SS1984 EDIT
 								else
-									entry += " - <font color='black'><b>DEAD</b></font>"
+									entry += " - <font color='black'><b>МЕРТВ</b></font>" //SS1984 EDIT
 							else
-								entry += " - <font color='black'><b>DEAD</b></font>"
+								entry += " - <font color='black'><b>МЕРТВ</b></font>" //SS1984 EDIT
 					if(is_special_character(client.mob))
-						entry += " - <b><font color='red'>Antagonist</font></b>"
+						entry += " - <b><font color='red'>Антагонист</font></b>" //SS1984 EDIT
 				entry += " [ADMIN_QUE(client.mob)]"
 				entry += " ([round(client.avgping, 1)]ms)"
 				Lines += entry
@@ -45,7 +45,7 @@
 			for(var/client/client in GLOB.clients)
 				var/entry = "[client.key]"
 				if(client.holder && client.holder.fakekey)
-					entry += " <i>(as [client.holder.fakekey])</i>"
+					entry += " <i>(как [client.holder.fakekey])</i>" //SS1984 EDIT
 				entry += " ([round(client.avgping, 1)]ms)"
 				Lines += entry
 	else
@@ -66,8 +66,8 @@
 			msg += "</tr><tr>"
 	msg += "</tr></table>"
 
-	msg += "<b>Total Players: [length(Lines)]</b>"
-	to_chat(src, fieldset_block(span_bold("Current Players"), span_infoplain(msg), "boxed_message"), type = MESSAGE_TYPE_INFO)
+	msg += "<b>Всего игроков: [length(Lines)]</b>" //SS1984 EDIT
+	to_chat(src, fieldset_block(span_bold("Текущие игроки"), span_infoplain(msg), "boxed_message"), type = MESSAGE_TYPE_INFO) //SS1984 EDIT
 
 /client/verb/adminwho()
 	set category = "Admin"
@@ -75,12 +75,24 @@
 
 	var/list/lines = list()
 	var/payload_string = generate_adminwho_string()
-	var/header = (payload_string == NO_ADMINS_ONLINE_MESSAGE) ? "No Admins Currently Online" : "Current Admins"
+	var/header = (payload_string == NO_ADMINS_ONLINE_MESSAGE) ? "Никого из админсостава нет онлайн" : "Онлайн из админсостава" //SS1984 EDIT
 
 	lines += span_bold(header)
+
+	// SS1984 EDIT
+	payload_string = replacetext(payload_string, "\[Host\]", "\[<font color='#1ABC9C'>Хост</font>\]")
+	payload_string = replacetext(payload_string, "\[Head Admin\]", "\[<font color='#f02f2f'>Главный Администратор</font>\]")
+	payload_string = replacetext(payload_string, "\[Admin\]",	"\[<font color='#ee8f29'>Админ</font>\]")
+	payload_string = replacetext(payload_string, "\[Trial Admin\]", "\[<font color='#cfc000'>Триал Админ</font>\]")
+	payload_string = replacetext(payload_string, "\[Moderator\]",	"\[<font color='#9db430'>Модератор</font>\]")
+	payload_string = replacetext(payload_string, "\[Mentor\]", "\[<font color='#67761e'>Ментор</font>\]")
+	payload_string = replacetext(payload_string, "\[Head Developer\]", "\[<font color='#2ecc71'>Главный Разработчик</font>\]")
+	payload_string = replacetext(payload_string, "\[Developer\]",	"\[<font color='#2ecc71'>Разработчик</font>\]")
+	// SS1984 EDIT END
+
 	lines += payload_string
 
-	to_chat(src, fieldset_block(span_bold(header), jointext(lines, "\n"), "boxed_message"), type = MESSAGE_TYPE_INFO)
+	to_chat(src, fieldset_block(span_bold("Админсостав"), jointext(lines, "\n"), "boxed_message"), type = MESSAGE_TYPE_INFO) //SS1984 EDIT
 
 /// Proc that generates the applicable string to dispatch to the client for adminwho.
 /client/proc/generate_adminwho_string()
@@ -124,7 +136,7 @@
 		if(admin.is_afk() || !isnull(admin.holder.fakekey))
 			continue //Don't show afk or fakekeyed admins to adminwho
 
-		returnable_list += "• [get_linked_admin_name(admin)] is a [admin.holder.rank_names()]"
+		returnable_list += "[get_linked_admin_name(admin)] \[[admin.holder.rank_names()]\]" //SS1984 EDIT ADMINWHO
 
 	return returnable_list
 
@@ -136,27 +148,27 @@
 	for(var/client/admin in checkable_admins)
 		var/list/admin_strings = list()
 
-		admin_strings += "• [get_linked_admin_name(admin)] is a [admin.holder.rank_names()]"
+		admin_strings += "[get_linked_admin_name(admin)] \[[admin.holder.rank_names()]\]" //SS1984 EDIT ADMINWHO
 
 		if(admin.holder.fakekey)
-			admin_strings += "<i>(as [admin.holder.fakekey])</i>"
+			admin_strings += "<i>(как [admin.holder.fakekey])</i>" //SS1984 EDIT
 
 		if(isobserver(admin.mob))
-			admin_strings += "- Observing"
+			admin_strings += "- Наблюдает" //SS1984 EDIT
 		else if(isnewplayer(admin.mob))
 			if(SSticker.current_state <= GAME_STATE_PREGAME)
 				var/mob/dead/new_player/lobbied_admin = admin.mob
 				if(lobbied_admin.ready == PLAYER_READY_TO_PLAY)
-					admin_strings += "- Lobby (Readied)"
+					admin_strings += "- В лобби (Готов)" //SS1984 EDIT
 				else
-					admin_strings += "- Lobby (Not Readied)"
+					admin_strings += "- В Лобби (Не готов)" //SS1984 EDIT
 			else
-				admin_strings += "- Lobby"
+				admin_strings += "- В Лобби" //SS1984 EDIT
 		else
-			admin_strings += "- Playing"
+			admin_strings += "- Играет" //SS1984 EDIT
 
 		if(admin.is_afk())
-			admin_strings += "(AFK)"
+			admin_strings += "(АФК)" //SS1984 EDIT
 
 		returnable_list += jointext(admin_strings, " ")
 
