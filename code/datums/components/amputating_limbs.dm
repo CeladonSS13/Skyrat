@@ -16,7 +16,7 @@
 /datum/component/amputating_limbs/Initialize(
 	surgery_time = 5 SECONDS,
 	surgery_verb = "prying",
-	minimum_stat = SOFT_CRIT,
+	minimum_stat = UNCONSCIOUS, //S1984 EDIT
 	snip_chance = 100,
 	list/target_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_ARM, BODY_ZONE_R_LEG),
 	datum/callback/pre_hit_callback,

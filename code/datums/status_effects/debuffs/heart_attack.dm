@@ -98,7 +98,7 @@
 		owner.adjustOxyLoss(oxyloss_sum)
 
 	if(time_until_stoppage <= 0)
-		if(owner.stat == CONSCIOUS)
+		if(owner.stat <= SOFT_CRIT)
 			to_chat(owner, span_userdanger("You feel a terrible pain in your chest, as if your heart has stopped!"))
 		owner.adjust_eye_blur(20 SECONDS)
 		human_owner.set_heartattack(TRUE)

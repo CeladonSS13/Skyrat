@@ -261,7 +261,7 @@
 		playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 
 	if(iscarbon(living_mob))
-		if(living_mob.stat == CONSCIOUS)
+		if(living_mob.stat <= SOFT_CRIT)
 			living_mob.say("ARRRRRRRRRRRGH!!!", forced= "recycler grinding")
 		add_mob_blood(living_mob)
 

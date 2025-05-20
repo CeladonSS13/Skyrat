@@ -106,7 +106,7 @@
 	return FALSE
 
 /datum/martial_art/krav_maga/proc/leg_sweep(mob/living/attacker, mob/living/defender)
-	if(defender.stat != CONSCIOUS || defender.IsParalyzed())
+	if(defender.stat > SOFT_CRIT || defender.IsParalyzed())
 		return MARTIAL_ATTACK_INVALID
 	if(HAS_TRAIT(attacker, TRAIT_PACIFISM))
 		return MARTIAL_ATTACK_INVALID // Does 5 damage, so we can't let pacifists leg sweep.

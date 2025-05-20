@@ -58,7 +58,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 /mob/living/proc/ci_on_stat_change(mob/source, new_stat)
 	SIGNAL_HANDLER
-	if(new_stat <= SOFT_CRIT)
+	if(new_stat <= UNCONSCIOUS) //S1984 EDIT
 		return
 	set_combat_indicator(FALSE, involuntary = TRUE)
 

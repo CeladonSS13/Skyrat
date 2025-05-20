@@ -430,7 +430,7 @@
 
 /obj/item/restraints/legcuffs/beartrap/attack_self(mob/user)
 	. = ..()
-	if(!ishuman(user) || user.stat != CONSCIOUS || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
+	if(!ishuman(user) || user.stat > SOFT_CRIT || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		return
 	armed = !armed
 	update_appearance()

@@ -209,7 +209,7 @@
 	var/mob/living/stabbed = target
 	if(istype(stabbed, /mob/living/simple_animal/hostile/illusion))
 		return
-	if(stabbed.stat == CONSCIOUS && prob(50))
+	if(stabbed.stat <= SOFT_CRIT && prob(50))
 		var/mob/living/simple_animal/hostile/illusion/fake_clone = new(user.loc)
 		fake_clone.faction = user.faction.Copy()
 		fake_clone.Copy_Parent(user, 100, user.health/2.5, 12, 30)

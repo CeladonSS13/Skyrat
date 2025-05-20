@@ -391,7 +391,7 @@
 			if(!attacking_item.get_sharpness() && !HAS_TRAIT(src, TRAIT_HEAD_INJURY_BLOCKED) && attacking_item.damtype == BRUTE)
 				if(prob(damage_done))
 					adjustOrganLoss(ORGAN_SLOT_BRAIN, 20)
-					if(stat == CONSCIOUS)
+					if(stat <= SOFT_CRIT)
 						visible_message(
 							span_danger("[src] is knocked senseless!"),
 							span_userdanger("You're knocked senseless!"),
@@ -405,7 +405,7 @@
 
 				// rev deconversion through blunt trauma.
 				// this can be signalized to the rev datum
-				if(mind && stat == CONSCIOUS && src != attacker && prob(damage_done + ((maxHealth - health) * 0.5))) // NOVA EDIT CHANGE - ORIGINAL : if(mind && stat == CONSCIOUS && src != attacker && prob(damage_done + ((100 - health) * 0.5)))
+				if(mind && stat <= SOFT_CRIT && src != attacker && prob(damage_done + ((maxHealth - health) * 0.5))) // NOVA EDIT CHANGE - ORIGINAL : if(mind && stat == CONSCIOUS && src != attacker && prob(damage_done + ((100 - health) * 0.5)))
 					var/datum/antagonist/rev/rev = mind.has_antag_datum(/datum/antagonist/rev)
 					rev?.remove_revolutionary(attacker)
 

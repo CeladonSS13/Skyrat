@@ -7,7 +7,7 @@
 	/// If someone else is already grabbing this, will we take it?
 	var/steal_from_others
 
-/datum/element/mob_grabber/Attach(datum/target, minimum_stat = SOFT_CRIT, steal_from_others = TRUE)
+/datum/element/mob_grabber/Attach(datum/target, minimum_stat = UNCONSCIOUS, steal_from_others = TRUE) //S1984 EDIT
 	. = ..()
 	if (!isliving(target))
 		return ELEMENT_INCOMPATIBLE

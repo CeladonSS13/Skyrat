@@ -82,5 +82,5 @@
 	if(isnull(itchy_brain))
 		return
 	itchy_brain.apply_organ_damage(rand(minimum_damage, maximum_damage), maximum = itchy_brain.maxHealth * 0.3)
-	if(owner.stat == CONSCIOUS && !owner.incapacitated && owner.get_empty_held_indexes())
+	if(owner.stat <= SOFT_CRIT && !owner.incapacitated && owner.get_empty_held_indexes())
 		to_chat(owner, span_warning("You scratch the itch in your head."))

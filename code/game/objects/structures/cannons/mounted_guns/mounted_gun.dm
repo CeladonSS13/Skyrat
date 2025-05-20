@@ -76,7 +76,7 @@
 		return
 	for(var/times_fired = 1, times_fired <= shots_in_gun, times_fired++) //The normal DM for loop structure since the times it has fired is changing in the loop itself.
 		for(var/mob/shaken_mob in urange(10, src))
-			if(shaken_mob.stat == CONSCIOUS && firing_shakes_camera == TRUE)
+			if(shaken_mob.stat <= SOFT_CRIT && firing_shakes_camera == TRUE)
 				shake_camera(shaken_mob, 3, 1)
 			icon_state = icon_state_fire
 		if(loaded_gun)
@@ -131,7 +131,7 @@
 		return
 	for(var/times_fired = 1, times_fired <= shots_in_gun, times_fired++) //The normal DM for loop structure since the times it has fired is changing in the loop itself.
 		for(var/mob/shaken_mob in urange(10, src))
-			if((shaken_mob.stat == CONSCIOUS)&&(firing_shakes_camera == TRUE))
+			if((shaken_mob.stat <= SOFT_CRIT)&&(firing_shakes_camera == TRUE))
 				shake_camera(shaken_mob, 3, 1)
 			icon_state = icon_state_fire
 		if(loaded_gun)

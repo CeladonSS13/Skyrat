@@ -120,7 +120,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 		span_hear("You hear a metallic creaking from [src]."))
 	if(!do_after(user, BREAKDOWN_TIME, target = src))
 		return
-	if(!user || user.stat != CONSCIOUS || user.loc != src)
+	if(!user || user.stat > SOFT_CRIT || user.loc != src)
 		return
 	user.visible_message(
 		span_warning("[user] successfully broke out of [src]!"),

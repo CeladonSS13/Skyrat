@@ -40,7 +40,7 @@
 		..(target)
 
 /obj/machinery/abductor/experiment/relaymove(mob/living/user, direction)
-	if(user.stat != CONSCIOUS)
+	if(user.stat > SOFT_CRIT)
 		return
 	if(message_cooldown <= world.time)
 		message_cooldown = world.time + 50

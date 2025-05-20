@@ -302,7 +302,7 @@
 		span_notice("You start wriggling, attempting to loosen [src]'s buckles... (this will take about [DisplayTimeText(breakout_time)].)"), \
 		span_hear("You hear straining cloth from [src]."))
 	if(do_after(user,(breakout_time), target = src))
-		if(!user || user.stat != CONSCIOUS || user.loc != src || opened || !sinched )
+		if(!user || user.stat > SOFT_CRIT || user.loc != src || opened || !sinched )
 			return
 		//we check after a while whether there is a point of resisting anymore and whether the user is capable of resisting
 		user.visible_message(span_danger("[user] successfully broke out of [src]!"),

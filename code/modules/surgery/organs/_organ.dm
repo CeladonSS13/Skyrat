@@ -246,7 +246,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	else
 		organ_flags &= ~ORGAN_FAILING
 
-	if(message && owner && owner.stat <= SOFT_CRIT)
+	if(message && owner && owner.stat <= UNCONSCIOUS) //SS1984 EDIT
 		to_chat(owner, message)
 
 ///SETS an organ's damage to the amount "damage_amount", and in doing so clears or sets the failing flag, good for when you have an effect that should fix an organ if broken

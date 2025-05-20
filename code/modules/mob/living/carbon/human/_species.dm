@@ -857,7 +857,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(SEND_SIGNAL(target, COMSIG_CARBON_PRE_HELP, user, attacker_style) & COMPONENT_BLOCK_HELP_ACT)
 		return TRUE
 
-	if(target.body_position == STANDING_UP || (target.appears_alive() && target.stat != SOFT_CRIT && target.stat != HARD_CRIT))
+	if(target.body_position == STANDING_UP || (target.appears_alive() && target.stat < HARD_CRIT)) //SS1984 EDIT
 		target.help_shake_act(user)
 		if(target != user)
 			log_combat(user, target, "shaken")

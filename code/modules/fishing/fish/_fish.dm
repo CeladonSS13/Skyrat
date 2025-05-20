@@ -244,7 +244,7 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 	stoplag(0.1 SECONDS)
 	user.visible_message(span_bolddanger(suicide_slap_text))
 	user.attackby(src, user)
-	if(user.stat > SOFT_CRIT || (iteration > 100))
+	if(user.stat > UNCONSCIOUS || (iteration > 100))
 		REMOVE_TRAIT(user, TRAIT_COMBAT_MODE_LOCK, REF(src))
 		user.gib(DROP_ORGANS|DROP_BODYPARTS|DROP_ITEMS)
 		return

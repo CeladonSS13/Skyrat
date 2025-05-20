@@ -64,7 +64,7 @@
 	return special_voice
 
 /mob/living/carbon/human/binarycheck()
-	if(stat >= SOFT_CRIT)
+	if(stat >= UNCONSCIOUS) //SS1984 EDIT
 		return FALSE
 	var/area/our_area = get_area(src)
 	if(our_area.area_flags & BINARY_JAMMING)

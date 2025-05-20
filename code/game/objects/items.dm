@@ -457,7 +457,7 @@
 	set category = "Object"
 	set src in oview(1)
 
-	if(!isturf(loc) || usr.stat != CONSCIOUS || HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED))
+	if(!isturf(loc) || usr.stat > SOFT_CRIT || HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED))
 		return
 
 	if(isliving(usr))
@@ -1886,7 +1886,7 @@
 		if(ishuman(target))
 			var/mob/living/carbon/human/victim_human = target
 			if(victim_human.key && !victim_human.client) // AKA braindead
-				if(victim_human.stat <= SOFT_CRIT && LAZYLEN(victim_human.afk_thefts) <= AFK_THEFT_MAX_MESSAGES)
+				if(victim_human.stat <= UNCONSCIOUS && LAZYLEN(victim_human.afk_thefts) <= AFK_THEFT_MAX_MESSAGES)
 					var/list/new_entry = list(list(user.name, "tried equipping you with [equipping]", world.time))
 					LAZYADD(victim_human.afk_thefts, new_entry)
 

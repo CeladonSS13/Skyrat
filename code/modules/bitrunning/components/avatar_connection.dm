@@ -176,7 +176,7 @@
 
 	old_body.apply_damage(damage, damage_type, def_zone, blocked, wound_bonus = CANT_WOUND)
 
-	if(old_body.stat > SOFT_CRIT) // KO!
+	if(old_body.stat > UNCONSCIOUS) // KO!
 		full_avatar_disconnect(cause_damage = TRUE)
 
 

@@ -301,7 +301,7 @@
 	// nothing to handle
 	if(!chosen_sting)
 		return
-	if(!isliving(ling) || clicked == ling || ling.stat != CONSCIOUS)
+	if(!isliving(ling) || clicked == ling || ling.stat > SOFT_CRIT)
 		return
 	// sort-of hack done here: we use in_given_range here because it's quicker.
 	// actual ling stings do pathfinding to determine whether the target's "in range".

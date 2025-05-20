@@ -71,7 +71,7 @@
 	if(!user.Adjacent(target) || !isliving(target))
 		return FALSE
 
-	if (target.stat <= SOFT_CRIT && !(organ_flags & ORGAN_FAILING))
+	if (target.stat <= UNCONSCIOUS && !(organ_flags & ORGAN_FAILING)) //SS1984 EDIT
 		target.add_mood_event("legion_core", /datum/mood_event/healsbadman)
 		target.apply_status_effect(applied_status)
 

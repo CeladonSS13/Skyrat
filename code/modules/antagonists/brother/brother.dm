@@ -71,7 +71,7 @@
 	if (flashed.stat == DEAD)
 		return
 
-	if (flashed.stat != CONSCIOUS)
+	if (flashed.stat > SOFT_CRIT)
 		flashed.balloon_alert(source, "unconscious!")
 		return
 

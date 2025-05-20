@@ -585,10 +585,12 @@
 	if(((maxHealth - total_burn) < husk_threshold) && stat == DEAD )
 		become_husk(BURN)
 	med_hud_set_health()
-	if(stat == SOFT_CRIT)
-		add_movespeed_modifier(/datum/movespeed_modifier/carbon_softcrit)
-	else
-		remove_movespeed_modifier(/datum/movespeed_modifier/carbon_softcrit)
+	// SS1984 EDIT START
+	//if(stat == SOFT_CRIT)
+	//	add_movespeed_modifier(/datum/movespeed_modifier/carbon_softcrit)
+	//else
+	//	remove_movespeed_modifier(/datum/movespeed_modifier/carbon_softcrit)
+	// SS1984 EDIT END
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
 /mob/living/carbon/update_sight()

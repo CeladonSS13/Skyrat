@@ -527,7 +527,7 @@
 		span_notice("You struggle inside [src], kicking the release with your foot... (this will take about [DisplayTimeText(CRYO_BREAKOUT_TIME)].)"), \
 		span_hear("You hear a thump from [src]."))
 	if(do_after(user, CRYO_BREAKOUT_TIME, target = src, hidden = TRUE))
-		if(!user || user.stat != CONSCIOUS || user.loc != src )
+		if(!user || user.stat > SOFT_CRIT || user.loc != src )
 			return
 		user.visible_message(span_warning("[user] successfully broke out of [src]!"), \
 			span_notice("You successfully break out of [src]!"))

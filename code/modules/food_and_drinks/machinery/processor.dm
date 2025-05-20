@@ -179,7 +179,7 @@
 	set category = "Object"
 	set name = "Eject Contents"
 	set src in oview(1)
-	if(usr.stat != CONSCIOUS || HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED))
+	if(usr.stat > SOFT_CRIT || HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED))
 		return
 	if(!usr.can_perform_action(src))
 		return

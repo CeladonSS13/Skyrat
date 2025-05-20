@@ -15,7 +15,7 @@
 		trigger_seizure()
 
 /datum/mutation/human/epilepsy/proc/trigger_seizure()
-	if(owner.stat != CONSCIOUS)
+	if(owner.stat > SOFT_CRIT)
 		return
 	owner.visible_message(span_danger("[owner] starts having a seizure!"), span_userdanger("You have a seizure!"))
 	owner.Unconscious(200 * GET_MUTATION_POWER(src))
@@ -88,7 +88,7 @@
 	power_coeff = 1
 
 /datum/mutation/human/cough/on_life(seconds_per_tick, times_fired)
-	if(SPT_PROB(2.5 * GET_MUTATION_SYNCHRONIZER(src), seconds_per_tick) && owner.stat == CONSCIOUS)
+	if(SPT_PROB(2.5 * GET_MUTATION_SYNCHRONIZER(src), seconds_per_tick) && owner.stat <= SOFT_CRIT)
 		owner.drop_all_held_items()
 		owner.emote("cough")
 		if(GET_MUTATION_POWER(src) > 1)
@@ -105,7 +105,7 @@
 	text_lose_indication = span_notice("The screaming in your mind fades.")
 
 /datum/mutation/human/paranoia/on_life(seconds_per_tick, times_fired)
-	if(SPT_PROB(2.5, seconds_per_tick) && owner.stat == CONSCIOUS)
+	if(SPT_PROB(2.5, seconds_per_tick) && owner.stat <= SOFT_CRIT)
 		owner.emote("scream")
 		if(prob(25))
 			owner.adjust_hallucinations(40 SECONDS)
@@ -233,7 +233,7 @@
 	synchronizer_coeff = 1
 
 /datum/mutation/human/tourettes/on_life(seconds_per_tick, times_fired)
-	if(SPT_PROB(5 * GET_MUTATION_SYNCHRONIZER(src), seconds_per_tick) && owner.stat == CONSCIOUS && !owner.IsStun())
+	if(SPT_PROB(5 * GET_MUTATION_SYNCHRONIZER(src), seconds_per_tick) && owner.stat <= SOFT_CRIT && !owner.IsStun())
 		switch(rand(1, 3))
 			if(1)
 				owner.emote("twitch")

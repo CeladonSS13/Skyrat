@@ -120,7 +120,7 @@
 		return SHAME
 
 	var/escape_our_torment = 0
-	while(carbon_user.stat == CONSCIOUS)
+	while(carbon_user.stat <= SOFT_CRIT)
 		if(QDELETED(src) || QDELETED(user))
 			return SHAME
 		if(escape_our_torment > 20) //Stops us from infinitely stunning ourselves if we're just not taking the damage

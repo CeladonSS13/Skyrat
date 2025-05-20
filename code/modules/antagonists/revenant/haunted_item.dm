@@ -47,7 +47,7 @@
 	if(!isnull(aggro_radius))
 		// We were given an aggro radius, we'll start attacking people nearby
 		for(var/mob/living/victim in view(aggro_radius, haunted_item))
-			if(victim.stat != CONSCIOUS)
+			if(victim.stat > SOFT_CRIT)
 				continue
 			if(victim.mob_biotypes & MOB_SPIRIT)
 				continue

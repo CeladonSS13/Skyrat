@@ -140,7 +140,7 @@
 		return FALSE
 
 	// Invalid
-	if(occupant != neo || isnull(neo.mind) || neo.stat > SOFT_CRIT || avatar.stat == DEAD)
+	if(occupant != neo || isnull(neo.mind) || neo.stat > UNCONSCIOUS || avatar.stat == DEAD)
 		return FALSE
 
 	return TRUE

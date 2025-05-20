@@ -27,7 +27,7 @@
 	/// Maximum stat before the ability is blocked.
 	/// For example, `UNCONSCIOUS` prevents it from being used when in hard crit or dead,
 	/// while `DEAD` allows the ability to be used on any stat values.
-	var/req_stat = CONSCIOUS
+	var/req_stat = SOFT_CRIT
 	/// usable when the changeling is in death coma
 	var/ignores_fakedeath = FALSE
 	/// used by a few powers that toggle

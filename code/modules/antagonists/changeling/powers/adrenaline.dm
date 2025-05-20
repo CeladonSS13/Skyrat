@@ -6,7 +6,7 @@
 	chemical_cost = 25 // similar cost to biodegrade, as they serve similar purposes
 	dna_cost = 2
 	req_human = FALSE
-	req_stat = CONSCIOUS
+	req_stat = SOFT_CRIT
 	disabled_by_fire = FALSE
 
 /datum/action/changeling/adrenaline/can_sting(mob/living/user, mob/living/target)

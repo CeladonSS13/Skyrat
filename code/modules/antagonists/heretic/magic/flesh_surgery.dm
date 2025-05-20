@@ -206,7 +206,7 @@
 	carbon_victim.balloon_alert(caster, "[chosen_organ] removed")
 	carbon_victim.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, COLOR_DARK_RED)
 	playsound(victim, 'sound/effects/dismember.ogg', 50, TRUE)
-	if(carbon_victim.stat == CONSCIOUS)
+	if(carbon_victim.stat <= SOFT_CRIT)
 		carbon_victim.adjust_timed_status_effect(15 SECONDS, /datum/status_effect/speech/slurring/heretic)
 		carbon_victim.emote("scream")
 

@@ -1501,7 +1501,7 @@ NOVA EDIT REMOVAL END */
 	if(!istype(target))
 		CRASH("Missing target arg for can_perform_action")
 
-	if(stat != CONSCIOUS)
+	if(stat > SOFT_CRIT)
 		to_chat(src, span_warning("You are not conscious enough for this action!"))
 		return FALSE
 
@@ -2533,16 +2533,16 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	if(. <= UNCONSCIOUS || new_stat >= UNCONSCIOUS)
 		update_body() // to update eyes
 
+	// SS1984 EDIT START
+
 	switch(.) //Previous stat.
 		if(CONSCIOUS)
 			if(stat >= UNCONSCIOUS)
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
-			add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED, TRAIT_FLOORED), STAT_TRAIT)
+				add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED, TRAIT_FLOORED), STAT_TRAIT)
 		if(SOFT_CRIT)
 			if(stat >= UNCONSCIOUS)
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT) //adding trait sources should come before removing to avoid unnecessary updates
-			if(pulledby)
-				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, PULLED_WHILE_SOFTCRIT_TRAIT)
 		if(UNCONSCIOUS)
 			if(stat != HARD_CRIT)
 				cure_blind(UNCONSCIOUS_TRAIT)
@@ -2552,6 +2552,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		if(DEAD)
 			remove_from_dead_mob_list()
 			add_to_alive_mob_list()
+
 	switch(stat) //Current stat.
 		if(CONSCIOUS)
 			if(. >= UNCONSCIOUS)
@@ -2559,10 +2560,9 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 			remove_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED, TRAIT_FLOORED, TRAIT_CRITICAL_CONDITION), STAT_TRAIT)
 			log_combat(src, src, "regained consciousness")
 		if(SOFT_CRIT)
-			if(pulledby)
-				ADD_TRAIT(src, TRAIT_IMMOBILIZED, PULLED_WHILE_SOFTCRIT_TRAIT) //adding trait sources should come before removing to avoid unnecessary updates
 			if(. >= UNCONSCIOUS)
 				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
+			remove_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED, TRAIT_FLOORED, TRAIT_CRITICAL_CONDITION), STAT_TRAIT)
 			ADD_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
 			log_combat(src, src, "entered soft crit")
 		if(UNCONSCIOUS)
@@ -2572,17 +2572,23 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 				ADD_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
 			else
 				REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
+			add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED, TRAIT_FLOORED), STAT_TRAIT)
 			log_combat(src, src, "lost consciousness")
 		if(HARD_CRIT)
 			if(. != UNCONSCIOUS)
 				become_blind(UNCONSCIOUS_TRAIT)
+			add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED, TRAIT_FLOORED), STAT_TRAIT)
 			ADD_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
 			log_combat(src, src, "entered hard crit")
 		if(DEAD)
+			add_traits(list(TRAIT_FLOORED), STAT_TRAIT)
 			REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
 			remove_from_alive_mob_list()
 			add_to_dead_mob_list()
 			log_combat(src, src, "died")
+
+	// SS1984 EDIT END
+
 	if(!can_hear())
 		stop_sound_channel(CHANNEL_AMBIENCE)
 	refresh_looping_ambience()
@@ -2622,11 +2628,13 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	update_incapacitated()
 	if(. == FALSE) //null is a valid value here, we only want to return if FALSE is explicitly passed.
 		return
-	if(pulledby)
-		if(!. && stat == SOFT_CRIT)
-			ADD_TRAIT(src, TRAIT_IMMOBILIZED, PULLED_WHILE_SOFTCRIT_TRAIT)
-	else if(. && stat == SOFT_CRIT)
-		REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, PULLED_WHILE_SOFTCRIT_TRAIT)
+	// SS1984 EDIT START
+	//if(pulledby)
+	//	if(!. && stat == SOFT_CRIT)
+	//		ADD_TRAIT(src, TRAIT_IMMOBILIZED, PULLED_WHILE_SOFTCRIT_TRAIT)
+	//else if(. && stat == SOFT_CRIT)
+	//	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, PULLED_WHILE_SOFTCRIT_TRAIT)
+	// SS1984 EDIT END
 
 
 /// Updates the grab state of the mob and updates movespeed

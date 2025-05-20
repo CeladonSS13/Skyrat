@@ -229,7 +229,7 @@
 
 	playsound(src, 'sound/effects/meteorimpact.ogg', 100, TRUE)
 	for(var/mob/living/nearby_mob in urange(8, src))
-		if(nearby_mob.stat != CONSCIOUS)
+		if(nearby_mob.stat > SOFT_CRIT)
 			continue
 		shake_camera(nearby_mob, 2, 3)
 

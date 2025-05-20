@@ -22,7 +22,7 @@
 	)
 	blackboard = list(
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
-		BB_TARGET_MINIMUM_STAT = SOFT_CRIT,
+		BB_TARGET_MINIMUM_STAT = UNCONSCIOUS, //SS1984 EDIT
 		BB_REINFORCEMENTS_SAY = "Call contact at nine dash two."
 	)
 

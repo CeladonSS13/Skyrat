@@ -627,7 +627,7 @@
  */
 /datum/antagonist/heretic/proc/passive_influence_gain()
 	knowledge_points++
-	if(owner.current.stat <= SOFT_CRIT)
+	if(owner.current.stat <= UNCONSCIOUS)
 		to_chat(owner.current, "[span_hear("You hear a whisper...")] [span_hypnophrase(pick_list(HERETIC_INFLUENCE_FILE, "drain_message"))]")
 	addtimer(CALLBACK(src, PROC_REF(passive_influence_gain)), passive_gain_timer)
 

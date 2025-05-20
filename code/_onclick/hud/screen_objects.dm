@@ -311,7 +311,7 @@
 	mouse_over_pointer = MOUSE_HAND_POINTER
 
 /atom/movable/screen/drop/Click()
-	if(usr.stat == CONSCIOUS)
+	if(usr.stat <= SOFT_CRIT)
 		usr.dropItemToGround(usr.get_active_held_item())
 
 /atom/movable/screen/combattoggle

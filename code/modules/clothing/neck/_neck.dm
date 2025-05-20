@@ -300,7 +300,7 @@
 					render_list += "<span class='danger ml-1'>You can't feel anything where [target.p_their()] appendix would be.</span>\n"
 					appendix_okay = FALSE
 				else
-					if(appendix.damage > 10 && carbon_patient.stat == CONSCIOUS)
+					if(appendix.damage > 10 && carbon_patient.stat <= SOFT_CRIT)
 						render_list += "<span class='danger ml-1'>[target] screams when you lift your hand from [target.p_their()] appendix!</span>\n"//scream if their appendix is damaged and they're awake
 						target.emote("scream")
 						appendix_okay = FALSE

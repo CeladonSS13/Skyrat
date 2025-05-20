@@ -127,9 +127,11 @@
 	variable = TRUE
 	flags = IGNORE_NOSLOW
 
-/datum/movespeed_modifier/carbon_softcrit
-	multiplicative_slowdown = SOFTCRIT_ADD_SLOWDOWN
-	flags = IGNORE_NOSLOW
+// SS1984 EDIT START
+///datum/movespeed_modifier/carbon_softcrit
+//	multiplicative_slowdown = SOFTCRIT_ADD_SLOWDOWN
+//	flags = IGNORE_NOSLOW
+// SS1984 EDIT END
 
 /datum/movespeed_modifier/carbon_crawling
 	multiplicative_slowdown = CRAWLING_ADD_SLOWDOWN

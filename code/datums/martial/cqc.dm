@@ -111,7 +111,7 @@
 	return TRUE
 
 /datum/martial_art/cqc/proc/Kick(mob/living/attacker, mob/living/defender)
-	if(defender.stat != CONSCIOUS)
+	if(defender.stat > SOFT_CRIT)
 		return FALSE
 
 	attacker.do_attack_animation(defender)
@@ -169,7 +169,7 @@
 /datum/martial_art/cqc/proc/Restrain(mob/living/attacker, mob/living/defender)
 	if(restraining_mob?.resolve())
 		return FALSE
-	if(defender.stat != CONSCIOUS)
+	if(defender.stat > SOFT_CRIT)
 		return FALSE
 
 	log_combat(attacker, defender, "restrained (CQC)")
@@ -188,7 +188,7 @@
 	return TRUE
 
 /datum/martial_art/cqc/proc/Consecutive(mob/living/attacker, mob/living/defender)
-	if(defender.stat != CONSCIOUS)
+	if(defender.stat > SOFT_CRIT)
 		return FALSE
 
 	attacker.do_attack_animation(defender)
@@ -329,7 +329,7 @@
 		return MARTIAL_ATTACK_SUCCESS
 
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_DISARM)
-	if(prob(65) && (defender.stat == CONSCIOUS || !defender.IsParalyzed() || !restraining_mob?.resolve()))
+	if(prob(65) && (defender.stat <= SOFT_CRIT || !defender.IsParalyzed() || !restraining_mob?.resolve()))
 		var/obj/item/disarmed_item = defender.get_active_held_item()
 		if(disarmed_item && defender.temporarilyRemoveItemFromInventory(disarmed_item))
 			attacker.put_in_hands(disarmed_item)
