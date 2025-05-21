@@ -400,6 +400,7 @@ ROUNDSTART_RACES vox
 ROUNDSTART_RACES teshari
 ROUNDSTART_RACES vox_primalis
 ROUNDSTART_RACES abductorweak
+ROUNDSTART_RACES hemophage
 
 ##-------------------------------------------------------------------------------------------
 

@@ -196,7 +196,6 @@ Lizard subspecies: ASHWALKERS
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/lizard,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/lizard,
 	)
-	veteran_only = TRUE
 
 /datum/species/lizard/ashwalker/get_physical_attributes()
 	return "Ash Walkers are identical to lizardpeople in almost all aspects. \
