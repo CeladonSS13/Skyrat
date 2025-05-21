@@ -368,7 +368,7 @@ ROUNDSTART_RACES human
 ## Races that are strictly worse than humans that could probably be turned on without balance concerns
 ROUNDSTART_RACES lizard
 ROUNDSTART_RACES felinid
-ROUNDSTART_RACES fly
+#ROUNDSTART_RACES fly
 ROUNDSTART_RACES moth
 ROUNDSTART_RACES plasmaman
 #ROUNDSTART_RACES shadow
@@ -377,7 +377,7 @@ ROUNDSTART_RACES plasmaman
 ROUNDSTART_RACES ethereal
 #ROUNDSTART_RACES jelly
 #ROUNDSTART_RACES abductor
-ROUNDSTART_RACES snail
+#ROUNDSTART_RACES snail
 
 ## Races that are straight upgrades. If these are on expect powergamers to always pick them
 #ROUNDSTART_RACES skeleton
@@ -389,27 +389,17 @@ ROUNDSTART_RACES snail
 #ROUNDSTART_RACES golem
 
 ## NOVA SECTOR RACES DOWN THERE
-ROUNDSTART_RACES mammal
 ROUNDSTART_RACES vulpkanin
 ROUNDSTART_RACES tajaran
-ROUNDSTART_RACES akula
 ROUNDSTART_RACES unathi
 ROUNDSTART_RACES skrell
-ROUNDSTART_RACES humanoid
-ROUNDSTART_RACES xeno
 ROUNDSTART_RACES slimeperson
 ROUNDSTART_RACES podweak
-ROUNDSTART_RACES dwarf
 ROUNDSTART_RACES synth
 ROUNDSTART_RACES vox
-ROUNDSTART_RACES aquatic
-ROUNDSTART_RACES insect
-ROUNDSTART_RACES ghoul
 ROUNDSTART_RACES teshari
-ROUNDSTART_RACES hemophage
 ROUNDSTART_RACES vox_primalis
 ROUNDSTART_RACES abductorweak
-ROUNDSTART_RACES kobold
 
 ##-------------------------------------------------------------------------------------------
 
