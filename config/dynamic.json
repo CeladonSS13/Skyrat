@@ -1,10 +1,431 @@
 {
-	"Dynamic": {},
+	"Dynamic": {
+		"pop_per_requirement": 10,
+		"latejoin_delay_min": 3000,
+		"latejoin_delay_max": 9000,
+		"threat_curve_centre": 1,
+		"threat_curve_width": 3,
+		"roundstart_split_curve_centre": 2,
+		"roundstart_split_curve_width": 1,
+		"midround_lower_bound": 9000,
+		"midround_upper_bound": 48000,
+		"midround_heavy_lower_bound": 54000,
+		"midround_heavy_upper_bound": 63000,
+		"midround_roll_distance": 6000,
+		"low_pop_maximum_threat": 0
+	},
 	"Roundstart": {
 		"Traitors": {
 			"cost": 8,
-			"scaling_cost": 9,
-			"weight": 0,
+			"scaling_cost": 5,
+			"weight": 5,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 10
+			},
+			"protected_roles": [
+				"Prisoner",
+				"Blueshield",
+				"Corrections Officer",
+				"Security Officer",
+				"Warden",
+				"Detective",
+				"Head of Security",
+				"Captain",
+				"Nanotrasen Consultant"
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
+		},
+
+		"Blood Brothers": {
+			"cost": 8,
+			"scaling_cost": 5,
+			"weight": 1,
+			"required_candidates": 2,
+			"minimum_required_age": 0,
+			"requirements": [
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 30,
+				"offset": 2
+			},
+			"protected_roles": [
+				"Prisoner",
+				"Blueshield",
+				"Corrections Officer",
+				"Security Officer",
+				"Warden",
+				"Detective",
+				"Head of Security",
+				"Captain",
+				"Nanotrasen Consultant"
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
+		},
+
+		"Changelings": {
+			"cost": 16,
+			"scaling_cost": 8,
+			"weight": 3,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				70,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 15
+			},
+			"protected_roles": [
+				"Prisoner",
+				"Blueshield",
+				"Corrections Officer",
+				"Security Officer",
+				"Warden",
+				"Detective",
+				"Head of Security",
+				"Captain",
+				"Nanotrasen Consultant"
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
+		},
+
+		"Heretics": {
+			"cost": 16,
+			"scaling_cost": 8,
+			"weight": 4,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 15
+			},
+			"protected_roles": [
+				"Prisoner",
+				"Blueshield",
+				"Corrections Officer",
+				"Security Officer",
+				"Warden",
+				"Detective",
+				"Head of Security",
+				"Captain",
+				"Nanotrasen Consultant"
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
+		},
+
+		"Wizard": {
+			"cost": 25,
+			"scaling_cost": 15,
+			"weight": 3,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				90,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 24
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Blood Cult": {
+			"cost": 20,
+			"scaling_cost": 10,
+			"weight": 4,
+			"required_candidates": 4,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				90,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 20,
+				"offset": 3
+			},
+			"protected_roles": [
+				"Prisoner",
+				"Blueshield",
+				"Corrections Officer",
+				"Security Officer",
+				"Warden",
+				"Detective",
+				"Head of Security",
+				"Captain",
+				"Nanotrasen Consultant"
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
+		},
+
+		"Nuclear Emergency": {
+			"cost": 60,
+			"scaling_cost": 10,
+			"weight": 3,
+			"required_candidates": 3,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				90,
+				80,
+				70,
+				60,
+				50,
+				40,
+				30,
+				20,
+				10
+			],
+			"antag_cap": {
+				"denominator": 15,
+				"offset": 1
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Revolution": {
+			"cost": 20,
+			"scaling_cost": 15,
+			"weight": 3,
+			"required_candidates": 2,
+			"minimum_required_age": 0,
+			"requirements": [
+				60,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 15,
+				"offset": 1
+			},
+			"protected_roles": [
+				"Prisoner",
+				"Blueshield",
+				"Corrections Officer",
+				"Security Officer",
+				"Warden",
+				"Detective",
+				"Head of Security",
+				"Captain",
+				"Nanotrasen Consultant",
+				"Head of Personnel",
+				"Chief Engineer",
+				"Chief Medical Officer",
+				"Research Director",
+				"Quartermaster"
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
+		},
+
+		"Malfunctioning AI": {
+			"cost": 30,
+			"scaling_cost": 99,
+			"weight": 1,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				100,
+				60,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 99
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+				"Captain",
+				"Head of Personnel",
+				"Head of Security",
+				"Chief Engineer",
+				"Research Director",
+				"Chief Medical Officer",
+				"Quartermaster",
+				"Nanotrasen Consultant",
+				"Blueshield",
+				"Cargo Technician",
+				"Shaft Miner",
+				"Customs Agent",
+				"Bartender",
+				"Cook",
+				"Barber",
+				"Botanist",
+				"Janitor",
+				"Clown",
+				"Mime",
+				"Curator",
+				"Lawyer",
+				"Chaplain",
+				"Psychologist",
+				"Bouncer",
+				"Station Engineer",
+				"Atmospheric Technician",
+				"Engineering Guard",
+				"Medical Doctor",
+				"Paramedic",
+				"Chemist",
+				"Geneticist",
+				"Virologist",
+				"Orderly",
+				"Scientist",
+				"Roboticist",
+				"Vanguard Operative",
+				"Science Guard",
+				"Warden",
+				"Detective",
+				"Security Officer",
+				"Corrections Officer",
+				"Cyborg",
+				"Assistant",
+				"Prisoner"
+			]
+		},
+
+		"Spies": {
+			"cost": 8,
+			"scaling_cost": 5,
+			"weight": 2,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 10
+			},
+			"protected_roles": [
+				"Prisoner",
+				"Blueshield",
+				"Corrections Officer",
+				"Security Officer",
+				"Warden",
+				"Detective",
+				"Head of Security",
+				"Captain",
+				"Nanotrasen Consultant"
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
+		}
+	},
+
+	"Midround": {
+		"Syndicate Sleeper Agent": {
+			"cost": 20,
+			"scaling_cost": 5,
+			"weight": 5,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
 			"requirements": [
@@ -31,6 +452,803 @@
 				"Detective",
 				"Head of Security",
 				"Captain",
+				"Nanotrasen Consultant"
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
+		},
+
+		"Malfunctioning AI": {
+			"cost": 40,
+			"scaling_cost": 30,
+			"weight": 1,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				90,
+				60,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 50
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+				"Captain",
+				"Head of Personnel",
+				"Head of Security",
+				"Chief Engineer",
+				"Research Director",
+				"Chief Medical Officer",
+				"Quartermaster",
+				"Nanotrasen Consultant",
+				"Blueshield",
+				"Cargo Technician",
+				"Shaft Miner",
+				"Customs Agent",
+				"Bartender",
+				"Cook",
+				"Barber",
+				"Botanist",
+				"Janitor",
+				"Clown",
+				"Mime",
+				"Curator",
+				"Lawyer",
+				"Chaplain",
+				"Psychologist",
+				"Bouncer",
+				"Station Engineer",
+				"Atmospheric Technician",
+				"Engineering Guard",
+				"Medical Doctor",
+				"Paramedic",
+				"Chemist",
+				"Geneticist",
+				"Virologist",
+				"Orderly",
+				"Scientist",
+				"Roboticist",
+				"Vanguard Operative",
+				"Science Guard",
+				"Warden",
+				"Detective",
+				"Security Officer",
+				"Corrections Officer",
+				"Cyborg",
+				"Assistant",
+				"Prisoner"
+			]
+		},
+
+		"Wizard": {
+			"cost": 50,
+			"scaling_cost": 15,
+			"weight": 2,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				90,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 24
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Nuclear Assault": {
+			"cost": 60,
+			"scaling_cost": 10,
+			"weight": 2,
+			"required_candidates": 3,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				100,
+				100,
+				90,
+				60,
+				50,
+				40,
+				30,
+				20,
+				10
+			],
+			"antag_cap": {
+				"denominator": 15,
+				"offset": 1
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Clown Operatives": {
+			"cost": 60,
+			"scaling_cost": 10,
+			"weight": 2,
+			"required_candidates": 3,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				100,
+				100,
+				90,
+				60,
+				50,
+				40,
+				30,
+				20,
+				10
+			],
+			"antag_cap": {
+				"denominator": 15,
+				"offset": 1
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Blob": {
+			"cost": 50,
+			"scaling_cost": 25,
+			"weight": 2,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				100,
+				100,
+				50,
+				50,
+				50,
+				40,
+				30,
+				20,
+				10
+			],
+			"antag_cap": {
+				"denominator": 25
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Blob Infection": {
+			"cost": 50,
+			"scaling_cost": 25,
+			"weight": 4,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				100,
+				100,
+				50,
+				50,
+				50,
+				40,
+				30,
+				20,
+				10
+			],
+			"antag_cap": {
+				"denominator": 25
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
+		},
+
+		"Alien Infestation": {
+			"cost": 50,
+			"scaling_cost": 10,
+			"weight": 4,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				70,
+				60,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 12,
+				"offset": 1
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Nightmare": {
+			"cost": 40,
+			"scaling_cost": 25,
+			"weight": 1,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				80,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 24
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Space Dragon": {
+			"cost": 50,
+			"scaling_cost": 30,
+			"weight": 3,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				100,
+				70,
+				60,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 99
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Abductors": {
+			"cost": 30,
+			"scaling_cost": 10,
+			"weight": 2,
+			"required_candidates": 2,
+			"minimum_required_age": 0,
+			"requirements": [
+				90,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 20,
+				"offset": 1
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Space Ninja": {
+			"cost": 35,
+			"scaling_cost": 20,
+			"weight": 3,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				100,
+				90,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 25
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Spiders": {
+			"cost": 50,
+			"scaling_cost": 10,
+			"weight": 3,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				100,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 12
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Revenant": {
+			"cost": 20,
+			"scaling_cost": 10,
+			"weight": 2,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				20,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 24
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Sentient Disease": {
+			"cost": 30,
+			"scaling_cost": 15,
+			"weight": 3,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				50,
+				50,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 24
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Space Pirates": {
+			"cost": 40,
+			"scaling_cost": 15,
+			"weight": 2,
+			"required_candidates": 2,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				90,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 15,
+				"offset": 1
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Dangerous Space Pirates": {
+			"cost": 60,
+			"scaling_cost": 20,
+			"weight": 2,
+			"required_candidates": 2,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				100,
+				100,
+				60,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 15,
+				"offset": 1
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Obsessed": {
+			"cost": 20,
+			"scaling_cost": 10,
+			"weight": 2,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 10
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
+		},
+
+		"Space Changeling": {
+			"cost": 40,
+			"scaling_cost": 16,
+			"weight": 2,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				90,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 20
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Paradox Clone": {
+			"cost": 20,
+			"scaling_cost": 20,
+			"weight": 2,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 10
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
+		},
+
+		"Voidwalker": {
+			"cost": 30,
+			"scaling_cost": 20,
+			"weight": 1,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				90,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 24
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Lone Operative": {
+			"cost": 50,
+			"scaling_cost": 99,
+			"weight": 2,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				90,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 99
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Lone Infiltrator": {
+			"cost": 40,
+			"scaling_cost": 99,
+			"weight": 1,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				90,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 99
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		},
+
+		"Drifting Contractors": {
+			"cost": 30,
+			"scaling_cost": 25,
+			"weight": 2,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				90,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 18
+			},
+			"protected_roles": [
+
+			],
+			"restricted_roles": [
+
+			]
+		}
+	},
+
+	"Latejoin": {
+		"Syndicate Infiltrator": {
+			"cost": 12,
+			"scaling_cost": 6,
+			"weight": 4,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 12
+			},
+			"protected_roles": [
+				"Prisoner",
+				"Blueshield",
+				"Corrections Officer",
+				"Security Officer",
+				"Warden",
+				"Detective",
+				"Head of Security",
+				"Captain",
+				"Nanotrasen Consultant"
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
+		},
+
+		"Provocateur": {
+			"cost": 40,
+			"scaling_cost": 15,
+			"weight": 3,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				50,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 15
+			},
+			"protected_roles": [
+				"Prisoner",
+				"Blueshield",
+				"Corrections Officer",
+				"Security Officer",
+				"Warden",
+				"Detective",
+				"Head of Security",
+				"Captain",
 				"Nanotrasen Consultant",
 				"Head of Personnel",
 				"Chief Engineer",
@@ -39,128 +1257,85 @@
 				"Quartermaster"
 			],
 			"restricted_roles": [
-				"Cyborg"
+				"Cyborg",
+				"AI"
 			]
 		},
 
-		"Blood Brothers": {
-			"weight": 0
-		},
-
-		"Changelings": {
-			"weight": 0
-		},
-
-		"Heretics": {
-			"weight": 0
-		},
-
-		"Wizard": {
-			"weight": 0
-		},
-
-		"Blood Cult": {
-			"weight": 0
-		},
-
-		"Nuclear Emergency": {
-			"weight": 0
-		},
-
-		"Revolution": {
-			"weight": 0
-		}
-	},
-
-	"Midround": {
-		"Syndicate Sleeper Agent": {
-			"weight": 0
-		},
-
-		"Malfunctioning AI": {
-			"weight": 0
-		},
-
-		"Wizard": {
-			"weight": 0
-		},
-
-		"Nuclear Assault": {
-			"weight": 0
-		},
-
-		"Blob": {
-			"weight": 0
-		},
-
-		"Blob Infection": {
-			"weight": 0
-		},
-
-		"Alien Infestation": {
-			"weight": 0
-		},
-
-		"Nightmare": {
-			"weight": 0
-		},
-
-		"Space Dragon": {
-			"weight": 0
-		},
-
-		"Abductors": {
-			"weight": 0
-		},
-
-		"Space Ninja": {
-			"weight": 0
-		},
-
-		"Spiders": {
-			"weight": 0
-		},
-
-		"Revenant": {
-			"weight": 0
-		},
-
-		"Sentient Disease": {
-			"weight": 0
-		},
-
-		"Space Pirates": {
-			"weight": 0
-		},
-
-		"Obsessed": {
-			"weight": 0
-		},
-
-		"Space Changeling": {
-			"weight": 0
-		},
-
-		"Paradox Clone": {
-			"weight": 0
-		}
-	},
-
-	"Latejoin": {
-		"Syndicate Infiltrator": {
-			"weight": 0
-		},
-
-		"Provocateur": {
-			"weight": 0
-		},
-
 		"Heretic Smuggler": {
-			"weight": 0
+			"cost": 16,
+			"scaling_cost": 8,
+			"weight": 3,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				40,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 15
+			},
+			"protected_roles": [
+				"Prisoner",
+				"Blueshield",
+				"Corrections Officer",
+				"Security Officer",
+				"Warden",
+				"Detective",
+				"Head of Security",
+				"Captain",
+				"Nanotrasen Consultant"
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
 		},
 
 		"Stowaway Changeling": {
-			"weight": 0
+			"cost": 16,
+			"scaling_cost": 12,
+			"weight": 2,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				100,
+				90,
+				30,
+				20,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 15
+			},
+			"protected_roles": [
+				"Prisoner",
+				"Blueshield",
+				"Corrections Officer",
+				"Security Officer",
+				"Warden",
+				"Detective",
+				"Head of Security",
+				"Captain",
+				"Nanotrasen Consultant"
+			],
+			"restricted_roles": [
+				"Cyborg",
+				"AI"
+			]
 		}
 	}
 }
