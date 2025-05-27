@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 	///All possible announcements and their local configurations
 	var/list/datum/aas_config_entry/config_entries = list()
-
+	var/datum/nttc_configuration/nttc = new() //SS1984 ADDITION
 	///The headset that we use for broadcasting
 	var/obj/item/radio/headset/radio
 	///AIs headset support all stations channels, but it may require an override for away site or syndie AASs.
@@ -110,6 +110,14 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 /obj/machinery/announcement_system/ui_data()
 	var/list/configs = list()
+	// SS1984 EDIT START
+	var/list/data = list()
+	var/list/nttc_data = list(
+		"toggle_jobs" = nttc.toggle_jobs,
+		"toggle_job_color" = nttc.toggle_job_color,
+		"toggle_name_color" = nttc.toggle_name_color,
+		"toggle_command_bold" = nttc.toggle_command_bold,
+	)
 	for(var/datum/aas_config_entry/config in config_entries)
 		configs += list(list(
 			name = config.name,
@@ -120,7 +128,10 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 			generalTooltip = config.general_tooltip,
 			varsAndTooltipsMap = config.vars_and_tooltips_map
 		))
-	return list("config_entries" = configs)
+	data["config_entries"] = configs
+	data["nttc"] = nttc_data
+	return data
+	// SS1984 EDIT END
 
 /obj/machinery/announcement_system/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -135,6 +146,30 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 	add_fingerprint(usr)
 	var/datum/aas_config_entry/config = locate(params["entryRef"]) in config_entries
+	// SS1984 ADDITION START
+	switch(action) // another switch before config check
+		// NTTC Toggles
+		if("nttc_toggle_jobs")
+			nttc.toggle_jobs = !nttc.toggle_jobs
+			usr.log_message("toggled job tags (Now [nttc.toggle_jobs])", LOG_GAME)
+			update_appearance()
+			return
+		if("nttc_toggle_job_color")
+			nttc.toggle_job_color = !nttc.toggle_job_color
+			usr.log_message("toggled job colors (Now [nttc.toggle_job_color])", LOG_GAME)
+			update_appearance()
+			return
+		if("nttc_toggle_name_color")
+			nttc.toggle_name_color = !nttc.toggle_name_color
+			usr.log_message("toggled name colors (Now [nttc.toggle_name_color])", LOG_GAME)
+			update_appearance()
+			return
+		if("nttc_toggle_command_bold")
+			nttc.toggle_command_bold = !nttc.toggle_command_bold
+			usr.log_message("toggled command bold (Now [nttc.toggle_command_bold])", LOG_GAME)
+			update_appearance()
+			return
+	// SS1984 ADDITION END
 	if(!config || !config.modifiable)
 		return
 

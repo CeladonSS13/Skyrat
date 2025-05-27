@@ -145,6 +145,11 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 /atom/movable/proc/compose_message(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods = list(), visible_name = FALSE)
 	//This proc uses [] because it is faster than continually appending strings. Thanks BYOND.
+	// SS1984 ADDITION START
+	var/obj/machinery/announcement_system/announcer = get_announcement_system(/datum/aas_config_entry/nttc_job_indicator_type, src, radio_freq)
+	var/datum/nttc_configuration/nttc = announcer ? announcer.nttc : null
+	var/obj/item/card/id/id_card = null
+	// SS1984 ADDITION END
 	//Basic span
 	var/spanpart1 = "<span class='[radio_freq ? get_radio_span(radio_freq) : "game say"]'>"
 	//Start name span.
@@ -154,12 +159,15 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	//Speaker name
 	var/namepart
 	var/list/stored_name = list(null)
-
-	if(iscarbon(speaker)) //First, try to pull the modified title from a carbon's ID. This will override both visual and audible names.
-		var/mob/living/carbon/carbon_human = speaker
+	// SS1984 EDIT START
+	var/is_carbonspeaker = iscarbon(speaker)
+	var/speaker_source = is_carbonspeaker ? speaker : speaker.GetSource()
+	if(is_carbonspeaker || iscarbon(speaker_source)) //First, try to pull the modified title from a carbon's ID. This will override both visual and audible names.
+		var/mob/living/carbon/carbon_human = speaker_source
+		// SS1984 EDIT END
 		var/obj/item/id_slot = carbon_human.get_item_by_slot(ITEM_SLOT_ID)
 		if(id_slot)
-			var/obj/item/card/id/id_card = id_slot?.GetID()
+			id_card = id_slot?.GetID() // SS1984 EDIT
 			if(id_card)
 				SEND_SIGNAL(id_card, COMSIG_ID_GET_HONORIFIC, stored_name, carbon_human)
 
@@ -170,7 +178,6 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 	//End name span.
 	var/endspanpart = "</span>"
-
 	//Message
 	var/messagepart
 	var/languageicon = ""
@@ -184,14 +191,30 @@ GLOBAL_LIST_INIT(freqtospan, list(
 			languageicon = "[dialect.get_icon()] "
 
 	messagepart = " <span class='message'>[messagepart]</span></span>"
-
-	return "[spanpart1][spanpart2][freqpart][languageicon][compose_track_href(speaker, namepart)][namepart][compose_job(speaker, message_language, raw_message, radio_freq)][endspanpart][messagepart]"
+	// SS1984 EDIT START
+	var/job = nttc ? nttc.retrieve_relevant_job(speaker_source, id_card) : null
+	var/job_part = compose_job(speaker, raw_message, radio_freq, namepart, announcer, job, speaker_source)
+	if (radio_freq && nttc && nttc.toggle_command_bold)
+		var/show_bold = job && (job in GLOB.nttc_highlight_jobs)
+		if (show_bold)
+			return "<b>[spanpart1][spanpart2][freqpart][languageicon][compose_track_href(speaker, namepart)][job_part][endspanpart][messagepart]</b>"
+	// basically same as above without <b>, written so for perfomance to avoid excess combining strings
+	return "[spanpart1][spanpart2][freqpart][languageicon][compose_track_href(speaker, namepart)][job_part][endspanpart][messagepart]"
+	// SS1984 EDIT END
 
 /atom/movable/proc/compose_track_href(atom/movable/speaker, message_langs, raw_message, radio_freq)
 	return ""
 
-/atom/movable/proc/compose_job(atom/movable/speaker, message_langs, raw_message, radio_freq)
-	return ""
+ //SS1984 EDIT START, DONT FORGET TO UPDATE SAME METHOD IN say_ai.dm IF MODIFY PARAMS!
+/atom/movable/proc/compose_job(atom/movable/speaker, raw_message, radio_freq, namepart, obj/machinery/announcement_system/announcer, job, speaker_source)
+	if (!radio_freq || !announcer)
+		return "[namepart]"
+	var/datum/nttc_configuration/nttc = announcer ? announcer.nttc : null
+	if (!nttc) // very weird if it's not exist, as it built-in to announcer
+		return "[namepart]"
+
+	return nttc.compose_ntts_job(raw_message, namepart, announcer, job, speaker_source)
+	// SS1984 EDIT END
 
 /**
  * Works out and returns which prefix verb the passed message should use.

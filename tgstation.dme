@@ -9253,4 +9253,7 @@
 #include "modular_ss220\modules\tts\code\~undefs\~tts_undefs.dm"
 #include "modular_ss220\modules\weapons_addon\code\energy1911.dm"
 #include "modular_ss220\modules\weapons_addon\code\qmgun.dm"
+#include "modular_ss220\modules\enhanced_messaging\nttc_globals.dm"
+#include "modular_ss220\modules\enhanced_messaging\code\messaging_config.dm"
+#include "modular_ss220\modules\enhanced_messaging\code\nttc_configuration.dm"
 // END_INCLUDE

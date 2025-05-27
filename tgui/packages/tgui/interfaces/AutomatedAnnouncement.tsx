@@ -24,14 +24,21 @@ type AASConfigEntry = {
   varsAndTooltipsMap: Record<string, string>;
 };
 
+type nttc_configuration = {
+  toggle_jobs: BooleanLike;
+  toggle_job_color: BooleanLike;
+  toggle_name_color: BooleanLike;
+  toggle_command_bold: BooleanLike;
+}
+
 type Data = {
   config_entries: AASConfigEntry[];
+  nttc: nttc_configuration;
 };
 
 export const AutomatedAnnouncement = (props) => {
   const { act, data } = useBackend<Data>();
-  const { config_entries = [] } = data;
-
+  const { config_entries = [], nttc } = data;
   const [search, setSearch] = useState('');
 
   const isEntryMatch = (entry: AASConfigEntry, search: string) => {
@@ -63,9 +70,51 @@ export const AutomatedAnnouncement = (props) => {
     (entry) => entry.name,
   );
   return (
-    <Window title="Automated Announcement System" width={500} height={280}>
+    <Window title="Automated Announcement System" width={500} height={400}>
       <Window.Content>
         <Stack fill vertical>
+          {/* SS1984 EDIT ADDITION START */}
+          <Section title="Radio Configuration">
+            <LabeledList>
+              <LabeledList.Item label="Job Announcements">
+                <Button
+                  selected={nttc.toggle_jobs}
+                  icon="user-tag"
+                  onClick={() => act('nttc_toggle_jobs')}
+                >
+                  {nttc.toggle_jobs ? 'On' : 'Off'}
+                </Button>
+              </LabeledList.Item>
+              <LabeledList.Item label="Job Departmentalisation">
+                <Button
+                  selected={nttc.toggle_job_color}
+                  icon="clipboard-list"
+                  onClick={() => act('nttc_toggle_job_color')}
+                >
+                  {nttc.toggle_job_color ? 'On' : 'Off'}
+                </Button>
+              </LabeledList.Item>
+              <LabeledList.Item label="Name Departmentalisation">
+                <Button
+                  selected={nttc.toggle_name_color}
+                  icon="user-tag"
+                  onClick={() => act('nttc_toggle_name_color')}
+                >
+                  {nttc.toggle_name_color ? 'On' : 'Off'}
+                </Button>
+              </LabeledList.Item>
+              <LabeledList.Item label="Command Amplification">
+                <Button
+                  selected={nttc.toggle_command_bold}
+                  icon="volume-up"
+                  onClick={() => act('nttc_toggle_command_bold')}
+                >
+                  {nttc.toggle_command_bold ? 'On' : 'Off'}
+                </Button>
+              </LabeledList.Item>
+            </LabeledList>
+          </Section>
+          {/* SS1984 EDIT ADDITION END */}
           <Stack.Item>
             <LabeledList>
               <LabeledList.Item label="Search">

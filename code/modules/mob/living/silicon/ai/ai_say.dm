@@ -7,11 +7,16 @@
 		return "<a href='byond://?src=[REF(src)];track=[html_encode(namepart)]'>"
 	return ""
 
-/mob/living/silicon/compose_job(atom/movable/speaker, message_langs, raw_message, radio_freq)
+/mob/living/silicon/compose_job(atom/movable/speaker, raw_message, radio_freq, namepart, obj/machinery/announcement_system/announcer, job, speaker_source) //SS1984 EDIT
 	//Also includes the </a> for AI hrefs, for convenience.
 	if(!HAS_TRAIT(src, TRAIT_CAN_GET_AI_TRACKING_MESSAGE))
-		return ""
-	return "[radio_freq ? " (" + speaker.GetJob() + ")" : ""]" + "[speaker.GetSource() ? "</a>" : ""]"
+	//SS1984 EDIT START
+		return "[namepart]" + "</a>"
+	var/retrieved_msg = ..(speaker, raw_message, radio_freq, namepart, announcer, job, speaker_source)
+	if (retrieved_msg == "[namepart]")
+		retrieved_msg += " ([speaker.GetJob()])" // smart enough to get job bypassing disabled settings at telecomms
+	return retrieved_msg + "</a>"
+	//SS1984 EDIT END
 
 /mob/living/silicon/ai/try_speak(message, ignore_spam = FALSE, forced = null, filterproof = FALSE)
 	// AIs cannot speak if silent AI is on.
