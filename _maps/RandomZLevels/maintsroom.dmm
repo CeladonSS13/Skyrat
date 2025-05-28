@@ -4725,7 +4725,6 @@
 	dir = 8
 	},
 /obj/structure/safe/floor,
-/obj/item/clothing/sextoy/dildo,
 /turf/open/floor/engine{
 	slowdown = 2
 	},

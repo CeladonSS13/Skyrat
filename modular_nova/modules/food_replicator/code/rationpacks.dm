@@ -150,7 +150,6 @@
 	desc = "To clean all the mess. Comes with a custom <i>combined</i> design of red and blue."
 	icon_state = "napkin_unused"
 	icon = 'modular_nova/modules/food_replicator/icons/rationpack.dmi'
-	used_serviette = /obj/item/serviette_used/colonial
 
 /obj/item/serviette_used/colonial
 	name = "dirty colonial napkin"

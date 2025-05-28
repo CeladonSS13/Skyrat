@@ -166,12 +166,7 @@
 				return
 
 			gloves = equipping
-			//NOVA EDIT ADDITION - ERP UPDATE
-			if(gloves.breakouttime)
-				ADD_TRAIT(src, TRAIT_RESTRAINED, TRAIT_GLOVES)
-				stop_pulling()
-				update_mob_action_buttons()
-			//NOVA EDIT ADDITION END
+			// SS1984 REMOVAL OF ERP GLOVES
 			update_worn_gloves()
 		if(ITEM_SLOT_FEET)
 			if(shoes)
@@ -256,12 +251,7 @@
 			if(belt && !can_equip(belt, ITEM_SLOT_BELT, TRUE, ignore_equipped = TRUE))
 				dropItemToGround(belt)
 	else if(I == gloves)
-		//NOVA EDIT ADDITION - ERP UPDATE
-		if(gloves.breakouttime) //when unequipping a straightjacket
-			REMOVE_TRAIT(src, TRAIT_RESTRAINED, TRAIT_GLOVES)
-			drop_all_held_items() //suit is restraining
-			update_mob_action_buttons() //certain action buttons may be usable again.
-		//NOVA EDIT ADDITION END
+		// SS1984 REMOVAL OF ERP GLOVES
 		gloves = null
 		if(!QDELETED(src))
 			update_worn_gloves()

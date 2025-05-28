@@ -4655,13 +4655,6 @@
 	pixel_x = -12;
 	pixel_y = -42
 	},
-/obj/item/fancy_pillow{
-	pixel_x = -22;
-	pixel_y = -7
-	},
-/obj/item/fancy_pillow{
-	pixel_y = -1
-	},
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafe)
 "bAX" = (
@@ -12373,10 +12366,6 @@
 	pixel_x = -19;
 	pixel_y = -23
 	},
-/obj/item/fancy_pillow{
-	pixel_x = -10;
-	pixel_y = -7
-	},
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafe)
 "oso" = (
@@ -13401,7 +13390,6 @@
 	},
 /obj/structure/window/spawner/directional/west,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/condom_pack,
 /turf/open/floor/carpet/green,
 /area/centcom/interlink/dorm_rooms)
 "pKF" = (
@@ -13722,7 +13710,6 @@
 "qdd" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/condom_pack,
 /turf/open/floor/wood,
 /area/centcom/interlink/dorm_rooms)
 "qdG" = (
@@ -15586,7 +15573,6 @@
 /area/centcom/interlink)
 "sOn" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/condom_pack,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},

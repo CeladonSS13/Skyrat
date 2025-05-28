@@ -5860,7 +5860,6 @@
 /area/station/security/brig/entrance)
 "bJn" = (
 /mob/living/basic/pet/cat/fennec,
-/obj/item/fancy_pillow,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/greater)
 "bJq" = (
@@ -21515,7 +21514,6 @@
 /area/station/security/corrections_officer)
 "gnC" = (
 /mob/living/basic/pet/cat/fennec,
-/obj/item/fancy_pillow,
 /turf/open/floor/plating,
 /area/station/service/salon)
 "gnX" = (
@@ -68489,7 +68487,6 @@
 /obj/structure/closet,
 /obj/item/storage/box/strippole_kit,
 /obj/item/storage/backpack/satchel,
-/obj/item/clothing/glasses/nice_goggles,
 /turf/open/floor/iron/dark,
 /area/station/commons/dorms/room4)
 "tUl" = (

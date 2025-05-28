@@ -27,10 +27,7 @@
 		ViewManifest()
 		return
 
-	if(href_list["view_directory"])
-		play_lobby_button_sound()
-		client?.show_character_directory()
-		return
+	// SS1984 REMOVE OF DIRECTORY
 
 	if(href_list["toggle_antag"])
 		play_lobby_button_sound()

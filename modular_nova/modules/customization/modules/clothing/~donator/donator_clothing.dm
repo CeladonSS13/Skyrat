@@ -706,30 +706,6 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 
 // Donation reward for inferno707
-/obj/item/clothing/neck/inferno_collar
-	name = "Kiara's collar"
-	desc = "A soft black collar that seems to stretch to fit whoever wears it."
-	icon_state = "infcollar"
-	icon = 'modular_nova/master_files/icons/donator/obj/custom.dmi'
-	worn_icon = 'modular_nova/master_files/icons/donator/mob/clothing/custom_w.dmi'
-	alternate_worn_layer = UNDER_SUIT_LAYER
-	/// What's the name on the tag, if any?
-	var/tagname = null
-	/// What treat item spawns inside the collar?
-	var/treat_path = /obj/item/food/cookie
-
-/obj/item/clothing/neck/inferno_collar/Initialize(mapload)
-	. = ..()
-	create_storage(storage_type = /datum/storage/collar)
-	if(treat_path)
-		new treat_path(src)
-
-/obj/item/clothing/neck/inferno_collar/attack_self(mob/user)
-	tagname = stripped_input(user, "Would you like to change the name on the tag?", "Name your new pet", "Kiara", MAX_NAME_LEN)
-	if(tagname)
-		name = "[initial(name)] - [tagname]"
-
-// Donation reward for inferno707
 /obj/item/clothing/accessory/medal/steele
 	name = "Insignia Of Steele"
 	desc = "An intricate pendant given to those who help a key member of the Steele Corporation."
@@ -1652,13 +1628,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	worn_icon = 'modular_nova/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "tactichill"
 
+// SS1984 REMOVA OF LEWD ITEMS START, END
 // Donation reward for thedragmeme and snailom
-/obj/item/clothing/shoes/fancy_heels/drag
-	desc = "A fancy pair of high heels. Clack clack clack... definitely turning a lot of heads."
-
-/obj/item/clothing/shoes/fancy_heels/drag/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/squeak, list('modular_nova/modules/modular_items/lewd_items/sounds/highheel1.ogg' = 1, 'modular_nova/modules/modular_items/lewd_items/sounds/highheel2.ogg' = 1), 70)
 
 // Donation reward for Razurath
 
@@ -2136,16 +2107,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	icon_state = "ignari_rem"
 	can_adjust = FALSE
 
-/obj/item/clothing/shoes/rem_shoes
-	name = "\improper M.I.A. heels"
-	desc = "A pair of form fitting heels. They appear to bear no distinguishing identifiers."
-	icon = 'modular_nova/master_files/icons/donator/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_nova/master_files/icons/donator/mob/clothing/feet.dmi'
-	icon_state = "rem_shoes"
-
-/obj/item/clothing/shoes/rem_shoes/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/squeak, list('modular_nova/modules/modular_items/lewd_items/sounds/highheel1.ogg' = 1, 'modular_nova/modules/modular_items/lewd_items/sounds/highheel2.ogg' = 1), 70)
+// SS1984 REMOVA OF LEWD ITEMS START, END
 
 /obj/item/clothing/under/bwake
 	name = "\improper Compression bodysuit"

@@ -770,28 +770,6 @@
 	name = "Blastwave Uniform"
 	item_path = /obj/item/clothing/under/blastwave
 
-/datum/loadout_item/under/miscellaneous/black_bunnysuit
-	name = "Black Bunny Suit"
-	item_path = /obj/item/clothing/under/costume/bunnylewd //contrary to the path, it's actually tame
-
-/datum/loadout_item/under/miscellaneous/white_bunnysuit
-	name = "White Bunny Suit"
-	item_path = /obj/item/clothing/under/costume/bunnylewd/white //also tame
-
-/datum/loadout_item/under/miscellaneous/latex_catsuit
-	name = "Latex Catsuit"
-	item_path = /obj/item/clothing/under/misc/latex_catsuit
-
-/datum/loadout_item/under/miscellaneous/stripper_outfit
-	name = "Tearaway Garments"
-	item_path = /obj/item/clothing/under/tearaway_garments
-	erp_item = TRUE
-
-/datum/loadout_item/under/miscellaneous/lewdmaid
-	name = "Provocative Maid Uniform"
-	item_path = /obj/item/clothing/under/costume/lewdmaid
-	erp_item = TRUE
-
 /datum/loadout_item/under/miscellaneous/geisha_suit
 	name = "Geisha Suit"
 	item_path = /obj/item/clothing/under/costume/geisha

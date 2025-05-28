@@ -992,10 +992,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(damage >= 9)
 			target.force_say()
 		log_combat(user, target, "punched")
-	// NOVA EDIT ADDITION START
-	if(target.try_nut_shot(user, limb_accuracy, staggered))
-		return
-	// NOVA EDIT ADDITION END
 
 	SEND_SIGNAL(target, COMSIG_HUMAN_GOT_PUNCHED, user, damage, attack_type, affecting, final_armor_block, kicking)
 

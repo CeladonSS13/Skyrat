@@ -45,7 +45,6 @@
 /area/ruin/unpowered/ash_walkers)
 "aE" = (
 /obj/structure/falsewall/wood,
-/obj/item/storage/box/lewd_toys,
 /obj/effect/mapping_helpers/no_lava,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)

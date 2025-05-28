@@ -26,12 +26,12 @@ fi
 # NOVA EDIT ADDITION START - Get all the .dmis and json configs from modular_nova
 mkdir -p \
 		$1/modular_nova \
-		$1/modular_nova/modules/GAGS/json_configs \
-		$1/modular_nova/modules/GAGS/nsfw/json_configs
+		$1/modular_nova/modules/GAGS/json_configs
+		# SS1984 REMOVAL OF NSFW CONFIGS START, END
 
 find modular_nova/ -name \*.dmi -exec cp --parents {} $1 \;
 find modular_nova/modules/GAGS/json_configs -name \*.json -exec cp --parents {} $1 \;
-find modular_nova/modules/GAGS/nsfw/json_configs -name \*.json -exec cp --parents {} $1 \;
+# SS1984 REMOVAL OF NSFW CONFIGS START, END
 # NOVA EDIT ADDITION END
 
 cp tgstation.dmb tgstation.rsc $1/

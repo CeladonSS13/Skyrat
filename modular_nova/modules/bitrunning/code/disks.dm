@@ -112,7 +112,7 @@
 
 /obj/item/summon_beacon/relax/equipped(mob/user, slot, initial)
 	. = ..()
-	if (!CONFIG_GET(flag/disable_erp_preferences) && user?.client?.prefs.read_preference(/datum/preference/toggle/master_erp_preferences))
+	if (!CONFIG_GET(flag/disable_erp_preferences)) // SS1984 REMOVAL OF ERP
 		selectable_atoms += /obj/machinery/vending/dorms/bitrunning
 	else
 		selectable_atoms -= /obj/machinery/vending/dorms/bitrunning

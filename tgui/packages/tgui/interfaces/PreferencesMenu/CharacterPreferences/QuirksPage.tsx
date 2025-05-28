@@ -27,10 +27,7 @@ function getColorValueClass(quirk: Quirk) {
     return 'positive';
   } else if (quirk.value < 0) {
     return 'negative';
-    // NOVA EDIT ADDITION BEGIN - Purple ERP quirks
-  } else if (quirk.erp_quirk) {
-    return 'erp_quirk';
-    // NOVA EDIT ADDITION END
+    // SS1984 REMOVAL OF ERP QUIRKS
   } else {
     return 'neutral';
   }

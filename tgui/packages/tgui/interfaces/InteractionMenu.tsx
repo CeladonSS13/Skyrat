@@ -3,7 +3,6 @@ import {
   Box,
   Button,
   Collapsible,
-  Icon,
   NoticeBox,
   Section,
   Stack,
@@ -17,7 +16,7 @@ class Interaction {
   interactions;
   descriptions;
   colors;
-  lewd_slots: LewdSlot[];
+  // SS1984 REMOVAL OF LEWD SLOTS
   self;
   ref_self;
   ref_user;
@@ -36,7 +35,7 @@ export const InteractionMenu = (props) => {
     interactions,
     descriptions,
     colors,
-    lewd_slots,
+    // SS1984 REMOVAL OF LEWD SLOTS
     self,
     ref_self,
     ref_user,
@@ -81,58 +80,6 @@ export const InteractionMenu = (props) => {
             ))}
           </Section>
         </Stack>
-        {lewd_slots.length > 0 ? (
-          <Section key="item_slots" title={'Lewd Slots'}>
-            <Stack fill>
-              {lewd_slots.map((element: LewdSlot) => {
-                return (
-                  <Stack.Item key={element.name}>
-                    <Button
-                      onClick={() =>
-                        act('remove_lewd_item', {
-                          item_slot: element.name,
-                          selfref: ref_self,
-                          userref: ref_user,
-                        })
-                      }
-                      tooltip={element.name}
-                    >
-                      <Box
-                        style={{
-                          width: '32px',
-                          height: '32px',
-                          margin: '0.5em 0',
-                        }}
-                      >
-                        {element.img ? (
-                          <img
-                            src={'data:image/png;base64,' + element.img}
-                            style={{
-                              width: '100%',
-                              height: '100%',
-                            }}
-                          />
-                        ) : (
-                          <Icon
-                            name="eye-slash"
-                            size={2}
-                            ml={0}
-                            mt={0.75}
-                            style={{
-                              textAlign: 'center',
-                            }}
-                          />
-                        )}
-                      </Box>
-                    </Button>
-                  </Stack.Item>
-                );
-              })}
-            </Stack>
-          </Section>
-        ) : (
-          ''
-        )}
       </Window.Content>
     </Window>
   );

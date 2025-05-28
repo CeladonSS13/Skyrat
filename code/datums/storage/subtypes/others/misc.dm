@@ -243,7 +243,6 @@
 	set_holdable(
 		can_hold_list = list(
 			// NOVA EDIT ADDITION BEGIN
-			/obj/item/condom_pack,
 			/obj/item/gbp_punchcard,
 			// NOVA EDIT ADDITION END
 			/obj/item/stack/spacecash,

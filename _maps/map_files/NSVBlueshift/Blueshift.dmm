@@ -83051,7 +83051,6 @@
 "pWA" = (
 /obj/structure/table,
 /obj/item/wirecutters/makeshift,
-/obj/item/clothing/sextoy/nipple_clamps,
 /obj/item/stock_parts/power_store/cell{
 	pixel_x = -5
 	},
@@ -98318,7 +98317,6 @@
 	pixel_x = -4;
 	pixel_y = -5
 	},
-/obj/item/clothing/glasses/nice_goggles,
 /obj/item/clothing/glasses/regular{
 	pixel_x = -3;
 	pixel_y = 3

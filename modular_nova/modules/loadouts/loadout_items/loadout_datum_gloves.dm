@@ -108,11 +108,6 @@
 	name = "Colourable Arm Wraps"
 	item_path = /obj/item/clothing/gloves/bracer/wraps
 
-/datum/loadout_item/gloves/latex
-	name = "Long Gloves"
-	item_path = /obj/item/clothing/gloves/long_gloves
-	erp_item = TRUE
-
 /*
 *	RINGS
 */

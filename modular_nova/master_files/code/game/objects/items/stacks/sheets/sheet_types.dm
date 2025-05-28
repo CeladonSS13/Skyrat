@@ -110,7 +110,6 @@ GLOBAL_LIST_INIT(nova_cardboard_recipes, list(
 // Cloth
 
 GLOBAL_LIST_INIT(nova_cloth_recipes, list(
-	new/datum/stack_recipe("fancy pillow", /obj/item/fancy_pillow, 3, category = CAT_ENTERTAINMENT),
 	new/datum/stack_recipe("towel", /obj/item/towel, 2, category = CAT_CLOTHING),
 	new/datum/stack_recipe("eyepatch wrap", /obj/item/clothing/glasses/eyepatch/wrap, 2, category = CAT_CLOTHING),
 	new/datum/stack_recipe("eyepatch", /obj/item/clothing/glasses/eyepatch, 2, category = CAT_CLOTHING),
@@ -133,7 +132,6 @@ GLOBAL_LIST_INIT(nova_leather_belt_recipes, list(
 	new/datum/stack_recipe("gear harness", /obj/item/clothing/under/misc/nova/gear_harness, 6, category = CAT_CLOTHING),
 	new/datum/stack_recipe("ammo pouch", /obj/item/storage/pouch/ammo, 4, category = CAT_CONTAINERS),
 	new/datum/stack_recipe("thigh holster (cowboy belt)", /obj/item/storage/belt/holster/thigh, 3, crafting_flags = NONE, category = CAT_CONTAINERS),
-	new/datum/stack_recipe("thigh satchel (black belt)", /obj/item/storage/belt/thigh_satchel, 3, crafting_flags = NONE, category = CAT_CONTAINERS),
 	new/datum/stack_recipe_list("saddles", list(
 		new/datum/stack_recipe("riding saddle (normal)", /obj/item/riding_saddle/leather, 5, category = CAT_CLOTHING),
 		new/datum/stack_recipe("riding saddle (blue)", /obj/item/riding_saddle/leather/blue, 5, category = CAT_CLOTHING),

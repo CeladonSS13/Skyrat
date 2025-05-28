@@ -438,10 +438,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			var/atom/movable/screen/alert/A = throw_alert("[REF(source)]_revival", /atom/movable/screen/alert/revival)
 			if(A)
 				var/ui_style = client?.prefs?.read_preference(/datum/preference/choiced/ui_style)
-				var/erp_ui_style = client?.prefs?.read_preference(/datum/preference/choiced/ui_style) //NOVA EDIT - ADDITION - ERP ICONS FIX
+				// SS1984 REMOVAL OF ERP STYLE START, END
 				if(ui_style)
 					A.icon = ui_style2icon(ui_style)
-					A.icon = erp_ui_style2icon(erp_ui_style) //NOVA EDIT - ADDITION - ERP ICONS FIX
+					// SS1984 REMOVAL OF ERP STYLE START, END
 				A.desc = message
 				var/old_layer = source.layer
 				var/old_plane = source.plane

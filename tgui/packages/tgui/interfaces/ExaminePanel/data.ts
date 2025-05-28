@@ -12,9 +12,7 @@ export type ExaminePanelData = {
   ooc_notes: string;
   custom_species: string;
   custom_species_lore: string;
-  // Descriptions, but requiring manual input to see
-  flavor_text_nsfw: string;
-  ooc_notes_nsfw: string;
+  // SS1984 REMOVAL OF ERP FLAVOR AND NOTES, START, END
   // Antaggery
   ideal_antag_optin_status: string;
   current_antag_optin_status: string;

@@ -331,8 +331,7 @@
 		flavor_text_link = span_notice("<a href='byond://?src=[REF(src)];lookup_info=open_examine_panel'>\[Examine closely...\]</a>")
 	if (flavor_text_link)
 		. += flavor_text_link
-	if (!face_obscured && !HAS_TRAIT(src, TRAIT_UNKNOWN) && client?.prefs.read_preference(/datum/preference/text/character_ad))
-		. += span_notice("[t_He] [t_has] an ad in the character directory... <a href='byond://?src=[REF(src)];lookup_info=open_character_ad'>\[Open directory?\]</a>")
+	// SS1984 REMOVAL OF DIRECTORY
 
 	//Temporary flavor text addition:
 	if(temporary_flavor_text)
@@ -343,10 +342,7 @@
 
 	. += EXAMINE_SECTION_BREAK
 
-	if(client)
-		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
-		if(erp_status_pref && !CONFIG_GET(flag/disable_erp_preferences) && user.client.prefs.read_preference(/datum/preference/toggle/master_erp_preferences))
-			. += span_info("ERP Status: [span_revenboldnotice(erp_status_pref)]")
+	// SS1984 REMOVAL OF ERP STATUS START, END
 
 	if (!CONFIG_GET(flag/disable_antag_opt_in_preferences))
 		var/opt_in_status = mind?.get_effective_opt_in_level()

@@ -97,7 +97,7 @@ export type Quirk = {
   customizable: boolean;
   customization_options?: string[];
   veteran_only: boolean; // NOVA EDIT ADDITION - Veteran quirks
-  erp_quirk: boolean; // NOVA EDIT ADDITION - Purple ERP quirks
+  // SS1984 REMOVAL OF ERP QUIRK
 };
 
 // NOVA EDIT START
@@ -185,7 +185,7 @@ export type PreferencesMenuData = {
   preview_selection: string; // NOVA EDIT ADDITION
 
   is_veteran: BooleanLike; // NOVA EDIT - Veteran status
-  erp_pref: BooleanLike; // NOVA EDIT ADDITION
+  // SS1984 REMOVAL OF ERP PREFS
 
   character_preferences: {
     clothing: Record<string, string>;

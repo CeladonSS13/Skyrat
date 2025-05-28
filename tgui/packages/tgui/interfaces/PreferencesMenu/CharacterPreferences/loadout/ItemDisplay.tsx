@@ -174,7 +174,7 @@ type TabProps = {
 // NOVA EDIT ADDITION START - Expanded loadout framework
 const FilterItemList = (items: LoadoutItem[]) => {
   const { data } = useBackend<LoadoutManagerData>();
-  const { is_donator, is_veteran, erp_pref } = data;
+  const { is_donator, is_veteran } = data; // SS1984 EDIT REMOVE ERP
   const ckey = data.ckey;
 
   return items.filter((item: LoadoutItem) => {
@@ -187,7 +187,7 @@ const FilterItemList = (items: LoadoutItem[]) => {
     if (item.veteran_only && !is_veteran) {
       return false;
     }
-    if (item.erp_item && !erp_pref) {
+    if (item.erp_item) { // SS1984 EDIT REMOVE ERP CHECK
       return false;
     }
 
@@ -217,7 +217,7 @@ type SearchProps = {
 export function SearchDisplay(props: SearchProps) {
   const { loadout_tabs, currentSearch } = props;
   const { data } = useBackend<LoadoutManagerData>(); // NOVA EDIT ADDITION
-  const { erp_pref } = data; // NOVA EDIT ADDITION
+  // SS1984 REMOVE ERP
 
   const search = createSearch(
     currentSearch,
@@ -227,7 +227,7 @@ export function SearchDisplay(props: SearchProps) {
   const validLoadoutItems = loadout_tabs
     // NOVA EDIT ADDITION START - Prefslocked tabs
     .filter(
-      (curTab) => !curTab.erp_category || (curTab.erp_category && erp_pref),
+      (curTab) => !curTab.erp_category || (curTab.erp_category), // SS1984 REMOVE ERP
     ) // NOVA EDIT ADDITION END
     .flatMap((tab) => tab.contents)
     .filter(search)

@@ -143,20 +143,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 /// Applies side effects to the user and/or target of the interaction.
 /datum/interaction/proc/apply_effects(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user_pain)
-		user.adjust_pain(user_pain)
-	if(target_pain)
-		target.adjust_pain(target_pain)
-	if(!lewd)
-		return
-	if(user_pleasure)
-		user.adjust_pleasure(user_pleasure)
-	if(user_arousal)
-		user.adjust_arousal(user_arousal)
-	if(target_pleasure)
-		target.adjust_pleasure(target_pleasure)
-	if(target_arousal)
-		target.adjust_arousal(target_arousal)
+	// SS1984 REMOVAL OF ERP PAIN
+	return
 
 /datum/interaction/proc/load_from_json(path)
 	var/fpath = path

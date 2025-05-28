@@ -1,7 +1,7 @@
-/datum/loadout_item/toys/miafoxplush
+/datum/loadout_item/toys/plush/miafoxplush
 	ckeywhitelist = null
 
-/datum/loadout_item/toys/teasefoxplush
+/datum/loadout_item/toys/plush/teasefoxplush
 	ckeywhitelist = null
 
 /datum/loadout_item/pocket_items/drawingtablet
@@ -44,9 +44,6 @@
 	ckeywhitelist = null
 
 /datum/loadout_item/shoes/rax_armadyne_boots
-	ckeywhitelist = null
-
-/datum/loadout_item/suit/rax_peacekeeper_jacket
 	ckeywhitelist = null
 
 /datum/loadout_item/under/jumpsuit/rax_banded_uniform
@@ -139,9 +136,6 @@
 /datum/loadout_item/neck/kiaracloak
 	ckeywhitelist = null
 
-/datum/loadout_item/neck/kiaracollar
-	ckeywhitelist = null
-
 /datum/loadout_item/pocket_items/kiaramedal
 	ckeywhitelist = null
 
@@ -217,7 +211,7 @@
 /datum/loadout_item/belts/trinket_belt
 	ckeywhitelist = null
 
-/datum/loadout_item/toys/voodooplush
+/datum/loadout_item/toys/plush/voodooplush
 	ckeywhitelist = null
 
 /datum/loadout_item/mask/octusvox
@@ -250,16 +244,16 @@
 /datum/loadout_item/pocket_items/tacticalbrush
 	ckeywhitelist = null
 
-/datum/loadout_item/toys/zappplush
+/datum/loadout_item/toys/plush/zappplush
 	donator_only = FALSE
 
 /datum/loadout_item/neck/fishpendant
 	ckeywhitelist = null
 
-/datum/loadout_item/toys/immovable_rod_plush
+/datum/loadout_item/toys/plush/immovable_rod_plush
 	ckeywhitelist = null
 
-/datum/loadout_item/toys/tesh_plush
+/datum/loadout_item/toys/plush/tesh_plush
 	ckeywhitelist = null
 
 /datum/loadout_item/under/jumpsuit/redhosneck
@@ -268,7 +262,7 @@
 /datum/loadout_item/glasses/redgigagar
 	ckeywhitelist = null
 
-/datum/loadout_item/toys/roselia_plush
+/datum/loadout_item/toys/plush/roselia_plush
 	ckeywhitelist = null
 
 /datum/loadout_item/accessory/mercbadge
@@ -289,19 +283,19 @@
 /datum/loadout_item/under/jumpsuit/nt_idol
 	ckeywhitelist = null
 
-/datum/loadout_item/toys/CFBonnie
+/datum/loadout_item/toys/plush/CFBonnie
 	donator_only = FALSE
 
-/datum/loadout_item/toys/CFAndrew
+/datum/loadout_item/toys/plush/CFAndrew
 	donator_only = FALSE
 
-/datum/loadout_item/toys/CFInessa
+/datum/loadout_item/toys/plush/CFInessa
 	donator_only = FALSE
 
-/datum/loadout_item/toys/plushie_chiara
+/datum/loadout_item/toys/plush/plushie_chiara
 	ckeywhitelist = null
 
-/datum/loadout_item/toys/plushie_dan
+/datum/loadout_item/toys/plush/plushie_dan
 	ckeywhitelist = null
 
 /datum/loadout_item/under/jumpsuit/bubbly_clown
@@ -316,22 +310,19 @@
 /datum/loadout_item/suit/techpriest
 	ckeywhitelist = null
 
-/datum/loadout_item/toys/plushie_azyre
+/datum/loadout_item/toys/plush/plushie_azyre
 	ckeywhitelist = null
 
 /datum/loadout_item/pocket_items/khicigs
 	ckeywhitelist = null
 
-/datum/loadout_item/shoes/dragheels
-	ckeywhitelist = null
-
 /datum/loadout_item/under/jumpsuit/bimpcap
 	ckeywhitelist = null
 
-/datum/loadout_item/toys/plushie_razurath
+/datum/loadout_item/toys/plush/plushie_razurath
 	ckeywhitelist = null
 
-/datum/loadout_item/toys/plushie_razurath/second
+/datum/loadout_item/toys/plush/plushie_razurath/second
 	ckeywhitelist = null
 
 /datum/loadout_item/suit/elofy
@@ -358,7 +349,7 @@
 /datum/loadout_item/suit/blackraincoat
 	ckeywhitelist = null
 
-/datum/loadout_item/toys/plushy_syntax1112
+/datum/loadout_item/toys/plush/plushy_syntax1112
 	ckeywhitelist = null
 
 /datum/loadout_item/head/somerandomowl
@@ -432,9 +423,6 @@
 	ckeywhitelist = null
 
 /datum/loadout_item/inhand/drop_pouch
-	ckeywhitelist = null
-
-/datum/loadout_item/inhand/melonseva
 	ckeywhitelist = null
 
 /datum/loadout_item/suit/desminus

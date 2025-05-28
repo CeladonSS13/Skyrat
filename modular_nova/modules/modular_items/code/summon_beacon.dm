@@ -176,12 +176,12 @@
 		/obj/machinery/vending/imported/mothic, // "Nomad Fleet Ration Chit Exchange"
 		/obj/machinery/vending/imported/tiziran, // "Tiziran Imported Delicacies"
 		/obj/machinery/vending/imported/yangyu, // "Fudobenda"
-		/obj/machinery/vending/deforest_medvend, // "DeForest Med-Vend"	
+		/obj/machinery/vending/deforest_medvend, // "DeForest Med-Vend"
 	)
 
 /obj/item/summon_beacon/vendors/equipped(mob/user, slot, initial)
 	. = ..()
-	if (!CONFIG_GET(flag/disable_erp_preferences) && user?.client?.prefs.read_preference(/datum/preference/toggle/master_erp_preferences))
+	if (!CONFIG_GET(flag/disable_erp_preferences)) // SS1984 EDIT REMOVE ERP
 		selectable_atoms += /obj/machinery/vending/dorms
 	else
 		selectable_atoms -= /obj/machinery/vending/dorms

@@ -118,7 +118,6 @@
 	dir = 8
 	},
 /obj/structure/closet/crate/bin,
-/obj/item/condom_pack,
 /turf/open/floor/iron,
 /area/station/common/cryopods)
 "Q" = (

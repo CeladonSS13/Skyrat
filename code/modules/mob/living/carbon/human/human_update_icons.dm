@@ -73,10 +73,7 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/update_obscured_slots(obscured_flags)
 	..()
 	sec_hud_set_security_status()
-	// NOVA EDIT ADDITION START - ERP Overlays
-	if(obscured_flags & HIDESEXTOY)
-		update_inv_lewd()
-	// NOVA EDIT ADDITION END
+	// SS1984 REMOVAL OF ERP OVERLAYS
 
 /* --------------------------------------- */
 //vvvvvv UPDATE_INV PROCS vvvvvv

@@ -42,9 +42,7 @@ export function ExaminePanel(props) {
     character_name,
     assigned_map,
     flavor_text,
-    flavor_text_nsfw,
     ooc_notes,
-    ooc_notes_nsfw,
     custom_species,
     custom_species_lore,
     headshot,
@@ -104,31 +102,18 @@ export function ExaminePanel(props) {
                   preserveWhitespace
                   title="Flavor Text"
                   buttons={
-                    <>
-                      <Button
-                        selected={flavorTextIndex === 'SFW'}
-                        bold={flavorTextIndex === 'SFW'}
-                        onClick={() => setFlavorTextIndex('SFW')}
-                        textAlign="center"
-                        width="150px"
-                      >
-                        SFW
-                      </Button>
-                      <Button
-                        selected={flavorTextIndex === 'NSFW'}
-                        disabled={!flavor_text_nsfw}
-                        bold={flavorTextIndex === 'NSFW'}
-                        onClick={() => setFlavorTextIndex('NSFW')}
-                        textAlign="center"
-                        width="150px"
-                      >
-                        NSFW
-                      </Button>
-                    </>
+                    <Button
+                      selected={flavorTextIndex === 'SFW'}
+                      bold={flavorTextIndex === 'SFW'}
+                      onClick={() => setFlavorTextIndex('SFW')}
+                      textAlign="center"
+                      width="150px"
+                    >
+                      SFW
+                    </Button>
                   }
                 >
                   {flavorTextIndex === 'SFW' && formatURLs(flavor_text)}
-                  {flavorTextIndex === 'NSFW' && formatURLs(flavor_text_nsfw)}
                 </Section>
               </Stack.Item>
               <Stack.Item grow>
@@ -140,27 +125,15 @@ export function ExaminePanel(props) {
                       title="OOC Notes"
                       preserveWhitespace
                       buttons={
-                        <>
-                          <Button
-                            selected={oocNotesIndex === 'SFW'}
-                            bold={oocNotesIndex === 'SFW'}
-                            onClick={() => setOocNotesIndex('SFW')}
-                            textAlign="center"
-                            minWidth="60px"
-                          >
-                            SFW
-                          </Button>
-                          <Button
-                            selected={oocNotesIndex === 'NSFW'}
-                            disabled={!ooc_notes_nsfw}
-                            bold={oocNotesIndex === 'NSFW'}
-                            onClick={() => setOocNotesIndex('NSFW')}
-                            textAlign="center"
-                            minWidth="60px"
-                          >
-                            NSFW
-                          </Button>
-                        </>
+                        <Button
+                          selected={oocNotesIndex === 'SFW'}
+                          bold={oocNotesIndex === 'SFW'}
+                          onClick={() => setOocNotesIndex('SFW')}
+                          textAlign="center"
+                          minWidth="60px"
+                        >
+                          SFW
+                        </Button>
                       }
                     >
                       {!!veteran_status && (
@@ -205,7 +178,6 @@ export function ExaminePanel(props) {
                           {formatURLs(ooc_notes)}
                         </Stack.Item>
                       )}
-                      {oocNotesIndex === 'NSFW' && formatURLs(ooc_notes_nsfw)}
                     </Section>
                   </Stack.Item>
                   <Stack.Item grow basis={0}>
