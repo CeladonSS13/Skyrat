@@ -168,6 +168,10 @@ SUBSYSTEM_DEF(ticker)
 				//send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.current_map.map_name]!"), channel_tag) // NOVA EDIT REMOVAL
 
 			current_state = GAME_STATE_PREGAME
+			// SS1984 ADDITION FIX NOVA NOT READY TITLE SCREEN
+			for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
+				player.title_screen_is_ready = TRUE // nova title screens be like...
+			// SS1984 ADDITION END
 			SStitle.change_title_screen() // NOVA EDIT ADDITION - Title screen
 			addtimer(CALLBACK(SStitle, TYPE_PROC_REF(/datum/controller/subsystem/title, change_title_screen)), 1 SECONDS) // NOVA EDIT ADDITION - Title screen
 			//Everyone who wants to be an observer is now spawned

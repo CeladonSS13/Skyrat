@@ -174,6 +174,25 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		</script>
 	"}
 
+	// SS1984 ADDITION FIX KEYBOARD HOTKEYS AT LOADING SCREEN
+	dat += {"
+		<script language="JavaScript">
+			function route_key_down(event) {
+				if (event)
+				{
+					var tmpKey = event.key;
+					if (tmpKey)
+					{
+						var rkey = tmpKey.toUpperCase();
+						window.location = "byond://?src=[text_ref(src)];route_key="+rkey;
+					}
+				}
+			}
+			window.addEventListener("keydown", route_key_down);
+		</script>
+	"}
+	// SS1984 ADDITION END
+
 	dat += "</body></html>"
 
 	return dat
