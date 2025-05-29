@@ -123,17 +123,7 @@
 
 	src << browse(SStitle.current_title_screen, "file=loading_screen.gif;display=0")
 	src << browse(dat, "window=title_browser")
-	//winset("title_browser", "", "command=keyDown")
-	// Create a tiny hidden input control in your UI window
-	//winset("title_browser", "hidden_input", "type=input; visible=0; command=keyDown")
-
-	// Focus it so it captures keys
-	//winset("title_browser", "hidden_input", "focus=1")
-	winset(src, "title_browser", "onshow=reset_client_focus()")
-	set_focus(src)
-
-/mob/dead/new_player/proc/reset_client_focus()
-	set_focus(src)
+	set_focus(src) // need to focus mob instead of browser
 
 /datum/asset/simple/lobby
 	assets = list(
