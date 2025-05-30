@@ -58372,7 +58372,7 @@
 /obj/structure/rack,
 /obj/item/clothing/suit/hooded/ablative,
 /obj/item/gun/energy/ionrifle,
-/obj/item/gun/ballistic/automatic/battle_rifle{
+/obj/item/gun/ballistic/automatic/sol_smg{
 	pixel_y = 3
 	},
 /obj/item/gun/energy/temperature/security,

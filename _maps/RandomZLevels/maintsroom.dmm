@@ -4461,7 +4461,7 @@
 /area/awaymission/caves/maintsroom)
 "qR" = (
 /obj/structure/rack,
-/obj/item/gun/ballistic/automatic/sol_rifle{
+/obj/item/gun/ballistic/automatic/sol_smg{
 	anchored = 1
 	},
 /turf/open/floor/iron/smooth,
@@ -4766,7 +4766,7 @@
 /area/awaymission/caves/maintsroom)
 "sf" = (
 /obj/structure/rack,
-/obj/item/gun/ballistic/automatic/nt20{
+/obj/item/gun/ballistic/automatic/sol_smg{
 	anchored = 1
 	},
 /turf/open/floor/iron/smooth,
@@ -9053,7 +9053,7 @@
 /area/awaymission/caves/maintsroom)
 "IW" = (
 /obj/structure/rack,
-/obj/item/gun/ballistic/automatic/napad{
+/obj/item/gun/ballistic/automatic/sol_smg{
 	anchored = 1
 	},
 /turf/open/floor/iron/smooth,

@@ -2612,7 +2612,7 @@
 "Pm" = (
 /obj/structure/rack,
 /obj/item/gun/ballistic/shotgun/automatic/combat/compact,
-/obj/item/gun/ballistic/automatic/sol_rifle/machinegun,
+/obj/item/gun/ballistic/automatic/sol_smg,
 /turf/open/floor/plating,
 /area/awaymission/beach/heretic)
 "Pp" = (

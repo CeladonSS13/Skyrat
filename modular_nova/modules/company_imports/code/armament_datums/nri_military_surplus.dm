@@ -130,29 +130,9 @@
 	item_type = /obj/item/melee/baton/security/stun_gun/loaded
 	cost = PAYCHECK_COMMAND * 3 //Similarly live action roleplay'iy stun baton lite
 
-/datum/armament_entry/company_import/nri_surplus/firearm/miecz
-	item_type = /obj/item/gun/ballistic/automatic/miecz
-	cost = PAYCHECK_COMMAND * 10
-	restricted = TRUE
-
-/datum/armament_entry/company_import/nri_surplus/firearm/napad
-	item_type = /obj/item/gun/ballistic/automatic/napad
-	cost = PAYCHECK_COMMAND * 12
-	restricted = TRUE
-
 /datum/armament_entry/company_import/nri_surplus/firearm/sakhno_rifle
 	item_type = /obj/item/gun/ballistic/rifle/boltaction
 	cost = PAYCHECK_COMMAND * 12
-	restricted = TRUE
-
-/datum/armament_entry/company_import/nri_surplus/firearm/lanca
-	item_type = /obj/item/gun/ballistic/automatic/lanca
-	cost = PAYCHECK_COMMAND * 14
-	restricted = TRUE
-
-/datum/armament_entry/company_import/nri_surplus/firearm/anti_materiel_rifle
-	item_type = /obj/item/gun/ballistic/automatic/wylom
-	cost = PAYCHECK_COMMAND * 16
 	restricted = TRUE
 
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo
@@ -165,18 +145,5 @@
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo/plasma_battery
 	item_type = /obj/item/ammo_box/magazine/recharge/plasma_battery
 
-/datum/armament_entry/company_import/nri_surplus/firearm_ammo/miecz
-	item_type = /obj/item/ammo_box/magazine/miecz/spawns_empty
-
-/datum/armament_entry/company_import/nri_surplus/firearm_ammo/napad
-	item_type = /obj/item/ammo_box/magazine/napad/spawns_empty
-
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo/sakhno
 	item_type = /obj/item/ammo_box/strilka310
-
-/datum/armament_entry/company_import/nri_surplus/firearm_ammo/lanca
-	item_type = /obj/item/ammo_box/magazine/lanca/spawns_empty
-
-/datum/armament_entry/company_import/nri_surplus/firearm_ammo/amr_magazine
-	item_type = /obj/item/ammo_box/magazine/wylom
-	cost = PAYCHECK_CREW * 3

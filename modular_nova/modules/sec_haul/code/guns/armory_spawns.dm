@@ -76,9 +76,9 @@
 
 /obj/effect/spawner/armory_spawn/centcom_rifles
 	guns = list(
-		/obj/item/gun/ballistic/automatic/sol_rifle,
-		/obj/item/gun/ballistic/automatic/sol_rifle,
-		/obj/item/gun/ballistic/automatic/sol_rifle/machinegun,
+		/obj/item/gun/ballistic/automatic/sol_smg,
+		/obj/item/gun/ballistic/automatic/sol_smg,
+		/obj/item/gun/ballistic/automatic/sol_smg,
 	)
 
 /obj/effect/spawner/armory_spawn/centcom_lasers
@@ -93,6 +93,6 @@
 	guns = list(
 		/obj/item/storage/toolbox/guncase/nova/carwo_large_case/sindano,
 		/obj/item/storage/toolbox/guncase/nova/carwo_large_case/sindano,
-		/obj/item/storage/toolbox/guncase/nova/carwo_large_case/sol_rifle,
-		/obj/item/storage/toolbox/guncase/nova/carwo_large_case/sol_rifle,
+		/obj/item/storage/toolbox/guncase/nova/carwo_large_case/sindano,
+		/obj/item/storage/toolbox/guncase/nova/carwo_large_case/sindano,
 	)

@@ -199,9 +199,9 @@
 /obj/item/mod/module/dispenser/ancient_milsim/trooper
 	name = "MOD Sol rifle-Sol rifle magazine dispenser module"
 	desc = "This module can create a single .40 Sol caliber assault rifle and additional magazines at the user's liking."
-	dispense_type = /obj/item/gun/ballistic/automatic/sol_rifle/evil
+	dispense_type = /obj/item/gun/ballistic/automatic/sol_smg
 	cooldown_time = 25 SECONDS
-	new_dispense_type = /obj/item/ammo_box/magazine/c40sol_rifle/standard
+	new_dispense_type = /obj/item/ammo_box/magazine/c35sol_pistol/stendo
 	new_cooldown_time = 15 SECONDS
 
 /obj/item/mod/module/insignia/milsim_mechanic

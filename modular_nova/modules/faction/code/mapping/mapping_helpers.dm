@@ -187,12 +187,6 @@
 			for(var/i in 1 to 2)
 				new /obj/item/ammo_box/magazine/c35sol_pistol/stendo(src)
 				new /obj/item/ammo_box/magazine/c35sol_pistol/stendo(src)
-			new /obj/item/gun/ballistic/automatic/lanca(src)
-			for(var/i in 1 to 2)
-				new /obj/item/ammo_box/magazine/lanca(src)
-			new /obj/item/gun/ballistic/automatic/miecz(src)
-			for(var/i in 1 to 2)
-				new /obj/item/ammo_box/magazine/miecz(src)
 
 		if(4) //MODsuits
 			new /obj/item/mod/control/pre_equipped/mining(src)

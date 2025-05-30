@@ -47,9 +47,7 @@
 		/obj/item/gun/ballistic/automatic/pistol/plasma_thrower = ITEM_WEIGHT_GUN_COMMON,
 		/obj/item/gun/ballistic/automatic/pistol/plasma_marksman = ITEM_WEIGHT_GUN_COMMON,
 		/obj/item/storage/toolbox/guncase/soviet/sakhno = ITEM_WEIGHT_GUN_COMMON,
-		/obj/item/gun/ballistic/automatic/miecz = ITEM_WEIGHT_GUN_RARE,
-		/obj/item/gun/ballistic/automatic/lanca = ITEM_WEIGHT_GUN_RARE,
-		/obj/item/gun/ballistic/automatic/wylom = ITEM_WEIGHT_GUN_RARE,
+		/obj/item/gun/ballistic/automatic/sol_smg = ITEM_WEIGHT_GUN_RARE,
 		// Ammo
 		/obj/item/storage/toolbox/ammobox/strilka310 = ITEM_WEIGHT_AMMO_BULK,
 		/obj/item/storage/toolbox/ammobox/strilka310/surplus = ITEM_WEIGHT_AMMO_BULK,

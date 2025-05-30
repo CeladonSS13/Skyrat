@@ -50,10 +50,10 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 10
 	ai_controller = /datum/ai_controller/basic_controller/trooper/calls_reinforcements/ancient_milsim/ranged
-	r_hand = /obj/item/gun/ballistic/automatic/miecz
+	r_hand = /obj/item/gun/ballistic/automatic/sol_smg
 	loot = list(/obj/effect/mob_spawn/corpse/human/cin_soldier, /obj/effect/spawner/random/ancient_milsim/ranged)
 	/// Type of bullet we use
-	var/casingtype = /obj/item/ammo_casing/c27_54cesarzowa
+	var/casingtype = /obj/item/ammo_casing/c35sol
 	/// Sound to play when firing weapon
 	var/projectilesound = 'modular_nova/modules/modular_weapons/sounds/smg_light.ogg'
 	/// number of burst shots
