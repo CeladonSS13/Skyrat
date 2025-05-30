@@ -60,7 +60,6 @@
 /obj/projectile/beam/m1911
 	name = "focused laser beam"
 	hitscan = FALSE
-	speed = 0.6
 	damage = 20
 	wound_bonus = -40
 	icon_state = "laser"
