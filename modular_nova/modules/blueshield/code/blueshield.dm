@@ -39,7 +39,7 @@
 		/obj/item/clothing/head/collectable/captain = 4,
 	)
 
-	veteran_only = TRUE
+	veteran_only = FALSE // SS1984 EDIT
 	job_flags = STATION_JOB_FLAGS | JOB_CANNOT_OPEN_SLOTS
 
 /datum/outfit/job/blueshield
