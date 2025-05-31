@@ -24,7 +24,7 @@
 	can_change_cable_layer = TRUE
 
 	/// The charge capacity.
-	var/capacity = 50 * STANDARD_BATTERY_CHARGE // The board defaults with 5 high capacity batteries.
+	var/capacity = 100 * STANDARD_BATTERY_CHARGE // SS1984 EDIT The board defaults with 10 high capacity batteries.
 	/// The current charge.
 	var/charge = 0
 
@@ -469,19 +469,19 @@
 	name = "super capacity power storage unit"
 	desc = "A super-capacity superconducting magnetic energy storage (SMES) unit. Relatively rare, and typically installed in long-range outposts where minimal maintenance is expected."
 	circuit = /obj/item/circuitboard/machine/smes/super
-	capacity = 100 * STANDARD_BATTERY_CHARGE
+	capacity = 200 * STANDARD_BATTERY_CHARGE // SS1984 EDIT
 
 /obj/machinery/power/smes/super/full
-	charge = 100 * STANDARD_BATTERY_CHARGE
+	charge = 200 * STANDARD_BATTERY_CHARGE  // SS1984 EDIT
 
 /obj/machinery/power/smes/full
-	charge = 50 * STANDARD_BATTERY_CHARGE
+	charge = 100 * STANDARD_BATTERY_CHARGE  // SS1984 EDIT
 
 /obj/machinery/power/smes/ship
 	charge = 20 * STANDARD_BATTERY_CHARGE
 
 /obj/machinery/power/smes/engineering
-	charge = 50 * STANDARD_BATTERY_CHARGE // Engineering starts with some charge for singulo //sorry little one, singulo as engine is gone
+	charge = 100 * STANDARD_BATTERY_CHARGE  // SS1984 EDIT, SMESES FOR ENGINE
 	output_level = 90 KILO WATTS
 
 /obj/machinery/power/smes/magical
