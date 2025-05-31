@@ -8,8 +8,7 @@
 #ifndef UNIT_TESTS
 /obj/machinery/light_switch/post_machine_initialize()
 	. = ..()
-	if(prob(50) && area.lightswitch) //50% chance for area to start with lights off.
-		turn_off()
+	// SS1984 REMOVAL START, END)
 #endif
 
 /obj/machinery/light_switch/proc/turn_off()
