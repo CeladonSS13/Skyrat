@@ -1,5 +1,5 @@
 // for time if offs remove items
-/*
+
 
 
 
@@ -186,7 +186,7 @@
 //outfits end
 
 //ert mod start
-*/
+
 /datum/mod_theme/frontline
 	name = "frontline"
 	desc = "A Novaya Rossiyskaya Imperiya Defense Collegia protective suit, designed for fortified positions operation and humanitarian aid."
@@ -462,9 +462,11 @@
 	return TRUE
 
 /obj/item/mod/module/ert_auto_doc/on_install()
+	. = ..()
 	RegisterSignal(mod, COMSIG_ATOM_ITEM_INTERACTION, PROC_REF(try_refill))
 
 /obj/item/mod/module/ert_auto_doc/on_uninstall(deleting)
+	. = ..()
 	UnregisterSignal(mod, COMSIG_ATOM_ITEM_INTERACTION)
 
 /obj/item/mod/module/ert_auto_doc/proc/try_refill(source, mob/user, obj/item/attacking_item)
@@ -486,9 +488,11 @@
 	return NONE
 
 /obj/item/mod/module/ert_auto_doc/on_install()
+	. = ..()
 	RegisterSignal(mod, COMSIG_ATOM_ITEM_INTERACTION, PROC_REF(on_item_interact))
 
 /obj/item/mod/module/ert_auto_doc/on_uninstall(deleting)
+	. = ..()
 	UnregisterSignal(mod, COMSIG_ATOM_ATTACKBY)
 
 
