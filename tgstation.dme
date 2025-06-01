@@ -8946,7 +8946,7 @@
 #include "modular_nova\modules\unusual_biochemistry\unusual_biochemistry.dm"
 #include "modular_nova\modules\verbs\code\looc.dm"
 #include "modular_nova\modules\verbs\code\say.dm"
-//#include "modular_nova\modules\verbs\code\subtle.dm" ss1984 remove удалёем ЕРП хуйню
+//#include "modular_nova\modules\verbs\code\subtle.dm" ss1984 remove удаляем ЕРП хуйню
 #include "modular_nova\modules\veteran_only\code\job_types.dm"
 #include "modular_nova\modules\veteran_only\code\species_types.dm"
 #include "modular_nova\modules\voice_actor_quirk\code\alter_voice_action.dm"
