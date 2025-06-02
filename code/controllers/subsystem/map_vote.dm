@@ -92,16 +92,18 @@ SUBSYSTEM_DEF(map_vote)
 	ASSERT(winner, "No winner found in map vote.")
 	set_next_map(config.maplist[winner])
 	var/list/messages = list("Map Selected - [span_bold(next_map_config.map_name)]")
-	messages += "Tallies at the time of selection:"
-	messages += tally_printout
+	// SS1984 REMOVAL START
+	// messages += "Tallies at the time of selection:"
+	// messages += tally_printout
 
-	// do not reset tallies if only one map is even possible
-	if(length(map_vote.choices) > 1)
-		map_vote_cache[winner] = CONFIG_GET(number/map_vote_minimum_tallies)
-		write_cache()
-		update_tally_printout()
-	else
-		messages += "Only one map was possible, tallies were not reset."
+	// // do not reset tallies if only one map is even possible
+	// if(length(map_vote.choices) > 1)
+	// 	map_vote_cache[winner] = CONFIG_GET(number/map_vote_minimum_tallies)
+	// 	write_cache()
+	// 	update_tally_printout()
+	// else
+	// 	messages += "Only one map was possible, tallies were not reset."
+	// SS1984 REMOVAL END
 
 	send_map_vote_notice(arglist(messages))
 
