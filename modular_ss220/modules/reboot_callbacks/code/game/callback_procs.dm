@@ -21,6 +21,8 @@
         shell("kill -SIGUSR1 " + pid) // linux magic
 
 /proc/GetHostProcessPID()
+	if (!fexists(CUSTOM_DREAMDAEMON_PID_PATH))
+		return null
     var/pid_str = file2text(CUSTOM_DREAMDAEMON_PID_PATH)
     if(!pid_str)
         return null
