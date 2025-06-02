@@ -37,7 +37,7 @@
 
 /datum/controller/subsystem/dynamic
 	/// Desired median point for midrounds, plus or minus the midround_roll_distance.
-	var/midround_median_frequency = 36000
+	var/midround_median_frequency = 12000 // SS1984 EDIT, even if it happens more often, it still limited by threat so it's fine
 
 /// Divides threat budget based on the server config
 /datum/controller/subsystem/dynamic/generate_budgets()

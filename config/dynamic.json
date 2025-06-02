@@ -7,12 +7,12 @@
 		"threat_curve_width": 3,
 		"roundstart_split_curve_centre": 2,
 		"roundstart_split_curve_width": 1,
-		"midround_lower_bound": 9000,
-		"midround_light_upper_bound": 15000,
+		"midround_lower_bound": 3000,
+		"midround_light_upper_bound": 16000,
 		"midround_heavy_lower_bound": 48000,
 		"midround_upper_bound": 63000,
-		"midround_roll_distance": 6000,
-		"low_pop_maximum_threat": 0
+		"midround_roll_distance": 3000,
+		"low_pop_maximum_threat": 50
 	},
 	"Roundstart": {
 		"Traitors": {
