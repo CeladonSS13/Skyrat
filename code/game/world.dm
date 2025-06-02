@@ -364,7 +364,7 @@ GLOBAL_VAR(restart_counter)
 	else
 		TgsReboot() // TGS can decide to kill us right here, so it's important to do it last
 	//SS220 EDIT CHANGE END
-
+	TryAutoHardReboot() // SS1984 ADDITION
 	..()
 	#endif
 

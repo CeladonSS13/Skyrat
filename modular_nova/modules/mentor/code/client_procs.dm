@@ -1,5 +1,5 @@
-/client/New()
-	. = ..()
+/client/New(TopicData) // SS1984 EDIT
+	. = ..(TopicData) // SS1984 EDIT
 	mentor_datum_set()
 
 /client/Destroy()
