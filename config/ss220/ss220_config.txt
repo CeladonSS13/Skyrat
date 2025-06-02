@@ -8,7 +8,7 @@
 ## Example valid values: "0-3" or "1,4-7"
 #FFMPEG_CPUAFFINITY 24-31
 
-AUTO_CRYO_SSD_MIN 10
+AUTO_CRYO_SSD_MIN 25
 
 ## Uncomment this to shut down the world any time it would normally reboot
 #SHUTDOWN_ON_REBOOT
