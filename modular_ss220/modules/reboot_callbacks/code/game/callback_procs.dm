@@ -13,17 +13,16 @@
 /// THE ACTUAL TROUBLE WILL BE IN CASE IT'S ACTUALLY SET UP, BUT THE WRONG WAY
 /// By some observations, players not always can connect without hard reboot the hosting service
 /// This is intended to send SIGUSR1 signal which should be captured (by 'trap' likely) and restart DreamMaker
-/world/proces/TryAutoHardReboot()
+/proc/TryAutoHardReboot()
     if (world.system_type != UNIX)
         return // not supported, write your own if needed
-    var/pid = world.GetHostProcessPID()
+    var/pid = GetHostProcessPID()
     if(pid)
-        spawn("kill -SIGUSR1 " + pid) // linux magic
+        shell("kill -SIGUSR1 " + pid) // linux magic
 
-/world/proc/GetHostProcessPID()
-    var/pid_file = open(CUSTOM_DREAMDAEMON_PID_PATH, "r")
-    if(!pid_file)
+/proc/GetHostProcessPID()
+    var/pid_str = file2text(CUSTOM_DREAMDAEMON_PID_PATH)
+    if(!pid_str)
         return null
-    var/pid_str = pid_file.Read()
-    pid_file.Close()
-    return toint(pid_str)
+    pid_str = trim(pid_str)
+    return text2num(pid_str)
