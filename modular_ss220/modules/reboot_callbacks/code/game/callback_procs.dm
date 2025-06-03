@@ -23,7 +23,7 @@
 	if (proc_pid)
 		var/pid_s = num2text(proc_pid)
 		if (pid_s != null)
-			shell("kill -SIGUSR1 [pid_s]") // linux magic
+			shell("kill -s USR1 [pid_s]") // linux magic
 
 /proc/GetHostProcessPID()
 	if (!fexists(CUSTOM_DREAMDAEMON_PID_PATH))
