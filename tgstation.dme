@@ -9142,4 +9142,5 @@
 #include "modular_ss220\modules\enhanced_messaging\code\messaging_config.dm"
 #include "modular_ss220\modules\enhanced_messaging\code\nttc_configuration.dm"
 #include "modular_ss220\modules\reboot_callbacks\code\game\callback_procs.dm"
+#include "modular_ss220\modules\reconnect-fix\reconnect_procs.dm"
 // END_INCLUDE

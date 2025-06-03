@@ -353,7 +353,7 @@ GLOBAL_VAR(restart_counter)
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
 	QDEL_NULL(Tracy)
 	QDEL_NULL(Debugger)
-
+	try_reconnect_all_players() // SS1984 ADDITION
 	//SS220 EDIT CHANGE BEGIN - SHUTDOWN
 	if(CONFIG_GET(flag/shutdown_on_reboot))
 		if(CONFIG_GET(string/shutdown_shell_command))
