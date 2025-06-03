@@ -55,21 +55,24 @@
 	var/custom_species_lore
 	var/obscured
 	var/ooc_notes = ""
-	var/ideal_antag_optin_status
-	var/current_antag_optin_status
+	// SS1984 REMOVAL START
+	// var/ideal_antag_optin_status
+	// var/current_antag_optin_status
+	// SS1984 REMOVAL END
 	var/headshot = ""
 
 	// OOC notes go first
-	if(preferences)
+	// SS1984 REMOVAL if(preferences)
 		// SS1984 REMOVAL OF ERP EXAMINE START, END
-
-		if(!CONFIG_GET(flag/disable_antag_opt_in_preferences))
-			var/antag_prefs = holder.mind?.ideal_opt_in_level
-			var/effective_opt_in_level = holder.mind?.get_effective_opt_in_level()
-			if(isnull(antag_prefs))
-				antag_prefs = preferences.read_preference(/datum/preference/choiced/antag_opt_in_status)
-			current_antag_optin_status = GLOB.antag_opt_in_strings[num2text(effective_opt_in_level)]
-			ideal_antag_optin_status = GLOB.antag_opt_in_strings[num2text(antag_prefs)]
+		// SS1984 REMOVAL START
+		// if(!CONFIG_GET(flag/disable_antag_opt_in_preferences))
+		// 	var/antag_prefs = holder.mind?.ideal_opt_in_level
+		// 	var/effective_opt_in_level = holder.mind?.get_effective_opt_in_level()
+		// 	if(isnull(antag_prefs))
+		// 		antag_prefs = preferences.read_preference(/datum/preference/choiced/antag_opt_in_status)
+		// 	current_antag_optin_status = GLOB.antag_opt_in_strings[num2text(effective_opt_in_level)]
+		// 	ideal_antag_optin_status = GLOB.antag_opt_in_strings[num2text(antag_prefs)]
+		// SS1984 REMOVAL END
 
 	// Now we handle silicon and/or human, order doesn't matter as both obviously can't fire.
 	// If other variants of mob/living need to be handled at some point, put them here.
@@ -108,15 +111,17 @@
 		"custom_species_lore" = custom_species_lore,
 		// SS1984 REMOVAL OF ERP EXAMINE START, END
 		// Antaggery
-		"ideal_antag_optin_status" = ideal_antag_optin_status, // Our opt-in status from prefs when we joined the game
-		"current_antag_optin_status" = current_antag_optin_status, // What it's being forced to if applicable
+		// SS1984 REMOVAL START
+		// "ideal_antag_optin_status" = ideal_antag_optin_status, // Our opt-in status from prefs when we joined the game
+		// "current_antag_optin_status" = current_antag_optin_status, // What it's being forced to if applicable
+		// SS1984 REMOVAL END
 	)
 	return data
 
 /datum/examine_panel/ui_static_data(mob/user)
 	var/list/data = list(
 		"veteran_status" = SSplayer_ranks.is_veteran(holder.client, admin_bypass = FALSE),
-		"opt_in_colors" = GLOB.antag_opt_in_colors,
+		// "opt_in_colors" = GLOB.antag_opt_in_colors, SS1984 REMOVAL
 	)
 	return data
 

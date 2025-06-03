@@ -47,9 +47,11 @@ export function ExaminePanel(props) {
     custom_species_lore,
     headshot,
     veteran_status,
-    ideal_antag_optin_status,
-    current_antag_optin_status,
-    opt_in_colors,
+    // SS1984 REMOVAL START
+    // ideal_antag_optin_status,
+    // current_antag_optin_status,
+    // opt_in_colors,
+    // SS1984 REMOVAL END
   } = data;
   const [oocNotesIndex, setOocNotesIndex] = useState('SFW');
   const [flavorTextIndex, setFlavorTextIndex] = useState('SFW');
@@ -148,6 +150,9 @@ export function ExaminePanel(props) {
                           </span>
                         </Stack.Item>
                       )}
+                      {/* SS1984 EDIT START */}
+                      {(<Stack.Item>
+                      {/*
                       {oocNotesIndex === 'SFW' && (
                         <Stack.Item>
                           {ideal_antag_optin_status && (
@@ -175,6 +180,8 @@ export function ExaminePanel(props) {
                               {'\n\n'}
                             </Stack.Item>
                           )}
+                        */}
+                        {/* SS1984 EDIT END */}
                           {formatURLs(ooc_notes)}
                         </Stack.Item>
                       )}

@@ -19,13 +19,15 @@
 		return
 	var/datum/team/cult/cult = team
 	var/list/target_candidates = list()
-	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // NOVA EDIT ADDITION - ANTAG OPT-IN
+	// SS1984 REMOVAL var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // NOVA EDIT ADDITION - ANTAG OPT-IN
 	for(var/mob/living/carbon/human/player in GLOB.player_list)
 		// NOVA EDIT ADDITION START - Players in the interlink can't be obsession targets + Antag Optin
 		if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
 			continue
-		if (!opt_in_disabled && !opt_in_valid(player))
-			continue
+		// SS1984 REMOVAL START
+		// if (!opt_in_disabled && !opt_in_valid(player))
+		// 	continue
+		// SS1984 REMOVAL END
 		// NOVA EDIT ADDITION END
 		if(player.mind && !IS_CULTIST(player) && !is_convertable_to_cult(player) && player.stat != DEAD && is_station_level(player.loc.z))
 			target_candidates += player.mind
@@ -35,8 +37,10 @@
 			// NOVA EDIT ADDITION START - Players in the interlink can't be obsession targets + Antag Optin
 			if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
 				continue
-			if (!opt_in_disabled && !opt_in_valid(player))
-				continue
+			// SS1984 REMOVAL START
+			// if (!opt_in_disabled && !opt_in_valid(player))
+			// 	continue
+			// SS1984 REMOVAL END
 			// NOVA EDIT ADDITION END
 			if(player.mind && !IS_CULTIST(player) && player.stat != DEAD && is_station_level(player.loc.z))
 				target_candidates += player.mind

@@ -222,10 +222,10 @@
 
 /datum/opposing_force/ui_static_data(mob/user)
 	var/list/data = list()
-
-	data["opt_in_colors"] = GLOB.antag_opt_in_colors
-	data["opt_in_enabled"] = (!CONFIG_GET(flag/disable_antag_opt_in_preferences))
-
+	// SS1984 REMOVAL START
+	//data["opt_in_colors"] = GLOB.antag_opt_in_colors
+	//data["opt_in_enabled"] = (!CONFIG_GET(flag/disable_antag_opt_in_preferences))
+	// SS1984 REMOVAL END
 	return data
 
 /datum/opposing_force/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -1041,15 +1041,17 @@
 			continue
 		var/name = iterated_record.name
 		var/rank = iterated_record.rank
-
-		var/opt_in_status = mind_datum.get_effective_opt_in_level()
-		var/ideal_opt_in_status = mind_datum.ideal_opt_in_level
-
+		// SS1984 REMOVAL START
+		// var/opt_in_status = mind_datum.get_effective_opt_in_level()
+		// var/ideal_opt_in_status = mind_datum.ideal_opt_in_level
+		// SS1984 REMOVAL END
 		output += list(list(
 			"name" = name,
 			"rank" = rank,
-			"opt_in_status" = GLOB.antag_opt_in_strings["[opt_in_status]"],
-			"ideal_opt_in_status" = GLOB.antag_opt_in_strings["[ideal_opt_in_status]"]
+			// SS1984 REMOVAL START
+			// "opt_in_status" = GLOB.antag_opt_in_strings["[opt_in_status]"],
+			// "ideal_opt_in_status" = GLOB.antag_opt_in_strings["[ideal_opt_in_status]"]
+			// SS1984 REMOVAL END
 		))
 
 	return output
