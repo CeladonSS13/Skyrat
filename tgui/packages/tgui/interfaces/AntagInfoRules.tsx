@@ -1,15 +1,18 @@
 // THIS IS A NOVA SECTOR UI FILE
-import { Stack } from 'tgui-core/components';
+// SS1984 REMOVAL START
+// import { Stack } from 'tgui-core/components';
 
-import { useBackend } from '../backend';
-import { Objective } from './common/Objectives';
+// import { useBackend } from '../backend';
+// import { Objective } from './common/Objectives';
 
-type Info = {
-  antag_name: string;
-  objectives: Objective[];
-};
+// type Info = {
+//   antag_name: string;
+//   objectives: Objective[];
+// };
+// SS1984 REMOVAL END
 
 export const Rules = (props) => {
+  /* SS1984 REMOVAL START
   const { data } = useBackend<Info>();
   const { antag_name } = data;
   switch (antag_name) {
@@ -273,4 +276,5 @@ export const Rules = (props) => {
       );
       break;
   }
+  SS1984 REMOVAL END */
 };
