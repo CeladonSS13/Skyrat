@@ -255,6 +255,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	TopicData = null //Prevent calls to client.Topic from connect
 
 	if(connection != "seeker" && connection != "web")//Invalid connection type.
+		log_access("LOGIN ERROR: Trying to log from: [key_name(src)] from [address ? address : "localhost"]-[computer_id], CONNECTION TYPE = [connection ? connection : "null"]")
 		return null
 
 	GLOB.clients += src
