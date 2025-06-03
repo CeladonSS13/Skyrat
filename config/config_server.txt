@@ -46,7 +46,7 @@ SERVERTAGLINE Event server of SS1984 Skyrat
 
 ## Discord Link: This is the link to Nova Sector's discord server
 # NOTE: uncommenting this might prevent players to join game if not setup correctly
-# DISCORD_LINK https://discord.gg/novasector
+DISCORD_LINK https://discord.gg/ss1984
 
 ## Station name: The name of the station as it is referred to in-game. If commented out, the game will generate a random name instead.
 STATIONNAME Station of Sky Rat
