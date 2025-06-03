@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(nttc_jobs, list(
 	JOB_SOLFED_LIASON = "centcomradio",
 	// NOVA EDIT ADDITION END
 ))
-/// List of highlight jobs (command, centcomm, ert)
+/// List of highlight jobs (command, centcom, ert)
 GLOBAL_LIST_INIT(nttc_highlight_jobs, list(
 	// COMMAND
 	JOB_CAPTAIN,
@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(nttc_highlight_jobs, list(
 	JOB_CHIEF_MEDICAL_OFFICER,
 	JOB_HEAD_OF_SECURITY,
 	JOB_QUARTERMASTER,
-	// CENTCOMM
+	// CENTCOM
 	JOB_CENTCOM,
 	JOB_CENTCOM_OFFICIAL,
 	JOB_CENTCOM_ADMIRAL,
@@ -139,7 +139,7 @@ GLOBAL_LIST_INIT(nttc_highlight_jobs, list(
 	JOB_ERT_CLOWN,
 	// AI
 	JOB_AI,
-	// NOVA CENTCOMM ADDITION
+	// NOVA CENTCOM ADDITION
 	JOB_NAVAL_ENSIGN,
 	JOB_NAVAL_LIEUTENANT,
 	JOB_NAVAL_LTCR,
