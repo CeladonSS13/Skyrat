@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 #ANSI Escape Codes for colors to increase contrast of errors
 RED="\033[0;31m"
