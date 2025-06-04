@@ -56,16 +56,6 @@
 	fire = 95
 	acid = 95
 
-/datum/armor/beret_blueshield
-	melee = 40
-	bullet = 35
-	laser = 30
-	energy = 20
-	bomb = 30
-	fire = 80
-	acid = 80
-	wound = 15
-
 /obj/item/clothing/head/beret/blueshield
 	name = "blueshield's beret"
 	desc = "A blue beret made of durathread with a genuine golden badge, denoting its owner as a Blueshield Lieuteneant. It seems to be padded with nano-kevlar, making it tougher than standard reinforced berets."
