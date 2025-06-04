@@ -151,7 +151,7 @@
 		/obj/item/reagent_containers/cup/glass/bottle/champagne = 10
 	)
 
-	veteran_only = TRUE
+	veteran_only = FALSE //ss1984 edit original TRUE
 	job_flags = STATION_JOB_FLAGS | JOB_BOLD_SELECT_TEXT | JOB_CANNOT_OPEN_SLOTS
 
 /datum/id_trim/job/nanotrasen_consultant
@@ -225,7 +225,7 @@
 	shoes = /obj/item/clothing/shoes/jackboots
 	head = /obj/item/clothing/head/nanotrasen_consultant
 	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/melee/baton/telescopic/gold = 1,
 		/obj/item/choice_beacon/ntc = 1,
 		)
 
