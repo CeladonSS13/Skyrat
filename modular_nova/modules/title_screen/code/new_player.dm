@@ -98,6 +98,10 @@
 
 /mob/dead/new_player/Login()
 	. = ..()
+	// SS1984 ADDITION START
+	if (SSticker?.current_state != GAME_STATE_STARTUP) // so we joined when title is already should be ready for everyone
+		src.title_screen_is_ready = TRUE
+	// SS1984 ADDITION END
 	show_title_screen()
 
 /**
