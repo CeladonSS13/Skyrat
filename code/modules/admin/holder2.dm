@@ -9,6 +9,8 @@ GLOBAL_PROTECT(href_token)
 #define RESULT_2FA_VALID 1
 #define RESULT_2FA_ID 2
 
+GENERAL_PROTECT_DATUM(/datum/admins) // SS1984 ADDITION
+
 /datum/admins
 	var/list/datum/admin_rank/ranks
 
