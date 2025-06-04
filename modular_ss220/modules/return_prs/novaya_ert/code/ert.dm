@@ -215,8 +215,8 @@
 	)
 	variants = list(
 		"frontline" = list(
-			MOD_ICON_OVERRIDE = 'modular_nova/modules/novaya_ert/icons/mod.dmi',
-			MOD_WORN_ICON_OVERRIDE = 'modular_nova/modules/novaya_ert/icons/wornmod.dmi',
+			MOD_ICON_OVERRIDE = 'modular_ss220/modules/return_prs/novaya_ert/icons/mod.dmi',
+			MOD_WORN_ICON_OVERRIDE = 'modular_ss220/modules/return_prs/novaya_ert/icons/wornmod.dmi',
 			/obj/item/clothing/head/mod = list(
 				UNSEALED_LAYER = HEAD_LAYER,
 				UNSEALED_CLOTHING = SNUG_FIT,
