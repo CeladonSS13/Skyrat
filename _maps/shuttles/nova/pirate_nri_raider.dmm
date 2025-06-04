@@ -272,6 +272,7 @@
 /obj/item/gun/ballistic/shotgun/riot{
 	pixel_x = -4
 	},
+/obj/item/gun/ballistic/automatic/miecz,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "kQ" = (
@@ -280,7 +281,6 @@
 	},
 /obj/structure/cable,
 /obj/machinery/suit_storage_unit/nri,
-/obj/item/gun/ballistic/automatic/sol_smg,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "kX" = (
@@ -529,7 +529,7 @@
 /area/shuttle/pirate/nri)
 "uh" = (
 /obj/structure/rack/gunrack,
-/obj/item/gun/ballistic/automatic/sol_smg,
+/obj/item/gun/ballistic/automatic/lanca,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
