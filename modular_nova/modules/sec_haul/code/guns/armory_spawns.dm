@@ -76,9 +76,9 @@
 
 /obj/effect/spawner/armory_spawn/centcom_rifles
 	guns = list(
-		/obj/item/gun/ballistic/automatic/sol_smg,
-		/obj/item/gun/ballistic/automatic/sol_smg,
-		/obj/item/gun/ballistic/automatic/sol_smg,
+		/obj/item/gun/ballistic/automatic/sol_rifle,
+		/obj/item/gun/ballistic/automatic/sol_rifle,
+		/obj/item/gun/ballistic/automatic/sol_rifle/marksman,
 	)
 
 /obj/effect/spawner/armory_spawn/centcom_lasers
