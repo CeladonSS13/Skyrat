@@ -194,7 +194,7 @@
 	id = /obj/item/card/id/advanced/centcom
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/headset_bs/alt
-	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/blue
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
@@ -202,7 +202,7 @@
 	messenger = /obj/item/storage/backpack/messenger/blueshield
 	head = /obj/item/clothing/head/beret/blueshield
 	box = /obj/item/storage/box/survival/security
-	belt = /obj/item/modular_computer/pda/security
+	belt = /obj/item/modular_computer/pda/blueshield
 	l_pocket = /obj/item/sensor_device/blueshield
 	backpack_contents = list(
 							/obj/item/storage/medkit/tactical/blueshield,
@@ -272,6 +272,7 @@
 	)
 	minimal_access = list(
 		ACCESS_ALL_PERSONAL_LOCKERS,
+		ACCESS_CHANGE_IDS,
 		ACCESS_BRIG_ENTRANCE,
 		ACCESS_CENT_GENERAL,
 		ACCESS_COMMAND,
@@ -295,4 +296,15 @@
 	)
 	job = /datum/job/blueshield
 
+/datum/armor/beret_blueshield
+	melee = 40
+	bullet = 35
+	laser = 30
+	energy = 35
+	bomb = 30
+	fire = 80
+	acid = 80
+	wound = 15
 
+/obj/item/clothing/head/beret/blueshield
+	armor_type = /datum/armor/beret_blueshield
