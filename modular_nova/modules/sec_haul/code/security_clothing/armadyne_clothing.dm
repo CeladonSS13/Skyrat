@@ -153,7 +153,7 @@
 	shoes = /obj/item/clothing/shoes/jackboots/armadyne
 	belt = /obj/item/storage/belt/security/webbing/armadyne
 	backpack_contents = list(
-		/obj/item/storage/toolbox/guncase/nova/pistol/trappiste_small_case/wespe,
+		/obj/item/storage/toolbox/guncase/nova/pistol/trappiste_small_case/takbok,
 		/obj/item/storage/box/handcuffs,
 		/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
 		/obj/item/modular_computer/pda/security,
@@ -167,23 +167,23 @@
 /datum/outfit/armadyne_security/high_alert
 	name = "Armadyne Corporate Security (High Alert)"
 	belt = /obj/item/storage/belt/security/webbing/armadyne
-	suit_store = /obj/item/gun/ballistic/automatic/sol_smg
+	suit_store = /obj/item/gun/ballistic/automatic/sol_rifle
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic,
 		/obj/item/storage/toolbox/guncase/nova/pistol/trappiste_small_case/wespe,
 		/obj/item/storage/box/handcuffs,
-		/obj/item/ammo_box/magazine/c35sol_pistol/stendo = 2,
+		/obj/item/ammo_box/magazine/c40sol_rifle/standard = 2,
 	)
 
 
 /datum/outfit/armadyne_security/commander/high_alert
 	name = "Armadyne Corporate Security Commander (High Alert)"
-	suit_store = /obj/item/gun/ballistic/automatic/sol_smg
+	suit_store = /obj/item/gun/ballistic/automatic/sol_rifle/marksman
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic,
 		/obj/item/storage/toolbox/guncase/nova/pistol/trappiste_small_case/skild,
 		/obj/item/storage/box/handcuffs,
-		/obj/item/ammo_box/magazine/c35sol_pistol/stendo = 2,
+		/obj/item/ammo_box/magazine/c40sol_rifle/standard = 2,
 	)
 
 /obj/item/card/id/advanced/armadyne
