@@ -5,7 +5,7 @@ on:
     types:
       - closed
     branches:
-      - nova
+      - master
 permissions:
   contents: write
 jobs:
