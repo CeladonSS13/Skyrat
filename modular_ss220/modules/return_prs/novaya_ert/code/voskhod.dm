@@ -22,7 +22,7 @@
 	cell = /obj/item/stock_parts/power_store/cell/bluespace
 	actions_types = list(/datum/action/item_action/hev_toggle/nri, /datum/action/item_action/hev_toggle_notifs/nri, /datum/action/item_action/toggle_spacesuit)
 	resistance_flags = FIRE_PROOF|UNACIDABLE|ACID_PROOF|FREEZE_PROOF
-	clothing_flags = STOPSPRESSUREDAMAGE|SNUG_FIT
+	clothing_flags = STOPSPRESSUREDAMAGE|THICKMATERIAL|SNUG_FIT
 	clothing_traits = list(TRAIT_BRAWLING_KNOCKDOWN_BLOCKED)
 
 	activation_song = null //No nice song.
@@ -114,7 +114,7 @@
 	obj_flags = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 	resistance_flags = FIRE_PROOF|UNACIDABLE|ACID_PROOF|FREEZE_PROOF
-	clothing_flags = STOPSPRESSUREDAMAGE|SNUG_FIT|BLOCK_GAS_SMOKE_EFFECT|HEADINTERNALS
+	clothing_flags = STOPSPRESSUREDAMAGE|SNUG_FIT|BLOCK_GAS_SMOKE_EFFECT|HEADINTERNALS|THICKMATERIAL|STACKABLE_HELMET_EXEMPT
 	clothing_traits = list(TRAIT_HEAD_INJURY_BLOCKED)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	flash_protect = FLASH_PROTECTION_WELDER
