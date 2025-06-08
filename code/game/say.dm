@@ -205,7 +205,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 /atom/movable/proc/compose_track_href(atom/movable/speaker, message_langs, raw_message, radio_freq)
 	return ""
 
- //SS1984 EDIT START, DONT FORGET TO UPDATE SAME METHOD IN say_ai.dm IF MODIFY PARAMS!
+// SS1984 EDIT START, DONT FORGET TO UPDATE SAME METHOD IN say_ai.dm IF MODIFY PARAMS!
 /atom/movable/proc/compose_job(atom/movable/speaker, raw_message, radio_freq, namepart, obj/machinery/announcement_system/announcer, job, speaker_source)
 	if (!radio_freq || !announcer)
 		return "[namepart]"
@@ -214,7 +214,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		return "[namepart]"
 
 	return nttc.compose_ntts_job(raw_message, namepart, announcer, job, speaker_source)
-	// SS1984 EDIT END
+// SS1984 EDIT END
 
 /**
  * Works out and returns which prefix verb the passed message should use.

@@ -1,0 +1,9 @@
+{
+	"file": "tgstation.dme",
+	"scannable_directory": "modular_ss220/",
+	"subdirectories": true,
+	"excluded_files": [
+		"modular_nova/modules/verbs/code/subtle.dm"
+	],
+	"forbidden_includes": []
+}

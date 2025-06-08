@@ -4,17 +4,17 @@ on:
   workflow_call:
   push:
     branches:
-    - nova
+    - master
     - 'project/**'
     - 'gh-readonly-queue/master/**'
     - 'gh-readonly-queue/project/**'
   pull_request:
     branches:
-    - nova
+    - master
     - 'project/**'
   merge_group:
     branches:
-    - nova
+    - master
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
