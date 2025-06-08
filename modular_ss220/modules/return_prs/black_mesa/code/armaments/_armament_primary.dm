@@ -45,6 +45,11 @@
 	max_purchase = 2
 	cost = 5
 
+/datum/armament_entry/hecu/primary/shotgun/autoshotgun_pump
+	item_type = /obj/item/gun/ballistic/shotgun/automatic
+	max_purchase = 1
+	cost = 7
+
 /datum/armament_entry/hecu/primary/special
 	subcategory = ARMAMENT_SUBCATEGORY_SPECIAL
 	mags_to_spawn = 2
