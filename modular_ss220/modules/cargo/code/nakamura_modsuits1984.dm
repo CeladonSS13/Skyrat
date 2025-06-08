@@ -2,7 +2,10 @@
 	category = NAKAMURA_ENGINEERING_MODSUITS_NAME
 	company_bitflag = CARGO_COMPANY_NAKAMURA_MODSUITS
 
-/datum/armament_entry/company_import/kahraman/ppe/civilian_mod
+/datum/armament_entry/company_import/nakamura_modsuits/mod
+	subcategory = "MOD Suits"
+
+/datum/armament_entry/company_import/nakamura_modsuits/mod/civilian_mod
 	name = "Civilian Miniaturized Belt Modsuit"
 	item_type = /obj/item/mod/control/pre_equipped/civilian
 	description = "A non spaceproof belt Modsuit made for civilian operations and Modsuit training \
@@ -11,7 +14,7 @@
 		average user."
 	cost = PAYCHECK_COMMAND * 5
 
-/datum/armament_entry/company_import/kahraman/ppe/civilian_mod
+/datum/armament_entry/company_import/nakamura_modsuits/mod/civilian_mod
 	name = "Standart Civilian Modsuit"
 	item_type = /obj/item/mod/control/pre_equipped/standard
 	description = "A third-generation, modular civilian class suit. \
