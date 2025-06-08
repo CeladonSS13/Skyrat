@@ -178,7 +178,7 @@
 	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/lethal
-	PAYCHECK_COMMAND * 2
+	cost = PAYCHECK_COMMAND * 2
 	contraband = TRUE
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/lethal/slugs
@@ -237,6 +237,6 @@
 
 /datum/armament_entry/company_import/vitezstvi/grenade_shells/phosphor
 	item_type = /obj/item/ammo_box/c980grenade/shrapnel/phosphor
-	cost = PAYCHECK_COMMAND * 2
+	cost = PAYCHECK_COMMAND * 3
 	restricted = TRUE
 	contraband = TRUE

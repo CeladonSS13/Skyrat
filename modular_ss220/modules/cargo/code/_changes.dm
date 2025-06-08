@@ -121,12 +121,12 @@
 		/obj/item/gun/ballistic/shotgun/riot,
 	)
 
-/*/obj/effect/spawner/armory_spawn/mod_lasers_big
+/obj/effect/spawner/armory_spawn/mod_lasers_big
 	guns = list(
-		/obj/item/gun/microfusion/mcr01,
-		/obj/item/gun/microfusion/mcr01,
-		/obj/item/gun/microfusion/mcr01,
-	)*/
+		/obj/item/gun/energy/e_gun,
+		/obj/item/gun/energy/e_gun,
+		/obj/item/gun/energy/e_gun, //replace with /obj/item/gun/microfusion/mcr01 later
+	)
 
 /obj/effect/spawner/armory_spawn/mod_lasers_small
 	guns = list(
@@ -158,11 +158,6 @@
 /datum/supply_pack/imports/russian
 	special = FALSE
 
-
-/*/datum/supply_pack/security/armory/renoster
-	special = TRUE
-	hidden = TRUE*/
-
 /datum/supply_pack/security/armory/short_mod_laser
 	special = TRUE
 	hidden = TRUE
@@ -170,9 +165,3 @@
 /datum/supply_pack/security/armory/big_mod_laser
 	special = TRUE
 	hidden = TRUE
-
-/*/datum/supply_pack/security/armory/sindano
-	special = TRUE
-	hidden = TRUE*/
-
-
