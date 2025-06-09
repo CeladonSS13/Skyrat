@@ -14,7 +14,7 @@
 		average user."
 	cost = PAYCHECK_COMMAND * 5
 
-/datum/armament_entry/company_import/nakamura_modsuits/mod/civilian_mod
+/datum/armament_entry/company_import/nakamura_modsuits/mod/standart_mod
 	name = "Standart Civilian Modsuit"
 	item_type = /obj/item/mod/control/pre_equipped/standard
 	description = "A third-generation, modular civilian class suit. \
