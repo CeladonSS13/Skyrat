@@ -18,10 +18,10 @@
 
 /datum/armament_entry/company_import/microstar/basic_energy_weapons/disabler
 	item_type = /obj/item/gun/energy/disabler
-	cost = PAYCHECK_COMMAND * 8
-	contraband = TRUE
+	cost = PAYCHECK_COMMAND * 9
+	restricted = TRUE
 
 /datum/armament_entry/company_import/microstar/basic_energy_weapons/disabler_smg
 	item_type = /obj/item/gun/energy/disabler/smg
 	cost = PAYCHECK_COMMAND * 15
-	contraband = TRUE
+	restricted = TRUE
