@@ -62,7 +62,8 @@
 #_maps/RandomRuins/SpaceRuins/mrow_thats_right.dmm
 #_maps/RandomRuins/SpaceRuins/old_infiltrator.dmm
 #_maps/RandomRuins/SpaceRuins/oldAIsat.dmm
-#_maps/RandomRuins/SpaceRuins/oldstation.dmm
+_maps/RandomRuins/SpaceRuins/oldstation.dmm
+#_maps/RandomRuins/SpaceRuins/oldstation1984.dmm
 #_maps/RandomRuins/SpaceRuins/oldteleporter.dmm
 #_maps/RandomRuins/SpaceRuins/onehalf.dmm
 #_maps/RandomRuins/SpaceRuins/originalcontent.dmm
