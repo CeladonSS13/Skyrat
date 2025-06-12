@@ -426,9 +426,12 @@
 /turf/open/floor/wood/parquet,
 /area/ruin/space/has_grav/cargodise_freighter/bridge)
 "fS" = (
-/obj/item/disk/ammo_workbench,
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
+/obj/item/ammo_workbench_module/lethal_super,
+/obj/item/ammo_workbench_module/lethal_esoteric,
+/obj/item/ammo_workbench_reboot,
+/obj/item/ammo_workbench_reboot,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/cargodise_freighter/vault)
 "fZ" = (
@@ -915,7 +918,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/cargodise_freighter/vault)
 "nw" = (
-/mob/living/simple_animal/hostile/looter,
+/mob/living/basic/looter,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "nz" = (
@@ -1014,7 +1017,7 @@
 /turf/open/floor/iron/smooth,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
 "pb" = (
-/mob/living/simple_animal/hostile/looter,
+/mob/living/basic/looter,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "pf" = (
@@ -1191,7 +1194,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "so" = (
 /obj/effect/turf_decal/tile/yellow/half,
-/mob/living/simple_animal/hostile/vox/melee,
+/mob/living/basic/vox/melee,
 /turf/open/floor/iron/dark/smooth_half,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "ss" = (
@@ -1213,7 +1216,7 @@
 /turf/closed/wall/r_wall/syndicate,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
 "sU" = (
-/mob/living/simple_animal/hostile/vox/melee,
+/mob/living/basic/vox/melee,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "sV" = (
@@ -1638,7 +1641,7 @@
 /obj/item/storage/box/shipping,
 /obj/item/cargo_teleporter,
 /obj/item/clothing/gloves/cargo_gauntlet,
-/obj/item/disk/ammo_workbench/advanced,
+/obj/item/ammo_workbench_module/lethal_super,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "zj" = (
@@ -1689,7 +1692,7 @@
 /turf/closed/wall/r_wall/syndicate,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "Ac" = (
-/mob/living/simple_animal/hostile/vox/melee,
+/mob/living/basic/vox/melee,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "Af" = (
@@ -1897,7 +1900,7 @@
 /obj/effect/turf_decal/tile/green/half/contrasted{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/looter,
+/mob/living/basic/looter,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "CL" = (
@@ -1959,7 +1962,7 @@
 	},
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "DG" = (
-/mob/living/simple_animal/hostile/vox/melee,
+/mob/living/basic/vox/melee,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "DQ" = (
@@ -2681,6 +2684,9 @@
 /obj/structure/safe,
 /obj/item/mod/module/jetpack,
 /obj/item/mod/control/pre_equipped/standard,
+/obj/item/ammo_workbench_reboot,
+/obj/item/ammo_workbench_reboot,
+/obj/item/ammo_workbench_module,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/cargodise_freighter/vault)
 "NV" = (
@@ -2840,7 +2846,7 @@
 	name = "Bridge/Armory Blastdoors";
 	pixel_y = -24
 	},
-/mob/living/simple_animal/hostile/looter/ranged/space/laser,
+/mob/living/basic/looter/ranged/space/laser,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/cargodise_freighter/vault)
 "Qv" = (
@@ -3111,7 +3117,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/looter,
+/mob/living/basic/looter,
 /obj/machinery/light_switch/directional/east,
 /turf/open/floor/iron/dark/smooth_half{
 	dir = 1
@@ -3162,7 +3168,7 @@
 /turf/open/floor/wood/parquet,
 /area/ruin/space/has_grav/cargodise_freighter/bridge)
 "Wq" = (
-/mob/living/simple_animal/hostile/looter/crusher,
+/mob/living/basic/looter/crusher,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "Ws" = (
@@ -3337,7 +3343,7 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
 "XV" = (
-/mob/living/simple_animal/hostile/looter/ranged/space/laser,
+/mob/living/basic/looter/ranged/space/laser,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/bridge)
 "XZ" = (
@@ -3380,7 +3386,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/mob/living/simple_animal/hostile/looter/ranged/space/laser,
+/mob/living/basic/looter/ranged/space/laser,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
@@ -3425,7 +3431,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/looter,
+/mob/living/basic/looter,
 /turf/open/floor/iron/dark/smooth_corner{
 	dir = 4
 	},
