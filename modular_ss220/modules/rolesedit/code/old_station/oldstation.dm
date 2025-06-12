@@ -267,8 +267,8 @@
 /obj/item/clothing/suit/space/nasavoid/captain
 	name = "Fancy NASA Void Suit"
 	desc = "A old but high tech, NASA Centcom branch designed space suit. Used for emergency situations. This one is tagged - \"emergency captain's space suit\". This one made from wear-resistant materials, despite its old appearance, it has not degraded."
-	icon = 'modular_ss220/modules/old_station/icons/spacesuit.dmi'
-	worn_icon = 'modular_ss220/modules/old_station/icons/spacesuitworn.dmi'
+	icon = 'modular_ss220/modules/rolesedit/icons/old_station/spacesuit.dmi'
+	worn_icon = 'modular_ss220/modules/rolesedit/icons/old_station/spacesuitworn.dmi'
 	icon_state = "void-cap"
 	lefthand_file = 'modular_ss220/modules/rolesedit/icons/old_station/spacesuit_l.dmi'
 	righthand_file = 'modular_ss220/modules/rolesedit/icons/old_station/spacesuit_r.dmi'
