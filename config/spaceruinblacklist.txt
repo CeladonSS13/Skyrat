@@ -91,7 +91,8 @@ _maps/RandomRuins/SpaceRuins/spacehotel.dmm
 ##Custom Ruins
 #_maps/RandomRuins/SpaceRuins/nova/alientoollab.dmm
 #_maps/RandomRuins/SpaceRuins/nova/blackmarket.dmm
-#_maps/RandomRuins/SpaceRuins/nova/cargodiselost.dmm
+_maps/RandomRuins/SpaceRuins/nova/cargodiselost.dmm
+#_maps/RandomRuins/SpaceRuins/nova/cargodiselost1984.dmm
 #_maps/RandomRuins/SpaceRuins/nova/clothing_facility.dmm
 #_maps/RandomRuins/SpaceRuins/nova/codealpha.dmm
 #_maps/RandomRuins/SpaceRuins/nova/crash.dmm
