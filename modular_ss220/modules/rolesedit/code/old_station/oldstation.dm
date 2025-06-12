@@ -34,7 +34,7 @@
 /obj/item/card/id/away/old
 	name = "\proper a perfectly generic identification ID"
 	desc = "A perfectly generic clip on ID Badge. Looks like it could use some flavor."
-	icon= 'modular_ss220/modules/old_station/icons/card.dmi'
+	icon= 'modular_ss220/modules/rolesedit/icons/old_station/card.dmi'
 	icon_state = "retro"
 
 /obj/item/card/id/away/old/sec
@@ -169,9 +169,9 @@
 /obj/item/clothing/under/retro
 	desc = "A generic retro jumpsuit."
 	name = "generic retro uniform"
-	icon = 'modular_ss220/modules/old_station/icons/suit.dmi'
+	icon = 'modular_ss220/modules/rolesedit/icons/old_station/suit.dmi'
 	icon_state = "retro_sec"
-	worn_icon = 'modular_ss220/modules/old_station/icons/suitworn.dmi'
+	worn_icon = 'modular_ss220/modules/rolesedit/icons/old_station/suitworn.dmi'
 	can_adjust = FALSE
 	armor_type = /datum/armor/clothing_under/retro
 
@@ -204,10 +204,10 @@
 //damaged captains armor
 /obj/item/clothing/head/helmet/space/damaged_captain
 	name = "damaged captain's space helmet"
-	icon = 'modular_ss220/modules/old_station/icons/spacehelm.dmi'
-	worn_icon = 'modular_ss220/modules/old_station/icons/spacehelmworn.dmi'
-	lefthand_file = 'modular_ss220/modules/old_station/icons/spacehelm_l.dmi'
-	righthand_file = 'modular_ss220/modules/old_station/icons/spacehelm_r.dmi'
+	icon = 'modular_ss220/modules/rolesedit/icons/old_station/spacehelm.dmi'
+	worn_icon = 'modular_ss220/modules/rolesedit/icons/old_station/spacehelmworn.dmi'
+	lefthand_file = 'modular_ss220/modules/rolesedit/icons/old_station/spacehelm_l.dmi'
+	righthand_file = 'modular_ss220/modules/rolesedit/icons/old_station/spacehelm_r.dmi'
 	icon_state = "broken-cap"
 	inhand_icon_state = "broken-cap"
 	desc = "A whole once special helmet designed for only the most fashionable of military figureheads, now it's a piece of damaged junk, and no longer provides what it used to."
@@ -226,10 +226,10 @@
 /obj/item/clothing/suit/space/damaged_captain
 	name = "damaged captain's space suit"
 	desc = "A old, bulky, heavy-duty piece of exclusive Nanotrasen armor. But... this suit not in charge anymore."
-	icon = 'modular_ss220/modules/old_station/icons/spacesuit.dmi'
-	worn_icon = 'modular_ss220/modules/old_station/icons/spacesuitworn.dmi'
-	lefthand_file = 'modular_ss220/modules/old_station/icons/spacesuit_l.dmi'
-	righthand_file = 'modular_ss220/modules/old_station/icons/spacesuit_r.dmi'
+	icon = 'modular_ss220/modules/rolesedit/icons/old_station/spacesuit.dmi'
+	worn_icon = 'modular_ss220/modules/rolesedit/icons/old_station/spacesuitworn.dmi'
+	lefthand_file = 'modular_ss220/modules/rolesedit/icons/old_station/spacesuit_l.dmi'
+	righthand_file = 'modular_ss220/modules/rolesedit/icons/old_station/spacesuit_r.dmi'
 	icon_state = "broken-cap"
 	inhand_icon_state = "broken-cap"
 	armor_type = /datum/armor/damaged_captain_space
@@ -256,11 +256,11 @@
 /obj/item/clothing/head/helmet/space/nasavoid/captain
 	name = "Fancy Retro Void Helmet"
 	desc = "A old but high tech, NASA Centcom branch designed space suit helmet. Used for emergency situations. This one is tagged - \"emergency captain's space helmet\"."
-	icon = 'modular_ss220/modules/old_station/icons/spacehelm.dmi'
-	worn_icon = 'modular_ss220/modules/old_station/icons/spacehelmworn.dmi'
+	icon = 'modular_ss220/modules/rolesedit/icons/old_station/spacehelm.dmi'
+	worn_icon = 'modular_ss220/modules/rolesedit/icons/old_station/spacehelmworn.dmi'
 	icon_state = "void-cap"
-	lefthand_file = 'modular_ss220/modules/old_station/icons/spacehelm_l.dmi'
-	righthand_file = 'modular_ss220/modules/old_station/icons/spacehelm_r.dmi'
+	lefthand_file = 'modular_ss220/modules/rolesedit/icons/old_station/spacehelm_l.dmi'
+	righthand_file = 'modular_ss220/modules/rolesedit/icons/old_station/spacehelm_r.dmi'
 	inhand_icon_state = "void-cap"
 	slowdown = 0
 
@@ -270,8 +270,8 @@
 	icon = 'modular_ss220/modules/old_station/icons/spacesuit.dmi'
 	worn_icon = 'modular_ss220/modules/old_station/icons/spacesuitworn.dmi'
 	icon_state = "void-cap"
-	lefthand_file = 'modular_ss220/modules/old_station/icons/spacesuit_l.dmi'
-	righthand_file = 'modular_ss220/modules/old_station/icons/spacesuit_r.dmi'
+	lefthand_file = 'modular_ss220/modules/rolesedit/icons/old_station/spacesuit_l.dmi'
+	righthand_file = 'modular_ss220/modules/rolesedit/icons/old_station/spacesuit_r.dmi'
 	inhand_icon_state = "void-cap"
 	slowdown = 1
 
