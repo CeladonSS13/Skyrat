@@ -121,6 +121,7 @@
 #define ROLE_GHOST_CAFE "Ghost Cafe Visitor"
 #define ROLE_BLACK_MARKET_DEALER "Black Market Dealer"
 #define ROLE_FREIGHTER_CREW "Freighter Crew"
+#define ROLE_FREIGHTER_COMMAND "Freighter Chief" // ss1984 edit- freighter command job
 #define ROLE_PORT_TARKON "Port Tarkon Survivor"
 // NOVA EDIT ADDITION END
 #define ROLE_LIFEBRINGER "Lifebringer"

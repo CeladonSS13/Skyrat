@@ -98,6 +98,8 @@
   DenIS318:
   - config: Maintenance access for everyone
 2025-06-12:
+  Arceniu:
+  - rscadd: cargodise 1984
   DenIS318:
   - bugfix: Throw items in softcrit now works properly
   - config: Min players for roundstart spies 10 -> 5

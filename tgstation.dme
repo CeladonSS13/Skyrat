@@ -9134,6 +9134,7 @@
 #include "modular_ss220\modules\rolesedit\code\_defines.dm"
 #include "modular_ss220\modules\rolesedit\code\old_station\_defines.dm"
 #include "modular_ss220\modules\rolesedit\code\old_station\oldstation.dm"
+#include "modular_ss220\modules\rolesedit\code\cargodiselost1984\cargodise.dm"
 #include "modular_ss220\modules\shutdown\shutdown_config.dm"
 #include "modular_ss220\modules\translations\code\customer_ru.dm"
 #include "modular_ss220\modules\tts\code\_tts_defines.dm"
