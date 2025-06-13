@@ -123,9 +123,9 @@
 
 /obj/effect/spawner/armory_spawn/mod_lasers_big
 	guns = list(
-		/obj/item/gun/energy/e_gun,
-		/obj/item/gun/energy/e_gun,
-		/obj/item/gun/energy/e_gun, //replace with /obj/item/gun/microfusion/mcr01 later
+		/obj/item/gun/microfusion/mcr01,
+		/obj/item/gun/microfusion/mcr01,
+		/obj/item/gun/microfusion/mcr01,
 	)
 
 /obj/effect/spawner/armory_spawn/mod_lasers_small
