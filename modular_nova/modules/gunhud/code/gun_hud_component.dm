@@ -184,23 +184,24 @@
 			hud.icon_state = "microfusion_counter_no_emitter"
 			hud.maptext = null
 			return
-		if(!parent_gun.cell.charge)
-			hud.icon_state = "microfusion_counter_no_emitter"
-			hud.maptext = null
-			return
-		var/phase_emitter_state = parent_gun.phase_emitter.get_heat_icon_state()
-		hud.icon_state = "microfusion_counter_[phase_emitter_state]"
-		hud.cut_overlays()
-		hud.maptext_x = -12
 		var/obj/item/ammo_casing/energy/shot = parent_gun.microfusion_lens
 		var/battery_percent = FLOOR(clamp(parent_gun.cell.charge / parent_gun.cell.maxcharge, 0, 1) * 100, 1)
 		var/shot_cost_percent = FLOOR(clamp(shot.e_cost / parent_gun.cell.maxcharge, 0, 1) * 100, 1)
+		var/phase_emitter_state = parent_gun.phase_emitter.get_heat_icon_state()
+		if(!parent_gun.cell.charge)
+			hud.icon_state = "microfusion_counter_[phase_emitter_state]"
+			hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_YELLOW]'>[battery_percent]%</font><br><font color='[COLOR_RED]'>[shot_cost_percent]%</font></div>")
+			return
+		hud.icon_state = "microfusion_counter_[phase_emitter_state]"
+		hud.cut_overlays()
+		hud.maptext_x = -12
 		if(battery_percent > 99 || shot_cost_percent > 99)
 			hud.maptext_x = -12
 		else
 			hud.maptext_x = -8
 		if(!parent_gun.can_shoot())
-			hud.icon_state = "microfusion_counter_no_emitter"
+			hud.icon_state = "microfusion_counter_[phase_emitter_state]"
+			hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_YELLOW]'>[battery_percent]%</font><br><font color='[COLOR_RED]'>[shot_cost_percent]%</font></div>")
 			return
 		if(battery_percent <= 25)
 			hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_YELLOW]'>[battery_percent]%</font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
