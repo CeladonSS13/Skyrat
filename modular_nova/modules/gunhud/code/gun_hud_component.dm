@@ -68,8 +68,8 @@
 		return the_gun.get_ammo(countchambered = FALSE)
 
 	if(the_gun.bolt_type == BOLT_TYPE_OPEN)
-		return the_gun.get_ammo(countchambered = FALSE)		
-	else		
+		return the_gun.get_ammo(countchambered = FALSE)	
+	else
 		return the_gun.get_ammo(countchambered = TRUE)
 
 
