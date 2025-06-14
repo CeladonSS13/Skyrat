@@ -365,7 +365,7 @@
 	/// Maximum amount of reagents this module can hold.
 	var/reagent_max_amount = 120
 	/// Health threshold above which the module won't heal.
-	var/health_threshold = 80
+	var/health_threshold = 90
 	/// Cooldown betwen each treatment.
 	var/general_cooldown = 25 SECONDS
 
@@ -411,6 +411,7 @@
 			return FALSE
 		if(new_oxyloss && reagents.total_volume >= reagent_required_amount * 0.5 * seconds_per_tick)
 			mod.wearer.reagents.add_reagent(/datum/reagent/medicine/salbutamol, 2.5 * seconds_per_tick)
+			mod.wearer.reagents.add_reagent(/datum/reagent/medicine/epinephrine, 1.5 * seconds_per_tick)
 			mod.wearer.playsound_local(mod, 'sound/items/internals/internals_on.ogg', 25, TRUE)
 			reagents.remove_reagent(reagent_required, reagent_required_amount * 0.5 * seconds_per_tick)
 			to_chat(mod.wearer, span_warning("Blood oxygen treatment administered. Overdose risks present on further use, consult your first-aid analyzer."))
@@ -441,6 +442,10 @@
 			return FALSE
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 2.5 * seconds_per_tick)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/stimulants, 2.5 * seconds_per_tick)
+		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/ephedrine, 2.5 * seconds_per_tick)
+		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/morphine, 1 * seconds_per_tick)
+		mod.wearer.reagents.add_reagent(/datum/reagent/drug/cocaine, 2.5 * seconds_per_tick)
+
 		mod.wearer.playsound_local(mod, 'sound/items/hypospray.ogg', 25, TRUE)
 		reagents.remove_reagent(reagent_required, reagent_required_amount * 0.25 * seconds_per_tick)
 		to_chat(mod.wearer, span_warning("Combat stimulants administered. Overdose risks present on further use, consult your first-aid analyzer."))
