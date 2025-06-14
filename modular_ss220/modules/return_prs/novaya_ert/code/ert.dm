@@ -510,7 +510,7 @@
 /// Not exactly a MODsuit thing but it's needed for the refills huh?
 /obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin
 	name = "bottle of cryptobiolin"
-	desc = "Nothing screams budget cuts like bottled suit fluid."
+	desc = "Nothing screams budget cuts like bottled suit fluid. This one has specialized fluid for more new version of autodoc."
 	list_reagents = list(/datum/reagent/cryptobiolin = 100)
 
 
