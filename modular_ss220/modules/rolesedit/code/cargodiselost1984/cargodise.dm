@@ -20,16 +20,53 @@
 	command = TRUE
 
 /datum/outfit/freighter_crew
+	accessory = /obj/item/clothing/accessory/armband/cargo/nonsec
+	head = /obj/item/clothing/head/soft
 	ears = /obj/item/radio/headset/headset_frontier_colonist/cargodise
+	glasses = /obj/item/clothing/glasses/hud/gun_permit
+	mask = /obj/item/clothing/mask/neck_gaiter
+	suit = /obj/item/clothing/suit/toggle/cargo_tech
+	gloves = /obj/item/clothing/gloves/fingerless
 	role_job = /datum/job/freighter_crew
+	backpack_contents = list(
+		/obj/item/boxcutter=1,
+		/obj/item/universal_scanner=1,
+		/obj/item/clothing/gloves/cargo_gauntlet=1,
+		)
 
 /datum/outfit/freighter_excavator
+	accessory = /obj/item/clothing/accessory/armband/cargo/nonsec
+	head = /obj/item/clothing/head/beret/cargo
 	ears = /obj/item/radio/headset/headset_frontier_colonist/cargodise
+	glasses = /obj/item/clothing/glasses/hud/gun_permit
+	mask = /obj/item/clothing/mask/neck_gaiter
+	gloves = /obj/item/clothing/gloves/color/black
 	role_job = /datum/job/freighter_crew
+	backpack_contents = list(/obj/item/flashlight/seclite=1,\
+		/obj/item/knife/combat/survival=1,
+		/obj/item/mining_voucher=1,
+		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
+		/obj/item/gun/energy/recharge/kinetic_accelerator=1,\
+		/obj/item/stack/marker_beacon/ten=1,
+		)
 
 /datum/outfit/freighter_boss
+	head = /obj/item/clothing/head/beret/sec/cargo
 	ears = /obj/item/radio/headset/headset_frontier_colonist/cargodise/qm
+	glasses = /obj/item/clothing/glasses/hud/gun_permit/sunglasses
+	mask = /obj/item/clothing/mask/neck_gaiter
+	suit = /obj/item/clothing/suit/jacket/quartermaster
+	uniform = /obj/item/clothing/under/rank/cargo/qm/nova/turtleneck
+	accessory = /obj/item/clothing/accessory/armband/cargo/nonsec
+	belt = /obj/item/melee/baton/telescopic/bronze
+	l_pocket = /obj/item/clipboard
+	r_pocket = /obj/item/stamp/head/qm
 	role_job = /datum/job/freighter_command
+	backpack_contents = list(
+		/obj/item/megaphone/cargo=1,
+		/obj/item/clothing/gloves/cargo_gauntlet=1,
+		/obj/item/universal_scanner=1,
+		)
 
 /obj/effect/mob_spawn/ghost_role/human/lostcargoqm
 	spawner_job_path = /datum/job/freighter_command
