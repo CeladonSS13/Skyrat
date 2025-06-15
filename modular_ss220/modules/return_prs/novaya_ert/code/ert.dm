@@ -368,6 +368,8 @@
 	var/health_threshold = 90
 	/// Cooldown betwen each treatment.
 	var/general_cooldown = 25 SECONDS
+	/// if TRUE, next cure will have downside.
+	var/after_effects = FALSE
 
 	/// Timer for the cooldown.
 	COOLDOWN_DECLARE(heal_timer)
@@ -399,16 +401,24 @@
 			return FALSE
 		mod.wearer.reagents.add_reagent(/datum/reagent/blood, 25, list("viruses"=null,"blood_DNA"=null,"blood_type"=mod.wearer.dna.blood_type,"resistances"=null,"trace_chem"=null))
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/coagulant, 2.5 * seconds_per_tick)
+		mod.wearer.reagents.add_reagent(/datum/reagent/consumable/nutriment/glucose, 3 * seconds_per_tick)
+		mod.wearer.reagents.add_reagent(/datum/reagent/iron, 2 * seconds_per_tick)
 		mod.wearer.playsound_local(mod, 'sound/items/hypospray.ogg', 25, TRUE)
 		reagents.remove_reagent(reagent_required, reagent_required_amount * 0.5 * seconds_per_tick)
 		to_chat(mod.wearer, span_warning("Blood infused."))
 		drain_power(use_energy_cost * 10 * seconds_per_tick)
-		addtimer(CALLBACK(src, PROC_REF(heal_aftereffects), mod.wearer), 60 SECONDS, TIMER_STOPPABLE|TIMER_DELETE_ME)
+		if(after_effects)
+			addtimer(CALLBACK(src, PROC_REF(heal_aftereffects), mod.wearer), 1 SECONDS, TIMER_STOPPABLE|TIMER_DELETE_ME)
+			after_effects = FALSE
+		addtimer(CALLBACK(src, PROC_REF(sat)), 60 SECONDS, TIMER_STOPPABLE|TIMER_DELETE_ME)
 		COOLDOWN_START(src, blood_timer, general_cooldown)
 
 	if(mod.wearer.health < health_threshold)
 		if(!COOLDOWN_FINISHED(src, heal_timer))
 			return FALSE
+		if(after_effects)
+			addtimer(CALLBACK(src, PROC_REF(heal_aftereffects), mod.wearer), 1 SECONDS, TIMER_STOPPABLE|TIMER_DELETE_ME)
+			after_effects = FALSE
 		if(new_oxyloss && reagents.total_volume >= reagent_required_amount * 0.5 * seconds_per_tick)
 			mod.wearer.reagents.add_reagent(/datum/reagent/medicine/salbutamol, 2.5 * seconds_per_tick)
 			mod.wearer.reagents.add_reagent(/datum/reagent/medicine/epinephrine, 1.5 * seconds_per_tick)
@@ -434,25 +444,26 @@
 			reagents.remove_reagent(reagent_required, reagent_required_amount * 0.5 * seconds_per_tick)
 			to_chat(mod.wearer, span_warning("Toxin treatment administered. Overdose risks present on further use, consult your first-aid analyzer."))
 		drain_power(use_energy_cost * 15 * seconds_per_tick)
-		addtimer(CALLBACK(src, PROC_REF(heal_aftereffects), mod.wearer), 60 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(sat)), 60 SECONDS, TIMER_STOPPABLE|TIMER_DELETE_ME)
 		COOLDOWN_START(src, heal_timer, general_cooldown)
 
 	if(new_stamloss > health_threshold && reagents.total_volume >= reagent_required_amount * 0.25 * seconds_per_tick)
 		if(!COOLDOWN_FINISHED(src, stamina_timer))
 			return FALSE
+		if(after_effects)
+			addtimer(CALLBACK(src, PROC_REF(heal_aftereffects), mod.wearer), 1 SECONDS, TIMER_STOPPABLE|TIMER_DELETE_ME)
+			after_effects = FALSE
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 2.5 * seconds_per_tick)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/stimulants, 2.5 * seconds_per_tick)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/ephedrine, 2.5 * seconds_per_tick)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/morphine, 1 * seconds_per_tick)
 		mod.wearer.reagents.add_reagent(/datum/reagent/drug/cocaine, 2.5 * seconds_per_tick)
-
 		mod.wearer.playsound_local(mod, 'sound/items/hypospray.ogg', 25, TRUE)
 		reagents.remove_reagent(reagent_required, reagent_required_amount * 0.25 * seconds_per_tick)
 		to_chat(mod.wearer, span_warning("Combat stimulants administered. Overdose risks present on further use, consult your first-aid analyzer."))
 		drain_power(use_energy_cost * 5 * seconds_per_tick)
-		addtimer(CALLBACK(src, PROC_REF(heal_aftereffects), mod.wearer), 60 SECONDS, TIMER_STOPPABLE|TIMER_DELETE_ME)
+		addtimer(CALLBACK(src, PROC_REF(sat)), 60 SECONDS, TIMER_STOPPABLE|TIMER_DELETE_ME)
 		COOLDOWN_START(src, stamina_timer, general_cooldown)
-
 
 /// Refills the module with needed chemicals, assuming the container isn't closed or the module isn't full. And if the reagent's not wrong.
 /obj/item/mod/module/ert_auto_doc/proc/charge_boost(obj/item/attacking_item, mob/user)
@@ -500,8 +511,6 @@
 	. = ..()
 	UnregisterSignal(mod, COMSIG_ATOM_ATTACKBY)
 
-
-
 /// Drawbacks to make this module less self-sufficient and so it feels "balanced" (there's no balance).
 /obj/item/mod/module/ert_auto_doc/proc/heal_aftereffects(mob/affected_mob)
 	if(!affected_mob)
@@ -511,6 +520,8 @@
 	mod.wearer.reagents.add_reagent(/datum/reagent/drug/maint/sludge, 5)
 	to_chat(affected_mob, span_danger("Your head starts slightly spinning, and your chest hurts."))
 
+/obj/item/mod/module/ert_auto_doc/proc/sat()
+	after_effects = TRUE
 
 /// Not exactly a MODsuit thing but it's needed for the refills huh?
 /obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin
