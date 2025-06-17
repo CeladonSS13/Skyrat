@@ -87,8 +87,8 @@
 	icon_keyboard = "med_key"
 	light_color = LIGHT_COLOR_GREEN
 	circuit = /obj/item/circuitboard/computer/communications/old
-//	away = TRUE
-//	can_call_911 = FALSE "remove // after second update"
+	away = TRUE
+	can_call_911 = FALSE
 	req_access = null
 	req_one_access = list(ACCESS_AWAY_COMMAND, ACCESS_COMMAND)
 
