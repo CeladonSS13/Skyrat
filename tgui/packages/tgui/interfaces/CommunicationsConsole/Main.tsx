@@ -23,6 +23,7 @@ export function PageMain(props) {
     canToggleEngineeringOverride, // NOVA EDIT ADDITION - Engineering Override
     emagged,
     syndicate,
+    away, // ss1984 edit oldstation
     emergencyAccess,
     engineeringOverride, // NOVA EDIT ADDITION - Engineering Override
     importantActionReady,
@@ -164,7 +165,7 @@ export function PageMain(props) {
             </Button.Confirm>
           )}
           {/* NOVA EDIT ADDITION END */}
-          {!syndicate && (
+          {!syndicate && !away && (
             <Button
               icon="desktop"
               onClick={() =>
@@ -208,7 +209,7 @@ export function PageMain(props) {
             </Button>
           )}
 
-          {!!canRequestNuke && (
+          {!!canRequestNuke && !away && (
             <Button
               icon="radiation"
               disabled={!importantActionReady}
