@@ -68,6 +68,7 @@ export type CommsConsoleData = {
   shuttleLastCalled: BooleanLike;
   shuttleRecallable: BooleanLike;
   syndicate: BooleanLike;
+  away: BooleanLike;
 
   // static_data
   callShuttleReasonMinLength: number;
