@@ -29,6 +29,8 @@ jobs:
         pip3 install setuptools
         tools/bootstrap/python -c ''
     - name: Setup part 5 (Install BYOND)
+      env:
+        BYOND_MIRROR_URL: ${{ secrets.BYOND_MIRROR_URL }}
       run: tools/ci/install_byond.sh STABLE
     - name: Setup part 6 (Install Dreamluau)
       run: tools/ci/install_dreamluau.sh
