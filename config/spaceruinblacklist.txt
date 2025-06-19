@@ -98,7 +98,8 @@ _maps/RandomRuins/SpaceRuins/nova/cargodiselost.dmm
 #_maps/RandomRuins/SpaceRuins/nova/codealpha.dmm
 #_maps/RandomRuins/SpaceRuins/nova/crash.dmm
 #_maps/RandomRuins/SpaceRuins/nova/derelictferry.dmm
-#_maps/RandomRuins/SpaceRuins/nova/des_two.dmm
+_maps/RandomRuins/SpaceRuins/nova/des_two.dmm
+#_maps/RandomRuins/SpaceRuins/nova/des_two1984.dmm
 #_maps/RandomRuins/SpaceRuins/nova/drones_derelict.dmm
 #_maps/RandomRuins/SpaceRuins/nova/ghostship.dmm
 #_maps/RandomRuins/SpaceRuins/nova/luna.dmm
