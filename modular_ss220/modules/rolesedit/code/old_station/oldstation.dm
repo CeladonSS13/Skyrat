@@ -365,6 +365,7 @@
 	important_text = "Work as a team with your fellow survivors and do not abandon them."
 	outfit = /datum/outfit/oldmed
 	spawner_job_path = /datum/job/ancient_crew
+	random_appearance = FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/oldmed/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
