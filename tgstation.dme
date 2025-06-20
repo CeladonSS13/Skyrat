@@ -9050,6 +9050,7 @@
 #include "modular_ss220\modules\events\round_event.dm"
 #include "modular_ss220\modules\loadout_addiction\code\accessory.dm"
 #include "modular_ss220\modules\loadout_addiction\code\donator.dm"
+#include "modular_ss220\modules\loadout_addiction\code\quirks.dm"
 #include "modular_ss220\modules\new_world_topics\world_topic.dm"
 #include "modular_ss220\modules\paradise_keybindings\code\keybinding\admin.dm"
 #include "modular_ss220\modules\paradise_keybindings\code\keybinding\artificial_intelligence.dm"
