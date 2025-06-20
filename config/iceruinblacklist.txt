@@ -40,7 +40,8 @@ _maps/RandomRuins/IceRuins/icemoon_underground_mining_site.dmm
 ##NOVA
 
 ##RESPAWN
-#_maps/RandomRuins/IceRuins/nova/icemoon_underground_interdyne_base1.dmm
+_maps/RandomRuins/IceRuins/nova/icemoon_underground_interdyne_base1.dmm
+#_maps/RandomRuins/IceRuins/nova/icemoon_underground_interdyne_base1984.dmm
 #_maps/RandomRuins/IceRuins/nova/icemoon_underground_icewalker_upper.dmm
 #_maps/RandomRuins/IceRuins/nova/icemoon_underground_icewalker_lower.dmm
 
