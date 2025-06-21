@@ -558,18 +558,7 @@
 			"weight": 5,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
-			"requirements": [
-				10,
-				10,
-				10,
-				10,
-				10,
-				10,
-				10,
-				10,
-				10,
-				10
-			],
+			"requirements": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
 			"antag_cap": {
 				"denominator": 24
 			},

@@ -53,6 +53,7 @@ ADMIN_VERB(cancel_shuttle, R_ADMIN, "Cancel Shuttle", "Recall the shuttle, regar
 
 	if(tgui_alert(user, "You sure?", "Confirm", list("Yes", "No")) != "Yes")
 		return
+	SSshuttle.unblock_recall() // SS1984 ADDITION
 	SSshuttle.admin_emergency_no_recall = FALSE
 	SSshuttle.emergency.cancel()
 	BLACKBOX_LOG_ADMIN_VERB("Cancel Shuttle")

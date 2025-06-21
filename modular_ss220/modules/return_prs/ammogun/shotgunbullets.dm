@@ -18,7 +18,7 @@
 	name = "12g hollow point shotgun slug"
 	damage = 60
 	wound_bonus = 0
-	bare_wound_bonus = 40
+	exposed_wound_bonus = 40
 	weak_against_armour = TRUE
 
 /obj/item/ammo_casing/shotgun/pt20

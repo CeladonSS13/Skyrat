@@ -11,8 +11,8 @@ jobs:
         with: # to make it work on pull requests
           ref: ${{github.event.pull_request.head.ref}}
           repository: ${{github.event.pull_request.head.repo.full_name}}
-      - name: Setup part 1 (Node)
-        uses: ./.github/actions/setup_node
+      - name: Setup part 1 (Bun)
+        uses: ./.github/actions/setup_bun
       - name: Setup part 2 (.NET SDK)
         uses: actions/setup-dotnet@v4.2.0
         with:

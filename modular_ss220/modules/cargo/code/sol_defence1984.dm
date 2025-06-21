@@ -66,10 +66,10 @@
 	cost = PAYCHECK_COMMAND * 3
 
 /datum/armament_entry/company_import/sol_defense/case/trappiste
-	item_type = /obj/item/storage/toolbox/guncase/nova/pistol/trappiste_small_case/empty
+	item_type = /obj/item/storage/toolbox/guncase/nova/pistol/trappiste_small_case
 
 /datum/armament_entry/company_import/sol_defense/case/carwo
-	item_type = /obj/item/storage/toolbox/guncase/nova/carwo_large_case/empty
+	item_type = /obj/item/storage/toolbox/guncase/nova/carwo_large_case
 	cost = PAYCHECK_COMMAND * 5
 
 /datum/armament_entry/company_import/sol_defense/sidearm
