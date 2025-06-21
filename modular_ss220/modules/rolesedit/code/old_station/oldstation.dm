@@ -24,7 +24,7 @@
 
 // charlie captain's spare(cool id card with (probably)all necessary access
 /datum/id_trim/away/old/captain
-	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINTENANCE, ACCESS_AWAY_SUPPLY, ACCESS_AWAY_MEDICAL, ACCESS_AWAY_SCIENCE, ACCESS_AWAY_ENGINEERING, ACCESS_AWAY_SEC, ACCESS_AWAY_COMMAND, ACCESS_ENGINEERING, ACCESS_ENGINE_EQUIP, ACCESS_CONSTRUCTION, ACCESS_ROBOTICS, ACCESS_ORDNANCE, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_SECURITY, ACCESS_COMMAND, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINTENANCE, ACCESS_AWAY_SUPPLY, ACCESS_AWAY_MEDICAL, ACCESS_AWAY_SCIENCE, ACCESS_AWAY_ENGINEERING, ACCESS_AWAY_SEC, ACCESS_AWAY_COMMAND, ACCESS_ENGINEERING, ACCESS_ENGINE_EQUIP, ACCESS_CONSTRUCTION, ACCESS_ROBOTICS, ACCESS_ORDNANCE, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_SECURITY, ACCESS_COMMAND, ACCESS_WEAPONS)
 	assignment = "Charlie Station Captain"
 	sechud_icon_state = SECHUD_OLD_CAPTAIN
 	big_pointer = TRUE
@@ -365,7 +365,6 @@
 	important_text = "Work as a team with your fellow survivors and do not abandon them."
 	outfit = /datum/outfit/oldmed
 	spawner_job_path = /datum/job/ancient_crew
-	random_appearance = FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/oldmed/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
@@ -389,7 +388,3 @@
 	new /obj/item/clothing/suit/bio_suit/general(src)
 	new /obj/item/clothing/suit/toggle/labcoat/medical(src)
 	new /obj/item/storage/box/masks(src)
-
-/obj/structure/showcase/machinery/oldpod/used
-	icon_state = "sleeper-open"
-
