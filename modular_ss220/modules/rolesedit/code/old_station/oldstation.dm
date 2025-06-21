@@ -391,6 +391,5 @@
 	new /obj/item/storage/box/masks(src)
 
 /obj/structure/showcase/machinery/oldpod/used
-	icon = 'modular_nova/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "sleeper-open"
 
