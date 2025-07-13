@@ -18,6 +18,8 @@
 /datum/quirk/cursed/add(client/client_source)
 	quirk_holder.AddComponent(/datum/component/omen/quirk)
 
-/datum/quirk/equipping/nerve_staple
-	desc = "You're a pacifist. Not because you want to be from birth, but because of the device stapled into your eye after you really wanted to become pacifist, but without brain damage."
-	value = 0
+/datum/quirk/equipping/nerve_staple/is_species_appropriate(datum/species/mob_species)
+	var/datum/species_traits = GLOB.species_prototypes[mob_species].inherent_traits
+	if(TRAIT_SYNTHETIC in species_traits)
+		return FALSE
+	return ..()
