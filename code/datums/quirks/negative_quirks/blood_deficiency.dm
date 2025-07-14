@@ -23,13 +23,13 @@
 /datum/quirk/blooddeficiency/remove()
 	UnregisterSignal(quirk_holder, list(COMSIG_HUMAN_ON_HANDLE_BLOOD, COMSIG_CARBON_CHANGED_BLOOD_TYPE))
 
-///datum/quirk/blooddeficiency/is_species_appropriate(datum/species/mob_species) //ss1984 disable start
-//	var/datum/species_traits = GLOB.species_prototypes[mob_species].inherent_traits
-//	if(TRAIT_NOBLOOD in species_traits)
-//		return FALSE
-//	if(TRAIT_NOBREATH in species_traits)
-//		return FALSE
-//	return ..() //ss1984 disable end
+/datum/quirk/blooddeficiency/is_species_appropriate(datum/species/mob_species)
+	var/datum/species_traits = GLOB.species_prototypes[mob_species].inherent_traits
+	if(TRAIT_NOBLOOD in species_traits)
+		return FALSE
+	if(TRAIT_NOBREATH in species_traits)
+		return FALSE
+	return ..()
 
 /datum/quirk/blooddeficiency/proc/lose_blood(datum/source, seconds_per_tick, times_fired)
 	SIGNAL_HANDLER
