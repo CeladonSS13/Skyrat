@@ -146,7 +146,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 /atom/movable/proc/compose_message(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods = list(), visible_name = FALSE)
 	//This proc uses [] because it is faster than continually appending strings. Thanks BYOND.
 	// SS1984 ADDITION START
-	var/obj/machinery/announcement_system/announcer = get_announcement_system(/datum/aas_config_entry/nttc_job_indicator_type, src, radio_freq)
+	var/obj/machinery/announcement_system/announcer = get_announcement_system(/datum/aas_config_entry/nttc_job_indicator_type, speaker, radio_freq)
 	var/datum/nttc_configuration/nttc = announcer ? announcer.nttc : null
 	var/obj/item/card/id/id_card = null
 	// SS1984 ADDITION END
@@ -192,8 +192,9 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 	messagepart = " <span class='message'>[messagepart]</span></span>"
 	// SS1984 EDIT START
-	var/job = nttc ? nttc.retrieve_relevant_job(speaker_source, id_card) : null
-	var/job_part = compose_job(speaker, raw_message, radio_freq, namepart, announcer, job, speaker_source)
+	var/job = nttc ? nttc.retrieve_relevant_job(speaker_source, id_card, FALSE) : null
+	var/job_custom_name = nttc ? nttc.retrieve_relevant_job(speaker_source, id_card, TRUE) : null // so we getting both custom and non-custom
+	var/job_part = compose_job(speaker, raw_message, radio_freq, namepart, announcer, job, job_custom_name, speaker_source)
 	if (radio_freq && nttc && nttc.toggle_command_bold)
 		var/show_bold = job && (job in GLOB.nttc_highlight_jobs)
 		if (show_bold)
@@ -205,15 +206,15 @@ GLOBAL_LIST_INIT(freqtospan, list(
 /atom/movable/proc/compose_track_href(atom/movable/speaker, message_langs, raw_message, radio_freq)
 	return ""
 
-// SS1984 EDIT START, DONT FORGET TO UPDATE SAME METHOD IN say_ai.dm IF MODIFY PARAMS!
-/atom/movable/proc/compose_job(atom/movable/speaker, raw_message, radio_freq, namepart, obj/machinery/announcement_system/announcer, job, speaker_source)
+// SS1984 EDIT START, DONT FORGET TO UPDATE SAME METHOD IN ai_say.dm IF MODIFY PARAMS!
+/atom/movable/proc/compose_job(atom/movable/speaker, raw_message, radio_freq, namepart, obj/machinery/announcement_system/announcer, job, job_custom_name, speaker_source)
 	if (!radio_freq || !announcer)
 		return "[namepart]"
 	var/datum/nttc_configuration/nttc = announcer ? announcer.nttc : null
 	if (!nttc) // very weird if it's not exist, as it built-in to announcer
 		return "[namepart]"
 
-	return nttc.compose_ntts_job(raw_message, namepart, announcer, job, speaker_source)
+	return nttc.compose_ntts_job(raw_message, namepart, announcer, job, job_custom_name, speaker_source)
 // SS1984 EDIT END
 
 /**

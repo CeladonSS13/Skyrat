@@ -275,6 +275,14 @@
 	inhand_icon_state = "void-cap"
 	slowdown = 1
 
+/obj/item/clothing/head/helmet/space/nasavoid/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/radiation_protected_clothing)
+
+/obj/item/clothing/suit/space/nasavoid/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/radiation_protected_clothing)
+
 // outfit override
 /datum/outfit/oldsec
 	name = "Ancient Security"

@@ -134,39 +134,76 @@ const MemoryQuality = (props) => {
 export const MemoryPanel = (props) => {
   const { act, data } = useBackend();
   const memories = data.memories || [];
+  const custom_notes = data.custom_notes || [];
   return (
     <Window title="Memory Panel" width={400} height={500}>
       <Window.Content>
-        <Section
-          maxHeight="32px"
-          title="Memories"
-          buttons={
-            <Button
-              color="transparent"
-              tooltip={`
-                These are your memories. You gain them from doing notable things
-                and you can use them in art!
-              `}
-              tooltipPosition="bottom-start"
-              icon="info"
-            />
-          }
-        />
-        {(!memories && (
-          <Dimmer fontSize="28px" align="center">
-            You have no memories!
-          </Dimmer>
-        )) || (
-          <Stack vertical>
-            {memories.map((memory) => (
-              <Stack.Item key={memory.name}>
-                <Section>
-                  <MemoryQuality quality={memory.quality} /> {memory.name}
+        <Stack fill vertical> {/* SS1984 ADDITION */}
+          <Section
+            maxHeight="32px"
+            title="Memories"
+            buttons={
+              <Button
+                color="transparent"
+                tooltip={`
+                  These are your memories. You gain them from doing notable things
+                  and you can use them in art!
+                `}
+                tooltipPosition="bottom-start"
+                icon="info"
+              />
+            }
+          />
+          {(!memories && (
+            <Dimmer fontSize="28px" align="center">
+              You have no memories!
+            </Dimmer>
+          )) || (
+            <Stack vertical>
+              {memories.map((memory) => (
+                <Stack.Item key={memory.name}>
+                  <Section>
+                    <MemoryQuality quality={memory.quality} /> {memory.name}
+                  </Section>
+                </Stack.Item>
+              ))}
+            </Stack>
+          )}
+          {/* SS1984 ADDITION START */}
+          <Section
+            maxHeight="32px"
+            title="Notes"
+            buttons={
+              <Button
+                color="transparent"
+                tooltip={`
+                  These are your written notes from Add Note.
+                `}
+                tooltipPosition="bottom-start"
+                icon="info"
+              />
+            }
+          />
+          {(!custom_notes && (
+            <Dimmer fontSize="28px" align="center">
+              You have not written any notes!
+            </Dimmer>
+          )) || (
+            <Section fill scrollable>
+              {custom_notes.map((custom_note) => (
+                <Section key={custom_note.name} grow
+                  style={{
+                    wordBreak: 'break-all',
+                    wordWrap: 'break-word',
+                    whiteSpace: 'pre-wrap',
+                  }}>
+                    {custom_note.name}
                 </Section>
-              </Stack.Item>
-            ))}
-          </Stack>
-        )}
+              ))}
+            </Section>
+          )}
+          {/* SS1984 ADDITION END */}
+        </Stack> {/* SS1984 ADDITION */}
       </Window.Content>
     </Window>
   );

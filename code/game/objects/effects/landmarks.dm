@@ -594,11 +594,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/effect/landmark/navigate_destination/LateInitialize()
-	if(!location)
-		var/obj/machinery/door/airlock/A = locate(/obj/machinery/door/airlock) in loc
-		location = A ? format_text(A.name) : get_area_name(src, format_text = TRUE)
+	// SS1984 REMOVAL START, look at modular_navigation
+	// if(!location)
+	// 	var/obj/machinery/door/airlock/A = locate(/obj/machinery/door/airlock) in loc
+	// 	location = A ? format_text(A.name) : get_area_name(src, format_text = TRUE)
 
-	GLOB.navigate_destinations[loc] = location
+	// GLOB.navigate_destinations[loc] = location
+	// SS1984 REMOVAL END
 
 	qdel(src)
 

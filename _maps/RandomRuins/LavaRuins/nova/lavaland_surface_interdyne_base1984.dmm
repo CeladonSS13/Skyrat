@@ -4261,6 +4261,8 @@
 /obj/item/clothing/neck/stethoscope,
 /obj/item/crowbar,
 /obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/circuitboard/machine/techfab/department/medical,
+/obj/item/circuitboard/machine/techfab/ip,
 /turf/open/floor/wood,
 /area/ruin/interdyne_planetary_base/cargo/deck)
 "IJ" = (
@@ -5757,7 +5759,7 @@
 /turf/open/floor/plating,
 /area/ruin/interdyne_planetary_base/eng)
 "UQ" = (
-/obj/item/circuitboard/machine/techfab/department/medical,
+/obj/item/circuitboard/machine/techfab/ip,
 /obj/structure/frame/machine/secured,
 /turf/open/floor/iron/dark/small,
 /area/ruin/interdyne_planetary_base/med)

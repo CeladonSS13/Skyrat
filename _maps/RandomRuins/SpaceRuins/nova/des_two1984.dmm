@@ -4428,6 +4428,7 @@
 	network = list("ds2")
 	},
 /obj/structure/table/glass,
+/obj/item/circuitboard/machine/protolathe/offstation,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/nova/des_two/research)
 "sR" = (
@@ -5608,7 +5609,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/nova/des_two/engineering)
 "zg" = (
-/obj/item/circuitboard/machine/protolathe/offstation,
+/obj/item/circuitboard/machine/techfab/ds,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
@@ -6256,6 +6257,7 @@
 /obj/item/wrench/bolter,
 /obj/item/circuitboard/computer/id_upgrader/ds,
 /obj/item/storage/toolbox/syndicate,
+/obj/item/circuitboard/machine/techfab/ds,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/nova/des_two/bridge/admiral)
 "Ce" = (

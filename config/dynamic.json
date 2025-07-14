@@ -18,8 +18,8 @@
 	},
 	"Roundstart": {
 		"Traitors": {
-			"cost": 8,
-			"scaling_cost": 5,
+			"cost": 12,
+			"scaling_cost": 15,
 			"weight": 5,
 			"required_candidates": 1,
 			"minimum_players": 5,
@@ -69,8 +69,8 @@
 		},
 
 		"Blood Brothers": {
-			"cost": 8,
-			"scaling_cost": 5,
+			"cost": 10,
+			"scaling_cost": 20,
 			"weight": 1,
 			"required_candidates": 2,
 			"minimum_required_age": 0,
@@ -101,7 +101,7 @@
 			],
 			"antag_cap": {
 				"denominator": 30,
-				"offset": 2
+				"offset": 1
 			},
 			"protected_roles": [
 				"Prisoner",
@@ -121,8 +121,8 @@
 		},
 
 		"Changelings": {
-			"cost": 16,
-			"scaling_cost": 8,
+			"cost": 20,
+			"scaling_cost": 20,
 			"weight": 3,
 			"required_candidates": 1,
 			"minimum_players": 15,
@@ -172,8 +172,8 @@
 		},
 
 		"Heretics": {
-			"cost": 16,
-			"scaling_cost": 8,
+			"cost": 20,
+			"scaling_cost": 15,
 			"weight": 4,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
@@ -224,7 +224,7 @@
 
 		"Wizard": {
 			"cost": 25,
-			"scaling_cost": 15,
+			"scaling_cost": 20,
 			"weight": 3,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
@@ -264,8 +264,8 @@
 		},
 
 		"Blood Cult": {
-			"cost": 20,
-			"scaling_cost": 10,
+			"cost": 30,
+			"scaling_cost": 101,
 			"weight": 4,
 			"required_candidates": 4,
 			"minimum_required_age": 0,
@@ -317,7 +317,7 @@
 
 		"Nuclear Emergency": {
 			"cost": 50,
-			"scaling_cost": 10,
+			"scaling_cost": 101,
 			"weight": 3,
 			"required_candidates": 3,
 			"minimum_required_age": 0,
@@ -360,7 +360,7 @@
 
 		"Revolution": {
 			"cost": 20,
-			"scaling_cost": 15,
+			"scaling_cost": 101,
 			"weight": 3,
 			"required_candidates": 2,
 			"minimum_required_age": 0,
@@ -389,10 +389,7 @@
 				0,
 				0
 			],
-			"antag_cap": {
-				"denominator": 15,
-				"offset": 1
-			},
+			"antag_cap": 3,
 			"protected_roles": [
 				"Prisoner",
 				"Blueshield",
@@ -417,7 +414,7 @@
 
 		"Malfunctioning AI": {
 			"cost": 30,
-			"scaling_cost": 99,
+			"scaling_cost": 101,
 			"weight": 1,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
@@ -500,8 +497,8 @@
 		},
 
 		"Spies": {
-			"cost": 8,
-			"scaling_cost": 5,
+			"cost": 12,
+			"scaling_cost": 12,
 			"weight": 2,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
@@ -554,7 +551,7 @@
 	"Midround": {
 		"Syndicate Sleeper Agent": {
 			"cost": 20,
-			"scaling_cost": 5,
+			"scaling_cost": 10,
 			"weight": 5,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
@@ -712,7 +709,7 @@
 
 		"Clown Operatives": {
 			"cost": 40,
-			"scaling_cost": 10,
+			"scaling_cost": 101,
 			"weight": 2,
 			"required_candidates": 3,
 			"minimum_required_age": 0,
@@ -801,7 +798,7 @@
 
 		"Alien Infestation": {
 			"cost": 40,
-			"scaling_cost": 10,
+			"scaling_cost": 20,
 			"weight": 4,
 			"minimum_players": 20,
 			"required_candidates": 1,
@@ -1061,7 +1058,7 @@
 			],
 			"antag_cap": {
 				"denominator": 15,
-				"offset": 1
+				"offset": 2
 			},
 			"protected_roles": [
 
@@ -1092,7 +1089,7 @@
 			],
 			"antag_cap": {
 				"denominator": 15,
-				"offset": 1
+				"offset": 3
 			},
 			"protected_roles": [
 
@@ -1313,7 +1310,7 @@
 	"Latejoin": {
 		"Syndicate Infiltrator": {
 			"cost": 12,
-			"scaling_cost": 6,
+			"scaling_cost": 10,
 			"weight": 4,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
@@ -1418,7 +1415,7 @@
 
 		"Heretic Smuggler": {
 			"cost": 16,
-			"scaling_cost": 8,
+			"scaling_cost": 12,
 			"weight": 3,
 			"required_candidates": 1,
 			"minimum_required_age": 0,

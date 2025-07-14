@@ -54,9 +54,9 @@
 	target.apply_damage(SYNTH_REVIVE_WELD_INTERNALS_DAMAGE, BRUTE, "[target_zone]", wound_bonus = CANT_WOUND)
 
 /datum/surgery_step/add_plating/fullbody
-	name = "add plating (15 iron sheets)"
+	name = "add plating (1 iron sheet)" // ss1984 edit "add plating (15 iron sheets)
 	time = 3 SECONDS
-	ironamount = 15
+	ironamount = 1 // ss1984 edit original ironamount = 15
 
 /datum/surgery_step/add_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(

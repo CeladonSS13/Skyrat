@@ -1682,12 +1682,21 @@
 /datum/memory_panel/ui_data(mob/user)
 	var/list/data = list()
 	var/list/memories = list()
+	var/list/custom_notes = list() // SS1984 ADDITION
 
 	for(var/memory_key in user?.mind.memories)
 		var/datum/memory/memory = user.mind.memories[memory_key]
 		memories += list(list("name" = memory.name, "quality" = memory.story_value))
 
+	// SS1984 ADDITION START
+
+	for(var/datum/memory/general_custom_memory/memory_custom in user?.mind.memories_custom)
+		custom_notes += list(list("name" = memory_custom.name, "quality" = memory_custom.story_value))
+
+	// SS1984 ADDITION END
+
 	data["memories"] = memories
+	data["custom_notes"] = custom_notes // SS1984 ADDITION
 	return data
 
 /mob/verb/view_skills()

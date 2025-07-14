@@ -7,12 +7,12 @@
 		return "<a href='byond://?src=[REF(src)];track=[html_encode(namepart)]'>"
 	return ""
 
-/mob/living/silicon/compose_job(atom/movable/speaker, raw_message, radio_freq, namepart, obj/machinery/announcement_system/announcer, job, speaker_source) //SS1984 EDIT
+/mob/living/silicon/compose_job(atom/movable/speaker, raw_message, radio_freq, namepart, obj/machinery/announcement_system/announcer, job, job_custom_name, speaker_source) //SS1984 EDIT
 	//Also includes the </a> for AI hrefs, for convenience.
 	if(!HAS_TRAIT(src, TRAIT_CAN_GET_AI_TRACKING_MESSAGE))
 	//SS1984 EDIT START
 		return "[namepart]" + "</a>"
-	var/retrieved_msg = ..(speaker, raw_message, radio_freq, namepart, announcer, job, speaker_source)
+	var/retrieved_msg = ..(speaker, raw_message, radio_freq, namepart, announcer, job, job_custom_name, speaker_source)
 	if (retrieved_msg == "[namepart]")
 		retrieved_msg += " ([speaker.GetJob()])" // smart enough to get job bypassing disabled settings at telecomms
 	return retrieved_msg + "</a>"

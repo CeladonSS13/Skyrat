@@ -7,13 +7,22 @@
 	var/toggle_name_color = TRUE
 	var/toggle_command_bold = TRUE
 
-/datum/nttc_configuration/proc/retrieve_relevant_job(speaker_source, obj/item/card/id/id_card)
+/datum/nttc_configuration/proc/retrieve_relevant_job(speaker_source, obj/item/card/id/id_card, get_custom_jobname)
 	var/job_at_card
 	if (id_card)
-		if (id_card.trim && id_card.trim.assignment)
-			job_at_card = id_card.trim.assignment
+		if (istype(id_card, /obj/item/card/id/advanced/chameleon))
+			// chameleon-card case
+			var/obj/item/card/id/advanced/chameleon/chameleon_card = id_card
+			if (!get_custom_jobname && chameleon_card.trim_assignment_override)
+				job_at_card = chameleon_card.trim_assignment_override
+			else
+				job_at_card = chameleon_card.assignment
 		else
-			job_at_card = id_card.assignment
+			// non-chameleon case
+			if (!get_custom_jobname && id_card.trim && id_card.trim.assignment)
+				job_at_card = id_card.trim.assignment
+			else
+				job_at_card = id_card.assignment
 	if (job_at_card) // could be null at this moment
 		if (!ishuman(speaker_source))
 			return job_at_card
@@ -38,7 +47,7 @@
 			return "Bot"
 	return "No id"
 
-/datum/nttc_configuration/proc/compose_ntts_job(raw_message, namepart, obj/machinery/announcement_system/announcer, job, speaker_source)
+/datum/nttc_configuration/proc/compose_ntts_job(raw_message, namepart, obj/machinery/announcement_system/announcer, job, job_custom_name, speaker_source)
 	var/job_class
 	var/name_with_job
 
@@ -58,11 +67,15 @@
 	if (toggle_name_color)
 		namepart = "<span class='[job_class]'>[namepart]</span>"
 
+	var/job_span = job
 	if (toggle_jobs)
 		if (toggle_job_color)
-			job = "<span class='[job_class]'>[job]</span>"
+			if (job_custom_name)
+				job_span = "<span class='[job_class]'>[job_custom_name]</span>"
+			else
+				job_span = "<span class='[job_class]'>[job]</span>"
 
-		var/message_format = list("JOB" = job, "NAME" = namepart)
+		var/message_format = list("JOB" = job_span, "NAME" = namepart)
 		var/compiled_message = announcer.compile_config_message(/datum/aas_config_entry/nttc_job_indicator_type, message_format, raw_message)
 		if (toggle_job_color) // to color also brackets or other things
 			name_with_job = "<span class='[job_class]'>[compiled_message]</span>"

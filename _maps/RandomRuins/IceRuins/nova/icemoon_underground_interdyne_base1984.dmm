@@ -104,6 +104,7 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/interdynefob/deckofficer_locker,
+/obj/item/circuitboard/machine/techfab/ip,
 /turf/open/floor/wood,
 /area/ruin/interdyne_planetary_base/cargo/deck)
 "aw" = (
@@ -4642,7 +4643,7 @@
 /area/ruin/interdyne_planetary_base/eng/disp)
 "mc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/oil,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/reinforced,
 /area/ruin/interdyne_planetary_base/eng/disp)
 "md" = (
@@ -7030,6 +7031,13 @@
 	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/interdyne_planetary_base/cargo/ware)
+"Cy" = (
+/obj/structure/frame/machine/secured,
+/obj/item/circuitboard/machine/techfab/ip,
+/turf/open/floor/vault/alien{
+	name = "floor"
+	},
+/area/ruin/interdyne_planetary_base/science)
 "CW" = (
 /obj/structure/shipping_container/kosmologistika{
 	pixel_x = -6;
@@ -8299,7 +8307,7 @@ ab
 ab
 fz
 ga
-gG
+Cy
 gG
 hS
 ic

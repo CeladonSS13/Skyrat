@@ -1,4 +1,4 @@
-#define MAX_NAVIGATE_RANGE 125
+#define MAX_NAVIGATE_RANGE 255
 
 /mob/living
 	/// Cooldown of the navigate() verb.
@@ -74,9 +74,19 @@
 		return
 
 	var/list/path = get_path_to(src, navigate_target, MAX_NAVIGATE_RANGE, mintargetdist = 1, access = get_access(), skip_first = FALSE)
+	var/display_found_path_alert = TRUE // SS1984 ADDITION
 	if(!length(path))
-		balloon_alert(src, "no valid path with current access!")
-		return
+		// SS1984 EDIT START
+		// no path with current access
+		var/list/access_all_station = SSid_access.get_region_access_list(list(REGION_ALL_STATION)) // tbh it can be cached if needed
+		path = get_path_to(src, navigate_target, MAX_NAVIGATE_RANGE, mintargetdist = 1, access = access_all_station, skip_first = FALSE) // same invocation as above, just with other access
+		if(!length(path))
+			balloon_alert(src, "no valid path found!")
+			return
+		else
+			balloon_alert(src, "found valid path, but your current access may not be sufficient!")
+			display_found_path_alert = FALSE
+		// SS1984 EDIT END
 	path |= get_turf(navigate_target)
 	for(var/i in 1 to length(path))
 		var/turf/current_turf = path[i]
@@ -104,7 +114,8 @@
 	RegisterSignal(src, COMSIG_LIVING_DEATH, PROC_REF(cut_navigation))
 	if(finding_zchange)
 		RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(cut_navigation))
-	balloon_alert(src, "navigation path created")
+	if (display_found_path_alert) // SS1984 ADDITION
+		balloon_alert(src, "navigation path created")
 
 /mob/living/proc/shine_navigation()
 	for(var/i in 1 to length(client.navigation_images))

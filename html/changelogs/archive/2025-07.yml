@@ -3,3 +3,69 @@
   - bugfix: fixed synd r_wall(now craftable), shuttle walls craftable(fixed spaceship
       plating)
   - image: fixed synd r_wall(working texture after disasamble)
+2025-07-03:
+  DenIS318:
+  - bugfix: Now shuttles building shouldn't freeze server and throw runtime instead
+      (could happen in some cases before)
+2025-07-07:
+  Arceniu:
+  - balance: now need only 1 iron instead of 15 to perform synth revive
+2025-07-08:
+  Arceniu:
+  - bugfix: fixed a minor tarkon card issues
+  - qol: interdyne shuttle now cannot be used without ip/ds-2 access, interdyne ghost
+      role modsuit now need access to activate
+  DenIS318:
+  - config: Dynamic increase rulesets scaling cost
+  - config: Dynamic increase rulesets threat consumed (mainly in roundstart)
+  - bugfix: NTTC now works based on speaker zlevel instead of "hearer" zlevel (as
+      ghost in centcomm now you properly see nttc from station)
+  - bugfix: NTTC chameleon card now should properly work instead of "Unknown"
+  - qol: NTTC now shows custom role (if exist) instead of default
+  - rscadd: Add Note button for IC tab, which lets you write some temporal info for
+      round as "memories"
+  - qol: Allow select same map at map-vote
+  - qol: Navigate now shows you path even if you don't have access
+  - qol: Navigation max range increased to 255 (whole station zlevel)
+  - qol: Navigate now shows all APC areas on station (Fore Primary Hallway, Robotics,
+      Ordnance Lab, Xenobiology Maintenance and so on), instead of only predefined
+      landmarks (like Research). Finally, he found Brig Maintenance.
+2025-07-09:
+  Arceniu:
+  - rscadd: Added new techfabs at ip and ds2
+  - bugfix: ip modsuit now idlocked at start
+  - bugfix: updated oldstation oil and blood spawners path
+  DenIS318:
+  - qol: Now shows navigation at interlink for players with < 10 hours played on server
+2025-07-10:
+  Arceniu:
+  - qol: nasavoid now protect from radiation like old time ago
+2025-07-12:
+  DenIS318:
+  - bugfix: AI now correctly die when receiving 200 damage
+  - bugfix: Interlink navigation tip for begginers now should work even when shuttle
+      departed to station
+  - rscadd: 'Secure closets and crates can be hacked now with tools. Follow order:
+      screwdriver => wirecutter => multitool. There is a chance to fail on each step.'
+2025-07-13:
+  DenIS318:
+  - balance: Stunprod knockdown time 1.5 seconds => 1 tick (~0.05 seconds). There's
+      still time after knockdown received to get up regardless of knockdown_time)
+  - balance: Stunprod size HUGE => NORMAL (can fit in backpack now)
+  - balance: Taser no longer apply tased status effect (no slowdown)
+  - balance: Taser no longer drain cell energy and stamina after hit target
+  - balance: Taser stamina damage 35 => 15
+  - balance: Taser delay between shots 0 => 15 ticks (~0.75 seconds)
+  - balance: Taser range 5 => 7
+  - balance: Taser paralyze 0 => 0.2 seconds (kind of microstun or ranged disarm)
+  - balance: Taser energy cost reduced, 5 => 15 shots with default battery
+  - rscdel: Taser no longer shows visual beam effect (by default)
+  - rscadd: Security roles (exclude detective and department guards) spawn with Security
+      Voucher
+  - rscadd: Security Voucher can be used on SecTech to get Taser or Sol Pistol with
+      non-lethal ammo
+  - rscadd: Added security vouchers to Warden's closet
+  - rscadd: Security vouchers can be purchased at cargo
+2025-07-14:
+  Arceniu:
+  - balance: rebalanced nerve staple quirk- synth now cant have it

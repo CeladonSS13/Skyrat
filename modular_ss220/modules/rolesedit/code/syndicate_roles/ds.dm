@@ -67,6 +67,17 @@
 	greyscale_colors = CIRCUIT_COLOR_SECURITY
 	build_path = /obj/machinery/computer/communications/syndicate/ds
 
+// techfab
+/obj/item/circuitboard/machine/techfab/ds
+	name = "\improper Techfab - Deepspace"
+	greyscale_colors = CIRCUIT_COLOR_SECURITY
+	build_path = /obj/machinery/rnd/production/techfab/ds
 
-
-
+/obj/machinery/rnd/production/techfab/ds
+	name = "techfab (Deepspace)"
+	desc = "An advanced fabricator designed to print out the latest prototypes and circuits researched from Science. Contains hardware to sync to research networks. This one is department-locked and only possesses a limited set of decryption keys."
+	allowed_department_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_SERVICE | DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_SCIENCE
+	allowed_buildtypes = PROTOLATHE | AWAY_LATHE | IMPRINTER | AWAY_IMPRINTER
+	circuit = /obj/item/circuitboard/machine/techfab/ds
+	stripe_color = "#96150b"
+	payment_department = ACCOUNT_DS2

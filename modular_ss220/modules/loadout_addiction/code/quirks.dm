@@ -18,6 +18,11 @@
 /datum/quirk/cursed/add(client/client_source)
 	quirk_holder.AddComponent(/datum/component/omen/quirk)
 
+/datum/quirk/equipping/nerve_staple/is_species_appropriate(datum/species/mob_species)
+	var/datum/species_traits = GLOB.species_prototypes[mob_species].inherent_traits
+	if(TRAIT_SYNTHETIC in species_traits)
+		return FALSE
+	return ..()
 
 /datum/quirk/hydraulicleak
 	name = "Hydraulic Leak"
