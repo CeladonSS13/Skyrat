@@ -166,7 +166,6 @@
 	special = TRUE
 	hidden = TRUE
 
-
 /datum/supply_pack/service/platinid
 	name = "Platinum ID Card Crate"
 	desc = "Do you neel more advanced id card? Purchase this high value ID card \
