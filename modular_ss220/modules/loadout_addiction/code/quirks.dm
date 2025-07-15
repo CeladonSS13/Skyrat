@@ -40,10 +40,6 @@
 /datum/quirk/hydraulicleak/add(client/client_source)
 	RegisterSignal(quirk_holder, COMSIG_HUMAN_ON_HANDLE_BLOOD, PROC_REF(lose_oil))
 
-	var/mob/living/carbon/human/human_holder = quirk_holder
-	if(!istype(human_holder))
-		return
-
 /datum/quirk/hydraulicleak/remove()
 	UnregisterSignal(quirk_holder, list(COMSIG_HUMAN_ON_HANDLE_BLOOD))
 
