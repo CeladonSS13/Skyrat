@@ -352,9 +352,10 @@ export function QuirksPage(props) {
         return 'You need a negative quirk to balance this out!';
       }
     }
-    // NOVA EDIT START - Veteran quirks
-    if (quirk.veteran_only && !data.is_veteran) {
-      return 'You need to be a veteran to select this quirk, apply today!';
+    // NOVA EDIT START - Nova star quirks
+    if (quirk.nova_stars_only && !data.is_nova_star) {
+      { /* SS1984 REMOVAL return 'You need to be a Nova star to select this quirk, apply today!'; */ }
+      return 'You need to be a Veteran to select this quirk, apply today!'; { /* SS1984 ADDITION */ }
     }
     // NOVA EDIT END
     const selectedQuirkNames = selectedQuirks.map((quirkKey) => {

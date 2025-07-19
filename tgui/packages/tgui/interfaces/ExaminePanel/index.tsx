@@ -46,7 +46,7 @@ export function ExaminePanel(props) {
     custom_species,
     custom_species_lore,
     headshot,
-    veteran_status,
+    nova_star_status,
     /* SS1984 REMOVAL START */
     /* ideal_antag_optin_status, */
     /* current_antag_optin_status, */
@@ -127,26 +127,40 @@ export function ExaminePanel(props) {
                       title="OOC Notes"
                       preserveWhitespace
                       buttons={
-                        <Button
-                          selected={oocNotesIndex === 'SFW'}
-                          bold={oocNotesIndex === 'SFW'}
-                          onClick={() => setOocNotesIndex('SFW')}
-                          textAlign="center"
-                          minWidth="60px"
-                        >
-                          SFW
-                        </Button>
+                        // SS1984 REMOVAL <>
+                          <Button
+                            selected={oocNotesIndex === 'SFW'}
+                            bold={oocNotesIndex === 'SFW'}
+                            onClick={() => setOocNotesIndex('SFW')}
+                            textAlign="center"
+                            minWidth="60px"
+                          >
+                            SFW
+                          </Button>
+                          // SS1984 REMOVAL START
+                          // <Button
+                          //   selected={oocNotesIndex === 'NSFW'}
+                          //   disabled={!ooc_notes_nsfw}
+                          //   bold={oocNotesIndex === 'NSFW'}
+                          //   onClick={() => setOocNotesIndex('NSFW')}
+                          //   textAlign="center"
+                          //   minWidth="60px"
+                          // >
+                          //   NSFW
+                          // </Button>
+                          // </>
+                          // SS1984 REMOVAL END
                       }
                     >
-                      {!!veteran_status && (
-                        <Stack.Item mb="30px">
+                      {!!nova_star_status && (
+                        <Stack.Item mb="8px">
                           <span
                             style={{
                               color: 'gold',
                               fontWeight: 'bold',
                             }}
                           >
-                            Player is a Veteran.
+                            Player is a Veteran. { /* SS1984 EDIT, original: Nova Star! ⭐ */ }
                           </span>
                         </Stack.Item>
                       )}

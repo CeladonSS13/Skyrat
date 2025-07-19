@@ -310,7 +310,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /datum/aas_config_entry/arrival
 	name = "Arrival Announcement"
 	announcement_lines_map = list(
-		"Message" = "%PERSON has signed up as %RANK")
+		"Message" = "Сотрудник %PERSON в должности %RANK прибыл")
 	vars_and_tooltips_map = list(
 		"PERSON" = "will be replaced with their name.",
 		"RANK" = "with their job."
@@ -328,7 +328,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /datum/aas_config_entry/newhead
 	name = "Departmental Head Announcement"
 	announcement_lines_map = list(
-		"Message" = "%PERSON, %RANK, is the department head.")
+		"Message" = "Прибыл глава отдела - %PERSON, %RANK.")
 	vars_and_tooltips_map = list(
 		"PERSON" = "will be replaced with their name.",
 		"RANK" = "with their job."
@@ -346,7 +346,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /datum/aas_config_entry/researched_node
 	name = "Research Node Announcement"
 	announcement_lines_map = list(
-		"Message" = "The %NODE techweb node has been researched")
+		"Message" = "Узел %NODE был исследован")
 	vars_and_tooltips_map = list(
 		"NODE" = "will be replaced with the researched node."
 	)
@@ -365,14 +365,14 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /datum/aas_config_entry/arrivals_broken
 	name = "Arrivals Shuttle Malfunction Announcement"
 	announcement_lines_map = list(
-		"Message" = "The arrivals shuttle has been damaged. Docking for repairs...")
+		"Message" = "Шаттл прибытия был поврежден. Происходит стыковка для ремонта...")
 	general_tooltip = "Broadcasted, when arrivals shuttle docks for repairs. No replacable variables provided."
 	modifiable = FALSE
 
 /datum/aas_config_entry/announce_officer
 	name = "Security Alert: Officer Arrival Announcement"
 	announcement_lines_map = list(
-		"Message" = "Officer %OFFICER has been assigned to %DEPARTMENT.")
+		"Message" = "Офицер %OFFICER был прикреплен к %DEPARTMENT.")
 	vars_and_tooltips_map = list(
 		"OFFICER" = "will be replaced with the officer's name.",
 		"DEPARTMENT" = "with the department they were assigned to."

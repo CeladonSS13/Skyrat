@@ -88,7 +88,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	// NOVA EDIT ADDITION START - Donator icons in OOC
 	if(SSplayer_ranks.is_donator(src))
 		if(prefs.read_preference(/datum/preference/toggle/display_donator_status))
-			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[icon2html('modular_nova/master_files/icons/donator/donator_chat_icon.dmi', world, "nova_logo")][keyname]</font>"
+			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[icon2html('modular_nova/master_files/icons/donator/donator_chat_icon.dmi', world, "ratge")][keyname]</font>" // SS1984 EDIT
 	// NOVA EDIT ADDITION END
 	if(prefs.hearted)
 		var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)
@@ -177,7 +177,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 /client/verb/admin_notice()
 	set name = "Adminnotice"
 	set category = "Admin"
-	set desc ="Check the admin notice if it has been set"
+	set desc = "Check the admin notice if it has been set"
 
 	if(GLOB.admin_notice)
 		to_chat(src, "[span_boldnotice("Admin Notice:")]\n \t [GLOB.admin_notice]")
@@ -428,7 +428,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 
 /// Attempt to automatically fit the viewport, assuming the user wants it
 /client/proc/attempt_auto_fit_viewport()
-	if (!prefs.read_preference(/datum/preference/toggle/auto_fit_viewport))
+	if (!prefs?.read_preference(/datum/preference/toggle/auto_fit_viewport))
 		return
 	if(fully_created)
 		INVOKE_ASYNC(src, VERB_REF(fit_viewport))

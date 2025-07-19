@@ -8,7 +8,7 @@
 		CATEGORY_SAUCES_REAGENTS,
 	)
 	blackbox_key = "chef"
-	announcement_line = "The kitchen has ordered groceries which will arrive on the cargo shuttle! Please make sure it gets to them as soon as possible!"
+	announcement_line = "Кухня заказала продукты, которые прибудут на грузовом шаттле! Пожалуйста, убедитесь, что они получат их как можно скорее!"
 	// Discount for items in the chefs category like mining/bitrunning consoles
 	cargo_cost_multiplier =  0.65
 

@@ -49,6 +49,7 @@
 	return FALSE
 
 /datum/dynamic_ruleset/midround/trim_candidates()
+	..() // SS1984 ADDITION
 	living_players = trim_list(GLOB.alive_player_list)
 	living_antags = trim_list(GLOB.current_living_antags)
 	dead_players = trim_list(GLOB.dead_player_list)

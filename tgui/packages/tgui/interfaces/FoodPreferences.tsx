@@ -138,7 +138,7 @@ export const FoodPreferences = (props) => {
                                 fontSize={0.75}
                                 verticalAlign={'top'}
                               >
-                                &nbsp;
+                                {'\u00A0'}
                                 <Icon name="star" style={{ color: 'orange' }} />
                               </Box>
                             </Tooltip>

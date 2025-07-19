@@ -33,6 +33,12 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	/// Whether syndicate mode is enabled or not.
 	var/syndicate = FALSE
 
+	/// Whether away mode is enabled or not. ss1984 add
+	var/away = FALSE
+
+	/// Whether console can see  call 911 button or not. ss1984 add
+	var/can_call_911 = TRUE
+
 	/// The current state of the UI
 	var/state = STATE_MAIN
 
@@ -117,13 +123,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		return TRUE
 	return authenticated
 
-// NOVA EDIT ADDIOTN START - Are we the AI?
-/obj/machinery/computer/communications/proc/authenticated_as_ai_or_captain(mob/user)
-	if (isAI(user))
-		return TRUE
-	return ACCESS_CAPTAIN in authorize_access
-// NOVA EDIT ADDITION END
-/obj/machinery/computer/communications/attackby(obj/I, mob/user, list/modifiers)
+/obj/machinery/computer/communications/attackby(obj/I, mob/user, list/modifiers, list/attack_modifiers)
 	if(isidcard(I))
 		attack_hand(user)
 	else
@@ -190,7 +190,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			message.answered = answer_index
 			message.answer_callback.InvokeAsync()
 		if ("callShuttle")
-			if (!authenticated(user) || syndicate)
+			if (!authenticated(user) || syndicate || away) // ss1984 edit original 'if (!authenticated(user) || syndicate)'
 				return
 			var/reason = trim(params["reason"], MAX_MESSAGE_LEN)
 			if (length(reason) < CALL_SHUTTLE_REASON_LENGTH)
@@ -242,7 +242,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				return
 			LAZYREMOVE(messages, LAZYACCESS(messages, message_index))
 		if ("makePriorityAnnouncement")
-			if (!authenticated_as_silicon_or_captain(user) && !syndicate)
+			if (!authenticated_as_silicon_or_captain(user) && !syndicate && !away) //ss1984 edit original 'if (!authenticated_as_silicon_or_captain(user) && !syndicate)'
 				return
 			make_announcement(user)
 		if ("messageAssociates")
@@ -261,6 +261,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			else if(syndicate)
 				message_syndicate(message, user)
 				to_chat(user, span_danger("Message transmitted to Syndicate Command."))
+			else if(away) // ss1984 add start
+				message_centcom(message, user)
+				to_chat(user, span_danger("Message transmitted to Nanotrasen Navy.")) // ss1984 add end
 			else
 				message_centcom(message, user)
 				to_chat(user, span_notice("Message transmitted to Central Command."))
@@ -304,10 +307,12 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			state = STATE_MAIN
 		if ("recallShuttle")
 			// AIs cannot recall the shuttle
-			if (!authenticated(user) || HAS_SILICON_ACCESS(user) || syndicate)
+			if (!authenticated(user) || HAS_SILICON_ACCESS(user) || syndicate || away) //ss1984 edit original 'if (!authenticated(user) || HAS_SILICON_ACCESS(user) || syndicate)'
 				return
 			SSshuttle.cancelEvac(user)
 		if ("requestNukeCodes")
+			if (away) //ss1984 add
+				return
 			if (!authenticated_as_non_silicon_captain(user))
 				return
 			if (!COOLDOWN_FINISHED(src, important_action_cooldown))
@@ -455,7 +460,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				to_chat(user, span_warning("The safe code has already been requested and is being delivered to your station!"))
 				return
 
-			if(SSjob.safe_code_requested)
+			if(SSjob.safe_code_requested || away) //ss1984 edit original 'if(SSjob.safe_code_requested)'
 				to_chat(user, span_warning("The safe code has already been requested and delivered to your station!"))
 				return
 
@@ -471,19 +476,31 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			minor_announce("Due to staff shortages, your station has been approved for delivery of access codes to secure the Captain's Spare ID. Delivery via drop pod at [get_area(pod_location)]. ETA 120 seconds.")
 		// NOVA EDIT ADDITION START
 		if ("callThePolice")
+			if(!can_call_911)
+				to_chat(user, span_warning("Error, unable to contact emergency response team!"))
+				return
 			if(!pre_911_check(usr))
 				return
 			calling_911(usr, "Marshals", EMERGENCY_RESPONSE_POLICE)
 		if ("callTheCatmos")
+			if(!can_call_911)
+				to_chat(user, span_warning("Error, unable to contact emergency response team!"))
+				return
 			if(!pre_911_check(usr))
 				return
 			calling_911(usr, "Advanced Atmospherics", EMERGENCY_RESPONSE_ATMOS)
 		if ("callTheParameds")
+			if(!can_call_911)
+				to_chat(user, span_warning("Error, unable to contact emergency response team!"))
+				return
 			if(!pre_911_check(usr))
 				return
 			calling_911(usr, "EMTs", EMERGENCY_RESPONSE_EMT)
 		if("callThePizza")
 			if(!(obj_flags & EMAGGED))
+				return
+			if(!can_call_911)
+				to_chat(user, span_warning("Error, unable to contact emergency pizza team!"))
 				return
 			if(!pre_911_check(usr))
 				return
@@ -553,8 +570,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		"authenticated" = FALSE,
 		"emagged" = FALSE,
 		"syndicate" = syndicate,
+		"away" = away,
 	)
-
+// ss1984 add "away" = away,
 	var/ui_state = HAS_SILICON_ACCESS(user) ? cyborg_state : state
 
 	var/has_connection = has_communication()
@@ -599,9 +617,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["authorizeName"] = authorize_name
 				data["canLogOut"] = !HAS_SILICON_ACCESS(user)
 				data["shuttleCanEvacOrFailReason"] = SSshuttle.canEvac()
-				if(syndicate)
-					data["shuttleCanEvacOrFailReason"] = "You cannot summon the shuttle from this console!"
 
+				if(syndicate || away) //ss1984 edit original 'if(syndicate)'
+					data["shuttleCanEvacOrFailReason"] = "You cannot summon the shuttle from this console!"
 				if (authenticated_as_non_silicon_captain(user))
 					data["canMessageAssociates"] = TRUE
 					data["canRequestNuke"] = TRUE
@@ -629,6 +647,12 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 					data["canSetAlertLevel"] = HAS_SILICON_ACCESS(user) ? "NO_SWIPE_NEEDED" : "SWIPE_NEEDED"
 				else if(syndicate)
 					data["canMakeAnnouncement"] = TRUE
+
+				data["away"] = away //ss1984 add start
+				if(away)
+					data["canMessageAssociates"] = TRUE
+					data["canMakeAnnouncement"] = FALSE
+					data["canRequestNuke"] = FALSE //ss1984 add end
 
 				if (authenticated_as_ai_or_captain(user)) // NOVA EDIT CHANGE - Allows AI to report to CC in the event of there being no command alive/to begin with - ORIGINAL: if (authenticated_as_non_silicon_captain(user))
 					data["canMessageAssociates"] = TRUE
@@ -725,7 +749,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 /obj/machinery/computer/communications/proc/has_communication()
 	var/turf/current_turf = get_turf(src)
 	var/z_level = current_turf.z
-	if(syndicate)
+	if(syndicate || away) //ss1984 edit original 'if(syndicate)'
 		return TRUE
 	return is_station_level(z_level) || is_centcom_level(z_level)
 

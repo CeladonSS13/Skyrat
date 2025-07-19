@@ -549,8 +549,8 @@
 	// Well we don't want to show that only Orion Trails reports violent behavior, eh-h?
 	name = "Violent Behavior Alert"
 	announcement_lines_map = list(
-		RADIO_CHANNEL_SECURITY = "SECURITY ALERT: Crewmember %PERSON recorded displaying antisocial tendencies in %LOCATION by %SOURCE. Please watch for violent behavior.",
-		RADIO_CHANNEL_MEDICAL = "PSYCH ALERT: Crewmember %PERSON recorded displaying antisocial tendencies in %LOCATION by %SOURCE. Please schedule psych evaluation.",
+		RADIO_CHANNEL_SECURITY = "ПРЕДУПРЕЖДЕНИЕ БЕЗОПАСНОСТИ: Член экипажа %PERSON зафиксирован как проявляющий антисоциальные наклонности в %LOCATION %SOURCE. Пожалуйста, следите за агрессивным поведением.",
+		RADIO_CHANNEL_MEDICAL = "ПСИХИЧЕСКАЯ ТРЕВОГА: Член экипажа %PERSON зафиксирован как проявляющий антисоциальные наклонности в %LOCATION %SOURCE. Пожалуйста, запланируйте психологическую оценку.",
 	)
 	vars_and_tooltips_map = list(
 		"PERSON" = "will be replaced with the crewmember reported",

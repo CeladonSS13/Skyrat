@@ -9,7 +9,7 @@
 /datum/aas_config_entry/goodycase_destroyed
 	name = "Cargo Alert: Goody Case Destroyed"
 	announcement_lines_map = list(
-		"Message" = "A goody case has been destroyed in %LOCATION.")
+		"Message" = "В %LOCATION уничтожен ящик с вещами.")
 	vars_and_tooltips_map = list(
 		"LOCATION" = "will be replaced with the location of the goody case.",
 	)

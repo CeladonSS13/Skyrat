@@ -42,10 +42,11 @@ const TAB2NAME = [
 
 const lineHeightNormal = 2.79;
 const buttonWidthNormal = 12.9;
-const lineHeightDebug = 6.09;
+const lineHeightDebug = 3.09; // SS1984 EDIT, original: 6.09
 
 const DebuggingTab = (props) => {
-  const { act } = useBackend();
+  const { act, data } = useBackend(); // SS1984 ADDITION, added data
+  const { is_pregame, is_infinity_wildcard_disabled } = data; // SS1984 ADDITION
   return (
     <Stack fill vertical>
       <Stack.Item>
@@ -78,6 +79,30 @@ const DebuggingTab = (props) => {
           onClick={() => act('infinite_sec')}
         />
       </Stack.Item>
+      { /* SS1984 ADDITION START */ }
+      <Stack.Item>
+        <Button
+          color="average"
+          disabled={is_infinity_wildcard_disabled}
+          lineHeight={lineHeightDebug}
+          icon={is_pregame ? "ellipsis-h" : "exclamation"}
+          fluid
+          onClick={() => act('disable_infinity_wildcard')}
+        >
+          <span>Disable infinity wildcard access override for </span>
+          {is_pregame ?
+          <span style={{ color: 'red' }}>
+            <b>THIS</b>
+          </span>
+          :
+          <span style={{ color: 'yellow' }}>
+            <b>NEXT</b>
+          </span>
+          }
+          <span> round </span>
+        </Button>
+      </Stack.Item>
+      { /* SS1984 ADDITION END */ }
     </Stack>
   );
 };
@@ -576,7 +601,7 @@ const FunForYouTab = (props) => {
       </Stack.Item>
       <Stack.Item>
         <Stack>
-          <Stack.Item grow>
+          <Stack.Item>
             <NoticeBox danger width={19.6} mb={0}>
               <Button
                 color="red"
@@ -587,7 +612,7 @@ const FunForYouTab = (props) => {
               />
             </NoticeBox>
           </Stack.Item>
-          <Stack.Item grow>
+          <Stack.Item>
             <NoticeBox info width={19.6} mb={0}>
               <Button
                 color="blue"

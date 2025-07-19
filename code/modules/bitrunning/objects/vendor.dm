@@ -23,7 +23,7 @@
 		CATEGORY_BEPIS,
 	)
 	blackbox_key = "bitrunning"
-	announcement_line = "A bitrunner has ordered equipment which will arrive on the cargo shuttle! Please make sure it gets to them as soon as possible!"
+	announcement_line = "Битран заказал оборудование, которое прибудет на грузовом шаттле! Пожалуйста, убедитесь, что оно доставлено им как можно скорее!"
 
 /obj/machinery/computer/order_console/bitrunning/subtract_points(final_cost, obj/item/card/id/card)
 	if(final_cost <= card.registered_account.bitrunning_points)

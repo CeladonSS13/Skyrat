@@ -213,7 +213,7 @@
 		return
 	user.examinate(src)
 
-/obj/machinery/mineral/labor_points_checker/attackby(obj/item/weapon, mob/user, list/modifiers)
+/obj/machinery/mineral/labor_points_checker/attackby(obj/item/weapon, mob/user, list/modifiers, list/attack_modifiers)
 	if(!istype(weapon, /obj/item/card/id/advanced/prisoner))
 		return ..()
 	var/obj/item/card/id/advanced/prisoner/prisoner_id = weapon
@@ -227,7 +227,7 @@
 /datum/aas_config_entry/security_labor_stacker
 	name = "Security Alert: Labor Camp Release"
 	announcement_lines_map = list(
-		"Message" = "%PERSON returned to the station. Minerals and Prisoner ID card ready for retrieval."
+		"Message" = "%PERSON вернулся на станцию. Минералы и удостоверение личности заключенного готовы к извлечению."
 	)
 	vars_and_tooltips_map = list(
 		"PERSON" = "will be replaced with the name of the prisoner."

@@ -472,7 +472,7 @@
 	playsound(source = nav_beacon, soundin = 'sound/vehicles/car_crash.ogg', vol = 100, vary = FALSE, falloff_distance = DEFAULT_TRAM_LENGTH)
 	nav_beacon.audible_message(span_userdanger("You hear metal grinding as the tram comes to a sudden, complete stop!"))
 	for(var/mob/living/tram_passenger in range(DEFAULT_TRAM_LENGTH - 2, nav_beacon))
-		if(tram_passenger.stat != CONSCIOUS)
+		if(tram_passenger.stat > SOFT_CRIT) // SS1984 EDIT
 			continue
 		shake_camera(M = tram_passenger, duration = 0.2 SECONDS, strength = 3)
 
@@ -845,7 +845,7 @@
 		. += span_notice("The cabinet can be opened with a [EXAMINE_HINT("Left-click.")]")
 
 
-/obj/machinery/transport/tram_controller/attackby(obj/item/weapon, mob/living/user, list/modifiers)
+/obj/machinery/transport/tram_controller/attackby(obj/item/weapon, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(user.combat_mode || cover_open)
 		return ..()
 
@@ -946,7 +946,7 @@
 		new /obj/item/wallframe/tram/controller(drop_location)
 	else
 		new /obj/item/stack/sheet/mineral/titanium(drop_location, 2)
-		new /obj/item/stack/sheet/iron(drop_location, 1)
+		new /obj/item/stack/sheet/iron(drop_location)
 
 /**
  * Update the blinky lights based on the controller status, allowing to quickly check without opening up the cabinet.

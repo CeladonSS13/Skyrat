@@ -5,6 +5,7 @@
 //////////////////////////////////////////////
 
 /datum/dynamic_ruleset/latejoin/trim_candidates()
+	..() // SS1984 ADDITION
 	for(var/mob/P in candidates)
 		if(!P.client || !P.mind || is_unassigned_job(P.mind.assigned_role)) // Are they connected?
 			candidates.Remove(P)

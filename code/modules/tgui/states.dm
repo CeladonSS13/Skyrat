@@ -64,7 +64,7 @@
 	if(!client && !HAS_TRAIT(src, TRAIT_PRESERVE_UI_WITHOUT_CLIENT))
 		return UI_CLOSE
 	// Disable UIs if unconscious.
-	else if(stat)
+	else if(stat > SOFT_CRIT) // SS1984 EDIT
 		return UI_DISABLED
 	// Update UIs if incapicitated but conscious.
 	else if(incapacitated)

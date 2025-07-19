@@ -1,6 +1,6 @@
 // Throwing stuff
 /mob/living/proc/toggle_throw_mode()
-	if(stat)
+	if(stat > SOFT_CRIT) // SS1984 EDIT
 		return
 	if(!HAS_TRAIT(src, TRAIT_CAN_THROW_ITEMS))
 		return

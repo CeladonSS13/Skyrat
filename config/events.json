@@ -9,7 +9,7 @@
 	},
 	"Aurora Caelus": {
 		"min_players": 0,
-		"weight": 1,
+		"weight": 0,
 		"earliest_start": 3000
 	},
 	"Spontaneous Brain Trauma": {

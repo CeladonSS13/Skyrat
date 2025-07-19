@@ -47,10 +47,10 @@
 	item_type = /obj/item/suppressor/standard
 
 /datum/armament_entry/company_import/vitezstvi/accessory/small_case
-	item_type = /obj/item/storage/toolbox/guncase/nova/pistol/empty
+	item_type = /obj/item/storage/toolbox/guncase/nova/pistol
 
 /datum/armament_entry/company_import/vitezstvi/accessory/large_case
-	item_type = /obj/item/storage/toolbox/guncase/nova/empty
+	item_type = /obj/item/storage/toolbox/guncase/nova
 	cost = PAYCHECK_COMMAND * 4
 
 /datum/armament_entry/company_import/vitezstvi/accessory/bandolier

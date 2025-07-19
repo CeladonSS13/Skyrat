@@ -156,7 +156,7 @@ function CodewordsSection(props) {
                 as if you&apos;re one of their own. Proceed with caution,
                 however, as everyone is a potential foe.
                 <span style={badstyle}>
-                  &ensp;The speech recognition subsystem has been configured to
+                  {'\u2002'}The speech recognition subsystem has been configured to
                   flag these codewords.
                 </span>
               </BlockQuote>

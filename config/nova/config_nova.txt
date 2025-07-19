@@ -1,5 +1,5 @@
 ## Comment this out if you'd like a server that cares only about local bans in the database.
-RESPECT_GLOBAL_BANS
+#RESPECT_GLOBAL_BANS
 
 ## Automatic population control population limit, will send players(not admins) to the overflow server.
 ## Set to 0 to disable
@@ -41,7 +41,7 @@ ALERT_EPSILON_DOWNTO The Sol Federation has released Military Command and action
 ALERT_FEDERAL The Sol Federation has placed this galactic sector under its full command. All star systems within this sector are now under Military Law. Comply with all official SolFed instructions.
 
 ## How long until someone can be put in cryo if they are SSD
-CRYO_MIN_SSD_TIME 15
+CRYO_MIN_SSD_TIME 25
 
 ## log subtler emotes in game.txt
 #LOG_SUBTLER
@@ -62,7 +62,7 @@ VOTE_AUTOTRANSFER_INTERVAL 18000
 ## autovote maximum votes until automatic transfer call. (default 4)
 ## Set to 0 to force automatic crew transfer after the 'vote_autotransfer_initial' elapsed.
 ## Set to -1 to disable the maximum votes cap.
-VOTE_AUTOTRANSFER_MAXIMUM 4
+VOTE_AUTOTRANSFER_MAXIMUM -1
 
 ## Policy for what people remember after dying and being brought back to life
 BLACKOUTPOLICY You remember nothing after you've blacked out and you do not remember who or what events killed you, however, you can have faint recollection of what led up to it.
@@ -80,7 +80,7 @@ ROLE_ASSIGN_CHANNEL_ID
 ROCKPLANET_BUDGET 60
 
 ## Splits the rounds threat budget between midrounds and roundstart
-#SPLIT_THREAT_BUDGET
+SPLIT_THREAT_BUDGET
 
 ##Player controlled mob spawn text
 PC_MOB_TEXT As a player controlled mob you are expected to play the role to the best of your ability. This means if you're an animal, act like one. You shouldn't display much intelligence if any. This also means if you're engaging in combat you should refrain from mercing people fully. Play not to win but to create a challenge. You're there to replace AI, make others enjoy the situation as well. If your simple mob is not above simple or mute intelligence, using structures such as welding tanks/canisters/boxes to hinder your opponent is entirely forbidden. Do not do this.
@@ -134,7 +134,7 @@ STATIONARY_BOH_SINGULARITY_GRAV_PULL 4
 DISABLE_ROAMING_BOH_SINGULARITY
 
 ## The link to the policy wiki page for primitive catgirls
-ICECATS_POLICY_LINK "https://wiki.novasector13.com/index.php/Ghost_Role_policy#Icewalkers"
+ICECATS_POLICY_LINK "https://skyrat.ss220.space/index.php/Политика_гост-ролей#Ледоходцы_(Icewalkers)"
 
 ## What is the maximum size (in percents) we want people to be able to use with the size collar?
 SIZE_COLLAR_MAXIMUM 400
@@ -155,7 +155,7 @@ SIZE_COLLAR_MINIMUM 15
 ## These flags are automatically enabled if SQL_ENABLED isn't.
 #DONATOR_LEGACY_SYSTEM
 #MENTOR_LEGACY_SYSTEM
-#VETERAN_LEGACY_SYSTEM
+#NOVA_STAR_LEGACY_SYSTEM
 
 ## How much time arrivals shuttle should stay at station after its engines recharged before returning to interlink. In deciseconds. 150 - 15 seconds. 0 - disables autoreturn.
 ARRIVALS_WAIT 150
@@ -176,4 +176,19 @@ REPLACE_SECBELT_FLASHBANGS_WITH_BOLA
 JUNGLE_BUDGET 2
 
 ## The ruin budget for SerenityStation's lower z-levels.
-JUNGLE_CAVES_BUDGET 2
+JUNGLE_CAVE_BUDGET 2
+
+## Comment this out if you do not want to show job estimations in the statpanel before roundstart
+#SHOW_JOB_ESTIMATION
+
+## Defines whether or not the whitelist (if configured using USEWHITELIST) uses the SQL system.
+## Highly recommended, as it allows the whitelist to be modified using the "whitelist <ckey>" command
+## through the TGS bot, as well as the "Add Whitelist" verb in-game, rather than requiring the manual
+## modification of the "whitelist.txt" configuration file.
+## NOTE: This does not replace USEWHITELIST in config.txt. Both flags must be enabled if you want to use this feature.
+#SQL_WHITELIST
+
+## Message that gets displayed to non-whitelisted players when they try to join the server
+## while it has an active whitelist. The \n allows the message to be displayed on a separate line,
+## to make it more readable in the BYOND window.
+MISSING_WHITELIST_MESSAGE "\nThis server requires you to be whitelisted in order to be allowed to play. Apply on our Discord by simply filling the Access Request form from the #application-instructions channel under the 'Landing Zone' category. Here's the invite link: https://discord.gg/novasector"

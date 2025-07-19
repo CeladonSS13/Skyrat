@@ -25,22 +25,22 @@ export const AntagInfoNightmare = (props) => {
                     strong powers in the darkness, becoming nigh unbeatable.
                     Unfortunately, you wither and burn away in the light. You
                     must use your
-                    <span style={noticestyle}>&ensp;light eater</span> to dim
+                    <span style={noticestyle}>{'\u2002'}light eater</span> to dim
                     the station, making hunting easier.
                   </BlockQuote>
                 </Stack.Item>
                 <Stack.Divider />
                 <Stack.Item textColor="label">
-                  <span style={tipstyle}>Tip #1:&ensp;</span>
+                  <span style={tipstyle}>Tip #1:{'\u2002'}</span>
                   Move often. The station will be hunting you after you are
                   discovered, so don&apos;t stay in one area for long.
                   <br />
-                  <span style={tipstyle}>Tip #2:&ensp;</span>
+                  <span style={tipstyle}>Tip #2:{'\u2002'}</span>
                   Pick unfair fights. You are incredibly strong in one versus
                   one situations, use it. The more you fight, the harder it will
                   be to keep it dark.
                   <br />
-                  <span style={tipstyle}>Tip #3:&ensp;</span>
+                  <span style={tipstyle}>Tip #3:{'\u2002'}</span>
                   Fully destroy APCs when possible. Instead of hunting lights
                   that can be fixed, hunt the APCs which are harder to repair.
                 </Stack.Item>

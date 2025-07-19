@@ -120,8 +120,8 @@
 
 /datum/examine_panel/ui_static_data(mob/user)
 	var/list/data = list(
-		"veteran_status" = SSplayer_ranks.is_veteran(holder.client, admin_bypass = FALSE),
-		// "opt_in_colors" = GLOB.antag_opt_in_colors, SS1984 REMOVAL
+		"nova_star_status" = SSplayer_ranks.is_nova_star(holder.client, admin_bypass = FALSE),
+		// SS1984 REMOVAL "opt_in_colors" = GLOB.antag_opt_in_colors,
 	)
 	return data
 

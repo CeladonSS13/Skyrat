@@ -10,14 +10,15 @@
 		to_chat(usr, span_danger("This server has disabled internet sound requests."), confidential = TRUE)
 		return
 
-	var/request_url = tgui_input_text(usr, "Please Input a URL", "Only certain sites are allowed, such as YouTube, SoundCloud, and Bandcamp.", "")
+	var/valid_sites_display = replacetext(CONFIG_GET(string/request_internet_allowed), "\\", "")// SS1984 ADDITION
+	var/request_url = tgui_input_text(usr, "Please Input a URL", "Only certain sites are allowed: [valid_sites_display].", "") // SS1984 EDIT
 	if(!request_url)
 		return
 
 	//regex filter
 	var/regex/allowed_regex = regex(replacetext(CONFIG_GET(string/request_internet_allowed), ",", "|"), "i")
 	if(!allowed_regex.Find(request_url))
-		to_chat(usr, span_danger("Invalid URL. Please use a URL from one of the following sites: [replacetext(CONFIG_GET(string/request_internet_allowed), "\\", "")]"), confidential = TRUE)
+		to_chat(usr, span_danger("Invalid URL. Please use a URL from one of the following sites: [valid_sites_display]"), confidential = TRUE) // SS1984 EDIT
 		return
 
 	var/credit = tgui_alert(usr, "Credit yourself for requesting this song? (will show up as [usr.ckey])", "Credit Yourself?", list("No", "Yes", "Cancel"))

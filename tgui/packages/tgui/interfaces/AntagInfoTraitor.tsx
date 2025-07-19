@@ -156,7 +156,7 @@ const CodewordsSection = (props) => {
                 conversation to identify other agents. Proceed with caution,
                 however, as everyone is a potential foe.
                 <span style={badstyle}>
-                  &ensp;You have memorized the codewords, allowing you to
+                  {'\u2002'}You have memorized the codewords, allowing you to
                   recognise them when heard.
                 </span>
               </BlockQuote>

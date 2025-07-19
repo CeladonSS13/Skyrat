@@ -323,6 +323,19 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 	for(var/obj/item/vending_refill/installed_refill in component_parts)
 		restock(installed_refill)
 
+/obj/machinery/vending/on_construction(mob/user, from_flatpack = FALSE)
+	if (!from_flatpack)
+		return
+	// When built from a flatpack, empty our canister upon construction
+	for(var/obj/item/vending_refill/installed_refill in component_parts)
+		for (var/item_sold in installed_refill.products)
+			installed_refill.products[item_sold] = 0
+		for (var/item_sold in installed_refill.contraband)
+			installed_refill.contraband[item_sold] = 0
+		for (var/item_sold in installed_refill.premium)
+			installed_refill.premium[item_sold] = 0
+	RefreshParts()
+
 /obj/machinery/vending/on_deconstruction(disassembled)
 	if(refill_canister)
 		return ..()
@@ -710,7 +723,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 		to_chat(user, span_warning("You must first secure [src]."))
 	return TRUE
 
-/obj/machinery/vending/attackby(obj/item/attack_item, mob/living/user, list/modifiers)
+/obj/machinery/vending/attackby(obj/item/attack_item, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(panel_open && is_wire_tool(attack_item))
 		wires.interact(user)
 		return
@@ -1793,7 +1806,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 				vend_ready = TRUE
 			return TRUE
 
-/obj/machinery/vending/custom/attackby(obj/item/attack_item, mob/user, list/modifiers)
+/obj/machinery/vending/custom/attackby(obj/item/attack_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(!linked_account && isliving(user))
 		var/mob/living/living_user = user
 		var/obj/item/card/id/card_used = living_user.get_idcard(TRUE)
@@ -1912,7 +1925,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 /datum/aas_config_entry/vendomat_age_control
 	name = "Security Alert: Underaged Substance Abuse"
 	announcement_lines_map = list(
-		"Message" = "SECURITY ALERT: %PERSON recorded attempting to purchase %PRODUCT in %LOCATION. Please watch for substance abuse." // NOVA EDIT CHANGE - Original: "Message" = "SECURITY ALERT: Underaged crewmember %PERSON recorded attempting to purchase %PRODUCT in %LOCATION by %VENDOR. Please watch for substance abuse."
+		"Message" = "ПРЕДУПРЕЖДЕНИЕ БЕЗОПАСНОСТИ: %PERSON зафиксирован при попытке купить %PRODUCT в %LOCATION. Пожалуйста, следите за злоупотреблением психоактивными веществами." // NOVA EDIT CHANGE - Original: "Message" = "SECURITY ALERT: Underaged crewmember %PERSON recorded attempting to purchase %PRODUCT in %LOCATION by %VENDOR. Please watch for substance abuse."
 	)
 	vars_and_tooltips_map = list(
 		"PERSON" = "will be replaced with the name of the crewmember",

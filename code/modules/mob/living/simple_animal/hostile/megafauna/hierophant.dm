@@ -726,7 +726,7 @@ Difficulty: Hard
 		L.apply_damage(damage, BURN, limb_to_hit, armor, wound_bonus=CANT_WOUND)
 		if(ishostile(L))
 			var/mob/living/simple_animal/hostile/H = L //mobs find and damage you...
-			if(H.stat == CONSCIOUS && !H.target && H.AIStatus != AI_OFF && !H.client)
+			if(H.stat <= SOFT_CRIT && !H.target && H.AIStatus != AI_OFF && !H.client) // SS1984 EDIT, original: if(H.stat == CONSCIOUS && !H.target && H.AIStatus != AI_OFF && !H.client)
 				if(!QDELETED(caster))
 					if(get_dist(H, caster) <= H.aggro_vision_range)
 						H.FindTarget(list(caster))
@@ -768,7 +768,7 @@ Difficulty: Hard
 	layer = LOW_OBJ_LAYER
 	anchored = TRUE
 
-/obj/effect/hierophant/attackby(obj/item/attacking_item, mob/user, list/modifiers)
+/obj/effect/hierophant/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attacking_item, /obj/item/hierophant_club))
 		var/obj/item/hierophant_club/club = attacking_item
 		if(club.beacon == src)

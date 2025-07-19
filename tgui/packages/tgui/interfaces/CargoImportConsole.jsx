@@ -95,7 +95,7 @@ export const CargoImportConsole = (props) => {
                                     'horizontal-align': 'middle',
                                   }}
                                 />
-                                &nbsp;{item.name}
+                                {'\u00A0'}{item.name}
                               </Button>
                             </Stack.Item>
                           ))}

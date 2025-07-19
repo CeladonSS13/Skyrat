@@ -123,9 +123,9 @@
 
 /obj/effect/spawner/armory_spawn/mod_lasers_big
 	guns = list(
-		/obj/item/gun/energy/e_gun,
-		/obj/item/gun/energy/e_gun,
-		/obj/item/gun/energy/e_gun, //replace with /obj/item/gun/microfusion/mcr01 later
+		/obj/item/gun/microfusion/mcr01,
+		/obj/item/gun/microfusion/mcr01,
+		/obj/item/gun/microfusion/mcr01,
 	)
 
 /obj/effect/spawner/armory_spawn/mod_lasers_small
@@ -165,3 +165,37 @@
 /datum/supply_pack/security/armory/big_mod_laser
 	special = TRUE
 	hidden = TRUE
+
+/datum/supply_pack/service/platinid
+	name = "Platinum ID Card Crate"
+	desc = "Do you neel more advanced id card? Purchase this high value ID card \
+		capable of holding all basic access and some advanced levels of access in a handy wallet-sized form factor."
+	cost = CARGO_CRATE_VALUE * 15
+	contains = list(/obj/item/card/id/advanced/platinum)
+	crate_name = "platinum id card crate"
+	crate_type = /obj/structure/closet/crate/secure/centcom
+	access_any = list(ACCESS_COMMAND, ACCESS_ARMORY)
+
+/datum/supply_pack/service/goldid
+	name = "Gold ID Card Crate"
+	desc = "Do you neel the most elite id card? Purchase this super value ID card \
+		capable of holding almost all advanced levels of access from your Nanotrasen station in a handy wallet-sized form factor.\
+		P.S This id card designed only for representatives of the High Command(Captain, Blueshield, Nanotrasen Official and above) or Acting Captains, illegal purchase or use may affect the terms of your contract."
+	cost = CARGO_CRATE_VALUE * 25
+	dangerous = 1 // annonce admin
+	contains = list(/obj/item/card/id/advanced/gold)
+	crate_name = "gold id card crate"
+	crate_type = /obj/structure/closet/crate/secure/centcom
+	access_any = list(ACCESS_HOP, ACCESS_HOS, ACCESS_ARMORY, ACCESS_CMO, ACCESS_RD, ACCESS_CE, ACCESS_QM, ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
+
+/datum/supply_pack/service/centdid
+	name = "CentCom ID Card Crate"
+	desc = "The Centcom Official lost their card while fighting assistant? Buy this CentCom grade ID card \
+		capable of holding all the access from entire Nanotrasen Central Command in a handy wallet-sized form factor.\
+		P.S This id card designed only for representatives of the central command (intern and above), illegal purchase or use may affect the terms of your contract."
+	cost = CARGO_CRATE_VALUE * 30
+	dangerous = 1 // annonce admin
+	contains = list(/obj/item/card/id/advanced/centcom)
+	crate_name = "centcom id card crate"
+	crate_type = /obj/structure/closet/crate/secure/centcom
+	access_any = list(ACCESS_HOP, ACCESS_HOS, ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)

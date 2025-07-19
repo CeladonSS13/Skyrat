@@ -186,7 +186,7 @@
 	var/list/possible_victims = list()
 
 	for(var/mob/living/iter_living in valid_targets)
-		if(HAS_TRAIT(iter_living, TRAIT_RECENTLY_COINED) || iter_living.stat != CONSCIOUS)
+		if(HAS_TRAIT(iter_living, TRAIT_RECENTLY_COINED) || iter_living.stat > SOFT_CRIT) // SS1984 EDIT, original: if(HAS_TRAIT(iter_living, TRAIT_RECENTLY_COINED) || iter_living.stat == CONSCIOUS)
 			continue
 
 		if(get_dist(src, iter_living) <= 2) // prioritize close mobs

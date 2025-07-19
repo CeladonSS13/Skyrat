@@ -89,8 +89,8 @@ const ClockworkHelp = (props) => {
           unable to function.
           <br />
           <b>
-            Install&nbsp;
-            <font color={brassColor}>Integration Cogs&nbsp;</font>
+            Install{'\u00A0'}
+            <font color={brassColor}>Integration Cogs{'\u00A0'}</font>
             to unlock more scriptures and siphon power!
           </b>
           <br />
@@ -100,18 +100,18 @@ const ClockworkHelp = (props) => {
         <Section>
           Most scriptures require <b>cogs</b> to unlock.
           <br />
-          Invoke&nbsp;
+          Invoke{'\u00A0'}
           <font color={brassColor}>
-            <b>Integration Cog&nbsp;</b>
+            <b>Integration Cog{'\u00A0'}</b>
           </font>
-          to summon an Integration Cog, which can be placed into any&nbsp;
-          <b>APC&nbsp;</b>
+          to summon an Integration Cog, which can be placed into any{'\u00A0'}
+          <b>APC{'\u00A0'}</b>
           on the station.
           <br />
-          Slice open the&nbsp;
-          <b>APC&nbsp;</b>
-          with the&nbsp;
-          <b>Integration Cog&nbsp;</b>
+          Slice open the{'\u00A0'}
+          <b>APC{'\u00A0'}</b>
+          with the{'\u00A0'}
+          <b>Integration Cog{'\u00A0'}</b>
           and then insert it in to begin siphoning power. However, you will only
           gain a cog after the Integration Cog has been inside the APC for 5
           minutes.
@@ -122,9 +122,9 @@ const ClockworkHelp = (props) => {
         <Section>
           Some scriptures and equipment take more than simply cogs to unlock.
           <br />
-          The&nbsp;
+          The{'\u00A0'}
           <font color={brassColor}>
-            <b>Technologist&apos;s Lectern&nbsp;</b>
+            <b>Technologist&apos;s Lectern{'\u00A0'}</b>
           </font>
           can be used to research normally-locked equipment and abilities, but
           not easily.
@@ -143,21 +143,21 @@ const ClockworkHelp = (props) => {
           </b>
           <br />
           <b>
-            <font color={brassColor}>Structures:&nbsp;</font>
+            <font color={brassColor}>Structures:{'\u00A0'}</font>
           </b>
           A variety of invaluable structures are available to you, allowing
           effective defense of your sanctum. Use your Slab on a structure to
           gain extra information.
           <br />
           <b>
-            <font color={brassColor}>Traps:&nbsp;</font>
+            <font color={brassColor}>Traps:{'\u00A0'}</font>
           </b>
           Traps are useful contraptions, able to be created at a{' '}
           <font color={tinkerCache}>Tinkerer&apos;s Cache</font>. Use your Slab
           to link traps and triggers together.
           <br />
           <b>
-            <font color={clockMarauder}>Clockwork Marauder:&nbsp;</font>
+            <font color={clockMarauder}>Clockwork Marauder:{'\u00A0'}</font>
           </b>
           A powerful shell that can deflect attacks and delivers a strong blow
           in close quarter combat.
@@ -168,7 +168,7 @@ const ClockworkHelp = (props) => {
       <Collapsible title="Tips" color="average">
         <Section>
           <b>
-            <font color={brassColor}>Vitality:&nbsp;</font>
+            <font color={brassColor}>Vitality:{'\u00A0'}</font>
           </b>
           You need vitality to create{' '}
           <font color={clockMarauder}>Clockwork Marauders</font>, which is
@@ -176,20 +176,20 @@ const ClockworkHelp = (props) => {
           <font color={brassColor}>Vitality Sigil</font>.
           <br />
           <b>
-            <font color={brassColor}>Power:&nbsp;</font>
+            <font color={brassColor}>Power:{'\u00A0'}</font>
           </b>
           Watch your power upkeep! You&apos;re dependent on your cogged APCs to
           stay powered, and a lot of structures can drain it quickly.
           <br />
           <b>
-            <font color={brassColor}>Your Base:&nbsp;</font>
+            <font color={brassColor}>Your Base:{'\u00A0'}</font>
           </b>
           Make sure to have a defensible base of operations! You&apos;re
           significantly stronger while on brass tiles, so make your home
           indefensible.
           <br />
           <b>
-            <font color={replicaFab}>Replica Fabricator:&nbsp;</font>
+            <font color={replicaFab}>Replica Fabricator:{'\u00A0'}</font>
           </b>
           The Replica Fabricator is one of the strongest tools available to you,
           via the <font color={tinkerCache}>Tinkerer&apos;s Cache</font>. It
@@ -198,7 +198,7 @@ const ClockworkHelp = (props) => {
           non-cultists.
           <br />
           <b>
-            <font color={brassColor}>Nar&apos;sie:&nbsp;</font>
+            <font color={brassColor}>Nar&apos;sie:{'\u00A0'}</font>
           </b>
           Nar&apos;sian cultists are your greatest foe! Some of your spells are
           less effective on them, and vice-versa. What remains of Ratvar may

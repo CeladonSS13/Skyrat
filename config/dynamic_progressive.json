@@ -1,0 +1,9 @@
+{
+	"Progressive Dynamic": {
+		"increase_interval": 600,
+		"roles_coefficient_multiplier": 2,
+		"security_coefficient": 5.0,
+		"head_coefficient": 4.0,
+		"crew_coefficient": 1.0
+	}
+}

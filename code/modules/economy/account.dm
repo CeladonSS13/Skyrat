@@ -37,6 +37,8 @@
 	var/list/transaction_history = list()
 	///A lazylist of coupons redeemed with the Coupon Master pda app associated with this account.
 	var/list/redeemed_coupons
+	/// desk while giving paycheck
+	var/paycheck_desc = "Nanotrasen: Salary"
 
 /datum/bank_account/New(newname, job, modifier = 1, player_account = TRUE)
 	account_holder = newname
@@ -168,7 +170,7 @@
 		var/reason_from = "Transfer: To [account_holder]"
 
 		if(IS_DEPARTMENTAL_ACCOUNT(from))
-			reason_to = "Nanotrasen: Salary"
+			reason_to = "[paycheck_desc]" // ss1984 edit, original *reason_to = "Nanotrasen: Salary"*
 			reason_from = ""
 
 		if(transfer_reason)
@@ -194,7 +196,7 @@
 		return
 	var/money_to_transfer = round(account_job.paycheck * payday_modifier * amount_of_paychecks)
 	if(amount_of_paychecks == 1)
-		money_to_transfer = clamp(money_to_transfer, 0, PAYCHECK_CREW) //We want to limit single, passive paychecks to regular crew income.
+		money_to_transfer = clamp(money_to_transfer, 0, PAYCHECK_LIMIT) //We want to limit single, passive paychecks to regular crew income. //ss1984 edit, original- PAYCHECK_CREW
 	if(free)
 		adjust_money(money_to_transfer, "Nanotrasen: Shift Payment")
 		SSblackbox.record_feedback("amount", "free_income", money_to_transfer)

@@ -127,7 +127,7 @@
 		return MAP_ERROR
 	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates(
 		"Do you want to spawn as a cortical borer?",
-		role = ROLE_PAI,
+		role = ROLE_BORER,
 		check_jobban = FALSE,
 		poll_time = 10 SECONDS,
 		ignore_category = POLL_IGNORE_CORTICAL_BORER,

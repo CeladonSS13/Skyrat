@@ -55,7 +55,7 @@ export type Species = {
 
   enabled_features: string[];
 
-  veteran_only: boolean; // NOVA EDIT - Veteran quirks
+  nova_stars_only: boolean; // NOVA EDIT - Nova star quirks
 
   perks: {
     positive: Perk[];
@@ -84,7 +84,7 @@ export type Job = {
   description: string;
   department: string;
   // NOVA EDIT
-  veteran?: boolean;
+  nova_star?: boolean;
   alt_titles?: string[];
   // NOVA EDIT END
 };
@@ -96,8 +96,8 @@ export type Quirk = {
   value: number;
   customizable: boolean;
   customization_options?: string[];
-  veteran_only: boolean; // NOVA EDIT ADDITION - Veteran quirks
-  // SS1984 REMOVAL OF ERP QUIRK
+  nova_stars_only: boolean; // NOVA EDIT ADDITION - Nova star quirks
+  // SS1984 REMOVAL erp_quirk: boolean; // NOVA EDIT ADDITION - Purple ERP quirks
 };
 
 // NOVA EDIT START
@@ -184,8 +184,8 @@ export type PreferencesMenuData = {
   preview_options: string[]; // NOVA EDIT ADDITION
   preview_selection: string; // NOVA EDIT ADDITION
 
-  is_veteran: BooleanLike; // NOVA EDIT - Veteran status
-  // SS1984 REMOVAL OF ERP PREFS
+  is_nova_star: BooleanLike; // NOVA EDIT - Star status
+  // SS1984 REMOVAL erp_pref: BooleanLike; // NOVA EDIT ADDITION
 
   character_preferences: {
     clothing: Record<string, string>;
@@ -200,6 +200,7 @@ export type PreferencesMenuData = {
     manually_rendered_features: Record<string, string>;
 
     names: Record<string, string>;
+    vocals: Record<string, string>; // NOVA EDIT ADDITION
 
     misc: {
       gender: Gender;

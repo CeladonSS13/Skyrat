@@ -151,7 +151,7 @@
 		/obj/item/reagent_containers/cup/glass/bottle/champagne = 10
 	)
 
-	veteran_only = FALSE //ss1984 edit original TRUE
+	nova_stars_only = FALSE //ss1984 edit original TRUE
 	job_flags = STATION_JOB_FLAGS | JOB_BOLD_SELECT_TEXT | JOB_CANNOT_OPEN_SLOTS
 
 /datum/id_trim/job/nanotrasen_consultant

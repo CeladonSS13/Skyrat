@@ -1,0 +1,47 @@
+name: SS1984 Compile
+on:
+  - pull_request_target
+jobs:
+  compile:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+
+    steps:
+    - uses: actions/checkout@v4
+      with: # to make it work on pull requests
+        ref: ${{github.event.pull_request.head.ref}}
+        repository: ${{github.event.pull_request.head.repo.full_name}}
+    - name: Setup part 1 (Bun)
+      uses: ./.github/actions/setup_bun
+    - name: Setup part 2 (.NET SDK)
+      uses: actions/setup-dotnet@v4.2.0
+      with:
+        dotnet-version: 9.x
+    - name: Setup part 3 (Install OpenDream)
+      uses: robinraju/release-downloader@v1.12
+      with:
+        repository: "OpenDreamProject/OpenDream"
+        tag: "latest"
+        fileName: "DMCompiler_linux-x64.tar.gz"
+        extract: true
+    - name: Setup part 4 (Install Tools)
+      run: |
+        pip3 install setuptools
+        tools/bootstrap/python -c ''
+    - name: Setup part 5 (Install BYOND)
+      run: tools/ci/install_byond.sh STABLE
+    - name: Setup part 6 (Install Dreamluau)
+      run: tools/ci/install_dreamluau.sh
+    - name: Setup part 7 (Install Rust)
+      run: tools/ci/install_rust_g.sh
+    - name: Setup part 8 (Give Linters A Go)
+      id: linter-setup
+      run: ":"
+    - name: Compile with OpenDream
+      if: steps.linter-setup.conclusion == 'success' && !cancelled()
+      run: ./DMCompiler_linux-x64/DMCompiler tgstation.dme --suppress-unimplemented --version=516.1662 --define=CIBUILDING | bash tools/ci/annotate_od.sh
+    - name: Compile with DM
+      if: steps.linter-setup.conclusion == 'success' && !cancelled()
+      run: |
+        source $HOME/BYOND/byond/bin/byondsetup
+        tools/ci/dm.sh -DCIBUILDING tgstation.dme

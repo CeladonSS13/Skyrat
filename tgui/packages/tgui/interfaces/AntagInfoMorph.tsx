@@ -29,17 +29,17 @@ export const AntagInfoMorph = (props) => {
                 the object in question will also work.
               </span>{' '}
               <span style={badstyle}>
-                &ensp;This process will alert any nearby observers.
+                {'\u2002'}This process will alert any nearby observers.
               </span>{' '}
               While morphed, you move faster, but are unable to attack creatures
               or eat anything. In addition,
               <span style={badstyle}>
-                &ensp;anyone within three tiles will note an uncanny wrongness
+                {'\u2002'}anyone within three tiles will note an uncanny wrongness
                 if examining you.
               </span>{' '}
               You can attack any item or dead creature to consume it -
               <span style={goodstyle}>
-                &ensp;corpses will restore your health.
+                {'\u2002'}corpses will restore your health.
               </span>{' '}
               Finally, you can restore yourself to your original form while
               morphed by{' '}

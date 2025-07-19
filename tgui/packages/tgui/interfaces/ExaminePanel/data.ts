@@ -23,5 +23,5 @@ export type ExaminePanelData = {
   // };
   // SS1984 REMOVAL END
   // Misc
-  veteran_status: boolean;
+  nova_star_status: boolean;
 };

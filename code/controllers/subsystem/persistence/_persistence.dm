@@ -108,25 +108,27 @@ SUBSYSTEM_DEF(persistence)
 
 /// Loads up the amount of times maps appeared to alter their appearance in voting and rotation.
 /datum/controller/subsystem/persistence/proc/load_recent_maps()
-	var/map_sav = FILE_RECENT_MAPS
-	if(!fexists(FILE_RECENT_MAPS))
-		return
-	var/list/json = json_decode(file2text(map_sav))
-	if(!json)
-		return
-	saved_maps = json["data"]
+	// SS1984 REMOVAL START
+	// var/map_sav = FILE_RECENT_MAPS
+	// if(!fexists(FILE_RECENT_MAPS))
+	// 	return
+	// var/list/json = json_decode(file2text(map_sav))
+	// if(!json)
+	// 	return
+	// saved_maps = json["data"]
 
-	//Convert the mapping data to a shared blocking list, saves us doing this in several places later.
-	for(var/map in config.maplist)
-		var/datum/map_config/VM = config.maplist[map]
-		var/run = 0
-		if(VM.map_name == SSmapping.current_map.map_name)
-			run++
-		for(var/name in SSpersistence.saved_maps)
-			if(VM.map_name == name)
-				run++
-		if(run >= 2) //If run twice in the last KEEP_ROUNDS_MAP + 1 (including current) rounds, disable map for voting and rotation.
-			blocked_maps += VM.map_name
+	// //Convert the mapping data to a shared blocking list, saves us doing this in several places later.
+	// for(var/map in config.maplist)
+	// 	var/datum/map_config/VM = config.maplist[map]
+	// 	var/run = 0
+	// 	if(VM.map_name == SSmapping.current_map.map_name)
+	// 		run++
+	// 	for(var/name in SSpersistence.saved_maps)
+	// 		if(VM.map_name == name)
+	// 			run++
+	// 	if(run >= 2) //If run twice in the last KEEP_ROUNDS_MAP + 1 (including current) rounds, disable map for voting and rotation.
+	// 		blocked_maps += VM.map_name
+	// SS1984 REMOVAL END
 
 ///Updates the list of the most recent maps.
 /datum/controller/subsystem/persistence/proc/collect_maps()

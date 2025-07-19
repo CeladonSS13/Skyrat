@@ -668,11 +668,11 @@
 /datum/aas_config_entry/medical_cryo_announcements
 	name = "Medical Alert: Cryogenics Reports"
 	announcement_lines_map = list(
-		"Autoejecting" = "Auto ejecting patient now.",
-		"Deceased" = "Cryogenics report: Patient is deceased. %AUTOEJECTING",
-		"Fully Recovered" = "Cryogenics report: Patient fully restored. %AUTOEJECTING",
-		"Insufficient Gas" = "Cryogenics report: Insufficient cryogenic gas, shutting down. %AUTOEJECTING",
-		"Wound Treatment" = "Cryogenics report: Patient vitals fully recovered, continuing automated wound treatment."
+		"Autoejecting" = "Автоматическая выгрузка пациента.",
+		"Deceased" = "Отчет криогеники: Пациент умер. %AUTOEJECTING",
+		"Fully Recovered" = "Отчет криогеники: Пациент полностью выздоровел. %AUTOEJECTING",
+		"Insufficient Gas" = "Отчет криогеники: недостаточно криогенного газа, отключение. %AUTOEJECTING",
+		"Wound Treatment" = "Отчет криогенной службы: жизненные показатели пациента полностью восстановились, продолжается автоматическая обработка ран."
 	)
 	vars_and_tooltips_map = list(
 		"AUTOEJECTING" = "will be replaced with Autoejecting line, if system reports it's necessity"

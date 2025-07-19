@@ -10,19 +10,19 @@
 	antagonist_restricted = TRUE
 
 /datum/job/head_of_personnel
-	antagonist_restricted = TRUE
+	antagonist_restricted = FALSE // SS1984 EDIT, original(for nova): TRUE
 
 /datum/job/chief_engineer
-	antagonist_restricted = TRUE
+	antagonist_restricted = FALSE // SS1984 EDIT, original(for nova): TRUE
 
 /datum/job/chief_medical_officer
-	antagonist_restricted = TRUE
+	antagonist_restricted = FALSE // SS1984 EDIT, original(for nova): TRUE
 
 /datum/job/research_director
-	antagonist_restricted = TRUE
+	antagonist_restricted = FALSE // SS1984 EDIT, original(for nova): TRUE
 
 /datum/job/quartermaster
-	antagonist_restricted = TRUE
+	antagonist_restricted = FALSE // SS1984 EDIT, original(for nova): TRUE
 
 /datum/job/blueshield
 	antagonist_restricted = TRUE

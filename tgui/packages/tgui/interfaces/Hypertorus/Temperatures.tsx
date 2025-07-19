@@ -65,7 +65,7 @@ const BarLabel = (props) => {
           <Box align="center" color="red">
             Empty
           </Box>
-          <Box className="hypertorus__unselectable">&nbsp;</Box>
+          <Box className="hypertorus__unselectable">{'\u00A0'}</Box>
         </>
       )}
     </>

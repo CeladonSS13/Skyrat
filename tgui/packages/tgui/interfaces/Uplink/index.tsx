@@ -236,7 +236,7 @@ export class Uplink extends Component<{}, UplinkState> {
             {item.cost_override_string || `${item.cost} TC`}
             {has_progression ? (
               <>
-                ,&nbsp;
+                ,{'\u00A0'}
                 <Box as="span">
                   {calculateDangerLevel(item.progression_minimum, true)}
                 </Box>
@@ -278,7 +278,7 @@ export class Uplink extends Component<{}, UplinkState> {
                           <Box>
                             <Box>
                               <Box>Your current level of threat.</Box> Threat
-                              determines what items you can purchase.&nbsp;
+                              determines what items you can purchase.{'\u00A0'}
                               <Box mt={0.5}>
                                 {/* A minute in deciseconds */}
                                 Threat passively increases by{' '}
@@ -287,7 +287,7 @@ export class Uplink extends Component<{}, UplinkState> {
                                     current_progression_scaling,
                                   )}
                                 </Box>
-                                &nbsp;every minute
+                                {'\u00A0'}every minute
                               </Box>
                               {dangerLevelsTooltip}
                             </Box>

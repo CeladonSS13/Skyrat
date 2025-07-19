@@ -1,7 +1,7 @@
 /datum/aas_config_entry/bitrunning_ghost_mark
 	name = "Bitrunning Alert: New Digital Message"
 	announcement_lines_map = list(
-		"Message" = "You have: a new message: from %NAME: %MESSAGE")
+		"Message" = "У вас есть новое сообщение: от %NAME: %MESSAGE")
 	vars_and_tooltips_map = list(
 		"NAME" = "will be replaced with their username.",
 		"MESSAGE" = "with the content of their message."

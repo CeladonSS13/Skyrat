@@ -47,7 +47,7 @@
 	///Typecast of an inserted, scanned ID card inside the console, as bounties are held within the ID card.
 	var/obj/item/card/id/inserted_scan_id
 
-/obj/machinery/computer/piratepad_control/civilian/attackby(obj/item/I, mob/living/user, list/modifiers)
+/obj/machinery/computer/piratepad_control/civilian/attackby(obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(isidcard(I))
 		if(id_insert(user, I, inserted_scan_id))
 			inserted_scan_id = I
@@ -433,7 +433,7 @@
 /datum/aas_config_entry/bounty_cube_created
 	name = "Cargo Alert: Bounty Cube Created"
 	announcement_lines_map = list(
-		"Message" = "A %COST cr bounty cube has been created in %LOCATION by %PERSON (%RANK). Speedy delivery bonus lost in %BONUSTIME.")
+		"Message" = "Кубик с наградой %COST кредитов создан в %LOCATION пользователем %PERSON (%RANK). Нужно его доставить за %BONUSTIME.")
 	vars_and_tooltips_map = list(
 		"LOCATION" = "will be replaced with the location of the cube.",
 		"PERSON" = "with who created the cube.",
@@ -445,8 +445,8 @@
 /datum/aas_config_entry/bounty_cube_unsent
 	name = "Cargo Alert: Bounty Cube Unsent"
 	announcement_lines_map = list(
-		"Regular Message" = "The %COST cr bounty cube is unsent in %LOCATION.",
-		"When Bonus Lost" = "The %COST cr bounty cube is unsent in %LOCATION. Speedy delivery bonus of %BONUSLOST credits lost.")
+		"Regular Message" = "Кубик с наградой %COST кредитов не отправлен в %LOCATION",
+		"When Bonus Lost" = "Кубик с наградой %COST кредитов не отправлен в %LOCATION. Бонус за быструю доставку в размере %BONUSLOST потерян.")
 	vars_and_tooltips_map = list(
 		"LOCATION" = "will be replaced with the location of the cube.",
 		"COST" = "with the cost of the cube.",

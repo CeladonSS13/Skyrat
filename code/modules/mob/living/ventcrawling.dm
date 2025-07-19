@@ -25,7 +25,7 @@
 		return
 	if(!HAS_TRAIT(src, TRAIT_VENTCRAWLER_NUDE) && !HAS_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS))
 		return
-	if(stat)
+	if(stat > SOFT_CRIT) // SS1984 EDIT
 		if(provide_feedback)
 			to_chat(src, span_warning("You must be conscious to do this!"))
 		return

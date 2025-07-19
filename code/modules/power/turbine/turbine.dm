@@ -699,7 +699,7 @@
 /datum/aas_config_entry/engineering_turbine_failure
 	name = "Engineering Alert: Turbine Failure"
 	announcement_lines_map = list(
-		"Message" = "Warning, turbine at %LOCATION taking damage, current integrity at %INTEGRITY%!",
+		"Message" = "Внимание, турбина в %LOCATION повреждена, текущая целостность %INTEGRITY%!",
 	)
 	vars_and_tooltips_map = list(
 		"LOCATION" = "will be replaced with location of the turbine.",

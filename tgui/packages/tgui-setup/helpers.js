@@ -394,8 +394,13 @@ window.onerror = function (msg, url, line, col, error) {
   }
   // Augment the stack
   stack = window.__augmentStack__(stack, error);
+  // SS1984 ADDITION START
+  var cannotIgnore = true
+  if (msg !== null && typeof msg === 'string' && msg.includes("ResizeObserver loop completed with undelivered notifications"))
+    cannotIgnore = false // so we ignore resizeobserver error and not throwing BSOD...
+  // SS1984 ADDITION END
   // Print error to the page
-  if (Byond.strictMode) {
+  if (Byond.strictMode && cannotIgnore) { // SS1984 EDIT
     var errorRoot = document.getElementById('FatalError');
     var errorStack = document.getElementById('FatalError__stack');
     if (errorRoot) {
@@ -434,7 +439,7 @@ window.onerror = function (msg, url, line, col, error) {
     });
   }
   // Short-circuit further updates
-  if (Byond.strictMode) {
+  if (Byond.strictMode && cannotIgnore) { // SS1984 EDIT
     window.update = function () {};
     window.update.queue = [];
   }

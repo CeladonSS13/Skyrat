@@ -14,6 +14,8 @@
 	VAR_PRIVATE/datum/weakref/beam_weakref
 	/// We need to track who was the ORIGINAL firer of the projectile specifically to ensure deflects work correctly
 	VAR_PRIVATE/datum/weakref/initial_firer_weakref
+	VAR_PROTECTED/apply_tase_effect = TRUE // SS1984 ADDITION, should tase status effect even be applied?
+	VAR_PROTECTED/show_beam_effect = TRUE // SS1984 ADDITION, should beam be shown once fired?
 
 /obj/projectile/energy/electrode/is_hostile_projectile()
 	return TRUE
@@ -24,13 +26,14 @@
 
 /obj/projectile/energy/electrode/fire(fire_angle, atom/direct_target)
 	if(firer)
-		beam_weakref = WEAKREF(firer.Beam(
-			BeamTarget = src,
-			icon = 'icons/effects/beam.dmi',
-			icon_state = "electrodes_nozap",
-			maxdistance = maximum_range + 1,
-			beam_type = /obj/effect/ebeam/electrodes_nozap,
-		))
+		if (show_beam_effect)
+			beam_weakref = WEAKREF(firer.Beam(
+				BeamTarget = src,
+				icon = 'icons/effects/beam.dmi',
+				icon_state = "electrodes_nozap",
+				maxdistance = maximum_range + 1,
+				beam_type = /obj/effect/ebeam/electrodes_nozap,
+			))
 		initial_firer_weakref = WEAKREF(firer)
 	return ..()
 
@@ -50,15 +53,16 @@
 
 	do_sparks(1, TRUE, src)
 	do_sparks(1, TRUE, fired_from)
-	target.apply_status_effect(
-		/*type = *//datum/status_effect/tased,
-		/*taser = */fired_from,
-		/*firer = */initial_firer_weakref?.resolve() || firer,
-		/*tase_stamina = */tase_stamina,
-		/*energy_drain = */STANDARD_CELL_CHARGE * 0.05,
-		/*electrode_name = */"\the [src]\s",
-		/*tase_range = */maximum_range + 1,
-	)
+	if (apply_tase_effect)
+		target.apply_status_effect(
+			/*type = *//datum/status_effect/tased,
+			/*taser = */fired_from,
+			/*firer = */initial_firer_weakref?.resolve() || firer,
+			/*tase_stamina = */tase_stamina,
+			/*energy_drain = */STANDARD_CELL_CHARGE * 0.05,
+			/*electrode_name = */"\the [src]\s",
+			/*tase_range = */maximum_range + 1,
+		)
 
 /obj/projectile/energy/electrode/on_range() //to ensure the bolt sparks when it reaches the end of its range if it didn't hit a target yet
 	do_sparks(1, TRUE, src)

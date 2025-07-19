@@ -31,6 +31,7 @@ GLOBAL_LIST_INIT(exp_specialmap, list(
 		ROLE_BLACK_MARKET_DEALER,
 		ROLE_DS2,
 		ROLE_FREIGHTER_CREW,
+		ROLE_FREIGHTER_COMMAND, // ss1984 edit- freighter command job
 		ROLE_GHOST_CAFE,
 		ROLE_PORT_TARKON,
 		//NOVA EDIT Start - End Custom Ghost roles

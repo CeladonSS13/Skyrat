@@ -208,7 +208,7 @@ const DepartmentCatalog = () => {
                   </Stack.Item>
                   <Stack.Item>
                     <CooldownEstimate cost={pack.cost} />
-                    &ensp;
+                    {'\u2002'}
                     <Button
                       onClick={() =>
                         act('order', {

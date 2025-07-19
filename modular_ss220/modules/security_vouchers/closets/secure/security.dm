@@ -1,0 +1,5 @@
+/obj/structure/closet/secure_closet/warden/PopulateContents()
+	..()
+	new /obj/item/security_voucher(src)
+	new /obj/item/security_voucher(src)
+	new /obj/item/security_voucher(src)

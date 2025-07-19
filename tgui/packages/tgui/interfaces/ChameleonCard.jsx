@@ -62,6 +62,13 @@ export const ChameleonCard = (props) => {
               access_wildcard: wildcard,
             })
           }
+          // SS1984 ADDITION START
+          extraActions={(action_name, accesses_list) =>
+            act(action_name, {
+              accesses: accesses_list,
+            })
+          }
+          // SS1984 ADDITION END
         />
       </Window.Content>
     </Window>

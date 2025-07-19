@@ -147,7 +147,7 @@
 	///How much wounding power it has
 	var/wound_bonus = CANT_WOUND
 	///How much bare wounding power it has
-	var/bare_wound_bonus = 0
+	var/exposed_wound_bonus = 0
 	///If the attacks from this are sharp
 	var/sharpness = NONE
 	///Generic flags
@@ -396,7 +396,7 @@
 			return FALSE
 	if (isliving(the_target))
 		var/mob/living/L = the_target
-		if(L.stat != CONSCIOUS)
+		if(L.stat > SOFT_CRIT) // SS1984 EDIT
 			return FALSE
 	if (ismecha(the_target))
 		var/obj/vehicle/sealed/mecha/M = the_target

@@ -14,6 +14,7 @@
 
 	var/static/list/allowed_devices = typecacheof(list(
 		/obj/item/gun/energy,
+		/obj/item/gun/microfusion, // ss1984 edit
 		/obj/item/melee/baton/security,
 		/obj/item/ammo_box/magazine/recharge,
 		/obj/item/modular_computer,
@@ -83,7 +84,7 @@
 		update_appearance()
 	return ..()
 
-/obj/machinery/recharger/attackby(obj/item/attacking_item, mob/user, list/modifiers)
+/obj/machinery/recharger/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(!is_type_in_typecache(attacking_item, allowed_devices))
 		return ..()
 

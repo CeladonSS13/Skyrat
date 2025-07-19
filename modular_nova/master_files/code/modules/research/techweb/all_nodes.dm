@@ -52,6 +52,7 @@
 		"synth_liver",
 		"synth_lungs",
 		"synth_stomach",
+		"synth_charger",
 		"synth_ears",
 		"synth_heart",
 	)
@@ -136,6 +137,7 @@
 /datum/techweb_node/consoles/New()
 	design_ids += list(
 		"nif_service_tools",
+		"idcard_guest",
 	)
 	return ..()
 
@@ -344,5 +346,13 @@
 /datum/techweb_node/engineering/New()
 	design_ids += list(
 		"rad_collector",
+	)
+	return ..()
+
+/////////////////////////Applied Bluespace /////////////////////////
+
+/datum/techweb_node/applied_bluespace/New()
+	design_ids += list(
+		"plantbag_holding",
 	)
 	return ..()

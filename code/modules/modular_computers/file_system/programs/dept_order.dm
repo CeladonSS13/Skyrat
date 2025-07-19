@@ -268,8 +268,8 @@ GLOBAL_VAR(department_cd_override)
 /datum/aas_config_entry/department_orders
 	name = "Departmental Order Announcement"
 	announcement_lines_map = list(
-		"Order Placed" = "A department order has been placed by %PERSON for %ORDER.",
-		"Cooldown Reset" = "Department order cooldown has expired! A new order may now be placed!",
+		"Order Placed" = "Заказ отдела был размещен %PERSON для %ORDER.",
+		"Cooldown Reset" = "Срок действия заказа отдела истек! Теперь можно разместить новый заказ!",
 	)
 	vars_and_tooltips_map = list(
 		"ORDER" = "will be replaced with the package name",
@@ -279,7 +279,7 @@ GLOBAL_VAR(department_cd_override)
 /datum/aas_config_entry/department_orders_cargo
 	name = "Cargo Alert: New Departmental Order"
 	announcement_lines_map = list(
-		"Message" = "New %DEPARTMENT departmental order has been placed"
+		"Message" = "Размещен новый заказ отдела %DEPARTMENT"
 	)
 	vars_and_tooltips_map = list(
 		"DEPARTMENT" = "will be replaced with orderer's department."

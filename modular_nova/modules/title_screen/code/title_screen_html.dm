@@ -115,7 +115,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			<a class="menu_button" href='byond://?src=[text_ref(src)];game_options=1'>GAME OPTIONS</a>
 			<a id="be_antag" class="menu_button" href='byond://?src=[text_ref(src)];toggle_antag=1'>[client.prefs.read_preference(/datum/preference/toggle/be_antag) ? "<span class='checked'>☑</span> BE ANTAGONIST" : "<span class='unchecked'>☒</span> BE ANTAGONIST"]</a>
 			<hr>
-			<a class="menu_button" href='byond://?src=[text_ref(src)];server_swap=1'>SWAP SERVERS</a>
+			<!-- SS1984 REMOVAL <a class="menu_button" href='byond://?src=[text_ref(src)];server_swap=1'>SWAP SERVERS</a> -->
 		"}
 
 		if(!is_guest_key(src.key))

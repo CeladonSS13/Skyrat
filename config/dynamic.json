@@ -5,23 +5,24 @@
 		"latejoin_delay_max": 9000,
 		"threat_curve_centre": 1,
 		"threat_curve_width": 3,
-		"roundstart_split_curve_centre": 2,
+		"roundstart_split_curve_centre": 1,
 		"roundstart_split_curve_width": 1,
 		"midround_lower_bound": 3000,
 		"midround_light_upper_bound": 16000,
 		"midround_heavy_lower_bound": 48000,
 		"midround_upper_bound": 63000,
 		"midround_roll_distance": 3000,
-		"low_pop_maximum_threat": 50,
+		"low_pop_maximum_threat": 38,
 		"random_event_hijack_minimum": 8000,
 		"random_event_hijack_maximum": 18000
 	},
 	"Roundstart": {
 		"Traitors": {
-			"cost": 8,
-			"scaling_cost": 5,
+			"cost": 12,
+			"scaling_cost": 15,
 			"weight": 5,
 			"required_candidates": 1,
+			"minimum_players": 5,
 			"minimum_required_age": 0,
 			"requirements": [
 				10,
@@ -34,6 +35,18 @@
 				10,
 				10,
 				10
+			],
+			"required_enemies": [
+				1,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
 			],
 			"antag_cap": {
 				"denominator": 10
@@ -56,11 +69,12 @@
 		},
 
 		"Blood Brothers": {
-			"cost": 8,
-			"scaling_cost": 5,
+			"cost": 10,
+			"scaling_cost": 20,
 			"weight": 1,
 			"required_candidates": 2,
 			"minimum_required_age": 0,
+			"minimum_players": 8,
 			"requirements": [
 				10,
 				10,
@@ -73,9 +87,21 @@
 				10,
 				10
 			],
+			"required_enemies": [
+				2,
+				1,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
 			"antag_cap": {
 				"denominator": 30,
-				"offset": 2
+				"offset": 1
 			},
 			"protected_roles": [
 				"Prisoner",
@@ -95,10 +121,11 @@
 		},
 
 		"Changelings": {
-			"cost": 16,
-			"scaling_cost": 8,
+			"cost": 20,
+			"scaling_cost": 20,
 			"weight": 3,
 			"required_candidates": 1,
+			"minimum_players": 15,
 			"minimum_required_age": 0,
 			"requirements": [
 				100,
@@ -111,6 +138,18 @@
 				10,
 				10,
 				10
+			],
+			"required_enemies": [
+				3,
+				2,
+				1,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
 			],
 			"antag_cap": {
 				"denominator": 15
@@ -129,15 +168,19 @@
 			"restricted_roles": [
 				"Cyborg",
 				"AI"
+			],
+			"restricted_species": [
+				"/datum/species/synthetic"
 			]
 		},
 
 		"Heretics": {
-			"cost": 16,
-			"scaling_cost": 8,
+			"cost": 20,
+			"scaling_cost": 15,
 			"weight": 4,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
+			"minimum_players": 10,
 			"requirements": [
 				100,
 				40,
@@ -149,6 +192,18 @@
 				10,
 				10,
 				10
+			],
+			"required_enemies": [
+				3,
+				2,
+				1,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
 			],
 			"antag_cap": {
 				"denominator": 15
@@ -172,7 +227,7 @@
 
 		"Wizard": {
 			"cost": 25,
-			"scaling_cost": 15,
+			"scaling_cost": 20,
 			"weight": 3,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
@@ -188,6 +243,18 @@
 				10,
 				10
 			],
+			"required_enemies": [
+				3,
+				3,
+				2,
+				1,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
 			"antag_cap": {
 				"denominator": 24
 			},
@@ -200,11 +267,12 @@
 		},
 
 		"Blood Cult": {
-			"cost": 20,
-			"scaling_cost": 10,
+			"cost": 30,
+			"scaling_cost": 101,
 			"weight": 4,
 			"required_candidates": 4,
 			"minimum_required_age": 0,
+			"minimum_players": 25,
 			"requirements": [
 				100,
 				90,
@@ -216,6 +284,18 @@
 				10,
 				10,
 				10
+			],
+			"required_enemies": [
+				5,
+				4,
+				3,
+				2,
+				1,
+				0,
+				0,
+				0,
+				0,
+				0
 			],
 			"antag_cap": {
 				"denominator": 20,
@@ -239,11 +319,12 @@
 		},
 
 		"Nuclear Emergency": {
-			"cost": 60,
-			"scaling_cost": 10,
+			"cost": 50,
+			"scaling_cost": 101,
 			"weight": 3,
 			"required_candidates": 3,
 			"minimum_required_age": 0,
+			"minimum_players": 30,
 			"requirements": [
 				100,
 				90,
@@ -255,6 +336,18 @@
 				30,
 				20,
 				10
+			],
+			"required_enemies": [
+				3,
+				3,
+				3,
+				2,
+				1,
+				0,
+				0,
+				0,
+				0,
+				0
 			],
 			"antag_cap": {
 				"denominator": 15,
@@ -270,10 +363,11 @@
 
 		"Revolution": {
 			"cost": 20,
-			"scaling_cost": 15,
+			"scaling_cost": 101,
 			"weight": 3,
 			"required_candidates": 2,
 			"minimum_required_age": 0,
+			"minimum_players": 20,
 			"requirements": [
 				60,
 				50,
@@ -286,10 +380,19 @@
 				10,
 				10
 			],
-			"antag_cap": {
-				"denominator": 15,
-				"offset": 1
-			},
+			"required_enemies": [
+				3,
+				3,
+				3,
+				2,
+				1,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"antag_cap": 3,
 			"protected_roles": [
 				"Prisoner",
 				"Blueshield",
@@ -314,7 +417,7 @@
 
 		"Malfunctioning AI": {
 			"cost": 30,
-			"scaling_cost": 99,
+			"scaling_cost": 101,
 			"weight": 1,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
@@ -329,6 +432,18 @@
 				10,
 				10,
 				10
+			],
+			"required_enemies": [
+				3,
+				3,
+				2,
+				1,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
 			],
 			"antag_cap": {
 				"denominator": 99
@@ -385,11 +500,12 @@
 		},
 
 		"Spies": {
-			"cost": 8,
-			"scaling_cost": 5,
+			"cost": 12,
+			"scaling_cost": 12,
 			"weight": 2,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
+			"minimum_players": 5,
 			"requirements": [
 				10,
 				10,
@@ -401,6 +517,18 @@
 				10,
 				10,
 				10
+			],
+			"required_enemies": [
+				1,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
 			],
 			"antag_cap": {
 				"denominator": 10
@@ -420,28 +548,20 @@
 				"Cyborg",
 				"AI"
 			]
+		},
+		"Quiet": {
+			"cost": 0.000001
 		}
 	},
 
 	"Midround": {
 		"Syndicate Sleeper Agent": {
 			"cost": 20,
-			"scaling_cost": 5,
+			"scaling_cost": 10,
 			"weight": 5,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
-			"requirements": [
-				10,
-				10,
-				10,
-				10,
-				10,
-				10,
-				10,
-				10,
-				10,
-				10
-			],
+			"requirements": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
 			"antag_cap": {
 				"denominator": 24
 			},
@@ -595,7 +715,7 @@
 
 		"Clown Operatives": {
 			"cost": 40,
-			"scaling_cost": 10,
+			"scaling_cost": 101,
 			"weight": 2,
 			"required_candidates": 3,
 			"minimum_required_age": 0,
@@ -684,7 +804,7 @@
 
 		"Alien Infestation": {
 			"cost": 40,
-			"scaling_cost": 10,
+			"scaling_cost": 20,
 			"weight": 4,
 			"minimum_players": 20,
 			"required_candidates": 1,
@@ -719,6 +839,7 @@
 			"weight": 1,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
+			"minimum_players": 20,
 			"requirements": [
 				100,
 				80,
@@ -748,6 +869,7 @@
 			"weight": 3,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
+			"minimum_players": 25,
 			"requirements": [
 				100,
 				100,
@@ -777,6 +899,7 @@
 			"weight": 2,
 			"required_candidates": 2,
 			"minimum_required_age": 0,
+			"minimum_players": 15,
 			"requirements": [
 				90,
 				50,
@@ -807,6 +930,7 @@
 			"weight": 3,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
+			"minimum_players": 20,
 			"requirements": [
 				100,
 				100,
@@ -836,6 +960,7 @@
 			"weight": 3,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
+			"minimum_players": 5,
 			"requirements": [
 				40,
 				20,
@@ -939,7 +1064,7 @@
 			],
 			"antag_cap": {
 				"denominator": 15,
-				"offset": 1
+				"offset": 2
 			},
 			"protected_roles": [
 
@@ -970,7 +1095,7 @@
 			],
 			"antag_cap": {
 				"denominator": 15,
-				"offset": 1
+				"offset": 3
 			},
 			"protected_roles": [
 
@@ -1045,6 +1170,7 @@
 			"weight": 2,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
+			"minimum_players": 5,
 			"requirements": [
 				10,
 				10,
@@ -1190,7 +1316,7 @@
 	"Latejoin": {
 		"Syndicate Infiltrator": {
 			"cost": 12,
-			"scaling_cost": 6,
+			"scaling_cost": 10,
 			"weight": 4,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
@@ -1205,6 +1331,18 @@
 				10,
 				10,
 				10
+			],
+			"required_enemies": [
+				1,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
 			],
 			"antag_cap": {
 				"denominator": 12
@@ -1244,6 +1382,18 @@
 				10,
 				10
 			],
+			"required_enemies": [
+				3,
+				3,
+				2,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
 			"antag_cap": {
 				"denominator": 15
 			},
@@ -1271,7 +1421,7 @@
 
 		"Heretic Smuggler": {
 			"cost": 16,
-			"scaling_cost": 8,
+			"scaling_cost": 12,
 			"weight": 3,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
@@ -1286,6 +1436,18 @@
 				10,
 				10,
 				10
+			],
+			"required_enemies": [
+				2,
+				2,
+				1,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
 			],
 			"antag_cap": {
 				"denominator": 15
@@ -1325,6 +1487,18 @@
 				10,
 				10
 			],
+			"required_enemies": [
+				3,
+				3,
+				2,
+				1,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
 			"antag_cap": {
 				"denominator": 15
 			},
@@ -1342,6 +1516,9 @@
 			"restricted_roles": [
 				"Cyborg",
 				"AI"
+			],
+			"restricted_species": [
+				"/datum/species/synthetic"
 			]
 		}
 	}

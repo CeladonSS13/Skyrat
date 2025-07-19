@@ -1,5 +1,5 @@
 /// Does 4 spaces. Used as a makeshift tabulator.
-#define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"
+#define FOURSPACES "{'\u00A0'}{'\u00A0'}{'\u00A0'}{'\u00A0'}"
 
 /// Standard maptext
 /// Prepares a text to be used for maptext. Use this so it doesn't look hideous.

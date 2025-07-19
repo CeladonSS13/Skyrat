@@ -340,7 +340,8 @@ GLOBAL_LIST_EMPTY(shuttle_frames_by_turf)
 		else if(areas)
 			areas[custom_area] = area_turfs - turfs_not_in_frame
 		turfs -= area_turfs
-	while(length(turfs))
+	var/counter = 0 // SS1984 ADDITION
+	while(length(turfs) && counter < 1000) // SS1984 EDIT, ORIGINAL: while(length(turfs))
 		var/turf/checked_turf = pick(turfs)
 		var/area/checked_area = checked_turf.loc
 		var/list/area_turfs = checked_area.get_turfs_by_zlevel(z)
@@ -353,6 +354,12 @@ GLOBAL_LIST_EMPTY(shuttle_frames_by_turf)
 			if(turfs[get_turf(apc)] || (wallmount_comp && turfs[wallmount_comp.hanging_wall_turf]))
 				. |= CONTAINS_APC_OF_NON_CUSTOM_AREA
 		turfs -= area_turfs
+		counter++ // SS1984 ADDITION
+	// SS1984 ADDITION START
+	if (counter >= 1000)
+		message_admins("shuttle_area_check counter gone above [counter], loop was partially skipped, contact a coder if you can explain how it happened (someone building shuttle???)")
+		log_runtime("shuttle_area_check counter gone above [counter], processing stopped to prevent infinity loop. Further investigation highly advised, as part of loop was skipped anyway")
+	// SS1984 ADDITION END
 
 /proc/convert_areas_to_shuttle_areas(list/turfs, list/in_areas, list/out_areas, list/underlying_areas, area_type = /area/shuttle/custom)
 	for(var/area/area as anything in in_areas)

@@ -132,18 +132,18 @@ const FlavorSection = () => {
       <Stack vertical textAlign="center" fontSize="14px">
         <Stack.Item>
           <i>
-            Another day at a meaningless job. You feel a&nbsp;
+            Another day at a meaningless job. You feel a{'\u00A0'}
             <span style={hereticBlue}>shimmer</span>
-            &nbsp;around you, as a realization of something&nbsp;
+            {'\u00A0'}around you, as a realization of something{'\u00A0'}
             <span style={hereticRed}>strange</span>
-            &nbsp;in the air unfolds. You look inwards and discover something
+            {'\u00A0'}in the air unfolds. You look inwards and discover something
             that will change your life.
           </i>
         </Stack.Item>
         <Stack.Item>
           <b>
             The <span style={hereticPurple}>Gates of Mansus</span>
-            &nbsp;open up to your mind.
+            {'\u00A0'}open up to your mind.
           </b>
         </Stack.Item>
       </Stack>
@@ -156,39 +156,39 @@ const GuideSection = () => {
     <Stack.Item>
       <Stack vertical fontSize="12px">
         <Stack.Item>
-          - Find reality smashing&nbsp;
+          - Find reality smashing{'\u00A0'}
           <span style={hereticPurple}>influences</span>
-          &nbsp;around the station invisible to the normal eye and&nbsp;
-          <b>right click</b> on them to harvest them for&nbsp;
+          {'\u00A0'}around the station invisible to the normal eye and{'\u00A0'}
+          <b>right click</b> on them to harvest them for{'\u00A0'}
           <span style={hereticBlue}>knowledge points</span>. Tapping them makes
           them visible to all after a short time. Dreaming of Mansus may help to
           find them.
         </Stack.Item>
         <Stack.Item>
-          - Use your&nbsp;
+          - Use your{'\u00A0'}
           <span style={hereticRed}>Living Heart action</span>
-          &nbsp;to track down&nbsp;
+          {'\u00A0'}to track down{'\u00A0'}
           <span style={hereticRed}>sacrifice targets</span>, but be careful:
           Pulsing it will produce a heartbeat sound that nearby people may hear.
           This action is tied to your <b>heart</b> - if you lose it, you must
           complete a ritual to regain it.
         </Stack.Item>
         <Stack.Item>
-          - Draw a&nbsp;
+          - Draw a{'\u00A0'}
           <span style={hereticGreen}>transmutation rune</span> by using a
-          drawing tool (a pen or crayon) on the floor while having&nbsp;
+          drawing tool (a pen or crayon) on the floor while having{'\u00A0'}
           <span style={hereticGreen}>Mansus Grasp</span>
-          &nbsp;active in your other hand. This rune allows you to complete
+          {'\u00A0'}active in your other hand. This rune allows you to complete
           rituals and sacrifices.
         </Stack.Item>
         <Stack.Item>
           - Follow your <span style={hereticRed}>Living Heart</span> to find
-          your targets. Bring them back to a&nbsp;
+          your targets. Bring them back to a{'\u00A0'}
           <span style={hereticGreen}>transmutation rune</span> in critical or
-          worse condition to&nbsp;
-          <span style={hereticRed}>sacrifice</span> them for&nbsp;
+          worse condition to{'\u00A0'}
+          <span style={hereticRed}>sacrifice</span> them for{'\u00A0'}
           <span style={hereticBlue}>knowledge points</span>. The Mansus{' '}
-          <b>ONLY</b> accepts targets pointed to by the&nbsp;
+          <b>ONLY</b> accepts targets pointed to by the{'\u00A0'}
           <span style={hereticRed}>Living Heart</span>.
         </Stack.Item>
         <Stack.Item>
@@ -226,15 +226,15 @@ const InformationSection = (props) => {
           </Stack.Item>
         )}
         <Stack.Item>
-          You have <b>{charges || 0}</b>&nbsp;
+          You have <b>{charges || 0}</b>{'\u00A0'}
           <span style={hereticBlue}>
             knowledge point{charges !== 1 ? 's' : ''}
           </span>
           .
         </Stack.Item>
         <Stack.Item>
-          You have made a total of&nbsp;
-          <b>{total_sacrifices || 0}</b>&nbsp;
+          You have made a total of{'\u00A0'}
+          <b>{total_sacrifices || 0}</b>{'\u00A0'}
           <span style={hereticRed}>sacrifices</span>.
         </Stack.Item>
       </Stack>
@@ -342,7 +342,7 @@ const ResearchInfo = (props) => {
   return (
     <Stack vertical fill>
       <Stack.Item fontSize="20px" textAlign="center">
-        You have <b>{charges || 0}</b>&nbsp;
+        You have <b>{charges || 0}</b>{'\u00A0'}
         <span style={hereticBlue}>
           knowledge point{charges !== 1 ? 's' : ''}
         </span>{' '}

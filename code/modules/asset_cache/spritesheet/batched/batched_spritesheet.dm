@@ -165,6 +165,10 @@
 /datum/asset/spritesheet_batched/proc/realize_spritesheets(yield)
 	if(fully_generated)
 		return
+	// SS1984 ADDITION START, tbh could be made modular, but doing it for such thing if can place here without merge issues?
+	if (!name || name == "N/A") // some deleted erp stuff?
+		return
+	// SS1984 ADDITION END
 	if(!length(entries))
 		CRASH("Spritesheet [name] ([type]) is empty! What are you doing?")
 

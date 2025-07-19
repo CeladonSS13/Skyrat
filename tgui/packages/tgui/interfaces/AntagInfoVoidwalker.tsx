@@ -28,16 +28,16 @@ export const AntagInfoVoidwalker = (props) => {
                 </Stack.Item>
                 <Stack.Divider />
                 <Stack.Item textColor="label">
-                  <span style={tipstyle}>Survive:&ensp;</span>
+                  <span style={tipstyle}>Survive:{'\u2002'}</span>
                   You have unrivaled freedom. Remain in space and no one can
                   stop you. You can move through windows, so stay near them to
                   always have a way out.
                   <br />
-                  <span style={tipstyle}>Hunt:&ensp;</span>
+                  <span style={tipstyle}>Hunt:{'\u2002'}</span>
                   Pick unfair fights. Look for inattentive targets and strike at
                   them when they don&apos;t expect you.
                   <br />
-                  <span style={tipstyle}>Abduct:&ensp;</span>
+                  <span style={tipstyle}>Abduct:{'\u2002'}</span>
                   Your Unsettle ability stuns and drains your targets. Finish
                   them with your void window and use it to pop a window, drag
                   them into space and use an empty hand to kidnap them.

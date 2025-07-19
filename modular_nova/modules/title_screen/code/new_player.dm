@@ -22,11 +22,12 @@
 		play_lobby_button_sound()
 		make_me_an_observer()
 		return
-
-	if(href_list["server_swap"])
-		play_lobby_button_sound()
-		server_swap()
-		return
+	// SS1984 REMOVAL START
+	// if(href_list["server_swap"])
+	// 	play_lobby_button_sound()
+	// 	server_swap()
+	// 	return
+	// SS1984 REMOVAL END
 
 	if(href_list["view_manifest"])
 		play_lobby_button_sound()
@@ -67,8 +68,11 @@
 			if(!is_admin(client) && length_char(client?.prefs?.read_preference(/datum/preference/text/flavor_text)) < CONFIG_GET(number/flavor_text_character_requirement))
 				to_chat(src, span_notice("You need at least [CONFIG_GET(number/flavor_text_character_requirement)] characters of flavor text to ready up for the round. You have [length_char(client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
 				return
-
 		ready = !ready
+		if(ready)
+			SSstatpanels.add_job_estimation(src)
+		else
+			SSstatpanels.remove_job_estimation(src)
 		client << output(ready, "title_browser:toggle_ready")
 		return
 
@@ -145,27 +149,29 @@
 /mob/dead/new_player/proc/play_lobby_button_sound()
 	SEND_SOUND(src, sound('modular_nova/master_files/sound/effects/save.ogg'))
 
-/**
- * Allows the player to select a server to join from any loaded servers.
- */
-/mob/dead/new_player/proc/server_swap()
-	var/list/servers = CONFIG_GET(keyed_list/cross_server)
-	if(LAZYLEN(servers) == 1)
-		var/server_name = servers[1]
-		var/server_ip = servers[server_name]
-		var/confirm = tgui_alert(src, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", list("Send me there", "Stay here"))
-		if(confirm == "Connect me!")
-			to_chat_immediate(src, "So long, spaceman.")
-			client << link(server_ip)
-		return
-	var/server_name = tgui_input_list(src, "Please select the server you wish to swap to:", "Swap servers!", servers)
-	if(!server_name)
-		return
-	var/server_ip = servers[server_name]
-	var/confirm = tgui_alert(src, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", list("Connect me!", "Stay here!"))
-	if(confirm == "Connect me!")
-		to_chat_immediate(src, "So long, spaceman.")
-		src.client << link(server_ip)
+// SS1984 REMOVAL START
+// /**
+//  * Allows the player to select a server to join from any loaded servers.
+//  */
+// /mob/dead/new_player/proc/server_swap()
+// 	var/list/servers = CONFIG_GET(keyed_list/cross_server)
+// 	if(LAZYLEN(servers) == 1)
+// 		var/server_name = servers[1]
+// 		var/server_ip = servers[server_name]
+// 		var/confirm = tgui_alert(src, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", list("Send me there", "Stay here"))
+// 		if(confirm == "Connect me!")
+// 			to_chat_immediate(src, "So long, spaceman.")
+// 			client << link(server_ip)
+// 		return
+// 	var/server_name = tgui_input_list(src, "Please select the server you wish to swap to:", "Swap servers!", servers)
+// 	if(!server_name)
+// 		return
+// 	var/server_ip = servers[server_name]
+// 	var/confirm = tgui_alert(src, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", list("Connect me!", "Stay here!"))
+// 	if(confirm == "Connect me!")
+// 		to_chat_immediate(src, "So long, spaceman.")
+// 		src.client << link(server_ip)
+// SS1984 REMOVAL END
 
 /**
  * Shows the player a list of current polls, if any.

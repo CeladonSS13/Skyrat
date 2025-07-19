@@ -19,7 +19,7 @@
 	base_icon_state = "savannah_ivanov"
 	icon_state = "savannah_ivanov_0_0"
 	//does not include mmi compatibility
-	mecha_flags = CAN_STRAFE | IS_ENCLOSED | HAS_LIGHTS
+	mecha_flags = CAN_STRAFE | IS_ENCLOSED | HAS_LIGHTS | BEACON_TRACKABLE | BEACON_CONTROLLABLE
 	mech_type = EXOSUIT_MODULE_SAVANNAH
 	movedelay = 3
 	max_integrity = 450 //really tanky, like damn
@@ -211,7 +211,7 @@
 				crushed_victim.adjustBruteLoss(15)
 				continue
 			to_chat(crushed_victim, span_userdanger("[chassis] crashes down on you from above!"))
-			if(crushed_victim.stat != CONSCIOUS)
+			if(crushed_victim.stat > SOFT_CRIT) // SS1984 EDIT
 				crushed_victim.investigate_log("has been gibbed by a falling Savannah Ivanov mech.", INVESTIGATE_DEATHS)
 				crushed_victim.gib(DROP_ALL_REMAINS)
 				continue

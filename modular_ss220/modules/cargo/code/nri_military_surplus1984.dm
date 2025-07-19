@@ -53,7 +53,7 @@
 	item_type = /obj/item/reagent_containers/cup/glass/waterbottle/large/protozine
 	cost = PAYCHECK_COMMAND * 2
 
-/datum/armament_entry/company_import/nri_surplus/misc/voskhod_autodoc_refill
+/datum/armament_entry/company_import/nri_surplus/misc/military_nri_autodoc_refill
 	item_type = /obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin
 	cost = PAYCHECK_COMMAND * 3
 	contraband = TRUE

@@ -23,6 +23,7 @@
 		/obj/item/stack/sheet/bronze = 2,
 		/obj/item/stack/sheet/runed_metal = 1,
 		/obj/item/stack/sheet/titaniumglass = 2,
+		/obj/item/stack/sheet/mineral/plastitanium = 2,
 		exotic_material = 2 // this needs to be refactored properly
 	)
 
@@ -43,7 +44,7 @@
 		if(GIRDER_TRAM)
 			. += span_notice("[src] is designed for tram usage. Deconstructed with a screwdriver!")
 
-/obj/structure/girder/attackby(obj/item/W, mob/user, list/modifiers)
+/obj/structure/girder/attackby(obj/item/W, mob/user, list/modifiers, list/attack_modifiers)
 	var/skill_modifier = user.mind?.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER) //NOVA EDIT ADDITION: Construction Skill
 	var/platingmodifier = 1
 	if(HAS_TRAIT(user, TRAIT_QUICK_BUILD))
@@ -227,6 +228,23 @@
 					qdel(src)
 				return
 
+		if(istype(sheets, /obj/item/stack/sheet/mineral/plastitanium))
+			var/amount = construction_cost[/obj/item/stack/sheet/mineral/plastitanium]
+			if(state == GIRDER_REINF)
+				if(sheets.get_amount() < amount)
+					return
+				balloon_alert(user, "adding plating...")
+				if(do_after(user, 50 * platingmodifier * skill_modifier, target = src))
+					if(sheets.get_amount() < amount)
+						return
+					sheets.use(amount)
+					var/turf/T = get_turf(src)
+					T.place_on_top(/turf/closed/wall/r_wall/syndicate)
+					user.mind?.adjust_experience(/datum/skill/construction, 2)
+					transfer_fingerprints_to(T)
+					qdel(src)
+				return
+
 		if(!sheets.has_unique_girder && sheets.material_type)
 			if(istype(src, /obj/structure/girder/reinforced))
 				balloon_alert(user, "need plasteel!")
@@ -305,7 +323,7 @@
 	else if(istype(W, /obj/item/pipe))
 		var/obj/item/pipe/P = W
 		if (P.pipe_type in list(0, 1, 5)) //simple pipes, simple bends, and simple manifolds.
-			if(!user.transferItemToLoc(P, drop_location()))
+			if(!user.transfer_item_to_turf(P, drop_location()))
 				return
 			balloon_alert(user, "inserted pipe")
 	else
@@ -456,7 +474,7 @@
 	smoothing_groups = null
 	canSmoothWith = null
 
-/obj/structure/girder/cult/attackby(obj/item/W, mob/user, list/modifiers)
+/obj/structure/girder/cult/attackby(obj/item/W, mob/user, list/modifiers, list/attack_modifiers)
 	add_fingerprint(user)
 	if(W.tool_behaviour == TOOL_WELDER)
 		if(!W.tool_start_check(user, amount=1))
@@ -490,7 +508,7 @@
 	return
 
 /obj/structure/girder/cult/atom_deconstruct(disassembled = TRUE)
-	new /obj/item/stack/sheet/runed_metal(drop_location(), 1)
+	new /obj/item/stack/sheet/runed_metal(drop_location())
 
 /obj/structure/girder/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	switch(the_rcd.mode)
@@ -531,7 +549,7 @@
 	smoothing_groups = null
 	canSmoothWith = null
 
-/obj/structure/girder/bronze/attackby(obj/item/W, mob/living/user, list/modifiers)
+/obj/structure/girder/bronze/attackby(obj/item/W, mob/living/user, list/modifiers, list/attack_modifiers)
 	add_fingerprint(user)
 	if(W.tool_behaviour == TOOL_WELDER)
 		if(!W.tool_start_check(user, amount = 0, heat_required = HIGH_TEMPERATURE_REQUIRED))

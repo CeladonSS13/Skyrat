@@ -167,7 +167,7 @@ const Cache = (props: CacheProps) => {
   return (
     <Section>
       <div>
-        Query and cache:&nbsp;
+        Query and cache:{'\u00A0'}
         <Input
           value={props.cacheInput}
           onBlur={(value) => props.setCacheInput(value.toLowerCase())}

@@ -182,10 +182,10 @@
 	name = "Cargo Alert: Weather Forecast"
 	general_tooltip = "Allows the radio to announce incoming weather."
 	announcement_lines_map = list(
-		"Clear" = "All clear, no weather alerts to report.",
-		"Incoming" = "Weather front incoming, begin to seek shelter.",
-		"Imminent or Active" = "Weather front imminent, find shelter immediately.",
-		"Safe" = "No risk expected from incoming weather front.",
+		"Clear" = "Погода в норме, предупреждений о погодных условиях нет.",
+		"Incoming" = "Приближается погодный фронт, начинайте искать укрытие.",
+		"Imminent or Active" = "Штормовое предупреждение! Немедленно найдите укрытие!",
+		"Safe" = "Текущий погодный фронт безопасен для выхода.",
 	)
 
 

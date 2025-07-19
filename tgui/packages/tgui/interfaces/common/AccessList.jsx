@@ -1,5 +1,5 @@
 import { sortBy } from 'common/collections';
-import { Button, Flex, Section, Tabs } from 'tgui-core/components';
+import { Button, Flex, Section, Stack, Tabs } from 'tgui-core/components'; // SS1984 ADDITION: Added "Stack" import
 
 import { useSharedState } from '../../backend';
 
@@ -15,6 +15,7 @@ export const AccessList = (props) => {
     wildcardFlags = {},
     extraButtons,
     showBasic,
+    extraActions, // SS1984 ADDITION
   } = props;
 
   const [wildcardTab, setWildcardTab] = useSharedState(
@@ -108,6 +109,10 @@ export const AccessList = (props) => {
             showBasic={showBasic}
             basicUsed={selectedTrimAccess.length}
             basicMax={trimAccess.length}
+            // SS1984 ADDITION START
+            extraActions={extraActions}
+            accesses={parsedRegions}
+            // SS1984 ADDITION END
           />
         </Flex.Item>
         <Flex.Item>
@@ -131,7 +136,7 @@ export const AccessList = (props) => {
 };
 
 export const FormatWildcards = (props) => {
-  const { wildcardSlots = {}, showBasic, basicUsed = 0, basicMax = 0 } = props;
+  const { wildcardSlots = {}, showBasic, basicUsed = 0, basicMax = 0, extraActions, accesses } = props; // SS1984 ADDITION, added: extraActions, accesses
 
   const [wildcardTab, setWildcardTab] = useSharedState(
     'wildcardSelected',
@@ -148,40 +153,61 @@ export const FormatWildcards = (props) => {
   }
 
   return (
-    <Tabs>
-      {showBasic && (
-        <Tabs.Tab
-          selected={selectedWildcard === 'None'}
-          onClick={() => setWildcardTab('None')}
-        >
-          Trim:
-          <br />
-          {basicUsed + '/' + basicMax}
-        </Tabs.Tab>
-      )}
-
-      {Object.keys(wildcardSlots).map((wildcard) => {
-        const wcObj = wildcardSlots[wildcard];
-        let wcLimit = wcObj.limit;
-        const wcUsage = wcObj.usage.length;
-        const wcLeft = wcLimit - wcUsage;
-        if (wcLeft < 0) {
-          wcLimit = '∞';
-        }
-        const wcLeftStr = `${wcUsage}/${wcLimit}`;
-        return (
+    <Stack fill horizontal> {/* SS1984 ADDITION*/}
+      <Tabs>
+        {showBasic && (
           <Tabs.Tab
-            key={wildcard}
-            selected={selectedWildcard === wildcard}
-            onClick={() => setWildcardTab(wildcard)}
+            selected={selectedWildcard === 'None'}
+            onClick={() => setWildcardTab('None')}
           >
-            {wildcard + ':'}
+            Trim:
             <br />
-            {wcLeftStr}
+            {basicUsed + '/' + basicMax}
           </Tabs.Tab>
-        );
-      })}
-    </Tabs>
+        )}
+
+        {Object.keys(wildcardSlots).map((wildcard) => {
+          const wcObj = wildcardSlots[wildcard];
+          let wcLimit = wcObj.limit;
+          const wcUsage = wcObj.usage.length;
+          const wcLeft = wcLimit - wcUsage;
+          if (wcLeft < 0) {
+            wcLimit = '∞';
+          }
+          const wcLeftStr = `${wcUsage}/${wcLimit}`;
+          return (
+            <Tabs.Tab
+              key={wildcard}
+              selected={selectedWildcard === wildcard}
+              onClick={() => setWildcardTab(wildcard)}
+            >
+              {wildcard + ':'}
+              <br />
+              {wcLeftStr}
+            </Tabs.Tab>
+          );
+        })}
+      </Tabs>
+      {/* SS1984 ADDITION START */}
+      <Button
+        onClick={() =>
+          extraActions("select_all", accesses, selectedWildcard)
+        }
+        height="80%"
+        icon="check">
+          Select All
+      </Button>
+      <Button.Confirm
+        onClick={() =>
+          extraActions("deselect_all", accesses, selectedWildcard)
+        }
+        height="80%"
+        confirmContent="Are you sure?"
+        icon="close">
+          Deselect All
+      </Button.Confirm>
+      {/* SS1984 ADDITION END */ }
+    </Stack> // SS1984 ADDITION
   );
 };
 

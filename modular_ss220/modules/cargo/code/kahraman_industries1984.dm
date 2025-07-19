@@ -118,5 +118,5 @@
 	cost = PAYCHECK_LOWER * 3
 
 /datum/armament_entry/company_import/kahraman/storage_equipment/vest
-	item_type = /obj/item/clothing/accessory/colonial_webbing
+	item_type = /obj/item/clothing/accessory/webbing/colonial
 	cost = PAYCHECK_COMMAND * 2

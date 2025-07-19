@@ -234,11 +234,12 @@ function JobRow(props: JobRowProps) {
       </Stack>
     );
     // NOVA EDIT START
-  } else if (job.veteran && !data.is_veteran) {
+  } else if (job.nova_star && !data.is_nova_star) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
-          <b>Veteran Only</b>
+          {/* SS1984 REMOVAL <b>Nova Stars Only</b> */ }
+          <b>Veteran Only</b> {/* SS1984 ADDITION */}
         </Stack.Item>
       </Stack>
     );

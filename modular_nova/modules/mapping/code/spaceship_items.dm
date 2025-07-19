@@ -8,6 +8,7 @@
 	sheettype = "spaceship"
 	merge_type = /obj/item/stack/sheet/spaceship
 	walltype = /turf/closed/wall/mineral/titanium/spaceship
+	material_type = /datum/material/titanium
 
 /obj/item/stack/sheet/spaceshipglass
 	name = "spaceship window plates"

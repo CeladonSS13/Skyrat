@@ -227,6 +227,7 @@ SUBSYSTEM_DEF(dynamic)
 	else
 		dat += "Midround: [DisplayTimeText(next_injection - world.time)] <a href='byond://?src=[text_ref(src)];[HrefToken()];injectmid=1'>\[Now!\]</a><BR>"
 
+	dat += SSprogressive_dynamic?.get_progressive_admin_panel(dat)// SS1984 ADDITION
 	var/datum/browser/browser = new(usr, "gamemode_panel", "Game Mode Panel", 500, 500)
 	browser.set_content(dat.Join())
 	browser.open()
@@ -480,6 +481,7 @@ SUBSYSTEM_DEF(dynamic)
 	setup_parameters()
 	setup_hijacking()
 	setup_rulesets()
+	SSprogressive_dynamic?.do_setup() // SS1984 ADDITION
 
 	//We do this here instead of with the midround rulesets and such because these rules can hang refs
 	//To new_player and such, and we want the datums to just free when the roundstart work is done

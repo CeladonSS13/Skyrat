@@ -384,7 +384,7 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 		to_chat(user, span_warning("You must open the maintenance panel first!"))
 	return TRUE
 
-/obj/machinery/requests_console/attackby(obj/item/attacking_item, mob/user, list/modifiers)
+/obj/machinery/requests_console/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	var/obj/item/card/id/ID = attacking_item.GetID()
 	if(ID)
 		message_verified_by = "[ID.registered_name] ([ID.assignment])"
@@ -418,9 +418,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/requests_console/auto_name, 30)
 /datum/aas_config_entry/rc_emergency
 	name = "RC Alert: Emergency"
 	announcement_lines_map = list(
-		"Security" = "Security emergency in %LOCATION!!!",
-		"Engineering" = "Engineering emergency in %LOCATION!!!",
-		"Medical" = "Medical emergency in %LOCATION!!!",
+		"Security" = "Срочный запрос СБ В %LOCATION!!!",
+		"Engineering" = "Срочный запрос ИНЖЕНЕРОВ В %LOCATION!!!",
+		"Medical" = "Срочный запрос МЕДИКОВ В %LOCATION!!!",
 	)
 	vars_and_tooltips_map = list(
 		"LOCATION" = "will be replaced with the department name",
