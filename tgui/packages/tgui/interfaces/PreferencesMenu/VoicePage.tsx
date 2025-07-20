@@ -144,11 +144,7 @@ export const VoicePage = (props) => {
   );
 
   let searchBar = (
-    <Input
-      placeholder="Название..."
-      fluid
-      onInput={(e, value) => setSearchtext(value)}
-    />
+    <Input placeholder="Название..." width="100%" onChange={setSearchtext} />
   );
 
   const availableSeeds = seeds
