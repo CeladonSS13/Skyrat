@@ -25,8 +25,8 @@ export const AntagInfoNightmare = (props) => {
                     strong powers in the darkness, becoming nigh unbeatable.
                     Unfortunately, you wither and burn away in the light. You
                     must use your
-                    <span style={noticestyle}>{'\u2002'}light eater</span> to dim
-                    the station, making hunting easier.
+                    <span style={noticestyle}>{'\u2002'}light eater</span> to
+                    dim the station, making hunting easier.
                   </BlockQuote>
                 </Stack.Item>
                 <Stack.Divider />

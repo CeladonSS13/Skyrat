@@ -3,10 +3,7 @@
 // SS1984 REMOVAL OF EVERYTHING EXCEPT BODY_SIZE START
 // Выпилено все что можно
 
-import {
-  FeatureNumberInput,
-  FeatureNumeric,
-} from '../../base';
+import { FeatureNumberInput, FeatureNumeric } from '../../base';
 
 export const body_size: FeatureNumeric = {
   name: 'Body Size',

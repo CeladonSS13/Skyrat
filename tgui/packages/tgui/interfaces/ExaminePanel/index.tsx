@@ -128,28 +128,28 @@ export function ExaminePanel(props) {
                       preserveWhitespace
                       buttons={
                         // SS1984 REMOVAL <>
-                          <Button
-                            selected={oocNotesIndex === 'SFW'}
-                            bold={oocNotesIndex === 'SFW'}
-                            onClick={() => setOocNotesIndex('SFW')}
-                            textAlign="center"
-                            minWidth="60px"
-                          >
-                            SFW
-                          </Button>
-                          // SS1984 REMOVAL START
-                          // <Button
-                          //   selected={oocNotesIndex === 'NSFW'}
-                          //   disabled={!ooc_notes_nsfw}
-                          //   bold={oocNotesIndex === 'NSFW'}
-                          //   onClick={() => setOocNotesIndex('NSFW')}
-                          //   textAlign="center"
-                          //   minWidth="60px"
-                          // >
-                          //   NSFW
-                          // </Button>
-                          // </>
-                          // SS1984 REMOVAL END
+                        <Button
+                          selected={oocNotesIndex === 'SFW'}
+                          bold={oocNotesIndex === 'SFW'}
+                          onClick={() => setOocNotesIndex('SFW')}
+                          textAlign="center"
+                          minWidth="60px"
+                        >
+                          SFW
+                        </Button>
+                        // SS1984 REMOVAL START
+                        // <Button
+                        //   selected={oocNotesIndex === 'NSFW'}
+                        //   disabled={!ooc_notes_nsfw}
+                        //   bold={oocNotesIndex === 'NSFW'}
+                        //   onClick={() => setOocNotesIndex('NSFW')}
+                        //   textAlign="center"
+                        //   minWidth="60px"
+                        // >
+                        //   NSFW
+                        // </Button>
+                        // </>
+                        // SS1984 REMOVAL END
                       }
                     >
                       {!!nova_star_status && (
@@ -160,13 +160,15 @@ export function ExaminePanel(props) {
                               fontWeight: 'bold',
                             }}
                           >
-                            Player is a Veteran. { /* SS1984 EDIT, original: Nova Star! ⭐ */ }
+                            Player is a Veteran.{' '}
+                            {/* SS1984 EDIT, original: Nova Star! ⭐ */}
                           </span>
                         </Stack.Item>
                       )}
                       {/* SS1984 EDIT START */}
-                      {(<Stack.Item>
-                      {/*
+                      {
+                        <Stack.Item>
+                          {/*
                       {oocNotesIndex === 'SFW' && (
                         <Stack.Item>
                           {ideal_antag_optin_status && (
@@ -195,10 +197,10 @@ export function ExaminePanel(props) {
                             </Stack.Item>
                           )}
                         */}
-                        {/* SS1984 EDIT END */}
+                          {/* SS1984 EDIT END */}
                           {formatURLs(ooc_notes)}
                         </Stack.Item>
-                      )}
+                      }
                     </Section>
                   </Stack.Item>
                   <Stack.Item grow basis={0}>

@@ -164,11 +164,11 @@ const AbilitiesSection = () => {
           <Stack fill vertical>
             <Stack.Item textColor="label" grow>
               Your
-              <span style={absorbstyle}>{'\u2002'}Absorb DNA</span> ability allows
-              you to steal the DNA and memories of a victim. The
-              <span style={absorbstyle}>{'\u2002'}Extract DNA Sting</span> ability
-              also steals the DNA of a victim, and is undetectable, but does not
-              grant you their memories or speech patterns.
+              <span style={absorbstyle}>{'\u2002'}Absorb DNA</span> ability
+              allows you to steal the DNA and memories of a victim. The
+              <span style={absorbstyle}>{'\u2002'}Extract DNA Sting</span>{' '}
+              ability also steals the DNA of a victim, and is undetectable, but
+              does not grant you their memories or speech patterns.
             </Stack.Item>
             <Stack.Divider />
             <Stack.Item textColor="label" grow>
@@ -185,18 +185,20 @@ const AbilitiesSection = () => {
           <Stack fill vertical>
             <Stack.Item textColor="label" grow>
               Your
-              <span style={transformstyle}>{'\u2002'}Transform</span> ability allows
-              you to change into the form of those you have collected DNA from,
-              lethally and nonlethally. It will also mimic (NOT REAL CLOTHING)
-              the clothing they were wearing for every slot you have open.
+              <span style={transformstyle}>{'\u2002'}Transform</span> ability
+              allows you to change into the form of those you have collected DNA
+              from, lethally and nonlethally. It will also mimic (NOT REAL
+              CLOTHING) the clothing they were wearing for every slot you have
+              open.
             </Stack.Item>
             <Stack.Divider />
             <Stack.Item textColor="label" grow>
               The
-              <span style={storestyle}>{'\u2002'}Cellular Emporium</span> is where
-              you purchase more abilities beyond your starting kit. You have 10
-              genetic points to spend on abilities and you are able to readapt
-              after absorbing a body, refunding your points for different kits.
+              <span style={storestyle}>{'\u2002'}Cellular Emporium</span> is
+              where you purchase more abilities beyond your starting kit. You
+              have 10 genetic points to spend on abilities and you are able to
+              readapt after absorbing a body, refunding your points for
+              different kits.
             </Stack.Item>
           </Stack>
         </Stack.Item>

@@ -240,7 +240,7 @@ export function PageMain(props) {
               Call Sol Federation 911: Medical Response
             </Button>
           )}
-          {!!emagged && !!canMakeAnnouncement &&(
+          {!!emagged && !!canMakeAnnouncement && (
             <Button icon="bullhorn" onClick={() => act('callThePizza')}>
               Place an Order with Dogginos Pizza
             </Button>

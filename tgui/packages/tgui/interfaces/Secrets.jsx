@@ -79,30 +79,30 @@ const DebuggingTab = (props) => {
           onClick={() => act('infinite_sec')}
         />
       </Stack.Item>
-      { /* SS1984 ADDITION START */ }
+      {/* SS1984 ADDITION START */}
       <Stack.Item>
         <Button
           color="average"
           disabled={is_infinity_wildcard_disabled}
           lineHeight={lineHeightDebug}
-          icon={is_pregame ? "ellipsis-h" : "exclamation"}
+          icon={is_pregame ? 'ellipsis-h' : 'exclamation'}
           fluid
           onClick={() => act('disable_infinity_wildcard')}
         >
           <span>Disable infinity wildcard access override for </span>
-          {is_pregame ?
-          <span style={{ color: 'red' }}>
-            <b>THIS</b>
-          </span>
-          :
-          <span style={{ color: 'yellow' }}>
-            <b>NEXT</b>
-          </span>
-          }
+          {is_pregame ? (
+            <span style={{ color: 'red' }}>
+              <b>THIS</b>
+            </span>
+          ) : (
+            <span style={{ color: 'yellow' }}>
+              <b>NEXT</b>
+            </span>
+          )}
           <span> round </span>
         </Button>
       </Stack.Item>
-      { /* SS1984 ADDITION END */ }
+      {/* SS1984 ADDITION END */}
     </Stack>
   );
 };

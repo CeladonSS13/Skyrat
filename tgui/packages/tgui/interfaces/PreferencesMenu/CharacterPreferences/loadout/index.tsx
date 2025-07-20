@@ -157,7 +157,7 @@ export function LoadoutPage(props) {
           }
         >
           <Tabs fluid align="center">
-		  \* SS1984 EDIT (убрали все что было ниже связанное с erp_pref) *\
+            \* SS1984 EDIT (убрали все что было ниже связанное с erp_pref) *\
             {loadout_tabs.map((curTab) => (
               <Tabs.Tab
                 key={curTab.name}

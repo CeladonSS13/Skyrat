@@ -136,7 +136,14 @@ export const AccessList = (props) => {
 };
 
 export const FormatWildcards = (props) => {
-  const { wildcardSlots = {}, showBasic, basicUsed = 0, basicMax = 0, extraActions, accesses } = props; // SS1984 ADDITION, added: extraActions, accesses
+  const {
+    wildcardSlots = {},
+    showBasic,
+    basicUsed = 0,
+    basicMax = 0,
+    extraActions,
+    accesses,
+  } = props; // SS1984 ADDITION, added: extraActions, accesses
 
   const [wildcardTab, setWildcardTab] = useSharedState(
     'wildcardSelected',
@@ -153,7 +160,9 @@ export const FormatWildcards = (props) => {
   }
 
   return (
-    <Stack fill horizontal> {/* SS1984 ADDITION*/}
+    <Stack fill horizontal>
+      {' '}
+      {/* SS1984 ADDITION*/}
       <Tabs>
         {showBasic && (
           <Tabs.Tab
@@ -190,23 +199,21 @@ export const FormatWildcards = (props) => {
       </Tabs>
       {/* SS1984 ADDITION START */}
       <Button
-        onClick={() =>
-          extraActions("select_all", accesses, selectedWildcard)
-        }
+        onClick={() => extraActions('select_all', accesses, selectedWildcard)}
         height="80%"
-        icon="check">
-          Select All
+        icon="check"
+      >
+        Select All
       </Button>
       <Button.Confirm
-        onClick={() =>
-          extraActions("deselect_all", accesses, selectedWildcard)
-        }
+        onClick={() => extraActions('deselect_all', accesses, selectedWildcard)}
         height="80%"
         confirmContent="Are you sure?"
-        icon="close">
-          Deselect All
+        icon="close"
+      >
+        Deselect All
       </Button.Confirm>
-      {/* SS1984 ADDITION END */ }
+      {/* SS1984 ADDITION END */}
     </Stack> // SS1984 ADDITION
   );
 };
