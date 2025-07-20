@@ -243,3 +243,7 @@
   - config: Roundstart asimov laws slighty changed (to be more default)
   - config: Some other small changes
   - bugfix: Liquid abuse should no longer freeze server as much as it was before
+  - bugfix: fixed {''} at dynamic-generated text (primary on round-end)
+2025-07-20:
+  DenIS318:
+  - bugfix: loadout page {'\u00A0'}

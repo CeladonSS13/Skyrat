@@ -146,7 +146,7 @@ export function LoadoutPage(props) {
         )}
         <Section
           fitted
-          title="{'\u00A0'}"
+          title={'\u00A0'}
           buttons={
             <Input
               width="200px"
