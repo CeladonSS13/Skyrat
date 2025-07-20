@@ -18,6 +18,7 @@
 		"modular_nova/modules/antag_opt_in/code/job.dm",
 		"modular_nova/modules/antag_opt_in/code/mind.dm",
 		"modular_nova/modules/antag_opt_in/code/objective.dm",
-		"modular_nova/modules/antag_opt_in/code/objective_item.dm"
+		"modular_nova/modules/antag_opt_in/code/objective_item.dm",
+		"modular_nova/modules/verbs/code/subtle.dm"
 	]
 }
