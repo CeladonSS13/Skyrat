@@ -11,7 +11,7 @@ import {
 } from 'tgui-core/components';
 
 import { useBackend, useLocalState } from '../../backend';
-import { PreferencesMenuData } from './data';
+import { PreferencesMenuData } from '../types';
 
 const donatorTiers = {
   0: 'Бесплатные',

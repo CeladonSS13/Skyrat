@@ -4079,17 +4079,7 @@
 "uQ" = (
 /obj/structure/closet,
 /obj/item/storage/medkit/regular,
-/obj/item/electropack/shockcollar,
-/obj/item/storage/box/strippole_kit,
 /obj/item/wrench,
-/obj/item/stack/shibari_rope/glow,
-/obj/item/storage/box/shibari_stand,
-/obj/item/stack/shibari_rope/glow/full,
-/obj/item/storage/box/strippole_kit,
-/obj/item/bdsm_candle,
-/obj/item/bdsm_candle,
-/obj/item/bdsm_candle,
-/obj/item/bdsm_bed_kit,
 /turf/open/floor/carpet/neon/simple/teal/nodots,
 /area/ruin/space/has_grav/hotel/guestroom/room_3)
 "uR" = (
