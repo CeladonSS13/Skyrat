@@ -13,6 +13,11 @@
 		"modular_nova/modules/company_imports/code/armament_datums/put_a_donk_on_it.dm",
 		"modular_nova/modules/company_imports/code/armament_datums/akh_frontier.dm",
 		"modular_nova/modules/company_imports/code/armament_datums/sol_defense.dm",
-		"modular_nova/modules/company_imports/code/armament_datums/microstar_energy.dm"
+		"modular_nova/modules/company_imports/code/armament_datums/microstar_energy.dm",
+		"modular_nova/modules/antag_opt_in/code/antag_optin_preferences.dm",
+		"modular_nova/modules/antag_opt_in/code/job.dm",
+		"modular_nova/modules/antag_opt_in/code/mind.dm",
+		"modular_nova/modules/antag_opt_in/code/objective.dm",
+		"modular_nova/modules/antag_opt_in/code/objective_item.dm"
 	]
 }

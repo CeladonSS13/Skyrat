@@ -2727,7 +2727,6 @@
 "aNw" = (
 /obj/effect/mapping_helpers/broken_floor,
 /obj/structure/table,
-/obj/item/bdsm_candle,
 /turf/open/floor/iron/dark/small,
 /area/station/maintenance/central/greater)
 "aNy" = (
@@ -60521,9 +60520,6 @@
 /area/station/science/robotics/lab)
 "rFD" = (
 /obj/structure/table/reinforced/plastitaniumglass,
-/obj/item/bdsm_candle{
-	pixel_y = 6
-	},
 /turf/open/floor/iron/dark/small,
 /area/station/common/night_club/back_stage)
 "rFL" = (
