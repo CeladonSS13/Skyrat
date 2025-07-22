@@ -273,7 +273,7 @@ export type PreferencesMenuData = {
   }>;
   phrases: string[];
 
-  window: Window;
+  window: PrefsWindow;
 };
 
 export type ServerData = {
