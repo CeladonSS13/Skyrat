@@ -102,7 +102,7 @@ const PrintButton = (props: PrintButtonProps) => {
         color={'transparent'}
         onClick={() => act('build', { ref: design.id, amount: quantity })}
       >
-        &times;{quantity}
+        {'×'}{quantity}
       </div>
     </Tooltip>
   );

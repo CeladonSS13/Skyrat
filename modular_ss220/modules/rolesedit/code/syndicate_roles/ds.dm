@@ -53,7 +53,7 @@
 	description = "If DS-1 was so good... and DS-2 from offs..."
 	always_place = TRUE
 
-
+// comm console
 /obj/machinery/computer/communications/syndicate/ds
 	name = "syndicate communications console"
 	desc = "A console meant to communicate with Syndicate upper command. This one seems to be busy processing flight calculations since you last saw it, usage is limited..."
@@ -81,3 +81,9 @@
 	circuit = /obj/item/circuitboard/machine/techfab/ds
 	stripe_color = "#96150b"
 	payment_department = ACCOUNT_DS2
+
+/obj/item/card/id/departmental_budget/ds2
+	budget_name = "Syndicate - Deep Space"
+	radio_channel = RADIO_CHANNEL_INTERDYNE //before i add ds2 freq
+	departament_access = ACCESS_SYNDICATE_DS
+	away = TRUE

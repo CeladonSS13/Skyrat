@@ -24,3 +24,10 @@
 /datum/outfit/tarkon
 	id_trim = /datum/id_trim/away/tarkon/deck
 	id = /obj/item/card/id/advanced/tarkon/deck
+
+//for custom bank machine
+/obj/item/card/id/departmental_budget/tarkon
+	budget_name = "Port Tarkon"
+	radio_channel = RADIO_CHANNEL_TARKON
+	departament_access = ACCESS_TARKON
+	away = TRUE

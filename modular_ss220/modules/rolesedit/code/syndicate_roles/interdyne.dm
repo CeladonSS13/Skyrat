@@ -54,3 +54,10 @@
 	allow_duplicates = FALSE
 	never_spawn_with = list(/datum/map_template/ruin/lavaland/nova/interdyne_base1984)
 	always_place = TRUE
+
+// bank code
+/obj/item/card/id/departmental_budget/interdyne
+	budget_name = "Interdyne Pharmaceuticals"
+	radio_channel = RADIO_CHANNEL_INTERDYNE
+	departament_access = ACCESS_SYNDICATE_IP
+	away = TRUE

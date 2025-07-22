@@ -159,7 +159,7 @@ const EjectButton = (props: EjectButtonProps) => {
       ])}
       onClick={() => onEject(amount)}
     >
-      &times;{amount}
+      {'×'}{amount}
     </Button>
   );
 };

@@ -13,3 +13,4 @@
 		var/obj/item/card/id/id_card = owner.wear_id
 		id_card.registered_account = offstation_bank_account
 	return
+
