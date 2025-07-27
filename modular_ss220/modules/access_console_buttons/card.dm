@@ -17,6 +17,8 @@
 					var/access_type = access_data["ref"]
 					if (access_type in inserted_auth_card.access)
 						continue
+					if(!(access_type in valid_access)) // some centcomm stuff/non station access (have such check in code\modules\modular_computers\file_system\programs\card.dm)
+						continue
 					if (!inserted_auth_card.add_access(list(access_type), wildcardTab))
 						continue // don't spam excess logs and errors to client
 					if(access_type in ACCESS_ALERT_ADMINS)

@@ -71,3 +71,9 @@
 	subspace_transmission = FALSE
 	subspace_switchable = TRUE
 	freerange = TRUE
+
+/obj/item/radio/headset/silicon/ai/faction
+	keyslot2 = /obj/item/encryptionkey/debug
+
+/obj/machinery/computer/cryopod
+	radio = /obj/item/radio/headset/silicon/ai/faction

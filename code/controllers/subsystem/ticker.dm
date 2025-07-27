@@ -187,7 +187,7 @@ SUBSYSTEM_DEF(ticker)
 			for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
 				if(player.ready == PLAYER_READY_TO_PLAY)
 					++totalPlayersReady
-					if(player.client?.holder)
+					if(player.client?.holder && (player.client in GLOB.admins)) // SS1984 EDIT, original: if(player.client?.holder)
 						++total_admins_ready
 
 			if(start_immediately)

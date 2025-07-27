@@ -376,7 +376,7 @@ const AvatarDisplay = (props) => {
           <Table.Row key={name}>
             <Table.Cell color="label">
               {pilot} as{' '}
-              <span style={{ color: 'white' }}>&quot;{name}&quot;</span>
+              <span style={{ color: 'white' }}>{'\u0022'}{name}{'\u0022'}</span>
             </Table.Cell>
             <Table.Cell collapsing>
               <Stack>

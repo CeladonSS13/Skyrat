@@ -533,6 +533,17 @@
 /// Used to seed the accesses_by_region list in SSid_access. A list of all CENTCOM_ACCESS regional accesses.
 #define REGION_ACCESS_CENTCOM CENTCOM_ACCESS
 
+//ss1984 edit add
+///name for nanotrasen consultant "region".
+#define REGION_NTR "Nanotrasen Official"
+/// Used to seed the accesses_by_region list in SSid_access.
+#define REGION_ACCESS_NTR list( \
+	ACCESS_CENT_GENERAL, \
+	ACCESS_COMMAND, \
+	ACCESS_VAULT, \
+)
+//ss1984 edit end
+
 /**
  * A list of PDA paths that can be painted as well as the regional heads which should be able to paint them.
  * If a PDA is not in this list, it cannot be painted using the PDA & ID Painter.

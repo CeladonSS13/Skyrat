@@ -176,7 +176,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	switch(action)
 		if("Toggle")
 			config.enabled = !config.enabled
-			if (config.type in list(/datum/aas_config_entry/arrival, /datum/aas_config_entry/newhead))
+			if (config.type in list(/datum/aas_config_entry/arrival, /datum/aas_config_entry/newhead, /datum/aas_config_entry/newcentcom)) //SS1984 EDIT ADD original: 			if (config.type in list(/datum/aas_config_entry/arrival, /datum/aas_config_entry/newhead))
 				update_appearance()
 		if("Text")
 			if(!(params["lineKey"] in config.announcement_lines_map))
@@ -342,6 +342,26 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	announcement_lines_map["Message"] = pick("OV#RL()D: \[UNKNOWN??\] DET*#CT)D!",
 		"ER)#R - B*@ TEXT F*O(ND!",
 		"AAS.exe is not responding. NanoOS is searching for a solution to the problem.")
+
+// SS1984 ADD START
+/datum/aas_config_entry/newcentcom
+	name = "Departmental CentCom Announcement"
+	announcement_lines_map = list(
+		"Message" = "Прибыл представитель Центрального Командования - %PERSON, %RANK.")
+	vars_and_tooltips_map = list(
+		"PERSON" = "will be replaced with their name.",
+		"RANK" = "with their job."
+	)
+
+/datum/aas_config_entry/newcentcom/act_up()
+	. = ..()
+	if (.)
+		return
+
+	announcement_lines_map["Message"] = pick("OV#RL()D: \[UNKNOWN??\] DET*#CT)D!",
+		"ER)#R - B*@ TEXT F*O(ND!",
+		"AAS.exe is not responding. NanoOS is searching for a solution to the problem.")
+// SS1984 ADD END
 
 /datum/aas_config_entry/researched_node
 	name = "Research Node Announcement"

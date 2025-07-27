@@ -30,6 +30,9 @@
 		/area/station/ai_monitored/turret_protected/ai,					// these are areas exclusive to RD
 		/area/station/ai_monitored/turret_protected/ai_upload_foyer,	// but sometimes mappers might misconfig
 		/area/station/ai_monitored/turret_protected/ai_upload,			// their doors with our several dozen access helpers
+		/area/centcom/central_command_areas/admin,						//ss1984 add start
+		/area/centcom/central_command_areas/armory,
+		/area/centcom/central_command_areas/ferry,						// ss1984 add end
 	)
 
 /obj/item/door_remote/Initialize(mapload)

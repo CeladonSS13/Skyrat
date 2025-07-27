@@ -23,6 +23,7 @@ The console is located at computer/gulag_teleporter.dm
 	var/jumpsuit_type = /obj/item/clothing/under/rank/prisoner
 	var/jumpskirt_type = /obj/item/clothing/under/rank/prisoner/skirt
 	var/shoes_type = /obj/item/clothing/shoes/sneakers/orange
+	var/headset_type = /obj/item/radio/headset // SS1984 ADDITION
 	var/emergency_plasglove_type = /obj/item/clothing/gloves/color/plasmaman
 	var/obj/machinery/gulag_item_reclaimer/linked_reclaimer
 	var/static/list/telegulag_required_items = typecacheof(list(
@@ -167,6 +168,8 @@ The console is located at computer/gulag_teleporter.dm
 		prisoner.equip_to_appropriate_slot(new emergency_plasglove_type, qdel_on_fail = TRUE)
 	if(shoes_type)
 		prisoner.equip_to_appropriate_slot(new shoes_type, qdel_on_fail = TRUE)
+	if (headset_type) // SS1984 ADDITION
+		prisoner.equip_to_appropriate_slot(new headset_type, qdel_on_fail = TRUE) // SS1984 ADDITION
 	if(id)
 		prisoner.equip_to_appropriate_slot(id, qdel_on_fail = TRUE)
 	if(target)

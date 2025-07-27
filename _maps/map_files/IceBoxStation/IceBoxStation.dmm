@@ -76205,6 +76205,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth_half,
 /area/station/maintenance/department/medical/central)
+"vER" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/mineral/ore_redemption/gulag_autolink,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
 "vEU" = (
 /obj/machinery/door/airlock/external{
 	glass = 1;
@@ -118654,7 +118659,7 @@ njJ
 cVD
 njJ
 hpl
-dqx
+vER
 dqx
 vjh
 nTO

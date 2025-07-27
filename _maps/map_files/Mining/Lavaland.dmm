@@ -3866,6 +3866,7 @@
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 9
 	},
+/obj/machinery/mineral/ore_redemption/gulag_autolink,
 /turf/open/floor/iron/checker,
 /area/mine/laborcamp)
 "uD" = (

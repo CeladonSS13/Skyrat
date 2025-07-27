@@ -253,3 +253,51 @@
   DenIS318:
   - bugfix: techfabs, autolathes, ore silos fixed UI display &times;
   - bugfix: admin beaker panel UI fixed {''}
+2025-07-23:
+  Arceniu:
+  - rscadd: Added head of staff traits and more to ntr(cmd bank card, door remote,
+      staff highlighting, upgraded headset)
+  - image: modified ntr headset
+  - code_imp: NTR headset now have all(almost) station channels, NTR now can give
+      access to janitor's keys, NTR now spawns with their door remote and cmd budget
+      card
+  DenIS318:
+  - bugfix: Admin secrets UI fixed
+2025-07-24:
+  DenIS318:
+  - bugfix: Modsuit UI fixed
+2025-07-25:
+  DenIS318:
+  - bugfix: quantum console UI &quit;
+  - image: quantum console sprite now shows with keyboard
+2025-07-26:
+  DenIS318:
+  - qol: Prisoner card goal max now can be set up to 999999
+  - rscadd: Radio headset to prisoner lockers
+  - qol: Microfusion cell with self-charging attachment now automatically discharges
+      itself when inserting to MCR rifle (without attachment still require manual
+      discharge by pressing Z or whatever bind you have)
+  - code_imp: Now minerals spawn instead of boulders in gulag
+  - bugfix: Select All on id computer no longer adds non-valid access, preventing
+      abusing centcomm acceses
+  - rscadd: Ore machine now adds points to prisoner card
+  - map: Added ore redemption machines to labor camps on all maps
+  - bugfix: Labor claim console UI fix &apos
+  - rscadd: Gulag teleporter now equips radio headset to prisoner
+  - rscadd: Ore Redemption at labor camp automatically link to station silo
+  - rscadd: Mining ore-redemptions can link to station ore silo (away levels still
+      can't)
+  - map: Labor shuttle no longer stays bolted after travel
+  - server: Disable bot language malfunction, machine language malfunction station
+      traits
+2025-07-27:
+  Arceniu:
+  - code_imp: ntr now have obj/item/clothing/glasses/hud/security/sunglasses/black
+  - rscadd: Added new corporate modsuit to nanotrasen representative
+  - code_imp: Added corporate modsuit to nanotrasen rep locker
+  DenIS318:
+  - bugfix: Total Admins Ready is no longer shows mentors, no longer 3/2 admins ready
+  - bugfix: Job estimation now doesn't show when disabled in config
+  - qol: Admins (non-deadminned) still can see job estimations
+  - balance: Flashbangs no longer stun/knockdown in 1 tile ignoring protection (still
+      works if detonated in backpack/at same tile)

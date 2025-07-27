@@ -133,6 +133,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 					if (occupant_job_radio != RADIO_CHANNEL_COMMAND)
 						radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has been moved to cryo storage.", RADIO_CHANNEL_COMMAND)
 					radio.use_command = TRUE
+				if (occupant_departments_bitflags & DEPARTMENT_BITFLAG_CENTRAL_COMMAND)
+					radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has been moved to cryo storage.", RADIO_CHANNEL_CENTCOM)
+					radio.use_command = TRUE
 				radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has been moved to cryo storage.", occupant_job_radio)
 				radio.use_command = FALSE
 			radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has been moved to cryo storage.", announcement_channel)

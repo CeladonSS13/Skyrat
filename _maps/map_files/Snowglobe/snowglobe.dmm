@@ -17464,9 +17464,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/station/maintenance/bloodcasino)
-"eIu" = (
-/turf/open/floor/iron,
-/area/station/maintenance/dorm_room)
 "eIz" = (
 /turf/open/floor/iron/dark/side{
 	dir = 1
@@ -21258,9 +21255,6 @@
 "fIf" = (
 /turf/open/floor/carpet,
 /area/station/service/cafeteria)
-"fIm" = (
-/turf/open/floor/plating,
-/area/station/maintenance/aft)
 "fIt" = (
 /obj/machinery/oven/range,
 /turf/open/floor/iron/kitchen,
@@ -51328,6 +51322,7 @@
 /area/station/service/bar)
 "nJm" = (
 /obj/machinery/light/directional/west,
+/obj/machinery/mineral/ore_redemption/gulag_autolink,
 /turf/open/floor/iron/smooth_edge{
 	dir = 8
 	},
@@ -183683,7 +183678,7 @@ xSb
 fxD
 ojl
 qgV
-eIu
+ifp
 pRT
 krS
 sWm
@@ -187279,7 +187274,7 @@ jSB
 wYN
 eoB
 sbt
-fIm
+gon
 mrs
 emF
 dWi
@@ -187537,7 +187532,7 @@ kCo
 kCo
 kCo
 fDD
-fIm
+gon
 emF
 voR
 uac
@@ -187794,7 +187789,7 @@ qLr
 erk
 kCo
 gtk
-fIm
+gon
 emF
 voL
 gBt
@@ -188308,7 +188303,7 @@ nYL
 hqf
 kCo
 mrs
-fIm
+gon
 emF
 vsX
 gBt
@@ -188564,7 +188559,7 @@ vuF
 lAq
 vBC
 kCo
-fIm
+gon
 osC
 emF
 wNW
@@ -189329,13 +189324,13 @@ pef
 sbt
 sbt
 sbt
-fIm
+gon
 qJJ
-fIm
+gon
 jbX
 vYt
-fIm
-fIm
+gon
+gon
 dBa
 dCO
 lqM
@@ -189580,10 +189575,10 @@ iws
 jlw
 biU
 aCi
-fIm
+gon
 cLX
 pef
-fIm
+gon
 vYt
 gws
 gws
@@ -189838,7 +189833,7 @@ cwP
 biU
 lcZ
 nPv
-fIm
+gon
 bqp
 vFP
 hka

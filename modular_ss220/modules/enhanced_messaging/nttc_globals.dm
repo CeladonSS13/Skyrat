@@ -148,4 +148,6 @@ GLOBAL_LIST_INIT(nttc_highlight_jobs, list(
 	JOB_NAVAL_REAR_ADMIRAL,
 	JOB_NAVAL_ADMIRAL,
 	JOB_NAVAL_FLEET_ADMIRAL,
+	//ss1984 command-centcom addiction
+	JOB_NT_REP,
 ))

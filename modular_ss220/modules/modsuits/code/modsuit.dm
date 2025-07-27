@@ -1,3 +1,5 @@
+//inbuilt and not modules
+
 /obj/item/mod/module/headprotector/inbuilt
 	name = "Inbuilt MOD safety-first head protection module"
 	desc = "A series of dampening plates are installed along the back and upper areas of \
@@ -11,6 +13,14 @@
 	name = "Inbuilt MOD operational status readout module"
 	removable = FALSE
 	complexity = 0
+
+/obj/item/mod/module/megaphone/inbuild
+	name = "inbuild MOD megaphone module"
+	desc = "A microchip megaphone linked to a MODsuit, for very important purposes, like: loudness. This one is inbuild and not removable."
+	complexity = 0
+	removable = FALSE
+
+//surplus military modsuit
 
 /datum/armor/mod_theme_surplus_military
 	melee = 45
@@ -150,3 +160,159 @@
 /obj/item/mod/construction/plating/security
 	name = "MOD security external plating"
 	icon_state = "security-plating"
+
+//ntr corporate
+
+/datum/armor/mod_theme_corporate_official
+	melee = 20
+	bullet = 20
+	laser = 15
+	energy = 15
+	bomb = 25
+	bio = 100
+	fire = 75
+	acid = 75
+	wound = 30
+
+/datum/mod_theme/corporate/ntr
+	name = "corporate official"
+	desc = "A fancy, high-tech suit for Nanotrasen's high ranking officials."
+	extended_desc = "An even more costly version of the Magnate model, the corporate suit is a electricity insulated, \
+		anti-corrosion coated suit for high-ranking CentCom Officials, deploying good layer of protective armor and \
+		advanced actuators, feeling practically weightless when turned on. Scraping the paint of this suit is \
+		counted as a war-crime and reason for immediate execution in over fifty Nanotrasen space stations. \
+		This is the newest V2 paperwork revision, which has \
+		advanced stamp module and some other premium modules. Sources say that some of the armor \
+		is ripped straight from an newbie intern's modsuit."
+	armor_type = /datum/armor/mod_theme_corporate_official
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	charge_drain = DEFAULT_CHARGE_DRAIN
+
+	slowdown_deployed = 0.35
+	allowed_suit_storage = list(
+		/obj/item/assembly/flash,
+		/obj/item/melee/baton,
+		/obj/item/restraints/handcuffs,
+		/obj/item/gun/energy,
+		/obj/item/gun/ballistic,
+		/obj/item/gun/microfusion,
+		/obj/item/megaphone,
+		/obj/item/paper,
+		/obj/item/stamp,
+		/obj/item/folder,
+		/obj/item/clipboard,
+	)
+
+/obj/item/mod/control/pre_equipped/corporate_official
+	theme = /datum/mod_theme/corporate/ntr
+	starting_frequency = MODLINK_FREQ_NANOTRASEN
+	applied_core = /obj/item/mod/core/standard
+	applied_cell = /obj/item/stock_parts/power_store/cell/high
+	req_access = list(ACCESS_CENT_LIVING)
+	complexity_max = DEFAULT_MAX_COMPLEXITY - 5
+	applied_modules = list(
+		/obj/item/mod/module/headprotector/inbuilt,
+		/obj/item/mod/module/megaphone/inbuild,
+		/obj/item/mod/module/stamp_advanced/inbuild,
+		/obj/item/mod/module/paper_dispenser_carbon/inbuild,
+		/obj/item/mod/module/thermal_regulator,
+		/obj/item/mod/module/hat_stabilizer,
+		/obj/item/mod/module/storage/large_capacity,
+		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/tether,
+	)
+
+/obj/item/mod/module/stamp_advanced
+	name = "MOD advanced stamper module"
+	desc = "A module installed into the wrist of the suit, this functions as a high-power stamp, \
+		able to switch between a lot bureaucratic modes."
+	icon_state = "stamp"
+	module_type = MODULE_ACTIVE
+	complexity = 1
+	active_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
+	device = /obj/item/stamp/mod_advanced
+	incompatible_modules = list(/obj/item/mod/module/stamp, /obj/item/mod/module/stamp_advanced)
+	cooldown_time = 0.5 SECONDS
+	required_slots = list(ITEM_SLOT_GLOVES)
+
+/obj/item/stamp/mod_advanced
+	name = "MOD advanced electronic stamp"
+	desc = "A high-power stamp, able to switch between some modules when used."
+
+/obj/item/stamp/mod_advanced/attack_self(mob/user, modifiers)
+	. = ..()
+	if(icon_state == "stamp-ok")
+		icon_state = "stamp-law"
+		balloon_alert(user, "switched mode: law")
+	else if(icon_state == "stamp-law")
+		icon_state = "stamp-cap"
+		balloon_alert(user, "switched mode: captain")
+	else if(icon_state == "stamp-cap")
+		icon_state = "stamp-centcom"
+		balloon_alert(user, "switched mode: centcom")
+	else if(icon_state == "stamp-centcom")
+		icon_state = "stamp-deny"
+		balloon_alert(user, "switched mode: deny")
+	else if(icon_state == "stamp-deny")
+		icon_state = "stamp-void"
+		balloon_alert(user, "switched mode: void")
+	else if(icon_state == "stamp-void")
+		icon_state = "stamp-ok"
+		balloon_alert(user, "switched mode: approve")
+
+/obj/item/mod/module/stamp_advanced/inbuild
+	name = "Inbuild MOD advanced stamper module"
+	desc = "A module installed into the wrist of the suit, this functions as a high-power stamp, \
+		able to switch between a lot bureaucratic modes. This one is integrated and not removable."
+	complexity = 0
+	removable = FALSE
+
+/obj/item/mod/module/paper_dispenser_carbon
+	name = "MOD advanced paper dispenser module"
+	desc = "A simple module designed by the bureaucrats of Torch Bay. \
+		It dispenses 'warm, clean, and crisp sheets of paper' onto a nearby table. This version had fixed dispence system, no more fire and also this module can print carbon paper."
+	icon_state = "paper_maker"
+	module_type = MODULE_USABLE
+	complexity = 1
+	use_energy_cost = DEFAULT_CHARGE_DRAIN * 0.5
+	incompatible_modules = list(/obj/item/mod/module/paper_dispenser,/obj/item/mod/module/paper_dispenser_carbon)
+	cooldown_time = 5 SECONDS
+	required_slots = list(ITEM_SLOT_GLOVES)
+	var/carbon = FALSE
+	var/printed_paper = null
+
+/obj/item/mod/module/paper_dispenser_carbon/on_use()
+	if(!do_after(mod.wearer, 1 SECONDS, target = mod))
+		return FALSE
+
+	if(carbon)
+		printed_paper = new /obj/item/paper/carbon(src)
+		var/atom/crisp_paper = printed_paper
+		crisp_paper.desc = "It's crisp and warm to the touch. Must be fresh."
+	else
+		printed_paper = new /obj/item/paper(src)
+		var/atom/crisp_paper = printed_paper
+		crisp_paper.desc = "It's crisp and warm to the touch. Must be fresh."
+
+	var/obj/structure/table/nearby_table = locate() in range(1, mod.wearer)
+	playsound(get_turf(src), 'sound/machines/click.ogg', 50, TRUE)
+	balloon_alert(mod.wearer, "dispensed paper[nearby_table ? " onto table":""]")
+
+	mod.wearer.put_in_hands(printed_paper)
+	if(nearby_table)
+		mod.wearer.transferItemToLoc(printed_paper, nearby_table.drop_location(), silent = FALSE)
+
+	drain_power(use_energy_cost)
+
+/obj/item/mod/module/paper_dispenser_carbon/get_configuration()
+	. = ..()
+	.["carbon"] = add_ui_configuration("Carbon", "bool", carbon)
+
+/obj/item/mod/module/paper_dispenser_carbon/inbuild
+	name = "Inbuild MOD paper dispenser module"
+	desc = "A simple module designed by the bureaucrats of Naval Intern Bay. \
+		It dispenses 'warm, clean, and crisp sheets of paper' onto a nearby table. This version had fixed dispence system, no more fire and also this module can print carbon paper. This one is inbuild and not removable."
+	complexity = 0
+	removable = FALSE
+
+

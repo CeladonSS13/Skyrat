@@ -590,8 +590,11 @@
 	var/obj/item/stock_parts/power_store/cell/old_cell = cell
 
 	if(inserting_cell.charge)
-		balloon_alert(user, "can't insert a charged cell!")
-		return FALSE
+		if (is_path_in_list(/obj/item/microfusion_cell_attachment/selfcharging, inserting_cell.attachments)) // if trying to install cell with self-charging
+			inserting_cell.cell_removal_discharge() // discharge and proceed further
+		else // so it's not self-charge
+			balloon_alert(user, "can't insert a charged cell!")
+			return FALSE
 	if(display_message)
 		balloon_alert(user, "cell inserted")
 	if(hotswap)

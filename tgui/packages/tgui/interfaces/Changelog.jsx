@@ -186,19 +186,20 @@ export class Changelog extends Component {
 
     const header = (
       <Section>
-        <h1>Nova Sector</h1>
+        <h1>Skyrat 1984</h1> {/* SS1984 EDIT */}
         <p>
           <b>Thanks to: </b>
+          Our upstreams: Nova Sector, /tg/station. {/* SS1984 ADDITION */}
           Traditional Games 13, Skyrat Station 13, Baystation 12, /vg/station,
           NTstation, CDK Station devs, FacepunchStation, GoonStation devs, the
           original Space Station 13 developers, Invisty for the title image and
           the countless others who have contributed to the game.
         </p>
         <p>
-          {'Current project maintainers can be found '}
-          <a href="https://github.com/NovaSector?tab=members">here</a>
-          {', recent GitHub contributors can be found '}
-          <a href="https://github.com/NovaSector/NovaSector/pulse/monthly">
+          {/* SS1984 REMOVAL {'Current project maintainers can be found '} */}
+          {/* SS1984 REMOVAL <a href="https://github.com/NovaSector?tab=members">here</a> */}
+          {'Recent GitHub contributors can be found '} {/* SS1984 EDIT */}
+          <a href="https://github.com/skyrat1984test/skyrat1984test/pulse/monthly"> {/* SS1984 EDIT */}
             here
           </a>
           .

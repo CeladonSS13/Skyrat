@@ -42,6 +42,7 @@
 	var/datum/techweb/stored_research
 	/// Linkage to the ORM silo
 	var/datum/component/remote_materials/materials
+	var/force_connect_to_silo = FALSE // SS1984 ADDITION
 
 /obj/machinery/mineral/ore_redemption/offstation
 	circuit = /obj/item/circuitboard/machine/ore_redemption/offstation
@@ -62,6 +63,7 @@
 	materials = AddComponent( \
 		/datum/component/remote_materials, \
 		mapload, \
+		force_connect = force_connect_to_silo, \
 		mat_container_signals = local_signals \
 	)
 
@@ -303,6 +305,11 @@
 			//we have points
 			if(points)
 				user_id_card.registered_account.mining_points += points
+				// SS1984 ADDITION START
+				if (istype(user_id_card, /obj/item/card/id/advanced/prisoner))
+					var/obj/item/card/id/advanced/prisoner/worn_prisoner_id = user_id_card
+					worn_prisoner_id.points += points
+				// SS1984 ADDITION END
 				points = 0
 				return TRUE
 

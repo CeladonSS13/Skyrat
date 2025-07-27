@@ -39,7 +39,7 @@ export const LaborClaimConsole = (props) => {
           materials, points will be calculated based on volume of delivered
           materials.
           <br />
-          Please note that only sheets printed with our manufacturer&apos;s seal
+          Please note that only sheets printed with our manufacturer{'\u0027'}s seal
           of quality, such as those produced from the work camp furnace, will be
           accepted as proof of labour.
         </Section>
