@@ -199,7 +199,9 @@ export class Changelog extends Component {
           {/* SS1984 REMOVAL {'Current project maintainers can be found '} */}
           {/* SS1984 REMOVAL <a href="https://github.com/NovaSector?tab=members">here</a> */}
           {'Recent GitHub contributors can be found '} {/* SS1984 EDIT */}
-          <a href="https://github.com/skyrat1984test/skyrat1984test/pulse/monthly"> {/* SS1984 EDIT */}
+          <a href="https://github.com/skyrat1984test/skyrat1984test/pulse/monthly">
+            {' '}
+            {/* SS1984 EDIT */}
             here
           </a>
           .

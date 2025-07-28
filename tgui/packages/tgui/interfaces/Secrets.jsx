@@ -688,7 +688,9 @@ export const Secrets = (props) => {
               <Flex mx={-0.5} align="stretch" justify="center">
                 <Flex.Item bold>
                   <NoticeBox color="black">
-                    {'\u0022The first rule of adminbuse is: you don\u0027t talk\u00A0about the adminbuse.\u0022'}
+                    {
+                      '\u0022The first rule of adminbuse is: you don\u0027t talk\u00A0about the adminbuse.\u0022'
+                    }
                   </NoticeBox>
                 </Flex.Item>
               </Flex>
