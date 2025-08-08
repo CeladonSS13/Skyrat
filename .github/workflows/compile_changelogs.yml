@@ -32,21 +32,15 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pyyaml
 
-      - name: Get commit SHA before a specific date
-        if: steps.value_holder.outputs.ACTIONS_ENABLED
-        id: get_sha
-        env:
-          TARGET_DATE: "2025-06-05"
-          TARGET_BRANCH: "master"
-        run: |
-          COMMIT_SHA=$(git rev-list -n 1 --before="${{ env.TARGET_DATE }} 00:00:00" ${{ env.TARGET_BRANCH }})
-          echo "commit_sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
-
       - name: "Checkout"
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         uses: actions/checkout@v4
         with:
-          ref: ${{ steps.get_sha.outputs.commit_sha }}
+          # this is approximately last 3-4 years
+          # to check locally, use something like: git rev-list --max-count=50000 HEAD | tail -1
+          # combined with: git show <SHA>
+          # SS1984 EDIT, original: 25
+          fetch-depth: 50000
           persist-credentials: false
 
       - name: "Compile"
