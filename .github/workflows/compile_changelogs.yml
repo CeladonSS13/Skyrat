@@ -36,11 +36,13 @@ jobs:
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         uses: actions/checkout@v4
         with:
-          # this is approximately last 3-4 years
-          # to check locally, use something like: git rev-list --max-count=50000 HEAD | tail -1
+          # this is approximately last 1-2 year
+          # if highlight changelog is incremental, it's perfectly fine for all times
+          # (unless lost and need to be regenerated locally or fetch-depth=0)
+          # to check locally, use something like: git rev-list --max-count=20000 HEAD | tail -1
           # combined with: git show <SHA>
           # SS1984 EDIT, original: 25
-          fetch-depth: 50000
+          fetch-depth: 20000
           persist-credentials: false
 
       - name: "Compile"
