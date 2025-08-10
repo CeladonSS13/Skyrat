@@ -79,7 +79,7 @@ jobs:
           fi
 
       - name: Commit Highlighted Changes
-        if: steps.value_holder.outputs.ACTIONS_ENABLED == 'true' && steps.commit_chanhighlight_changesges.outputs.highlight_made == 'true'
+        if: steps.value_holder.outputs.ACTIONS_ENABLED == 'true' && steps.highlight_changes.outputs.highlight_made == 'true'
         run: |
           git commit -m "Automatic Changelog Highlight [ci skip]" -a || true
 
