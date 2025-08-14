@@ -42,18 +42,16 @@
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
 	cooldown_time = 20 SECONDS
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/rejuvenate/cast(mob/cast_on)
 	. = ..()
 	var/mob/living/U = cast_on
 
-	U.SetParalyzed(0)
-	U.SetStun(0)
-	U.SetKnockdown(0)
-	U.SetUnconscious(0)
+	U.set_body_position(STANDING_UP)
+	U.set_lying_angle(0)
+	U.SetAllImmobility(0)
 	U.SetSleeping(0)
-	U.SetImmobilized(0)
 	U.adjustStaminaLoss(-100)
 	to_chat(cast_on, "<span class='notice'>You instill your body with clean blood and remove any incapacitating effects.</span>")
 	var/datum/antagonist/vampire/V = U.mind.has_antag_datum(/datum/antagonist/vampire)
@@ -65,8 +63,8 @@
 	for(var/i in 1 to 5)
 		var/update = NONE
 		update |= user.heal_overall_damage(2 * rejuv_bonus, 2 * rejuv_bonus, updating_health = FALSE)
-		update |= user.adjustToxLoss(2 * rejuv_bonus, updating_health = FALSE)
-		update |= user.adjustOxyLoss(5 * rejuv_bonus, updating_health = FALSE)
+		update |= user.adjustToxLoss(-2 * rejuv_bonus, updating_health = FALSE)
+		update |= user.adjustOxyLoss(-5 * rejuv_bonus, updating_health = FALSE)
 		if(update)
 			user.updatehealth()
 		for(var/datum/reagent/R in user.reagents.reagent_list)

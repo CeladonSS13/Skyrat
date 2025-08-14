@@ -148,7 +148,7 @@
 			L.visible_message(span_warning("[L] опутывается кровавыми щупальцами, которые ограничивают его движение!"))
 			var/turf/target_turf = get_turf(L)
 			playsound(target_turf, 'sound/effects/magic/tail_swing.ogg', 50, TRUE)
-			new /obj/effect/decal/cleanable/blood(target_turf)
+			new /obj/effect/decal/cleanable/blood(target_turf, null, GET_ATOM_BLOOD_DNA(L))
 			new /obj/effect/temp_visual/blood_tendril/long(target_turf)
 
 
@@ -334,6 +334,8 @@
 	. = ..()
 	update_vampire_spell_name()
 
+/datum/action/cooldown/spell/jaunt/ethereal_jaunt/blood_pool/do_steam_effects(turf/loc)
+	return
 
 /datum/action/cooldown/spell/jaunt/ethereal_jaunt/blood_pool/create_new_handler()
 	var/datum/spell_handler/vampire/H = new
@@ -343,17 +345,24 @@
 /obj/effect/dummy/phased_mob/spell_jaunt/blood_pool
 	name = "sanguine pool"
 	desc = "a pool of living blood."
+	phased_mob_icon_state = null
 	movespeed = 1.5
 
-
 /obj/effect/dummy/phased_mob/spell_jaunt/blood_pool/relaymove(mob/living/user, direction)
-	. = ..()
-	new /obj/effect/decal/cleanable/blood(user.loc)
+	..()
+	var/obj/effect/decal/cleanable/blood/blood = new /obj/effect/decal/cleanable/blood/trail(loc, null, GET_ATOM_BLOOD_DNA(user))
+	blood.setDir(direction)
 
 	var/turf/target_turf = phased_check(user, direction)
-	if(isspaceturf(target_turf) || target_turf.density)
+	if(!target_turf)
 		return FALSE
-	return TRUE
+
+
+/obj/effect/dummy/phased_mob/spell_jaunt/blood_pool/phased_check(mob/living/user, direction)
+	. = ..()
+	var/turf/target_turf = get_step_multiz(src,direction)
+	if(isspaceturf(target_turf) || target_turf.density)
+		return null
 
 
 /datum/action/cooldown/spell/list_target/predator_senses
