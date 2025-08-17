@@ -1,10 +1,3 @@
-//sechud defines
-#define SECHUD_OLD_CAPTAIN "hudoldcaptain"
-#define SECHUD_OLD_SEC "hudoldsec"
-#define SECHUD_OLD_ENG "hudoldeng"
-#define SECHUD_OLD_SCI "hudoldsci"
-#define SECHUD_OLD_MED "hudoldmed"
-
 // safe code
 GLOBAL_LIST_EMPTY(safes)
 

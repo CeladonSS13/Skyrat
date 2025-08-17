@@ -1,3 +1,10 @@
+//sechud defines
+#define SECHUD_OLD_CAPTAIN "hudoldcaptain"
+#define SECHUD_OLD_SEC "hudoldsec"
+#define SECHUD_OLD_ENG "hudoldeng"
+#define SECHUD_OLD_SCI "hudoldsci"
+#define SECHUD_OLD_MED "hudoldmed"
+
 /datum/outfit
 	var/role_job = /datum/job/ghost_role
 	var/paycheck_name = "Nanotrasen: Salary"
@@ -15,4 +22,3 @@
 		var/obj/item/card/id/id_card = owner.wear_id
 		id_card.registered_account = offstation_bank_account
 	return
-
