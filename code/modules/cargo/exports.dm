@@ -186,7 +186,18 @@ Then the player gets the profit from selling his own wasted time.
  */
 /datum/export/proc/sell_object(obj/sold_item, datum/export_report/report, dry_run = TRUE, apply_elastic = TRUE)
 	///This is the value of the object, as derived from export datums.
-	var/export_value = get_cost(sold_item, apply_elastic)
+	// SS1984 REMOVAL START
+	// var/export_value = get_cost(sold_item, apply_elastic)
+	// SS1984 REMOVAL END
+	// SS1984 ADDITION START
+	var/export_value = 0
+	if (dry_run)
+		export_value = get_cost(sold_item, apply_elastic)
+	else
+		export_value = get_cost_ready_to_sell(sold_item, apply_elastic)
+		if (export_value < 0)
+			export_value = get_cost(sold_item, apply_elastic)
+	// SS1984 ADDITION END
 	///Quantity of the object in question.
 	var/export_amount = get_amount(sold_item)
 

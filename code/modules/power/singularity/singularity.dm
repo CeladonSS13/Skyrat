@@ -60,10 +60,6 @@
 /obj/singularity/Initialize(mapload, starting_energy)
 	. = ..()
 
-	new /obj/effect/singularity_creation(loc)
-
-	addtimer(CALLBACK(src, PROC_REF(make_visible)), SINGULARITY_EFFECT_ANIM_TIME)
-
 	energy = starting_energy || energy
 
 	START_PROCESSING(SSsinguloprocess, src)
@@ -174,7 +170,6 @@
 		if(prob(event_chance))
 			event()
 	dissipate(seconds_per_tick)
-	hawking_pulse(seconds_per_tick)
 	check_energy()
 
 /obj/singularity/proc/dissipate(seconds_per_tick)

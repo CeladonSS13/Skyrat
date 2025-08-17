@@ -243,7 +243,7 @@ SUBSYSTEM_DEF(garbage)
 					#endif
 					continue
 			if (GC_QUEUE_HARDDELETE)
-				HardDelete(D, TRUE)
+				HardDelete(D)
 				if (MC_TICK_CHECK)
 					return
 				continue
@@ -267,7 +267,7 @@ SUBSYSTEM_DEF(garbage)
 	if (isnull(D))
 		return
 	if (level > GC_QUEUE_COUNT)
-		HardDelete(D, TRUE)
+		HardDelete(D)
 		return
 	var/queue_time = world.time
 
@@ -278,7 +278,7 @@ SUBSYSTEM_DEF(garbage)
 	queue[++queue.len] = list(queue_time, D, D.gc_destroyed) // not += for byond reasons
 
 //this is mainly to separate things profile wise.
-/datum/controller/subsystem/garbage/proc/HardDelete(datum/D, from_queue = FALSE)
+/datum/controller/subsystem/garbage/proc/HardDelete(datum/D)
 	++delslasttick
 	++totaldels
 	var/type = D.type
@@ -289,11 +289,7 @@ SUBSYSTEM_DEF(garbage)
 		LAZYADD(type_info.extra_details, detail)
 
 	var/tick_usage = TICK_USAGE
-	//if something came from the GC queue we won't harddel it because it takes too much time
-	//but we will log it and fix its destructor in the future (lol do you really belive in it?)
-	//also you may notice that this crutch covers only QDEL_HINT_HARDDEL_NOW hint, but there are no uses of QDEL_HINT_HARDDEL, so let it be like that
-	if(!from_queue)
-		del(D)
+	del(D)
 	tick_usage = TICK_USAGE_TO_MS(tick_usage)
 
 	type_info.hard_deletes++

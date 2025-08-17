@@ -63,10 +63,12 @@
 
 	if (CONFIG_GET(flag/humans_need_surnames) && preferences.read_preference(/datum/preference/choiced/species) == /datum/species/human)
 		var/first_space = findtext(input, " ")
+		var/gender = preferences.read_preference(/datum/preference/choiced/gender) // SS1984 ADDITION
+		var/lastname_source = gender == "female" ? GLOB.last_names_female : GLOB.last_names // SS1984 ADDITION
 		if(!first_space) //we need a surname
-			input += " [pick(GLOB.last_names)]"
+			input += " [pick(lastname_source)]" // SS1984 EDIT, original: input += " [pick(GLOB.last_names)]"
 		else if(first_space == length(input))
-			input += "[pick(GLOB.last_names)]"
+			input += "[pick(lastname_source)]" // SS1984 EDIT, original: input += "[pick(GLOB.last_names)]"
 
 	return reject_bad_name(input, allow_numbers)
 

@@ -415,3 +415,94 @@
 /obj/item/borg/upgrade/transform/syndicatejack/action(mob/living/silicon/robot/cyborg, user = usr) // Only usable on emagged cyborgs. In exchange. makes you unable to get locked down or detonated.
 	if(cyborg.emagged)
 		return ..()
+// SS1984 REMOVAL START
+// /// Dominatrix time
+// /obj/item/borg/upgrade/dominatrixmodule
+// 	name = "borg dominatrix module"
+// 	desc = "A module that greatly upgrades the ability of borgs to display affection."
+// 	icon = 'modular_nova/modules/borgs/icons/robot_items.dmi'
+// 	icon_state = "module_lust"
+// 	custom_price = 0
+
+// /obj/item/borg/upgrade/dominatrixmodule/action(mob/living/silicon/robot/borg)
+// 	. = ..()
+// 	if(!.)
+// 		return
+// 	var/obj/item/kinky_shocker/cur_shocker = locate() in borg.model.modules
+// 	if(cur_shocker)
+// 		to_chat(usr, span_warning("This unit already has a dominatrix module installed!"))
+// 		return FALSE
+
+// 	var/obj/item/kinky_shocker/shocker = new /obj/item/kinky_shocker()
+// 	borg.model.basic_modules += shocker
+// 	borg.model.add_module(shocker, FALSE, TRUE)
+// 	var/obj/item/clothing/mask/leatherwhip/whipper = new /obj/item/clothing/mask/leatherwhip()
+// 	borg.model.basic_modules += whipper
+// 	borg.model.add_module(whipper, FALSE, TRUE)
+// 	var/obj/item/spanking_pad/spanker = new /obj/item/spanking_pad()
+// 	borg.model.basic_modules += spanker
+// 	borg.model.add_module(spanker, FALSE, TRUE)
+// 	var/obj/item/tickle_feather/tickler = new /obj/item/tickle_feather()
+// 	borg.model.basic_modules += tickler
+// 	borg.model.add_module(tickler, FALSE, TRUE)
+// 	var/obj/item/clothing/sextoy/fleshlight/fleshlight = new /obj/item/clothing/sextoy/fleshlight()
+// 	borg.model.basic_modules += fleshlight
+// 	borg.model.add_module(fleshlight, FALSE, TRUE)
+
+// /obj/item/borg/upgrade/dominatrixmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
+// 	. = ..()
+// 	if(!.)
+// 		return
+
+// 	for(var/obj/item/kinky_shocker/shocker in borg.model.modules)
+// 		borg.model.remove_module(shocker)
+// 	for(var/obj/item/clothing/mask/leatherwhip/whipper in borg.model.modules)
+// 		borg.model.remove_module(whipper)
+// 	for(var/obj/item/spanking_pad/spanker in borg.model.modules)
+// 		borg.model.remove_module(spanker)
+// 	for(var/obj/item/tickle_feather/tickler in borg.model.modules)
+// 		borg.model.remove_module(tickler)
+// 	for(var/obj/item/clothing/sextoy/fleshlight/fleshlight in borg.model.modules)
+// 		borg.model.remove_module(fleshlight)
+// SS1984 REMOVAL END
+
+/obj/item/borg/upgrade/cargo_papermanipulator
+	name = "Cargo Cyborg Paper Manipulator"
+	desc = "An upgrade to the service model cyborg, to help handle foods and paper."
+	icon_state = "module_miner"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/cargo)
+	model_flags = BORG_MODEL_CARGO
+
+	items_to_add = list(/obj/item/borg/apparatus/cargo_papermanipulator)
+
+/obj/item/borg/apparatus/cargo_papermanipulator
+	name = "Cargo apparatus"
+	desc = "A not so special apparatus designed for the most tedious of tasks, holding paper..."
+	icon_state = "borg_service_apparatus"
+	storable = list(
+		/obj/item/paper,
+	)
+
+/obj/item/borg/apparatus/cargo_papermanipulator/Initialize(mapload)
+	update_appearance()
+	return ..()
+
+/obj/item/borg/apparatus/cargo_papermanipulator/update_overlays()
+	. = ..()
+	var/mutable_appearance/arm = mutable_appearance(icon, "borg_hardware_apparatus_arm1")
+	if(stored)
+		stored.pixel_w = -3
+		stored.pixel_z = 0
+		var/mutable_appearance/stored_copy = new /mutable_appearance(stored)
+		stored_copy.layer = FLOAT_LAYER
+		stored_copy.plane = FLOAT_PLANE
+		. += stored_copy
+	. += arm
+
+/obj/item/borg/apparatus/cargo_papermanipulator/examine()
+	. = ..()
+	if(stored)
+		. += "The apparatus currently has [stored] secured."
+	. += span_notice("<i>Alt-click</i> will drop the currently secured item.")
+

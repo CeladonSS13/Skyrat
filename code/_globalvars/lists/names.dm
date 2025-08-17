@@ -8,6 +8,7 @@ GLOBAL_LIST_INIT(first_names, world.file2list(convert_to_localized_path("first.t
 GLOBAL_LIST_INIT(first_names_male, world.file2list(convert_to_localized_path("first_male.txt")))
 GLOBAL_LIST_INIT(first_names_female, world.file2list(convert_to_localized_path("first_female.txt")))
 GLOBAL_LIST_INIT(last_names, world.file2list(convert_to_localized_path("last.txt")))
+GLOBAL_LIST_INIT(last_names_female, world.file2list(convert_to_localized_path("last_female.txt"))) // SS1984 ADDITION
 GLOBAL_LIST_INIT(clown_names, world.file2list(convert_to_localized_path("clown.txt")))
 GLOBAL_LIST_INIT(mime_names, world.file2list(convert_to_localized_path("mime.txt")))
 GLOBAL_LIST_INIT(religion_names, world.file2list(convert_to_localized_path("religion.txt")))

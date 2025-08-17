@@ -9,7 +9,7 @@ import {
   Section,
   Stack,
 } from 'tgui-core/components';
-import { BooleanLike } from 'tgui-core/react';
+import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -37,6 +37,7 @@ type ActiveVote = {
   question: string | null;
   timeRemaining: number;
   displayStatistics: boolean;
+  choicesHighlight: string[] | null; // SS1984 ADDITION
   choices: Option[];
   countMethod: number;
 };
@@ -237,6 +238,23 @@ const VotersList = (props) => {
 const ChoicesPanel = (props) => {
   const { act, data } = useBackend<Data>();
   const { currentVote, user } = data;
+  // SS1984 ADDITION START
+  if (currentVote && currentVote.choices && currentVote.choices.length > 0) {
+    const highlightNames = currentVote.choicesHighlight;
+    if (highlightNames && highlightNames.length > 0) {
+      // Sort, so highlighted are displayed first
+      currentVote.choices.sort((a, b) => {
+        const aHighlighted = highlightNames.includes(a.name);
+        const bHighlighted = highlightNames.includes(b.name);
+
+        if (aHighlighted === bHighlighted) {
+          return 0; // keep relative order if both highlighted or both non-highlighted
+        }
+        return aHighlighted ? -1 : 1; // highlighted option comes first
+      });
+    }
+  }
+  // SS1984 ADDITION END
 
   return (
     <Stack.Item grow>
@@ -251,7 +269,14 @@ const ChoicesPanel = (props) => {
             {currentVote.choices.map((choice) => (
               <Box key={choice.name}>
                 <LabeledList.Item
-                  label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
+                  // SS1984 REMOVAL label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
+                  // SS1984 ADDITION START
+                  label={
+                    <span style={{ fontWeight: currentVote.choicesHighlight?.includes(choice.name) ? 'bold' : 'normal' }}>
+                      {choice.name.replace(/^\w/, (c) => c.toUpperCase())}
+                    </span>
+                  }
+                  // SS1984 ADDITION END
                   textAlign="right"
                   buttons={
                     <Button
@@ -280,7 +305,7 @@ const ChoicesPanel = (props) => {
                     )}
                   {currentVote.displayStatistics ||
                   user.isLowerAdmin /* NOVA EDIT CHANGE - isLowerAdmin - ORIGINAL: {currentVote.displayStatistics */
-                    ? choice.votes + ' Votes'
+                    ? `${choice.votes} Votes`
                     : null}
                 </LabeledList.Item>
                 <LabeledList.Divider />
@@ -298,7 +323,14 @@ const ChoicesPanel = (props) => {
             {currentVote.choices.map((choice) => (
               <Box key={choice.name}>
                 <LabeledList.Item
-                  label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
+                  // SS1984 REMOVAL label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
+                  // SS1984 ADDITION START
+                  label={
+                    <span style={{ fontWeight: currentVote.choicesHighlight?.includes(choice.name) ? 'bold' : 'normal' }}>
+                      {choice.name.replace(/^\w/, (c) => c.toUpperCase())}
+                    </span>
+                  }
+                  // SS1984 ADDITION END
                   textAlign="right"
                   buttons={
                     <Button

@@ -18,7 +18,7 @@ import {
 } from 'tgui-core/components';
 
 import { getSecurityRecord } from './helpers';
-import { Crime, SECURETAB, SecurityRecordsData } from './types';
+import { type Crime, SECURETAB, type SecurityRecordsData } from './types';
 
 /** Displays a list of crimes and allows to add new ones. */
 export const CrimeWatcher = (props) => {
@@ -104,7 +104,7 @@ const CrimeDisplay = ({ item }: { item: Crime }) => {
   const { current_user, higher_access } = data;
   const { author, crime_ref, details, fine, name, paid, time, valid, voider } =
     item;
-  const showFine = !!fine && fine > 0 ? `: ${fine} cr` : ': PAID OFF';
+  const showFine = fine === -1 ? '' : (!!fine && fine > 0 ? `: ${fine} cr` : ': PAID OFF'); // SS1984 EDIT, original: const showFine = !!fine && fine > 0 ? `: ${fine} cr` : ': PAID OFF';
 
   let collapsibleColor = '';
   if (!valid) {

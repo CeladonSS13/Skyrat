@@ -3,7 +3,9 @@
 	var/paycheck_name = "Nanotrasen: Salary"
 
 /datum/outfit/proc/handlebank(mob/living/carbon/human/owner)
-	var/datum/bank_account/offstation_bank_account = new(owner.real_name)
+	if(!owner.mind)
+		return
+	var/datum/bank_account/offstation_bank_account = new(owner.real_name, owner.mind.assigned_role)
 	owner.account_id = offstation_bank_account.account_id
 	offstation_bank_account.replaceable = FALSE
 	offstation_bank_account.account_job = new role_job

@@ -1,8 +1,6 @@
 name: Compile changelogs
 
 on:
-  schedule:
-    - cron: "0 0 * * *"
   workflow_dispatch:
   workflow_call:
 
@@ -33,13 +31,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install pyyaml
-          sudo apt-get install  dos2unix
 
       - name: "Checkout"
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         uses: actions/checkout@v4
         with:
-          fetch-depth: 25
+          # SS1984 EDIT, original fetch-depth: 25
+          fetch-depth: 100
           persist-credentials: false
 
       - name: "Compile"
@@ -48,13 +46,44 @@ jobs:
           python tools/ss13_genchangelog.py html/changelogs
 
       - name: Commit
+        id: commit_changes # SS1984 ADDITION
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
           git config --local user.name "1984-ci-event[bot]"
           git config --local user.email "1283078+1984-ci-event[bot]@users.noreply.github.com"
           git pull origin master
           git add html/changelogs
-          git commit -m "Automatic changelog compile [ci skip]" -a || true
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            echo "commit_made=false" >> $GITHUB_OUTPUT
+          else
+            git commit -m "Automatic changelog compile [ci skip]"
+            echo "commit_made=true" >> $GITHUB_OUTPUT
+          fi
+
+        # SS1984 ADDITION START
+      - name: Highlight Changes SS1984
+        id: highlight_changes
+        if: steps.value_holder.outputs.ACTIONS_ENABLED == 'true' && steps.commit_changes.outputs.commit_made == 'true' # SS1984 EDIT, original: if: steps.value_holder.outputs.ACTIONS_ENABLED
+        run: |
+          git pull origin master
+          python tools/ss1984_changelog_highlight.py
+
+          git add tools/ss1984_changelog_highlight_generated.json
+          if git diff --cached --quiet; then
+            echo "No new highlights"
+            echo "highlight_made=false" >> $GITHUB_OUTPUT
+          else
+            echo "highlight_made=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit Highlighted Changes
+        if: steps.value_holder.outputs.ACTIONS_ENABLED == 'true' && steps.highlight_changes.outputs.highlight_made == 'true'
+        run: |
+          git commit -m "Automatic Changelog Highlight [ci skip]" -a || true
+
+      # SS1984 ADDITION END
 
       - name: Generate App Token
         id: app-token-generation

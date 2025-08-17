@@ -40,7 +40,12 @@
 		equipped_outfit = outfit
 	else
 		CRASH("Outfit passed to equip_outfit_and_loadout was neither a path nor an instantiated type!")
-
+	// SS1984 ADDITION START
+	if (equipping_job && equipping_job.disable_all_loadout)
+		equipOutfit(equipped_outfit, visuals_only) // equip only outfit
+		regenerate_icons()
+		return TRUE
+	// SS1984 ADDITION END
 	var/override_preference = preference_source.read_preference(/datum/preference/choiced/loadout_override_preference)
 
 	var/list/loadout_entries = preference_source.read_preference(/datum/preference/loadout)

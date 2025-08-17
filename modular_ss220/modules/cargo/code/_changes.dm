@@ -59,7 +59,7 @@
 	cost = CARGO_CRATE_VALUE * 3
 	access = ACCESS_SECURITY
 	contains = list(
-		/obj/item/clothing/suit/armor/vest/det_suit/sol = 3,
+		/obj/item/clothing/suit/armor/vest/sol = 3,
 	)
 
 /datum/supply_pack/security/armory/hardened_emt_armor

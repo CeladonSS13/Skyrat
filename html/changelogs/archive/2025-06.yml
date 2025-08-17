@@ -6,7 +6,7 @@
   LotusLadno:
   - bugfix: fixed sprites augment+, moving hands 1 pixel up
   Maximal08:
-  - bugfix: "\u043F\u043E\u0447\u0438\u043D\u043A\u0430 ert auto doc"
+  - bugfix: "починка ert auto doc"
   - rscdel: Remove subtler
   OrionTheFox:
   - bugfix: fixed a broken labcoat appearing in the SciDrobe
@@ -90,7 +90,7 @@
       guard lockers.
 2025-06-08:
   Artemchik542:
-  - bugfix: "\u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043A\u043E\u0434\u0430"
+  - bugfix: "тесты для кода"
   Darkinite:
   - rscadd: Staff plushie master files and items into the game
   DenIS318:

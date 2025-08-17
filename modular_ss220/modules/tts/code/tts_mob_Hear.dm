@@ -1,3 +1,4 @@
+// might need change later once we will have TTS (if we will EVER have it)
 /mob/proc/Hear_tts(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods, message_range)
 	if(!SSttsSilero.is_enabled)
 		return
@@ -50,18 +51,24 @@
 
 	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), speaker, src, message_tts, real_speaker.tts_seed, !radio_freq, effect, traits)
 
-/mob/living/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods, message_range)
+/mob/living/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods, message_range)
 	var/static/regex/plus_sign_replace = new(@"\+", "g")
-	var/plussless_message = plus_sign_replace.Replace(raw_message, "")
+	raw_message = plus_sign_replace.Replace(raw_message, "")
 
-	. = ..(message, speaker, message_language, plussless_message, radio_freq, spans, message_mods, message_range)
+	. = ..()
+	// TODO: tts things might need tweaking later
+	// See: (https://github.com/tgstation/tgstation/pull/91647)
+	// Since we don't use it on test server, can't really test it for now
+	// DIFFS:
+	// was: /mob/living/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods = list(), message_range=0)
+	// after PR: /mob/living/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range=0)
 
 	Hear_tts(message, speaker, message_language, raw_message, radio_freq, spans, message_mods, message_range)
 
-/mob/dead/observer/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods, message_range)
+/mob/dead/observer/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods, message_range)
 	var/static/regex/plus_sign_replace = new(@"\+", "g")
-	var/plussless_message = plus_sign_replace.Replace(raw_message, "")
+	raw_message = plus_sign_replace.Replace(raw_message, "")
 
-	. = ..(message, speaker, message_language, plussless_message, radio_freq, spans, message_mods, message_range)
+	. = ..()
 
 	Hear_tts(message, speaker, message_language, raw_message, radio_freq, spans, message_mods, message_range)

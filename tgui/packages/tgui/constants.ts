@@ -164,6 +164,12 @@ export const RADIO_CHANNELS = [
     freq: 1459,
     color: '#1ecc43',
   },
+  /* //SS1984 ADDITION START - PRISONERS HEADSETS */
+  {
+    name: 'Prison',
+    freq: 1473,
+    color: '#975032',
+  } /* //SS1984 ADDITION END - PRISONERS HEADSETS */,
 ] as const;
 
 const GASES = [

@@ -37,16 +37,16 @@
 				10
 			],
 			"required_enemies": [
+				2,
 				1,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1
 			],
 			"antag_cap": {
 				"denominator": 10
@@ -89,15 +89,15 @@
 			],
 			"required_enemies": [
 				2,
-				1,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2
 			],
 			"antag_cap": {
 				"denominator": 30,
@@ -142,14 +142,14 @@
 			"required_enemies": [
 				3,
 				2,
-				1,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2
 			],
 			"antag_cap": {
 				"denominator": 15
@@ -196,14 +196,14 @@
 			"required_enemies": [
 				3,
 				2,
-				1,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2
 			],
 			"antag_cap": {
 				"denominator": 15
@@ -247,9 +247,9 @@
 				3,
 				3,
 				2,
+				2,
+				2,
 				1,
-				0,
-				0,
 				0,
 				0,
 				0,
@@ -289,13 +289,13 @@
 				5,
 				4,
 				3,
+				3,
+				3,
 				2,
-				1,
-				0,
-				0,
-				0,
-				0,
-				0
+				2,
+				2,
+				2,
+				2
 			],
 			"antag_cap": {
 				"denominator": 20,
@@ -385,12 +385,12 @@
 				3,
 				3,
 				2,
-				1,
-				0,
-				0,
-				0,
-				0,
-				0
+				2,
+				2,
+				2,
+				2,
+				2,
+				2
 			],
 			"antag_cap": 3,
 			"protected_roles": [
@@ -437,10 +437,10 @@
 				3,
 				3,
 				2,
+				2,
+				2,
 				1,
-				0,
-				0,
-				0,
+				1,
 				0,
 				0,
 				0
@@ -520,15 +520,15 @@
 			],
 			"required_enemies": [
 				1,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1
 			],
 			"antag_cap": {
 				"denominator": 10
@@ -550,7 +550,7 @@
 			]
 		},
 		"Quiet": {
-			"cost": 0.000001
+			"cost": 0.1
 		}
 	},
 
@@ -560,8 +560,10 @@
 			"scaling_cost": 10,
 			"weight": 5,
 			"required_candidates": 1,
+			"minimum_players": 5,
 			"minimum_required_age": 0,
 			"requirements": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+			"required_enemies": [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
 			"antag_cap": {
 				"denominator": 24
 			},
@@ -599,6 +601,18 @@
 				10,
 				10,
 				10
+			],
+			"required_enemies": [
+				3,
+				3,
+				2,
+				2,
+				2,
+				1,
+				1,
+				0,
+				0,
+				0
 			],
 			"antag_cap": {
 				"denominator": 50
@@ -659,6 +673,7 @@
 			"scaling_cost": 15,
 			"weight": 2,
 			"required_candidates": 1,
+			"minimum_players": 20,
 			"minimum_required_age": 0,
 			"requirements": [
 				100,
@@ -671,6 +686,18 @@
 				10,
 				10,
 				10
+			],
+			"required_enemies": [
+				3,
+				3,
+				2,
+				2,
+				2,
+				1,
+				0,
+				0,
+				0,
+				0
 			],
 			"antag_cap": {
 				"denominator": 24
@@ -688,6 +715,7 @@
 			"scaling_cost": 10,
 			"weight": 2,
 			"required_candidates": 3,
+			"minimum_players": 30,
 			"minimum_required_age": 0,
 			"requirements": [
 				100,
@@ -701,6 +729,7 @@
 				20,
 				10
 			],
+			"required_enemies": [ 3, 3, 3, 2, 2, 2, 2, 2, 2, 2 ],
 			"antag_cap": {
 				"denominator": 15,
 				"offset": 1
@@ -718,6 +747,7 @@
 			"scaling_cost": 101,
 			"weight": 2,
 			"required_candidates": 3,
+			"minimum_players": 30,
 			"minimum_required_age": 0,
 			"requirements": [
 				100,
@@ -731,6 +761,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 3, 3, 3, 2, 2, 2, 2, 2, 2, 2 ],
 			"antag_cap": {
 				"denominator": 15,
 				"offset": 1
@@ -761,6 +792,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 3, 3, 3, 2, 1, 1, 1, 0, 0, 0 ],
 			"antag_cap": {
 				"denominator": 25
 			},
@@ -790,6 +822,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 3, 3, 3, 2, 1, 1, 1, 0, 0, 0 ],
 			"antag_cap": {
 				"denominator": 25
 			},
@@ -821,6 +854,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 3, 2, 1, 1, 1, 1, 1, 0, 0, 0 ],
 			"antag_cap": {
 				"denominator": 12,
 				"offset": 1
@@ -852,6 +886,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 3, 2, 1, 1, 1, 1, 1, 1, 1, 1 ],
 			"antag_cap": {
 				"denominator": 24
 			},
@@ -882,6 +917,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 3, 3, 3, 2, 1, 1, 1, 1, 1, 1 ],
 			"antag_cap": {
 				"denominator": 99
 			},
@@ -912,6 +948,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 2, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
 			"antag_cap": {
 				"denominator": 20,
 				"offset": 1
@@ -943,6 +980,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 3, 3, 3, 2, 2, 2, 2, 2, 2, 2 ],
 			"antag_cap": {
 				"denominator": 25
 			},
@@ -973,6 +1011,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
 			"antag_cap": {
 				"denominator": 12
 			},
@@ -1003,6 +1042,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
 			"antag_cap": {
 				"denominator": 24
 			},
@@ -1062,6 +1102,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 2, 1, 1, 1, 1, 1, 1, 0, 0, 0 ],
 			"antag_cap": {
 				"denominator": 15,
 				"offset": 2
@@ -1093,6 +1134,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 2, 1, 1, 1, 1, 1, 1, 0, 0, 0 ],
 			"antag_cap": {
 				"denominator": 15,
 				"offset": 3
@@ -1110,6 +1152,7 @@
 			"scaling_cost": 10,
 			"weight": 2,
 			"required_candidates": 1,
+			"minimum_players": 5,
 			"minimum_required_age": 0,
 			"requirements": [
 				10,
@@ -1123,6 +1166,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
 			"antag_cap": {
 				"denominator": 10
 			},
@@ -1140,6 +1184,7 @@
 			"scaling_cost": 16,
 			"weight": 2,
 			"required_candidates": 1,
+			"minimum_players": 5,
 			"minimum_required_age": 0,
 			"requirements": [
 				100,
@@ -1153,6 +1198,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ],
 			"antag_cap": {
 				"denominator": 20
 			},
@@ -1183,6 +1229,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 1, 1, 1, 1, 1, 1, 1, 0, 0, 0 ],
 			"antag_cap": {
 				"denominator": 10
 			},
@@ -1213,6 +1260,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 3, 2, 1, 1, 1, 1, 1, 1, 1, 1 ],
 			"antag_cap": {
 				"denominator": 24
 			},
@@ -1242,6 +1290,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 3, 2, 1, 1, 1, 1, 1, 1, 1, 1 ],
 			"antag_cap": {
 				"denominator": 99
 			},
@@ -1271,6 +1320,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 3, 2, 1, 1, 1, 1, 1, 1, 1, 1 ],
 			"antag_cap": {
 				"denominator": 99
 			},
@@ -1301,6 +1351,7 @@
 				10,
 				10
 			],
+			"required_enemies": [ 3, 2, 1, 1, 1, 1, 1, 1, 1, 1 ],
 			"antag_cap": {
 				"denominator": 18
 			},
@@ -1319,6 +1370,7 @@
 			"scaling_cost": 10,
 			"weight": 4,
 			"required_candidates": 1,
+			"minimum_players": 5,
 			"minimum_required_age": 0,
 			"requirements": [
 				10,
@@ -1334,15 +1386,15 @@
 			],
 			"required_enemies": [
 				1,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1
 			],
 			"antag_cap": {
 				"denominator": 12
@@ -1386,13 +1438,13 @@
 				3,
 				3,
 				2,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2
 			],
 			"antag_cap": {
 				"denominator": 15
@@ -1424,6 +1476,7 @@
 			"scaling_cost": 12,
 			"weight": 3,
 			"required_candidates": 1,
+			"minimum_players": 10,
 			"minimum_required_age": 0,
 			"requirements": [
 				100,
@@ -1440,14 +1493,14 @@
 			"required_enemies": [
 				2,
 				2,
-				1,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2
 			],
 			"antag_cap": {
 				"denominator": 15
@@ -1474,6 +1527,7 @@
 			"scaling_cost": 12,
 			"weight": 2,
 			"required_candidates": 1,
+			"minimum_players": 10,
 			"minimum_required_age": 0,
 			"requirements": [
 				100,
@@ -1491,13 +1545,13 @@
 				3,
 				3,
 				2,
-				1,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2
 			],
 			"antag_cap": {
 				"denominator": 15

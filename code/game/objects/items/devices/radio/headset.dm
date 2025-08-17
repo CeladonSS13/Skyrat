@@ -13,6 +13,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	RADIO_CHANNEL_GUILD = RADIO_TOKEN_GUILD, //NOVA EDIT ADDITION - Mapping
 	RADIO_CHANNEL_TARKON = RADIO_TOKEN_TARKON, //NOVA EDIT ADDITION - MAPPING
 	RADIO_CHANNEL_SOLFED = RADIO_TOKEN_SOLFED, //NOVA EDIT ADDITION - SOLFED
+	RADIO_CHANNEL_PRISON = RADIO_TOKEN_PRISON, //SS1984 ADDITION - PRISONERS HEADSETS
 	RADIO_CHANNEL_SYNDICATE = RADIO_TOKEN_SYNDICATE,
 	RADIO_CHANNEL_SUPPLY = RADIO_TOKEN_SUPPLY,
 	RADIO_CHANNEL_SERVICE = RADIO_TOKEN_SERVICE,
@@ -68,7 +69,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	for(var/i in 1 to length(channels))
 		var/channel_name = channels[i]
 		var/channel_token = GLOB.channel_tokens[channel_name]
-		var/channel_span_class = get_radio_span(GLOB.radiochannels[channel_name])
+		var/channel_span_class = get_radio_span(GLOB.default_radio_channels[channel_name])
 
 		if(i == 1)
 			available_channels += "<li><b>[span_class(channel_span_class, MODE_TOKEN_DEPARTMENT)]</b> or <b>[span_class(channel_span_class, channel_token)]</b> for <b>[span_class(channel_span_class, channel_name)]</b></li>"
@@ -456,7 +457,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 /obj/item/radio/headset/screwdriver_act(mob/living/user, obj/item/tool)
 	if(keyslot || keyslot2)
 		for(var/ch_name in channels)
-			SSradio.remove_object(src, GLOB.radiochannels[ch_name])
+			SSradio.remove_object(src, GLOB.default_radio_channels[ch_name])
 			secure_radio_connections[ch_name] = null
 
 		if(keyslot)
@@ -505,7 +506,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 		special_channels |= keyslot2.special_channels
 
 		for(var/ch_name in channels)
-			secure_radio_connections[ch_name] = add_radio(src, GLOB.radiochannels[ch_name])
+			secure_radio_connections[ch_name] = add_radio(src, GLOB.default_radio_channels[ch_name])
 
 	// Updates radio languages entirely for the mob wearing the headset
 	var/mob/mob_loc = loc

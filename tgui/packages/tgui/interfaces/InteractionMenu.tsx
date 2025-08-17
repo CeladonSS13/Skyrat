@@ -43,7 +43,7 @@ export const InteractionMenu = (props) => {
   } = data;
 
   return (
-    <Window width={500} height={600} title={'Interact - ' + self}>
+    <Window width={500} height={600} title={`Interact - ${self}`}>
       <Window.Content scrollable>
         {(block_interact && <NoticeBox>Unable to Interact</NoticeBox>) || (
           <NoticeBox>Able to Interact</NoticeBox>
@@ -80,6 +80,60 @@ export const InteractionMenu = (props) => {
             ))}
           </Section>
         </Stack>
+        { /* SS1984 REMOVAL START
+        {lewd_slots.length > 0 ? (
+          <Section key="item_slots" title={'Lewd Slots'}>
+            <Stack fill>
+              {lewd_slots.map((element: LewdSlot) => {
+                return (
+                  <Stack.Item key={element.name}>
+                    <Button
+                      onClick={() =>
+                        act('remove_lewd_item', {
+                          item_slot: element.name,
+                          selfref: ref_self,
+                          userref: ref_user,
+                        })
+                      }
+                      tooltip={element.name}
+                    >
+                      <Box
+                        style={{
+                          width: '32px',
+                          height: '32px',
+                          margin: '0.5em 0',
+                        }}
+                      >
+                        {element.img ? (
+                          <img
+                            src={`data:image/png;base64,${element.img}`}
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                            }}
+                          />
+                        ) : (
+                          <Icon
+                            name="eye-slash"
+                            size={2}
+                            ml={0}
+                            mt={0.75}
+                            style={{
+                              textAlign: 'center',
+                            }}
+                          />
+                        )}
+                      </Box>
+                    </Button>
+                  </Stack.Item>
+                );
+              })}
+            </Stack>
+          </Section>
+        ) : (
+          ''
+        )}
+        SS1984 REMOVAL END */ }
       </Window.Content>
     </Window>
   );

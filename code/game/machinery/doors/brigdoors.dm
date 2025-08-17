@@ -76,7 +76,7 @@
 		return PROCESS_KILL
 
 	if(REALTIMEOFDAY - activation_time >= timer_duration) // NOVA EDIT CHANGE: original was world.time
-		timer_end() // open doors, reset timer, clear status screen
+		timer_end_full() // open doors, reset timer, clear status screen
 	update_content()
 
 /**
@@ -91,6 +91,10 @@
 
 	var/disp1 = name
 	var/disp2 = "[add_leading(num2text((time_left / 60) % 60), 2, "0")]:[add_leading(num2text(time_left % 60), 2, "0")]"
+	// SS1984 ADDITION START
+	if (time_left == 3600 && disp2 == "00:00")
+		disp2 = "60:00"
+	// SS1984 ADDITION END
 	set_messages(disp1, disp2)
 
 /**
@@ -101,6 +105,17 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		return 0
 
+	// SS1984 ADDITION START
+	if(!prisoner_name || !prisoner_charge || !prisoner_time)
+		return FALSE
+
+	timeset(prisoner_time * 60) // to seconds
+	prison_occupant = prisoner_name
+	crimes = prisoner_charge
+	prisoner_name = null
+	prisoner_charge = null
+	prisoner_time = null
+	// SS1984 ADDITION END
 	activation_time = REALTIMEOFDAY // NOVA EDIT CHANGE: original was world.time
 	timing = TRUE
 	begin_processing()
@@ -199,9 +214,11 @@
 
 /obj/machinery/status_display/door_timer/ui_data()
 	var/list/data = list()
-	var/time_left = time_left(seconds = TRUE)
-	data["seconds"] = round(time_left % 60)
-	data["minutes"] = round((time_left - data["seconds"]) / 60)
+	// SS1984 REMOVAL START
+	//var/time_left = time_left(seconds = TRUE)
+	//data["seconds"] = round(time_left % 60)
+	//data["minutes"] = round((time_left - data["seconds"]) / 60)
+	// SS1984 REMOVAL END
 	data["timing"] = timing
 	data["flash_charging"] = FALSE
 	for(var/datum/weakref/flash_ref as anything in flashers)
@@ -228,20 +245,30 @@
 		return FALSE
 
 	switch(action)
-		if("time")
-			var/value = text2num(params["adjust"])
-			if(value)
-				. = set_timer(timer_duration + value)
-				user.investigate_log("modified the timer by [value/10] seconds for cell [id], currently [time_left(seconds = TRUE)]", INVESTIGATE_RECORDS)
-				user.log_message("modified the timer by [value/10] seconds for cell [id], currently [time_left(seconds = TRUE)]", LOG_ATTACK)
+		// SS1984 REMOVAL START
+		// if("time")
+		// 	var/value = text2num(params["adjust"])
+		// 	if(value)
+		// 		. = set_timer(timer_duration + value)
+		// 		user.investigate_log("modified the timer by [value/10] seconds for cell [id], currently [time_left(seconds = TRUE)]", INVESTIGATE_RECORDS)
+		// 		user.log_message("modified the timer by [value/10] seconds for cell [id], currently [time_left(seconds = TRUE)]", LOG_ATTACK)
+		// SS1984 REMOVAL END
 		if("start")
-			timer_start()
+			if (!timer_start()) // SS1984 EDIT, original: timer_start()
+				return FALSE // SS1984 ADDITION
 			user.investigate_log("has started [id]'s timer of [time_left(seconds = TRUE)] seconds", INVESTIGATE_RECORDS)
 			user.log_message("has started [id]'s timer of [time_left(seconds = TRUE)] seconds", LOG_ATTACK)
 		if("stop")
+			if (!timer_end_full(forced = TRUE)) // SS1984 ADDITION
+				return FALSE // SS1984 ADDITION
 			user.investigate_log("has stopped [id]'s timer of [time_left(seconds = TRUE)] seconds", INVESTIGATE_RECORDS)
 			user.log_message("has stopped [id]'s timer of [time_left(seconds = TRUE)] seconds", LOG_ATTACK)
-			timer_end(forced = TRUE)
+			 // SS1984 ADDITION START
+			aas_config_announce(/datum/aas_config_entry/brig_cell_release_forced_announcement,
+				list("CELL" = name, "RELEASER" = isobserver(usr) ? "Central Command" : user.name),
+				src, list(broadcast_channel))
+			// SS1984 ADDITION END
+			// SS1984 REMOVAL timer_end(forced = TRUE)
 		if("flash")
 			user.investigate_log("has flashed cell [id]", INVESTIGATE_RECORDS)
 			user.log_message("has flashed cell [id]", LOG_ATTACK)
@@ -251,23 +278,29 @@
 					flashers -= flash_ref
 					continue
 				flasher.flash()
-		if("preset")
-			var/preset = params["preset"]
-			var/preset_time = time_left()
-			switch(preset)
-				if("short")
-					preset_time = PRESET_SHORT
-				if("medium")
-					preset_time = PRESET_MEDIUM
-				if("long")
-					preset_time = PRESET_LONG
-			. = set_timer(preset_time)
-			user.investigate_log("set cell [id]'s timer to [preset_time/10] seconds", INVESTIGATE_RECORDS)
-			user.log_message("set cell [id]'s timer to [preset_time/10] seconds", LOG_ATTACK)
-			if(timing)
-				activation_time = REALTIMEOFDAY // NOVA EDIT CHANGE: original was world.time
+		// SS1984 ADDITION START
 		else
-			. = FALSE
+			return ui_act_extra(action, params, ui, state)
+		// SS1984 ADDITION END
+		// SS1984 REMOVAL START
+		// if("preset")
+		// 	var/preset = params["preset"]
+		// 	var/preset_time = time_left()
+		// 	switch(preset)
+		// 		if("short")
+		// 			preset_time = PRESET_SHORT
+		// 		if("medium")
+		// 			preset_time = PRESET_MEDIUM
+		// 		if("long")
+		// 			preset_time = PRESET_LONG
+		// 	. = set_timer(preset_time)
+		// 	user.investigate_log("set cell [id]'s timer to [preset_time/10] seconds", INVESTIGATE_RECORDS)
+		// 	user.log_message("set cell [id]'s timer to [preset_time/10] seconds", LOG_ATTACK)
+		// 	if(timing)
+		// 		activation_time = REALTIMEOFDAY // NOVA EDIT CHANGE: original was world.time
+		// else
+		// 	. = FALSE
+		// SS1984 REMOVAL END
 
 /obj/machinery/status_display/door_timer/proc/grey_tide(datum/source, list/grey_tide_areas)
 	SIGNAL_HANDLER
@@ -278,7 +311,7 @@
 	for(var/area_type in grey_tide_areas)
 		if(!istype(get_area(src), area_type))
 			continue
-		timer_end(forced = TRUE)
+		grey_tide_open()
 
 /datum/aas_config_entry/brig_cell_release_announcement
 	name = "Security Alert: Cell Timer Expired"

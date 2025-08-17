@@ -4,7 +4,7 @@
 	icon = 'icons/mob/simple/mob.dmi'
 	icon_state = "ghost"
 	icon_living = "ghost"
-	mob_biotypes = MOB_SPIRIT
+	mob_biotypes = MOB_SPIRIT | MOB_UNDEAD
 	speak_emote = list("wails", "weeps")
 	response_help_continuous = "passes through"
 	response_help_simple = "pass through"
@@ -92,7 +92,7 @@
 			if(0)
 				name = "ghost of [pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
 			if(1)
-				name = "ghost of [pick(GLOB.first_names_female)] [pick(GLOB.last_names)]"
+				name = "ghost of [pick(GLOB.first_names_female)] [pick(GLOB.last_names_female)]" // SS1984 EDIT, original: name = "ghost of [pick(GLOB.first_names_female)] [pick(GLOB.last_names)]"
 
 /datum/ai_controller/basic_controller/ghost
 	blackboard = list(

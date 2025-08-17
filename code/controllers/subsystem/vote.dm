@@ -343,6 +343,7 @@ SUBSYSTEM_DEF(vote)
 				"countMethod" = current_vote.count_method,
 				"displayStatistics" = current_vote.display_statistics,
 				"choices" = choices,
+				"choicesHighlight" = current_vote.choices_highlight, // SS1984 ADDITION
 				"vote" = vote_data,
 			)
 

@@ -129,7 +129,7 @@
 	if(gender != MALE && gender != FEMALE)
 		gender = pick(MALE, FEMALE)
 	if(gender == FEMALE)
-		return capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
+		return capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names_female)) // SS1984 EDIT, original: return capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 	return capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 
 

@@ -187,7 +187,7 @@
 	armor_type = /datum/armor/mod_theme_corporate_official
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	charge_drain = DEFAULT_CHARGE_DRAIN
-
+	complexity_max = DEFAULT_MAX_COMPLEXITY - 5
 	slowdown_deployed = 0.35
 	allowed_suit_storage = list(
 		/obj/item/assembly/flash,
@@ -209,7 +209,6 @@
 	applied_core = /obj/item/mod/core/standard
 	applied_cell = /obj/item/stock_parts/power_store/cell/high
 	req_access = list(ACCESS_CENT_LIVING)
-	complexity_max = DEFAULT_MAX_COMPLEXITY - 5
 	applied_modules = list(
 		/obj/item/mod/module/headprotector/inbuilt,
 		/obj/item/mod/module/megaphone/inbuild,
@@ -307,6 +306,11 @@
 /obj/item/mod/module/paper_dispenser_carbon/get_configuration()
 	. = ..()
 	.["carbon"] = add_ui_configuration("Carbon", "bool", carbon)
+
+/obj/item/mod/module/paper_dispenser_carbon/configure_edit(key, value)
+	switch(key)
+		if("carbon")
+			carbon = text2num(value)
 
 /obj/item/mod/module/paper_dispenser_carbon/inbuild
 	name = "Inbuild MOD paper dispenser module"

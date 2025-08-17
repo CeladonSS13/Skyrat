@@ -9,6 +9,7 @@
 // This code doesn't look very good because it's doubling already existing, yet at least it working pretty good
 /obj/structure/closet/crate/secure
 	var/broken_lvl = 0
+	var/allow_hack = TRUE
 
 /obj/structure/closet/crate/secure/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
@@ -21,6 +22,9 @@
 	if (!broken && broken_lvl != 0) // extra check to fix broken_lvl in case it somehow not correct
 		broken_lvl = 0
 	if (!locked || broken_lvl != 0 || user.combat_mode)
+		return .
+	if (!allow_hack)
+		balloon_alert(user, "Панель не откручивается!")
 		return .
 
 	to_chat(user, "<span class='notice'>Вы начинаете откручивать панель замка [src]...</span>")
@@ -40,7 +44,7 @@
 
 /obj/structure/closet/crate/secure/wirecutter_act(mob/living/user, obj/item/tool)
 	. = ..()
-	if (!locked || broken_lvl != 1 || user.combat_mode || !broken) // should be broken by screwdriver act
+	if (!locked || broken_lvl != 1 || user.combat_mode || !broken || !allow_hack) // should be broken by screwdriver act
 		return .
 
 	to_chat(user, "<span class='notice'>Вы начинаете подготавливать провода панели [src]...</span>")
@@ -57,7 +61,7 @@
 
 /obj/structure/closet/crate/secure/multitool_act(mob/living/user, obj/item/tool)
 	. = ..()
-	if (!locked || broken_lvl != 2 || user.combat_mode || !broken)
+	if (!locked || broken_lvl != 2 || user.combat_mode || !broken || !allow_hack)
 		return .
 
 	to_chat(user, "<span class='notice'>Вы начинаете подключать провода панели замка [src] к [tool]...</span>")

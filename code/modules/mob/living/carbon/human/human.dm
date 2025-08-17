@@ -269,7 +269,7 @@
 				return
 			if(ishuman(human_or_ghost_user))
 				var/mob/living/carbon/human/human_user = human_or_ghost_user
-				if(human_user.stat || human_user == src) //|| !human_user.canmove || human_user.restrained()) Fluff: Sechuds have eye-tracking technology and sets 'arrest' to people that the wearer looks and blinks at.
+				if(human_user.stat > SOFT_CRIT) // SS1984 EDIT, original: if(human_user.stat || human_user == src) //|| !human_user.canmove || human_user.restrained()) Fluff: Sechuds have eye-tracking technology and sets 'arrest' to people that the wearer looks and blinks at.
 					return   //Non-fluff: This allows sec to set people to arrest as they get disarmed or beaten
 			// Checks the user has security clearence before allowing them to change arrest status via hud, comment out to enable all access
 				var/obj/item/clothing/glasses/hud/security/user_glasses = human_user.glasses
@@ -298,12 +298,41 @@
 				if(!new_status || !target_record || !human_user.canUseHUD() || !HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
 					return
 
-				if(new_status == WANTED_ARREST)
-					var/datum/crime/new_crime = new(author = human_user, details = "Set by SecHUD.")
-					target_record.crimes += new_crime
-					investigate_log("SecHUD auto-crime | Added to [target_record.name] by [key_name(human_user)]", INVESTIGATE_RECORDS)
+				// SS1984 REMOVAL START
+				// if(new_status == WANTED_ARREST)
+				// 	var/datum/crime/new_crime = new(author = human_user, details = "Set by SecHUD.")
+				// 	target_record.crimes += new_crime
+				// 	investigate_log("SecHUD auto-crime | Added to [target_record.name] by [key_name(human_user)]", INVESTIGATE_RECORDS)
+				// SS1984 REMOVAL END
+				// SS1984 ADDITION START
+				var/reason_text = tgui_input_text(usr, "Comment:", "Add comment", "", MAX_DESC_LEN, encode = FALSE)
+				if(!reason_text)
+					reason_text = "" // it's valid
 
-				investigate_log("has been set from [target_record.wanted_status] to [new_status] via HUD by [key_name(human_user)].", INVESTIGATE_RECORDS)
+				var/id_card
+				var/found_rank
+				var/found_name
+				var/obj/item/id_slot = human_user.get_item_by_slot(ITEM_SLOT_ID)
+				if(id_slot)
+					id_card = id_slot?.GetID()
+				if (id_card)
+					var/retrieved_job = retrieve_relevant_job(usr, id_card, TRUE)
+					if (!retrieved_job)
+						retrieved_job = retrieve_relevant_job(usr, id_card, FALSE)
+					if (retrieved_job)
+						found_rank = retrieved_job
+					var/obj/item/card/id/id_card_casted = id_card
+					if (id_card_casted)
+						found_name = id_card_casted.registered_name
+				if (!found_name)
+					found_name = "Unknown"
+
+				var/datum/crime/new_crime = new(author = "SecHUD", details = "Set status from [target_record.wanted_status] to [new_status] by [found_name][found_rank ? " ([found_rank])" : ""]. Comment: [reason_text]")
+				target_record.crimes += new_crime
+				investigate_log("SecHUD status change to [target_record.name] by [key_name(human_user)]. Comment: [reason_text]", INVESTIGATE_RECORDS)
+				// SS1984 ADDITION END
+
+				// SS1984 REMOVAL investigate_log("has been set from [target_record.wanted_status] to [new_status] via HUD by [key_name(human_user)].", INVESTIGATE_RECORDS)
 				target_record.wanted_status = new_status
 				update_matching_security_huds(target_record.name)
 				return
@@ -763,9 +792,9 @@
 
 /mob/living/carbon/human/fully_heal(heal_flags = HEAL_ALL)
 	if(heal_flags & HEAL_NEGATIVE_MUTATIONS)
-		for(var/datum/mutation/human/existing_mutation in dna.mutations)
+		for(var/datum/mutation/existing_mutation in dna.mutations)
 			if(existing_mutation.quality != POSITIVE && existing_mutation.remove_on_aheal)
-				dna.remove_mutation(existing_mutation)
+				dna.remove_mutation(existing_mutation, list(MUTATION_SOURCE_ACTIVATED, MUTATION_SOURCE_MUTATOR, MUTATION_SOURCE_TIMED_INJECTOR))
 
 	if(heal_flags & HEAL_TEMP)
 		set_coretemperature(get_body_temp_normal(apply_change = FALSE))
@@ -825,20 +854,22 @@
 		if(!check_rights(R_SPAWN))
 			return
 		var/list/options = list("Clear"="Clear")
-		for(var/x in subtypesof(/datum/mutation/human))
-			var/datum/mutation/human/mut = x
+		for(var/x in subtypesof(/datum/mutation))
+			var/datum/mutation/mut = x
 			var/name = initial(mut.name)
 			options[dna.check_mutation(mut) ? "[name] (Remove)" : "[name] (Add)"] = mut
 		var/result = input(usr, "Choose mutation to add/remove","Mutation Mod") as null|anything in sort_list(options)
 		if(result)
 			if(result == "Clear")
-				dna.remove_all_mutations()
+				for(var/datum/mutation/mutation as anything in dna.mutations)
+					dna.remove_mutation(mutation, mutation.sources)
 			else
 				var/mut = options[result]
 				if(dna.check_mutation(mut))
-					dna.remove_mutation(mut)
+					var/datum/mutation/mutation = dna.get_mutation(mut)
+					dna.remove_mutation(mut, mutation.sources)
 				else
-					dna.add_mutation(mut)
+					dna.add_mutation(mut, MUTATION_SOURCE_VV)
 
 	if(href_list[VV_HK_MOD_QUIRKS])
 		if(!check_rights(R_SPAWN))
@@ -1143,7 +1174,7 @@
 	if (!isnull(race))
 		dna.species = new race
 
-/mob/living/carbon/human/species/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE) // NOVA EDIT - Customization
+/mob/living/carbon/human/species/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, replace_missing = TRUE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE) // NOVA EDIT CHANGE - Customization. ORIGINAL: /mob/living/carbon/human/species/set_species(datum/species/mrace, icon_update, pref_load, replace_missing)
 	. = ..()
 	if(use_random_name)
 		fully_replace_character_name(real_name, generate_random_mob_name())
@@ -1152,12 +1183,9 @@
 /mob/living/carbon/human/proc/crewlike_monkify()
 	if(!ismonkey(src))
 		set_species(/datum/species/monkey)
-	dna.add_mutation(/datum/mutation/human/clever)
 	// Can't make them human or nonclever. At least not with the easy and boring way out.
-	for(var/datum/mutation/human/mutation as anything in dna.mutations)
-		mutation.mutadone_proof = TRUE
-		mutation.instability = 0
-		mutation.class = MUT_OTHER
+	dna.add_mutation(/datum/mutation/clever, MUTATION_SOURCE_CREW_MONKEY)
+	dna.add_mutation(/datum/mutation/race, MUTATION_SOURCE_CREW_MONKEY)
 
 	add_traits(list(TRAIT_NO_DNA_SCRAMBLE, TRAIT_BADDNA, TRAIT_BORN_MONKEY), SPECIES_TRAIT)
 
@@ -1259,6 +1287,3 @@
 
 /mob/living/carbon/human/species/zombie/infectious
 	race = /datum/species/zombie/infectious
-
-/mob/living/carbon/human/species/voidwalker
-	race = /datum/species/voidwalker

@@ -284,7 +284,7 @@
 	log_manifest(character.mind.key, character.mind, character, latejoin = TRUE)
 
 	// NOVA EDIT ADDITION START
-	if(humanc)
+	if(humanc && !job.disable_all_loadout) // SS1984 EDIT, original: if(humanc)
 		var/list/loadout = humanc.client?.get_loadout_datums()
 		for(var/datum/loadout_item/item as anything in loadout)
 			if (item.restricted_roles && length(item.restricted_roles) && !(job.title in item.restricted_roles))

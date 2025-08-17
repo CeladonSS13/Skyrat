@@ -233,10 +233,12 @@
 		else
 			stack_trace("Unknown cyborg type '[special_role_name]' could not be found by [src]!")
 
+	var/is_male_name = TRUE // SS1984 ADDITION
 	var/brainfirstname = pick(GLOB.first_names_male)
 	if(prob(50))
 		brainfirstname = pick(GLOB.first_names_female)
-	var/brainopslastname = pick(GLOB.last_names)
+		is_male_name = FALSE // SS1984 ADDITION
+	var/brainopslastname = is_male_name ? pick(GLOB.last_names) : pick(GLOB.last_names_female) // SS1984 EDIT, original: var/brainopslastname = pick(GLOB.last_names)
 	if(creator_op.nuke_team.syndicate_name)  //the brain inside the syndiborg has the same last name as the other ops.
 		brainopslastname = creator_op.nuke_team.syndicate_name
 	var/brainopsname = "[brainfirstname] [brainopslastname]"

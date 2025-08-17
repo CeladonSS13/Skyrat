@@ -102,8 +102,8 @@
 		if(PLURAL)
 			first_name = pick(GLOB.first_names)
 			death_sound = pick(male_screams + female_screams + monkey_screeches)
-
-	fully_replace_character_name(name, "[first_name] [pick(GLOB.last_names)]")
+	var/last_name_source = gender == FEMALE ? GLOB.last_names_female : GLOB.last_names // SS1984 ADDITION
+	fully_replace_character_name(name, "[first_name] [pick(last_name_source)]") // SS1984 EDIT, original: fully_replace_character_name(name, "[first_name] [pick(GLOB.last_names)]")
 	desc += span_infoplain("\nToday, that cause is: ")
 	shuffle_inplace(causes)
 	desc += span_notice("#[pick(causes)].")

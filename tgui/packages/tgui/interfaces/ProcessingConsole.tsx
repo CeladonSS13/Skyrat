@@ -13,7 +13,7 @@ import { toTitleCase } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { Material } from './Fabrication/Types';
+import type { Material } from './Fabrication/Types';
 
 type IconData = {
   id: string;
@@ -41,7 +41,7 @@ export const ProcessingConsole = (props: any) => {
   const { state } = data;
 
   return (
-    <Window title="Processing Unit Console" width={580} height={500}>
+    <Window title="Processing Unit Console" width={580} height={540}> {/* SS1984 EDIT, original height = 500 */}
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item grow basis={0}>

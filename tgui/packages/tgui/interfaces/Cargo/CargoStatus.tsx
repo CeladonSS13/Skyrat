@@ -8,7 +8,7 @@ import {
 import { formatMoney } from 'tgui-core/format';
 
 import { useBackend } from '../../backend';
-import { CargoData } from './types';
+import type { CargoData } from './types';
 
 export function CargoStatus(props) {
   const { act, data } = useBackend<CargoData>();
@@ -24,20 +24,38 @@ export function CargoStatus(props) {
     points,
     requestonly,
     can_send,
+    current_plasma_cost, // SS1984 ADDITION
   } = data;
 
   return (
     <Section
       title={department}
       buttons={
-        <Box inline bold verticalAlign="middle">
-          <AnimatedNumber
-            value={points}
-            format={(value) => formatMoney(value)}
-          />
-          {' credits'}
-        </Box>
+      // SS1984 REMOVAL START
+      //     // <Box inline bold verticalAlign="middle">
+      //     //   <AnimatedNumber
+      //     //     value={points}
+      //     //     format={(value) => formatMoney(value)}
+      //     //   />
+      //     //   {' credits'}
+      //     // </Box>
+      //   }
+      // SS1984 REMOVAL END
+      // SS1984 ADDITION START
+        <>
+          <Box inline bold verticalAlign="middle" style={{ marginRight: '1em' }}>
+            <span style={{ color: '#BA3692' }}>Plasma</span> cost: {current_plasma_cost}
+          </Box>
+          <Box inline bold verticalAlign="middle">
+            <AnimatedNumber
+              value={points}
+              format={(value) => formatMoney(value)}
+            />
+            {' credits'}
+          </Box>
+        </>
       }
+      // SS1984 ADDITION END
     >
       <LabeledList>
         <LabeledList.Item label="Shuttle">

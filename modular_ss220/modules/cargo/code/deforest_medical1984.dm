@@ -48,8 +48,8 @@
 /datum/armament_entry/company_import/deforest/first_aid
 	subcategory = "First-Aid Consumables"
 
-/datum/armament_entry/company_import/deforest/first_aid/emergency_sutures
-	item_type = /obj/item/stack/medical/suture/emergency
+/datum/armament_entry/company_import/deforest/first_aid/bandage
+	item_type = /obj/item/stack/medical/bandage
 	cost = PAYCHECK_LOWER * 3
 
 /datum/armament_entry/company_import/deforest/first_aid/normal_sutures

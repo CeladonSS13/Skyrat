@@ -450,11 +450,12 @@ SUBSYSTEM_DEF(ticker)
 		if(ishuman(new_player_living))
 			SEND_SIGNAL(new_player_living, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED)
 			//NOVA EDIT ADDITION START
-			var/list/loadout = new_player_living.client?.get_loadout_datums()
-			for(var/datum/loadout_item/item as anything in loadout)
-				if (item.restricted_roles && length(item.restricted_roles) && !(player_assigned_role.title in item.restricted_roles))
-					continue
-				item.post_equip_item(new_player_mob.client?.prefs, new_player_living)
+			if (!player_assigned_role.disable_all_loadout) // SS1984 ADDITION
+				var/list/loadout = new_player_living.client?.get_loadout_datums()
+				for(var/datum/loadout_item/item as anything in loadout)
+					if (item.restricted_roles && length(item.restricted_roles) && !(player_assigned_role.title in item.restricted_roles))
+						continue
+					item.post_equip_item(new_player_mob.client?.prefs, new_player_living)
 			//NOVA EDIT ADDITION END
 		CHECK_TICK
 

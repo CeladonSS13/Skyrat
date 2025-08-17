@@ -4,6 +4,7 @@ This file has the basic atom/movable level speech procs.
 And the base of the send_speech() proc, which is the core of saycode.
 */
 GLOBAL_LIST_INIT(freqtospan, list(
+	"[FREQ_COMMON]" = "radio",
 	"[FREQ_SCIENCE]" = "sciradio",
 	"[FREQ_MEDICAL]" = "medradio",
 	"[FREQ_ENGINEERING]" = "engradio",
@@ -22,6 +23,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	"[FREQ_GUILD]" = "syndradio", //NOVA EDIT ADDITION - MAPPING
 	"[FREQ_TARKON]" = "engradio", //NOVA EDIT ADDITION - MAPPING
 	"[FREQ_SOLFED]" = "medradio", //NOVA EDIT ADDITION - SOLFED
+	"[FREQ_PRISON]" = "monkey", //SS1984 ADDITION - PRISONERS HEADSETS
 	"[FREQ_CTF_RED]" = "redteamradio",
 	"[FREQ_CTF_BLUE]" = "blueteamradio",
 	"[FREQ_CTF_GREEN]" = "greenteamradio",
@@ -72,7 +74,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 /// Called when this movable hears a message from a source.
 /// Returns TRUE if the message was received and understood.
-/atom/movable/proc/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods = list(), message_range=0)
+/atom/movable/proc/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range=0)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_HEAR, args)
 	return TRUE
 
@@ -123,7 +125,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		if(!hearing_movable)//theoretically this should use as anything because it shouldnt be able to get nulls but there are reports that it does.
 			stack_trace("somehow theres a null returned from get_hearers_in_view() in send_speech!")
 			continue
-		if(hearing_movable.Hear(null, src, message_language, message, null, spans, message_mods, range))
+		if(hearing_movable.Hear(null, src, message_language, message, null, null, null, spans, message_mods, range))
 			listened += hearing_movable
 		if(!found_client && length(hearing_movable.client_mobs_in_contents))
 			found_client = TRUE
@@ -143,7 +145,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		if (!CONFIG_GET(flag/tts_no_whisper) || (CONFIG_GET(flag/tts_no_whisper) && !message_mods[WHISPER_MODE]))
 			INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(tts_message_to_use), message_language, voice, filter.Join(","), listened, message_range = range, pitch = pitch)
 
-/atom/movable/proc/compose_message(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods = list(), visible_name = FALSE)
+/atom/movable/proc/compose_message(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), visible_name = FALSE)
 	//This proc uses [] because it is faster than continually appending strings. Thanks BYOND.
 	// SS1984 ADDITION START
 	var/obj/machinery/announcement_system/announcer = get_announcement_system(/datum/aas_config_entry/nttc_job_indicator_type, speaker, radio_freq)
@@ -151,11 +153,12 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	var/obj/item/card/id/id_card = null
 	// SS1984 ADDITION END
 	//Basic span
-	var/spanpart1 = "<span class='[radio_freq ? get_radio_span(radio_freq) : "game say"]'>"
+	var/freq_color = get_radio_color(radio_freq, radio_freq_color)
+	var/spanpart1 = "<span class='[radio_freq ? get_radio_span(radio_freq) : "game say"]' [freq_color ? "style='color:[freq_color];'" : ""]>"
 	//Start name span.
 	var/spanpart2 = "<span class='name'>"
 	//Radio freq/name display
-	var/freqpart = radio_freq ? "\[[get_radio_name(radio_freq)]\] " : ""
+	var/freqpart = radio_freq ? "\[[get_radio_name(radio_freq, radio_freq_name)]\] " : ""
 	//Speaker name
 	var/namepart
 	var/list/stored_name = list(null)
@@ -192,8 +195,8 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 	messagepart = " <span class='message'>[messagepart]</span></span>"
 	// SS1984 EDIT START
-	var/job = nttc ? nttc.retrieve_relevant_job(speaker_source, id_card, FALSE) : null
-	var/job_custom_name = nttc ? nttc.retrieve_relevant_job(speaker_source, id_card, TRUE) : null // so we getting both custom and non-custom
+	var/job = nttc ? retrieve_relevant_job(speaker_source, id_card, FALSE) : null
+	var/job_custom_name = nttc ? retrieve_relevant_job(speaker_source, id_card, TRUE) : null // so we getting both custom and non-custom
 	var/job_part = compose_job(speaker, raw_message, radio_freq, namepart, announcer, job, job_custom_name, speaker_source)
 	if (radio_freq && nttc && nttc.toggle_command_bold)
 		var/show_bold = job && (job in GLOB.nttc_highlight_jobs)
@@ -211,7 +214,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	if (!radio_freq || !announcer)
 		return "[namepart]"
 	var/datum/nttc_configuration/nttc = announcer ? announcer.nttc : null
-	if (!nttc) // very weird if it's not exist, as it built-in to announcer
+	if (!nttc || (announcer.machine_stat & (BROKEN|NOPOWER|EMPED)))
 		return "[namepart]"
 
 	return nttc.compose_ntts_job(raw_message, namepart, announcer, job, job_custom_name, speaker_source)
@@ -315,11 +318,29 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		return returntext
 	return "radio"
 
-/proc/get_radio_name(freq)
-	var/returntext = GLOB.reverseradiochannels["[freq]"]
-	if(returntext)
-		return returntext
+/proc/get_radio_name(freq, freq_name)
+	if(freq_name)
+		return freq_name
+	var/name = GLOB.reserved_radio_frequencies["[freq]"]
+	if(name)
+		return name
 	return "[copytext_char("[freq]", 1, 4)].[copytext_char("[freq]", 4, 5)]"
+
+/proc/get_radio_color(freq, freq_color)
+	if(freq)
+		// No custom colors for channels with theme settings
+		if(GLOB.freqtospan["[freq]"])
+			return ""
+		// No color overrides for commonn channel color (for freqs like 145.3)
+		if(freq_color == RADIO_COLOR_COMMON)
+			return ""
+		if(freq_color)
+			return freq_color
+		var/color = GLOB.reserved_radio_colors[get_radio_name(freq, null)]
+		if(color)
+			return color
+		return RADIO_COLOR_COMMON
+	return ""
 
 /proc/attach_spans(input, list/spans)
 	return "[message_spans_start(spans)][input]</span>"

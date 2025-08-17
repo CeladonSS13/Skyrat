@@ -1,4 +1,4 @@
-import { BooleanLike } from 'tgui-core/react';
+import type { BooleanLike } from 'tgui-core/react';
 
 export type CargoData = {
   amount_by_name: Record<string, number> | undefined;
@@ -20,6 +20,7 @@ export type CargoData = {
   requestonly: BooleanLike;
   self_paid: BooleanLike;
   supplies: Record<string, SupplyCategory>;
+  current_plasma_cost: number; // SS1984 ADDITION
 };
 
 export type SupplyCategory = {

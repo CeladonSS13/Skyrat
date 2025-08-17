@@ -60,13 +60,13 @@
 			valid_access = SSid_access.get_region_access_list(list(REGION_CENTCOM))
 		else if((is_centcom) && ((ACCESS_CENT_LIVING in auth_card.access)))
 			centcom_minor = TRUE
-			job_templates = SSid_access.station_job_templates_no_ntr.Copy()
+			job_templates = SSid_access.station_job_templates.Copy()
 			valid_access = SSid_access.get_region_access_list(list(REGION_NTR))
 		else if(is_centcom)
 			return FALSE
 		else
 			centcom_minor = FALSE
-			job_templates = SSid_access.station_job_templates_no_ntr.Copy()
+			job_templates = SSid_access.station_job_templates.Copy()
 			valid_access = SSid_access.get_region_access_list(list(REGION_ALL_STATION))	// SS1984 ADDITION END
 		computer.update_static_data_for_all_viewers()
 		return TRUE

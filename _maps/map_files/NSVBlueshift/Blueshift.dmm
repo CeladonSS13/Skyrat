@@ -16743,7 +16743,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 6
 	},
-/obj/machinery/computer/scan_consolenew{
+/obj/machinery/computer/dna_console{
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
@@ -28507,7 +28507,7 @@
 /turf/open/floor/iron/dark,
 /area/station/security/courtroom)
 "fuZ" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/permanent,
 /obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
@@ -35416,7 +35416,7 @@
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/rd)
 "gOb" = (
-/obj/machinery/computer/scan_consolenew{
+/obj/machinery/computer/dna_console{
 	dir = 4
 	},
 /obj/structure/window/spawner/directional/west{
@@ -58435,7 +58435,7 @@
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
 "ljh" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/permanent,
 /obj/machinery/camera/directional/south{
 	c_tag = "Security - Brig Port";
 	dir = 1
@@ -72878,7 +72878,6 @@
 /area/station/medical/break_room)
 "nZT" = (
 /obj/machinery/power/smes{
-	capacity = 1.8e+008;
 	charge = 2e+005
 	},
 /obj/structure/cable,
@@ -82258,7 +82257,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/aft/upper)
 "pOU" = (
-/obj/machinery/computer/scan_consolenew{
+/obj/machinery/computer/dna_console{
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes{
@@ -99995,6 +99994,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/landmark/start/bridge_officer,
 /turf/open/floor/iron/stairs{
 	dir = 8
 	},
@@ -122762,7 +122762,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/central)
 "xuN" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/permanent,
 /obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)

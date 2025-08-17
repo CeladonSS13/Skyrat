@@ -22,3 +22,6 @@ ALLOW_GALACTIC_MARKET_SELL
 
 # Uncomment to allow all cards regardless of their type (platinum, gold, silver...) to have infinity wildcard slots
 INFINITE_ACCESS_SLOTS
+
+# Uncomment to enable plasma inflation system in cargo
+PLASMA_INFLATION

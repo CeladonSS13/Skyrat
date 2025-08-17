@@ -115,9 +115,6 @@
 		var/obj/item/microfusion_gun_attachment/attachment = new type(src)
 		add_attachment(attachment)
 
-/obj/item/gun/microfusion/give_gun_safeties()
-	AddComponent(/datum/component/gun_safety)
-
 /obj/item/gun/microfusion/add_weapon_description()
 	AddElement(/datum/element/weapon_description, attached_proc = PROC_REF(add_notes_energy))
 

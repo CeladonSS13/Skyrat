@@ -1,0 +1,807 @@
+[
+  {
+    "date": "2025-08-12",
+    "author": "DenIS318",
+    "changes": [
+      "Revert: Materials value reduction (#5733)"
+    ]
+  },
+  {
+    "date": "2025-08-10",
+    "author": "DenIS318",
+    "changes": [
+      "Gun safety no longer added to weapons"
+    ]
+  },
+  {
+    "date": "2025-08-09",
+    "author": "Arceniu",
+    "changes": [
+      "Returned Bridge Assistant",
+      "Bridge Officer now only can be summoned by admins",
+      "Changed bridge assistant code, separating him from Nova's Bridge Officer"
+    ]
+  },
+  {
+    "date": "2025-08-09",
+    "author": "DenIS318",
+    "changes": [
+      "Removed bridge officer from id painter and non-centcom console ID templates"
+    ]
+  },
+  {
+    "date": "2025-08-08",
+    "author": "DenIS318",
+    "changes": [
+      "Security Voucher supply crate's amount 4 => 3",
+      "Prison cell timers no longer says \"NO DATA\" and doesn't display admin-observer names",
+      "Now displays cryo wake up message when spawned on cryo pod, instead of default arrival message",
+      "Prisoners latejoin spawns at cryopods in permabrig, instead of appearing from nowhere",
+      "Dormitory vendor (CozyMate) no longer spawn on permabrig",
+      "Prisoners no longer spawn with any loadout, only with outfit",
+      "Prisoner is now colored at NTTC radio",
+      "Prisoner processing console UI height 500 => 540",
+      "SS1984 changes are now hightlighted in changelogs"
+    ]
+  },
+  {
+    "date": "2025-08-06",
+    "author": "DenIS318",
+    "changes": [
+      "Fixed issues with broken say messages + no radio on machinery"
+    ]
+  },
+  {
+    "date": "2025-08-05",
+    "author": "Arceniu",
+    "changes": [
+      "Added new vendor-with sleep suits and bedsheets",
+      "NTR trim now have CentcomBlue color big pointer"
+    ]
+  },
+  {
+    "date": "2025-08-03",
+    "author": "DenIS318",
+    "changes": [
+      "Revert: Removed 'His Grace' from the Traitor uplink. It was a chaplain traitor only item that required you to consume 25 player corpses to ascend, making you inmune to stuns, regen life and putting you in a timer to kill as many people possible. (upstream #5777)",
+      "Bridge Officer no longer available to station",
+      "Added safe to HOS office with unica-6 in it with 3 speedloaders + holster for all recommended maps (Delta, Meta, Icebox, Tram)",
+      "Added safe codes to HOS office for all recommended maps (Delta, Meta, Icebox, Tram)"
+    ]
+  },
+  {
+    "date": "2025-08-02",
+    "author": "DenIS318",
+    "changes": [
+      "Engineering Secure Storage button is added to all recommended maps (delta, meta, icebox, tram)",
+      "Revert: making detective role more unique, by removing crew pinpointer and detective scanner from their closets, preventing abuse this by officer's. (upstream #4464)",
+      "Detective scanner is added to HOS closet",
+      "Armory access no longer required to open security MOD room, now it's brig access. For all supported maps (Delta, Meta, Icebox, Tram)",
+      "Added oxygen canister to armory on recommended maps (Delta, Meta, Icebox, Tram)",
+      "Modular computers (PDA) now shows message when shutdown by powerloss",
+      "Modular computers (PDA) powerloss now triggering itself when cell charge's ends",
+      "Russian human female lastnames generation"
+    ]
+  },
+  {
+    "date": "2025-08-01",
+    "author": "DenIS318",
+    "changes": [
+      "Plasma inflation mechanic for cargo. TL;DR: the more plasma you send rapidly, the less it worth.",
+      "Plasma sells at cargo now calculate new prices & revenue by curve similar to Log2(x)",
+      "Plasma price recovers in 15 mins (if there's no sells, if there's any plasma cell - timer stops and start again, but from current price)",
+      "Current plasma cost is displayed at cargo console UI",
+      "Plasma inflation works only for cargo shuttle, no away ghots roles/pirates",
+      "More detailed description & formulas & graphs are attached in pull request Excel file",
+      "Example: 50 plasma worth ~3200 credits, before worth 4000. And 1000 plasma (sold rapidly) worth ~8000 credits, before worth 80000",
+      "All simplemobs stamina slowdown reduced 3 => 2, except spiders",
+      "For spiders, flesh spiders stamina slowdown reduced 12 => 1",
+      "Hunter slug damage multiplier for compatible targets 5=>4, base damage still 20",
+      "Hunter Slugs no longer deals damage twice to compatible targets",
+      "Kiboko grenades projectiles speed increased 0.5 => 0.9 (normal projectile speed is 1.25)",
+      "NTTC at telecomms no longer works if machine is depowered/broken/EMP (comms blackout count as EMP)",
+      "SSD players no longer get considered for antag role in midround dynamic rulesets",
+      "Map vote now highlight recommended maps (Delta, Meta, Tram, Icebox) - these maps have up-to-date mapping",
+      "Highlighted options in vote displayed at top"
+    ]
+  },
+  {
+    "date": "2025-07-30",
+    "author": "DenIS318",
+    "changes": [
+      "Dynamic rulesets now should correctly work based on enemies per threat, most rulesets require at least 1 enemy (security/captain)",
+      "Agent card \"select all\" and \"deselect all\" buttons now should correctly work",
+      "All midround antag rulesets except sentient disease and borers now require at least 1 enemy (security/heads) for lowpop. Some rulesets require more than 1.",
+      "Midround antags rulesets now require at least 5 players, for which they didn't required already. This includes: Syndicate Sleeper, Obsessed. And relevant latejoins. If you want such antagonists at all - you need at least 1 security (captain would fit as well)",
+      "Changes for minimum players for other rulesets, such as nuclear assault, wizard, etc...",
+      "Quiet ruleset now cost 0.1 threat instead of 0.00001...",
+      "Abandoned crates no longer can be hacked using screwdriver-multitool-wirecutter",
+      "Now you can see/set security notes/status and other records on yourself if you have relevant HUD.",
+      "Now can correctly set status/some other HUD related actions during softcrit",
+      "Now during changing security status with SecHUD comment can be added. Automatically adds all such actions it to crime history",
+      "revert Nova's Max message length 2048 -> 1024 (as it is in TG)",
+      "Added handgun shoulder holster, works similar as MOD Shoulder Holster, but attaches to suit",
+      "Added hotkey for attachable shoulder holster (H by default)",
+      "Shoulder holster is added to all security weapon kits (hybrid taser kit, sol pistol...)",
+      "Shoulder holster added to biogenerator craft for 200 biomaterial"
+    ]
+  },
+  {
+    "date": "2025-07-29",
+    "author": "DenIS318",
+    "changes": [
+      "Brig Prison's Cell Timers reworked",
+      "New Cell Timer UI",
+      "Support for adding crimes directly in Cell Timer",
+      "Cell Timer now work based on prisoner name",
+      "Auto status set on sentenced/released by Cell Timer",
+      "Auto radio announces on cell timer sentenced/released/reset timer",
+      "Telecomms config entries for jail announcements/releases/reset timers",
+      "Warrant consoles now prints autogenerated sentences papers when Cell Timer activated",
+      "Remove \"old\" Cell Timer UI"
+    ]
+  },
+  {
+    "date": "2025-07-29",
+    "author": "Arceniu",
+    "changes": [
+      "Added new prison headset and encryption key",
+      "Changed permabrig closets to the same, but with prison headset",
+      "Added prison frequency"
+    ]
+  },
+  {
+    "date": "2025-07-28",
+    "author": "Arceniu",
+    "changes": [
+      "fixed a ntr paper dispenser module carbon button",
+      "fixed a ntr modsuit complexity"
+    ]
+  },
+  {
+    "date": "2025-07-27",
+    "author": "DenIS318",
+    "changes": [
+      "Flashbangs no longer stun/knockdown in 1 tile ignoring protection (still works if detonated in backpack/at same tile)"
+    ]
+  },
+  {
+    "date": "2025-07-27",
+    "author": "DenIS318",
+    "changes": [
+      "Job estimation now doesn't show when disabled in config",
+      "Admins (non-deadminned) still can see job estimations",
+      "Total Admins Ready is no longer shows mentors, no longer 3/2 admins ready"
+    ]
+  },
+  {
+    "date": "2025-07-27",
+    "author": "Arceniu",
+    "changes": [
+      "Added new corporate modsuit to nanotrasen representative",
+      "Added corporate modsuit to nanotrasen rep locker",
+      "ntr now have obj/item/clothing/glasses/hud/security/sunglasses/black"
+    ]
+  },
+  {
+    "date": "2025-07-26",
+    "author": "DenIS318",
+    "changes": [
+      "Disable bot language malfunction, machine language malfunction station traits",
+      "Select All on id computer no longer adds non-valid access, preventing abusing centcomm acceses",
+      "Gulag teleporter now equips radio headset to prisoner",
+      "Now minerals spawn instead of boulders in gulag",
+      "Labor claim console UI fix &apos",
+      "Ore machine now adds points to prisoner card",
+      "Added ore redemption machines to labor camps on all maps",
+      "Labor shuttle no longer stays bolted after travel",
+      "Ore Redemption at labor camp automatically link to station silo",
+      "Mining ore-redemptions can link to station ore silo (away levels still can't)",
+      "Radio headset to prisoner lockers",
+      "Prisoner card goal max now can be set up to 999999",
+      "Microfusion cell with self-charging attachment now automatically discharges itself when inserting to MCR rifle (without attachment still require manual discharge by pressing Z or whatever bind you have)"
+    ]
+  },
+  {
+    "date": "2025-07-25",
+    "author": "DenIS318",
+    "changes": [
+      "quantum console sprite now shows with keyboard",
+      "quantum console UI &quit;"
+    ]
+  },
+  {
+    "date": "2025-07-24",
+    "author": "DenIS318",
+    "changes": [
+      "Modsuit UI fixed"
+    ]
+  },
+  {
+    "date": "2025-07-23",
+    "author": "Arceniu",
+    "changes": [
+      "Added head of staff traits and more to ntr(cmd bank card, door remote, staff highlighting, upgraded headset)",
+      "modified ntr headset",
+      "NTR headset now have all(almost) station channels, NTR now can give access to janitor's keys, NTR now spawns with their door remote and cmd budget card"
+    ]
+  },
+  {
+    "date": "2025-07-23",
+    "author": "DenIS318",
+    "changes": [
+      "Admin secrets UI fixed"
+    ]
+  },
+  {
+    "date": "2025-07-21",
+    "author": "DenIS318",
+    "changes": [
+      "techfabs, autolathes, ore silos fixed UI display &times;",
+      "admin beaker panel UI fixed {''}"
+    ]
+  },
+  {
+    "date": "2025-07-21",
+    "author": "Arceniu",
+    "changes": [
+      "Added new custom bank console"
+    ]
+  },
+  {
+    "date": "2025-07-20",
+    "author": "DenIS318",
+    "changes": [
+      "loadout page {'\\u00A0'}"
+    ]
+  },
+  {
+    "date": "2025-07-19",
+    "author": "DenIS318",
+    "changes": [
+      "fixed {''} at dynamic-generated text (primary on round-end)",
+      "Liquid abuse should no longer freeze server as much as it was before"
+    ]
+  },
+  {
+    "date": "2025-07-19",
+    "author": "DenIS318",
+    "changes": [
+      "Replaced &nbsp; and &ensp; in UI and text. If there's anywhere displays {''} please report to coder",
+      "Random laws for AI enabled",
+      "Job's estimation no longer shown",
+      "Roundstart asimov laws slighty changed (to be more default)",
+      "Some other small changes",
+      "disabled station roundstart traits: late arrivals, random spawns, hangover, blackout, rev trash, birthday"
+    ]
+  },
+  {
+    "date": "2025-07-19",
+    "author": "Arceniu",
+    "changes": [
+      "Added \"box\" for safe code paper at oldstation",
+      "slighly changed oldstation"
+    ]
+  },
+  {
+    "date": "2025-07-18",
+    "author": "DenIS318",
+    "changes": [
+      "Synth humans can no longer be drafted to become changelings by dynamic",
+      "Heads now can become antags (CE, RD, CMO, QM, HOP) by dynamic",
+      "Revert \"makes the holster module unable to hold bulky guns\"",
+      "Fixed threesome balaclavas icons",
+      "Select All button at ID computer is now should work correctly when infinity access slots is disabled",
+      "Less chat and log spam on fail to add access using \"Select All\""
+    ]
+  },
+  {
+    "date": "2025-07-17",
+    "author": "DenIS318",
+    "changes": [
+      "Added button at \"Secrets\" - \"Debugging\" tab to disable infinity access slots for this round (if not started yet) or next round (if round already started)",
+      "Infinity access slots is config-locked now from VV. Use added button instead",
+      "Debugging tab at \"Secrets\" reduced buttons vertical size"
+    ]
+  },
+  {
+    "date": "2025-07-17",
+    "author": "Arceniu",
+    "changes": [
+      "Added new craftable modsuit(alternative hand made safeguard mod)"
+    ]
+  },
+  {
+    "date": "2025-07-16",
+    "author": "Arceniu",
+    "changes": [
+      "Added platinum, gold and CentCom id card to cargo"
+    ]
+  },
+  {
+    "date": "2025-07-16",
+    "author": "DenIS318",
+    "changes": [
+      "Select/Deselect all access buttons added to ID computer. Now you can select/deselect all acceses visible in console at Trim/All tabs (not by department). To get full access, you need to use \"select all\" button at BOTH \"Trim\" and \"All\" tabs"
+    ]
+  },
+  {
+    "date": "2025-07-15",
+    "author": "DenIS318",
+    "changes": [
+      "DNR revival typo \"target.p_theyre()\"",
+      "Disabled autotransfer vote cap. Shuttle no longer auto-calls after 4 shuttle votes even when selected continue playing",
+      "Now all cards can have infinite amount of wildcard accesses. There's still no option to get specific access related to Blueshield/Consultant"
+    ]
+  },
+  {
+    "date": "2025-07-15",
+    "author": "Arceniu",
+    "changes": [
+      "synth again have Hydraulic Leak-separated from blooddeficiency"
+    ]
+  },
+  {
+    "date": "2025-07-14",
+    "author": "DenIS318",
+    "changes": [
+      "Added autolathes to engineering, brig, research at maps: Delta, Meta, Tram, Icebox",
+      "Added 10 glass and 10 iron near added autolathes",
+      "Moved cargo autolathe, so it can be accesed if cargo open window to it",
+      "Security autolathe is hacked by default"
+    ]
+  },
+  {
+    "date": "2025-07-14",
+    "author": "Arceniu",
+    "changes": [
+      "rebalanced nerve staple quirk- synth now cant have it"
+    ]
+  },
+  {
+    "date": "2025-07-13",
+    "author": "DenIS318",
+    "changes": [
+      "Stunprod knockdown time 1.5 seconds => 1 tick (~0.05 seconds). There's still time after knockdown received to get up regardless of knockdown_time)",
+      "Stunprod size HUGE => NORMAL (can fit in backpack now)",
+      "Taser no longer apply tased status effect (no slowdown)",
+      "Taser no longer drain cell energy and stamina after hit target",
+      "Taser stamina damage 35 => 15",
+      "Taser delay between shots 0 => 15 ticks (~0.75 seconds)",
+      "Taser range 5 => 7",
+      "Taser paralyze 0 => 0.2 seconds (kind of microstun or ranged disarm)",
+      "Taser energy cost reduced, 5 => 15 shots with default battery",
+      "Taser no longer shows visual beam effect (by default)",
+      "Security roles (exclude detective and department guards) spawn with Security Voucher",
+      "Security Voucher can be used on SecTech to get Taser or Sol Pistol with non-lethal ammo",
+      "Added security vouchers to Warden's closet",
+      "Security vouchers can be purchased at cargo"
+    ]
+  },
+  {
+    "date": "2025-07-12",
+    "author": "DenIS318",
+    "changes": [
+      "Secure closets and crates can be hacked now with tools. Follow order: screwdriver => wirecutter => multitool. There is a chance to fail on each step.",
+      "AI now correctly die when receiving 200 damage",
+      "Interlink navigation tip for begginers now should work even when shuttle departed to station"
+    ]
+  },
+  {
+    "date": "2025-07-10",
+    "author": "Arceniu",
+    "changes": [
+      "nasavoid now protect from radiation like old time ago"
+    ]
+  },
+  {
+    "date": "2025-07-09",
+    "author": "Arceniu",
+    "changes": [
+      "ip modsuit now idlocked at start",
+      "Added new techfabs at ip and ds2",
+      "updated oldstation oil and blood spawners path"
+    ]
+  },
+  {
+    "date": "2025-07-09",
+    "author": "DenIS318",
+    "changes": [
+      "Now shows navigation at interlink for players with < 10 hours played on server"
+    ]
+  },
+  {
+    "date": "2025-07-08",
+    "author": "Arceniu",
+    "changes": [
+      "fixed a minor tarkon card issues",
+      "interdyne shuttle now cannot be used without ip/ds-2 access, interdyne ghost role modsuit now need access to activate"
+    ]
+  },
+  {
+    "date": "2025-07-08",
+    "author": "DenIS318",
+    "changes": [
+      "Navigate now shows you path even if you don't have access",
+      "Navigation max range increased to 255 (whole station zlevel)",
+      "Navigate now shows all APC areas on station (Fore Primary Hallway, Robotics, Ordnance Lab, Xenobiology Maintenance and so on), instead of only predefined landmarks (like Research). Finally, he found Brig Maintenance.",
+      "Add Note button for IC tab, which lets you write some temporal info for round as \"memories\"",
+      "Allow select same map at map-vote",
+      "Dynamic increase rulesets scaling cost",
+      "Dynamic increase rulesets threat consumed (mainly in roundstart)",
+      "NTTC now works based on speaker zlevel instead of \"hearer\" zlevel (as ghost in centcomm now you properly see nttc from station)",
+      "NTTC chameleon card now should properly work instead of \"Unknown\"",
+      "NTTC now shows custom role (if exist) instead of default"
+    ]
+  },
+  {
+    "date": "2025-07-07",
+    "author": "Arceniu",
+    "changes": [
+      "now need only 1 iron instead of 15 to perform synth revive"
+    ]
+  },
+  {
+    "date": "2025-07-03",
+    "author": "DenIS318",
+    "changes": [
+      "Now shuttles building shouldn't freeze server and throw runtime instead (could happen in some cases before)"
+    ]
+  },
+  {
+    "date": "2025-07-02",
+    "author": "Arceniu",
+    "changes": [
+      "fixed synd r_wall(now craftable), shuttle walls craftable(fixed spaceship plating)",
+      "fixed synd r_wall(working texture after disasamble)"
+    ]
+  },
+  {
+    "date": "2025-06-30",
+    "author": "DenIS318",
+    "changes": [
+      "Mentors now can see LOOC"
+    ]
+  },
+  {
+    "date": "2025-06-29",
+    "author": "DenIS318",
+    "changes": [
+      "Removed unused buttons: \"Report Issue\", \"Forum\" from top-right menu",
+      "Rescaled buttons at top-right menu",
+      "Fixed mining order typo",
+      "Can interact with machinery/TGUI in softcrit",
+      "Can speak to headset/radio in softcrit",
+      "Mobs should now correct attack softcrit targets",
+      "Other found bugs fixed related to softcrit",
+      "Slutter speech during softcrit",
+      "Can receive stun in softcrit for 4 seconds with 3% chance",
+      "Progressive Dynamic non-station roles (such as ERT or ghost roles) no more increases threat level"
+    ]
+  },
+  {
+    "date": "2025-06-27",
+    "author": "Arceniu",
+    "changes": [
+      "accounts now able to have custom payday desc"
+    ]
+  },
+  {
+    "date": "2025-06-24",
+    "author": "Arceniu",
+    "changes": [
+      "fixed a some ds 2 map code",
+      "added syndicate comm console to DS-2(can send message to synd-admins)"
+    ]
+  },
+  {
+    "date": "2025-06-23",
+    "author": "Arceniu",
+    "changes": [
+      "pai and ai now able to move MOD suit"
+    ]
+  },
+  {
+    "date": "2025-06-23",
+    "author": "DenIS318",
+    "changes": [
+      "Localize most default telecomms messages (credits to Dexter0506)"
+    ]
+  },
+  {
+    "date": "2025-06-22",
+    "author": "Arceniu",
+    "changes": [
+      "oldstation spawners now able to have custom character(human, felinid, synth), cryo icon fixed",
+      "added ACCESS_MINERAL_STOREROOM access to spare oldstation id"
+    ]
+  },
+  {
+    "date": "2025-06-22",
+    "author": "DenIS318",
+    "changes": [
+      "Return UI buttons at top of screen that were removed by TG"
+    ]
+  },
+  {
+    "date": "2025-06-21",
+    "author": "Arceniu",
+    "changes": [
+      "returned 3 quirks back"
+    ]
+  },
+  {
+    "date": "2025-06-21",
+    "author": "DenIS318",
+    "changes": [
+      "Temporal fix for resizeobserver error",
+      "Admins can properly cancel non-recallable shuttles now (no more need to disable/enable shuttle for that)"
+    ]
+  },
+  {
+    "date": "2025-06-20",
+    "author": "Arceniu",
+    "changes": [
+      "fixed removed serviettes, fixed oldstation implant",
+      "Added modular interdyne",
+      "changed ip to 1984 version"
+    ]
+  },
+  {
+    "date": "2025-06-19",
+    "author": "Arceniu",
+    "changes": [
+      "Added modular DS-2 and some code",
+      "Fixed Tarkon deck hud / interdyne huds"
+    ]
+  },
+  {
+    "date": "2025-06-18",
+    "author": "DenIS318",
+    "changes": [
+      "Aurora Caelsus event temporaly disabled from triggering automatically"
+    ]
+  },
+  {
+    "date": "2025-06-17",
+    "author": "Arceniu",
+    "changes": [
+      "changed comm console",
+      "fixed missing mcr in list"
+    ]
+  },
+  {
+    "date": "2025-06-16",
+    "author": "Arceniu",
+    "changes": [
+      "fixed HEV suits"
+    ]
+  },
+  {
+    "date": "2025-06-15",
+    "author": "Arceniu",
+    "changes": [
+      "changed after effect for ert module",
+      "changed cargodise outfit",
+      "slighly changed desc of military autodoc refill bottle",
+      "fixed a basic autodoc refill override in cargo"
+    ]
+  },
+  {
+    "date": "2025-06-14",
+    "author": "DenIS318",
+    "changes": [
+      "Translated codeworks and ion laws",
+      "Modify Goals UI fix for admins",
+      "Galactic Materials Market now accepts selling materials as it was before Nova's disabled it",
+      "New config flag for Galactic Market sell",
+      "Roundstart antagonists correctly spawn when roundstart players at least 5. Some rulesets also requires roundstart security/heads",
+      "Generated threat at round start decreased by 24% for lowpop (below 20 players), otherwise it would be really syndicate station",
+      "Paradox Clone midround event minimum players 0 => 5",
+      "Some other small tweaks at dynamic rulesets values for minimum players",
+      "Correct sub-roles display at radio",
+      "Infiltrator modset now correctly hiding job at radio",
+      "Preference for cortical borer to allow spawn as them in midround event"
+    ]
+  },
+  {
+    "date": "2025-06-13",
+    "author": "Arceniu",
+    "changes": [
+      "Returned MCR",
+      "changed cargo(added mcr)"
+    ]
+  },
+  {
+    "date": "2025-06-13",
+    "author": "DenIS318",
+    "changes": [
+      "Dynamic Progressive support (TESTING): now based on station strength the threat for dynamic could be increased at each minute. More info at PR.",
+      "Admins can disable Dynamic Progressive at Game Panel for Dynamic Options",
+      "Lavaland ruins budget 0 => 30. Now you can encounter more structures at lavaland, like hierophant arena and so on.",
+      "Space ruins budget 0 => 30. Now space ruins actually spawn!!!"
+    ]
+  },
+  {
+    "date": "2025-06-12",
+    "author": "DenIS318",
+    "changes": [
+      "Skyrat event title screen"
+    ]
+  },
+  {
+    "date": "2025-06-12",
+    "author": "DenIS318",
+    "changes": [
+      "nova logo replaced by ss1984 logo",
+      "nova logo in-chat replaced by ratge"
+    ]
+  },
+  {
+    "date": "2025-06-12",
+    "author": "DenIS318",
+    "changes": [
+      "Throw items in softcrit now works properly",
+      "Remove Nova's swap servers from title screen",
+      "Min players for roundstart spies 10 -> 5"
+    ]
+  },
+  {
+    "date": "2025-06-12",
+    "author": "Arceniu",
+    "changes": [
+      "Edited oldstation",
+      "added/enabled oldstation1984.dmm spawn, disabled oldstation1984.dmm spawn"
+    ]
+  },
+  {
+    "date": "2025-06-12",
+    "author": "Arceniu",
+    "changes": [
+      "cargodise 1984"
+    ]
+  },
+  {
+    "date": "2025-06-11",
+    "author": "DenIS318",
+    "changes": [
+      "Maintenance access for everyone"
+    ]
+  },
+  {
+    "date": "2025-06-10",
+    "author": "DenIS318",
+    "changes": [
+      "Enable Quirk balance",
+      "Add Request Sound support",
+      "Dynamic midround events threat or (and) min players lowered: Clown Operatives, Alien Infestation, Spiders, Space Pirates, Dangerous Space Pirates, Revenant"
+    ]
+  },
+  {
+    "date": "2025-06-09",
+    "author": "Arceniu",
+    "changes": [
+      "removed one override"
+    ]
+  },
+  {
+    "date": "2025-06-09",
+    "author": "Arceniu",
+    "changes": [
+      "rebalanced cargo imports",
+      "changed modular nova config",
+      "armament tgui"
+    ]
+  },
+  {
+    "date": "2025-06-09",
+    "author": "DenIS318",
+    "changes": [
+      "More details at map vote",
+      "Fixed map vote that was random before",
+      "Obsession event threat 20 -> 10",
+      "Removed weird spotlight effect from economy"
+    ]
+  },
+  {
+    "date": "2025-06-09",
+    "author": "DenIS318",
+    "changes": [
+      "Fixes wiki urls for in-game books"
+    ]
+  },
+  {
+    "date": "2025-06-08",
+    "author": "Artemchik542",
+    "changes": [
+      "тесты для кода"
+    ]
+  },
+  {
+    "date": "2025-06-08",
+    "author": "DenIS318",
+    "changes": [
+      "Ouroboros map temporaly excluded from map vote"
+    ]
+  },
+  {
+    "date": "2025-06-07",
+    "author": "Arceniu",
+    "changes": [
+      "fixed hev helmets",
+      "Returned gas masks",
+      "fixed a gas mask on blackmesa"
+    ]
+  },
+  {
+    "date": "2025-06-05",
+    "author": "Arceniu",
+    "changes": [
+      "Replaced basic telescopic baton with more elite version",
+      "Removed veteran req for NTR/BS",
+      "returned guns to some ruins/outfits",
+      "updated some code",
+      "fixed a icon override"
+    ]
+  },
+  {
+    "date": "2025-06-05",
+    "author": "Arceniu",
+    "changes": [
+      "NTR gun now have 1.6 projectile speed (instead of basic)"
+    ]
+  },
+  {
+    "date": "2025-06-05",
+    "author": "DenIS318",
+    "changes": [
+      "Flag BUILDMODE should be accesible by admins now",
+      "Now character name should correctly update at menu",
+      "Remove all Nova's antag opt-in references (examine, GUI... and so on)",
+      "Removed Nova's antag metaprotections UI",
+      "Fix input when changing name at menu",
+      "Enable autotransfer in config",
+      "Disable combat indicator",
+      "Navigation tip for players with < 3 hours",
+      "Walk speed 2 -> 1.8 as headmin request"
+    ]
+  },
+  {
+    "date": "2025-06-05",
+    "author": "DenIS318",
+    "changes": [
+      "auto cryo after 10->25 minutes",
+      "Light switches on by default",
+      "SMES now have double capacity (5MJ->10MJ/10MJ->20MJ)",
+      "More roundstart charge for engineering SMES (5MJ->10MJ)",
+      "SMES now contains/require double power-cells (5->10)",
+      "Nanotrasen Consultant m1911 gun now have default projectile speed (instead of slow-mode like)",
+      "Blueshield and Nanotrasen Consultant can be played by anyone (no veteran requirement)",
+      "Most deadly Nova's sector guns moved to admin-spawn",
+      "Moved guns replaced by Sinado Submachine Gun at ruins/maps/other spawns",
+      "Armory now have 2 Sinado Submachine Gun instead of 2 Sol Rifles",
+      "Keybindings now work at menu loading screen",
+      "Swapping characters at menu now correctly update character name",
+      "Remove ERP-related stuff",
+      "Radio Configuration at telecomms automated announcer",
+      "Support for NTTC at telecomms",
+      "Support for custom editable job + name formatting at automated announcer",
+      "Disabled some species from creation at editor",
+      "Hide metainfo (loaded ashwalker fortress at ...) from loading screen",
+      "Threshold for full death increased",
+      "Can perform actions during softcrit",
+      "Adminwho colored & translated",
+      "Disabled tutorials in config",
+      "Russian localization for human/golem/wizard names + localized some verbs (currently TESTING)",
+      "testing changelog compilation"
+    ]
+  },
+  {
+    "date": "2025-06-05",
+    "author": "Maximal08",
+    "changes": [
+      "починка ert auto doc",
+      "Remove subtler"
+    ]
+  }
+]
