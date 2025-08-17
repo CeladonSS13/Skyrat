@@ -115,7 +115,16 @@ export class Changelog extends Component {
       const sanitizeConfig = {
         // Allow the img tag and common attributes relevant to the image
         ALLOWED_TAGS: ['img'],
-        ALLOWED_ATTR: ['src', 'alt', 'class', 'id', 'style', 'title', 'width', 'height'],
+        ALLOWED_ATTR: [
+          'src',
+          'alt',
+          'class',
+          'id',
+          'style',
+          'title',
+          'width',
+          'height',
+        ],
       };
       const sanitized_html = DOMPurify.sanitize(our_icon_html, sanitizeConfig);
       this.icon_sanitized = {
@@ -350,7 +359,9 @@ export class Changelog extends Component {
                         // SS1984 ADDITION START
                         const changeText = change[changeType];
                         const keyChangelog = `${date}|${name}|${changeText}`;
-                        const isInOurChangelogs = this.icon_sanitized && this.lookupSet.has(keyChangelog);
+                        const isInOurChangelogs =
+                          this.icon_sanitized &&
+                          this.lookupSet.has(keyChangelog);
                         // SS1984 ADDITION END
                         return (
                           <Table.Row key={changeType + change[changeType]}>
@@ -362,7 +373,11 @@ export class Changelog extends Component {
                               // SS1984 ADDITION START
                               style={
                                 isInOurChangelogs
-                                  ? { minHeight: '16px', padding: '4px', verticalAlign: 'top' }
+                                  ? {
+                                      minHeight: '16px',
+                                      padding: '4px',
+                                      verticalAlign: 'top',
+                                    }
                                   : undefined
                               }
                               // SS1984 ADDITION END
@@ -382,12 +397,25 @@ export class Changelog extends Component {
                               />
                               SS1984 REMOVAL END */}
                               {/* SS1984 ADDITION START*/}
-                              <Box bold style={{ display: 'inline-flex', alignItems: 'flex-start' }}>
+                              <Box
+                                bold
+                                style={{
+                                  display: 'inline-flex',
+                                  alignItems: 'flex-start',
+                                }}
+                              >
                                 {isInOurChangelogs && (
-                                  <Box style={{
-                                    display: 'block',
-                                    marginRight: '1em', width: '16px', height: '16px' }}
-                                    dangerouslySetInnerHTML={this.icon_sanitized} />
+                                  <Box
+                                    style={{
+                                      display: 'block',
+                                      marginRight: '1em',
+                                      width: '16px',
+                                      height: '16px',
+                                    }}
+                                    dangerouslySetInnerHTML={
+                                      this.icon_sanitized
+                                    }
+                                  />
                                 )}
                                 <Icon
                                   color={
@@ -401,7 +429,7 @@ export class Changelog extends Component {
                                       : icons['unknown'].icon
                                   }
                                 />
-                              {/* SS1984 ADDITION END*/}
+                                {/* SS1984 ADDITION END*/}
                               </Box>
                             </Table.Cell>
                             <Table.Cell className="Changelog__Cell">

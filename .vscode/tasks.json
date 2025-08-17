@@ -183,6 +183,14 @@
 			"problemMatcher": ["$tsc", "$eslint-stylish"],
 			"group": "build",
 			"label": "tgui: rebuild tgfont"
+		},
+		{
+			"type": "npm",
+			"script": "tgui:prettier",
+			"path": "tgui",
+			"problemMatcher": ["$msCompile"],
+			"label": "npm: tgui:prettier - tgui",
+			"detail": "prettier --check ."
 		}
 	]
 }

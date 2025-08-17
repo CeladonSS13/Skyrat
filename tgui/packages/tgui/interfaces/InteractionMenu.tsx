@@ -80,7 +80,7 @@ export const InteractionMenu = (props) => {
             ))}
           </Section>
         </Stack>
-        { /* SS1984 REMOVAL START
+        {/* SS1984 REMOVAL START
         {lewd_slots.length > 0 ? (
           <Section key="item_slots" title={'Lewd Slots'}>
             <Stack fill>
@@ -133,7 +133,7 @@ export const InteractionMenu = (props) => {
         ) : (
           ''
         )}
-        SS1984 REMOVAL END */ }
+        SS1984 REMOVAL END */}
       </Window.Content>
     </Window>
   );
