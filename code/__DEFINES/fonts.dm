@@ -14,7 +14,7 @@
 
 /// Emoji icon set
 // повтороное изменение файла хранения иконок на наши
-#define EMOJI_SET 'modular_ss220/master_files_skyrat/icons/emoji.dmi' // ss1984 edit
+#define EMOJI_SET 'modular_ss220/modules/emoji_add/icons/emoji.dmi' // SS1984 CHANGE
 // ex666 edit - skyrat: modular_skyrat/master_files/icons/emoji.dmi  // SKYRAT EDIT - ORIGINAL: 'icons/ui_icons/emoji/emoji.dmi'
 
 // Font metrics bitfield
