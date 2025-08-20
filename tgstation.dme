@@ -9311,7 +9311,6 @@
 #include "modular_ss220\modules\tts\code\tts_configuration.dm"
 #include "modular_ss220\modules\tts\code\tts_mob_Hear.dm"
 #include "modular_ss220\modules\tts\code\tts_numbers.dm"
-#include "modular_ss220\modules\vampire\code\__HELPERS\_lists.dm"
 #include "modular_ss220\modules\tts\code\tts_preferences.dm"
 #include "modular_ss220\modules\tts\code\tts_provider.dm"
 #include "modular_ss220\modules\tts\code\tts_seed.dm"
