@@ -71,7 +71,7 @@
 	antag_menu_addition = "гемомансер"
 	standard_powers = list(/datum/action/cooldown/spell/vamp_claws = 150,
 							/datum/action/cooldown/spell/pointed/blood_tendrils = 250,
-							///obj/effect/proc_holder/spell/vampire/blood_barrier = 250,
+							/datum/action/cooldown/spell/pointed/blood_barrier = 250,
 							/datum/action/cooldown/spell/jaunt/ethereal_jaunt/blood_pool = 400,
 							/datum/action/cooldown/spell/list_target/predator_senses = 600,
 							/datum/action/cooldown/spell/aoe/blood_eruption = 800)

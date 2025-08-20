@@ -161,112 +161,50 @@
 /obj/effect/temp_visual/blood_tendril/long
 	duration = 2 SECONDS
 
-/*
+
 /datum/action/cooldown/spell/pointed/blood_barrier
 	name = "Кровавый барьер"
-	desc = "Выберите две точки в пределах трёх тайлов друг от друга и создайте между ними барьер. Вы можете наложить заклинание на себя, чтобы мгновенно создать барьер на вашей текущей позиции."
-	required_blood = 20
+	desc = "Создает барьер из кристаллизованной крови вокруг выбранной цели."
+	button_icon_state = "blood_barrier"
+	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
+	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
+	background_icon_state = "bg_vampire"
 	cooldown_time = 30 SECONDS
-	should_recharge_after_cast = FALSE
-	deduct_blood_on_cast = FALSE
-	action_icon_state = "blood_barrier"
-	need_active_overlay = TRUE
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
-	var/max_walls = 3
-	var/turf/start_turf = null
-
-
-/obj/effect/proc_holder/spell/vampire/blood_barrier/create_new_targeting()
-	var/datum/spell_targeting/click/T = new
-	T.allowed_type = /atom
-	T.try_auto_target = FALSE
-	return T
+/datum/action/cooldown/spell/pointed/blood_barrier/create_new_handler()
+	var/datum/spell_handler/vampire/H = new
+	H.required_blood = 30
+	return H
 
 
-/obj/effect/proc_holder/spell/vampire/blood_barrier/remove_ranged_ability(mob/user, msg)
+/datum/action/cooldown/spell/pointed/blood_barrier/is_valid_target(atom/cast_on)
+	if(!isturf(cast_on) && !ismob(cast_on))
+		owner.balloon_alert(owner, "Можно выбрать только пол или существо!")
+		return FALSE
+	return TRUE
+
+/datum/action/cooldown/spell/pointed/blood_barrier/cast(atom/cast_on)
 	. = ..()
-	if(msg) // this is only true if the user intentionally turned off the spell
-		start_turf = null
-		should_recharge_after_cast = FALSE
-
-
-/obj/effect/proc_holder/spell/vampire/blood_barrier/should_remove_click_intercept()
-	if(start_turf)
-		return TRUE
-	return FALSE
-
-
-/obj/effect/proc_holder/spell/vampire/blood_barrier/cast(list/targets, mob/user)
-	// First we check if vampire clicks on himself
-	var/turf/target_turf = get_turf(targets[1])
-	var/user_found = FALSE
-	for(var/mob/living/check in target_turf.contents)
-		if(check == user)
-			user_found = TRUE
-			break
-
-	if(user_found && !start_turf)
-		var/odd_number = max_walls % 2
-		var/walls_amount = odd_number ? ((max_walls - 1) / 2) : (max_walls / 2 - 1)
-		var/dir_right = turn(user.dir, 90)
-		var/dir_left = turn(user.dir, 270)
-
-		new /obj/structure/blood_barrier(target_turf)
-		for(var/i in 1 to walls_amount)
-			new /obj/structure/blood_barrier(get_step(target_turf, dir_right))
-
-		for(var/i in 1 to (odd_number ? walls_amount : walls_amount + 1))
-			new /obj/structure/blood_barrier(get_step(target_turf, dir_left))
-
-		var/datum/spell_handler/vampire/V = custom_handler
-		var/datum/antagonist/vampire/vampire = user.mind.has_antag_datum(/datum/antagonist/vampire)
-		var/blood_cost = V.calculate_blood_cost(vampire)
-		vampire.bloodusable -= blood_cost
-		remove_ranged_ability(user)
-		cooldown_handler.start_recharge()
+	var/turf/center_turf = get_turf(cast_on)
+	if(!center_turf)
 		return
 
-	// Otherwise we will try to build a wall by two clicks
-	if(target_turf == start_turf)
-		to_chat(user, span_notice("Вы убираете пометку с тайла."))
-		start_turf = null
-		should_recharge_after_cast = FALSE
-		return
+	for(var/turf/nearby_turf in orange(1, center_turf))
+		if(nearby_turf.density)
+			continue
+		if(nearby_turf == center_turf)
+			continue
 
-	if(!start_turf)
-		start_turf = target_turf
-		should_recharge_after_cast = TRUE
-		return
-
-	var/wall_count
-	for(var/turf/T as anything in get_line(target_turf, start_turf))
-		if(max_walls <= wall_count)
-			break
-		new /obj/structure/blood_barrier(T)
-		wall_count++
-
-	var/datum/spell_handler/vampire/V = custom_handler
-	var/datum/antagonist/vampire/vampire = user.mind.has_antag_datum(/datum/antagonist/vampire)
-	var/blood_cost = V.calculate_blood_cost(vampire)
-	vampire.bloodusable -= blood_cost
-	start_turf = null
-	should_recharge_after_cast = FALSE
+		new /obj/structure/blood_barrier(nearby_turf)
 
 
 /obj/structure/blood_barrier
 	name = "blood barrier"
 	desc = "Гротескная структура из кристаллизованной крови. Она медленно тает..."
-	ru_names = list(
-    NOMINATIVE = "кровавый барьер",
-    GENITIVE = "кровавого барьера",
-    DATIVE = "кровавому барьеру",
-    ACCUSATIVE = "кровавый барьер",
-    INSTRUMENTAL = "кровавым барьером",
-    PREPOSITIONAL = "о кровавом барьере"
-	)
 	max_integrity = 100
 	icon_state = "blood_barrier"
-	icon = 'icons/effects/vampire_effects.dmi'
+	icon = 'modular_ss220/modules/vampire/icons/effects/vampire_effects.dmi'
 	density = TRUE
 	anchored = TRUE
 	opacity = FALSE
@@ -278,6 +216,7 @@
 
 
 /obj/structure/blood_barrier/Destroy()
+	new /obj/effect/decal/cleanable/blood(loc)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -286,15 +225,8 @@
 	take_damage(8, sound_effect = FALSE)
 
 
-/obj/structure/blood_barrier/obj_destruction(damage_flag)
-	new /obj/effect/decal/cleanable/blood(loc)
-	return ..()
-
-
-/obj/structure/blood_barrier/CanAllowThrough(atom/movable/mover, border_dir)
+/obj/structure/blood_barrier/CanPass(atom/movable/mover, border_dir)
 	. = ..()
-	if(checkpass(mover))
-		return TRUE
 
 	if(!isliving(mover))
 		return FALSE
@@ -309,7 +241,7 @@
 
 	if(is_type_in_list(V.subclass, list(SUBCLASS_HEMOMANCER, SUBCLASS_ANCIENT)))
 		return TRUE
-*/
+
 
 /datum/action/cooldown/spell/jaunt/ethereal_jaunt/blood_pool
 	name = "Погружение в кровь"
