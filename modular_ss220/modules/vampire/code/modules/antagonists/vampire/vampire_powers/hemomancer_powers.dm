@@ -128,21 +128,21 @@
 	H.required_blood = 10
 	return H
 
-/datum/action/cooldown/spell/pointed/blood_tendrils/cast(list/targets, mob/user)
+/datum/action/cooldown/spell/pointed/blood_tendrils/cast(atom/cast_on)
 	. = ..()
-	var/turf/T = get_turf(targets[1]) // there should only ever be one entry in targets for this spell
+	var/turf/T = get_turf(cast_on) // there should only ever be one entry in targets for this spell
 
 	for(var/turf/blood_turf in view(area_of_affect, T))
 		if(blood_turf.density)
 			continue
 		new /obj/effect/temp_visual/blood_tendril(blood_turf)
 
-	addtimer(CALLBACK(src, PROC_REF(apply_slowdown), T, area_of_affect, 6 SECONDS, user), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(apply_slowdown), T, area_of_affect, 6 SECONDS), 1 SECONDS)
 
 
-/datum/action/cooldown/spell/pointed/blood_tendrils/proc/apply_slowdown(turf/T, distance, slowed_amount, mob/user)
+/datum/action/cooldown/spell/pointed/blood_tendrils/proc/apply_slowdown(turf/T, distance, slowed_amount)
 	for(var/mob/living/carbon/human/L in range(distance, T))
-		if(L.affects_vampire(user))
+		if(L.affects_vampire(owner))
 			L.adjust_staggered(slowed_amount)
 			L.apply_damage(33, TOX)
 			L.visible_message(span_warning("[L] опутывается кровавыми щупальцами, которые ограничивают его движение!"))
@@ -324,10 +324,10 @@
 	jaunt_type = /obj/effect/dummy/phased_mob/spell_jaunt/blood_pool
 	jaunt_out_type = /obj/effect/temp_visual/dir_setting/cult/phase/out
 	jaunt_in_type = /obj/effect/temp_visual/dir_setting/cult/phase
-	jaunt_in_time = 0
+	jaunt_in_time = 2.5 SECONDS
 	sound = 'sound/effects/magic/enter_blood.ogg'
 	exit_jaunt_sound = 'sound/effects/magic/exit_blood.ogg'
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
 
 /datum/action/cooldown/spell/jaunt/ethereal_jaunt/blood_pool/build_button_icon(atom/movable/screen/movable/action_button/button, update_flags, force)
@@ -375,35 +375,58 @@
 	cooldown_time = 10 SECONDS
 	target_radius = 255
 	choose_target_message = "Лицо для поиска"
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	spell_requirements = SPELL_REQUIRES_HUMAN
+	var/datum/weakref/last_target_ref
+	var/blocked = FALSE
+
+/datum/action/cooldown/spell/list_target/predator_senses/Trigger(trigger_flags, atom/target)
+	if(trigger_flags & TRIGGER_SECONDARY_ACTION)
+		var/mob/living/last_target = last_target_ref?.resolve()
+		if(isnull(last_target))
+			owner.balloon_alert(owner, "нет предыдущей цели!")
+			return FALSE
+		if(!is_valid_target(last_target))
+			owner.balloon_alert(owner, "цель недоступна!")
+			return FALSE
+		if(!can_cast_spell(feedback = TRUE))
+			return FALSE
+		apply_effects(last_target)
+		StartCooldown()
+		return TRUE
+	return ..()
 
 /datum/action/cooldown/spell/list_target/predator_senses/get_list_targets(atom/center, target_radius)
 	var/list/possible_targets = list()
-	for(var/mob/living/possible_target as anything in GLOB.alive_mob_list)
+	for(var/mob/living/carbon/human/possible_target in GLOB.human_list)
+		if(possible_target == owner)
+			continue
+		if(possible_target.z != owner.z)
+			continue
 		possible_targets += possible_target
+	return possible_targets
 
-	var/list/targets = pick_multiple_unique(possible_targets, 1)
+/datum/action/cooldown/spell/list_target/predator_senses/is_valid_target(mob/living/carbon/cast_on)
+	return ..() || cast_on.affects_vampire(owner)
 
-	return targets
-
-
-/datum/action/cooldown/spell/list_target/predator_senses/cast(mob/user)
+/datum/action/cooldown/spell/list_target/predator_senses/cast(mob/living/carbon/cast_on)
 	. = ..()
-	var/targets_by_name = list()
-	for(var/mob/living/carbon/human/H as anything in get_list_targets(user))
-		targets_by_name[H.real_name] = H
 
-	var/target_name = tgui_input_list(user, choose_target_message, "Запах крови", targets_by_name)
-	if(!target_name)
+	if(!istype(cast_on, /mob/living/carbon/human))
+		to_chat(owner, span_warning("Неверная цель!"))
 		return
 
-	var/mob/living/carbon/human/target = targets_by_name[target_name]
-	var/message = "[target_name] находится в локации [get_area(target)], на [dir2text(get_dir(user, target))]е от вас."
+	last_target_ref = WEAKREF(cast_on)
+	apply_effects(cast_on)
+
+/datum/action/cooldown/spell/list_target/predator_senses/proc/apply_effects(mob/living/carbon/human/target)
+	var/message = "[target.real_name] находится в локации [get_area(target)], на [dir2text(get_dir(owner, target))] от вас."
+
 	if(target.getBruteLoss() >= 40 || target.get_bleed_rate())
 		message += "<i> Цель ранена...</i>"
-	to_chat(user, span_cult_bold("[message]"))
 
-	if(target in view(user))
+	to_chat(owner, span_cult_bold("[message]"))
+
+	if(target in view(7, owner))
 		target.Knockdown(4 SECONDS)
 		var/turf/target_turf = get_turf(target)
 		playsound(target_turf, 'sound/effects/splat.ogg', 50, TRUE)
@@ -419,7 +442,7 @@
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
 	aoe_radius = 4
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	spell_requirements = NONE
 
 /datum/action/cooldown/spell/aoe/blood_eruption/create_new_handler()
 	var/datum/spell_handler/vampire/H = new
@@ -427,17 +450,25 @@
 	return H
 
 
-/datum/action/cooldown/spell/aoe/blood_eruption/is_valid_target(mob/living/target, user)
-	var/turf/T = get_turf(target)
-	if(locate(/obj/effect/decal/cleanable/blood) in T)
-		if(target.affects_vampire(user) && !target.ssd_indicator)
-			return TRUE
-	return FALSE
+/datum/action/cooldown/spell/aoe/blood_eruption/get_things_to_cast_on(atom/center)
+	var/list/things = list()
+	for(var/mob/living/nearby_mob in range(aoe_radius, center))
+		if(nearby_mob == owner || nearby_mob == center)
+			continue
+		if(!locate(/obj/effect/decal/cleanable/blood) in get_turf(nearby_mob))
+			continue
+
+		things += nearby_mob
+
+	return things
 
 
-/datum/action/cooldown/spell/aoe/blood_eruption/cast(mob/user)
-	. = ..()
-	for(var/mob/living/L in get_things_to_cast_on(user))
+/datum/action/cooldown/spell/aoe/blood_eruption/is_valid_target(mob/living/carbon/cast_on)
+	return ..() || cast_on.affects_vampire(owner)
+
+
+/datum/action/cooldown/spell/aoe/blood_eruption/cast_on_thing_in_aoe(atom/victim, atom/caster)
+	for(var/mob/living/L in get_things_to_cast_on(caster))
 		var/turf/T = get_turf(L)
 		var/obj/effect/decal/cleanable/blood/B = locate(/obj/effect/decal/cleanable/blood) in T
 		var/obj/effect/temp_visual/blood_spike/spike = new /obj/effect/temp_visual/blood_spike(T)
