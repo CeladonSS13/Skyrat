@@ -32,13 +32,17 @@ jobs:
       run: tools/ci/install_byond.sh STABLE
     - name: Setup part 6 (Install Dreamluau)
       run: tools/ci/install_dreamluau.sh
-    - name: Create RUST_REMOTE directory
-      run: |
-        mkdir RUST_REMOTE
+    - name: Cache RUST_REMOTE folder
+      uses: actions/cache@v4
+      with:
+        path: RUST_REMOTE  # The folder to cache
+        key: composer-${{ runner.os }}-${{ hashFiles('Cargo.lock') }} # Unique key for the cache
+        restore-keys: |
+          composer-${{ runner.os }}-
     - name: Setup part 7 (Rust Cache)
       uses: Swatinem/rust-cache@v2.8.0
       with:
-        workspaces: RUST_REMOTE
+        workspaces: RUST_REMOTE, RUST
         cache-all-crates: true
     - name: Setup part 8 (Give Linters A Go)
       id: linter-setup
