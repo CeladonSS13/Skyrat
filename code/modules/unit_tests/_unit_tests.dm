@@ -322,7 +322,6 @@
 #include "worn_icons.dm"
 // NOVA EDIT START
 #include "~nova\automapper.dm"
-//#include "~nova\liver.dm" //SS1984 REMOVE due to fokery in furry code
 #include "~nova\opposing_force.dm"
 // NOVA EDIT END
 // END_INCLUDE

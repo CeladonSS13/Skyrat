@@ -3,7 +3,7 @@
 	"map_name": "Void Raptor",
 	"map_path": "map_files/VoidRaptor",
 	"map_file": "VoidRaptor.dmm",
-	"exclude_from_ci": false,
+	"exclude_from_ci": true,
 	"shuttles": {
 		"emergency": "emergency_nova",
 		"ferry": "ferry_nova",
