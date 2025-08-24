@@ -586,26 +586,33 @@
 
 
 /datum/antagonist/vampire/proc/handle_vampire_cloak()
-	if(!ishuman(owner.current))
-		animate(owner.current, time = 5, alpha = 255)
+	if(!owner || !owner.current)
 		return
 
-	var/turf/owner_turf = get_turf(owner)
-	var/light_available = ((iscloaking)?owner_turf.get_lumcount():owner_turf.get_lumcount(0.5)) * 10
+	var/mob/living/M = owner.current
 
+	if(!ishuman(M))
+		animate(M, time = 5, alpha = 255)
+		return
+
+	var/turf/owner_turf = get_turf(M)
 	if(!istype(owner_turf))
 		return
 
-	if(!iscloaking || owner.current.on_fire)
-		animate(owner.current, time = 5, alpha = 255)
-		owner.current.remove_movespeed_modifier(/datum/movespeed_modifier/vampire_cloak)
+	var/light_available = owner_turf.get_lumcount() * 10
+
+	if(!iscloaking || M.on_fire)
+		animate(M, time = 5, alpha = 255)
+		M.remove_movespeed_modifier(/datum/movespeed_modifier/vampire_cloak)
 		return
 
 	if(light_available <= 2)
-		animate(owner.current, time = 5, alpha = 38)
-		if(iscloaking)
-			owner.current.add_movespeed_modifier(/datum/movespeed_modifier/vampire_cloak)
+		animate(M, time = 5, alpha = 38)
+		M.add_movespeed_modifier(/datum/movespeed_modifier/vampire_cloak)
+		return
 
+	M.remove_movespeed_modifier(/datum/movespeed_modifier/vampire_cloak)
+	animate(M, time = 5, alpha = 255)
 
 /datum/antagonist/vampire/vv_edit_var(var_name, var_value)
 	. = ..()

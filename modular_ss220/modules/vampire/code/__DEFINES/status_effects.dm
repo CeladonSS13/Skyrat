@@ -5,8 +5,6 @@
 
 #define STATUS_EFFECT_CHARGING /datum/status_effect/charging
 
-#define STATUS_EFFECT_SHADOW_BOXING /datum/status_effect/shadow_boxing
-
 #define STATUS_EFFECT_MARK_PREY /datum/status_effect/mark_prey
 
 #define STATUS_EFFECT_PACIFIED /datum/status_effect/pacifism

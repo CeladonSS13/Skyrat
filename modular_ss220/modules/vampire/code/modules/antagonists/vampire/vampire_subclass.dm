@@ -51,7 +51,7 @@
 							/datum/action/cooldown/spell/pointed/shadow_snare = 250,
 							/datum/action/cooldown/spell/soul_anchor = 250,
 							/datum/action/cooldown/spell/pointed/dark_passage = 400,
-							/datum/action/cooldown/spell/aoe/vamp_extinguish = 600,
+							/datum/action/cooldown/spell/shadow_blade = 600,
 							/datum/action/cooldown/spell/pointed/shadow_boxing = 800)
 	fully_powered_abilities = list(/datum/vampire_passive/full,
 								/datum/action/cooldown/spell/eternal_darkness,
@@ -172,7 +172,7 @@
 							/datum/action/cooldown/spell/anabiosis,
 							/datum/action/cooldown/spell/list_target/predator_senses,
 							/datum/action/cooldown/spell/overwhelming_force,
-							/datum/action/cooldown/spell/aoe/vamp_extinguish,
+							/datum/action/cooldown/spell/shadow_blade,
 							/datum/action/cooldown/spell/aoe/rally_thralls,
 							/datum/action/cooldown/spell/share_damage,
 							/datum/action/cooldown/spell/pointed/projectile/fireball/demonic_grasp,

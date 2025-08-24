@@ -6,12 +6,15 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/vamp_claws/create_new_handler()
 	var/datum/spell_handler/vampire/H = new
 	H.required_blood = 20
 	return H
+
+/datum/action/cooldown/spell/vamp_claws/before_cast(atom/cast_on)
+	return ..() | SPELL_NO_FEEDBACK | SPELL_NO_IMMEDIATE_COOLDOWN
 
 /datum/action/cooldown/spell/vamp_claws/cast(mob/user)
 	. = ..()
@@ -30,6 +33,7 @@
 		return
 
 	for(var/obj/item/vamp_claws/claws in user.held_items)
+		StartCooldown()
 		qdel(claws)
 	to_chat(user, span_notice("Вы рассеиваете когти!"))
 
@@ -72,7 +76,7 @@
 /obj/item/vamp_claws/Destroy()
 	if(parent_spell)
 		parent_spell.UnregisterSignal(parent_spell.owner, COMSIG_MOB_DROPPING_ITEM)
-		parent_spell.build_button_icon()
+		parent_spell.StartCooldown()
 		parent_spell = null
 	return ..()
 
@@ -100,11 +104,13 @@
 	if(!V.get_ability(/datum/vampire_passive/blood_spill))
 		durability--
 		if(durability <= 0)
+			parent_spell.StartCooldown()
 			qdel(src)
 			to_chat(user, span_warning("Ваши когти сломаны!"))
 
 
 /obj/item/vamp_claws/attack_self(mob/user)
+	parent_spell.StartCooldown()
 	qdel(src)
 	to_chat(user, span_notice("Вы рассеиваете когти!"))
 
@@ -432,8 +438,9 @@
 	H.required_blood = 10
 	return H
 
-/datum/action/cooldown/spell/blood_spill/cast(mob/user)
+/datum/action/cooldown/spell/blood_spill/cast(atom/cast_on)
 	. = ..()
+	var/mob/living/user = cast_on
 	var/datum/antagonist/vampire/V = user.mind.has_antag_datum(/datum/antagonist/vampire)
 	if(!V.get_ability(/datum/vampire_passive/blood_spill))
 		V.force_add_ability(/datum/vampire_passive/blood_spill)

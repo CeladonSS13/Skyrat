@@ -6,10 +6,10 @@
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
 	cooldown_time = 2 SECONDS
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
 
-/datum/action/cooldown/spell/cloak/cloak/update_vampire_spell_name(mob/user = usr)
+/datum/action/cooldown/spell/cloak/update_vampire_spell_name(mob/user = usr)
 	var/datum/antagonist/vampire/V = user?.mind?.has_antag_datum(/datum/antagonist/vampire)
 	if(!V)
 		return
@@ -19,27 +19,37 @@
 	build_button_icon()
 
 
-/datum/action/cooldown/spell/cloak/cloak/cast(mob/living/cast_on)
+/datum/action/cooldown/spell/cloak/cast(mob/living/cast_on)
 	. = ..()
 	var/datum/antagonist/vampire/V = cast_on.mind.has_antag_datum(/datum/antagonist/vampire)
+	if(!V)
+		return
+
 	V.iscloaking = !V.iscloaking
+
 	if(ishuman(cast_on))
 		var/mob/living/carbon/human/H = cast_on
 		if(V.iscloaking)
 			H.physiology.burn_mod *= 1.3
-			cast_on.RegisterSignal(cast_on, COMSIG_LIVING_IGNITED, TYPE_PROC_REF(/mob/living, update_vampire_cloak))
+			RegisterSignal(H, COMSIG_LIVING_IGNITED, PROC_REF(on_ignited))
 		else
-			cast_on.UnregisterSignal(cast_on, COMSIG_LIVING_IGNITED)
+			UnregisterSignal(H, list(
+				COMSIG_LIVING_IGNITED,
+			))
 			H.physiology.burn_mod /= 1.3
+			animate(H, time = 5, alpha = 255)
+			H.remove_movespeed_modifier(/datum/movespeed_modifier/vampire_cloak)
+
+	V.handle_vampire_cloak()
 
 	update_vampire_spell_name(cast_on)
 	to_chat(cast_on, span_notice("Теперь вы будете <b>[V.iscloaking ? "скрыты" : "видимы"]</b> в темноте."))
 
-
-/mob/living/proc/update_vampire_cloak()
+/datum/action/cooldown/spell/cloak/proc/on_ignited(mob/living/source)
 	SIGNAL_HANDLER
-	var/datum/antagonist/vampire/V = mind.has_antag_datum(/datum/antagonist/vampire)
-	V.handle_vampire_cloak()
+	var/datum/antagonist/vampire/V = source.mind.has_antag_datum(/datum/antagonist/vampire)
+	if(V)
+		V.handle_vampire_cloak()
 
 
 /datum/action/cooldown/spell/pointed/shadow_snare
@@ -50,17 +60,17 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/pointed/shadow_snare/create_new_handler()
 	var/datum/spell_handler/vampire/H = new
 	H.required_blood = 20
 	return H
 
-/datum/action/cooldown/spell/pointed/shadow_snare/cast(list/targets, mob/user)
+/datum/action/cooldown/spell/pointed/shadow_snare/cast(atom/cast_on)
 	. = ..()
-	var/turf/target = targets[1]
-	new /obj/item/restraints/legcuffs/beartrap/shadow_snare(target)
+	var/turf/target_turf = get_turf(cast_on)
+	new /obj/item/restraints/legcuffs/beartrap/shadow_snare(target_turf)
 
 
 /obj/item/restraints/legcuffs/beartrap/shadow_snare
@@ -150,7 +160,7 @@
 	var/making_anchor = FALSE
 	/// Holds a reference to the timer until the caster is forced to recall
 	var/timer
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/soul_anchor/create_new_handler()
 	var/datum/spell_handler/vampire/H = new
@@ -159,24 +169,30 @@
 	return H
 
 
-/datum/action/cooldown/spell/touch/before_cast(atom/cast_on)
+/datum/action/cooldown/spell/soul_anchor/before_cast(atom/cast_on)
+	if(anchor)
+		return ..() | SPELL_NO_FEEDBACK
 	return ..() | SPELL_NO_FEEDBACK | SPELL_NO_IMMEDIATE_COOLDOWN
+
 
 /datum/action/cooldown/spell/soul_anchor/cast(mob/cast_on)
 	. = ..()
-	if(making_anchor) // second cast, but we are impatient
+	if(making_anchor)
 		cast_on.balloon_alert(cast_on, "якорь не готов!")
 		return
 
-	if(!making_anchor && !anchor) // first cast, setup the anchor
+	if(!making_anchor && !anchor)
 		var/turf/anchor_turf = get_turf(cast_on)
 		making_anchor = TRUE
-		if(do_after(cast_on, 5 SECONDS, cast_on, ALL)) // no checks, cant fail
+		if(do_after(cast_on, 5 SECONDS, cast_on, ALL))
 			make_anchor(cast_on, anchor_turf)
 			making_anchor = FALSE
 			return
+		else
+			making_anchor = FALSE
+			return
 
-	if(anchor) // second cast, teleport us back
+	if(anchor)
 		recall(cast_on)
 
 
@@ -190,9 +206,16 @@
 		deltimer(timer)
 		timer = null
 
+	if(!anchor)
+		return
+
 	var/turf/start_turf = get_turf(user)
 	var/turf/end_turf = get_turf(anchor)
+
 	QDEL_NULL(anchor)
+
+	if(!end_turf || !start_turf)
+		return
 	if(end_turf.z != start_turf.z)
 		return
 	if(is_secret_level(end_turf.z))
@@ -245,7 +268,7 @@
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
 	sound = 'sound/effects/magic/teleport_app.ogg'
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/pointed/dark_passage/create_new_handler()
 	var/datum/spell_handler/vampire/H = new
@@ -253,13 +276,15 @@
 	H.deduct_blood_on_cast = FALSE
 	return H
 
-/datum/action/cooldown/spell/pointed/dark_passage/cast(mob/cast_on)
+/datum/action/cooldown/spell/pointed/dark_passage/cast(atom/cast_on)
 	. = ..()
-	var/list/targets = list()
-	var/turf/target = get_turf(targets[1])
-	new /obj/effect/temp_visual/vamp_mist_out(get_turf(cast_on))
-	cast_on.forceMove(target)
-	new /obj/effect/temp_visual/vamp_mist_in(get_turf(cast_on))
+	if(!(cast_on in view(cast_range, owner)))
+		return SPELL_CANCEL_CAST
+	var/turf/curturf = get_turf(owner)
+	var/turf/destturf = get_turf(cast_on)
+	new /obj/effect/temp_visual/vamp_mist_out(get_turf(curturf))
+	owner.forceMove(destturf)
+	new /obj/effect/temp_visual/vamp_mist_in(get_turf(destturf))
 
 
 /obj/effect/temp_visual/vamp_mist_out
@@ -274,25 +299,103 @@
 	icon_state = "mist_reappear"
 
 
-/datum/action/cooldown/spell/aoe/vamp_extinguish
-	name = "Погасить"
-	desc = "Вы гасите любой источник света в области вокруг себя."
-	cooldown_time = 30 SECONDS
-	button_icon_state = "vampire_extinguish"
+/datum/action/cooldown/spell/shadow_blade
+	name = "Shadow blade"
+	desc = "Using shadow magic, you summon a blade made of shadows that snuffs out light sources to heal you."
+	cooldown_time = 15 SECONDS
+	button_icon_state = "shadow_blade"
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
+/datum/action/cooldown/spell/shadow_blade/create_new_handler()
+	var/datum/spell_handler/vampire/H = new
+	H.required_blood = 20
+	return H
 
-/datum/action/cooldown/spell/aoe/vamp_extinguish/cast(mob/cast_on)
+/datum/action/cooldown/spell/shadow_blade/before_cast(atom/cast_on)
+	return ..() | SPELL_NO_FEEDBACK | SPELL_NO_IMMEDIATE_COOLDOWN
+
+/datum/action/cooldown/spell/shadow_blade/cast(mob/user)
 	. = ..()
-	var/list/targets = list()
-	for(var/turf/T in targets)
-		T.set_light(0, 0, null, l_on = FALSE)
-		for(var/atom/A in T.contents)
-			A.set_light(0, 0, null, l_on = FALSE)
+	user.drop_all_held_items()
+	var/obj/item/shadow_blade/blade = new /obj/item/shadow_blade(user.loc, src)
+	user.put_in_hands(blade)
 
+/datum/action/cooldown/spell/shadow_blade/can_cast_spell(feedback)
+	var/mob/living/L = owner
+	if(L.canUnEquip(L.get_item_for_held_index(LEFT_HANDS)) && L.canUnEquip(L.get_item_for_held_index(RIGHT_HANDS)))
+		return ..()
+
+/obj/item/shadow_blade
+	name = "shadow blade"
+	desc = "A blade forged from pure shadow. \
+	Extinguishes nearby light sources on strike and converts their energy into healing for the wielder."
+	icon = 'icons/obj/mining_zones/artefacts.dmi'
+	icon_state = "cursed_katana"
+	icon_angle = -45
+	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	force = 15
+	armour_penetration = 30
+	block_chance = 30
+	block_sound = 'sound/items/weapons/parry.ogg'
+	sharpness = SHARP_EDGED
+	w_class = WEIGHT_CLASS_HUGE
+	attack_verb_continuous = list("attacks", "slashes", "slices", "tears", "lacerates", "rips", "dices", "cuts")
+	attack_verb_simple = list("attack", "slash", "slice", "tear", "lacerate", "rip", "dice", "cut")
+	hitsound = 'sound/items/weapons/bladeslice.ogg'
+	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | FREEZE_PROOF
+	item_flags = ABSTRACT|DROPDEL
+	var/datum/action/cooldown/spell/shadow_blade/parent_spell
+	var/durability = 20
+	var/healing_power = 5
+
+/obj/item/shadow_blade/Initialize(mapload, new_parent_spell)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT)
+	parent_spell = new_parent_spell
+	AddComponent(/datum/component/light_eater)
+	RegisterSignal(src, COMSIG_LIGHT_EATER_DEVOUR, PROC_REF(on_light_devoured))
+
+/obj/item/shadow_blade/afterattack(atom/target, mob/user, proximity, params)
+	if(!proximity)
+		return
+
+	var/datum/antagonist/vampire/V = user.mind?.has_antag_datum(/datum/antagonist/vampire)
+	if(!V)
+		return
+	if(!V.get_ability(/datum/vampire_passive/eternal_darkness))
+		durability--
+		if(durability <= 0)
+			parent_spell.StartCooldown()
+			qdel(src)
+			to_chat(user, span_warning("Ваш клинок сломан!"))
+
+/obj/item/shadow_blade/proc/on_light_devoured(datum/source, atom/devoured_light)
+	SIGNAL_HANDLER
+	var/mob/living/user = loc
+	if(istype(user) && (src in user.held_items))
+		user.heal_overall_damage(healing_power, healing_power)
+
+/obj/item/shadow_blade/Destroy()
+	if(parent_spell)
+		parent_spell.StartCooldown()
+		parent_spell = null
+	return ..()
+
+/obj/item/shadow_blade/attack_self(mob/user)
+	parent_spell.StartCooldown()
+	qdel(src)
+	to_chat(user, span_notice("Вы рассеиваете клинок!"))
+
+/obj/item/shadow_blade/dropped(mob/user)
+	. = ..()
+	if(isturf(loc))
+		parent_spell.build_button_icon()
+		parent_spell.StartCooldown()
+		qdel(src)
 
 /datum/action/cooldown/spell/pointed/shadow_boxing
 	name = "Бой с тенью"
@@ -303,8 +406,10 @@
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
 	cast_range = 2
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
-	var/target_UID
+	spell_requirements = SPELL_REQUIRES_HUMAN
+	var/uses_amount = 8
+	var/current_uses = 0
+	var/damage = 8
 
 /datum/action/cooldown/spell/pointed/shadow_boxing/create_new_handler()
 	var/datum/spell_handler/vampire/H = new
@@ -312,13 +417,39 @@
 	H.deduct_blood_on_cast = FALSE
 	return H
 
-
-/datum/action/cooldown/spell/pointed/shadow_boxing/cast(mob/cast_on)
+/datum/action/cooldown/spell/pointed/shadow_boxing/New(Target)
 	. = ..()
-	var/list/targets = list()
-	var/mob/living/target = targets[1]
-	target.apply_status_effect(STATUS_EFFECT_SHADOW_BOXING, cast_on)
+	if(uses_amount > 1)
+		unset_after_click = FALSE
 
+/datum/action/cooldown/spell/pointed/shadow_boxing/on_activation(mob/on_who)
+	. = ..()
+	if(!.)
+		return
+	current_uses = uses_amount
+
+/datum/action/cooldown/spell/pointed/shadow_boxing/on_deactivation(mob/on_who, refund_cooldown = TRUE)
+	. = ..()
+	if(uses_amount > 1 && current_uses)
+		StartCooldown(cooldown_time * ((uses_amount - current_uses) / uses_amount))
+		current_uses = 0
+
+/datum/action/cooldown/spell/pointed/shadow_boxing/cast(atom/cast_on)
+	. = ..()
+	var/mob/living/target = cast_on
+	var/mob/living/user = owner
+	if(target in view(cast_range, user))
+		user.do_attack_animation(target, ATTACK_EFFECT_PUNCH)
+		target.apply_damage(damage, BRUTE)
+		shadow_to_animation(get_turf(user), get_turf(target), user)
+		current_uses--
+	if(uses_amount <= 0)
+		unset_click_ability(user, refund_cooldown = FALSE)
+
+/datum/action/cooldown/spell/pointed/shadow_boxing/after_cast(atom/cast_on)
+	. = ..()
+	if(current_uses > 0)
+		reset_spell_cooldown()
 
 /datum/action/cooldown/spell/eternal_darkness
 	name = "Вечная тьма"
@@ -328,7 +459,7 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	spell_requirements = SPELL_REQUIRES_HUMAN
 	var/shroud_power = -4
 
 /datum/action/cooldown/spell/eternal_darkness/create_new_handler()
@@ -338,14 +469,13 @@
 	return H
 
 
-/datum/action/cooldown/spell/eternal_darkness/cast(mob/cast_on)
+/datum/action/cooldown/spell/eternal_darkness/cast(atom/cast_on)
 	. = ..()
-	var/list/targets = list()
-	var/datum/antagonist/vampire/V = cast_on.mind.has_antag_datum(/datum/antagonist/vampire)
-	var/mob/target = targets[1]
+	var/mob/living/user = cast_on
+	var/datum/antagonist/vampire/V = user.mind.has_antag_datum(/datum/antagonist/vampire)
 	if(!V.get_ability(/datum/vampire_passive/eternal_darkness))
 		V.force_add_ability(/datum/vampire_passive/eternal_darkness)
-		target.set_light(6, shroud_power, "#AAD84B")
+		user.set_light(6, shroud_power, "#AAD84B")
 	else
 		for(var/datum/vampire_passive/eternal_darkness/E in V.powers)
 			V.remove_ability(E)
@@ -361,7 +491,7 @@
 
 
 /datum/vampire_passive/eternal_darkness/Destroy(force)
-	owner.set_light(0, 0, null, l_on = FALSE)
+	owner.set_light(0, 0, null)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 

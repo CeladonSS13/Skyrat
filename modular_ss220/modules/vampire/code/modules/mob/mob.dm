@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT(holy_areas, typecacheof(list(
 	return istype(wear_mask, /obj/item/clothing/mask/muzzle)
 
 /datum/movespeed_modifier/vampire_cloak
-	multiplicative_slowdown = -0.5
+	multiplicative_slowdown = -0.8
 	movetypes = GROUND
 	blacklisted_movetypes = (FLYING|FLOATING)
 

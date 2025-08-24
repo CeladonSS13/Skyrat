@@ -18,10 +18,8 @@
 	/// Because the lighting system does not like overlay lights getting set_light() called.
 	switch(atom_target.light_system)
 		if(COMPLEX_LIGHT)
-			target.set_light(0, 0, null, l_on = FALSE)
+			target.set_light(l_on = FALSE)
 		else
-			target.set_light_power(0)
-			target.set_light_range(0)
 			target.set_light_on(FALSE)
 			target.update_icon()
 
@@ -63,9 +61,11 @@
 /datum/element/light_eaten/proc/on_examine(atom/eaten_light, mob/examiner, list/examine_text)
 	SIGNAL_HANDLER
 	examine_text += span_warning("It's dark and empty...")
+	/* SKYRAT1984 REMOVAL
 	if(isliving(examiner) && prob(20))
 		var/mob/living/target = examiner
 		examine_text += span_danger("You can feel something in [eaten_light.p_them()] gnash at your eyes!")
 		target.adjust_temp_blindness(10 SECONDS)
 		target.set_eye_blur_if_lower(20 SECONDS)
+	SKYRAT1984 REMOVAL */
 	return NONE
