@@ -24,4 +24,5 @@
 	if (!..(preferences))
 		return FALSE
 
-	return !CONFIG_GET(flag/sec_start_brig)
+	// SS1984 REMOVAL: return !CONFIG_GET(flag/sec_start_brig)
+	return TRUE // SS1984 ADDITION

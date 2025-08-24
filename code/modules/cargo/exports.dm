@@ -91,7 +91,7 @@ Then the player gets the profit from selling his own wasted time.
 			if(dry_run && !export.scannable)
 				external_report.all_contents_scannable = FALSE
 				break
-			sold = export.sell_object(exported_atom, external_report, dry_run, apply_elastic)
+			sold = export.sell_object(exported_atom, external_report, dry_run, apply_elastic, export_market) // SS1984 EDIT, orgininal: sold = export.sell_object(exported_atom, external_report, dry_run, apply_elastic)
 			external_report.exported_atoms += " [exported_atom.name]"
 			break
 	return sold
@@ -170,7 +170,7 @@ Then the player gets the profit from selling his own wasted time.
 		return FALSE
 	if(!get_cost(exported_item, apply_elastic))
 		return FALSE
-	if(export_market != sales_market)
+	if(!is_compatible_market(export_market)) // SS1984 EDIT, original: if(export_market != sales_market)
 		return FALSE
 	if(exported_item.flags_1 & HOLOGRAM_1)
 		return FALSE
@@ -184,19 +184,15 @@ Then the player gets the profit from selling his own wasted time.
  * get_cost, get_amount and applies_to do not neccesary mean a successful sale.
  *
  */
-/datum/export/proc/sell_object(obj/sold_item, datum/export_report/report, dry_run = TRUE, apply_elastic = TRUE)
+/datum/export/proc/sell_object(obj/sold_item, datum/export_report/report, dry_run = TRUE, apply_elastic = TRUE, target_market) // SS1984 EDIT, original: /datum/export/proc/sell_object(obj/sold_item, datum/export_report/report, dry_run = TRUE, apply_elastic = TRUE)
 	///This is the value of the object, as derived from export datums.
 	// SS1984 REMOVAL START
 	// var/export_value = get_cost(sold_item, apply_elastic)
 	// SS1984 REMOVAL END
 	// SS1984 ADDITION START
-	var/export_value = 0
-	if (dry_run)
+	var/export_value = get_cost_ready_to_sell(sold_item, apply_elastic, target_market ? target_market : sales_market)
+	if (export_value < 0)
 		export_value = get_cost(sold_item, apply_elastic)
-	else
-		export_value = get_cost_ready_to_sell(sold_item, apply_elastic)
-		if (export_value < 0)
-			export_value = get_cost(sold_item, apply_elastic)
 	// SS1984 ADDITION END
 	///Quantity of the object in question.
 	var/export_amount = get_amount(sold_item)

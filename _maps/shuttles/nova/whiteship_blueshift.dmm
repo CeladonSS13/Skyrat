@@ -4829,7 +4829,7 @@
 "UK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/optable,
-/obj/machinery/defibrillator_mount/directional/south,
+/obj/machinery/defibrillator_mount/loaded/directional/south,
 /obj/structure/alien/weeds,
 /obj/effect/mob_spawn/corpse/human/doctor,
 /turf/open/floor/iron/white,

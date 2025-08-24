@@ -2005,7 +2005,7 @@
 /turf/open/floor/wood/large,
 /area/awaymission/beach)
 "zI" = (
-/obj/machinery/defibrillator_mount/directional/west,
+/obj/machinery/defibrillator_mount/loaded/directional/west,
 /obj/structure/bed/pod{
 	desc = "An old medical bed, just waiting for replacement with something up to date.";
 	dir = 4;
@@ -2898,7 +2898,7 @@
 	dir = 4;
 	name = "medical bed"
 	},
-/obj/machinery/defibrillator_mount/directional/east,
+/obj/machinery/defibrillator_mount/loaded/directional/east,
 /obj/machinery/iv_drip{
 	pixel_y = 21;
 	pixel_x = -4

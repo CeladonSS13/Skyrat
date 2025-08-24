@@ -774,7 +774,7 @@ SUBSYSTEM_DEF(dynamic)
 				if(high_impact_ruleset_executed)
 					return FALSE
 
-	var/population = GLOB.alive_player_list.len
+	var/population = get_population_for_dynamic_rolling() // SS1984 EDIT, original: var/population = GLOB.alive_player_list.len
 	if((new_rule.acceptable(population, threat_level) && (ignore_cost || new_rule.cost <= mid_round_budget)) || forced)
 		new_rule.trim_candidates()
 		new_rule.load_templates()
@@ -847,12 +847,13 @@ SUBSYSTEM_DEF(dynamic)
 	var/was_forced = late_forced_injection
 	late_forced_injection = FALSE
 	var/list/possible_latejoin_rules = list()
+	var/pop_count_filtered = get_population_for_dynamic_rolling() // SS1984 ADDITION
 	for (var/datum/dynamic_ruleset/latejoin/rule in latejoin_rules)
 		if(!rule.weight)
 			continue
 		if(mid_round_budget < rule.cost)
 			continue
-		if(!rule.acceptable(GLOB.alive_player_list.len, threat_level))
+		if(!rule.acceptable(pop_count_filtered, threat_level)) // SS1984 EDIT, original: if(!rule.acceptable(GLOB.alive_player_list.len, threat_level))
 			continue
 		possible_latejoin_rules[rule] = rule.get_weight()
 

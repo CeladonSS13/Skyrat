@@ -118,7 +118,7 @@
 /area/shuttle/escape)
 "nt" = (
 /obj/structure/table/optable,
-/obj/machinery/defibrillator_mount/directional/north,
+/obj/machinery/defibrillator_mount/loaded/directional/north,
 /obj/effect/turf_decal/tile/blue/anticorner{
 	dir = 1
 	},

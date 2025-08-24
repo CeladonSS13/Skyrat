@@ -20,11 +20,13 @@
 	var/wallframe_type = /obj/item/wallframe/defib_mount
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount/loaded, 28) // SS1984 ADDITION
 
 /obj/machinery/defibrillator_mount/loaded/Initialize(mapload) //loaded subtype for mapping use
 	. = ..()
 	defib = new/obj/item/defibrillator/loaded(src)
 	find_and_hang_on_wall()
+	update_appearance() // SS1984 ADDITION, could be modular but i believe it's TG bugfix for defib overlays
 
 /obj/machinery/defibrillator_mount/Destroy()
 	QDEL_NULL(defib)

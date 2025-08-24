@@ -38,16 +38,16 @@
 
 	var/list/drafted_heavies = list()
 	var/list/drafted_lights = list()
-
+	var/pop_count_filtered = get_population_for_dynamic_rolling() // SS1984 ADDITION
 	for (var/datum/dynamic_ruleset/midround/ruleset in midround_rules)
 		if (ruleset.weight == 0)
 			log_dynamic("FAIL: [ruleset] has a weight of 0")
 			continue
 
-		if (!ruleset.acceptable(GLOB.alive_player_list.len, threat_level))
+		if (!ruleset.acceptable(pop_count_filtered, threat_level)) // SS1984 EDIT, original: if (!ruleset.acceptable(GLOB.alive_player_list.len, threat_level))
 			var/ruleset_forced = GLOB.dynamic_forced_rulesets[type] || RULESET_NOT_FORCED
 			if (ruleset_forced == RULESET_NOT_FORCED)
-				log_dynamic("FAIL: [ruleset] is not acceptable with the current parameters. Alive players: [GLOB.alive_player_list.len], threat level: [threat_level]")
+				log_dynamic("FAIL: [ruleset] is not acceptable with the current parameters. Alive players: [pop_count_filtered], threat level: [threat_level]") // SS1984 EDIT, original: log_dynamic("FAIL: [ruleset] is not acceptable with the current parameters. Alive players: [GLOB.alive_player_list.len], threat level: [threat_level]")
 			else
 				log_dynamic("FAIL: [ruleset] was disabled.")
 			continue
@@ -100,7 +100,7 @@
 	if (GLOB.current_living_antags.len == 0)
 		chance_modifier += 0.5
 
-	if (GLOB.dead_player_list.len > GLOB.alive_player_list.len)
+	if (GLOB.dead_player_list.len > get_population_for_dynamic_rolling()) // SS1984 EDIT, original: if (GLOB.dead_player_list.len > GLOB.alive_player_list.len)
 		chance_modifier -= 0.3
 
 	var/heavy_coefficient = CLAMP01((next_midround_roll - midround_light_upper_bound) / (midround_heavy_lower_bound - midround_light_upper_bound))

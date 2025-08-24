@@ -2454,7 +2454,7 @@
 /area/ruin/interdyne_planetary_base/cargo)
 "us" = (
 /obj/structure/table/optable,
-/obj/machinery/defibrillator_mount/directional{
+/obj/machinery/defibrillator_mount/loaded/directional{
 	pixel_y = 26
 	},
 /turf/open/floor/iron/dark/textured_large,

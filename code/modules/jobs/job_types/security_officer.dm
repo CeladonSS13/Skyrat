@@ -43,11 +43,12 @@
 		JOB_SECURITY_OFFICER_ENGINEERING,
 		JOB_SECURITY_OFFICER_SUPPLY,
 		JOB_SECURITY_OFFICER_SCIENCE,
+		JOB_SECURITY_OFFICER_SERVICE, // SS1984 ADDITION
 	)
 	job_flags = STATION_JOB_FLAGS
 
 
-GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, SEC_DEPT_SCIENCE, SEC_DEPT_SUPPLY))
+GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, SEC_DEPT_SCIENCE, SEC_DEPT_SUPPLY, SEC_DEPT_SERVICE)) // SS1984 EDIT, original: GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, SEC_DEPT_SCIENCE, SEC_DEPT_SUPPLY))
 
 /**
  * The department distribution of the security officers.
@@ -60,24 +61,18 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 /datum/job/security_officer/after_roundstart_spawn(mob/living/spawning, client/player_client)
 	. = ..()
-	//NOVA EDIT REMOVAL
-	/*
+	// SS1984 REMOVE NOVA's REMOVAL
 	if(ishuman(spawning))
 		setup_department(spawning, player_client)
-	*/
-	//NOVA EDIT END
 
 
 /datum/job/security_officer/after_latejoin_spawn(mob/living/spawning)
 	. = ..()
-	//NOVA EDIT REMOVAL
-	/*
+	// SS1984 REMOVE NOVA's REMOVAL
 	if(ishuman(spawning))
 		var/department = setup_department(spawning, spawning.client)
 		if(department)
 			announce_latejoin(spawning, department, GLOB.security_officer_distribution)
-	*/
-	//NOVA EDIT END
 
 
 /// Returns the department this mob was assigned to, if any.
@@ -115,6 +110,13 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 			dep_trim = /datum/id_trim/job/security_officer/science
 			destination = /area/station/security/checkpoint/science
 			accessory = /obj/item/clothing/accessory/armband/science
+		// SS1984 ADDITION START
+		if(SEC_DEPT_SERVICE)
+			ears = /obj/item/radio/headset/headset_sec/alt/department/service
+			dep_trim = /datum/id_trim/job/security_officer/service
+			destination = /area/station/security/checkpoint/service
+			accessory = /obj/item/clothing/accessory/armband/hydro
+		// SS1984 ADDITION END
 
 	if(accessory)
 		var/obj/item/clothing/under/worn_under = spawning.w_uniform

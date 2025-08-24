@@ -212,7 +212,7 @@ MINIMAL_ACCESS_THRESHOLD 20
 EVERYONE_HAS_MAINT_ACCESS
 
 ## Comment this out this to make security officers spawn in departmental security posts
-SEC_START_BRIG
+#SEC_START_BRIG
 
 ## This variable is how you may configure "Scaling Access" for Departmental Security Officers.
 ## Set to 0/commented out for "off", Departmental Security Officers will never get additional room-specific access (beyond general departmental doors).
@@ -392,7 +392,7 @@ ROUNDSTART_RACES ethereal
 ## NOVA SECTOR RACES DOWN THERE
 ROUNDSTART_RACES vulpkanin
 ROUNDSTART_RACES tajaran
-ROUNDSTART_RACES unathi
+#ROUNDSTART_RACES unathi
 ROUNDSTART_RACES skrell
 ROUNDSTART_RACES slimeperson
 ROUNDSTART_RACES podweak

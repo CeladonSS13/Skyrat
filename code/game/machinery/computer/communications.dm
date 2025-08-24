@@ -981,8 +981,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			SSdynamic.unfavorable_situation()
 
 		if(HACK_SLEEPER) // Trigger one or multiple sleeper agents with the crew (or for latejoining crew)
+			var/pop_filtered = SSdynamic ? SSdynamic.get_population_for_dynamic_rolling() : GLOB.alive_player_list.len // SS1984 ADDITION
 			var/datum/dynamic_ruleset/midround/sleeper_agent_type = /datum/dynamic_ruleset/midround/from_living/autotraitor
-			var/max_number_of_sleepers = clamp(round(length(GLOB.alive_player_list) / 20), 1, 3)
+			var/max_number_of_sleepers = clamp(round(pop_filtered / 20), 1, 3) // SS1984 EDIT, original: var/max_number_of_sleepers = clamp(round(length(GLOB.alive_player_list) / 20), 1, 3)
 			var/num_agents_created = 0
 			for(var/num_agents in 1 to rand(1, max_number_of_sleepers))
 				if(!SSdynamic.picking_specific_rule(sleeper_agent_type, forced = TRUE, ignore_cost = TRUE))

@@ -20,6 +20,7 @@ endmap
 map deltastation
 	minplayers 50
 	votable
+    default
 endmap
 
 map icebox

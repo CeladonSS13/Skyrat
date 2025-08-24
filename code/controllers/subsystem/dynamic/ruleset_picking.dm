@@ -106,7 +106,7 @@
 /datum/controller/subsystem/dynamic/proc/execute_midround_latejoin_rule(sent_rule)
 	var/datum/dynamic_ruleset/rule = sent_rule
 	spend_midround_budget(rule.cost, threat_log, "[gameTimestamp()]: [rule.ruletype] [rule.name]")
-	rule.pre_execute(GLOB.alive_player_list.len)
+	rule.pre_execute(get_population_for_dynamic_rolling()) // SS1984 EDIT, original: rule.pre_execute(GLOB.alive_player_list.len)
 	if (rule.execute())
 		log_dynamic("Injected a [rule.ruletype] ruleset [rule.name].")
 		if(rule.flags & HIGH_IMPACT_RULESET)

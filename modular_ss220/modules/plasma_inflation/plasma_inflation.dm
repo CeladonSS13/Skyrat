@@ -15,12 +15,10 @@ SUBSYSTEM_DEF(plasma_inflation)
 	// recovery settings:
 	var/recovery_time = 15 MINUTES
 
-	// internal
-	var/current_time // minutes
-	var/current_price = PLASMA_DEFAULT_COST_CARGO
-	var/is_recovering = FALSE // is it currently recovering?
-	var/recovery_start_price = PLASMA_DEFAULT_COST_CARGO
-	var/quantity_sold_batch = 0
+	// markets
+
+	var/list/markets_per_name = list()
+	var/list/dry_checkpoints_quantity_per_market = list()
 
 /datum/controller/subsystem/plasma_inflation/Initialize()
 	if (!CONFIG_GET(flag/plasma_inflation))
@@ -29,62 +27,39 @@ SUBSYSTEM_DEF(plasma_inflation)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/plasma_inflation/fire()
-	// Part 1. Update price after batch sale
-
-	if (quantity_sold_batch > 0)
-		current_price = quantity_sold_batch * (NUM_E ** (-decay_factor * quantity_sold_batch))
-
-		if (current_price < 0) // not going negative price
-			current_price = 0
-
-		// Reset stuff
-
-		quantity_sold_batch = 0
-		current_time = 0 // reset
-		recovery_start_price = current_price // should be placed after current_price update
-		is_recovering = TRUE
-		return // not recovering at this fire
-
-	// Part 2. recover stuff
-	if (!is_recovering)
+	if (length(markets_per_name) < 1)
 		return
+	for(var/market_name in markets_per_name)
+		var/datum/plasma_inflation_market/market = markets_per_name[market_name]
+		if (!market)
+			markets_per_name -= market
+			continue
+		market.update_market()
 
-	current_time += wait
-
-	if (default_plasma_price <= 0) // zero div
-		default_plasma_price = 0.000000001
-
-	if (recovery_time <= 0) // no negative stuff
-		recovery_time = wait
-
-	if (current_time >= recovery_time)
-		is_recovering = FALSE
-		current_price = default_plasma_price
-		return
-
-	if (recovery_start_price <= 0)// zero div
-		recovery_start_price = 000000001
-
-	current_price = recovery_start_price * ((default_plasma_price / recovery_start_price) ** (current_time / recovery_time))
-
-/datum/controller/subsystem/plasma_inflation/proc/sell_plasma(quantity)
-	if (!isnum(quantity) || quantity < 1)
+/datum/controller/subsystem/plasma_inflation/proc/sell_plasma(quantity, market_name)
+	var/datum/plasma_inflation_market/market = get_market(market_name)
+	if (!market)
+		log_runtime("Market is null after get_market(), market_name = [market_name]")
 		return 0
+	return market.sell(quantity)
 
+/datum/controller/subsystem/plasma_inflation/proc/get_market(market_name)
+	if (!market_name || length(market_name) < 1)
+		market_name = EXPORT_MARKET_BLACKMARKET
+	var/datum/plasma_inflation_market/market = markets_per_name[market_name]
+	if (!market)
+		market = new /datum/plasma_inflation_market()
+		markets_per_name[market_name] = market
+	return market
 
-	if (recovery_time <= 0) // no negative stuff
-		recovery_time = wait
-
-	if (decay_factor <= 0) // zero div
-		decay_factor = 0.000000001
-
-	if (quantity_sold_batch < 0) // no negative
-		quantity_sold_batch = 0
-
-	var/revenue = (current_price / decay_factor) * (NUM_E ** (-decay_factor * quantity_sold_batch) - NUM_E ** (-decay_factor * (quantity_sold_batch + quantity)))
-	quantity_sold_batch += quantity
-
-	if (revenue < 0) // no negative revenue
-		revenue = 0
-
-	return revenue
+/datum/controller/subsystem/plasma_inflation/proc/update_dry(dry_run, is_start)
+	if (!dry_run)
+		return
+	for(var/market_name in markets_per_name)
+		var/datum/plasma_inflation_market/market = markets_per_name[market_name]
+		if (!market)
+			continue
+		if (is_start)
+			dry_checkpoints_quantity_per_market[market] = market.quantity_sold_batch
+		else
+			market.quantity_sold_batch = dry_checkpoints_quantity_per_market[market]

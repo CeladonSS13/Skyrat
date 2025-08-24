@@ -816,7 +816,7 @@
 /area/shuttle/syndicate/slaver)
 "Lf" = (
 /obj/structure/table/optable,
-/obj/machinery/defibrillator_mount/directional/north,
+/obj/machinery/defibrillator_mount/loaded/directional/north,
 /obj/effect/turf_decal/trimline/dark_blue/filled/line,
 /obj/effect/turf_decal/trimline/dark_blue/warning{
 	dir = 1

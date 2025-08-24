@@ -348,6 +348,8 @@ ADMIN_VERB(log_viewer_new, R_ADMIN|R_DEBUG, "View Round Logs", "View the rounds 
 			data = recursive_jsonify(serialization_data, semvers)
 
 		if(islist(data) && !length(data))
+			if (isnull(data)) // SS1984 ADDITION
+				continue // SS1984 ADDITION
 			stack_trace("recursive_jsonify got an empty list after serialization")
 			continue
 

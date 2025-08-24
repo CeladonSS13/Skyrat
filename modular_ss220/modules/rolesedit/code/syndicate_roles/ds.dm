@@ -87,3 +87,42 @@
 	radio_channel = RADIO_CHANNEL_INTERDYNE //before i add ds2 freq
 	departament_access = ACCESS_SYNDICATE_DS
 	away = TRUE
+
+//job code
+/datum/outfit/ds2
+	role_job = /datum/job/ds2
+
+/datum/outfit/ds2/prisoner
+	role_job = /datum/job/ds2/prisoner
+
+/datum/outfit/ds2/syndicate_command
+	role_job = /datum/job/ds2/command
+
+/datum/job/ds2/mining
+	bounty_types = DYNE_JOB_COMMAND
+	paycheck_department = ACCOUNT_DS2
+
+/datum/outfit/ds2/syndicate/miner
+	role_job = /datum/job/ds2/mining
+
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/miner
+	spawner_job_path = /datum/job/ds2/mining
+
+/datum/job/ds2/service
+	bounty_types = DS2_JOB_SERVICE
+	paycheck_department = ACCOUNT_DS2
+
+/datum/outfit/ds2/syndicate/service
+	role_job = /datum/job/ds2/service
+
+/datum/outfit/ds2/syndicate/enginetech
+	role_job = /datum/job/ds2/engineer
+
+/datum/outfit/ds2/syndicate/researcher
+	role_job = /datum/job/ds2/science
+
+/datum/outfit/ds2/syndicate/stationmed
+	role_job = /datum/job/ds2/science
+
+/datum/outfit/ds2/syndicate/brigoff
+	role_job = /datum/job/ds2/enforce

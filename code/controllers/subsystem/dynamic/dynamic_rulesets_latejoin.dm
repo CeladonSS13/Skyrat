@@ -35,6 +35,10 @@
 		for (var/mob/M in GLOB.alive_player_list)
 			if (M.stat == DEAD)
 				continue // Dead players cannot count as opponents
+			// SS1984 ADDITION START
+			if (!SSdynamic.is_mob_considered_as_valid(M))
+				continue
+			// SS1984 ADDITION END
 			if (M.mind && (M.mind.assigned_role.title in enemy_roles) && (!(M in candidates) || (M.mind.assigned_role.title in restricted_roles)))
 				job_check++ // Checking for "enemies" (such as sec officers). To be counters, they must either not be candidates to that rule, or have a job that restricts them from it
 
@@ -137,6 +141,10 @@
 		return FALSE
 	var/head_check = 0
 	for(var/mob/player in GLOB.alive_player_list)
+		// SS1984 ADDITION START
+		if (!SSdynamic.is_mob_considered_as_valid(player))
+			continue
+		// SS1984 ADDITION END
 		if (player.mind.assigned_role.job_flags & JOB_HEAD_OF_STAFF)
 			head_check++
 	return (head_check >= required_heads_of_staff)

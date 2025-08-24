@@ -7438,7 +7438,7 @@
 /turf/open/floor/iron/white/smooth_half,
 /area/station/medical/virology)
 "bXb" = (
-/obj/machinery/defibrillator_mount/directional/south,
+/obj/machinery/defibrillator_mount/loaded/directional/south,
 /obj/effect/spawner/surgery_tray/full,
 /obj/effect/turf_decal/tile/blue/half,
 /obj/structure/table/reinforced,
@@ -10615,7 +10615,7 @@
 /turf/open/floor/iron/edge,
 /area/station/hallway/primary/forestarboardhall)
 "cOD" = (
-/obj/structure/closet/secure_closet/security/engine,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/machinery/airalarm/directional/west,
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/turf_decal/bot_red,
@@ -19307,7 +19307,7 @@
 /turf/open/floor/iron/herringbone,
 /area/station/hallway/primary/port)
 "fik" = (
-/obj/structure/closet/secure_closet/security/med,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/effect/turf_decal/tile/blue/full,
 /obj/effect/turf_decal/bot_red,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -37941,7 +37941,7 @@
 /area/station/hallway/primary/aftporthall)
 "kcR" = (
 /obj/machinery/stasis,
-/obj/machinery/defibrillator_mount/directional/east,
+/obj/machinery/defibrillator_mount/loaded/directional/east,
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/treatment_center)
@@ -39388,7 +39388,7 @@
 /turf/open/floor/plating,
 /area/station/cargo/storage)
 "kvj" = (
-/obj/machinery/defibrillator_mount/directional/south,
+/obj/machinery/defibrillator_mount/loaded/directional/south,
 /obj/effect/spawner/surgery_tray/full,
 /obj/effect/turf_decal/tile/blue/half,
 /obj/structure/table/reinforced,
@@ -39470,7 +39470,7 @@
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
 "kwr" = (
-/obj/structure/closet/secure_closet/security/med,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/effect/turf_decal/tile/blue/full,
 /obj/machinery/newscaster/directional/south,
 /obj/effect/turf_decal/bot_red,
@@ -61192,7 +61192,7 @@
 /turf/open/floor/wood/tile,
 /area/station/medical/psychology)
 "quL" = (
-/obj/structure/closet/secure_closet/security/cargo,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/effect/turf_decal/box/red,
@@ -62398,7 +62398,7 @@
 "qLC" = (
 /obj/structure/window/reinforced/tinted/spawner/directional/east,
 /obj/structure/window/reinforced/tinted/spawner/directional/south,
-/obj/structure/closet/secure_closet/security/service,
+/obj/structure/closet/secure_closet/security/sec,
 /turf/open/floor/iron/dark/side{
 	dir = 6
 	},
@@ -87728,7 +87728,7 @@
 /area/station/hallway/secondary/recreation)
 "xub" = (
 /obj/structure/window/reinforced/spawner/directional/east,
-/obj/structure/closet/secure_closet/security/science,
+/obj/structure/closet/secure_closet/security/sec,
 /turf/open/floor/iron/dark/side{
 	dir = 5
 	},

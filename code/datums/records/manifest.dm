@@ -28,6 +28,10 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	// First we build up the order in which we want the departments to appear in.
 	var/list/manifest_out = list()
 	for(var/datum/job_department/department as anything in SSjob.joinable_departments)
+		// SS1984 ADDITION START
+		if(department.department_name == DEPARTMENT_SILICON || department.department_name == DEPARTMENT_CENTRAL_COMMAND)
+			continue
+		// SS1984 ADDITION END
 		manifest_out[department.department_name] = list()
 	manifest_out[DEPARTMENT_UNASSIGNED] = list()
 
@@ -36,6 +40,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		var/name = target.name
 		var/rank = target.rank // user-visible job
 		var/trim = target.trim // internal jobs by trim type
+		var/active_status = target.physical_status // SS1984 ADDITION
 		// NOVA EDIT ADDITION START - bare minimum data the station records need to possess to show up on the crew manifest
 		if((name == "Unknown") || (rank == "Unassigned" || rank == "Unknown")) // records are unassigned by default, but if edited without input becomes unknown
 			continue
@@ -47,6 +52,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 				"name" = name,
 				"rank" = rank,
 				"trim" = trim,
+				"active" = active_status, // SS1984 ADDITION
 				)
 			continue
 		for(var/department_type as anything in job.departments_list)
@@ -61,8 +67,16 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 				"name" = name,
 				"rank" = rank,
 				"trim" = trim,
+				"active" = active_status,  // SS1984 ADDITION
 				)
-			var/list/department_list = manifest_out[department.department_name]
+			// SS1984 ADDITION START
+			var/department_key = department.department_name
+			if(trim == DEPARTMENT_SILICON || department_key == DEPARTMENT_SILICON)
+				continue // no silicons in CREW manifest
+			if(trim == DEPARTMENT_CENTRAL_COMMAND || department_key == DEPARTMENT_CENTRAL_COMMAND)
+				continue // don't show them as "central command", only to other departments (command)
+			// SS1984 ADDITION END
+			var/list/department_list = manifest_out[department_key] // SS1984 EDIT, original: var/list/department_list = manifest_out[department.department_name]
 			if(istype(job, department.department_head))
 				department_list.Insert(1, null)
 				department_list[1] = entry

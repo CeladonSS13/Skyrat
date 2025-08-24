@@ -32,6 +32,8 @@ export const COLORS = {
     centcom: '#00c100',
     other: '#c38312',
     prisoner: '#FFC2C2', // NOVA EDIT ADDITION
+    command: '#F6F743', // SS1984 ADDITION
+    medical: '#3498db', // SS1984 ADDITION
   },
   // Damage type colors
   damageType: {

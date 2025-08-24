@@ -102,7 +102,7 @@
 				return FALSE
 
 			if(!text_to_use || length(text_to_use) <= 6)
-				examine_datum.nif_examine_text = "There's a certain spark to their eyes."
+				examine_datum.nif_examine_text = "" // SS1984 EDIT, original: examine_datum.nif_examine_text = "There's a certain spark to their eyes."
 				return FALSE
 
 			examine_datum.nif_examine_text = text_to_use

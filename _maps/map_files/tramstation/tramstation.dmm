@@ -19217,8 +19217,8 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 5
 	},
-/obj/machinery/space_heater,
 /obj/machinery/light/directional/north,
+/obj/machinery/suit_storage_unit/atmos,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "fKn" = (
@@ -22194,7 +22194,7 @@
 /obj/structure/bed/medical{
 	dir = 4
 	},
-/obj/machinery/defibrillator_mount/directional/east,
+/obj/machinery/defibrillator_mount/loaded/directional/east,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
 	},
@@ -22685,7 +22685,7 @@
 /turf/open/floor/plating,
 /area/station/medical/virology)
 "gXb" = (
-/obj/structure/closet/secure_closet/security/cargo,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/item/clothing/mask/whistle,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
@@ -27332,7 +27332,7 @@
 /obj/machinery/stasis{
 	dir = 8
 	},
-/obj/machinery/defibrillator_mount/directional/north,
+/obj/machinery/defibrillator_mount/loaded/directional/north,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 5
 	},
@@ -29199,7 +29199,7 @@
 /obj/structure/bed/medical{
 	dir = 8
 	},
-/obj/machinery/defibrillator_mount/directional/west,
+/obj/machinery/defibrillator_mount/loaded/directional/west,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
@@ -31264,13 +31264,9 @@
 /turf/open/floor/iron,
 /area/station/cargo/office)
 "kce" = (
-/obj/effect/turf_decal/tile/neutral/tram,
-/obj/effect/spawner/random{
-	name = "funny slipper :)";
-	loot = list(/obj/effect/decal/cleanable/blood/oil/slippery=10, /obj/effect/decal/cleanable/blood/oil=90)
-	},
-/turf/open/floor/tram/plate,
-/area/station/hallway/primary/tram/left)
+/obj/machinery/space_heater,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
 "kcm" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
 	dir = 4
@@ -44542,7 +44538,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 4
 	},
-/obj/machinery/space_heater,
+/obj/machinery/suit_storage_unit/atmos,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "oMc" = (
@@ -52731,6 +52727,7 @@
 /obj/machinery/camera/emp_proof/directional/north{
 	c_tag = "Engineering - Atmospherics North"
 	},
+/obj/machinery/space_heater,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "rDt" = (
@@ -53222,7 +53219,7 @@
 /obj/machinery/stasis{
 	dir = 4
 	},
-/obj/machinery/defibrillator_mount/directional/north,
+/obj/machinery/defibrillator_mount/loaded/directional/north,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
 	},
@@ -60658,7 +60655,7 @@
 /turf/open/floor/iron,
 /area/station/maintenance/tram/mid)
 "uoJ" = (
-/obj/structure/closet/secure_closet/security/science,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/item/clothing/mask/whistle,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
@@ -69754,7 +69751,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
 "xzn" = (
-/obj/structure/closet/secure_closet/security/engine,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
 	},
@@ -70526,7 +70523,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/disposal/incinerator)
 "xOM" = (
-/obj/structure/closet/secure_closet/security/med,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/item/clothing/mask/whistle,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
@@ -105656,7 +105653,7 @@ kpq
 rDj
 tTW
 vUk
-wQm
+kce
 skM
 bZW
 qkN

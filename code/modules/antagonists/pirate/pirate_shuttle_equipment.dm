@@ -346,6 +346,7 @@
 ///The loop that calculates the value of stuff on a pirate pad, or plain sell them if dry_run is FALSE.
 /obj/machinery/computer/piratepad_control/proc/pirate_export_loop(obj/machinery/piratepad/pad, dry_run = TRUE)
 	var/datum/export_report/report = new
+	SSplasma_inflation?.update_dry(dry_run, TRUE) // SS1984 ADDITION
 	for(var/atom/movable/item_on_pad as anything in get_turf(pad))
 		if(item_on_pad == pad)
 			continue
@@ -363,11 +364,12 @@
 			continue
 		for(var/mob/living/hidden as anything in hidden_mobs)
 			///Sell mobs, but leave their contents intact.
-			export_single_item(hidden, apply_elastic = FALSE, dry_run = dry_run, external_report = report)
+			export_single_item(hidden, apply_elastic = FALSE, dry_run = dry_run, external_report = report, export_market = export_market) // SS1984 EDIT, original: export_single_item(hidden, apply_elastic = FALSE, dry_run = dry_run, external_report = report)
 		///there are still licing mobs inside that item. Stop, don't sell it ffs.
 		if(locate(/mob/living) in item_on_pad.get_all_contents())
 			continue
 		export_item_and_contents(item_on_pad, apply_elastic = FALSE, dry_run = dry_run, delete_unsold = FALSE, external_report = report, ignore_typecache = nosell_typecache, export_market = export_market) // NOVA EDIT CHANGE - FIXES DS2/DYNE EXPORTS - ORIGINAL: export_item_and_contents(item_on_pad, apply_elastic = FALSE, dry_run = dry_run, delete_unsold = FALSE, external_report = report, ignore_typecache = nosell_typecache, export_market = EXPORT_MARKET_PIRACY)
+	SSplasma_inflation?.update_dry(dry_run, FALSE) // SS1984 ADDITION
 	return report
 
 /// Prepares to sell the items on the pad

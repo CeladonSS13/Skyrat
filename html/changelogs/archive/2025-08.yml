@@ -750,3 +750,93 @@
   - balance: Man-eaters can now pull living beings again
   - rscadd: Difficult spacevines event, always spawns man-eaters and can appear in
       more places than just hallways
+2025-08-17:
+  DenIS318:
+  - rscadd: Colored PDA manifest
+  - rscadd: Now shows physical status in crew manifest, according to medical records
+      such as Active/Deceased
+  - rscadd: Departments are colored in PDA manifest
+  - rscdel: Crew manifest no longer contains any silicons (they are NOT crew)
+  - rscdel: Crew manifest no longer contains any "Central Command" (blueshield, consultant,
+      and other such are placed in "Command")
+  - bugfix: Admin revive now heals scarring eyes
+  - bugfix: Reconnect after server restart most likely should always work now
+2025-08-18:
+  DenIS318:
+  - rscadd: Security officers now are assigned per department (Science, Engineering,
+      Medical, Cargo, Service)
+  - rscadd: Security department preference in character preferences
+  - rscadd: Service Security Officer. He doesn't have it's own post and start at brig
+  - balance: Max amount of sec offs increased accordingly (7 => 12) to fit departments
+  - qol: Corrections Officer now have security sunglasses (with HUD), instead of normal
+      sunglasses
+  - qol: Security Officer's assigned to department start at their posts
+  - map: Replaced department's guard lockers with security officer lockers
+  - rscdel: Department guards removed (Orderly, Bouncer, Customs Agent, Engineering
+      Guard, Medical Guard)
+2025-08-19:
+  DenIS318:
+  - bugfix: Huds no longer can change status from inside of bitrunning domains. Some
+      other functional is limited as well from bitrunning.
+2025-08-20:
+  DenIS318:
+  - server: Delta is now considered as "default" map during map-votes (matters if
+      someone doesn't vote at all and don't have prefered map selected)
+  - server: When there's no votes at all during transfer vote, always "Continue Playing"
+      is selected (so it won't auto-transfer when there's no players at all)
+  - server: 'Transfer vote now normally accesible to players only at periods: between
+      15-40 minutes of round, after 90 minutes of round'
+  - admin: If any admin use toggle vote for transfer vote at least once, this will
+      disable automatic toggle behaviour (15-40-90 minutes thresholds)
+  - rscdel: 'Deleted unused client verbs, such as: "Link Forum Account", "Show Map
+      Vote Tallies" (we don''t use them at all)'
+  - qol: Ion Jetpack module is now auto-pinned on insert to pre-equipped MODsuits
+      (not for fully hand-crafted MODs)
+  - server: Disable unathi from roundstart races. Use lizardperson instead
+  - rscadd: Added 3 Ion Jetpack modules to engivend's premium with cost 400 per each
+  - map: Added 2 more atmos MODsuits storage units to all recommended maps (Delta,
+      Meta, Tram, Icebox). Now it's 3 in total.
+  - map: Replaced almost all empty defibs on all maps/templates with initially loaded
+      defibs
+  - rscadd: Health analyzer (basic) is added to autolathe designs
+  - bugfix: Loaded defibs at maps now properly shows attached defib overlay
+2025-08-23:
+  DenIS318:
+  - balance: 'Plasma inflation now works for ghostroles markets same way, as it does
+      for station cargo. Interdyne and DS-2 market are shared. Total 5 markets: station,
+      interdyne+ds, tarkon, pirates, "blackmarket" (when it doesn''t fit any of others)'
+  - qol: Plasma inflation is calculated during predict value on ghostroles pads (can
+      view how much you will get from plasma before sending it)
+  - rscadd: Mutadone pills added to NanoDrug
+  - balance: Dynamic no longer counts non-station roles as "Alive" for rulesets population
+  - bugfix: Dynamic rolling no longer counts SSD/disconnected players as "Alive"
+  - code_imp: 'Example how Dynamic count alive players now: 1 secoff, 1 disconnected
+      crew, 1 SSD crew, 2 normal crew, 1 dead crew, and 1 non-station role (tarkon)
+      = 3 alive players, antags normally start from 5 population (including 1 security/captain).
+      The same principes applying to "enemies" selection, such when calculating amount
+      of alive security/heads (for revs)'
+  - admin: Alive Players in dynamic panel now shows how much it count as "Alive" for
+      rolling (no ghost roles... etc.). This might differ from other admin panels
+      (it's should be that way)
+  - rscadd: Atmos techs now start with engineering skillchip
+  - balance: Ghostroles such as Tarkon, DS-2, Interdyne no longer have destination
+      to station docks
+  - balance: Tarkon instead of station can fly to Deep Space by using camera console
+      (in case it was spawned)
+  - rscadd: Tarkon remote now can fly to any custom location and back to tarkon port
+      (unique feature for tarkon shuttle only)
+  - rscadd: Syndicate research server is added to DS-2. It's have it's own techweb
+      separated from station. Interdyne is also gain researches from it (in case they
+      build R&D)
+  - rscadd: Spare Syndicate R&D server circuit added to DS-2 vault safe
+  - qol: Removed NIFsoft default examine text ("There's a certain spark to their eyes.").
+      You need to set it manually if you want it to appear (more than 6 characters)
+  - bugfix: Now transfer vote properly count non-voters as "Continue playing" as other
+      votes does
+2025-08-24:
+  Arceniu:
+  - bugfix: fixed a some runtimes in DS2/IP/PT job accounts
+  - map: returned jackets to ds2
+  - rscadd: Upgraded blueshield medkit to fix synth
+  - bugfix: fixed some lost blueshield edits
+  - refactor: blueshield now have 1984 modularity instead of offs code edit

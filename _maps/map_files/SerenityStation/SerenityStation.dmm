@@ -15809,7 +15809,7 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos)
 "eDG" = (
-/obj/structure/closet/secure_closet/security/science,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 10
 	},
@@ -17420,7 +17420,7 @@
 	pixel_y = -7
 	},
 /obj/structure/table/optable,
-/obj/machinery/defibrillator_mount/directional/east{
+/obj/machinery/defibrillator_mount/loaded/directional/east{
 	pixel_y = 4
 	},
 /obj/structure/cable,
@@ -27510,7 +27510,7 @@
 /area/station/hallway/secondary/exit/departure_lounge)
 "hRl" = (
 /obj/structure/table/optable,
-/obj/machinery/defibrillator_mount/directional/south,
+/obj/machinery/defibrillator_mount/loaded/directional/south,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -28500,7 +28500,7 @@
 /turf/open/floor/engine,
 /area/station/science/ordnance)
 "ifz" = (
-/obj/structure/closet/secure_closet/security/med,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -32073,7 +32073,7 @@
 	dir = 6
 	},
 /obj/machinery/power/apc/auto_name/directional/south,
-/obj/structure/closet/secure_closet/security/engine,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/machinery/airalarm/directional/east,
 /obj/machinery/camera/directional/east{
 	c_tag = "Engineering - Guard Post";
@@ -36671,7 +36671,7 @@
 /area/station/commons/fitness/recreation)
 "kwl" = (
 /obj/machinery/light/directional/south,
-/obj/structure/closet/secure_closet/security/service,
+/obj/structure/closet/secure_closet/security/sec,
 /turf/open/floor/wood,
 /area/station/service/bar)
 "kwm" = (
@@ -44114,7 +44114,7 @@
 	name = "medical bed"
 	},
 /obj/machinery/iv_drip,
-/obj/machinery/defibrillator_mount/directional/north,
+/obj/machinery/defibrillator_mount/loaded/directional/north,
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 4
 	},
@@ -44135,7 +44135,7 @@
 	dir = 1
 	},
 /obj/machinery/stasis,
-/obj/machinery/defibrillator_mount/directional/east,
+/obj/machinery/defibrillator_mount/loaded/directional/east,
 /turf/open/floor/iron/white/smooth_edge{
 	dir = 8
 	},
@@ -60781,7 +60781,7 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 9
 	},
-/obj/structure/closet/secure_closet/security/science,
+/obj/structure/closet/secure_closet/security/sec,
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/science/research)
 "rKP" = (
@@ -69527,7 +69527,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 1
 	},
-/obj/machinery/defibrillator_mount/directional/west,
+/obj/machinery/defibrillator_mount/loaded/directional/west,
 /obj/machinery/stasis{
 	dir = 1
 	},
@@ -72137,7 +72137,7 @@
 	name = "medical bed"
 	},
 /obj/machinery/iv_drip,
-/obj/machinery/defibrillator_mount/directional/north,
+/obj/machinery/defibrillator_mount/loaded/directional/north,
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 8
 	},
@@ -73063,7 +73063,7 @@
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "vjq" = (
-/obj/structure/closet/secure_closet/security/cargo,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 9
@@ -81338,7 +81338,7 @@
 	pixel_y = -7
 	},
 /obj/structure/table/optable,
-/obj/machinery/defibrillator_mount/directional/east{
+/obj/machinery/defibrillator_mount/loaded/directional/east{
 	pixel_y = 4
 	},
 /obj/structure/cable,

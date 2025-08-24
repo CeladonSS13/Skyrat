@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(vote)
 	var/to_display = current_vote.get_result_text(winners, final_winner, non_voters)
 
 	var/total_votes = 0
-	var/list/vote_choice_data = list()
+	var/list/vote_choice_data = current_vote.choices?.len > 0 ? list() : null // SS1984 EDIT, prevent runtime caused by empty list by passing null instead. Original: var/list/vote_choice_data = list()
 	for(var/choice in current_vote.choices)
 		var/choice_votes = current_vote.choices[choice]
 		total_votes += choice_votes

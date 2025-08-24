@@ -15,11 +15,12 @@ type Data = {
   pad: string;
   sending: BooleanLike;
   status_report: string;
+  current_plasma_cost: number | string; // SS1984 ADDITION
 };
 
 export const CargoHoldTerminal = (props) => {
   const { act, data } = useBackend<Data>();
-  const { points, pad, sending, status_report } = data;
+  const { points, pad, sending, status_report, current_plasma_cost } = data; // SS1984 ADDITION: current_plasma_cost
 
   return (
     <Window width={600} height={230}>
@@ -57,6 +58,11 @@ export const CargoHoldTerminal = (props) => {
             <LabeledList.Item label="Status" color={pad ? 'good' : 'bad'}>
               {pad ? 'Online' : 'Not Found'}
             </LabeledList.Item>
+            { /* SS1984 ADDITION START */ }
+            <LabeledList.Item>
+              <span style={{ color: '#BA3692' }}>Plasma</span> cost: {current_plasma_cost}
+            </LabeledList.Item>
+            { /* SS1984 ADDITION END */ }
             <LabeledList.Item label="Cargo Report">
               {status_report}
             </LabeledList.Item>

@@ -2,20 +2,6 @@
 
 //Uniform items are in command.dm
 
-/datum/armor/gloves_combat/blueshield
-	fire = 100
-	acid = 100
-	bio = 90
-
-/obj/item/clothing/gloves/tackler/combat/insulated/blueshield
-	name = "combat gloves"
-	desc = "These tactical gloves appear to be unique, made out of double woven durathread fibers which make it fireproof as well as acid resistant"
-	icon = 'modular_nova/master_files/icons/obj/clothing/gloves.dmi'
-	icon_state = "combat"
-	worn_icon = 'modular_nova/master_files/icons/mob/clothing/hands.dmi'
-	resistance_flags = FIRE_PROOF |  ACID_PROOF
-	armor_type = /datum/armor/gloves_combat/blueshield
-
 /obj/item/radio/headset/headset_bs
 	name = "\proper the blueshield's headset"
 	icon = 'modular_nova/modules/blueshield/icons/radio.dmi'
@@ -65,7 +51,6 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#3A4E7D#DEB63D"
 	icon_state = "beret_badge_police"
-	armor_type = /datum/armor/beret_blueshield
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/soft/blueshield
@@ -114,15 +99,6 @@
 	inhand_icon_state = "duffel_blueshield"
 
 //blueshield armor
-/datum/armor/suit_armor/blueshield
-	melee = 40
-	bullet = 35
-	laser = 30
-	energy = 25
-	bomb = 30
-	fire = 75
-	acid = 75
-	wound = 15
 
 /obj/item/clothing/suit/armor/vest/blueshield
 	icon = 'modular_nova/master_files/icons/obj/clothing/suits/armor.dmi'
@@ -132,7 +108,6 @@
 	icon_state = "blueshieldarmor"
 	body_parts_covered = CHEST
 	uses_advanced_reskins = TRUE
-	armor_type = /datum/armor/suit_armor/blueshield
 	unique_reskin = list(
 		"Slim" = list(
 			RESKIN_ICON = 'modular_nova/master_files/icons/obj/clothing/suits/armor.dmi',
@@ -171,7 +146,7 @@
 	desc = "A comfy kevlar-lined coat with blue highlights, fit to keep the blueshield armored and warm."
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/nova/blueshield
 	allowed = list(/obj/item/melee/baton/security/loaded)
-	armor_type = /datum/armor/suit_armor/blueshield
+	armor_type = /datum/armor/suit_armor
 
 /obj/item/clothing/suit/hooded/wintercoat/nova/blueshield/Initialize(mapload)
 	. = ..()
@@ -180,4 +155,4 @@
 /obj/item/clothing/head/hooded/winterhood/nova/blueshield
 	icon_state = "hood_blueshield"
 	desc = "A comfy kevlar-lined hood to go with the comfy kevlar-lined coat."
-	armor_type = /datum/armor/suit_armor/blueshield
+	armor_type = /datum/armor/suit_armor

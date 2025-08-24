@@ -52,6 +52,7 @@ const BASEICONS = {
   'Security Officer (Engineering)': 'shield-halved',
   'Security Officer (Medical)': 'shield-halved',
   'Security Officer (Science)': 'shield-halved',
+  'Security Officer (Service)': 'shield-halved', // SS1984 ADDITION
   'Security Officer': 'shield-halved',
   'Shaft Miner': 'digging',
   'Station Engineer': 'gears',
@@ -64,13 +65,13 @@ const BASEICONS = {
   Virologist: 'virus',
   Barber: 'scissors',
   Blueshield: 'shield-dog',
-  Bouncer: 'shield-heart',
+  // SS1984 REMOVAL Bouncer: 'shield-heart',
   'Corrections Officer': 'hands-bound',
-  'Customs Agent': 'shield-heart',
-  'Engineering Guard': 'shield-heart',
+  // SS1984 REMOVAL 'Customs Agent': 'shield-heart',
+  // SS1984 REMOVAL 'Engineering Guard': 'shield-heart',
   'Nanotrasen Consultant': 'clipboard-check',
-  Orderly: 'shield-heart',
-  'Science Guard': 'shield-heart',
+  // SS1984 REMOVAL Orderly: 'shield-heart',
+  // SS1984 REMOVAL 'Science Guard': 'shield-heart',
   'Security Medic': 'heart-pulse',
   // NOVA EDIT END
 } as const;
@@ -116,7 +117,7 @@ const ALTTITLES = {
   Herbalist: BASEICONS['Botanist'],
   Florist: BASEICONS['Botanist'],
   // Bouncer - shield-heart
-  'Service Guard': BASEICONS['Bouncer'],
+  // SS1984 REMOVAL 'Service Guard': BASEICONS['Bouncer'],
   // Captain - crown
   'Station Commander': BASEICONS['Captain'],
   'Commanding Officer': BASEICONS['Captain'],

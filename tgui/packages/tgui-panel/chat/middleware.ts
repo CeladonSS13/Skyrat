@@ -195,6 +195,7 @@ export const chatMiddleware = (store: Store) => {
     if (type === 'roundrestart') {
       // Save chat as soon as possible
       saveChatToStorage(store);
+      startAsyncReconnect(); // SS1984 ADDITION
       return next(action);
     }
     if (type === saveChatToDisk.type) {
@@ -208,3 +209,14 @@ export const chatMiddleware = (store: Store) => {
     return next(action);
   };
 };
+// SS1984 ADDITION START
+function delay_reconnect(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function startAsyncReconnect(): Promise<void> {
+  for (let i = 0; i < 8; i++) {
+    await delay_reconnect(15 * 1000); // Wait for 15 seconds
+    Byond.command('.reconnect');
+  }
+}
+// SS1984 ADDITION END

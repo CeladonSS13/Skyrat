@@ -94,6 +94,7 @@ GLOBAL_LIST_INIT(security_depts_prefs, sort_list(list(
 	SEC_DEPT_NONE,
 	SEC_DEPT_SCIENCE,
 	SEC_DEPT_SUPPLY,
+	SEC_DEPT_SERVICE, // SS1984 ADDITION
 )))
 
 	//Backpacks

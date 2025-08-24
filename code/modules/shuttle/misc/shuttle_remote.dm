@@ -67,6 +67,14 @@
 	var/obj/docking_port/away = SSshuttle.getDock(shuttle_away_id)
 	var/obj/docking_port/dock = our_port.get_docked()
 
+	// SS1984 ADDITION START
+	if (allow_call_to_custom_and_backhome)
+		if ("[our_computer.shuttleId]_custom" == dock.shuttle_id || away == dock)
+			away = home
+	if (!away || !away.name)
+		return // no away location (might be custom, so it's ok)
+	// SS1984 ADDITION END
+
 	var/send_off_text = "Are you sure you want to send off [get_area_name(SSshuttle.getShuttle(our_computer.shuttleId))] to [away.name]?"
 	var/list/send_off_options = list("Yes", "No")
 	var/destination = null

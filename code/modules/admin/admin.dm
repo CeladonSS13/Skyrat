@@ -153,7 +153,7 @@ ADMIN_VERB(spawn_cargo, R_SPAWN, "Spawn Cargo", "Spawn a cargo crate.", ADMIN_CA
 		browser.open()
 		return
 
-	var/pop_count = length(GLOB.alive_player_list)
+	var/pop_count = SSdynamic.get_population_for_dynamic_rolling() // SS1984 EDIT, original: var/pop_count = length(GLOB.alive_player_list)
 	var/threat_level = SSdynamic.threat_level
 	dat += dynamic_ruleset_category_during_round_display("Latejoin", SSdynamic.latejoin_rules, pop_count, threat_level)
 	dat += dynamic_ruleset_category_during_round_display("Midround", SSdynamic.midround_rules, pop_count, threat_level)

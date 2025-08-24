@@ -29,6 +29,7 @@
 		return list()
 
 	var/list/possible_heavies = list()
+	var/pop_count_filtered = get_population_for_dynamic_rolling() // SS1984 ADDITION
 	for (var/datum/dynamic_ruleset/midround/ruleset as anything in midround_rules)
 		if (ruleset.midround_ruleset_style != MIDROUND_RULESET_STYLE_HEAVY)
 			continue
@@ -39,7 +40,7 @@
 		if (ruleset.cost > max_threat_level)
 			continue
 
-		if (!ruleset.acceptable(GLOB.alive_player_list.len, threat_level))
+		if (!ruleset.acceptable(pop_count_filtered, threat_level)) // SS1984 EDIT, original: if (!ruleset.acceptable(GLOB.alive_player_list.len, threat_level))
 			continue
 
 		if (ruleset.minimum_round_time > world.time - SSticker.round_start_time)

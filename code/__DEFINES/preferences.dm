@@ -57,6 +57,7 @@
 #define SEC_DEPT_MEDICAL "Medical"
 #define SEC_DEPT_SCIENCE "Science"
 #define SEC_DEPT_SUPPLY "Supply"
+#define SEC_DEPT_SERVICE "Service" // SS1984 ADDITION
 
 // Playtime tracking system, see jobs_exp.dm
 #define EXP_TYPE_LIVING "Living"

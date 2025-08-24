@@ -7094,7 +7094,7 @@
 "gki" = (
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/machinery/stasis,
-/obj/machinery/defibrillator_mount/directional/east,
+/obj/machinery/defibrillator_mount/loaded/directional/east,
 /turf/open/floor/iron/freezer,
 /area/centcom/interlink)
 "gko" = (
@@ -7767,7 +7767,7 @@
 /obj/effect/turf_decal/siding/white{
 	dir = 8
 	},
-/obj/machinery/defibrillator_mount/directional/west,
+/obj/machinery/defibrillator_mount/loaded/directional/west,
 /obj/machinery/computer/operating{
 	dir = 4
 	},

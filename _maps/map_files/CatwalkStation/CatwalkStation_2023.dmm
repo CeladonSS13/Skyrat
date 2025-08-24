@@ -5544,7 +5544,7 @@
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "bIZ" = (
-/obj/structure/closet/secure_closet/security/med,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/item/book/manual/wiki/security_space_law,
 /obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /obj/effect/turf_decal/tile/red/opposingcorners{
@@ -18081,7 +18081,7 @@
 /area/station/engineering/supermatter/room)
 "fsS" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/closet/secure_closet/security/science,
+/obj/structure/closet/secure_closet/security/sec,
 /turf/open/openspace,
 /area/station/security/checkpoint/science)
 "ftk" = (
@@ -22330,7 +22330,7 @@
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
 "gFB" = (
-/obj/structure/closet/secure_closet/security/cargo,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/machinery/light_switch/directional/north,
 /obj/machinery/camera/directional/north{
 	c_tag = "Cargo Bay - Security Post (Low)"
@@ -22794,7 +22794,7 @@
 	desc = "An old medical bed, just waiting for replacement with something up to date.";
 	name = "medical bed"
 	},
-/obj/machinery/defibrillator_mount/directional/south,
+/obj/machinery/defibrillator_mount/loaded/directional/south,
 /turf/open/floor/iron/white/textured_large,
 /area/station/medical/medbay/central)
 "gNK" = (
@@ -40541,7 +40541,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/mid_joiner{
 	dir = 4
 	},
-/obj/machinery/defibrillator_mount/directional/east,
+/obj/machinery/defibrillator_mount/loaded/directional/east,
 /turf/open/floor/iron/white/textured_large,
 /area/station/medical/medbay/central)
 "lYe" = (
@@ -43031,7 +43031,7 @@
 	desc = "An old medical bed, just waiting for replacement with something up to date.";
 	name = "medical bed"
 	},
-/obj/machinery/defibrillator_mount/directional/south,
+/obj/machinery/defibrillator_mount/loaded/directional/south,
 /turf/open/floor/iron/white/textured_large,
 /area/station/medical/medbay/central)
 "mKF" = (
@@ -51891,7 +51891,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/mid_joiner{
 	dir = 4
 	},
-/obj/machinery/defibrillator_mount/directional/east,
+/obj/machinery/defibrillator_mount/loaded/directional/east,
 /obj/machinery/light/directional/east,
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/white/textured_large,
@@ -58135,7 +58135,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 10
 	},
-/obj/structure/closet/secure_closet/security/engine,
+/obj/structure/closet/secure_closet/security/sec,
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/engineering)
 "rlq" = (

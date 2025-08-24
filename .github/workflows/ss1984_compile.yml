@@ -32,8 +32,14 @@ jobs:
       run: tools/ci/install_byond.sh STABLE
     - name: Setup part 6 (Install Dreamluau)
       run: tools/ci/install_dreamluau.sh
-    - name: Setup part 7 (Install Rust)
-      run: tools/ci/install_rust_g.sh
+    - name: Create RUST_REMOTE directory
+      run: |
+        mkdir RUST_REMOTE
+    - name: Setup part 7 (Rust Cache)
+      uses: Swatinem/rust-cache@v2.8.0
+      with:
+        workspaces: RUST_REMOTE
+        cache-all-crates: true
     - name: Setup part 8 (Give Linters A Go)
       id: linter-setup
       run: ":"

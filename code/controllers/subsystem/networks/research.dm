@@ -81,6 +81,7 @@ SUBSYSTEM_DEF(research)
 	new /datum/techweb/admin
 	new /datum/techweb/oldstation
 	new /datum/techweb/tarkon //NOVA EDIT
+	new /datum/techweb/interdyne_ds2 // SS1984 ADDITION
 	autosort_categories()
 	error_design = new
 	error_node = new

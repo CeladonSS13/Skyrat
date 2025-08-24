@@ -25,7 +25,6 @@ Blueshield=1,1
 
 Cargo Technician=4,2
 Shaft Miner=4,4
-Customs Agent=2,2
 
 
 # Service
@@ -41,14 +40,12 @@ Curator=2,2
 Lawyer=2,2
 Chaplain=1,1
 Psychologist=1,1
-Bouncer=2,2
 
 
 # Engineering
 
 Station Engineer=5,5
 Atmospheric Technician=3,2
-Engineering Guard=2,2
 
 
 # Medical
@@ -58,7 +55,6 @@ Paramedic=3,2
 Chemist=2,2
 Geneticist=2,2
 Virologist=1,1
-Orderly=2,2
 
 
 # Science
@@ -66,7 +62,6 @@ Orderly=2,2
 Scientist=5,5
 Roboticist=3,2
 Vanguard Operative=0,0
-Science Guard=2,2
 
 
 # Security

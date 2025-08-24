@@ -7037,6 +7037,7 @@
 	dir = 8
 	},
 /obj/machinery/light/directional/east,
+/obj/machinery/suit_storage_unit/atmos,
 /turf/open/floor/iron/textured,
 /area/station/engineering/atmos)
 "bSH" = (
@@ -11543,7 +11544,7 @@
 "dfw" = (
 /obj/structure/reagent_dispensers/wall/peppertank/directional/west,
 /obj/machinery/airalarm/directional/north,
-/obj/structure/closet/secure_closet/security/science,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 1
 	},
@@ -36068,7 +36069,7 @@
 /turf/open/floor/iron/textured,
 /area/station/commons/storage/mining)
 "kmG" = (
-/obj/machinery/defibrillator_mount/directional/north,
+/obj/machinery/defibrillator_mount/loaded/directional/north,
 /obj/effect/turf_decal/tile/blue/full,
 /obj/machinery/light/cold/directional/north,
 /obj/machinery/stasis{
@@ -38614,7 +38615,7 @@
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/port/aft)
 "kXM" = (
-/obj/structure/closet/secure_closet/security/med,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/effect/turf_decal/tile/red/full,
@@ -48809,6 +48810,7 @@
 /area/station/science/research)
 "nSc" = (
 /obj/effect/turf_decal/siding/yellow,
+/obj/machinery/suit_storage_unit/atmos,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "nSk" = (
@@ -57978,7 +57980,7 @@
 /area/station/hallway/primary/central)
 "qsQ" = (
 /obj/machinery/stasis,
-/obj/machinery/defibrillator_mount/directional/north,
+/obj/machinery/defibrillator_mount/loaded/directional/north,
 /obj/effect/turf_decal/tile/blue/full,
 /turf/open/floor/iron/large,
 /area/station/medical/treatment_center)
@@ -58179,7 +58181,7 @@
 /area/station/security/range)
 "qwd" = (
 /obj/machinery/light_switch/directional/south,
-/obj/structure/closet/secure_closet/security/cargo,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 8
 	},
@@ -65324,7 +65326,7 @@
 	pixel_x = 6
 	},
 /obj/item/reagent_containers/syringe,
-/obj/machinery/defibrillator_mount/directional/east,
+/obj/machinery/defibrillator_mount/loaded/directional/east,
 /obj/effect/turf_decal/tile/blue/full,
 /turf/open/floor/iron/large,
 /area/station/medical/treatment_center)
@@ -80350,7 +80352,7 @@
 /turf/open/floor/iron/dark,
 /area/station/maintenance/disposal/incinerator)
 "wTC" = (
-/obj/structure/closet/secure_closet/security/engine,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/machinery/requests_console/directional/north{
 	department = "Security";
 	name = "Security Requests Console"
