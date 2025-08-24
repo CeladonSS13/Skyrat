@@ -13,7 +13,7 @@
 			pop_filtered_amount++
 	return pop_filtered_amount
 
-/datum/controller/subsystem/dynamic/proc/is_mob_considered_as_valid(var/mob/mob_to_check)
+/datum/controller/subsystem/dynamic/proc/is_mob_considered_as_valid(mob_to_check)
 	var/mob/living/living_mob = mob_to_check
 	if (!living_mob || !living_mob.ckey || !GET_CLIENT(living_mob) || living_mob.ssd_indicator)
 		return FALSE
