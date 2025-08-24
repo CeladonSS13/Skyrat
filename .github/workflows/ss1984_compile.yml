@@ -11,6 +11,16 @@ jobs:
       with: # to make it work on pull requests
         ref: ${{github.event.pull_request.head.ref}}
         repository: ${{github.event.pull_request.head.repo.full_name}}
+    - name: Cache APT packages
+      uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: gcc-multilib zlib1g-dev:i386
+        version: 1.0
+    - name: Cache PYTHON
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.9' # would be good, if match PYTHON_VERSION in dependencies.sh
+        cache: 'pip'
     - name: Setup part 1 (Bun)
       uses: ./.github/actions/setup_bun
     - name: Setup part 2 (.NET SDK)
