@@ -47,24 +47,24 @@ export const ManifestTable = ({ group, department }) => {
 
   return (
     <Table>
-        <Table.Row header color="white">
+      <Table.Row header color="white">
         <Table.Cell width="50%">Name</Table.Cell>
         <Table.Cell width="35%">Rank</Table.Cell>
         <Table.Cell width="15%">Active</Table.Cell>
-        </Table.Row>
-        {group.map((person) => (
+      </Table.Row>
+      {group.map((person) => (
         <Table.Row
-            color={HCC(person.rank)}
-            key={`${person.name}-${person.rank}`}
-            bold={HBC(person.rank)}
+          color={HCC(person.rank)}
+          key={`${person.name}-${person.rank}`}
+          bold={HBC(person.rank)}
         >
-            <Table.Cell>{decodeHtmlEntities(person.name)}</Table.Cell>
-            <Table.Cell>{decodeHtmlEntities(person.rank)}</Table.Cell>
-            <Table.Cell>{person.active}</Table.Cell>
+          <Table.Cell>{decodeHtmlEntities(person.name)}</Table.Cell>
+          <Table.Cell>{decodeHtmlEntities(person.rank)}</Table.Cell>
+          <Table.Cell>{person.active}</Table.Cell>
         </Table.Row>
-        ))}
+      ))}
     </Table>
-    );
+  );
 };
 
 export const CrewManifestSS1984 = ({ manifest }) => {
@@ -75,14 +75,18 @@ export const CrewManifestSS1984 = ({ manifest }) => {
         const deptColor = deptCols[(department ?? '').toLowerCase()] ?? 'white';
 
         return (
-            <Section
+          <Section
             key={department}
-            title={<Box style={{ color: deptColor, fontWeight: 'bold' }}>{department}</Box>}
-            >
+            title={
+              <Box style={{ color: deptColor, fontWeight: 'bold' }}>
+                {department}
+              </Box>
+            }
+          >
             <ManifestTable group={group} department={department} />
-            </Section>
+          </Section>
         );
-        })}
+      })}
     </>
   );
 };

@@ -211,7 +211,7 @@ export const chatMiddleware = (store: Store) => {
 };
 // SS1984 ADDITION START
 function delay_reconnect(ms: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 async function startAsyncReconnect(): Promise<void> {
   for (let i = 0; i < 8; i++) {
