@@ -35,14 +35,16 @@ jobs:
     - name: Cache RUST_REMOTE folder
       uses: actions/cache@v4
       with:
-        path: RUST_REMOTE  # The folder to cache
-        key: composer-${{ runner.os }}-${{ hashFiles('Cargo.lock') }} # Unique key for the cache
+        path: RUST_REMOTE # folder to cache
+        key: rust_remote_repo_1984 # key for the cache
         restore-keys: |
-          composer-${{ runner.os }}-
+          rust_remote_repo_1984
     - name: Setup part 7 (Rust Cache)
       uses: Swatinem/rust-cache@v2.8.0
       with:
-        workspaces: RUST_REMOTE, RUST
+        workspaces: |
+          RUST_REMOTE
+          RUST
         cache-all-crates: true
     - name: Setup part 8 (Give Linters A Go)
       id: linter-setup
