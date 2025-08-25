@@ -2,7 +2,7 @@ name: CI Suite
 
 on:
   pull_request:
-    types: [opened]
+    types: [ready_for_review, opened, synchronize]
     branches:
       - master
       - "project/**"
