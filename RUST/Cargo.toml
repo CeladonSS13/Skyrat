@@ -1,0 +1,10 @@
+[package]
+name = "rust-1984"
+version = "1.0.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+rust-g = { path = "../RUST_REMOTE" }

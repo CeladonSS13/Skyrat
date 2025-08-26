@@ -214,6 +214,7 @@
 #include "code\__DEFINES\rotation.dm"
 #include "code\__DEFINES\roundend.dm"
 #include "code\__DEFINES\rust_g.dm"
+#include "modular_ss220\modules\rust_g_custom\__DEFINES\rust_defines.dm"
 #include "code\__DEFINES\rust_g_overrides.dm"
 #include "code\__DEFINES\say.dm"
 #include "code\__DEFINES\screentips.dm"
@@ -9361,6 +9362,7 @@
 #include "modular_ss220\modules\rolesedit\code\syndicate_roles\ds.dm"
 #include "modular_ss220\modules\rolesedit\code\syndicate_roles\interdyne.dm"
 #include "modular_ss220\modules\rolesedit\code\tarkon\tarkon.dm"
+#include "modular_ss220\modules\rust_g_custom\test.dm"
 #include "modular_ss220\modules\security_minor_1984\__HELPERS\text.dm"
 #include "modular_ss220\modules\security_minor_1984\corrections_officer_tweaks\corrections_officer.dm"
 #include "modular_ss220\modules\security_minor_1984\detective_analyzer_closets\security.dm"
@@ -9426,6 +9428,7 @@
 #include "modular_ss220\modules\vote_highlight\map_vote.dm"
 #include "modular_ss220\modules\vote_highlight\vote.dm"
 #include "modular_ss220\modules\votes_stuff\transfer_vote.dm"
+#include "modular_ss220\modules\votes_stuff\autotransfer.dm"
 #include "modular_ss220\modules\weapons_addon\code\energy1911.dm"
 #include "modular_ss220\modules\weapons_addon\code\qmgun.dm"
 // END_INCLUDE

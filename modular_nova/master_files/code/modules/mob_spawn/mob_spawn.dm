@@ -26,7 +26,7 @@
 				if(appearance_choice == "Yes")
 					load_prefs = TRUE
 
-	var/mob/living/spawned_mob = ..(mob_possessor, newname, load_prefs)
+	var/mob/living/spawned_mob = ..(mob_possessor, newname, "NOEQUIP")
 
 	var/mob/living/carbon/human/spawned_human
 	if (istype(spawned_mob, /mob/living/carbon/human))
@@ -35,7 +35,8 @@
 		if(!load_prefs)
 			var/datum/language_holder/holder = spawned_human.get_language_holder()
 			holder.get_selected_language() //we need this here so a language starts off selected
-
+			equip(spawned_mob) // SS1984 ADDITION
+			after_create_nova(spawned_human) // SS1984 ADDITION
 			return spawned_human
 
 		spawned_human?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
@@ -53,7 +54,7 @@
 		spawned_human?.equip_outfit_and_loadout(outfit, spawned_mob.client.prefs)
 	else if (!isnull(spawned_human))
 		equip(spawned_human)
-
+	after_create_nova(spawned_human) // SS1984 ADDITION
 	return spawned_mob
 
 /// This edit would cause somewhat ugly diffs, so I'm just replacing it.
@@ -62,7 +63,8 @@
 	var/mob/living/spawned_mob = new mob_type(get_turf(src)) //living mobs only
 	name_mob(spawned_mob, newname)
 	special(spawned_mob, mob_possessor)
-	equip(spawned_mob)
+	if (use_loadout != "NOEQUIP") // SS1984 ADDITION
+		equip(spawned_mob)
 	return spawned_mob
 
 // Anything that can potentially be overwritten by transferring prefs must go in this proc
