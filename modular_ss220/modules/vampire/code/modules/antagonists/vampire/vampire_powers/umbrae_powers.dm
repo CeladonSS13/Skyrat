@@ -5,6 +5,8 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
+	overlay_icon_state = null
+	school = "vampire"
 	cooldown_time = 2 SECONDS
 	spell_requirements = SPELL_REQUIRES_HUMAN
 
@@ -60,6 +62,8 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
+	overlay_icon_state = null
+	school = "vampire"
 	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/pointed/shadow_snare/create_new_handler()
@@ -155,12 +159,14 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
+	overlay_icon_state = null
+	school = "vampire"
+	spell_requirements = SPELL_REQUIRES_HUMAN
 	var/obj/structure/shadow_anchor/anchor
 	/// Are we making an anchor?
 	var/making_anchor = FALSE
 	/// Holds a reference to the timer until the caster is forced to recall
 	var/timer
-	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/soul_anchor/create_new_handler()
 	var/datum/spell_handler/vampire/H = new
@@ -267,6 +273,8 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
+	overlay_icon_state = null
+	school = "vampire"
 	sound = 'sound/effects/magic/teleport_app.ogg'
 	spell_requirements = SPELL_REQUIRES_HUMAN
 
@@ -307,6 +315,8 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
+	overlay_icon_state = null
+	school = "vampire"
 	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/shadow_blade/create_new_handler()
@@ -405,7 +415,9 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
-	cast_range = 2
+	overlay_icon_state = null
+	school = "vampire"
+	cast_range = 4
 	spell_requirements = SPELL_REQUIRES_HUMAN
 	var/uses_amount = 8
 	var/current_uses = 0
@@ -459,6 +471,8 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
+	overlay_icon_state = null
+	school = "vampire"
 	spell_requirements = SPELL_REQUIRES_HUMAN
 	var/shroud_power = -4
 

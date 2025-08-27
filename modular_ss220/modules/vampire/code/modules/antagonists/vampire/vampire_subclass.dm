@@ -91,7 +91,7 @@
 							/datum/action/cooldown/spell/overwhelming_force = 600,
 							/datum/action/cooldown/spell/pointed/projectile/fireball/demonic_grasp = 800)
 	fully_powered_abilities = list(/datum/vampire_passive/full,
-								/datum/action/cooldown/spell/pointed/charge)
+								/datum/action/cooldown/mob_cooldown/charge/gargantua_charge)
 	improved_rejuv_healing = TRUE
 
 /datum/vampire_subclass/gargantua/on_blood_sucking(mob/living/carbon/human/H)
@@ -182,7 +182,7 @@
 							/datum/vampire_passive/full,
 							/datum/action/cooldown/spell/metamorphosis/hound,
 							/datum/action/cooldown/spell/blood_spill,
-							/datum/action/cooldown/spell/pointed/charge,
+							/datum/action/cooldown/mob_cooldown/charge/gargantua_charge,
 							/datum/action/cooldown/spell/eternal_darkness,
 							/datum/action/cooldown/spell/aoe/hysteria,
 							/datum/action/cooldown/spell/aoe/raise_vampires,

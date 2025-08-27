@@ -6,7 +6,9 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	overlay_icon_state = null
+	school = "vampire"
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/blood_swell/create_new_handler()
 	. = ..()
@@ -14,12 +16,10 @@
 	H.required_blood = 30
 	return H
 
-/datum/action/cooldown/spell/blood_swell/cast(list/targets, mob/user)
+/datum/action/cooldown/spell/blood_swell/cast(atom/cast_on)
 	. = ..()
-	var/mob/living/target = targets[1]
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		H.apply_status_effect(STATUS_EFFECT_BLOOD_SWELL)
+	var/mob/living/carbon/human/H = cast_on
+	H.apply_status_effect(STATUS_EFFECT_BLOOD_SWELL)
 
 
 /datum/vampire_passive/blood_swell_upgrade
@@ -33,10 +33,15 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
+	overlay_icon_state = null
+	school = "vampire"
 	cooldown_time = 30 SECONDS
-	aoe_radius = 1
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
-	var/max_range = 4
+	aoe_radius = 4
+	spell_requirements = SPELL_REQUIRES_HUMAN
+	var/effect_duration = 10 SECONDS
+	var/windup_time = 1 SECONDS
+	var/effect_timer
+	var/casting_cycle = FALSE
 
 /datum/action/cooldown/spell/aoe/stomp/create_new_handler()
 	. = ..()
@@ -44,50 +49,98 @@
 	H.required_blood = 25
 	return H
 
-/datum/action/cooldown/spell/aoe/stomp/can_cast_spell(feedback)
-	var/mob/living/carbon/user = owner
-	if(user.legcuffed)
-		return FALSE
-	return ..()
-
-
-/datum/action/cooldown/spell/aoe/stomp/cast(list/targets)
+/datum/action/cooldown/spell/aoe/stomp/Remove(mob/M)
 	. = ..()
+	stop_cycle()
+
+/datum/action/cooldown/spell/aoe/stomp/cast(atom/cast_on)
+	. = ..()
+	start_cycle()
+
+/datum/action/cooldown/spell/aoe/stomp/proc/start_cycle()
+	if(casting_cycle)
+		return
+
+	casting_cycle = TRUE
+	to_chat(owner, span_notice("Вы активируете ударную волну! Эффект продлится 10 секунд."))
+
+	effect_timer = addtimer(CALLBACK(src, PROC_REF(stop_cycle)), effect_duration, TIMER_STOPPABLE)
+
+	start_windup()
+
+/datum/action/cooldown/spell/aoe/stomp/proc/stop_cycle()
+	if(!casting_cycle)
+		return
+
+	casting_cycle = FALSE
+	if(effect_timer)
+		deltimer(effect_timer)
+
+	to_chat(owner, span_warning("Эффект ударной волны прекращается."))
+
+/datum/action/cooldown/spell/aoe/stomp/proc/start_windup()
+	if(!casting_cycle || !owner)
+		return
+
+	if(!do_after(owner, windup_time, timed_action_flags = IGNORE_USER_LOC_CHANGE|IGNORE_HELD_ITEM))
+		stop_cycle()
+		return
+
+	perform_stomp()
+
+/datum/action/cooldown/spell/aoe/stomp/proc/perform_stomp()
+	if(!casting_cycle || !owner)
+		return
+
 	var/turf/T = get_turf(owner)
-	playsound(T, 'sound/effects/meteorimpact.ogg', 100, TRUE)
-	addtimer(CALLBACK(src, PROC_REF(hit_check), aoe_radius, T, owner), 0.2 SECONDS)
+	playsound(T, 'sound/effects/meteorimpact.ogg', 80, TRUE)
 	new /obj/effect/temp_visual/stomp(T)
 
+	var/list/targets = get_things_to_cast_on(owner)
+	for(var/mob/living/target in targets)
+		cast_on_thing_in_aoe(target, owner)
 
-/datum/action/cooldown/spell/aoe/stomp/proc/hit_check(range, turf/start_turf, mob/user, safe_targets = list())
-	// gets the two outermost turfs in a ring, we get two so people cannot "walk over" the shockwave
-	var/list/targets = view(range, start_turf) - view(range - 2, start_turf)
-	for(var/turf/flooring in targets)
-		if(prob(100 - (range * 20)))
-			flooring.ex_act(EXPLODE_LIGHT)
+	if(casting_cycle)
+		addtimer(CALLBACK(src, PROC_REF(start_windup)), 0.5 SECONDS)
 
-	for(var/mob/living/L in targets)
-		if(L in safe_targets)
+/datum/action/cooldown/spell/aoe/stomp/get_things_to_cast_on(atom/center)
+	var/list/things = list()
+	for(var/mob/living/nearby_mob in view(aoe_radius, center))
+		if(nearby_mob == owner)
 			continue
-
-		if(L.throwing) // no double hits
+		if(!nearby_mob.affects_vampire(owner))
 			continue
+		things += nearby_mob
+	return things
 
-		if(!L.affects_vampire(user))
-			continue
+/datum/action/cooldown/spell/aoe/stomp/cast_on_thing_in_aoe(atom/victim, atom/caster)
+	if(!isliving(victim))
+		return
 
-		if(L.move_resist > MOVE_FORCE_VERY_STRONG)
-			continue
+	var/mob/living/L = victim
+	if(!L.affects_vampire(owner))
+		return
 
-		var/throw_target = get_edge_target_turf(L, get_dir(start_turf, L))
-		INVOKE_ASYNC(L, TYPE_PROC_REF(/atom/movable, throw_at), throw_target, 3, 4)
-		L.Knockdown(2 SECONDS)
-		safe_targets += L
+	L.adjust_staggered(4 SECONDS)
+	L.apply_damage(15, BRUTE, spread_damage = TRUE)
 
-	var/new_range = range + 1
-	if(new_range <= max_range)
-		addtimer(CALLBACK(src, PROC_REF(hit_check), new_range, start_turf, user, safe_targets), 0.2 SECONDS)
+/datum/action/cooldown/spell/aoe/stomp/can_cast_spell(feedback = TRUE)
+	. = ..()
+	if(!.)
+		return FALSE
 
+	var/mob/living/carbon/user = owner
+	if(user.legcuffed)
+		if(feedback)
+			to_chat(user, span_warning("Мои ноги скованы, я не могу использовать эту способность!"))
+		return FALSE
+
+	if(casting_cycle)
+		if(feedback)
+			to_chat(user, span_warning("Ударная волна уже активна!"))
+		return FALSE
+
+	return TRUE
 
 /obj/effect/temp_visual/stomp
 	icon = 'modular_ss220/modules/vampire/icons/effects/seismic_stomp_effect.dmi'
@@ -101,7 +154,7 @@
 	. = ..()
 	var/matrix/M = matrix() * 0.5
 	transform = M
-	animate(src, transform = M * 8, time = duration, alpha = 0)
+	animate(src, transform = M * 4, time = duration, alpha = 0)
 
 #define DOAFTER_SOURCE_GARGANTUA_INTERACTION
 
@@ -113,22 +166,27 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	overlay_icon_state = null
+	school = "vampire"
+	spell_requirements = SPELL_REQUIRES_HUMAN
+	var/active = FALSE
 
 
-/datum/action/cooldown/spell/overwhelming_force/cast(mob/living/carbon/user)
+/datum/action/cooldown/spell/overwhelming_force/cast(atom/cast_on)
 	. = ..()
-	to_chat(user, span_userdanger("ВЫ ЧУВСТВУЕТЕ СЕБЯ СИЛЬНЕЕ!"))
-	//user.AddElement(/datum/element/door_pryer, pry_time = 0 SECONDS, interaction_key = DOAFTER_SOURCE_GARGANTUA_INTERACTION)
-	//user.status_flags &= ~CANPUSH
-	//user.move_resist = MOVE_FORCE_STRONG
-
-	// else
-	// 	to_chat(user, span_warning("Вы чувствуете себя слабее..."))
-	// 	REMOVE_TRAIT(user, TRAIT_FORCE_DOORS, VAMPIRE_TRAIT)
-	// 	user.RemoveElement(/datum/element/door_pryer, pry_time = 0 SECONDS, interaction_key = DOAFTER_SOURCE_GARGANTUA_INTERACTION)
-	// 	user.move_resist = MOVE_FORCE_DEFAULT
-	// 	user.status_flags |= CANPUSH
+	var/mob/living/user = cast_on
+	if(!active)
+		to_chat(user, span_userdanger("ВЫ ЧУВСТВУЕТЕ СЕБЯ СИЛЬНЕЕ!"))
+		user.AddElement(/datum/element/door_pryer, 0, DOAFTER_SOURCE_GARGANTUA_INTERACTION)
+		user.status_flags &= ~CANPUSH
+		user.move_resist = MOVE_FORCE_STRONG
+		active = TRUE
+	else
+		to_chat(user, span_warning("Вы чувствуете себя слабее..."))
+		user.RemoveElement(/datum/element/door_pryer)
+		user.move_resist = MOVE_FORCE_DEFAULT
+		user.status_flags |= CANPUSH
+		active = FALSE
 
 
 /datum/action/cooldown/spell/blood_rush
@@ -139,7 +197,9 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	overlay_icon_state = null
+	school = "vampire"
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/blood_rush/create_new_handler()
 	. = ..()
@@ -147,42 +207,30 @@
 	H.required_blood = 15
 	return H
 
-/datum/action/cooldown/spell/blood_rush/cast(list/targets, mob/user)
+/datum/action/cooldown/spell/blood_rush/cast(atom/cast_on)
 	. = ..()
-	var/mob/living/target = targets[1]
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		to_chat(H, span_notice("Вы ощущаете прилив энергии!"))
-		H.apply_status_effect(STATUS_EFFECT_BLOOD_RUSH)
+	var/mob/living/carbon/human/H = cast_on
+	to_chat(H, span_notice("Вы ощущаете прилив энергии!"))
+	H.apply_status_effect(STATUS_EFFECT_BLOOD_RUSH)
 
 
-/datum/action/cooldown/spell/pointed/projectile/fireball/demonic_grasp
+/datum/action/cooldown/spell/pointed/projectile/demonic_grasp
 	name = "Демоническая хватка"
 	desc = "Выстрелите сгустком демонической энергии, захватывая или отбрасывая цель в зависимости от вашего намерения: «ОБЕЗОРУЖИТЬ» — оттолкнуть, «СХВАТИТЬ» — притянуть."
 	cooldown_time = 15 SECONDS
 	projectile_type = /obj/projectile/magic/demonic_grasp
-
 	active_msg		= span_notice("Вы поднимаете руку, полную демонической энергии!")
 	deactive_msg	= span_notice("Вы возвращаете себе энергию... пока что.")
-
 	button_icon_state = "demonic_grasp"
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
-
+	overlay_icon_state = null
 	school = "vampire"
-	invocation_type = "none"
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
-	invocation = null
+	spell_requirements = SPELL_REQUIRES_HUMAN
 	sound = 'sound/effects/magic/exit_blood.ogg'
 
-
-/datum/action/cooldown/spell/pointed/projectile/fireball/demonic_grasp/build_button_icon(atom/movable/screen/movable/action_button/button, update_flags, force)
-	. = ..()
-	update_vampire_spell_name()
-
-
-/datum/action/cooldown/spell/pointed/projectile/fireball/demonic_grasp/create_new_handler()
+/datum/action/cooldown/spell/pointed/projectile/demonic_grasp/create_new_handler()
 	var/datum/spell_handler/vampire/V = new()
 	V.required_blood = 10
 	return V
@@ -190,8 +238,7 @@
 
 /obj/projectile/magic/demonic_grasp
 	name = "demonic grasp"
-	// parry this you filthy casual
-	//reflectability = REFLECTABILITY_NEVER
+	reflectable = FALSE
 	icon_state = null
 
 
@@ -200,26 +247,31 @@
 	new /obj/effect/temp_visual/demonic_grasp(loc)
 
 
-/obj/projectile/magic/demonic_grasp/on_hit(mob/living/target, blocked, hit_zone)
+/obj/projectile/magic/demonic_grasp/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	if(!istype(target) || !firer || !target.affects_vampire(firer))
+	if(!isliving(target) || !firer)
 		return
 
-	var/target_turf = get_turf(target)
-	target.Immobilize(5 SECONDS)
+	var/mob/living/victim = target
+
+	if(!victim.affects_vampire(firer))
+		return
+
+	var/target_turf = get_turf(victim)
+	victim.Immobilize(5 SECONDS)
 	playsound(target_turf, 'sound/effects/magic/demon_attack1.ogg', 50, TRUE)
 	new /obj/effect/temp_visual/demonic_grasp(target_turf)
 
 	var/throw_target
 	var/mob/living/user = firer
 	if(user.combat_mode)
-		throw_target = get_edge_target_turf(target, get_dir(firer, target))
-		target.throw_at(throw_target, 2, 5, spin = FALSE, callback = CALLBACK(src, PROC_REF(create_snare), target)) // shove away
+		throw_target = get_edge_target_turf(victim, get_dir(firer, victim))
+		victim.throw_at(throw_target, 2, 5, spin = FALSE, callback = CALLBACK(src, PROC_REF(create_snare), victim)) // shove away
 	if(!user.combat_mode)
-		throw_target = get_step(firer, get_dir(firer, target))
-		target.throw_at(throw_target, 2, 5, spin = FALSE, diagonals_first = TRUE, callback = CALLBACK(src, PROC_REF(create_snare), target)) // pull towards
+		throw_target = get_step(firer, get_dir(firer, victim))
+		victim.throw_at(throw_target, 2, 5, spin = FALSE, diagonals_first = TRUE, callback = CALLBACK(src, PROC_REF(create_snare), victim)) // pull towards
 	else
-		create_snare(target)
+		create_snare(victim)
 
 
 /obj/projectile/magic/demonic_grasp/proc/create_snare(mob/living/target)
@@ -237,17 +289,18 @@
 	icon_state = "immobilized"
 	duration = 5 SECONDS
 
-
-/datum/action/cooldown/spell/pointed/charge
+/datum/action/cooldown/mob_cooldown/charge/gargantua_charge
 	name = "Рывок"
 	desc = "Вы резко бросаетесь в выбранное направление, нанося огромный урон, оглушая и разрушая стены и другие объекты."
-	cooldown_time = 30 SECONDS
+	cooldown_time = 20 SECONDS
 	button_icon_state = "vampire_charge"
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
-	cast_range = 7
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	charge_distance = 7
+	charge_delay = 0
+	/// Amount of time to knock over an impacted target
+	var/knockdown_duration = 4 SECONDS
 
 /datum/action/cooldown/spell/pointed/charge/can_cast_spell(feedback)
 	var/mob/living/carbon/user
@@ -255,18 +308,17 @@
 		return FALSE
 	return ..()
 
-/datum/action/cooldown/spell/pointed/charge/create_new_handler()
-	. = ..()
-	var/datum/spell_handler/vampire/V = new()
-	V.required_blood = 30
-	return V
+/datum/action/cooldown/mob_cooldown/charge/gargantua_charge/do_charge_indicator(atom/charger, atom/charge_target)
+	return
 
-/datum/action/cooldown/spell/pointed/charge/cast(list/targets, mob/user)
+/datum/action/cooldown/mob_cooldown/charge/gargantua_charge/hit_target(atom/movable/source, atom/target, damage_dealt)
 	. = ..()
-	var/target = targets[1]
-	if(isliving(user))
-		var/mob/living/L = user
-		L.apply_status_effect(STATUS_EFFECT_CHARGING)
-		L.throw_at(target, cast_range, 1, L, FALSE, callback = CALLBACK(L, TYPE_PROC_REF(/mob/living, remove_status_effect), STATUS_EFFECT_CHARGING))
+	var/mob/living/living_target = target
+	living_target.Knockdown(knockdown_duration)
+
+/datum/action/cooldown/mob_cooldown/charge/gargantua_charge/charge_sequence(atom/movable/charger, atom/target_atom, delay, past)
+	. = ..()
+	var/datum/antagonist/vampire/V = owner.mind.has_antag_datum(/datum/antagonist/vampire)
+	V.bloodusable = max(V.bloodusable - 30, 0)
 
 #undef DOAFTER_SOURCE_GARGANTUA_INTERACTION

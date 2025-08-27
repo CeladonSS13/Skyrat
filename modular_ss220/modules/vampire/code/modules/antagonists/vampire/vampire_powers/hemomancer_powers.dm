@@ -6,6 +6,8 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
+	overlay_icon_state = null
+	school = "vampire"
 	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/vamp_claws/create_new_handler()
@@ -123,11 +125,13 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
+	overlay_icon_state = null
+	school = "vampire"
 	sound = 'sound/effects/magic/enter_blood.ogg'
 	var/area_of_affect = 1
 	active_msg		= span_notice("Вы используете магию крови, чтобы ослабить завесу блюспейса.")
 	deactive_msg	= span_notice("Ваша магия ослабевает.")
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/pointed/blood_tendrils/create_new_handler()
 	var/datum/spell_handler/vampire/H = new
@@ -175,6 +179,8 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
+	overlay_icon_state = null
+	school = "vampire"
 	cooldown_time = 30 SECONDS
 	spell_requirements = SPELL_REQUIRES_HUMAN
 
@@ -258,6 +264,8 @@
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
 	button_icon_state = "blood_pool"
+	overlay_icon_state = null
+	school = "vampire"
 	cooldown_time = 25 SECONDS
 	jaunt_type = /obj/effect/dummy/phased_mob/spell_jaunt/blood_pool
 	jaunt_out_type = /obj/effect/temp_visual/dir_setting/cult/phase/out
@@ -310,6 +318,8 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
+	overlay_icon_state = null
+	school = "vampire"
 	cooldown_time = 10 SECONDS
 	target_radius = 255
 	choose_target_message = "Лицо для поиска"
@@ -379,8 +389,10 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
+	overlay_icon_state = null
+	school = "vampire"
 	aoe_radius = 4
-	spell_requirements = NONE
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/aoe/blood_eruption/create_new_handler()
 	var/datum/spell_handler/vampire/H = new
@@ -431,7 +443,9 @@
 	button_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon = 'modular_ss220/modules/vampire/icons/actions/actions.dmi'
 	background_icon_state = "bg_vampire"
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC|SPELL_REQUIRES_HUMAN
+	overlay_icon_state = null
+	school = "vampire"
+	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/blood_spill/create_new_handler()
 	var/datum/spell_handler/vampire/H = new

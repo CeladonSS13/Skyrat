@@ -7,12 +7,14 @@ GLOBAL_LIST_INIT(holy_areas, typecacheof(list(
 	return istype(wear_mask, /obj/item/clothing/mask/muzzle)
 
 /datum/movespeed_modifier/vampire_cloak
-	multiplicative_slowdown = -0.8
+	multiplicative_slowdown = -0.5
 	movetypes = GROUND
 	blacklisted_movetypes = (FLYING|FLOATING)
 
 /datum/movespeed_modifier/status_effect/blood_rush
-	multiplicative_slowdown = -1
+	multiplicative_slowdown = -0.5
+	movetypes = GROUND
+	blacklisted_movetypes = (FLYING|FLOATING)
 
 /mob/proc/make_invisible()
 	invisibility = 45
