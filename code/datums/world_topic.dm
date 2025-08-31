@@ -122,7 +122,7 @@
 	var/message = "<b color='orange'>CROSS-SECTOR MESSAGE (INCOMING):</b> [input["sender_ckey"]] (from [input["source"]]) is about to send \
 			the following message (will autoapprove in [soft_filter_passed ? "[extended_time_display]" : "[normal_time_display]"]): \
 			<b><a href='byond://?src=[REF(src)];reject_cross_comms_message=[timer_id]'>REJECT</a></b><br><br>\
-			[html_encode(input["message"])]"
+			[input["message"]]"
 
 	if(soft_filter_passed)
 		message += "<br><br><b>NOTE: This message passed the soft filter on the origin server! The time was automatically expanded to [extended_time_display].</b>"
@@ -168,7 +168,6 @@
 	keyword = "News_Report"
 
 /datum/world_topic/news_report/Run(list/input)
-
 	priority_announce(input["message"], "Breaking Update From [input["message_sender"]]") //NOVA EDIT CHANGE
 
 /datum/world_topic/adminmsg
@@ -249,51 +248,65 @@
 		.["shuttle_timer"] = SSshuttle.emergency.timeLeft()
 		// Shuttle timer, in seconds
 
-/datum/world_topic/status2
-	keyword = "status2"
+/datum/world_topic/create_news_channel
+	keyword = "create_news_channel"
+	/// Lazylist of timers for actually creating the channel to give admins some time
+	var/list/timers
 
-/datum/world_topic/status2/Run(list/input)
-	. = list()
-	.["mode"] = "dynamic"
-	.["respawn"] = config ? !!CONFIG_GET(flag/allow_respawn) : FALSE
-	.["enter"] = !LAZYACCESS(SSlag_switch.measures, DISABLE_NON_OBSJOBS)
-	.["roundtime"] = gameTimestamp()
-	.["listed"] = GLOB.hub_visibility
-	.["players"] = GLOB.clients.len
-	.["ticker_state"] = SSticker.current_state
-	.["mapname"] = SSmapping.current_map?.map_name || "Loading..."
-	.["security_level"] = SSsecurity_level.get_current_level_as_text()
-	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
+/datum/world_topic/create_news_channel/Run(list/input)
+	var/message_delay = text2num(input["delay"])
+	var/timer_id = addtimer(CALLBACK(src, PROC_REF(create_channel), input), message_delay)
+	input["timer_id"] = timer_id
+	LAZYADD(timers, timer_id)
 
-/datum/world_topic/playerlist_ext
-	keyword = "playerlist_ext"
-	require_comms_key = TRUE
+	var/message = "<b color='orange'>Cross-sector channel creation (Incoming):</b> [input["author_ckey"]] is about to create a cross-sector \
+			newscaster channel \"[input["message"]]\" (will autoapprove in [DisplayTimeText(message_delay)]): \
+			<b><a href='byond://?src=[REF(src)];reject_channel_creation=[timer_id]'>REJECT</a></b>"
 
-/datum/world_topic/playerlist_ext/Run(list/input)
-	. = list()
-	var/list/players = list()
-	var/list/disconnected_observers = list()
+	message_admins(span_adminnotice(message))
 
-	for(var/mob/M in GLOB.dead_mob_list)
-		if(!M.ckey)
-			continue
-		if (M.client)
-			continue
-		var/ckey = ckey(M.ckey)
-		disconnected_observers[ckey] = ckey
+/datum/world_topic/create_news_channel/Topic(href, list/href_list)
+	. = ..()
+	if (.)
+		return
 
-	for(var/client/C as anything in GLOB.clients)
-		var/ckey = C.ckey
-		players[ckey] = ckey
-		. += ckey
+	var/timer_id = href_list["reject_channel_creation"]
+	if (!timer_id)
+		return
 
-	for(var/mob/M in GLOB.alive_mob_list)
-		if(!M.ckey)
-			continue
-		var/ckey = ckey(M.ckey)
-		if(players[ckey])
-			continue
-		if(disconnected_observers[ckey])
-			continue
-		players[ckey] = ckey
-		. += ckey
+	if (!usr.client?.holder)
+		log_game("tried to reject the creation of an incoming cross-sector newscaster channel without being an admin.", LOG_ADMIN)
+		message_admins("[key_name(usr)] tried to reject the creation of an incoming cross-sector newscaster channel without being an admin.")
+		return
+
+	if (!(timer_id in timers))
+		to_chat(usr, span_warning("It's too late!"))
+		return
+
+	deltimer(timer_id)
+	LAZYREMOVE(timers, timer_id)
+
+	log_admin("[key_name(usr)] has cancelled the creation of an incoming cross-sector newscaster channel.")
+	message_admins("[key_name(usr)] has cancelled the creation of an incoming cross-sector newscaster channel.")
+	return TRUE
+
+/datum/world_topic/create_news_channel/proc/create_channel(list/input)
+	LAZYREMOVE(timers, input["timer_id"])
+	message_admins("[input["author_ckey"]] has crated a cross-sector newscaster channel titled \"[input["message"]]\"")
+	GLOB.news_network.create_feed_channel(input["message"], input["author"], input["desc"], locked = TRUE, receiving_cross_sector = TRUE)
+
+/datum/world_topic/create_news_article
+	keyword = "create_news_article"
+
+/datum/world_topic/create_news_article/Run(list/input)
+	var/msg = input["msg"]
+	var/author = input["author"]
+	var/author_key = input["author_ckey"]
+	var/channel_name = input["message"]
+
+	var/datum/feed_channel/chosen_channel = GLOB.news_network.network_channels_by_name[channel_name]
+	if(isnull(chosen_channel)) // No channel with a matching name, abort
+		return
+
+	message_admins(span_adminnotice("Incoming cross-sector newscaster article by [author_key] in channel [channel_name]."))
+	GLOB.news_network.submit_article(msg, author, channel_name)

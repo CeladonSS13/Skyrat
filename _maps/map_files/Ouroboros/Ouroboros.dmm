@@ -13359,7 +13359,7 @@
 "dUK" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,
-/turf/open/space,
+/turf/open/space/basic,
 /area/station/solars/aisat)
 "dUT" = (
 /obj/effect/turf_decal/tile/dark_red/opposingcorners{
@@ -22182,7 +22182,7 @@
 "gyE" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,
-/turf/open/space,
+/turf/open/space/basic,
 /area/station/solars/starboard/fore)
 "gyS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
@@ -40606,7 +40606,7 @@
 "lHb" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,
-/turf/open/space,
+/turf/open/space/basic,
 /area/station/solars/starboard/aft)
 "lHd" = (
 /obj/effect/turf_decal/tile/red{
@@ -44761,7 +44761,6 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/paper/fluff/ids_for_dummies,
 /obj/item/stamp/centcom{
 	pixel_x = 4;
 	pixel_y = 4
@@ -45793,10 +45792,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
-"ndx" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/space/nearstation)
 "ndA" = (
 /obj/machinery/button/door/directional/west{
 	id = "Xtestlab";
@@ -47801,7 +47796,7 @@
 /area/station/hallway/secondary/entry)
 "nGt" = (
 /obj/structure/lattice/catwalk,
-/turf/open/space,
+/turf/open/space/basic,
 /area/station/solars/port/aft)
 "nGD" = (
 /obj/machinery/navbeacon{
@@ -52281,7 +52276,7 @@
 /area/station/service/kitchen/diner)
 "pbP" = (
 /obj/structure/lattice/catwalk,
-/turf/open/space,
+/turf/open/space/basic,
 /area/station/solars/starboard/aft)
 "pbT" = (
 /obj/structure/tank_dispenser,
@@ -53271,7 +53266,7 @@
 /area/station/science/robotics/augments)
 "pqZ" = (
 /obj/structure/lattice/catwalk,
-/turf/open/space,
+/turf/open/space/basic,
 /area/station/solars/port/fore)
 "prf" = (
 /obj/structure/cable,
@@ -58294,7 +58289,7 @@
 "qOg" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,
-/turf/open/space,
+/turf/open/space/basic,
 /area/station/solars/port/fore)
 "qOt" = (
 /obj/item/food/grown/banana,
@@ -58438,7 +58433,7 @@
 /obj/machinery/keycard_auth/wall_mounted/directional/west{
 	pixel_y = -8
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/white,
 /obj/machinery/firealarm/directional/north,
 /obj/machinery/light_switch/directional/west{
 	pixel_y = 6
@@ -61185,7 +61180,7 @@
 "rLl" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,
-/turf/open/space,
+/turf/open/space/basic,
 /area/station/solars/port/aft)
 "rLo" = (
 /turf/open/openspace,
@@ -63759,7 +63754,7 @@
 /area/station/medical/virology)
 "swb" = (
 /obj/structure/lattice/catwalk,
-/turf/open/space,
+/turf/open/space/basic,
 /area/station/solars/starboard/fore)
 "swf" = (
 /obj/structure/cable,
@@ -168984,9 +168979,9 @@ vnr
 wGh
 hbD
 qov
-ndx
-ndx
-ndx
+obu
+obu
+obu
 qov
 vnr
 wGh

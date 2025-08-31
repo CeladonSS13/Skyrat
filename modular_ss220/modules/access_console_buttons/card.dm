@@ -3,7 +3,7 @@
 	if (.)
 		return .
 	var/mob/user = usr
-	var/obj/item/card/id/inserted_auth_card = computer.computer_id_slot
+	var/obj/item/card/id/inserted_auth_card = computer.alt_stored_id
 	switch (action)
 		if("select_all") // сould be optimized if we modify the way we getting data, but is someone really care for such function?
 			var/list/params_received = params["accesses"]

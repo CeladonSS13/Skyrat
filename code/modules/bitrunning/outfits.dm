@@ -1,5 +1,3 @@
-
-
 /datum/outfit/echolocator
 	name = "Bitrunning Echolocator"
 	glasses = /obj/item/clothing/glasses/blindfold

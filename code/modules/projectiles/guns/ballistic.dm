@@ -552,7 +552,7 @@
 			magazine.stored_ammo -= chambered
 		set_chambered(null) // SS1984 EDIT, original: chambered = null
 
-	var/num_loaded = magazine?.attackby(ammo, user, silent = TRUE)
+	var/num_loaded = magazine?.try_load(user, ammo, silent = TRUE)
 	if (!num_loaded)
 		return FALSE
 

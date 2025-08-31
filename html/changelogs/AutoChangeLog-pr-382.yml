@@ -1,4 +1,0 @@
-author: "DenIS318"
-delete-after: True
-changes:
-  - qol: "Now once casing left from gun that had custom projectile damage modifier, it's combat information displays info relative to previous gun. Also shows for normal modifier as well"
