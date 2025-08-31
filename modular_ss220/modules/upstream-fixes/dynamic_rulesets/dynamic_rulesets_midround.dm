@@ -1,3 +1,4 @@
+/* TODO: REWORK LATER FOR NEW DYNAMIC
 /datum/dynamic_ruleset/midround/from_living/trim_candidates()
 	..()
 	candidates = living_players
@@ -10,3 +11,4 @@
 		if (candidate.ssd_indicator) // no ssd to be considered
 			candidates -= candidate
 			continue
+*/

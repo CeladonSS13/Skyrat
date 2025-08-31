@@ -4,6 +4,9 @@
 		"roles_coefficient_multiplier": 2,
 		"security_coefficient": 5.0,
 		"head_coefficient": 4.0,
-		"crew_coefficient": 1.0
+		"crew_coefficient": 1.0,
+		"max_dynamic_tier_to_stop": 4,
+		"required_threat_to_raise_one_lvl": [15, 60, 150, 450],
+		"announce_to_station_when_tier_increased": 1
 	}
 }

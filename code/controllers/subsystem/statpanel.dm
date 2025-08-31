@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(statpanels)
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)",
 		)
 		*/
-		var/real_round_time = world.timeofday - SSticker.real_round_start_time
+		// SS1984 REMOVAL var/real_round_time = world.timeofday - SSticker.real_round_start_time
 		global_data = list(
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)",
 		)
@@ -68,7 +68,7 @@ SUBSYSTEM_DEF(statpanels)
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			"Station Time: [station_time_timestamp()]",
 			"Round Timer: [ROUND_TIME()]",
-			"Actual Round Timer: [time2text(real_round_time, "hh:mm:ss", 0)]"
+			// SS1984 REMOVAL "Actual Round Timer: [time2text(real_round_time, "hh:mm:ss", 0)]"
 		)
 		// NOVA EDIT CHANGE END
 

@@ -8,6 +8,7 @@ SUBSYSTEM_DEF(lag_watcher)
 	var/list/fire_amount = list()
 	var/list/custom_thresholds = list( // Name and ms threshold
 		"Atmospherics" = 700,
+		"Garbage" = 2000,
 	)
 	var/triggered = FALSE
 	var/min_clients_to_trigger = 2 // reduce to test alone

@@ -13,6 +13,8 @@
 
 /mob/living/carbon/Logout()
 	. = ..()
+	if (!mind) // mind might be null if you don't enter round as character (start as observer)
+		return
 	if(mind.active)
 		is_logout = TRUE
 

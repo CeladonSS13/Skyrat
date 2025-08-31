@@ -148,7 +148,7 @@
 // bridge assistant
 /datum/station_trait/job/bridge_assistant
 	weight = 2
-	can_roll_antag = CAN_ROLL_ALWAYS
+	// can_roll_antag = CAN_ROLL_ALWAYS
 	job_to_add = /datum/job/bridge_assistant_1984
 
 /obj/item/modular_computer/pda/bridge_assistant_1984

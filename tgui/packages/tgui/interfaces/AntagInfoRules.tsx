@@ -1,18 +1,16 @@
+/* SS1984 REMOVAL START
 // THIS IS A NOVA SECTOR UI FILE
-// SS1984 REMOVAL START
-// import { Stack } from 'tgui-core/components';
+import { Stack } from 'tgui-core/components';
 
-// import { useBackend } from '../backend';
-// import { Objective } from './common/Objectives';
+import { useBackend } from '../backend';
+import type { Objective } from './common/Objectives';
 
-// type Info = {
-//   antag_name: string;
-//   objectives: Objective[];
-// };
-// SS1984 REMOVAL END
+type Info = {
+  antag_name: string;
+  objectives: Objective[];
+};
 
 export const Rules = (props) => {
-  /* SS1984 REMOVAL START
   const { data } = useBackend<Info>();
   const { antag_name } = data;
   switch (antag_name) {
@@ -31,7 +29,6 @@ export const Rules = (props) => {
           </Stack.Item>
         </Stack>
       );
-      break;
     case 'Drifting Contractor':
       return (
         <Stack vertical>
@@ -45,7 +42,6 @@ export const Rules = (props) => {
           </Stack.Item>
         </Stack>
       );
-      break;
     case 'Cortical Borer':
       return (
         <Stack vertical>
@@ -59,7 +55,6 @@ export const Rules = (props) => {
           </Stack.Item>
         </Stack>
       );
-      break;
     case 'Venus Human Trap':
       return (
         <Stack vertical>
@@ -73,7 +68,6 @@ export const Rules = (props) => {
           </Stack.Item>
         </Stack>
       );
-      break;
     case 'Obsessed':
       return (
         <Stack vertical>
@@ -87,7 +81,6 @@ export const Rules = (props) => {
           </Stack.Item>
         </Stack>
       );
-      break;
     case 'Revenant':
       return (
         <Stack vertical>
@@ -101,7 +94,6 @@ export const Rules = (props) => {
           </Stack.Item>
         </Stack>
       );
-      break;
     case 'Space Dragon':
       return (
         <Stack vertical>
@@ -115,7 +107,6 @@ export const Rules = (props) => {
           </Stack.Item>
         </Stack>
       );
-      break;
     case 'Space Pirate':
       return (
         <Stack vertical>
@@ -129,7 +120,6 @@ export const Rules = (props) => {
           </Stack.Item>
         </Stack>
       );
-      break;
     case 'Blob':
       return (
         <Stack vertical>
@@ -143,7 +133,6 @@ export const Rules = (props) => {
           </Stack.Item>
         </Stack>
       );
-      break;
     case 'Changeling':
       return (
         <Stack vertical>
@@ -274,7 +263,6 @@ export const Rules = (props) => {
           </Stack.Item>
         </Stack>
       );
-      break;
   }
-  SS1984 REMOVAL END */
 };
+SS1984 REMOVAL END */

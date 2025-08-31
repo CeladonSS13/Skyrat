@@ -36,7 +36,7 @@
 									entry += " - <font color='black'><b>МЕРТВ</b></font>" //SS1984 EDIT
 							else
 								entry += " - <font color='black'><b>МЕРТВ</b></font>" //SS1984 EDIT
-					if(is_special_character(client.mob))
+					if(client.mob.is_antag())
 						entry += " - <b><font color='red'>Антагонист</font></b>" //SS1984 EDIT
 				entry += " [ADMIN_QUE(client.mob)]"
 				entry += " ([round(client.avgping, 1)]ms)"

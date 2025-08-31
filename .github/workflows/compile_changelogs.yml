@@ -34,7 +34,7 @@ jobs:
 
       - name: "Checkout"
         if: steps.value_holder.outputs.ACTIONS_ENABLED
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           # SS1984 EDIT, original fetch-depth: 25
           fetch-depth: 100

@@ -94,11 +94,12 @@
 /datum/armament_entry/company_import/nakamura_modsuits/protection_modules/emp_shield
 	item_type = /obj/item/mod/module/emp_shield
 
-/datum/armament_entry/company_import/nakamura_modsuits/protection_modules/armor_plates
-	item_type = /obj/item/mod/module/armor_booster/retractplates
-	cost = PAYCHECK_COMMAND * 9
-	restricted = TRUE
-	contraband = TRUE
+// TODO: uncomment when return retractives
+// /datum/armament_entry/company_import/nakamura_modsuits/protection_modules/armor_plates
+// 	item_type = /obj/item/mod/module/armor_booster/retractplates
+// 	cost = PAYCHECK_COMMAND * 9
+// 	restricted = TRUE
+// 	contraband = TRUE
 
 // Utility modules, general purpose stuff that really anyone might want
 

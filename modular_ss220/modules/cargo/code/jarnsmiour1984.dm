@@ -40,7 +40,7 @@
 	cost = PAYCHECK_COMMAND * 25
 
 /datum/armament_entry/company_import/blacksteel/blade/shamshir_sabre
-	item_type = /obj/item/storage/belt/sabre/cargo
+	item_type = /obj/item/storage/belt/sheath/sabre/cargo
 	restricted = TRUE
 	cost = PAYCHECK_COMMAND * 18
 
