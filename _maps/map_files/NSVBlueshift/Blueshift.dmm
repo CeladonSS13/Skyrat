@@ -27952,9 +27952,6 @@
 /turf/open/floor/plating,
 /area/station/commons/vacant_room/commissary)
 "fnx" = (
-/obj/item/bdsm_candle{
-	pixel_y = 6
-	},
 /obj/structure/table/reinforced/plasmarglass,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/common/night_club/back_stage)
@@ -30105,7 +30102,6 @@
 	dir = 8
 	},
 /obj/structure/window/spawner/directional/west,
-/obj/structure/bed/pillow_large,
 /turf/open/floor/carpet/purple,
 /area/station/commons/dorms/room4)
 "fLb" = (
@@ -65894,7 +65890,6 @@
 "mEz" = (
 /obj/structure/flora/bush/fullgrass,
 /obj/structure/flora/bush/flowers_pp,
-/obj/structure/bed/pillow_tiny,
 /turf/open/misc/grass,
 /area/station/service/barber)
 "mEC" = (
@@ -85366,10 +85361,6 @@
 /area/station/medical/surgery)
 "qpP" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/applicator/pill/crocin{
-	pixel_x = -3;
-	pixel_y = 12
-	},
 /obj/item/reagent_containers/applicator/pill/lsd{
 	pixel_x = 5;
 	pixel_y = 5
@@ -102454,10 +102445,6 @@
 /area/station/maintenance/department/crew_quarters/bar)
 "tAw" = (
 /obj/structure/table,
-/obj/item/clothing/gloves/ball_mittens,
-/obj/item/clothing/gloves/ball_mittens,
-/obj/item/clothing/gloves/ball_mittens,
-/obj/item/clothing/gloves/ball_mittens,
 /obj/item/restraints/handcuffs{
 	pixel_y = 4
 	},
@@ -110125,9 +110112,6 @@
 "uWi" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/syringe/contraband/space_drugs,
-/obj/item/reagent_containers/applicator/pill/dopamine{
-	pixel_y = 6
-	},
 /obj/item/reagent_containers/syringe/contraband/space_drugs{
 	pixel_x = -3;
 	pixel_y = 5
@@ -114497,7 +114481,6 @@
 "vLZ" = (
 /obj/structure/flora/bush/fullgrass,
 /obj/structure/flora/bush/flowers_br,
-/obj/structure/bed/pillow_large,
 /turf/open/misc/grass,
 /area/station/service/barber)
 "vMe" = (

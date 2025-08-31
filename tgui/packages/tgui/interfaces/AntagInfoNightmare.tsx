@@ -1,7 +1,6 @@
 import { BlockQuote, LabeledList, Section, Stack } from 'tgui-core/components';
 
 import { Window } from '../layouts';
-import { Rules } from './AntagInfoRules'; // NOVA EDIT ADDITION
 
 const tipstyle = {
   color: 'white',
@@ -26,8 +25,8 @@ export const AntagInfoNightmare = (props) => {
                     strong powers in the darkness, becoming nigh unbeatable.
                     Unfortunately, you wither and burn away in the light. You
                     must use your
-                    <span style={noticestyle}>{'\u2002'}light eater</span> to dim
-                    the station, making hunting easier.
+                    <span style={noticestyle}>{'\u2002'}light eater</span> to
+                    dim the station, making hunting easier.
                   </BlockQuote>
                 </Stack.Item>
                 <Stack.Divider />
@@ -71,11 +70,6 @@ export const AntagInfoNightmare = (props) => {
               </LabeledList>
             </Section>
           </Stack.Item>
-          {/* NOVA EDIT ADDITION START */}
-          <Stack.Item>
-            <Rules />
-          </Stack.Item>
-          {/* NOVA EDIT ADDITION END */}
         </Stack>
       </Window.Content>
     </Window>

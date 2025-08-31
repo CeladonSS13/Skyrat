@@ -99,7 +99,8 @@ export const ArmamentStation = (props) => {
                                     verticalAlign: 'middle',
                                   }}
                                 />
-                                {'\u00A0'}{item.name}
+                                {'\u00A0'}
+                                {item.name}
                               </Button>
                             </Stack.Item>
                           ))}

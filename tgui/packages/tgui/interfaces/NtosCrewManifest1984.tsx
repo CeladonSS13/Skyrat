@@ -18,11 +18,8 @@ export const NtosCrewManifest1984 = (props) => {
         <Section
           title="Crew Manifest"
           buttons={
-            <Button
-              icon="print"
-              onClick={() => act('PRG_print')}
-            >
-                Print
+            <Button icon="print" onClick={() => act('PRG_print')}>
+              Print
             </Button>
           }
         >

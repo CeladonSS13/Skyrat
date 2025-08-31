@@ -14,7 +14,6 @@ import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { Rules } from './AntagInfoRules';
 
 type Objectives = {
   count: number;
@@ -132,9 +131,6 @@ export const AntagInfoAssaultops = (props) => {
             </Stack>
             {tab === 1 && <TargetPrintout />}
             {tab === 2 && <KeyPrintout />}
-          </Stack.Item>
-          <Stack.Item>
-            <Rules />
           </Stack.Item>
         </Stack>
       </Window.Content>

@@ -1,5 +1,6 @@
-/obj/item/card/id/advanced/chameleon/proc/ui_act_extra(var/obj/item/card/id/target_card, action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/card/id/advanced/chameleon/proc/ui_act_extra(target_card_input, action, list/params, datum/tgui/ui, datum/ui_state/state)
 	var/mob/user = usr
+	var/obj/item/card/id/target_card = target_card_input
 	switch (action)
 		if("select_all") // сould be optimized if we modify the way we getting data, but is someone really care for such function?
 			var/list/params_received = params["accesses"]

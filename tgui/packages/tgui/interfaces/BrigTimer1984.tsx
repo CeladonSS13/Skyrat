@@ -1,4 +1,10 @@
-import { Box, Button, Dropdown, LabeledList, Section } from 'tgui-core/components';
+import {
+  Box,
+  Button,
+  Dropdown,
+  LabeledList,
+  Section,
+} from 'tgui-core/components';
 import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
@@ -8,16 +14,16 @@ type Data = {
   timing: BooleanLike;
   flash_charging: BooleanLike;
   cell_id: string;
-	occupant: string;
-	crimes: string;
-	brigged_by: string;
-	time_set: string;
-	time_left: string;
-	isAllowed: BooleanLike;
-	prisoner_name: string;
-	prisoner_charge: string;
-	prisoner_time: string;
-	prisoner_hasrec: BooleanLike;
+  occupant: string;
+  crimes: string;
+  brigged_by: string;
+  time_set: string;
+  time_left: string;
+  isAllowed: BooleanLike;
+  prisoner_name: string;
+  prisoner_charge: string;
+  prisoner_time: string;
+  prisoner_hasrec: BooleanLike;
   spns: string[];
 };
 
@@ -50,9 +56,15 @@ export const BrigTimer1984 = (props) => {
             <LabeledList.Item label="Cell ID">{data.cell_id}</LabeledList.Item>
             <LabeledList.Item label="Occupant">{nameText}</LabeledList.Item>
             <LabeledList.Item label="Crimes">{data.crimes}</LabeledList.Item>
-            <LabeledList.Item label="Brigged By">{data.brigged_by}</LabeledList.Item>
-            <LabeledList.Item label="Time Brigged For">{data.time_set}</LabeledList.Item>
-            <LabeledList.Item label="Time Left">{data.time_left}</LabeledList.Item>
+            <LabeledList.Item label="Brigged By">
+              {data.brigged_by}
+            </LabeledList.Item>
+            <LabeledList.Item label="Time Brigged For">
+              {data.time_set}
+            </LabeledList.Item>
+            <LabeledList.Item label="Time Left">
+              {data.time_left}
+            </LabeledList.Item>
             <LabeledList.Item label="Actions">
               <>
                 <Button
@@ -94,11 +106,17 @@ export const BrigTimer1984 = (props) => {
                   <Box mt="0.3rem">
                     <Dropdown
                       disabled={!data.isAllowed || !data.spns.length}
-                      options={data.spns.map(spn => ({ value: spn, displayText: spn }))}
+                      options={data.spns.map((spn) => ({
+                        value: spn,
+                        displayText: spn,
+                      }))}
                       selected={
-                      data.prisoner_name
-                        ? { value: data.prisoner_name, displayText: data.prisoner_name }
-                        : null
+                        data.prisoner_name
+                          ? {
+                              value: data.prisoner_name,
+                              displayText: data.prisoner_name,
+                            }
+                          : null
                       }
                       width="250px"
                       onSelected={(value) =>
@@ -113,7 +131,9 @@ export const BrigTimer1984 = (props) => {
               <LabeledList.Item label="Prisoner Crimes">
                 <Button
                   icon="pencil-alt"
-                  content={data.prisoner_charge ? data.prisoner_charge : '-----'}
+                  content={
+                    data.prisoner_charge ? data.prisoner_charge : '-----'
+                  }
                   disabled={!data.isAllowed}
                   onClick={() => act('prisoner_charge')}
                 />

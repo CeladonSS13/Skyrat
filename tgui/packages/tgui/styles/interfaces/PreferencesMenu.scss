@@ -242,8 +242,7 @@ $department_map: (
         $quality_map: (
           'positive': var(--color-green),
           'neutral': var(--color-white),
-          'negative': var(--color-red),
-          // ss1984 removal of erp quirk
+          'negative': var(--color-red), // ss1984 removal of erp quirk
         );
 
         @each $quality, $color-value in $quality_map {

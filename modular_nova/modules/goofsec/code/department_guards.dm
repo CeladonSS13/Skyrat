@@ -95,7 +95,7 @@
 	worn_icon = 'modular_nova/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "mallcop_helm"
 	worn_icon_state = "mallcop_helm"
- SS1984 REMOVAL END */
+SS1984 REMOVAL END */
 
 /obj/item/clothing/head/beret/sec/science
 	name = "science guard beret"

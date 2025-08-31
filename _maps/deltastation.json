@@ -9,7 +9,7 @@
 		"cargo": "cargo_nova_delta",
 		"whiteship": "whiteship_delta"
 	},
-	"exclude_from_ci": true,
+	"exclude_from_ci": false,
 	"job_changes": {
 		"Cook": {
 			"additional_cqc_areas": ["/area/station/service/cafeteria"]

@@ -1,7 +1,6 @@
 import { BlockQuote, Stack } from 'tgui-core/components';
 
 import { Window } from '../layouts';
-import { Rules } from './AntagInfoRules'; // NOVA EDIT ADDITION
 
 const goodstyle = {
   color: 'lightgreen',
@@ -35,8 +34,8 @@ export const AntagInfoMorph = (props) => {
               While morphed, you move faster, but are unable to attack creatures
               or eat anything. In addition,
               <span style={badstyle}>
-                {'\u2002'}anyone within three tiles will note an uncanny wrongness
-                if examining you.
+                {'\u2002'}anyone within three tiles will note an uncanny
+                wrongness if examining you.
               </span>{' '}
               You can attack any item or dead creature to consume it -
               <span style={goodstyle}>
@@ -50,11 +49,6 @@ export const AntagInfoMorph = (props) => {
               </span>{' '}
             </BlockQuote>
           </Stack.Item>
-          {/* NOVA EDIT ADDITION START */}
-          <Stack.Item>
-            <Rules />
-          </Stack.Item>
-          {/* NOVA EDIT ADDITION END */}
         </Stack>
       </Window.Content>
     </Window>

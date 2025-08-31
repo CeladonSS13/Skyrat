@@ -209,6 +209,7 @@ export type PreferencesMenuData = {
       species: string;
       loadout_lists: LoadoutList; // NOVA EDIT CHANGE - Multiple loadout presets - ORIGINAL: loadout_list: LoadoutList;
       job_clothes: BooleanLike;
+      loadout_index: string; // NOVA EDIT ADDITION: Multiple loadout presets
       tts_seed: string;
     };
 
@@ -273,7 +274,7 @@ export type PreferencesMenuData = {
   }>;
   phrases: string[];
 
-  window: Window;
+  window: PrefsWindow;
 };
 
 export type ServerData = {

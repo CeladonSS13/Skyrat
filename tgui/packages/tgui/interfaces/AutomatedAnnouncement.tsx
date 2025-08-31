@@ -30,7 +30,7 @@ type nttc_configuration = {
   toggle_job_color: BooleanLike;
   toggle_name_color: BooleanLike;
   toggle_command_bold: BooleanLike;
-}
+};
 
 type Data = {
   config_entries: AASConfigEntry[];

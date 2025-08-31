@@ -31,20 +31,26 @@ export function CargoStatus(props) {
     <Section
       title={department}
       buttons={
-      // SS1984 REMOVAL START
-      //     // <Box inline bold verticalAlign="middle">
-      //     //   <AnimatedNumber
-      //     //     value={points}
-      //     //     format={(value) => formatMoney(value)}
-      //     //   />
-      //     //   {' credits'}
-      //     // </Box>
-      //   }
-      // SS1984 REMOVAL END
-      // SS1984 ADDITION START
+        // SS1984 REMOVAL START
+        //     // <Box inline bold verticalAlign="middle">
+        //     //   <AnimatedNumber
+        //     //     value={points}
+        //     //     format={(value) => formatMoney(value)}
+        //     //   />
+        //     //   {' credits'}
+        //     // </Box>
+        //   }
+        // SS1984 REMOVAL END
+        // SS1984 ADDITION START
         <>
-          <Box inline bold verticalAlign="middle" style={{ marginRight: '1em' }}>
-            <span style={{ color: '#BA3692' }}>Plasma</span> cost: {current_plasma_cost}
+          <Box
+            inline
+            bold
+            verticalAlign="middle"
+            style={{ marginRight: '1em' }}
+          >
+            <span style={{ color: '#BA3692' }}>Plasma</span> cost:{' '}
+            {current_plasma_cost}
           </Box>
           <Box inline bold verticalAlign="middle">
             <AnimatedNumber

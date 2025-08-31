@@ -123,7 +123,8 @@ const EvoInfo = (props) => {
       <Stack.Item grow>
         <Stack vertical height="100%">
           <Stack.Item fontSize="20px" textAlign="center">
-            You have <b>{evolution_points || 0}</b>{'\u00A0'}
+            You have <b>{evolution_points || 0}</b>
+            {'\u00A0'}
             <span style={borerColor}>
               evolution point{evolution_points !== 1 ? 's' : ''}
             </span>{' '}

@@ -272,7 +272,15 @@ const ChoicesPanel = (props) => {
                   // SS1984 REMOVAL label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
                   // SS1984 ADDITION START
                   label={
-                    <span style={{ fontWeight: currentVote.choicesHighlight?.includes(choice.name) ? 'bold' : 'normal' }}>
+                    <span
+                      style={{
+                        fontWeight: currentVote.choicesHighlight?.includes(
+                          choice.name,
+                        )
+                          ? 'bold'
+                          : 'normal',
+                      }}
+                    >
                       {choice.name.replace(/^\w/, (c) => c.toUpperCase())}
                     </span>
                   }
@@ -326,7 +334,15 @@ const ChoicesPanel = (props) => {
                   // SS1984 REMOVAL label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
                   // SS1984 ADDITION START
                   label={
-                    <span style={{ fontWeight: currentVote.choicesHighlight?.includes(choice.name) ? 'bold' : 'normal' }}>
+                    <span
+                      style={{
+                        fontWeight: currentVote.choicesHighlight?.includes(
+                          choice.name,
+                        )
+                          ? 'bold'
+                          : 'normal',
+                      }}
+                    >
                       {choice.name.replace(/^\w/, (c) => c.toUpperCase())}
                     </span>
                   }

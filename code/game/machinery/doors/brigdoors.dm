@@ -263,7 +263,7 @@
 				return FALSE // SS1984 ADDITION
 			user.investigate_log("has stopped [id]'s timer of [time_left(seconds = TRUE)] seconds", INVESTIGATE_RECORDS)
 			user.log_message("has stopped [id]'s timer of [time_left(seconds = TRUE)] seconds", LOG_ATTACK)
-			 // SS1984 ADDITION START
+			// SS1984 ADDITION START
 			aas_config_announce(/datum/aas_config_entry/brig_cell_release_forced_announcement,
 				list("CELL" = name, "RELEASER" = isobserver(usr) ? "Central Command" : user.name),
 				src, list(broadcast_channel))

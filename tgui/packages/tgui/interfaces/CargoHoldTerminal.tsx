@@ -58,11 +58,12 @@ export const CargoHoldTerminal = (props) => {
             <LabeledList.Item label="Status" color={pad ? 'good' : 'bad'}>
               {pad ? 'Online' : 'Not Found'}
             </LabeledList.Item>
-            { /* SS1984 ADDITION START */ }
+            {/* SS1984 ADDITION START */}
             <LabeledList.Item>
-              <span style={{ color: '#BA3692' }}>Plasma</span> cost: {current_plasma_cost}
+              <span style={{ color: '#BA3692' }}>Plasma</span> cost:{' '}
+              {current_plasma_cost}
             </LabeledList.Item>
-            { /* SS1984 ADDITION END */ }
+            {/* SS1984 ADDITION END */}
             <LabeledList.Item label="Cargo Report">
               {status_report}
             </LabeledList.Item>

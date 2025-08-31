@@ -236,7 +236,7 @@ function JobRow(props: JobRowProps) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
-          {/* SS1984 REMOVAL <b>Nova Stars Only</b> */ }
+          {/* SS1984 REMOVAL <b>Nova Stars Only</b> */}
           <b>Veteran Only</b> {/* SS1984 ADDITION */}
         </Stack.Item>
       </Stack>

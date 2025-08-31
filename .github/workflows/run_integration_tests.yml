@@ -20,8 +20,15 @@ on:
 
 jobs:
   run_integration_tests:
+    # If `inputs.major` is specified, this will output `Run Tests (major.minor; map; max)`.
+    # For example, `Run Tests (515.1627; runtimestation; 515)`.
+    #
+    # Otherwise, it will output `Run Tests (map; max)`.
+    # For example, `Run Tests (runtimestation; 515)`.
+    name: Run Tests (${{ inputs.major && format('{0}.{1}; ', inputs.major, inputs.minor) || '' }}${{ inputs.map }}; ${{ inputs.max_required_byond_client }})
     runs-on: ubuntu-22.04
     timeout-minutes: 15
+    # SS1984 ADD BEGIN (we use MarinaDB)
     services:
       mysql:
         image: mariadb:latest
@@ -30,6 +37,7 @@ jobs:
         ports:
           - 3306
         options: --health-cmd="mariadb-admin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    # SS1984 ADD END
     steps:
       - uses: actions/checkout@v5
       - name: Restore BYOND from Cache

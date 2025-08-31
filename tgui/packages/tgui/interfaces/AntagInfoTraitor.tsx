@@ -3,7 +3,6 @@ import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { Rules } from './AntagInfoRules'; // NOVA EDIT ADDITION
 import { type Objective, ObjectivePrintout } from './common/Objectives';
 
 const allystyle = {
@@ -47,13 +46,6 @@ const IntroductionSection = (props) => {
         <Stack.Item fontSize="25px">{intro}</Stack.Item>
         <Stack.Item grow>
           <ObjectivePrintout objectives={objectives} />
-          {/* NOVA EDIT ADDITION START */}
-          <Stack.Item grow>
-            <Stack.Item>
-              <Rules />
-            </Stack.Item>
-          </Stack.Item>
-          {/* NOVA EDIT ADDITION END */}
         </Stack.Item>
       </Stack>
     </Section>

@@ -12,7 +12,6 @@ import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { Rules } from './AntagInfoRules'; // NOVA EDIT ADDITION
 import {
   type Objective,
   ObjectivePrintout,
@@ -91,11 +90,6 @@ const IntroductionSection = (props) => {
           <Stack vertical>
             <FlavorSection />
             <Stack.Divider />
-            {/* NOVA EDIT ADDITION START */}
-            <Stack.Item>
-              <Rules />
-            </Stack.Item>
-            {/* NOVA EDIT ADDITION END */}
             <Stack.Divider />
             <GuideSection />
             <Stack.Divider />
@@ -142,8 +136,8 @@ const FlavorSection = () => {
             <span style={hereticBlue}>shimmer</span>
             {'\u00A0'}around you, as a realization of something{'\u00A0'}
             <span style={hereticRed}>strange</span>
-            {'\u00A0'}in the air unfolds. You look inwards and discover something
-            that will change your life.
+            {'\u00A0'}in the air unfolds. You look inwards and discover
+            something that will change your life.
           </i>
         </Stack.Item>
         <Stack.Item>
@@ -232,7 +226,8 @@ const InformationSection = (props) => {
           </Stack.Item>
         )}
         <Stack.Item>
-          You have <b>{charges || 0}</b>{'\u00A0'}
+          You have <b>{charges || 0}</b>
+          {'\u00A0'}
           <span style={hereticBlue}>
             knowledge point{charges !== 1 ? 's' : ''}
           </span>
@@ -240,7 +235,8 @@ const InformationSection = (props) => {
         </Stack.Item>
         <Stack.Item>
           You have made a total of{'\u00A0'}
-          <b>{total_sacrifices || 0}</b>{'\u00A0'}
+          <b>{total_sacrifices || 0}</b>
+          {'\u00A0'}
           <span style={hereticRed}>sacrifices</span>.
         </Stack.Item>
       </Stack>
@@ -348,7 +344,8 @@ const ResearchInfo = (props) => {
   return (
     <Stack vertical fill>
       <Stack.Item fontSize="20px" textAlign="center">
-        You have <b>{charges || 0}</b>{'\u00A0'}
+        You have <b>{charges || 0}</b>
+        {'\u00A0'}
         <span style={hereticBlue}>
           knowledge point{charges !== 1 ? 's' : ''}
         </span>{' '}

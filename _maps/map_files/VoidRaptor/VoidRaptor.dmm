@@ -78640,7 +78640,6 @@
 /area/station/science/ordnance/burnchamber)
 "vNq" = (
 /obj/structure/table,
-/obj/item/bdsm_candle,
 /turf/open/floor/glass/reinforced,
 /area/station/maintenance/port/fore)
 "vNs" = (
