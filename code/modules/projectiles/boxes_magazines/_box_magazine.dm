@@ -209,7 +209,7 @@
 	var/obj/item/ammo_casing/A = get_round()
 	if(!A)
 		return
-
+	A.set_chamber_source(isnull(was_chambered_at) ? null : was_chambered_at.resolve()) // SS1984 ADDITION
 	A.forceMove(drop_location())
 	if(!user.is_holding(src) || !user.put_in_hands(A)) //incase they're using TK
 		A.bounce_away(FALSE, NONE)
@@ -270,5 +270,6 @@
 	var/turf/turf_mag = get_turf(src)
 	var/obj/item/ammo_casing/casing = get_round()
 	while (casing)
+		casing.set_chamber_source(isnull(was_chambered_at) ? null : was_chambered_at.resolve()) // SS1984 ADDITION
 		casing.forceMove(turf_mag)
 		casing = get_round()

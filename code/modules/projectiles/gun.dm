@@ -36,7 +36,7 @@
 	var/can_unsuppress = TRUE
 	var/recoil = 0 //boom boom shake the room
 	var/clumsy_check = TRUE
-	var/obj/item/ammo_casing/chambered = null
+	VAR_FINAL/obj/item/ammo_casing/chambered = null // SS1984 EDIT use set_chambered, original: var/obj/item/ammo_casing/chambered = null
 	trigger_guard = TRIGGER_GUARD_NORMAL //trigger guard on the weapon, hulks can't fire them with their big meaty fingers
 	var/sawn_desc = null //description change if weapon is sawn-off
 	var/sawn_off = FALSE
@@ -133,7 +133,7 @@
 	if(gone == pin)
 		pin = null
 	if(gone == chambered)
-		chambered = null
+		set_chambered(null) // SS1984 EDIT, original: chambered = null
 		update_appearance()
 	if(gone == suppressed)
 		clear_suppressor()

@@ -204,7 +204,7 @@
 /obj/item/gun/ballistic/bow/clockwork/proc/recharge_bolt()
 	var/obj/item/ammo_casing/arrow/clockbolt/bolt = new
 	magazine.give_round(bolt)
-	chambered = bolt
+	set_chambered(bolt) // SS1984 EDIT, original: chambered = bolt
 	update_icon()
 
 

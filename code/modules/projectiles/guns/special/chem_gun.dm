@@ -30,7 +30,7 @@
 
 /obj/item/gun/chem/Initialize(mapload)
 	. = ..()
-	chambered = new /obj/item/ammo_casing/chemgun(src)
+	set_chambered(new /obj/item/ammo_casing/chemgun(src)) // SS1984 EDIT, original: chambered = new /obj/item/ammo_casing/chemgun(src)
 	START_PROCESSING(SSobj, src)
 	create_reagents(90, OPENCONTAINER)
 

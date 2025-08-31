@@ -51,7 +51,7 @@
 
 /obj/item/gun/syringe/smartdart/Initialize(mapload)
 	. = ..()
-	chambered = new /obj/item/ammo_casing/syringegun/dart(src)
+	set_chambered(new /obj/item/ammo_casing/syringegun/dart(src)) // SS1984 EDIT, original: chambered = new /obj/item/ammo_casing/syringegun/dart(src)
 
 /obj/item/gun/syringe/smartdart/give_gun_safeties()
 	return

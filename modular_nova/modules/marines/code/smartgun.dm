@@ -128,8 +128,7 @@
 	if(istype(fired_from, /obj/item/gun))
 		var/obj/item/gun/shot_from = fired_from
 		if(shot_from.chambered == src)
-			shot_from.chambered = null //Nuke it. Nuke it now.
-	qdel(src)
+			shot_from.set_chambered(null) // SS1984 EDIT, original: shot_from.chambered = null //Nuke it. Nuke it now.
 	return TRUE
 
 /obj/item/ammo_casing/smart/update_icon_state()

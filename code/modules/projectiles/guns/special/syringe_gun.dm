@@ -31,7 +31,7 @@
 
 /obj/item/gun/syringe/Initialize(mapload)
 	. = ..()
-	chambered = new /obj/item/ammo_casing/syringegun(src)
+	set_chambered(new /obj/item/ammo_casing/syringegun(src)) // SS1984 EDIT, original: chambered = new /obj/item/ammo_casing/syringegun(src)
 	recharge_newshot()
 
 /obj/item/gun/syringe/apply_fantasy_bonuses(bonus)
@@ -52,9 +52,9 @@
 		return
 	//NOVA EDIT SMARTDARTS
 	if(istype(syringes[length(syringes)], /obj/item/reagent_containers/syringe/smartdart))
-		chambered = new /obj/item/ammo_casing/syringegun/dart(src)
+		set_chambered(new /obj/item/ammo_casing/syringegun/dart(src)) // SS1984 EDIT, original: chambered = new /obj/item/ammo_casing/syringegun/dart(src)
 	else
-		chambered = new /obj/item/ammo_casing/syringegun(src)
+		set_chambered(new /obj/item/ammo_casing/syringegun(src)) // SS1984 EDIT, original: chambered = new /obj/item/ammo_casing/syringegun(src)
 	//NOVA EDIT SMARTDARTS END
 	chambered.newshot()
 
@@ -189,7 +189,7 @@
 
 /obj/item/gun/syringe/dna/Initialize(mapload)
 	. = ..()
-	chambered = new /obj/item/ammo_casing/dnainjector(src)
+	set_chambered(new /obj/item/ammo_casing/dnainjector(src)) // SS1984 EDIT, original: chambered = new /obj/item/ammo_casing/dnainjector(src)
 
 /obj/item/gun/syringe/dna/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/dnainjector))

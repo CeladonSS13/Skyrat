@@ -32,5 +32,5 @@
 	if(isgun(fired_from))
 		var/obj/item/gun/shot_from = fired_from
 		if(shot_from.chambered == shell)
-			shot_from.chambered = null //Nuke it. Nuke it now.
+			shot_from.set_chambered(null) // SS1984 EDIT, original: shot_from.chambered = null
 	QDEL_NULL(shell)

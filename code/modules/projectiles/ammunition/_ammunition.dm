@@ -83,7 +83,7 @@
 	var/proj_damage_mult = 1
 	if(!ispath(exam_proj) || pellets == 0)
 		return
-
+	var/datum/weakref/was_chambered_at_shared = was_chambered_at // SS1984 ADDITION
 	// are we in an ammo box?
 	if(isammobox(loc))
 		var/obj/item/ammo_box/our_box = loc
@@ -92,6 +92,10 @@
 			var/obj/item/gun/our_gun = our_box.loc
 			// grab the damage multiplier
 			proj_damage_mult = our_gun.projectile_damage_multiplier
+		// SS1984 ADDITION START
+		if(!isnull(our_box.was_chambered_at) && isweakref(our_box.was_chambered_at))
+			was_chambered_at_shared = our_box.was_chambered_at
+		// SS1984 ADDITION END
 	// if not, are we just in a gun e.g. chambered
 	else if(isgun(loc))
 		var/obj/item/gun/our_gun = loc
@@ -100,11 +104,25 @@
 	var/list/readout = list()
 	if(proj_damage_mult <= 0 || (initial_damage <= 0 && initial_stamina <= 0))
 		return "Our legal team has determined the offensive nature of these [span_warning(caliber)] rounds to be esoteric."
+	// SS1984 ADDITION START
+	var/was_chambered_desc = ""
+	var/dmg_desc_normal_stamina_text = "" // we need both stamina and normal, can't just append to was_chambered_desc as it would affect both at once
+	var/dmg_desc_normal_text = ""
+	var/obj/item/gun/was_chambered_at_gun = isnull(was_chambered_at_shared) ? null : was_chambered_at_shared.resolve()
+	if (!isnull(was_chambered_at_gun) && isgun(was_chambered_at_gun))
+		proj_damage_mult = was_chambered_at_gun.projectile_damage_multiplier
+		if (proj_damage_mult != 1)
+			was_chambered_desc = " from [span_bold(was_chambered_at_gun.name)]"
+			if (initial_damage)
+				dmg_desc_normal_text = " or [span_warning("[HITS_TO_CRIT((initial(exam_proj.damage) * 1) * pellets)]")] from other gun normally"
+			if (initial_stamina)
+				dmg_desc_normal_stamina_text = " or [span_warning("[HITS_TO_CRIT((initial(exam_proj.stamina) * 1) * pellets)]")] from other gun normally"
+	// SS1984 ADDITION END
 	// No dividing by 0
 	if(initial_damage)
-		readout += "Most monkeys our legal team subjected to these [span_warning(caliber)] rounds succumbed to their wounds after [span_warning("[HITS_TO_CRIT((initial(exam_proj.damage) * proj_damage_mult) * pellets)] shot\s")] at point-blank, taking [span_warning("[pellets] shot\s")] per round."
+		readout += "Most monkeys our legal team subjected to these [span_warning(caliber)] rounds succumbed to their wounds after [span_warning("[HITS_TO_CRIT((initial(exam_proj.damage) * proj_damage_mult) * pellets)] shot\s[was_chambered_desc][dmg_desc_normal_text]")] at point-blank, taking [span_warning("[pellets] shot\s")] per round." // SS1984 EDIT, original:	readout += "Most monkeys our legal team subjected to these [span_warning(caliber)] rounds succumbed to their wounds after [span_warning("[HITS_TO_CRIT((initial(exam_proj.damage) * proj_damage_mult) * pellets)] shot\s")] at point-blank, taking [span_warning("[pellets] shot\s")] per round."
 	if(initial_stamina)
-		readout += "[!readout.len ? "Most monkeys" : "More fortunate monkeys"] collapsed from exhaustion after [span_warning("[HITS_TO_CRIT((initial(exam_proj.stamina) * proj_damage_mult) * pellets)] impact\s")] of these [span_warning("[caliber]")] rounds."
+		readout += "[!readout.len ? "Most monkeys" : "More fortunate monkeys"] collapsed from exhaustion after [span_warning("[HITS_TO_CRIT((initial(exam_proj.stamina) * proj_damage_mult) * pellets)] impact\s[was_chambered_desc][dmg_desc_normal_stamina_text]")] of these [span_warning("[caliber]")] rounds." // SS1984 EDIT, original: readout += "[!readout.len ? "Most monkeys" : "More fortunate monkeys"] collapsed from exhaustion after [span_warning("[HITS_TO_CRIT((initial(exam_proj.stamina) * proj_damage_mult) * pellets)] impact\s")] of these [span_warning("[caliber]")] rounds."
 	return readout.Join("\n") // Sending over a single string, rather than the whole list
 
 /obj/item/ammo_casing/update_icon_state()
