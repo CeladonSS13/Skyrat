@@ -9,7 +9,7 @@
 	icon = 'modular_ss220/modules/nucleations/icons/surgery.dmi'
 	icon_state = "crystal-eyes"
 	desc = "A crystalized human eyes. It has a strangely iridescent glow."
-	lighting_cutoff = 2
+	lighting_cutoff = LIGHTING_CUTOFF_REAL_LOW
 
 /obj/item/organ/brain/nucleationcrystal
 	name = "crystallized brain"

@@ -33,6 +33,7 @@
 	)
 
 	var/obj/effect/dummy/lighting_obj/nucleation_light
+	var/former_hardcrit_threshold
 
 /datum/species/nucleation/on_species_gain(mob/living/carbon/human/new_nucleation, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
@@ -51,6 +52,11 @@
 	for(var/obj/item/bodypart/limb as anything in new_nucleation.bodyparts)
 		if(limb.limb_id == SPECIES_NUCLEATION)
 			limb.update_limb(is_creating = TRUE)
+
+	// crit stuff
+
+	former_hardcrit_threshold = new_nucleation.hardcrit_threshold
+	new_nucleation.hardcrit_threshold = HEALTH_THRESHOLD_CRIT
 
 	// rest
 
@@ -72,8 +78,11 @@
 	))
 	QDEL_NULL(nucleation_light)
 
-	former_nucleation.physiology.burn_mod |= 4
-	former_nucleation.physiology.brute_mod |= 2
+	former_nucleation.physiology.burn_mod /= 4
+	former_nucleation.physiology.brute_mod /= 2
+
+	former_nucleation.hardcrit_threshold = former_hardcrit_threshold ? former_hardcrit_threshold : HEALTH_THRESHOLD_FULLCRIT
+	former_hardcrit_threshold = null
 
 	return ..()
 
@@ -141,6 +150,20 @@
 		SPECIES_PERK_ICON = "burn",
 		SPECIES_PERK_NAME = "Extreme Burn Weakness",
 		SPECIES_PERK_DESC = "[plural_form] receive 4x burn damage.",
+	))
+
+	to_add += list(list(
+		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
+		SPECIES_PERK_ICON = FA_ICON_SKULL,
+		SPECIES_PERK_NAME = "Permament Death",
+		SPECIES_PERK_DESC = "[plural_form] death is permament, they cause small explosion on death, which is also destroys all items with them.",
+	))
+
+	to_add += list(list(
+		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
+		SPECIES_PERK_ICON = FA_ICON_SQUARE_XMARK,
+		SPECIES_PERK_NAME = "No Soft Crit",
+		SPECIES_PERK_DESC = "[plural_form] does not have softcrit, they instantly fall into hardcrit instead.",
 	))
 
 	to_add += list(list(

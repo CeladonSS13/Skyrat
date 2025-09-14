@@ -1,4 +1,4 @@
 /datum/quirk/death_consequences/is_species_appropriate(datum/species/mob_species)
-	if(istype(mob_species, /datum/species/nucleation))
+	if(ispath(mob_species, /datum/species/nucleation))
 		return FALSE
 	return ..()

@@ -9540,6 +9540,7 @@
 #include "modular_ss220\modules\nucleations\species_bodyparts\nucleation_bodyparts.dm"
 #include "modular_ss220\modules\nucleations\species_bodyparts\nucleation_organs.dm"
 #include "modular_ss220\modules\nucleations\species\nucleation.dm"
+#include "modular_ss220\modules\nucleations\species\human.dm"
 #include "modular_ss220\modules\nucleations\init_signals.dm"
 #include "modular_ss220\modules\nucleations\quirks\immunodeficiency.dm"
 #include "modular_ss220\modules\nucleations\quirks\blood_deficiency.dm"
