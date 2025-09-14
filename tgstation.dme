@@ -9518,6 +9518,7 @@
 #include "modular_ss220\modules\qol_casual_1984\combat_info_desc_gun\ammunition.dm"
 #include "modular_ss220\modules\qol_casual_1984\combat_info_desc_gun\gun.dm"
 #include "modular_ss220\modules\qol_casual_1984\combat_info_desc_gun\box_magazine.dm"
+#include "modular_ss220\modules\qol_casual_1984\extended_perk_description\species.dm"
 #include "modular_ss220\modules\ghostroles_stuff\ds2_interdyne_shared\techweb_types.dm"
 #include "modular_ss220\modules\ghostroles_stuff\ds2_interdyne_shared\machine_circuits.dm"
 #include "modular_ss220\modules\ghostroles_stuff\ds2_interdyne_shared\interdyne_ds2_rnd.dm"
@@ -9545,4 +9546,5 @@
 #include "modular_ss220\modules\nucleations\quirks\breather.dm"
 #include "modular_ss220\modules\nucleations\quirks\death_consequences.dm"
 #include "modular_ss220\modules\nucleations\quirks\numb.dm"
+#include "modular_ss220\modules\nucleations\radium.dm"
 // END_INCLUDE

@@ -91,13 +91,17 @@
 
 /datum/species/nucleation/proc/handle_death(datum/source)
 	SIGNAL_HANDLER
+
 	var/mob/living/carbon/human/nucleation = source
 	if (!isnucleation(nucleation))
 		log_runtime("Tried to handle nucleation death from non-nucleation source [source] with type [source.type]! Will not explode it. Dead nucleation???")
 		return
-	var/turf/T = get_turf(src)
+
+	var/turf/T = get_turf(nucleation)
 	nucleation.visible_message(span_warning("[nucleation]'s body explodes, leaving behind a pile of microscopic crystals!"))
 	explosion(T, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 2, flame_range = 0, flash_range = 2) // Create a small explosion burst upon death
+
+	nucleation.ghostize(FALSE) //So we don't throw an alert for deleting a mob with a key inside.
 	qdel(nucleation)
 
 /datum/species/nucleation/get_physical_attributes()
@@ -144,6 +148,27 @@
 		SPECIES_PERK_ICON = FA_ICON_STAR_OF_LIFE,
 		SPECIES_PERK_NAME = "No Pain",
 		SPECIES_PERK_DESC = "[plural_form] does not feel pain at all.",
+	))
+
+	to_add += list(list(
+		SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
+		SPECIES_PERK_ICON = FA_ICON_LIGHTBULB,
+		SPECIES_PERK_NAME = "Glowing",
+		SPECIES_PERK_DESC = "[plural_form] glowing slighty, that's easy to notice in darkness.",
+	))
+
+	to_add += list(list(
+		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+		SPECIES_PERK_ICON = FA_ICON_BOTTLE_DROPLET,
+		SPECIES_PERK_NAME = "Radium Healing",
+		SPECIES_PERK_DESC = "Radium heal [plural_form] from 3 burn and 3 brute damage per second.",
+	))
+
+	to_add += list(list(
+		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+		SPECIES_PERK_ICON = FA_ICON_EYE,
+		SPECIES_PERK_NAME = "Luminescent eyes",
+		SPECIES_PERK_DESC = "[plural_form] eyes can see just a little bit better in darkness.",
 	))
 
 	return to_add
