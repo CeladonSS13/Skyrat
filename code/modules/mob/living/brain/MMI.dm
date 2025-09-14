@@ -53,6 +53,11 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(istype(O, /obj/item/organ/brain)) //Time to stick a brain in it --NEO
 		var/obj/item/organ/brain/newbrain = O
+		// SS1984 ADDITION START
+		if(istype(O, /obj/item/organ/brain/crystal))
+			to_chat(user, span_warning("This brain is too malformed to be able to use!"))
+			return
+		// SS1984 ADDITION END
 		if(brain)
 			to_chat(user, span_warning("There's already a brain in the MMI!"))
 			return

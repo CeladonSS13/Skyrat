@@ -413,6 +413,9 @@ ROUNDSTART_RACES vox_primalis
 ROUNDSTART_RACES abductorweak
 ROUNDSTART_RACES hemophage
 
+## SS1984 RACES DOWN THERE
+ROUNDSTART_RACES nucleation
+
 ##-------------------------------------------------------------------------------------------
 
 ## Roundstart no-reset races
