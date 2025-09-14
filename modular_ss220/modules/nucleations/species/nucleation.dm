@@ -65,13 +65,6 @@
 
 	return .
 
-/datum/species/nucleation/spec_life(mob/living/carbon/human/human)
-	. = ..()
-
-	if(human.stat == SOFT_CRIT || human.stat == HARD_CRIT)
-		if(prob(10))
-			human.painful_scream(TRUE) // damage is done at code\modules\mob\living\carbon\human\_species.dm
-
 /datum/species/nucleation/on_species_loss(mob/living/carbon/human/former_nucleation, datum/species/new_species, pref_load)
 	UnregisterSignal(former_nucleation, list(
 		COMSIG_LIVING_DEATH,
@@ -85,7 +78,6 @@
 	former_hardcrit_threshold = null
 
 	return ..()
-
 
 /datum/species/nucleation/Destroy(force)
 	QDEL_NULL(nucleation_light)
