@@ -54,7 +54,7 @@
 	if(istype(O, /obj/item/organ/brain)) //Time to stick a brain in it --NEO
 		var/obj/item/organ/brain/newbrain = O
 		// SS1984 ADDITION START
-		if(istype(O, /obj/item/organ/brain/crystal))
+		if(istype(O, /obj/item/organ/brain/nucleationcrystal))
 			to_chat(user, span_warning("This brain is too malformed to be able to use!"))
 			return
 		// SS1984 ADDITION END

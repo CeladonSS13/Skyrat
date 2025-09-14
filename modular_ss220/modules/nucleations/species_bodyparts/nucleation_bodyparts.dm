@@ -1,5 +1,6 @@
 /obj/item/bodypart/head/nucleation
 	icon_greyscale = 'modular_ss220/modules/nucleations/icons/r_nucleation.dmi'
+	icon_state = "nucleation_head"
 	limb_id = SPECIES_NUCLEATION
 
 /obj/item/bodypart/arm/left/nucleation

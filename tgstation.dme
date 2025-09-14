@@ -517,6 +517,7 @@
 #include "modular_ss220\modules\return_prs\justice_modular\code\__DEFINES\research_categories.dm"
 #include "modular_ss220\modules\return_prs\justice_modular\code\__DEFINES\exosuit_fab.dm"
 #include "modular_ss220\modules\nucleations\__DEFINES\mobs.dm"
+#include "modular_ss220\modules\nucleations\__DEFINES\traits.dm"
 #include "code\__HELPERS\_auxtools_api.dm"
 #include "code\__HELPERS\_dreamluau.dm"
 #include "code\__HELPERS\_lists.dm"
@@ -9538,4 +9539,10 @@
 #include "modular_ss220\modules\nucleations\species_bodyparts\nucleation_bodyparts.dm"
 #include "modular_ss220\modules\nucleations\species_bodyparts\nucleation_organs.dm"
 #include "modular_ss220\modules\nucleations\species\nucleation.dm"
+#include "modular_ss220\modules\nucleations\init_signals.dm"
+#include "modular_ss220\modules\nucleations\quirks\immunodeficiency.dm"
+#include "modular_ss220\modules\nucleations\quirks\blood_deficiency.dm"
+#include "modular_ss220\modules\nucleations\quirks\breather.dm"
+#include "modular_ss220\modules\nucleations\quirks\death_consequences.dm"
+#include "modular_ss220\modules\nucleations\quirks\numb.dm"
 // END_INCLUDE

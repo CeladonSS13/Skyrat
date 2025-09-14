@@ -7,10 +7,12 @@
 		TRAIT_NOBREATH,
 		TRAIT_OXYIMMUNE,
 		TRAIT_RADIMMUNE,
-		TRAIT_ANALGESIA, // AKA no pain
+		TRAIT_ANALGESIA, // AKA no pain pt1
+		TRAIT_NO_DAMAGE_OVERLAY, // AKA no pain pt2
 		TRAIT_NOBLOOD,
 		TRAIT_SHAVED,
 		TRAIT_VIRUSIMMUNE,
+		TRAIT_NO_DAMAGE_SLOWDOWN, // AKA no pain pt3, custom trait
 	)
 
 	blood_deficiency_drain_rate = 0
@@ -62,7 +64,7 @@
 
 	if(human.stat == SOFT_CRIT || human.stat == HARD_CRIT)
 		if(prob(10))
-			painful_scream(TRUE) // damage is done at code\modules\mob\living\carbon\human\_species.dm
+			human.painful_scream(TRUE) // damage is done at code\modules\mob\living\carbon\human\_species.dm
 
 /datum/species/nucleation/on_species_loss(mob/living/carbon/human/former_nucleation, datum/species/new_species, pref_load)
 	UnregisterSignal(former_nucleation, list(
@@ -87,15 +89,15 @@
 		nucleation_light.set_light_range_power_color(2, 1, "#1C1C00")
 		nucleation_light.set_light_on(TRUE)
 
-/datum/species/nucleation/proc/handle_death()
+/datum/species/nucleation/proc/handle_death(datum/source)
 	SIGNAL_HANDLER
-	var/turf/T = get_turf(src)
-	var/mob/living/carbon/human/nucleation = src
+	var/mob/living/carbon/human/nucleation = source
 	if (!isnucleation(nucleation))
-		log_runtime("Tried to handle non-nucleation death as it was nucleation for [src] with type [src.type]! Will not explode it")
+		log_runtime("Tried to handle nucleation death from non-nucleation source [source] with type [source.type]! Will not explode it. Dead nucleation???")
 		return
+	var/turf/T = get_turf(src)
 	nucleation.visible_message(span_warning("[nucleation]'s body explodes, leaving behind a pile of microscopic crystals!"))
-	explosion(T, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 2, flame_range = 0, flash_range = 2, cause = "Nucleation death") // Create a small explosion burst upon death
+	explosion(T, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 2, flame_range = 0, flash_range = 2) // Create a small explosion burst upon death
 	qdel(nucleation)
 
 /datum/species/nucleation/get_physical_attributes()
@@ -105,7 +107,7 @@
 		and produces a calming effect on the individual."
 
 /datum/species/nucleation/get_species_description()
-	return "A sub-race of unfortunates who have been exposed to too much supermatter radiation. As a result, \
+	return "A human sub-race of unfortunates who have been exposed to too much supermatter radiation. As a result, \
 		supermatter crystal clusters have begun to grow across their bodies."
 
 /datum/species/nucleation/get_species_lore()
@@ -120,7 +122,7 @@
 /datum/species/nucleation/create_pref_damage_perks()
 	. = ..()
 	var/list/to_add = .
-	if (!base_perks)
+	if (!to_add)
 		return .
 
 	to_add += list(list(
@@ -137,14 +139,14 @@
 		SPECIES_PERK_DESC = "[plural_form] receive 4x burn damage.",
 	))
 
-	if(TRAIT_ANALGESIA in inherent_traits)
-		to_add += list(list(
-			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
-			SPECIES_PERK_ICON = FA_ICON_STAR_OF_LIFE,
-			SPECIES_PERK_NAME = "No Pain",
-			SPECIES_PERK_DESC = "[plural_form] does not feel pain at all.",
-		))
-	// TODO: rad immune, virus immune...
+	to_add += list(list(
+		SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
+		SPECIES_PERK_ICON = FA_ICON_STAR_OF_LIFE,
+		SPECIES_PERK_NAME = "No Pain",
+		SPECIES_PERK_DESC = "[plural_form] does not feel pain at all.",
+	))
+
+	return to_add
 
 // Sounds are basically copy-paste from human sounds
 
