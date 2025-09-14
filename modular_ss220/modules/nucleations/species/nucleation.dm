@@ -106,7 +106,7 @@
 
 /datum/species/nucleation/get_species_description()
 	return "A sub-race of unfortunates who have been exposed to too much supermatter radiation. As a result, \
-		supermatter crystal clusters have begun to grow across their bodies.
+		supermatter crystal clusters have begun to grow across their bodies."
 
 /datum/species/nucleation/get_species_lore()
 	return list(
