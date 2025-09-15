@@ -13,7 +13,6 @@
 		TRAIT_ANALGESIA, // AKA no pain pt1
 		TRAIT_NO_DAMAGE_OVERLAY, // AKA no pain pt2
 		TRAIT_NOBLOOD,
-		TRAIT_SHAVED,
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_NO_DAMAGE_SLOWDOWN, // AKA no pain pt3, custom trait
 	)
@@ -27,6 +26,7 @@
 	mutantheart = /obj/item/organ/heart/strange_crystal
 
 	mutant_bodyparts = list("legs" = "Normal Legs") // nova stuff
+	lore_protected = TRUE
 
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/nucleation,
@@ -131,6 +131,16 @@
 		Nucleations are highly stigmatized, and are treated much in the same way as lepers were back on Earth",
 	)
 
+/// OK for those who came after, and who still can save 3+ hours of their lives trying to debug why things are not working:
+/// If you think this thing is not working/never invoked
+/// You need to manually delete "cache" folder (at root of repository, where .dmb and all that stuff are stored)
+/// Most likely it tied to smart caching, that COULD be enabled locally, in case you use config_server (which have it enabled)
+/// Once that done, it should correctly invoke this
+/// If you see troubles on server, but not locally: then you probably need to notify host about it
+/// Or if you have sufficient rights, probably can invoke something like that (try from TOP to BOTTOM, skip other steps if succesful)
+/// "Clear Legacy Asset Cache", that is a verb in Debug
+/// "Clear Smart Asset Cache", that is a verb in Debug
+/// /datum/asset/spritesheet_batched/proc/realize_spritesheets(yield), not sure about this one though
 /datum/species/nucleation/prepare_human_for_preview(mob/living/carbon/human/human_for_preview)
 	human_for_preview.set_haircolor(COLOR_YELLOW, update = FALSE)
 	human_for_preview.set_hairstyle("Nucleation Crystals", update = TRUE)
@@ -144,25 +154,8 @@
 		"legs" = list("Normal Legs", FALSE),
 	)
 
-/datum/species/nucleation/create_pref_damage_perks()
-	. = ..()
-	var/list/to_add = .
-	if (!to_add)
-		return .
-
-	to_add += list(list(
-		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
-		SPECIES_PERK_ICON = "band-aid",
-		SPECIES_PERK_NAME = "High Brutal Weakness",
-		SPECIES_PERK_DESC = "[plural_form] receive 2x brute damage.",
-	))
-
-	to_add += list(list(
-		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
-		SPECIES_PERK_ICON = "burn",
-		SPECIES_PERK_NAME = "Extreme Burn Weakness",
-		SPECIES_PERK_DESC = "[plural_form] receive 4x burn damage.",
-	))
+/datum/species/nucleation/create_pref_unique_perks()
+	var/list/to_add = list()
 
 	to_add += list(list(
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
@@ -204,6 +197,28 @@
 		SPECIES_PERK_ICON = FA_ICON_EYE,
 		SPECIES_PERK_NAME = "Luminescent eyes",
 		SPECIES_PERK_DESC = "[plural_form] eyes can see just a little bit better in darkness.",
+	))
+
+	return to_add
+
+/datum/species/nucleation/create_pref_damage_perks()
+	. = ..()
+	var/list/to_add = .
+	if (!to_add)
+		return .
+
+	to_add += list(list(
+		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
+		SPECIES_PERK_ICON = "band-aid",
+		SPECIES_PERK_NAME = "High Brutal Weakness",
+		SPECIES_PERK_DESC = "[plural_form] receive 2x brute damage.",
+	))
+
+	to_add += list(list(
+		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
+		SPECIES_PERK_ICON = "burn",
+		SPECIES_PERK_NAME = "Extreme Burn Weakness",
+		SPECIES_PERK_DESC = "[plural_form] receive 4x burn damage.",
 	))
 
 	return to_add
