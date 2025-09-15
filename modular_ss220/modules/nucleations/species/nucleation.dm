@@ -1,3 +1,6 @@
+#define NUCLEATION_BURN_MOD 4
+#define NUCLEATION_BRUTE_MOD 2
+
 /datum/species/nucleation
 	name = "\improper Nucleation"
 	id = SPECIES_NUCLEATION
@@ -22,6 +25,8 @@
 	mutantbrain = /obj/item/organ/brain/nucleationcrystal
 	mutanteyes = /obj/item/organ/eyes/luminescent_crystal
 	mutantheart = /obj/item/organ/heart/strange_crystal
+
+	mutant_bodyparts = list("legs" = "Normal Legs") // nova stuff
 
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/nucleation,
@@ -60,8 +65,8 @@
 
 	// rest
 
-	new_nucleation.physiology.burn_mod *= 4
-	new_nucleation.physiology.brute_mod *= 2
+	new_nucleation.physiology.burn_mod *= NUCLEATION_BURN_MOD
+	new_nucleation.physiology.brute_mod *= NUCLEATION_BRUTE_MOD
 
 	return .
 
@@ -71,11 +76,16 @@
 	))
 	QDEL_NULL(nucleation_light)
 
-	former_nucleation.physiology.burn_mod /= 4
-	former_nucleation.physiology.brute_mod /= 2
+	former_nucleation.physiology.burn_mod /= NUCLEATION_BURN_MOD
+	former_nucleation.physiology.brute_mod /= NUCLEATION_BRUTE_MOD
 
 	former_nucleation.hardcrit_threshold = former_hardcrit_threshold ? former_hardcrit_threshold : HEALTH_THRESHOLD_FULLCRIT
 	former_hardcrit_threshold = null
+
+	if(former_nucleation.health > former_nucleation.hardcrit_threshold)
+		REMOVE_TRAIT(former_nucleation, TRAIT_KNOCKEDOUT, CRIT_HEALTH_TRAIT)
+
+	former_nucleation.updatehealth()
 
 	return ..()
 
@@ -121,8 +131,18 @@
 		Nucleations are highly stigmatized, and are treated much in the same way as lepers were back on Earth",
 	)
 
-/datum/species/nucleation/prepare_human_for_preview(mob/living/carbon/human/human)
-	human.set_hairstyle("Nucleation Crystals", update = TRUE)
+/datum/species/nucleation/prepare_human_for_preview(mob/living/carbon/human/human_for_preview)
+	human_for_preview.set_haircolor(COLOR_YELLOW, update = FALSE)
+	human_for_preview.set_hairstyle("Nucleation Crystals", update = TRUE)
+
+/datum/species/nucleation/get_default_mutant_bodyparts()
+	// basically copy-paste for humans in modular_nova\modules\customization\modules\mob\living\carbon\human\species.dm
+	return list(
+		"ears" = list("None", FALSE),
+		"tail" = list("None", FALSE),
+		"wings" = list("None", FALSE),
+		"legs" = list("Normal Legs", FALSE),
+	)
 
 /datum/species/nucleation/create_pref_damage_perks()
 	. = ..()
@@ -188,7 +208,7 @@
 
 	return to_add
 
-// Sounds are basically copy-paste from human sounds
+// Sounds are basically copy-paste from human sounds, but we don't want a nucleation derive from human though (they have their own perks and some other stuff, especially ishuman check)
 
 /datum/species/nucleation/get_scream_sound(mob/living/carbon/human/human)
 	if(human.physique == MALE)
@@ -273,3 +293,6 @@
 
 /datum/species/nucleation/get_hiss_sound(mob/living/carbon/human/human)
 	return 'sound/mobs/humanoids/human/hiss/human_hiss.ogg'
+
+#undef NUCLEATION_BURN_MOD
+#undef NUCLEATION_BRUTE_MOD
