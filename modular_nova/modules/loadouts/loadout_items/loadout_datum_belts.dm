@@ -94,30 +94,31 @@
 
 // RIGS/WEBBING (for military larpers)
 
-/datum/loadout_item/belts/cin_surplus_chestrig
-	name = "Chest Rig - CIN Surplus (Colorable)"
-	item_path = /obj/item/storage/belt/military/cin_surplus
-
-/datum/loadout_item/belts/cin_surplus_chestrig_desert
-	name = "Chest Rig - CIN Surplus (Desert)"
-	item_path = /obj/item/storage/belt/military/cin_surplus/desert
-	can_be_greyscale = DONT_GREYSCALE
-
-/datum/loadout_item/belts/cin_surplus_chestrig_forest
-	name = "Chest Rig - CIN Surplus (Forest)"
-	item_path = /obj/item/storage/belt/military/cin_surplus/forest
-	can_be_greyscale = DONT_GREYSCALE
-
-/datum/loadout_item/belts/cin_surplus_chestrig_marine
-	name = "Chest Rig - CIN Surplus (Marine)"
-	item_path = /obj/item/storage/belt/military/cin_surplus/marine
-	can_be_greyscale = DONT_GREYSCALE
-
-/datum/loadout_item/belts/expeditionary_chestrig_belt
-	name = "Chest Rig - Expeditionary"
-	item_path = /obj/item/storage/belt/military/expeditionary_corps
-
-/datum/loadout_item/belts/frontier_chestrig
-	name = "Chest Rig - Frontier"
-	item_path = /obj/item/storage/belt/utility/frontier_colonist
-
+// SS1984 REMOVAL START
+// /datum/loadout_item/belts/cin_surplus_chestrig
+// 	name = "Chest Rig - CIN Surplus (Colorable)"
+// 	item_path = /obj/item/storage/belt/military/cin_surplus
+//
+// /datum/loadout_item/belts/cin_surplus_chestrig_desert
+// 	name = "Chest Rig - CIN Surplus (Desert)"
+// 	item_path = /obj/item/storage/belt/military/cin_surplus/desert
+// 	can_be_greyscale = DONT_GREYSCALE
+//
+// /datum/loadout_item/belts/cin_surplus_chestrig_forest
+// 	name = "Chest Rig - CIN Surplus (Forest)"
+// 	item_path = /obj/item/storage/belt/military/cin_surplus/forest
+// 	can_be_greyscale = DONT_GREYSCALE
+//
+// /datum/loadout_item/belts/cin_surplus_chestrig_marine
+// 	name = "Chest Rig - CIN Surplus (Marine)"
+// 	item_path = /obj/item/storage/belt/military/cin_surplus/marine
+// 	can_be_greyscale = DONT_GREYSCALE
+//
+// /datum/loadout_item/belts/expeditionary_chestrig_belt
+// 	name = "Chest Rig - Expeditionary"
+// 	item_path = /obj/item/storage/belt/military/expeditionary_corps
+//
+// /datum/loadout_item/belts/frontier_chestrig
+// 	name = "Chest Rig - Frontier"
+// 	item_path = /obj/item/storage/belt/utility/frontier_colonist
+// SS1984 REMOVAL END
