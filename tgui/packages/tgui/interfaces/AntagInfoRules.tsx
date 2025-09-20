@@ -266,3 +266,9 @@ export const Rules = (props) => {
   }
 };
 SS1984 REMOVAL END */
+
+// SS1984 ADDITION START
+export const Rules = (props) => {
+  return null;
+}
+// SS1984 ADDITION END
