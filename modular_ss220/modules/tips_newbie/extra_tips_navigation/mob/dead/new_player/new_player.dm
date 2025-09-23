@@ -18,3 +18,4 @@
 		return
 
 	target_mind.try_show_navigation_tip()
+	target_mind.try_show_loadout_tip(src.client) // to not duplicating same modular code such as this, placing it here
