@@ -15,14 +15,22 @@
 /obj/item/healthanalyzer/proc/get_header(mob/user)
 	var/srcref = REF(src)
 	var/usrref = REF(user)
-	return "<a href='byond://?src=[srcref];user=[usrref];clear=1'>Очистить</a><a href='byond://?src=[srcref];user=[usrref];print=1'>Печать отчёта</a>"
+	return "<a href='byond://?src=[srcref];user=[usrref];clear=1'>Очистить</a><a href='byond://?src=[srcref];user=[usrref];print=1'>Печать отчёта</a><a href='byond://?src=[srcref];user=[usrref];switch_mode=1'>Сменить режим</a>"
+
+/obj/item/healthanalyzer/examine(mob/user)
+	. = ..()
+	if(last_scan_text && last_scan_title)
+		if(in_range(user, src) || istype(user, /mob/dead/observer))
+			show_results(user)
+		else
+			. += span_notice("Нужно подойти ближе, чтобы прочесть содержмое.")
 
 /obj/item/healthanalyzer/Topic(href, href_list)
 	. = ..()
 	var/user_ref = href_list["user"]
 	if(!user_ref) // reference
 		return FALSE
-	var/mob/user = locate(href_list["user"]) in GLOB.mob_list
+	var/mob/user = locate(user_ref) in GLOB.mob_list
 	if (!user) // actual variable
 		return FALSE
 	winset(user, "mapwindow", "focus=true")
@@ -32,11 +40,15 @@
 		return FALSE
 
 	if(href_list["print"])
-		click_ctrl_shift(usr)
+		click_ctrl_shift(user)
+		return TRUE
+
+	if(href_list["switch_mode"])
+		attack_self(user)
 		return TRUE
 
 	if(href_list["clear"])
-		to_chat(usr, "Вы очистили буфер данных [src].")
+		to_chat(user, "Вы очистили буфер данных [src].")
 		last_scan_text = null
 		last_scan_title = ""
 		user << browse(null, "window=scanner")

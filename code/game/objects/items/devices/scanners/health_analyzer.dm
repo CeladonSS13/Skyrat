@@ -110,7 +110,11 @@
 				last_healthy_scanned = null
 		if (SCANMODE_WOUND)
 			if(readability_check)
-				woundscan(user, M, src)
+				last_scan_text = woundscan(user, M, src) // SS1984 EDIT, original: woundscan(user, M, src)
+				// SS1984 ADDITION START
+				last_scan_title = "Wound analyze results for <b>[M]</b>"
+				show_results(user)
+				// SS1984 ADDITION END
 
 	add_fingerprint(user)
 
@@ -669,13 +673,16 @@
 			playsound(simple_scanner, 'sound/machines/ping.ogg', 50, FALSE)
 			to_chat(user, span_notice("\The [simple_scanner] makes a happy ping and briefly displays a smiley face with several exclamation points! It's really excited to report that [patient] has no wounds!"))
 			simple_scanner.show_emotion(AID_EMOTION_HAPPY)
-		to_chat(user, "<span class='notice ml-1'>No wounds detected in subject.</span>")
+		var/to_return_msg = "<span class='notice ml-1'>No wounds detected in subject.</span>" // SS1984 ADDITION
+		to_chat(user, to_return_msg) // SS1984 EDIT, original: to_chat(user, "<span class='notice ml-1'>No wounds detected in subject.</span>")
+		return to_return_msg // SS1984 ADDITION
 	else
 		to_chat(user, custom_boxed_message("blue_box", jointext(render_list, "")), type = MESSAGE_TYPE_INFO)
 		if(simple_scan)
 			var/obj/item/healthanalyzer/simple/simple_scanner = scanner
 			simple_scanner.show_emotion(AID_EMOTION_WARN)
 			playsound(simple_scanner, 'sound/machines/beep/twobeep.ogg', 50, FALSE)
+		return render_list // SS1984 ADDITION
 
 
 /obj/item/healthanalyzer/simple
