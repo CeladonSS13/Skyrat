@@ -99,6 +99,11 @@
 	switch (scanmode)
 		if (SCANMODE_HEALTH)
 			last_scan_text = healthscan(user, M, mode, advanced, tochat = readability_check)
+			// SS1984 ADDITION START
+			last_scan_title = "Analyzing results for <b>[M]</b>"
+			if(readability_check)
+				show_results(user)
+			// SS1984 ADDITION END
 			if((M.health / M.maxHealth) > CLEAN_BILL_OF_HEALTH_RATIO)
 				last_healthy_scanned = WEAKREF(M)
 			else

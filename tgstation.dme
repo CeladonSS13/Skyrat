@@ -9544,6 +9544,7 @@
 #include "modular_ss220\modules\qol_casual_1984\combat_info_desc_gun\gun.dm"
 #include "modular_ss220\modules\qol_casual_1984\combat_info_desc_gun\box_magazine.dm"
 #include "modular_ss220\modules\qol_casual_1984\extended_perk_description\species.dm"
+#include "modular_ss220\modules\qol_casual_1984\healthanalzer_ui\health_analyzer.dm"
 #include "modular_ss220\modules\ghostroles_stuff\ds2_interdyne_shared\techweb_types.dm"
 #include "modular_ss220\modules\ghostroles_stuff\ds2_interdyne_shared\machine_circuits.dm"
 #include "modular_ss220\modules\ghostroles_stuff\ds2_interdyne_shared\interdyne_ds2_rnd.dm"
