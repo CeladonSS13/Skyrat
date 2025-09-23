@@ -30,10 +30,13 @@
 	var/user_ref = href_list["user"]
 	if(!user_ref) // reference
 		return FALSE
-	var/mob/user = locate(user_ref) in GLOB.mob_list
+	var/mob/user = locate(user_ref) in GLOB.alive_mob_list
 	if (!user) // actual variable
 		return FALSE
 	winset(user, "mapwindow", "focus=true")
+
+	if(isdead(user)) // might be not necessary since GLOB.alive_mob_list, but let's keep it for safety
+		return FALSE
 
 	if(!in_range(user, src))
 		to_chat(user, span_notice("Нужно подойти ближе, чтобы нажать на кнопку."))
