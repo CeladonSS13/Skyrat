@@ -1,4 +1,4 @@
-#define MEDKIT_TOOLTIP_DELAY 4 SECONDS
+#define MEDKIT_TOOLTIP_DELAY 4 MINUTES
 
 /datum/mind
 	var/sent_loadout_tip = FALSE
@@ -29,10 +29,7 @@
 		for(var/path in loadout_list)
 			if (!path)
 				continue
-			if (ispath(path, /datum/loadout_item/pocket_items/medkit))
-				skip_tip = TRUE
-				break
-			if (ispath(path, /datum/loadout_item/pocket_items/synthetic_medkit))
+			if (ispath(path, /obj/item/storage/medkit)) // unlike loadout datums, that's for actual loadout item path! Skip if there's ANY medkit (including subtypes)
 				skip_tip = TRUE
 				break
 
