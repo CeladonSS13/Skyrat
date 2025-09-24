@@ -122,7 +122,16 @@
 "Spawn Positions" = 0
 "Total Positions" = 0
 
-#OTHERS
+# SS1984 Jobs (with custom tags)
+
+[SECURITY_MEDIC]
+"Playtime Requirements" = 0
+"Required Account Age" = 0
+"Required Character Age" = 0
+"Spawn Positions" = 1
+"Total Positions" = 1
+
+# Others
 
 [ASSISTANT]
 "Playtime Requirements" = 0
@@ -310,8 +319,8 @@
 "Playtime Requirements" = 0
 "Required Account Age" = 0
 "Required Character Age" = 0
-"Spawn Positions" = 5
-"Total Positions" = 5
+"Spawn Positions" = 8
+"Total Positions" = 8
 
 [SHAFT_MINER]
 "Playtime Requirements" = 0
