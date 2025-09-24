@@ -9,6 +9,8 @@
 	classic_keys = list("Unbound")
 	emote_key = initial(faketype.key)
 	name = faketype.name // SS1984 EDIT, original: name = initial(faketype.key)
+	if (!name) // SS1984 ADDITION
+		name = emote_key // SS1984 ADDITION
 	full_name = capitalize(name) // SS1984 EDIT, original: full_name = capitalize(initial(faketype.key))
 
 /datum/keybinding/emote/down(client/user, turf/target)
