@@ -374,10 +374,10 @@
 			Write_Memory(FALSE)
 			return INITIALIZE_HINT_QDEL
 	else if(age == record_age)
-		icon_state = "old_corgi"
-		icon_living = "old_corgi"
-		held_state = "old_corgi"
-		icon_dead = "old_corgi_dead"
+		icon_state = "corgi_old" // SS1984 EDIT, original: icon_state = "old_corgi"
+		icon_living = "corgi_old" // SS1984 EDIT, original: icon_living = "old_corgi"
+		held_state = "corgi_old" // SS1984 EDIT, original: held_state = "old_corgi"
+		icon_dead = "corgi_old_dead" // SS1984 EDIT, original: icon_dead = "old_corgi_dead"
 		desc = "At a ripe old age of [record_age], Ian's not as spry as he used to be, but he'll always be the HoP's beloved corgi." //RIP
 		ai_controller?.set_blackboard_key(BB_DOG_IS_SLOW, TRUE)
 		is_slow = TRUE
