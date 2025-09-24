@@ -53,7 +53,7 @@
 	update_appearance()
 	to_chat(user, span_notice("You start pressing a new license plate!"))
 
-	if(!do_after(user, 4 SECONDS, target = src))
+	if(!do_after(user, 4 SECONDS * speed_modifier, target = src)) // SS1984 EDIT, original: if(!do_after(user, 4 SECONDS, target = src))
 		pressing = FALSE
 		update_appearance()
 		return FALSE
