@@ -10,10 +10,10 @@
 	speed_modifier = DEFAULT_PLATE_PRESS_SPEED_MOD
 
 	for(var/datum/stock_part/matter_bin/new_matter_bin in component_parts)
-		speed_modifier -= (new_matter_bin.tier * 0.025)
+		speed_modifier -= ((new_matter_bin.tier - 1) * 0.025)
 
 	for(var/datum/stock_part/servo/new_servo in component_parts)
-		speed_modifier -= (new_servo.tier * 0.05)
+		speed_modifier -= ((new_servo.tier - 1) * 0.05)
 
 	// so tier 4 bin and tier 4 servo gives
 	// 4 * 0.025 + 4 * 0.05 = 0.3 modifier reduce
