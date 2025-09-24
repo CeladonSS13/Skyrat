@@ -122,6 +122,20 @@
 "Spawn Positions" = 0
 "Total Positions" = 0
 
+[HUMAN_AI]
+"Playtime Requirements" = 300
+"Required Account Age" = 0
+"Required Character Age" = 0
+"Spawn Positions" = 0
+"Total Positions" = 0
+
+[PUN_PUN]
+"Playtime Requirements" = 0
+"Required Account Age" = 0
+"Required Character Age" = 0
+"Spawn Positions" = 0
+"Total Positions" = 0
+
 # SS1984 Jobs (with custom tags)
 
 [SECURITY_MEDIC]
