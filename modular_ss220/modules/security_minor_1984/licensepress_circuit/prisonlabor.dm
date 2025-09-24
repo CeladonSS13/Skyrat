@@ -1,4 +1,4 @@
-#define DEFAULT_PLATE_PRESS_SPEED_MOD = 1.0
+#define DEFAULT_PLATE_PRESS_SPEED_MOD 1.0
 
 /obj/machinery/plate_press
 	circuit = /obj/item/circuitboard/machine/plate_press
