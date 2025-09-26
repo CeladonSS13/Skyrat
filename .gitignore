@@ -285,3 +285,7 @@ librust_1984.so
 
 # Ignore rust build config
 tools/build_rust_config.txt
+
+# Cached rust un-ignore
+!rust_cached/rust_1984.dll
+!rust_cached/rust_g.dll

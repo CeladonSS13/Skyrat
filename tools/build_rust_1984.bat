@@ -2,24 +2,46 @@
 
 set REPO_URL=https://github.com/skyrat1984test/rust-skyrat-1984.git
 set TARGET_DIR="%~dp0\..\RUST_REMOTE"
-set REQUIRED_FLAG_TO_SKIP_BUILD=DO_NOT_BUILD
+set REQUIRED_FLAG_TO_BUILD=BUILD_LOCAL
 
-setlocal
-setlocal enabledelayedexpansion
-
-rem Read the first line of file.txt into variable firstLine
-set "firstLine="
-for /f "usebackq delims=" %%a in ("%~dp0\build_rust_config.txt") do (
-  set "firstLine=%%a"
+set buildLocal=false
+if exist "%~dp0\build_rust_config.txt" (
+    setlocal
+    setlocal enabledelayedexpansion
+    set "firstLine="
+    for /f "usebackq delims=" %%a in ("%~dp0\build_rust_config.txt") do (
+        set "firstLine=%%a"
+    )
+    for /f "tokens=* delims= " %%x in ("!firstLine!") do set "firstLine=%%x"
+    if /i "!firstLine!"=="%REQUIRED_FLAG_TO_BUILD%" (
+        set buildLocal=true
+    )
+    endlocal
 )
-for /f "tokens=* delims= " %%x in ("!firstLine!") do set "firstLine=%%x"
 
-if /i "!firstLine!"=="%REQUIRED_FLAG_TO_SKIP_BUILD%" (
-    echo Skipping rust build. If you have troubles like PROCEDURE NOT FOUND in DM, then manually download latest rust from https://github.com/skyrat1984test/skyrat1984test/releases/tag/rust_cached or ask for update, if it's outdated
+if /i "%buildLocal%"=="false" (
+    xcopy "%~dp0\..\rust_cached\rust_1984.dll" "%~dp0\.." /Y /q
+    IF %ERRORLEVEL% NEQ 0 (
+        ECHO Failed to copy rust_1984.dll. Is file exist: rust_cached\rust_1984.dll?
+        exit 117
+    )
+    ECHO Copied rust_cached\rust_1984.dll
+
+    xcopy "%~dp0\..\rust_cached\rust_g.dll" "%~dp0\.." /Y /q
+    IF %ERRORLEVEL% NEQ 0 (
+        ECHO Failed to copy rust_g.dll. Is file exist: rust_cached\rust_g.dll?
+        exit 117
+    )
+    ECHO Copied rust_cached\rust_g.dll
+
+    echo Skipping rust build and use cached from rust_cached.
+    echo ------
+    echo If you have troubles like PROCEDURE NOT FOUND in DM, then try to build it locally by creating tools\build_rust_config with first line:
+    echo %REQUIRED_FLAG_TO_BUILD%
+    echo You can also ask to update cached version
+    echo ------
     exit /b 0
 )
-
-endlocal
 
 REM Check if folder exists (order is important)
 if exist %TARGET_DIR% (
