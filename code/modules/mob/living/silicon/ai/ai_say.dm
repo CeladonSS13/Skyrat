@@ -8,15 +8,21 @@
 	return ""
 
 /mob/living/silicon/compose_job(atom/movable/speaker, raw_message, radio_freq, namepart, obj/machinery/announcement_system/announcer, job, job_custom_name, speaker_source) //SS1984 EDIT
-	//Also includes the </a> for AI hrefs, for convenience.
+	// SS1984 REMOVAL START
+	// //Also includes the </a> for AI hrefs, for convenience.
+	// if(!HAS_TRAIT(src, TRAIT_CAN_GET_AI_TRACKING_MESSAGE))
+	// 	return ""
+	// return "[radio_freq ? " (" + speaker.GetJob() + ")" : ""]" + "[speaker.GetSource() ? "</a>" : ""]"
+	// SS1984 REMOVAL END
+	// SS1984 ADDITION START
+	var/retrieved_msg = ..()
 	if(!HAS_TRAIT(src, TRAIT_CAN_GET_AI_TRACKING_MESSAGE))
-	//SS1984 EDIT START
-		return "[namepart]" + "</a>"
-	var/retrieved_msg = ..(speaker, raw_message, radio_freq, namepart, announcer, job, job_custom_name, speaker_source)
+		return retrieved_msg
+
 	if (retrieved_msg == "[namepart]")
 		retrieved_msg += " ([speaker.GetJob()])" // smart enough to get job bypassing disabled settings at telecomms
 	return retrieved_msg + "</a>"
-	//SS1984 EDIT END
+	//SS1984 ADDITION END
 
 /mob/living/silicon/ai/try_speak(message, ignore_spam = FALSE, forced = null, filterproof = FALSE)
 	// AIs cannot speak if silent AI is on.

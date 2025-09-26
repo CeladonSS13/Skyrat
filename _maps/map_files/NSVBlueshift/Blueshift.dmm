@@ -62879,7 +62879,6 @@
 	},
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
-/obj/item/ai_module/core/full/armadyne_safeguard,
 /obj/machinery/camera/autoname/directional/north,
 /turf/open/floor/iron,
 /area/station/ai_monitored/turret_protected/ai_upload)
