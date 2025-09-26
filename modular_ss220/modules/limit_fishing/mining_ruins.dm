@@ -8,3 +8,5 @@
 	if (amount > 0)
 		fish_counts[/obj/item/fish/lavaloop] = amount
 		fish_count_regen[/obj/item/fish/lavaloop] = 1 MINUTES
+
+	..()
