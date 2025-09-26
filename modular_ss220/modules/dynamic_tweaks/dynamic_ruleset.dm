@@ -32,18 +32,24 @@
 			// example: min_enemies for tier 1 is 5, and we checking for tier 1
 			if (tier in min_enemies)
 				return min_enemies[tier]
-			// example: min_enemies for tier 1 is 5, but we checking for tier 0
-			// then it start from 0, last valid is 0
-			// once it reach tier 1, it use last valid (0)
-			var/last_valid_tier = 0
-			for (var/tier_iter in min_enemies)
+			if (tier < 1)
+				return 0 // no defined min_enemies for tier zero explicitly, so use 0
+
+			var/last_valid_tier = (0 in min_enemies) ? 0 : 1 // there could be no zero index
+			// byond indexing not from 0 to len-1 is confusing sometimes, but consider that:
+			// (E) (C) (M) min_enemies = /list (4)
+			// 1 = 3
+			// 2 = 2
+			// 3 = 2
+			// 4 = 2
+			for(var/tier_iter min_enemies)
 				if (tier_iter < tier)
 					last_valid_tier = tier_iter
 				else
 					return min_enemies[last_valid_tier]
 
 		// case when specified tier is higher than defined in min_enemies
-		return min_enemies[len - 1] // last defined tier num
+		return min_enemies[len] // last defined tier num
 
 	if (min_enemies > 0)
 		return min_enemies
