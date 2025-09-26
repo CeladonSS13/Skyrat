@@ -42,7 +42,7 @@
 			// 2 = 2
 			// 3 = 2
 			// 4 = 2
-			for(var/tier_iter min_enemies)
+			for(var/tier_iter in min_enemies)
 				if (tier_iter < tier)
 					last_valid_tier = tier_iter
 				else
