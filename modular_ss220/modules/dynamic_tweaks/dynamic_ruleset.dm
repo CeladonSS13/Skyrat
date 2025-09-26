@@ -32,18 +32,21 @@
 			// example: min_enemies for tier 1 is 5, and we checking for tier 1
 			if (tier in min_enemies)
 				return min_enemies[tier]
-			if (tier < 1)
-				return 0 // no defined min_enemies for tier zero explicitly, so use 0
 
-			var/last_valid_tier = (0 in min_enemies) ? 0 : 1 // there could be no zero index
+			// Consider we checking for tier 0 how much enemies we should have for heretics
+			// If we just return 0, then we possible get heretics in greenshifts
+			// So instead, start from the end and go until we reach target tier, then use latest that we had
+
 			// byond indexing not from 0 to len-1 is confusing sometimes, but consider that:
 			// (E) (C) (M) min_enemies = /list (4)
 			// 1 = 3
 			// 2 = 2
 			// 3 = 2
 			// 4 = 2
-			for(var/tier_iter in min_enemies)
-				if (tier_iter < tier)
+
+			var/last_valid_tier = len
+			for(var/tier_iter in len to 1 step -1)
+				if (tier_iter > tier)
 					last_valid_tier = tier_iter
 				else
 					return min_enemies[last_valid_tier]
