@@ -16,7 +16,7 @@
 	if (!living_mob || living_mob.ssd_indicator)
 		return FALSE
 	if (issilicon(living_mob))
-		return living_mob.mind.assigned_role?.faction & FACTION_STATION // are they station role? AI, cyborgs yes
+		return living_mob.mind.assigned_role?.faction == FACTION_STATION // are they station role? AI, cyborgs yes
 	var/mob/living/carbon/human/human_mob = living_mob
 	if (!human_mob)
 		return FALSE

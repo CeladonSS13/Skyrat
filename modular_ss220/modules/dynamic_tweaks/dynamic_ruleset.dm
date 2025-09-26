@@ -24,13 +24,30 @@
 /datum/dynamic_ruleset/proc/get_minimal_num_of_enemies(tier = DYNAMIC_TIER_LOW)
 	if (islist(min_enemies))
 		var/len = length(min_enemies)
+
 		if (len < 1)
 			return 0
+
 		if (tier < len)
-			return min_enemies[tier]
+			// example: min_enemies for tier 1 is 5, and we checking for tier 1
+			if (tier in min_enemies)
+				return min_enemies[tier]
+			// example: min_enemies for tier 1 is 5, but we checking for tier 0
+			// then it start from 0, last valid is 0
+			// once it reach tier 1, it use last valid (0)
+			var/last_valid_tier = 0
+			for (var/tier_iter in min_enemies)
+				if (tier_iter < tier)
+					last_valid_tier = tier_iter
+				else
+					return min_enemies[last_valid_tier]
+
+		// case when specified tier is higher than defined in min_enemies
 		return min_enemies[len - 1] // last defined tier num
+
 	if (min_enemies > 0)
 		return min_enemies
+
 	return 0
 
 /datum/dynamic_ruleset/can_be_selected()
