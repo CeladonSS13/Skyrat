@@ -2,20 +2,20 @@
 	. = ..(destination)
 
 	if (!. || !new_character)
-		return
+		return .
 
 	var/datum/mind/target_mind = new_character.mind
 
 	if (!target_mind)
-		return
+		return .
 
 	if (!src.client)
-		return
+		return .
 
 	// TIP FOR NAVIGATION BUTTON
 	var/exp_living = src.client.get_exp_living(pure_numeric = TRUE)
 	if (exp_living > 180) // 3 hours
-		return
+		return .
 
 	target_mind.try_show_navigation_tip()
 	target_mind.try_show_loadout_tip(src.client) // to not duplicating same modular code such as this, placing it here
