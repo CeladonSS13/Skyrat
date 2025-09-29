@@ -316,8 +316,8 @@ LAW_WEIGHT custom,0
 ## standard-ish laws. These are fairly ok to run
 ## Unique AI station trait uses weights so we don't want asimov
 #NOVA EDIT ADDITION BEGIN
-LAW_WEIGHT armadyne_safeguard,40
-LAW_WEIGHT dagothbot,8
+# SS1984 REMOVAL: LAW_WEIGHT armadyne_safeguard,40
+# SS1984 REMOVAL: LAW_WEIGHT dagothbot,8
 #NOVA EDIT ADDITION END
 LAW_WEIGHT asimov,5
 #LAW_WEIGHT asimovpp,5
