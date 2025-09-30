@@ -57,7 +57,7 @@
 		return null
 
 	var/list/valid_areas_types = list()
-	for (var/area_type_to_check as anything in areas_to_check_ordered)
+	for (var/area_type_to_check as anything in areas_to_check)
 		if (!(area_type_to_check in GLOB.areas_by_type))
 			continue
 
@@ -66,15 +66,17 @@
 			continue // weird, but just in case
 
 		valid_areas_types += area_type_to_check
+
 	if (!valid_areas_types || length(valid_areas_types) < 1)
 		return null
+
 	var/list/valid_chargers = list()
 	for (var/obj/machinery/recharge_station/charger in all_chargers)
 		if (charger.occupant)
 			continue
 
 		var/area/charger_area = get_area(charger)
-		if (!(charger_area.type in areas_to_check_ordered))
+		if (!(charger_area.type in valid_areas_types))
 			continue
 
 		if ((charger.machine_stat & BROKEN) || (charger.machine_stat & MAINT) || (charger.machine_stat & NOPOWER) || (charger.machine_stat & EMPED))
