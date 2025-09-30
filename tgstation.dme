@@ -9586,4 +9586,5 @@
 #include "modular_ss220\modules\nucleations\quirks\numb.dm"
 #include "modular_ss220\modules\nucleations\radium.dm"
 #include "modular_ss220\modules\limit_fishing\mining_ruins.dm"
+#include "modular_ss220\modules\cyborg_cryo_wake\cyborg.dm"
 // END_INCLUDE
