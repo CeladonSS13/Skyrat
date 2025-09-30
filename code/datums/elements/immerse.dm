@@ -269,10 +269,15 @@ GLOBAL_LIST_INIT(immerse_ignored_movable, typecacheof(list(
 /// A band-aid to keep the (unique) visual overlay from scaling and rotating along with its owner. I'm sorry.
 /datum/element/immerse/proc/on_update_transform(mob/living/source, resize, new_lying_angle, is_opposite_angle)
 	SIGNAL_HANDLER
+	// SS1984 ADDITION START
+	var/atom/movable/immerse_mask/effect_relay = generated_visual_overlays[source]
+	if (isnull(effect_relay))
+		return
+	// SS1984 ADDITION END
 	var/matrix/new_transform = matrix()
 	new_transform.Scale(1 / source.current_size)
 	new_transform.Turn(-new_lying_angle)
-	var/atom/movable/immerse_mask/effect_relay = generated_visual_overlays[source]
+	// SS1984 REMOVAL var/atom/movable/immerse_mask/effect_relay = generated_visual_overlays[source]
 	var/mutable_appearance/relay_appearance = new(effect_relay.appearance)
 	relay_appearance.transform = new_transform
 	effect_relay.appearance = relay_appearance
