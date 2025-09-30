@@ -83,7 +83,7 @@
 			continue
 
 		var/turf/charger_turf = get_turf(charger)
-		if (!charger_turf || charger_turf.is_blocked_turf(exclude_mobs = FALSE))
+		if (!charger_turf || charger_turf.is_blocked_turf(exclude_mobs = FALSE)) // actually it still considered valid if someone in turf, but that's kind of rare issue
 			continue
 
 		valid_chargers += charger
