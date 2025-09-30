@@ -40,12 +40,13 @@
 	if (!control_comp)
 		return .
 
-	var/occupant_departments_bitflags = /datum/job/cyborg::departments_bitflags
-	var/chosen_title = title
+	var/chosen_title
 	if (spawning.client && spawning.client.prefs && spawning.client.prefs.alt_job_titles)
-		chosen_title = spawning.client.prefs.alt_job_titles[title] ? title
+		chosen_title = spawning.client.prefs.alt_job_titles[title]
+	if (!chosen_title)
+		chosen_title = title
 
-	control_comp.announce("CRYO_JOIN", spawning.real_name, chosen_title, occupant_departments_bitflags)
+	control_comp.announce("CRYO_JOIN", spawning.real_name, chosen_title, /datum/job/cyborg::departments_bitflags)
 
 	return .
 
