@@ -2378,7 +2378,7 @@
 /obj/item/stack/spacecash/c1{
 	pixel_y = 5
 	},
-/obj/item/reagent_containers/cup/rag,
+/obj/item/rag,
 /turf/open/floor/iron/dark,
 /area/awaymission/black_mesa/security_outpost)
 "aEW" = (
@@ -4376,7 +4376,7 @@
 /turf/open/floor/iron/textured_large,
 /area/awaymission/black_mesa/black_ops_downstairs_atrium)
 "bLS" = (
-/obj/machinery/photocopier,
+/obj/machinery/photocopier/prebuilt,
 /turf/open/floor/iron/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
 "bMJ" = (
@@ -10183,7 +10183,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa/hecu_zone_external_hall)
 "mSA" = (
-/obj/machinery/photocopier,
+/obj/machinery/photocopier/prebuilt,
 /turf/open/floor/iron/textured,
 /area/awaymission/black_mesa/hecu_zone_atrium)
 "mSM" = (

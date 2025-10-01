@@ -30,7 +30,7 @@
 /mob/living/basic/pig
 	tts_seed = "Anubarak"
 
-/mob/living/simple_animal/hostile/retaliate/goose
+/mob/living/basic/goose
 	tts_seed = "pantheon"
 
 /mob/living/basic/pet/fox

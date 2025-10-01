@@ -15,7 +15,7 @@
 /mob/living/basic/mining/hivelord
 	tts_seed = "Ladyvashj"
 
-/mob/living/basic/legion_brood
+/mob/living/basic/mining/legion_brood
 	tts_seed = "Ladyvashj"
 
 /mob/living/basic/mining/legion

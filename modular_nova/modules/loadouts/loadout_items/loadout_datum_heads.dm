@@ -479,7 +479,7 @@
 
 /datum/loadout_item/head/maidhead2
 	name = "Maid Headband - Frilly"
-	item_path = /obj/item/clothing/head/costume/maidheadband
+	item_path = /obj/item/clothing/head/costume/maid_headband
 	group = "Costumes"
 
 /datum/loadout_item/head/maidhead2/get_item_information()
