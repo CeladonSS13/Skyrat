@@ -188,7 +188,7 @@
 	contraband = TRUE
 
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo/sakhno
-	item_type = /obj/item/ammo_box/strilka310
+	item_type = /obj/item/ammo_box/speedloader/strilka310
 	cost = PAYCHECK_CREW * 6
 
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo/lanca

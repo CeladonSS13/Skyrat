@@ -5247,8 +5247,8 @@
 	},
 /obj/item/spess_knife,
 /obj/item/gun/ballistic/rifle/boltaction,
-/obj/item/ammo_box/strilka310,
-/obj/item/ammo_box/strilka310,
+/obj/item/ammo_box/speedloader/strilka310,
+/obj/item/ammo_box/speedloader/strilka310,
 /obj/item/clothing/head/helmet/swat/nanotrasen{
 	tint = 1.5;
 	name = "\improper Degraded SWAT helmet";

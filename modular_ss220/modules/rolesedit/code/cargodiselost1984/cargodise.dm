@@ -88,10 +88,10 @@
 	new /obj/item/ammo_box/magazine/lanca(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol(src)
-	new /obj/item/ammo_box/strilka310(src)
-	new /obj/item/ammo_box/strilka310(src)
-	new /obj/item/ammo_box/strilka310(src)
-	new /obj/item/ammo_box/strilka310(src)
+	new /obj/item/ammo_box/speedloader/strilka310(src)
+	new /obj/item/ammo_box/speedloader/strilka310(src)
+	new /obj/item/ammo_box/speedloader/strilka310(src)
+	new /obj/item/ammo_box/speedloader/strilka310(src)
 
 //QM's gear locker
 /obj/structure/closet/secure_closet/personal/cabinet/freighterboss

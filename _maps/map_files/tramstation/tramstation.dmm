@@ -5954,9 +5954,9 @@
 	known_by = list("hos")
 	},
 /obj/item/gun/ballistic/revolver/mateba,
-/obj/item/ammo_box/a357,
-/obj/item/ammo_box/a357,
-/obj/item/ammo_box/a357,
+/obj/item/ammo_box/speedloader/c357,
+/obj/item/ammo_box/speedloader/c357,
+/obj/item/ammo_box/speedloader/c357,
 /obj/item/clothing/accessory/holster,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hos)
