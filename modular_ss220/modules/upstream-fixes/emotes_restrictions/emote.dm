@@ -31,8 +31,3 @@
 	if (!haswings(user))
 		return FALSE
 	return ..()
-
-/datum/emote/living/carbon/human/wing/can_run_emote(mob/user, status_check = TRUE, intentional, params)
-	if (!haswings(user)) // extra check for external wings
-		return FALSE
-	return ..()
