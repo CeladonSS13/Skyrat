@@ -31,3 +31,7 @@
 	if (!haswings(user))
 		return FALSE
 	return ..()
+
+// THIS is not needed to be overriden: /datum/emote/living/carbon/human/wing/can_run_emote
+/datum/emote/living/carbon/human/wing/select_message_type(mob/user, intentional)
+	return message
