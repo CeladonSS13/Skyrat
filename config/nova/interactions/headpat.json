@@ -4,7 +4,7 @@
 	"usage": "other",
 	"category": "Miscellaneous",
 	"distance_allowed": 0,
-	"message": ["%USER% гладит по голове %TARGET%'s!"],
+	"message": ["%USER% гладит по голове %TARGET%!"],
 	"sound_use": 0,
 	"sound_possible": [],
 	"sound_range": 7,

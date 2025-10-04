@@ -4,7 +4,7 @@
 	"usage": "other",
 	"category": "Miscellaneous",
 	"distance_allowed": 0,
-	"message": ["%USER% ударяет кулак %TARGET%'s о свой!"],
+	"message": ["%USER% ударяет кулак %TARGET% о свой!"],
 	"sound_use": 0,
 	"sound_possible": [],
 	"sound_range": 7,
