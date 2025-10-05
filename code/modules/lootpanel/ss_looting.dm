@@ -28,7 +28,11 @@ SUBSYSTEM_DEF(looting)
 	while(length(processing))
 		// SS1984 ADDITION START
 		var/datum/weakref/panel_ref = processing[length(processing)]
-		var/datum/lootpanel/panel = panel_ref.resolve()
+		var/datum/lootpanel/panel
+		if (isnull(panel_ref) || !isweakref(panel_ref))
+			panel = processing[length(processing)] // perhaps it placed not weakref somehow by upstreams
+		else
+			panel = panel_ref.resolve()
 		if (isnull(panel_ref))
 			processing.len--
 			continue
