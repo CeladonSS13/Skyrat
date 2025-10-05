@@ -9410,6 +9410,7 @@
 #include "modular_ss220\modules\rolesedit\code\jobs\misc.dm"
 #include "modular_ss220\modules\rolesedit\code\jobs\command.dm"
 #include "modular_ss220\modules\rolesedit\code\jobs\blueshield.dm"
+#include "modular_ss220\modules\rolesedit\code\jobs\chief_engineer.dm"
 #include "modular_ss220\modules\rolesedit\code\old_station\oldstation.dm"
 #include "modular_ss220\modules\rolesedit\code\cargodiselost1984\cargodise.dm"
 #include "modular_ss220\modules\shutdown\shutdown_config.dm"
