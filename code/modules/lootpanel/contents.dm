@@ -38,7 +38,7 @@
 	window?.send_update()
 
 	if(length(to_image))
-		SSlooting.backlog += src
+		SSlooting.backlog += WEAKREF(src) // SS1984 EDIT, original: SSlooting.backlog += src
 
 
 /// For: Resetting to empty. Ignores the searchable qdel event

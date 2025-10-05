@@ -26,13 +26,20 @@ SUBSYSTEM_DEF(looting)
 		backlog = list()
 
 	while(length(processing))
-		var/datum/lootpanel/panel = processing[length(processing)]
+		// SS1984 ADDITION START
+		var/datum/weakref/panel_ref = processing[length(processing)]
+		var/datum/lootpanel/panel = panel_ref.resolve()
+		if (isnull(panel_ref))
+			processing.len--
+			continue
+		// SS1984 ADDITION END
+		// SS1984 REMOVAL var/datum/lootpanel/panel = processing[length(processing)]
 		if(QDELETED(panel) || !length(panel.to_image))
 			processing.len--
 			continue
 
 		if(!panel.process_images())
-			backlog += panel
+			backlog += panel_ref // SS1984 EDIT, original: backlog += panel
 
 		if(MC_TICK_CHECK)
 			return
