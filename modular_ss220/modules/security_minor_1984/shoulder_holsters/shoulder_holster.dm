@@ -10,6 +10,7 @@
 	var/obj/item/gun/holstered = null
 	actions_types = list(/datum/action/item_action/accessory/holster)
 	w_class = WEIGHT_CLASS_NORMAL // so it doesn't fit in pockets
+	minimize_when_attached = FALSE
 
 /obj/item/clothing/accessory/holster/Destroy()
 	if(holstered?.loc == src) // Gun still in the holster
