@@ -1,3 +1,5 @@
+#define EDGE_OVERLAY_COLOR "#4f4f4f"
+
 /obj/structure/window/fulltile/frame
 	name = "DONT USE THIS"
 	icon = 'modular_ss220/modules/nanomaps/icons/window_edges.dmi'
