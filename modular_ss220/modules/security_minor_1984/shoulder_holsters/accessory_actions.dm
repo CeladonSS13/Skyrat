@@ -1,8 +1,9 @@
-// for clothing accessories like holsters
-/datum/action/item_action/accessory
-	check_flags = AB_CHECK_INCAPACITATED|AB_CHECK_CONSCIOUS
+/datum/action/item_action/accessory/holster
+	name = "Holster"
+	button_icon = 'icons/obj/clothing/accessories.dmi'
+	button_icon_state = "holster"
 
-/datum/action/item_action/accessory/IsAvailable(feedback = FALSE)
+/datum/action/item_action/accessory/holster/IsAvailable(feedback = FALSE)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -14,6 +15,3 @@
 	if(istype(item_target.loc, /obj/item/clothing/under) && item_target.loc.loc == owner)
 		return TRUE
 	return FALSE
-
-/datum/action/item_action/accessory/holster
-	name = "Holster"
