@@ -10,7 +10,7 @@
 	if(!length(map_ui_data))
 		var/list/station_z_levels = levels_by_trait(ZTRAIT_STATION)
 		var/min_station_z_level = station_z_levels[1]
-		var/main_station_z_level = isnull(current_map.main_floor) ? min_station_z_level : min_station_z_level + current_map.main_floor - 1
+		var/main_station_z_level = min_station_z_level
 		var/max_station_z_level = station_z_levels[length(station_z_levels)]
 
 		var/list/mining_levels = levels_by_trait(ZTRAIT_MINING)
