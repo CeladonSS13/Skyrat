@@ -109,12 +109,17 @@
 		return
 
 	var/turf/T = get_turf(nucleation)
-
 	nucleation.visible_message(span_warning("[nucleation]'s body explodes, leaving behind a pile of microscopic crystals!"))
 	nucleation.ghostize(FALSE) //So we don't throw an alert for deleting a mob with a key inside. Also allows to hear explosion properly
 
 	explosion(T, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 2, flame_range = 0, flash_range = 2) // Create a small explosion burst upon death
-	qdel(nucleation) // qdel should be last, because it's not immediate and if placing explosion after it, it could runtime somewhere in middle of some proc
+	qdel(nucleation) // qdel should go last
+	// THERE most likely will be runtimes, since qdel is not instant, this one are 100% safe to ignore in this case, otherwise rewrite how qdel works
+	// code/modules/mob/living/carbon/carbon.dm, line 431: Cannot read null.max_damage
+	// code/modules/mob/living/carbon/damage_procs.dm, line 23: list index out of bounds
+	// code/_onclick/item_attack.dm, line 399: list index out of bounds
+	// code/modules/forensics/_forensics.dm, line 140: Cannot read null.unique_identity
+	// ... and perhaps some other runtimes would be caused by that qdel, yet they not break anything since we qdel it anyway
 
 /datum/species/nucleation/get_physical_attributes()
 	return "The supermatter crystals produce oxygen, \
