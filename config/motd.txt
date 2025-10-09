@@ -16,6 +16,6 @@
 </p>
 
 <p><b>Для подключения адрес сервера: </b>89.169.0.84:7731</p>
-<b>Discord:</b> <a href="https://discord.gg/ss1984">https://discord.gg/ss1984</a>
+<b>Discord:</b> <a href="http://discord.ss220.space">http://discord.ss220.space</a>
 <br>
 <b>Github:</b> <a href="https://github.com/skyrat1984test/skyrat1984test">https://github.com/skyrat1984test/skyrat1984test</a>

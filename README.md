@@ -10,7 +10,7 @@
 | Upstream (Novasector)   | [https://github.com/NovaSector/NovaSector](https://github.com/NovaSector/NovaSector)                                                   |
 | Wiki                    | [https://skyrat.ss220.space/index.php](https://skyrat.ss220.space/index.php)                                                           |
 | Codedocs                | [https://NovaSector.github.io/NovaSector/](https://NovaSector.github.io/NovaSector/)                                                   |
-| SS1984 Discord          | [https://discord.gg/ss1984](https://discord.gg/ss1984)                                                                                 |
+| SS1984 Discord          | [http://discord.ss220.space](http://discord.ss220.space)                                                                                 |
 | Coderbus Discord        | [https://discord.gg/Vh8TJp9](https://discord.gg/Vh8TJp9)                                                                               |
 
 Space Station 13 is a paranoia-laden round-based roleplaying game set against the backdrop of a nonsensical, metal death trap masquerading as a space station, with charming spritework designed to represent the sci-fi setting and its dangerous undertones. Have fun, and survive!
