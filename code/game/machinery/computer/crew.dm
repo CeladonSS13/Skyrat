@@ -181,7 +181,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 /datum/crewmonitor/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "CrewConsoleNova") // NOVA EDIT CHANGE - ORIGINAL: ui = new(user, src, "CrewConsole")
+		ui = new(user, src, "CrewConsole1984") // SS1984 EDIT, ORIGINAL: ui = new(user, src, "CrewConsole")
 		ui.open()
 
 /datum/crewmonitor/proc/show(mob/M, source)

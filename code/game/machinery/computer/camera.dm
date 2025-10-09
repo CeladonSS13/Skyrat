@@ -65,6 +65,7 @@
 		// Open UI
 		ui = new(user, src, "CameraConsole1984", name) // SS1984 EDIT, original: ui = new(user, src, "CameraConsole", name)
 		ui.open()
+		ui.set_autoupdate(FALSE) // SS1984 ADDITION
 		// Register map objects
 		cam_screen.display_to(user, ui.window)
 

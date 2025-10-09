@@ -9609,4 +9609,8 @@
 #include "modular_ss220\modules\nucleations\radium.dm"
 #include "modular_ss220\modules\limit_fishing\mining_ruins.dm"
 #include "modular_ss220\modules\cyborg_cryo_wake\cyborg.dm"
+#include "modular_ss220\modules\nanomaps\camera_console.dm"
+#include "modular_ss220\modules\nanomaps\crew_monitor.dm"
+#include "modular_ss220\modules\nanomaps\nanomap_assets.dm"
+#include "modular_ss220\modules\nanomaps\nanomap_datum.dm"
 // END_INCLUDE
