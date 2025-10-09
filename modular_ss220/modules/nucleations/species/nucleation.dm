@@ -111,10 +111,10 @@
 	var/turf/T = get_turf(nucleation)
 
 	nucleation.visible_message(span_warning("[nucleation]'s body explodes, leaving behind a pile of microscopic crystals!"))
-	nucleation.ghostize(FALSE) //So we don't throw an alert for deleting a mob with a key inside.
+	nucleation.ghostize(FALSE) //So we don't throw an alert for deleting a mob with a key inside. Also allows to hear explosion properly
 
-	qdel(nucleation) // deleting before explosion, so ghosted nucleation can hear explosion
 	explosion(T, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 2, flame_range = 0, flash_range = 2) // Create a small explosion burst upon death
+	qdel(nucleation) // qdel should be last, because it's not immediate and if placing explosion after it, it could runtime somewhere in middle of some proc
 
 /datum/species/nucleation/get_physical_attributes()
 	return "The supermatter crystals produce oxygen, \
