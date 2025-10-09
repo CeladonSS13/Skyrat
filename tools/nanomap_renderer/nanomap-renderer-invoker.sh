@@ -7,14 +7,14 @@ tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_fil
 tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/tramstation/tramstation.dmm"
 tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/Mining/Lavaland.dmm"
 # Nova-related maps
-tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "/_maps/map_files/CatwalkStation/CatwalkStation_2023.dmm"
-tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "/_maps/map_files/NebulaStation/NebulaStation.dmm"
-tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "/_maps/map_files/NSVBlueshift/Blueshift.dmm"
-tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "/_maps/map_files/Ouroboros/Ouroboros.dmm"
-tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "/_maps/map_files/SerenityStation/SerenityStation.dmm"
-tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "/_maps/map_files/Snowglobe/snowglobe.dmm"
-tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "/_maps/map_files/VoidRaptor/VoidRaptor.dmm"
-tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "/_maps/map_files/wawastation/wawastation.dmm"
+tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/CatwalkStation/CatwalkStation_2023.dmm"
+tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/NebulaStation/NebulaStation.dmm"
+tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/NSVBlueshift/Blueshift.dmm"
+tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/Ouroboros/Ouroboros.dmm"
+tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/SerenityStation/SerenityStation.dmm"
+tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/Snowglobe/snowglobe.dmm"
+tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/VoidRaptor/VoidRaptor.dmm"
+tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/wawastation/wawastation.dmm"
 # Move and rename files so the game understands them (filename => map name in _maps .json files, in case they different)
 # TG-related (stage 1)
 cd "data/nanomaps"

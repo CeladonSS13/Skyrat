@@ -36,6 +36,7 @@ jobs:
           git config --local user.name "1984-ci-event[bot]"
           git config --local user.email "1283078+1984-ci-event[bot]@users.noreply.github.com"
           git pull origin master
+          git add icons/_nanomaps
           git commit -m "NanoMap Update" -a || true
           git push -f -u origin nanomap-render
           result=$(gh pr create -t "Automatic NanoMap Update" -b "Review the diff images before merging." -l "NanoMaps" -H "nanomap-render" -B "master") || true
