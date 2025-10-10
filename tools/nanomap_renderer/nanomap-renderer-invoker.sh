@@ -1,5 +1,7 @@
 #!/bin/bash
 set -e
+# mkdir
+mkdir -p "icons/_nanomaps"
 # TG maps
 tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/Deltastation/DeltaStation2.dmm"
 tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/IceBoxStation/IceBoxStation.dmm"
