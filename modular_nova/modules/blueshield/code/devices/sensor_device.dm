@@ -4,5 +4,7 @@
 	icon = 'modular_nova/modules/blueshield/icons/device.dmi'
 	icon_state = "blueshield_scanner"
 
-/obj/item/sensor_device/blueshield/attack_self(mob/user)
-	GLOB.blueshield_crewmonitor.show(user,src)
+// SS1984 REMOVAL START
+// /obj/item/sensor_device/blueshield/attack_self(mob/user)
+// 	GLOB.blueshield_crewmonitor.show(user,src)
+// SS1984 REMOVAL END
