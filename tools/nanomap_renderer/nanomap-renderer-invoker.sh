@@ -20,10 +20,10 @@ tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_fil
 # Move and rename files so the game understands them (filename => map name in _maps .json files, in case they different)
 # TG-related (stage 1)
 cd "data/nanomaps"
-echo "At..."
-pwd
-echo "Files:"
-ls
+# echo "At..."
+# pwd
+# echo "Files:"
+# ls
 mv "DeltaStation2_nanomap_z1.png" "Delta Station_nanomap_z1.png"
 mv "IceBoxStation_nanomap_z1.png" "Ice Box Station_nanomap_z1.png"
 mv "IceBoxStation_nanomap_z2.png" "Ice Box Station_nanomap_z2.png"
@@ -41,8 +41,8 @@ mv "wawastation_nanomap_z1.png" "Wawastation_nanomap_z1.png"
 mv "wawastation_nanomap_z2.png" "Wawastation_nanomap_z2.png"
 # TG-related (stage 2)
 cd "../../"
-echo "Moving to..."
-pwd
+# echo "Moving to..."
+# pwd
 cp "data/nanomaps/Delta Station_nanomap_z1.png" "icons/_nanomaps"
 cp "data/nanomaps/Ice Box Station_nanomap_z1.png" "icons/_nanomaps"
 cp "data/nanomaps/Ice Box Station_nanomap_z2.png" "icons/_nanomaps"
@@ -60,10 +60,10 @@ cp "data/nanomaps/Snowglobe Station_nanomap_z3.png" "icons/_nanomaps"
 cp "data/nanomaps/Void Raptor_nanomap_z1.png" "icons/_nanomaps"
 cp "data/nanomaps/Wawastation_nanomap_z1.png" "icons/_nanomaps"
 cp "data/nanomaps/Wawastation_nanomap_z2.png" "icons/_nanomaps"
-# Debug stuff
-cd "icons/_nanomaps"
-echo "At..."
-pwd
-echo "Files:"
-ls
-cd "../../" # jump back
+# # Debug stuff
+# cd "icons/_nanomaps"
+# echo "At..."
+# pwd
+# echo "Files:"
+# ls
+# cd "../../" # jump back
