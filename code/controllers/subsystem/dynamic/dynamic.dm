@@ -444,6 +444,7 @@ SUBSYSTEM_DEF(dynamic)
 		CRASH("force_run_midround() was called with an invalid midround type: [midround_typepath]")
 
 	var/datum/dynamic_ruleset/midround/running = new midround_typepath(dynamic_config)
+	running.can_always_be_selected = TRUE // SS1984 ADDITION
 	if(isnum(forced_max_cap) && forced_max_cap > 0)
 		running.min_antag_cap = min(forced_max_cap, running.min_antag_cap)
 		running.max_antag_cap = forced_max_cap

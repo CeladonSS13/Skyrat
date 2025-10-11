@@ -126,6 +126,12 @@ ADMIN_VERB(dynamic_panel, R_ADMIN, "Dynamic Panel", "Mess with dynamic.", ADMIN_
 			if(!ruleset_path)
 				return
 			SSdynamic.queue_ruleset(ruleset_path)
+			// SS1984 ADDITION START
+			if (islist(SSdynamic.queued_rulesets) && SSdynamic.queued_rulesets.len > 0)
+				var/datum/dynamic_ruleset/ruleset_instance = SSdynamic.queued_rulesets[SSdynamic.queued_rulesets.len]
+				if (ruleset_instance)
+					ruleset_instance.can_always_be_selected = TRUE
+			// SS1984 ADDITION END
 			message_admins("[key_name_admin(ui.user)] added [initial(ruleset_path.config_tag)] to the dynamic ruleset queue.")
 			log_admin("[key_name_admin(ui.user)] added [initial(ruleset_path.config_tag)] to the dynamic ruleset queue.")
 			return TRUE

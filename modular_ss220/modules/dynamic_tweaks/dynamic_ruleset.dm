@@ -20,6 +20,7 @@
 		JOB_BLUESHIELD,
 		JOB_NT_REP,
 	)
+	var/can_always_be_selected = FALSE // used primary for admin-forced, basically just skips entirely proc: can_be_selected()
 
 /datum/dynamic_ruleset/proc/get_minimal_num_of_enemies(tier = DYNAMIC_TIER_LOW)
 	if (islist(min_enemies))
@@ -60,6 +61,8 @@
 	return 0
 
 /datum/dynamic_ruleset/can_be_selected()
+	if (can_always_be_selected)
+		return TRUE
 	. = ..()
 	if (!.)
 		return .
