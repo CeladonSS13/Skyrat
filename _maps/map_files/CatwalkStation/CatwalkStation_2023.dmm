@@ -59086,7 +59086,7 @@
 "qTt" = (
 /obj/machinery/firealarm/directional/east,
 /obj/machinery/camera/autoname/directional/south,
-/obj/structure/closet/secure_closet/security/engine,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
 	},

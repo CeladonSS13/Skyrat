@@ -56272,7 +56272,7 @@
 /area/station/cargo/storage)
 "tqr" = (
 /obj/effect/turf_decal/tile/red/fourcorners,
-/obj/structure/closet/secure_closet/security/cargo,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/supply)

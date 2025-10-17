@@ -63006,7 +63006,7 @@
 	dir = 5
 	},
 /obj/structure/sign/clock/directional/north,
-/obj/structure/closet/secure_closet/security/engine,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/item/clothing/mask/whistle,
 /turf/open/floor/iron,
 /area/station/security/checkpoint/engineering)

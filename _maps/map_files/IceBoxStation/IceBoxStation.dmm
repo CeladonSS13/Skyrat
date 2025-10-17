@@ -84773,7 +84773,7 @@
 	pixel_y = -24;
 	pixel_x = -2
 	},
-/obj/structure/closet/secure_closet/security/cargo,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 8
 	},
