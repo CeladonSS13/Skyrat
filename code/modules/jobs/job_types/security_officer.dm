@@ -64,7 +64,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	. = ..()
 	// SS1984 REMOVE NOVA's REMOVAL
 	if(ishuman(spawning))
-		setup_department(spawning, player_client, move_to = FALSE)
+		setup_department(spawning, player_client, move_to = TRUE)
 
 
 /datum/job/security_officer/after_latejoin_spawn(mob/living/spawning)
