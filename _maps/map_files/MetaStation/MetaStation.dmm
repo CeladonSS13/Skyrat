@@ -294,11 +294,6 @@
 /mob/living/simple_animal/bot/secbot/beepsky/armsky,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
-"agd" = (
-/obj/effect/turf_decal/tile/red/fourcorners,
-/obj/structure/closet/secure_closet/security/sec,
-/turf/open/floor/iron/dark,
-/area/station/security/checkpoint/supply)
 "agi" = (
 /obj/effect/spawner/random/maintenance,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -997,18 +992,6 @@
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hos)
-"asT" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/autolathe,
-/obj/machinery/door/window/left/directional/east{
-	name = "Cargo Autolathe";
-	req_access = list("cargo")
-	},
-/turf/open/floor/iron,
-/area/station/cargo/lobby)
 "atf" = (
 /obj/structure/table/glass,
 /obj/machinery/power/apc/auto_name/directional/north,
@@ -58790,7 +58773,7 @@
 /turf/open/floor/carpet,
 /area/station/service/theater)
 "uii" = (
-/obj/effect/spawner/structure/window,
+/obj/machinery/autolathe,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -58799,7 +58782,13 @@
 	name = "Cargo Lockdown Shutters";
 	id = "cargolockdown"
 	},
-/turf/open/floor/plating,
+/obj/structure/window/reinforced/tinted/spawner/directional,
+/obj/structure/window/reinforced/tinted/spawner/directional/north,
+/obj/machinery/door/window/left/directional/east{
+	name = "Cargo Autolathe";
+	req_access = list("cargo")
+	},
+/turf/open/floor/iron,
 /area/station/cargo/lobby)
 "uiw" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -59840,6 +59829,14 @@
 /obj/item/stamp{
 	pixel_x = -9;
 	pixel_y = -1
+	},
+/obj/item/stack/sheet/glass/fifty{
+	pixel_x = -2;
+	pixel_y = 16
+	},
+/obj/item/stack/sheet/iron/fifty{
+	pixel_x = -8;
+	pixel_y = 16
 	},
 /turf/open/floor/catwalk_floor/iron,
 /area/station/cargo/storage)
