@@ -9507,6 +9507,7 @@
 #include "modular_ss220\modules\balance-1984\hunterslug\shotgun.dm"
 #include "modular_ss220\modules\balance-1984\greandes_projectiles\grenade.dm"
 #include "modular_ss220\modules\balance-1984\advanced_egun_taser\energy_gun.dm"
+#include "modular_ss220\modules\balance-1984\no_ion_delay\special.dm"
 #include "modular_ss220\modules\sol_pistol_incapacitator\magazines.dm"
 #include "modular_ss220\modules\sol_pistol_incapacitator\pistol.dm"
 #include "modular_ss220\modules\security_vouchers\closets\secure\security.dm"
