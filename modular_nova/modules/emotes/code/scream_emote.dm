@@ -1,6 +1,6 @@
 /datum/emote/living/scream
 	vary = TRUE
-	mob_type_blacklist_typecache = list(/mob/living/carbon/human, /mob/living/basic/slime, /mob/living/brain) //Humans get specialized scream.
+	// SS1984 REMOVAL, non modular so upstream most likely will fix and override it as well: mob_type_blacklist_typecache = list(/mob/living/carbon/human, /mob/living/basic/slime, /mob/living/brain) //Humans get specialized scream.
 
 /datum/emote/living/scream/get_sound(mob/living/user)
 	if(issilicon(user))
