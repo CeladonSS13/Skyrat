@@ -88,6 +88,7 @@
 	payload_string = replacetext(payload_string, "\[Mentor\]", "\[<font color='#67761e'>Ментор</font>\]")
 	payload_string = replacetext(payload_string, "\[Head Developer\]", "\[<font color='#2ecc71'>Главный Разработчик</font>\]")
 	payload_string = replacetext(payload_string, "\[Developer\]",	"\[<font color='#2ecc71'>Разработчик</font>\]")
+	payload_string = replacetext(payload_string, "\[Eventologist\]",	"\[<font color='#0000FF'>Ивентолог</font>\]")
 	// SS1984 EDIT END
 
 	lines += payload_string
