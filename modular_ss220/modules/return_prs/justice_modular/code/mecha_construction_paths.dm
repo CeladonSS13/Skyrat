@@ -13,7 +13,7 @@
 	)
 	icon_for_spawn_result = 'modular_ss220/modules/return_prs/justice_modular/icons/mech_construction.dmi'
 
-/datum/component/construction/unordered/mecha_chassis/update_parent()
+/datum/component/construction/unordered/mecha_chassis/justice/update_parent()
 	var/atom/parent_atom = parent
 	if (parent_atom)
 		parent_atom.icon = 'modular_ss220/modules/return_prs/justice_modular/icons/mech_construct.dmi'
