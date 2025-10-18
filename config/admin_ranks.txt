@@ -68,3 +68,8 @@ Name = Host
 Include = EVERYTHING
 Exclude =
 Edit = EVERYTHING
+
+Name = Eventologist
+Include = BUILDMODE BUILD ADMIN FUN SERVER POSSESS POLL VAREDIT SOUND SPAWN AUTOLOGIN
+Exclude =
+Edit =
