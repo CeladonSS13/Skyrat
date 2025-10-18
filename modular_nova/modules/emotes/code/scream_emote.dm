@@ -18,6 +18,7 @@
 		return 'sound/mobs/non-humanoids/gorilla/gorilla.ogg'
 	if(isalien(user))
 		return 'sound/mobs/non-humanoids/hiss/hiss6.ogg'
+	return ..() // SS1984 ADDITION
 
 /datum/emote/living/scream/can_run_emote(mob/living/user, status_check, intentional, params)
 	if(iscyborg(user))
