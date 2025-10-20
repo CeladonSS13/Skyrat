@@ -234,6 +234,8 @@
 		/datum/job_department/central_command,
 		/datum/job_department/command,
 	)
+	mind_traits = list(SECURITY_MIND_TRAITS, TRAIT_FAST_TYING)
+	voice_of_god_power = 1.2 //Technically a private screamer, "Make way for the captain!"
 	liver_traits = list(TRAIT_PRETENDER_ROYAL_METABOLISM)
 
 	family_heirlooms = list(/obj/item/bedsheet/captain, /obj/item/clothing/head/beret/blueshield)
