@@ -1,4 +1,4 @@
-#define ELECTROCUTE_IMMUNITY_TIME 1 SECONDS
+#define ELECTROCUTE_IMMUNITY_TIME 2 SECONDS
 
 /mob/living
 	var/last_electrocute_time = 0
