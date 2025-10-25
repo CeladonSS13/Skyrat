@@ -122,7 +122,7 @@
 			continue
 		if (!human_mob.mind || !human_mob.mind.assigned_role)
 			continue
-		if (!("[human_mob.mind.assigned_role.type]" in enemy_roles))
+		if (!("[human_mob.mind.assigned_role.title]" in enemy_roles))
 			continue
 		valid_enemy += human_mob
 	return valid_enemy
