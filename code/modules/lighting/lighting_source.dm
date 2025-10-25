@@ -96,7 +96,8 @@ GLOBAL_LIST_EMPTY(lighting_sheets)
 		return FALSE
 
 	LAZYADD(new_atom_host.light_sources, src)
-	if(ismovable(new_atom_host) && new_atom_host == source_atom)
+	//yes, we register the signal to the top atom too, this is intentional and ensures contained lighting updates properly
+	if(ismovable(new_atom_host))
 		RegisterSignal(new_atom_host, COMSIG_MOVABLE_MOVED, PROC_REF(update_host_lights))
 	RegisterSignal(new_atom_host, COMSIG_TURF_NO_LONGER_BLOCK_LIGHT, PROC_REF(force_update))
 	return TRUE
@@ -107,7 +108,7 @@ GLOBAL_LIST_EMPTY(lighting_sheets)
 		return FALSE
 
 	LAZYREMOVE(old_atom_host.light_sources, src)
-	if(ismovable(old_atom_host) && old_atom_host == source_atom)
+	if(ismovable(old_atom_host))
 		UnregisterSignal(old_atom_host, COMSIG_MOVABLE_MOVED)
 	UnregisterSignal(old_atom_host, COMSIG_TURF_NO_LONGER_BLOCK_LIGHT)
 	return TRUE
