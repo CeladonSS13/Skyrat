@@ -107,7 +107,7 @@ export const CargoImportConsole = (props) => {
             </Stack.Item>
             <Divider vertical />
             <Stack.Item width="20%">
-              <Section title="Selected Item">
+              <Section title="Selected Item" scrollable fill height="480px"> { /* SS1984 EDIT, original: <Section title="Selected Item"> */}
                 {armaments_list.map((armament_category) =>
                   armament_category.subcategories.map((subcat) =>
                     subcat.items.map(
@@ -125,7 +125,14 @@ export const CargoImportConsole = (props) => {
                                 }}
                               />
                             </Stack.Item>
-                            <Stack.Item>{item.description}</Stack.Item>
+                            { /* SS1984 REMOVAL <Stack.Item>{item.description}</Stack.Item> */}
+                            { /* SS1984 ADDITION START */ }
+                            <Stack.Item>
+                              {/* <Section scrollable fill> */}
+                              {item.description}
+                              {/* </Section> */}
+                            </Stack.Item>
+                            { /* SS1984 ADDITION END */ }
                             {!!cant_buy_restricted && !!item.restricted && (
                               <Stack.Item textColor={'red'}>
                                 {'You need a weapon permit to buy this item!'}
