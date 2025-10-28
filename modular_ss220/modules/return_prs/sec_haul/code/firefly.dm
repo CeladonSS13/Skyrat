@@ -37,7 +37,7 @@
 	icon_state = "pdh_lethal"
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly/hp
-	icon_state = "pdh-hp"
+	icon_state = "pdh_hp"
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber
