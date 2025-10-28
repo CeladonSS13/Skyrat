@@ -125,14 +125,7 @@ export const CargoImportConsole = (props) => {
                                 }}
                               />
                             </Stack.Item>
-                            { /* SS1984 REMOVAL <Stack.Item>{item.description}</Stack.Item> */}
-                            { /* SS1984 ADDITION START */ }
-                            <Stack.Item>
-                              {/* <Section scrollable fill> */}
-                              {item.description}
-                              {/* </Section> */}
-                            </Stack.Item>
-                            { /* SS1984 ADDITION END */ }
+                            <Stack.Item>{item.description}</Stack.Item>
                             {!!cant_buy_restricted && !!item.restricted && (
                               <Stack.Item textColor={'red'}>
                                 {'You need a weapon permit to buy this item!'}
