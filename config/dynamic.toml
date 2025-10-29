@@ -278,7 +278,10 @@ min_enemies.3 = 2
 # same for higher tiers
 
 ["Midround Clownops"]
-weight = 0
+weight.1 = 0
+weight.2 = 1
+weight.3 = 3
+weight.4 = 3
 min_pop = 30
 blacklisted_roles = []
 min_antag_cap.denominator = 18
@@ -484,7 +487,8 @@ minimum_required_age = 0
 min_enemies = 1
 
 ["Cortical Borers"]
-weight = 3
+# weight = 3
+weight = 0 # until fixed
 min_pop = 1
 blacklisted_roles = []
 min_antag_cap = 1
@@ -696,7 +700,10 @@ repeatable = 0
 minimum_required_age = 0
 
 ["Roundstart Clownops"]
-weight = 0
+weight.1 = 0
+weight.2 = 1
+weight.3 = 3
+weight.4 = 3
 min_pop = 30
 blacklisted_roles = []
 min_antag_cap.denominator = 18
