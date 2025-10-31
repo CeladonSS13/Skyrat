@@ -9549,6 +9549,7 @@
 #include "modular_ss220\modules\balance-1984\no_ion_delay\special.dm"
 #include "modular_ss220\modules\balance-1984\electrocute_cooldown\living_defense.dm"
 #include "modular_ss220\modules\balance-1984\normal_c38_damage\projectiles.dm"
+#include "modular_ss220\modules\balance-1984\battlerifle_tg\automatic.dm"
 #include "modular_ss220\modules\sol_pistol_incapacitator\magazines.dm"
 #include "modular_ss220\modules\sol_pistol_incapacitator\pistol.dm"
 #include "modular_ss220\modules\security_vouchers\code\closets\secure\security.dm"
