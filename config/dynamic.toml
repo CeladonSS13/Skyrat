@@ -487,9 +487,8 @@ minimum_required_age = 0
 min_enemies = 1
 
 ["Cortical Borers"]
-# weight = 3
-weight = 0 # until fixed
-min_pop = 1
+weight = 3
+min_pop = 5
 blacklisted_roles = []
 min_antag_cap = 1
 # max_antag_cap = min_antag_cap

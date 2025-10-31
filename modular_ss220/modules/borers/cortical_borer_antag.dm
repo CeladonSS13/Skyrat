@@ -12,9 +12,29 @@
 	max_antag_cap = 3
 	min_antag_cap = 1
 	repeatable_weight_decrease = 3
+	var/datum/weakref/first_vent_ref // harddel paranoid
 
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/can_be_selected()
-	return ..() && length(find_vents()) > 0
+	if (!..())
+		return FALSE
+
+	var/list/vent_list = find_vents()
+	if (!vent_list || length(vent_list) < 1)
+		return FALSE
+
+	first_vent_ref = WEAKREF(vent_list[1])
+	return TRUE
+
+/datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/create_ruleset_body()
+	var/loc_to_place
+	if (first_vent_ref)
+		var/obj/machinery/atmospherics/components/unary/vent_pump = first_vent_ref.resolve()
+		if (vent_pump)
+			loc_to_place = vent_pump.loc
+	else
+		first_vent_ref = null
+
+	return new /mob/living/basic/cortical_borer(loc_to_place) // so we place them temporaly here before to avoid runtimes related to nullspace
 
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/execute()
 	. = ..()
