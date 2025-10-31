@@ -57,7 +57,8 @@
 		spawned_human?.equip_outfit_and_loadout(outfit, spawned_mob.client.prefs, FALSE, null, allow_mechanical_loadout_items)
 	else if (!isnull(spawned_human))
 		equip(spawned_human)
-	after_create_nova(spawned_human) // SS1984 ADDITION
+	if (!isnull(spawned_mob)) // SS1984 ADDITION
+		after_create_nova(spawned_mob) // SS1984 ADDITION
 	return spawned_mob
 
 /// This edit would cause somewhat ugly diffs, so I'm just replacing it.
