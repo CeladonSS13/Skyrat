@@ -2,6 +2,10 @@
 	. = ..()
 	forge_objectives()
 
+/datum/antagonist/cortical_borer/greet()
+	. = ..()
+	owner.announce_objectives()
+
 /datum/antagonist/cortical_borer/forge_objectives()
 	var/datum/objective/borer_egg/objective_1 = new
 	var/datum/objective/borer_hosts/objective_2 = new
