@@ -609,7 +609,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
 	var/alt_name = get_spawner_outfit_name()
 	alt_name = alt_name ? alt_name : name
 	GLOB.ghost_records.Add(list(list("name" = spawned_mob.real_name, "rank" = alt_name)))
-	if(control_computer)
+	if(control_computer && ishuman(spawned_mob)) // SS1984 EDIT, original: if(control_computer)
 		// Due ghost often have only channel, I decide to not send awakening message if we sending head announcement
 		var/datum/job/ghost_job = SSjob.get_job_type(spawner_job_path)
 		if (ghost_job.head_announce)
