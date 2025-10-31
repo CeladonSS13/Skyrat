@@ -9695,4 +9695,5 @@
 #include "modular_ss220\modules\nanomaps\crew_monitor.dm"
 #include "modular_ss220\modules\nanomaps\nanomap_assets.dm"
 #include "modular_ss220\modules\nanomaps\nanomap_datum.dm"
+#include "modular_ss220\modules\borers\cortical_borer_antag.dm"
 // END_INCLUDE

@@ -98,7 +98,7 @@
 	min_pop = 50
 	repeatable = TRUE
 	/// List of on-station vents
-	var/list/vents = list()
+	// SS1984 REMOVAL var/list/vents = list()
 
 // Ripped from xenomorph ruleset
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/proc/find_vents()
