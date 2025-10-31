@@ -554,7 +554,7 @@
 	// the initial setup of this var, it will be updated in damage_stamina() as needed
 	if(isnull(current_minimum_stamina_damage))
 		var/clamped_degradation = clamp((current_degradation - stamina_damage_minimum_degradation), 0, stamina_damage_max_degradation)
-		var/percent_to_max = min((clamped_degradation / stamina_damage_max_degradation), 1)
+		var/percent_to_max = stamina_damage_max_degradation > 0 ? min((clamped_degradation / stamina_damage_max_degradation), 1) : 0 // SS1984 EDIT, original: var/percent_to_max = min((clamped_degradation / stamina_damage_max_degradation), 1)
 		current_minimum_stamina_damage = max_stamina_damage * percent_to_max
 
 	update_effects()
