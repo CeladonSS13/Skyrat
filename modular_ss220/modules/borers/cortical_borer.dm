@@ -1,6 +1,6 @@
 /datum/antagonist/cortical_borer/on_gain()
-	. = ..()
 	forge_objectives()
+	return ..()
 
 /datum/antagonist/cortical_borer/greet()
 	. = ..()
