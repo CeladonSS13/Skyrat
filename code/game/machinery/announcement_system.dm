@@ -117,7 +117,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		"toggle_job_color" = nttc.toggle_job_color,
 		"toggle_name_color" = nttc.toggle_name_color,
 		"toggle_command_bold" = nttc.toggle_command_bold,
-		"setting_language" = nttc.setting_language.name, // passing NAME, that important
+		"setting_language" = nttc.setting_language ? nttc.setting_language.name : null, // passing NAME, that important
 	)
 	for(var/datum/aas_config_entry/config in config_entries)
 		configs += list(list(
@@ -172,16 +172,17 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 			return
 		if("nttc_setting_language")
 			var/new_language = tgui_input_list(usr, "Pick a language to convert messages to", "Language Conversion", nttc.valid_languages)
-			if(!new_language)
+			if(!new_language || !(new_language in nttc.valid_languages))
 				return
 			if(new_language == "--DISABLE--")
 				nttc.setting_language = null
 				to_chat(usr, span_notice("Language conversion disabled."))
 			else
-				var/datum/language_found_lang
-				for(var/datum/language/lang in GLOB.all_languages)
-					if (lang.name == new_language)
-						language_found_lang = lang
+				var/datum/language/language_found_lang
+				for(var/language_name in GLOB.all_languages) // can't directly access by [], because it's typepath key in both all_languages and language_datum_instances
+					var/datum/language/L = GLOB.language_datum_instances[language_name]
+					if (L.name == new_language)
+						language_found_lang = L
 						break
 				if (language_found_lang)
 					nttc.setting_language = language_found_lang // datum

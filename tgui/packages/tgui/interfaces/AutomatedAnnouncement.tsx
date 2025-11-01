@@ -116,7 +116,7 @@ export const AutomatedAnnouncement = (props) => {
               </LabeledList.Item>
               <LabeledList.Item label="Language Conversion">
                 <Button
-                  // selected={nttc.setting_language}
+                  selected={nttc.setting_language ? true : false}
                   icon="globe"
                   onClick={() => act('nttc_setting_language')}
                 >

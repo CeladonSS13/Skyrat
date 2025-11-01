@@ -239,8 +239,14 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	//This is before anything that sends say a radio message, and after all important message type modifications, so you can scumb in alien chat or something
 	if(saymode && (saymode.handle_message(src, message, spans, language, message_mods) & SAYMODE_MESSAGE_HANDLED))
 		return
-
-	var/radio_return = radio(message, message_mods, spans, language)//roughly 27% of living/say()'s total cost
+	// SS1984 ADDITION START, doesn't work well modular, cuz of tons of overrides for subtypes
+	var/obj/machinery/announcement_system/announcer = get_announcement_system(source = src)
+	var/datum/nttc_configuration/nttc = announcer ? announcer.nttc : null
+	var/lang_for_radio = language // should be type!
+	if(nttc && nttc.setting_language && istype(nttc.setting_language, /datum/language))
+		lang_for_radio = nttc.setting_language.type
+	// SS1984 ADDITION END
+	var/radio_return = radio(message, message_mods, spans, lang_for_radio) // SS1984 EDIT, original: var/radio_return = radio(message, message_mods, spans, language) //roughly 27% of living/say()'s total cost
 	if(radio_return & NOPASS)
 		return TRUE
 

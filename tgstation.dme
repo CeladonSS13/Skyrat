@@ -9513,6 +9513,7 @@
 #include "modular_ss220\modules\enhanced_messaging\code\nttc_configuration.dm"
 #include "modular_ss220\modules\enhanced_messaging\code\announcement_system.dm"
 #include "modular_ss220\modules\enhanced_messaging\code\languages\calcic.dm"
+#include "modular_ss220\modules\enhanced_messaging\code\languages\canilunzt.dm"
 #include "modular_ss220\modules\enhanced_messaging\code\languages\common.dm"
 #include "modular_ss220\modules\enhanced_messaging\code\languages\draconic.dm"
 #include "modular_ss220\modules\enhanced_messaging\code\languages\gutter.dm"
