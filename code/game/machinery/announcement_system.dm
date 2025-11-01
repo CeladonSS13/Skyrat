@@ -117,6 +117,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		"toggle_job_color" = nttc.toggle_job_color,
 		"toggle_name_color" = nttc.toggle_name_color,
 		"toggle_command_bold" = nttc.toggle_command_bold,
+		"setting_language" = nttc.setting_language.name, // passing NAME, that important
 	)
 	for(var/datum/aas_config_entry/config in config_entries)
 		configs += list(list(
@@ -167,6 +168,28 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		if("nttc_toggle_command_bold")
 			nttc.toggle_command_bold = !nttc.toggle_command_bold
 			usr.log_message("toggled command bold (Now [nttc.toggle_command_bold])", LOG_GAME)
+			update_appearance()
+			return
+		if("nttc_setting_language")
+			var/new_language = tgui_input_list(usr, "Pick a language to convert messages to", "Language Conversion", nttc.valid_languages)
+			if(!new_language)
+				return
+			if(new_language == "--DISABLE--")
+				nttc.setting_language = null
+				to_chat(usr, span_notice("Language conversion disabled."))
+			else
+				var/datum/language_found_lang
+				for(var/datum/language/lang in GLOB.all_languages)
+					if (lang.name == new_language)
+						language_found_lang = lang
+						break
+				if (language_found_lang)
+					nttc.setting_language = language_found_lang // datum
+					to_chat(usr, span_notice("Messages will now be converted to [new_language]."))
+				else
+					return
+
+			usr.log_message(new_language == "--DISABLE--" ? "disabled NTTC language conversion" : "set NTTC language conversion to [new_language]", LOG_GAME)
 			update_appearance()
 			return
 	// SS1984 ADDITION END

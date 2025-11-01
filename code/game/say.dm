@@ -170,6 +170,8 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		var/obj/item/id_slot = carbon_human.get_item_by_slot(ITEM_SLOT_ID)
 		if(id_slot)
 			id_card = id_slot?.GetID()
+	if(nttc.setting_language && istype(nttc.setting_language, /datum/language))
+		message_language = nttc.setting_language
 	// SS1984 ADDITION END
 
 	//End name span.

@@ -6,6 +6,9 @@
 	var/toggle_job_color = TRUE
 	var/toggle_name_color = TRUE
 	var/toggle_command_bold = TRUE
+	// strings
+	var/datum/language/setting_language
+	var/list/valid_languages = list("--DISABLE--")
 
 /datum/nttc_configuration/proc/compose_ntts_job(raw_message, namepart, obj/machinery/announcement_system/announcer, job, job_custom_name, speaker_source)
 	var/job_class
@@ -45,3 +48,10 @@
 		name_with_job = namepart
 
 	return name_with_job
+
+/datum/nttc_configuration/proc/update_languages()
+	for(var/language in GLOB.all_languages)
+		var/datum/language/L = GLOB.all_languages[language]
+		if(!(L.flags & AVAILABLE_IN_TELECOMMS))
+			continue
+		valid_languages[language] = TRUE

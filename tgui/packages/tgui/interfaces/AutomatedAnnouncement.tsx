@@ -30,6 +30,7 @@ type nttc_configuration = {
   toggle_job_color: BooleanLike;
   toggle_name_color: BooleanLike;
   toggle_command_bold: BooleanLike;
+  setting_language: String; // here it's a string, but in DM we search a datum lang with that "name" as this string
 }
 
 type Data = {
@@ -111,6 +112,15 @@ export const AutomatedAnnouncement = (props) => {
                   onClick={() => act('nttc_toggle_command_bold')}
                 >
                   {nttc.toggle_command_bold ? 'On' : 'Off'}
+                </Button>
+              </LabeledList.Item>
+              <LabeledList.Item label="Language Conversion">
+                <Button
+                  // selected={nttc.setting_language}
+                  icon="globe"
+                  onClick={() => act('nttc_setting_language')}
+                >
+                  {nttc.setting_language ? nttc.setting_language : 'Unset'}
                 </Button>
               </LabeledList.Item>
             </LabeledList>

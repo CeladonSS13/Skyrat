@@ -2,6 +2,7 @@
 #define TONGUELESS_SPEECH 2
 #define LANGUAGE_HIDE_ICON_IF_UNDERSTOOD 4
 #define LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD 8
+#define AVAILABLE_IN_TELECOMMS 16 // SS1984 ADDITION, should be here to proper merge because that is binary operations (multiple each new by 2 from last one)
 
 // LANGUAGE SOURCE DEFINES
 /// For use in full removal only.
