@@ -1,7 +1,7 @@
 #define POWERMONITORING_RED_TEXT span_notice("Power monitoring port is: [span_red("RED")], there is no surplus power in grid. <b>Can't charge cells</b>.")
 #define POWERMONITORING_GREEN_TEXT span_notice("Power monitoring port is: [span_green("GREEN")], there is a surplus power in grid. <b>Can charge cells</b>.")
 
-/obj/machinery/cell_charger/proc/get_powermonitoring_desc(mob/user)
+/obj/machinery/cell_charger/proc/get_powermonitoring_desc()
 	var/area/home = get_area(src)
 	if(isnull(home))
 		return POWERMONITORING_RED_TEXT
