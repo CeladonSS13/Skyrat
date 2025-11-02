@@ -9572,6 +9572,7 @@
 #include "modular_ss220\modules\balance-1984\battlerifle_tg\automatic.dm"
 #include "modular_ss220\modules\balance-1984\max_staminadamage_tg\living_defines.dm"
 #include "modular_ss220\modules\balance-1984\drones_restrictions\drone_dispenser.dm"
+#include "modular_ss220\modules\balance-1984\old_hos_gun\energy.dm"
 #include "modular_ss220\modules\sol_pistol_incapacitator\magazines.dm"
 #include "modular_ss220\modules\sol_pistol_incapacitator\pistol.dm"
 #include "modular_ss220\modules\security_vouchers\code\closets\secure\security.dm"
