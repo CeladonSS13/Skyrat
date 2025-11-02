@@ -9678,6 +9678,7 @@
 #include "modular_ss220\modules\qol_casual_1984\genders_for_species\plasmamen.dm"
 #include "modular_ss220\modules\qol_casual_1984\genders_for_species\ghost.dm"
 #include "modular_ss220\modules\qol_casual_1984\whetstone_vendor\drinnerware.dm"
+#include "modular_ss220\modules\qol_casual_1984\cellcharger_power_desc\cell_charger.dm"
 #include "modular_ss220\modules\ghostroles_stuff\ds2_interdyne_shared\techweb_types.dm"
 #include "modular_ss220\modules\ghostroles_stuff\ds2_interdyne_shared\machine_circuits.dm"
 #include "modular_ss220\modules\ghostroles_stuff\ds2_interdyne_shared\interdyne_ds2_rnd.dm"
