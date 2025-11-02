@@ -117,6 +117,7 @@
 
 /datum/outfit/ds2/syndicate/enginetech
 	role_job = /datum/job/ds2/engineer
+	skillchips = list(/obj/item/skillchip/job/engineer)
 
 /datum/outfit/ds2/syndicate/researcher
 	role_job = /datum/job/ds2/science
@@ -126,7 +127,3 @@
 
 /datum/outfit/ds2/syndicate/brigoff
 	role_job = /datum/job/ds2/enforce
-
-/datum/outfit/ds2/syndicate/enginetech
-	role_job = /datum/job/ds2/engineer
-	skillchips = list(/obj/item/skillchip/job/engineer)
