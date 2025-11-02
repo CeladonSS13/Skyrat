@@ -1,3 +1,4 @@
+/* SS1984 REMOVAL START
 /obj/item/gun/energy/ionrifle
 	icon = 'modular_nova/modules/aesthetics/guns/icons/energy.dmi'
 	// also covers the ion carbine
@@ -68,3 +69,4 @@
 	worn_icon_state = "gun"
 	worn_icon = null
 	shaded_charge = FALSE
+SS1984 REMOVAL END */
