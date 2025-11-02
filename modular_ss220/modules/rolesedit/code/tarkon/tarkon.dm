@@ -41,6 +41,9 @@
 	id = /obj/item/card/id/advanced/tarkon/deck
 	role_job = /datum/job/tarkon
 
+/datum/outfit/tarkon/engi
+	skillchips = list(/obj/item/skillchip/job/engineer)
+
 /datum/outfit/tarkon/ensign
 	role_job = /datum/job/tarkon/command
 

@@ -300,6 +300,7 @@
 	gloves = /obj/item/clothing/gloves/color/fyellow/old
 	shoes = /obj/item/clothing/shoes/workboots
 	l_pocket = /obj/item/tank/internals/emergency_oxygen
+	skillchips = list(/obj/item/skillchip/job/engineer) // might be not really great lorewise (if chips weren't invented yet), but for gameplay it's good
 
 /datum/outfit/oldsci
 	name = "Ancient Scientist"
