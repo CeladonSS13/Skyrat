@@ -417,21 +417,22 @@
 	pixel_y += py
 	child.pixel_x += px
 	child.pixel_y += py
-	animate(src, movedelay, pixel_x=0, pixel_y=0)
-	animate(child, movedelay, pixel_x=0, pixel_y=0)
+	var/calculated_movedelay = get_movedelay() // SS1984 ADDITION
+	animate(src, calculated_movedelay, pixel_x=0, pixel_y=0) // SS1984 EDIT, original: animate(src, movedelay, pixel_x=0, pixel_y=0)
+	animate(child, calculated_movedelay, pixel_x=0, pixel_y=0) // SS1984 EDIT, original: animate(child, movedelay, pixel_x=0, pixel_y=0)
 	for (var/mob/buckled in (buckled_mobs + child.buckled_mobs))
 		var/inital_pixel_x = buckled.pixel_x
 		var/inital_pixel_y = buckled.pixel_y
 		buckled.pixel_x += px
 		buckled.pixel_y += py
-		animate(buckled, movedelay, pixel_x=inital_pixel_x, pixel_y=inital_pixel_y)
+		animate(buckled, calculated_movedelay, pixel_x=inital_pixel_x, pixel_y=inital_pixel_y) // SS1984 EDIT, original: animate(buckled, movedelay, pixel_x=inital_pixel_x, pixel_y=inital_pixel_y)
 		if (buckled.client)
 			var/client/client = buckled.client
 			var/initial_client_pixel_x = client.pixel_x
 			var/initial_client_pixel_y = client.pixel_y
 			client.pixel_x += px
 			client.pixel_y += py
-			animate(client, movedelay, pixel_x=initial_client_pixel_x, pixel_y=initial_client_pixel_y)
+			animate(client, calculated_movedelay, pixel_x=initial_client_pixel_x, pixel_y=initial_client_pixel_y) // SS1984 EDIT, original: animate(client, movedelay, pixel_x=initial_client_pixel_x, pixel_y=initial_client_pixel_y)
 
 /obj/vehicle/ridden/golfcart/Move(atom/newloc, direct, glide_size_override = 0, update_dir = TRUE)
 	perform_extra_step = FALSE

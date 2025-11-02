@@ -603,7 +603,7 @@
 	if(!overclock_mode && overclock_temp > 0)
 		overclock_temp -= seconds_per_tick
 		return
-	var/temp_gain = seconds_per_tick * (1 + 1 / movedelay)
+	var/temp_gain = seconds_per_tick * (1 + 1 / get_movedelay()) // SS1984 EDIT, original: var/temp_gain = seconds_per_tick * (1 + 1 / movedelay)
 	overclock_temp = min(overclock_temp + temp_gain, overclock_temp_danger * 2)
 	if(overclock_temp < overclock_temp_danger)
 		return

@@ -499,7 +499,7 @@
 		cart.set_movedelay_effect(2)
 	else
 		cart.set_movedelay_effect(1)
-	vehicle_move_delay = cart.movedelay
+	vehicle_move_delay = cart.get_movedelay()// SS1984 EDIT, original: vehicle_move_delay = cart.movedelay
 	return ..()
 
 /datum/component/riding/vehicle/golfcart/handle_ride(mob/user, direction)
