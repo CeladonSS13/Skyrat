@@ -428,7 +428,11 @@
 
 /obj/item/toy/crayon/proc/crayon_text_strip(text)
 	text = copytext(text, 1, MAX_MESSAGE_LEN)
-	var/static/regex/crayon_regex = new /regex(@"[^\w!?,.=&%#+/\-]", "ig")
+	//SS1984 CHANGE BEGIN (localization_modular\ru_letters_crayon)
+	//ORIGINAL// var/static/regex/crayon_regex = new /regex(@"[^\w!?,.=&%#+/\-]", "ig")
+
+	var/static/regex/crayon_regex = new /regex(@"[^\wА-Яа-яЁё!?,.=&%#+/\-]", "ig")
+	//SS1984 CHANGE END (localization_modular\ru_letters_crayon)
 	return LOWER_TEXT(crayon_regex.Replace(text, ""))
 
 /// Is this a valid object for use_on to run on?
@@ -451,7 +455,14 @@
 	var/drawing = drawtype
 	switch(drawtype)
 		if(RANDOM_LETTER)
-			drawing = ascii2text(rand(97, 122)) // a-z
+			// SS1984 CHANGE BEGIN (localization_modular\ru_letters_crayon)
+			//ORIGINAL// drawing = ascii2text(rand(97, 122)) // a-z
+
+			if(rand(0,1))
+				drawing = ascii2text(rand(97, 122)) // a-z
+			else
+				drawing = ascii2text(rand(1072, 1103)) // а-я
+			// SS1984 CHANGE END
 		if(RANDOM_PUNCTUATION)
 			drawing = pick(punctuation)
 		if(RANDOM_SYMBOL)
@@ -488,6 +499,10 @@
 	var/ascii = (length(drawing) == 1)
 	if(ascii && is_lowercase_character(drawing))
 		temp = "letter"
+	// SS1984 ADD BEGIN (localization_modular\ru_letters_crayon)
+	else if(((text2ascii(drawing) >= 1072) && (text2ascii(drawing) <= 1103)) || text2ascii(drawing) == 1105)
+		temp = "сyrillic letter"
+	// SS1984 ADD END
 	else if(ascii && is_digit(drawing))
 		temp = "number"
 	else if(drawing in punctuation)
@@ -539,7 +554,18 @@
 
 	if(length(text_buffer))
 		drawing = text_buffer[1]
+		// SS1984 ADD BEGIN (localization_modular\ru_letters_crayon)
+		// DM также поддерживает кириллицу в .dmi изображениях, но тогда у ТГ надо модифицировать специальный тест в CI
 
+		// Символ из кириллицы занимает 2 байта в UTF-8.
+		// За счет этого знания мы можем их с легкостью отсеивать от латиницы
+		// также весь текст на данном этапе уже в нижнем регистре -> [а-я + ё]
+		if(length(drawing) != length_char(drawing))
+			var/char_code = text2ascii(drawing)
+			if((char_code >= 1072 && char_code <= 1103) || char_code == 1105)
+				to_chat(user, char_code)
+				drawing = "u[char_code]"
+		// SS1984 ADD END
 
 	var/list/turf/affected_turfs = list(target)
 
