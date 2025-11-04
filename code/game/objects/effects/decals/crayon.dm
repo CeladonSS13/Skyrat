@@ -1,11 +1,7 @@
 /obj/effect/decal/cleanable/crayon
 	name = "rune"
 	desc = "Graffiti. Damn kids."
-	//SS1984 CHANGE BEGIN (localization_modular\ru_letters_crayon)
-	//ORIGINAL// icon = 'icons/effects/crayondecal.dmi'
-
-	icon = 'modular_ss220/modules/localization_modular/ru_letters_crayon/icons/crayondecal.dmi'
-	//SS1984 CHANGE END (localization_modular\ru_letters_crayon)
+	icon = 'icons/effects/crayondecal.dmi'
 	icon_state = "rune1"
 	gender = NEUTER
 	mergeable_decal = FALSE
