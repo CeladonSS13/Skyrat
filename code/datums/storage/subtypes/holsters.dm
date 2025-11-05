@@ -71,6 +71,12 @@
 		/obj/item/gun/energy/laser/captain,
 		/obj/item/gun/energy/e_gun/hos,
 		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
+		// NOVA EDIT ADDITION START
+		/obj/item/ammo_box/magazine,
+		/obj/item/food/grown/banana,
+		/obj/item/gun/energy/recharge/kinetic_accelerator/variant/glock,
+		// NOVA EDIT ADDITION END
+		/obj/item/gun/energy/e_gun/advtaser, // SS1984 ADDITION
 	)
 
 	return ..()

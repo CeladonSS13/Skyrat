@@ -97,33 +97,35 @@
 /datum/storage/holster/detective
 	max_slots = 4
 
-/datum/storage/holster/detective/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound, list/holdables)
-	holdables = list(
-		/obj/item/gun/ballistic/automatic/pistol,
-		/obj/item/ammo_box/magazine/m9mm, // Pistol magazines.
-		/obj/item/ammo_box/magazine/m9mm_aps,
-		/obj/item/ammo_box/magazine/m10mm,
-		/obj/item/ammo_box/magazine/m45,
-		/obj/item/ammo_box/magazine/m50,
-		/obj/item/gun/ballistic/revolver,
-		/obj/item/ammo_box/speedloader, // Speedloaders, which includes stripper clips on a technicality.
-		/obj/item/ammo_box/magazine/toy/pistol,
-		/obj/item/gun/energy/e_gun/mini,
-		/obj/item/gun/energy/disabler,
-		/obj/item/gun/energy/dueling,
-		/obj/item/gun/energy/laser/thermal,
-		/obj/item/gun/energy/laser/captain,
-		/obj/item/gun/energy/e_gun/hos,
-		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
-		// NOVA EDIT ADDITION START
-		/obj/item/ammo_box/magazine,
-		/obj/item/food/grown/banana,
-		/obj/item/gun/energy/recharge/kinetic_accelerator/variant/glock,
-		// NOVA EDIT ADDITION END
-		/obj/item/gun/energy/e_gun/advtaser, // SS1984 ADDITION
-	)
+// SS1984 REMOVAL START - Moved to non-modular, bcs it's not working modular that way
+// /datum/storage/holster/detective/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound, list/holdables)
+// 	holdables = list(
+// 		/obj/item/gun/ballistic/automatic/pistol,
+// 		/obj/item/ammo_box/magazine/m9mm, // Pistol magazines.
+// 		/obj/item/ammo_box/magazine/m9mm_aps,
+// 		/obj/item/ammo_box/magazine/m10mm,
+// 		/obj/item/ammo_box/magazine/m45,
+// 		/obj/item/ammo_box/magazine/m50,
+// 		/obj/item/gun/ballistic/revolver,
+// 		/obj/item/ammo_box/speedloader, // Speedloaders, which includes stripper clips on a technicality.
+// 		/obj/item/ammo_box/magazine/toy/pistol,
+// 		/obj/item/gun/energy/e_gun/mini,
+// 		/obj/item/gun/energy/disabler,
+// 		/obj/item/gun/energy/dueling,
+// 		/obj/item/gun/energy/laser/thermal,
+// 		/obj/item/gun/energy/laser/captain,
+// 		/obj/item/gun/energy/e_gun/hos,
+// 		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
+// 		// NOVA EDIT ADDITION START
+// 		/obj/item/ammo_box/magazine,
+// 		/obj/item/food/grown/banana,
+// 		/obj/item/gun/energy/recharge/kinetic_accelerator/variant/glock,
+// 		// NOVA EDIT ADDITION END
+// 		/obj/item/gun/energy/e_gun/advtaser, // SS1984 ADDITION
+// 	)
 
-	return ..()
+// 	return ..()
+// SS1984 REMOVAL END
 
 ///Enables you to quickdraw weapons from security holsters
 /datum/storage/holster/open_storage(mob/to_show, can_reach_target)
