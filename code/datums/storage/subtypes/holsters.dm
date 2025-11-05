@@ -97,6 +97,7 @@
 		/obj/item/gun/energy/dueling,
 		/obj/item/gun/energy/laser/captain,
 		/obj/item/gun/energy/e_gun/hos,
+		/obj/item/gun/energy/e_gun/advtaser, // SS1984 ADDITION
 	)
 
 	return ..()
