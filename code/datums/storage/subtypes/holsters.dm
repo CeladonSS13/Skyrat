@@ -44,6 +44,7 @@
 		/obj/item/ammo_box/magazine/recharge/plasma_battery,
 		/obj/item/gun/energy/recharge/kinetic_accelerator/variant/glock,
 		// NOVA EDIT ADDITION END
+		/obj/item/gun/energy/e_gun/advtaser, // SS1984 ADDITION
 	)
 
 	return ..()
