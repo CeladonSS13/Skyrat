@@ -87,6 +87,7 @@
 		/obj/item/ammo_box/speedloader,
 		/obj/item/gun/energy/recharge/kinetic_accelerator/variant/glock,
 		// NOVA EDIT ADDITION END
+		/obj/item/gun/energy/e_gun/advtaser, // SS1984 ADDITION
 	))
 
 /obj/item/storage/belt/holster/detective
