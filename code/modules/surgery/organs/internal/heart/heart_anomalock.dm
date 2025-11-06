@@ -187,7 +187,7 @@
 /datum/status_effect/voltaic_overdrive/tick(seconds_between_ticks)
 	. = ..()
 
-	if(owner.health <= owner.crit_threshold)
+	if(owner.health <= owner.hardcrit_threshold) // SS1984 EDIT, original: if(owner.health <= owner.crit_threshold)
 		owner.heal_overall_damage(5, 5)
 		owner.adjustOxyLoss(-5)
 		owner.adjustToxLoss(-5)
