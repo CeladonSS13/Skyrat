@@ -682,7 +682,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	// SS1984 ADDITION START
 	if (H.stat == SOFT_CRIT)
 		H.adjust_stutter(1 SECONDS * seconds_per_tick) // should keep slutter always (almost, based on lags)
-		if (prob(3 * seconds_per_tick))
+		if (!HAS_TRAIT(H, TRAIT_NOSOFTCRIT) && prob(3 * seconds_per_tick))
 			H.Paralyze(4 SECONDS)
 	// SS1984 ADDITION END
 

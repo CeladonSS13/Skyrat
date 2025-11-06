@@ -63,7 +63,7 @@
 	source.say("WAAAAAAAAAAAAAAGH!", forced="hulk")
 
 /datum/mutation/hulk/on_life(seconds_per_tick, times_fired)
-	if(owner.health < owner.crit_threshold)
+	if(owner.health < owner.hardcrit_threshold) // SS1984 EDIT, original: if(owner.health < owner.crit_threshold)
 		on_losing(owner)
 		to_chat(owner, span_danger("You suddenly feel very weak."))
 		qdel(src)
