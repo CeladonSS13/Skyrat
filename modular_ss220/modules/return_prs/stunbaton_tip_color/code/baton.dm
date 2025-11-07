@@ -39,3 +39,8 @@
 
 /obj/item/melee/baton/security/boomerang
 	tip_changes_color = FALSE
+
+/obj/item/melee/baton/security/stunsword
+	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
+	tip_changes_color = FALSE // no such sprites sadly
