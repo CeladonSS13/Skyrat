@@ -9698,6 +9698,7 @@
 #include "modular_ss220\modules\admin_spawn_stuff\ashwalkers\monkey_controller.dm"
 #include "modular_ss220\modules\admin_spawn_stuff\ashwalkers\ashwalker.dm"
 #include "modular_ss220\modules\admin_spawn_stuff\ashwalkers\nests.dm"
+#include "modular_ss220\modules\admin_spawn_stuff\custom_particle_effect\custom_particle.dm"
 #include "modular_ss220\modules\nucleations\sprite_accessories\nucleation_face.dm"
 #include "modular_ss220\modules\nucleations\species_bodyparts\nucleation_bodyparts.dm"
 #include "modular_ss220\modules\nucleations\species_bodyparts\nucleation_organs.dm"
