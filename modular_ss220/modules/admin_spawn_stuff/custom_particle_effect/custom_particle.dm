@@ -24,6 +24,14 @@
 /particles/custom_effect/two_color_darkred_black
 	color = generator("color", COLOR_DARK_RED, COLOR_BLACK, UNIFORM_RAND) // generator syntax doesn't really work well not from constructor
 
+/particles/custom_effect/two_color_darkred_black/intense
+	scale = generator(GEN_VECTOR, list(1, 1), list(3,3), NORMAL_RAND)
+	spawning = 8
+	position = generator(GEN_CIRCLE, 0, 48, NORMAL_RAND)
+
+/particles/custom_effect/two_color_white_black
+	color = generator("color", COLOR_WHITE, COLOR_BLACK, UNIFORM_RAND)
+
 // components
 
 /datum/component/custom_particle
@@ -32,17 +40,13 @@
 	var/obj/effect/abstract/particle_holder/special_effects
 
 /datum/component/custom_particle/Initialize(color)
-	if (!ismovable(parent) && !isitem(parent))
+	if (!ismovable(parent)) // doesn't really work for items (not for inhands overlays)
 		return COMPONENT_INCOMPATIBLE
 
 	special_effects = new(parent, /particles/custom_effect)
 
 	if (color)
-		pecial_effects.color = colorA
-
-	var/obj/item/item_parent = parent
-	if (item_parent)
-		item_parent.inhand_icon_state
+		special_effects.color = color
 
 /datum/component/custom_particle/Destroy(force)
 	if (istype(special_effects, /obj/effect/abstract/particle_holder))
