@@ -396,7 +396,7 @@
 			new impact_effect_type(target_turf, impact_x, impact_y)
 		return BULLET_ACT_HIT
 
-	if((blocked >= 100 || (damage && damage_type != BRUTE)) && impact_effect_type && !hitscan)
+	if((blocked >= 100 || (damage && damage_type != BRUTE) || always_impact_on_living) && impact_effect_type && !hitscan) // SS1984 EDIT, original: if((blocked >= 100 || (damage && damage_type != BRUTE)) && impact_effect_type && !hitscan)
 		new impact_effect_type(target_turf, impact_x, impact_y)
 
 	var/mob/living/living_target = target

@@ -40,18 +40,17 @@
 	damage_type = BRUTE
 	armor_flag = MELEE
 	impact_effect_type = /obj/effect/temp_visual/blank_effect_on_user/impact_black_flame_sword
-
 	color = COLOR_DARK_RED
 	alpha = 150
 	layer = ABOVE_ALL_MOB_LAYER
 	plane = ABOVE_GAME_PLANE
 	hitsound = 'modular_ss220/modules/admin_spawn_stuff/custom_particle_effect/sound/loud_slash.ogg'
 	hitsound_wall = 'modular_ss220/modules/admin_spawn_stuff/custom_particle_effect/sound/loud_slash.ogg'
+	always_impact_on_living = TRUE
 
 	var/effect_on_hit = /datum/status_effect/black_flame
 	var/particle_type_flying = /particles/custom_effect/two_color_darkred_black
 	var/obj/effect/abstract/particle_holder/effect_holder_flying
-	var/rotation_per_sec = 180
 
 /obj/projectile/blade_slash/Initialize(mapload)
 	. = ..()
@@ -76,12 +75,3 @@
 		living_target.apply_status_effect(effect_on_hit)
 
 	return .
-
-/obj/projectile/blade_slash/process_movement(pixels_to_move, hitscan, tile_limit)
-	. = ..()
-
-	if (QDELETED(src))
-		return
-
-	var/matrix/new_transform = transform
-	transform = new_transform.Turn(rotation_per_sec / 1 SECONDS)
