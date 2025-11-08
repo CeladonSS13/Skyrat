@@ -3,6 +3,7 @@
 	tick_interval = 0.2 SECONDS
 	status_type = STATUS_EFFECT_REFRESH
 	duration = 3 SECONDS
+	alert_type = /atom/movable/screen/alert/status_effect/black_flame
 
 	var/damage_per_second = 5
 	var/damage_type = BURN
@@ -10,6 +11,7 @@
 
 	var/obj/effect/abstract/particle_holder/effect_holder
 	var/particle_type = /particles/custom_effect/two_color_white_black
+
 
 /datum/status_effect/black_flame/on_apply()
 	if (isnull(effect_holder))
@@ -24,5 +26,13 @@
 		qdel(src)
 		return
 
-	owner.apply_damage(damage_per_second * seconds_between_ticks, damage_type)
-	owner.apply_damage(stamina_per_second * seconds_between_ticks, STAMINA)
+	var/need_mob_update = FALSE
+	need_mob_update += owner.adjustStaminaLoss(stamina_per_second * seconds_between_ticks, updating_stamina = FALSE)
+	need_mob_update += owner.apply_damage(damage_per_second * seconds_between_ticks, damage_type)
+	if (need_mob_update)
+		owner.updatehealth()
+
+/atom/movable/screen/alert/status_effect/black_flame
+	name = "Black Flame"
+	desc = "It seems that you are burning from inside!"
+	icon_state = "crucible"

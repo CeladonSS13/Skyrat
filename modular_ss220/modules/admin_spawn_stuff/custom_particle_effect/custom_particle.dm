@@ -9,7 +9,7 @@
 	height = 100
 	count = 1000
 	spawning = 4 // 4 new particles per 0.1s
-	lifespan = 0.7 SECONDS // how much till fade out
+	lifespan = 1 SECONDS // how much will live
 	fade = 1 SECONDS // fade out time
 	grow = -0.01 // change in scale per TICK!
 	velocity = list(0, 0) // x,y,z velocity in pixels
@@ -22,6 +22,7 @@
 	color = COLOR_WHITE
 
 /particles/custom_effect/two_color_darkred_black
+	spawning = 20
 	color = generator("color", COLOR_DARK_RED, COLOR_BLACK, UNIFORM_RAND) // generator syntax doesn't really work well not from constructor
 
 /particles/custom_effect/two_color_darkred_black/intense
@@ -30,7 +31,11 @@
 	position = generator(GEN_CIRCLE, 0, 48, NORMAL_RAND)
 
 /particles/custom_effect/two_color_white_black
+	icon = 'icons/effects/particles/generic.dmi'
+	icon_state = "curl"
 	color = generator("color", COLOR_WHITE, COLOR_BLACK, UNIFORM_RAND)
+	scale = generator(GEN_VECTOR, list(0.45, 0.45), list(1.5,1.5), NORMAL_RAND) // Scale applied
+	spawning = 12
 
 // components
 

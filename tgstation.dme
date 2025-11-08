@@ -9704,6 +9704,8 @@
 #include "modular_ss220\modules\admin_spawn_stuff\custom_particle_effect\weaponry.dm"
 #include "modular_ss220\modules\admin_spawn_stuff\custom_particle_effect\temporary_visual.dm"
 #include "modular_ss220\modules\admin_spawn_stuff\custom_particle_effect\fire_stacks.dm"
+#include "modular_ss220\modules\admin_spawn_stuff\custom_particle_effect\particle_holder_timed.dm"
+#include "modular_ss220\modules\admin_spawn_stuff\custom_particle_effect\wave_projectile.dm"
 #include "modular_ss220\modules\nucleations\sprite_accessories\nucleation_face.dm"
 #include "modular_ss220\modules\nucleations\species_bodyparts\nucleation_bodyparts.dm"
 #include "modular_ss220\modules\nucleations\species_bodyparts\nucleation_organs.dm"

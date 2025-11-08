@@ -1,9 +1,10 @@
 /obj/item/customizable_hfr_blade
-	name = "The Blade"
+	name = "The Black Blade"
 	desc = "It seems to be a sword."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "hfrequency0"
 	worn_icon_state = "hfrequency0"
+	color = COLOR_BLACK // inhand
 	icon_angle = -45
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
@@ -17,12 +18,15 @@
 	sharpness = SHARP_EDGED
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
+	actions_types = list(/datum/action/cooldown/spell/pointed/projectile/customizable_slash_wave)
+	action_slots = ITEM_SLOT_HANDS
 
 	var/slash_color_primary = COLOR_DARK_RED // used both for slash and particles
 	var/slash_sound = 'modular_ss220/modules/admin_spawn_stuff/custom_particle_effect/sound/loud_slash.ogg'
 	var/next_attack_time = 0
 	var/particle_over_slash = /particles/custom_effect/two_color_darkred_black/intense
 	var/particle_for_owner_on_slash = /particles/custom_effect/two_color_darkred_black
+	var/particle_duration_for_owner_on_slash = 1 SECONDS
 	var/icon_for_slash = 'icons/effects/effects.dmi'
 	var/icon_state_for_slash = "highfreq_slash"
 	var/fire_effect_on_hit = /datum/status_effect/black_flame
@@ -91,9 +95,8 @@
 
 	// particle holders instances creation & assigning references
 
-	var/obj/effect/abstract/particle_holder/special_effects_blank = new(user, particle_for_owner_on_slash)
-
-	var/obj/effect/abstract/particle_holder/special_effects_blank_on_slash_loc = new(blank_effect_on_slash_loc, particle_over_slash)
+	new /obj/effect/abstract/particle_holder/timed(user, particle_for_owner_on_slash, NONE, particle_duration_for_owner_on_slash) // effect on user
+	var/obj/effect/abstract/particle_holder/special_effects_blank_on_slash_loc = new(blank_effect_on_slash_loc, particle_over_slash) // effect at slash location
 	blank_effect_on_slash_loc.special_effects_holder_ref = WEAKREF(special_effects_blank_on_slash_loc)
 
 	// sound
