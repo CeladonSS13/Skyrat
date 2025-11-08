@@ -41,3 +41,18 @@
       of softcrit)
   - bugfix: Hulk is now properly removed on death (in case it get one-shot somehow
       bypassing hardcrit)
+2025-11-07:
+  Arceniu:
+  - rscdel: Removed eng skillchip from oldstation eng
+  - rscadd: Added small blueprints to oldstation engineer
+  - map: Added blueprints to bridge safe
+  - map: Replaced eng skillchip in oldstation eng storage with both light bulb removing/
+      know wires prototype
+  - map: Replaced psychologist chip in oldstation med crate with custom combined chip
+      (maddness immune, coroner organs examine, speed buff while operating other,
+      ability to do operations on yourself-without buff)
+  DenIS318:
+  - rscadd: Returned stunbaton's color chang based on cell (blue on bluespace cell
+      and so on)
+  - qol: Throw-mode keybinding by default is R now (applies only when you don't have
+      overrides for it)

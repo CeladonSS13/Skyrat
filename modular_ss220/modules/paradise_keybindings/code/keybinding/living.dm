@@ -18,3 +18,6 @@
 
 /datum/keybinding/living/disable_combat_mode
 	hotkey_keys = list("1")
+
+/datum/keybinding/living/toggle_throw_mode
+	hotkey_keys = list("R")

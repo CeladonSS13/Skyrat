@@ -953,7 +953,7 @@
 /obj/item/clothing/head/utility/hardhat/welding,
 /obj/item/clothing/gloves/tinkerer,
 /obj/item/clothing/gloves/atmos,
-/obj/item/skillchip/job/engineer,
+/obj/item/skillchip/job/oldstation/engineering,
 /turf/open/floor/plating,
 /area/ruin/space/ancientstation/beta/supermatter)
 "ed" = (
@@ -5403,6 +5403,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/safe/floor/charlie_captain,
+/obj/item/blueprints/oldstation,
 /obj/item/card/id/away/old/captains_spare,
 /obj/item/clothing/suit/space/nasavoid/captain,
 /obj/item/clothing/head/helmet/space/nasavoid/captain,
@@ -8137,7 +8138,7 @@
 "Up" = (
 /obj/structure/closet/crate/medical,
 /obj/item/circuitboard/machine/sleeper,
-/obj/item/skillchip/job/psychology,
+/obj/item/skillchip/job/oldstation/medical,
 /turf/open/floor/plating/airless,
 /area/ruin/space/ancientstation/beta/medbay)
 "Uq" = (

@@ -300,7 +300,7 @@
 	gloves = /obj/item/clothing/gloves/color/fyellow/old
 	shoes = /obj/item/clothing/shoes/workboots
 	l_pocket = /obj/item/tank/internals/emergency_oxygen
-	skillchips = list(/obj/item/skillchip/job/engineer) // might be not really great lorewise (if chips weren't invented yet), but for gameplay it's good
+	r_pocket = /obj/item/blueprints/oldstation/eng
 
 /datum/outfit/oldsci
 	name = "Ancient Scientist"
@@ -416,3 +416,78 @@
 /obj/structure/showcase/machinery/oldpod/used
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper-open"
+
+//skillchips
+/obj/item/skillchip/job/oldstation
+	name = "Prototype skillchip"
+	desc = "Endorsed by the Nanotrasen Navy."
+	complexity = 2
+	abstract_parent_type = /obj/item/skillchip/job/oldstation
+
+/obj/item/skillchip/job/oldstation/engineering
+	name = "Prototype Engineering C0-RCU-1T-N11H5M2R1 skillchip"
+	desc = "Endorsed by the Chief Engineer of the Nanotrasen Navy and the Head Janitor himself."
+	auto_traits = list(TRAIT_KNOW_ENGI_WIRES, TRAIT_LIGHTBULB_REMOVER)
+	skill_name = "Combined Engineering Circuitry / Lightbulb Removing skills Beta"
+	skill_description = "Recognise airlock and APC wire layouts and understand their functionality at a glance and also stop failing taking out lightbulbs, even without gloves!"
+	skill_icon = "sitemap"
+	activate_message = span_notice("You suddenly comprehend the secrets behind airlock and APC circuitry and your pain recentors in hands seems less sensetive to hot objects.")
+	deactivate_message = span_notice("Airlock and APC circuitry stops making sense as images of coloured wires fade from your mind... And you feel like hot objects could stop you again...")
+
+/obj/item/skillchip/job/oldstation/medical
+	name = "Prototype Medical SRX-4H912T skillchip"
+	desc = "A skillchip containing 'new' Nanotrasen medical training protocols, boosting overall medical efficiency. Endorsed by the Nanotrasen Navy Security and Medical ERTs."
+	auto_traits = list(TRAIT_MADNESS_IMMUNE, TRAIT_ENTRAILS_READER, TRAIT_SELF_SURGERY)
+	skill_name = "Medic++"
+	skill_description = "Become a real field doctor in an instant!"
+	skill_icon = FA_ICON_USER_DOCTOR
+	activate_message = span_notice("You realize that your surgical skills have become noticeably better and also there's nothing stopping you from performing surgery on yourself.")
+	deactivate_message = span_notice("You suddenly feel like your medical skills are fading.")
+	slot_use = 3
+
+/obj/item/skillchip/job/oldstation/medical/on_activate(mob/living/carbon/user, silent)
+	. = ..()
+	RegisterSignal(user, COMSIG_LIVING_INITIATE_SURGERY_STEP, PROC_REF(apply_surgery_buff))
+
+/obj/item/skillchip/job/oldstation/medical/on_deactivate(mob/living/carbon/user, silent)
+	. = ..()
+	UnregisterSignal(user, COMSIG_LIVING_INITIATE_SURGERY_STEP)
+
+/obj/item/skillchip/job/oldstation/medical/proc/apply_surgery_buff(mob/living/carbon/_source, mob/living/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, datum/surgery_step/step, list/modifiers)
+	SIGNAL_HANDLER
+	if(user != target)
+		modifiers[FAIL_PROB_INDEX] -= 10
+		modifiers[SPEED_MOD_INDEX] *= 0.9
+
+//blueprints
+#define LEGEND_VIEWING_LIST "watching_list"
+///The blueprints are on the main page.
+#define LEGEND_OFF "off"
+
+/obj/item/blueprints/oldstation
+	name = "A.B.C.D stations blueprints"
+	desc = "Blueprints of the complex of stations. There is a \"Nanotrasen Navy - Classified\" stamp and some old coffee stains on it."
+	fluffnotice = "Property of Nanotrasen Navy. For heads of staff or engineering personnel only. Store in high-secure storage."
+
+/obj/item/blueprints/oldstation/ui_static_data(mob/user)
+	var/list/data = list()
+	data["legend_viewing_list"] = LEGEND_VIEWING_LIST
+	data["legend_off"] = LEGEND_OFF
+	data["fluff_notice"] = fluffnotice
+	data["station_name"] = "Nanotrasen Station Complex - Alpha, Beta, Charlie, Delta."
+	data["wire_devices"] = list()
+	for(var/wireset in GLOB.wire_color_directory)
+		data["wire_devices"] += list(list(
+			"name" = GLOB.wire_name_directory[wireset],
+			"ref" = wireset,
+		))
+	return data
+
+/obj/item/blueprints/oldstation/eng
+	name = "Crude copy of A.B.C.D stations blueprints"
+	desc = "Small crude copy of stations complex blueprints. It contain information about some wires, that are likely to help in the maintenance of the airlocks and other electronic devices."
+	icon_state = "shuttle_blueprints_crude1"
+	w_class = WEIGHT_CLASS_SMALL
+
+#undef LEGEND_VIEWING_LIST
+#undef LEGEND_OFF

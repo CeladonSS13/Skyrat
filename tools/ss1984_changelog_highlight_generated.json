@@ -1,5 +1,24 @@
 [
   {
+    "date": "2025-11-07",
+    "author": "Arceniu",
+    "changes": [
+      "Removed eng skillchip from oldstation eng",
+      "Added small blueprints to oldstation engineer",
+      "Added blueprints to bridge safe",
+      "Replaced eng skillchip in oldstation eng storage with both light bulb removing/ know wires prototype",
+      "Replaced psychologist chip in oldstation med crate with custom combined chip (maddness immune, coroner organs examine, speed buff while operating other, ability to do operations on yourself-without buff)"
+    ]
+  },
+  {
+    "date": "2025-11-07",
+    "author": "DenIS318",
+    "changes": [
+      "Throw-mode keybinding by default is R now (applies only when you don't have overrides for it)",
+      "Returned stunbaton's color chang based on cell (blue on bluespace cell and so on)"
+    ]
+  },
+  {
     "date": "2025-11-06",
     "author": "DenIS318",
     "changes": [
