@@ -14,12 +14,12 @@
 
 	var/datum/objective/missionobj = new ()
 	missionobj.owner = owner
-	missionobj.explanation_text = "[/obj/machinery/nuclearbomb/selfdestruct::name] code is: [r_code]."
+	missionobj.explanation_text = "[/obj/machinery/nuclearbomb/selfdestruct::name] code is: [self_destruct.r_code]."
 	missionobj.no_failure = TRUE // don't print
-	objectives |= mission
+	objectives |= missionobj
 
 	// also to memories
-	owner.memories += list(list("name" = "[/obj/machinery/nuclearbomb/selfdestruct::name] code", "story" = "[r_code]"))
+	owner.memories += list(list("name" = "[/obj/machinery/nuclearbomb/selfdestruct::name] code", "story" = "[self_destruct.r_code]"))
 
 /datum/antagonist/ert/deathsquad/leader/forge_objectives()
 	var/obj/machinery/nuclearbomb/selfdestruct/self_destruct = find_valid_selfdestruct()
