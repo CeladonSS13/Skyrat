@@ -1897,8 +1897,8 @@
 		/obj/item/restraints/handcuffs,
 		/obj/item/assembly/flash,
 		/obj/item/melee/baton,
-		// /obj/item/melee/energy/sword, // SS1984 REMOVAL, they don't have valid wearable icon (icons\mob\clothing\belt_mirror.dmi)
-		// /obj/item/shield/energy, // SS1984 REMOVAL
+		/obj/item/melee/energy/sword,
+		/obj/item/shield/energy,
 	)
 	variants = list(
 		"apocryphal" = list(
