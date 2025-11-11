@@ -335,7 +335,7 @@ SUBSYSTEM_DEF(dynamic)
 	midround_admin_reroll = FALSE
 	COOLDOWN_RESET(src, midround_admin_cancel_period)
 
-	var/player_count = get_active_player_count(afk_check = TRUE)
+	var/player_count = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) // SS1984 EDIT, original: var/player_count = get_active_player_count(afk_check = TRUE)
 	var/list/rulesets_weighted = get_midround_rulesets(player_count, range)
 	var/datum/dynamic_ruleset/midround/picked_ruleset = pick_weight(rulesets_weighted)
 	if(isnull(picked_ruleset))
@@ -484,7 +484,7 @@ SUBSYSTEM_DEF(dynamic)
 		log_dynamic("Latejoin: Ruleset chance failed ([latejoin_chance]% chance)")
 		return FALSE
 
-	var/player_count = get_active_player_count(afk_check = TRUE)
+	var/player_count = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) // SS1984 EDIT, original: var/player_count = get_active_player_count(afk_check = TRUE)
 	var/list/rulesets_weighted = get_latejoin_rulesets(player_count)
 	// Note, we make no effort to actually pick a valid ruleset here
 	// We pick a ruleset, and they player might not even have that antag selected. And that's fine
@@ -564,7 +564,7 @@ SUBSYSTEM_DEF(dynamic)
 	var/chance = 0
 	var/num_antags = length(GLOB.current_living_antags)
 	var/num_dead = length(GLOB.dead_player_list)
-	var/num_alive = get_active_player_count(afk_check = TRUE)
+	var/num_alive = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) // SS1984 EDIT, original: var/num_alive = get_active_player_count(afk_check = TRUE)
 	if(num_dead + num_alive <= 0)
 		return 0
 
@@ -584,7 +584,7 @@ SUBSYSTEM_DEF(dynamic)
 	var/chance = 0
 	var/num_antags = length(GLOB.current_living_antags)
 	var/num_dead = length(GLOB.dead_player_list)
-	var/num_alive = get_active_player_count(afk_check = TRUE)
+	var/num_alive = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) // SS1984 EDIT, original: var/num_alive = get_active_player_count(afk_check = TRUE)
 	if(num_dead + num_alive <= 0)
 		return 0
 
