@@ -16,7 +16,11 @@
 	missionobj.owner = owner
 	missionobj.explanation_text = "[/obj/machinery/nuclearbomb/selfdestruct::name] code is: [self_destruct.r_code]."
 	missionobj.no_failure = TRUE // don't print
-	objectives += missionobj
+
+	if (!(mission in objectives))
+		objectives += mission // original mission
+
+	objectives += missionobj // disk code info, not real a mission, just show in tgui
 
 	// also to memories
 	owner.add_memory(/datum/memory/station_nuke_code_know, nuke_code = self_destruct.r_code)
