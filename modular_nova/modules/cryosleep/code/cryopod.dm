@@ -399,6 +399,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 				qdel(possible_target_record)
 				break
 
+	if(!announce_rank) // SS1984 ADDITION - not in manifest (visitor ID or removed from manifest)
+		announce_rank = "Unassigned[occupant_rank ? " (as [occupant_rank])" : ""]" // SS1984 ADDITION
+
 	var/obj/machinery/computer/cryopod/control_computer = control_computer_weakref?.resolve()
 	if(!control_computer)
 		control_computer_weakref = null
