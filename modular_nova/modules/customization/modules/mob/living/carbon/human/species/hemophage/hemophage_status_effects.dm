@@ -9,9 +9,9 @@
 /// The threshold at which you have too much damage to use hemokinetic regen.
 #define DAMAGE_LIMIT_HEMOKINETIC_REGEN 50
 /// The amount in units of blood that gets consumed per point of damage healed (by hemokinetic regen and master of the house)
-#define HEMOKINETIC_REGEN_BLOOD_CONSUMPTION 0.25
+#define HEMOKINETIC_REGEN_BLOOD_CONSUMPTION 1 // SS1984 EDIT, original: #define HEMOKINETIC_REGEN_BLOOD_CONSUMPTION 0.25
 /// How much damage per second is healed by hemokinetic regen
-#define HEMOKINETIC_REGEN_HEALING 1.8
+#define HEMOKINETIC_REGEN_HEALING 0.5 // SS1984 EDIT, original: #define HEMOKINETIC_REGEN_HEALING 1.8
 
 /datum/status_effect/blood_thirst_satiated
 	id = "blood_thirst_satiated"
