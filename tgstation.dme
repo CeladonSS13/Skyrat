@@ -9680,6 +9680,7 @@
 #include "modular_ss220\modules\fixes_minor_1984\no_bitrun_huduse\human.dm"
 #include "modular_ss220\modules\fixes_minor_1984\bitrun_stuff\outfits.dm"
 #include "modular_ss220\modules\fixes_minor_1984\default_wearable_iconstate\items.dm"
+#include "modular_ss220\modules\fixes_minor_1984\default_wearable_iconstate\leather.dm"
 #include "modular_ss220\modules\votes_stuff\transfer_vote.dm"
 #include "modular_ss220\modules\votes_stuff\autotransfer.dm"
 #include "modular_ss220\modules\qol_casual_1984\engivend_jetpacks\modules_general.dm"
