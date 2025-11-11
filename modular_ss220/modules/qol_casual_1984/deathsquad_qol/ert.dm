@@ -5,9 +5,10 @@
 		return self_destruct
 
 /datum/antagonist/ert/deathsquad/forge_objectives()
+	. = ..()
 	var/obj/machinery/nuclearbomb/selfdestruct/self_destruct = find_valid_selfdestruct()
 	if(!self_destruct)
-		return ..()
+		return .
 
 	if(self_destruct.r_code == NUKE_CODE_UNSET)
 		self_destruct.r_code = random_nukecode()
@@ -16,9 +17,6 @@
 	missionobj.owner = owner
 	missionobj.explanation_text = "[/obj/machinery/nuclearbomb/selfdestruct::name] code is: [self_destruct.r_code]."
 	missionobj.no_failure = TRUE // don't print
-
-	if (!(mission in objectives))
-		objectives += mission // original mission
 
 	objectives += missionobj // disk code info, not real a mission, just show in tgui
 
