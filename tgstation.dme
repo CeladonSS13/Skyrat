@@ -9562,6 +9562,7 @@
 #include "modular_ss220\modules\lag-watcher\lag_watcher.dm"
 #include "modular_ss220\modules\server-monitoring\server_monitoring_config.dm"
 #include "modular_ss220\modules\server-monitoring\server_monitoring.dm"
+#include "modular_ss220\modules\server-monitoring\master.dm"
 #include "modular_ss220\modules\server_interaction_topics\server_interaction_config.dm"
 #include "modular_ss220\modules\server_interaction_topics\world.dm"
 #include "modular_ss220\modules\server_interaction_topics\server_interaction_topics_handle.dm"
