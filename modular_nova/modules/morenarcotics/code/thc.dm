@@ -76,7 +76,7 @@
 
 /datum/reagent/drug/thc/overdose_process(mob/living/M, seconds_per_tick, times_fired)
 	. = ..()
-	var/cg420_message = pick("It's major...", "Oh my goodness...",)
+	var/cg420_message = pick("Кайф...", "О боже...")  // SS1984 EDIT, original: var/cg420_message = pick("It's major...", "Oh my goodness...",)
 	if(SPT_PROB(1.5, seconds_per_tick))
 		M.say("[cg420_message]")
 	M.adjust_drowsiness(0.2 SECONDS * REM * normalise_creation_purity() * seconds_per_tick)
