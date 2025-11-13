@@ -98,6 +98,14 @@
 /// Proc that generates the applicable string to dispatch to the client for adminwho.
 /client/proc/generate_adminwho_string()
 	var/list/list_of_admins = get_list_of_admins()
+	// SS1984 ADDITION START
+	for(var/ckey in GLOB.admin_datums)
+		var/datum/admins/D = GLOB.admin_datums[ckey]
+		for(var/datum/admin_rank/rank in D.ranks)
+			if (rank.name == "Mentor" || rank.name == "Moderator" || rank.name == "Developer" || rank.name == "Head Developer")
+				list_of_admins += ckey
+				break // skip to next ckey
+	// SS1984 ADDITION END
 	if(isnull(list_of_admins) || list_of_admins.len < 1)
 		return NO_ADMINS_ONLINE_MESSAGE
 
