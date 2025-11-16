@@ -413,12 +413,16 @@ weight.2 = 3
 weight.3 = 4
 weight.4 = 5
 min_pop = 25
+restricted_species = [
+    "/datum/species/synthetic",
+]
 blacklisted_roles = []
 repeatable_weight_decrease = 4
 repeatable = 1
 minimum_required_age = 0
 min_antag_cap = 2
 max_antag_cap = 3
+min_enemies = 3
 
 ["Paradox Clone"]
 weight = 5
@@ -532,6 +536,7 @@ repeatable = 1
 minimum_required_age = 0
 min_antag_cap = 2
 max_antag_cap = 4
+min_enemies = 2
 
 ["Midround Malfunctioning AI"]
 weight.1 = 0
