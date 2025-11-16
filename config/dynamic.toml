@@ -391,7 +391,23 @@ repeatable = 0
 minimum_required_age = 0
 min_enemies = 1
 
-["Midround Changeling"]
+["Sleeper Changeling"]
+weight = 3
+min_pop = 15
+blacklisted_roles = []
+restricted_species = [
+    "/datum/species/synthetic",
+]
+min_antag_cap = 1
+max_antag_cap = 1
+repeatable_weight_decrease = 2
+repeatable = 1
+minimum_required_age = 0
+min_enemies.1 = 3
+min_enemies.2 = 2
+# same for higher tiers
+
+["Midround Changeling"] # actually its latejoin
 weight = 3
 min_pop = 15
 blacklisted_roles = []
@@ -422,6 +438,30 @@ repeatable = 1
 minimum_required_age = 0
 min_antag_cap = 2
 max_antag_cap = 3
+min_enemies = 3
+
+["Sleeper Heretic"]
+weight = 3
+min_pop = 10
+blacklisted_roles = []
+repeatable_weight_decrease = 2
+repeatable = 1
+minimum_required_age = 0
+min_enemies.1 = 3
+min_enemies.2 = 2
+
+["Midround Mass Heretics"]
+weight.1 = 0
+weight.2 = 3
+weight.3 = 4
+weight.4 = 5
+min_pop = 25
+blacklisted_roles = []
+repeatable_weight_decrease = 4
+repeatable = 1
+minimum_required_age = 0
+min_antag_cap = 2
+max_antag_cap = 4
 min_enemies = 3
 
 ["Paradox Clone"]
