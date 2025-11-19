@@ -52,6 +52,7 @@
 
 		if(bullet)
 			bullet.forceMove(drop_location())
+			bullet.update_appearance() // SS1984 ADDITION
 		return TRUE
 	return FALSE
 
