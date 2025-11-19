@@ -9622,6 +9622,7 @@
 #include "modular_ss220\modules\upstream-fixes\aicontroller_ghostize\ai_controller.dm"
 #include "modular_ss220\modules\upstream-fixes\emotes_restrictions\emote.dm"
 #include "modular_ss220\modules\upstream-fixes\hulk_loss_on_death\hulk.dm"
+#include "modular_ss220\modules\upstream-fixes\airlock_ntos\airlock_electronics.dm"
 #include "modular_ss220\modules\vendors\code\dorms.dm"
 #include "modular_ss220\modules\restrict-species\restrict_species.dm"
 #include "modular_ss220\modules\disabled_station_traits\negative_traits.dm"
