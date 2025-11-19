@@ -8,14 +8,26 @@
 		log_mapping("[src] at [AREACOORD(src)] tried to set req_one_access, but req_access was already set!")
 	else
 		var/list/access_list = get_access()
-		airlock.req_one_access += access_list
+		// SS1984 REMOVAL airlock.req_one_access += access_list
+		// SS1984 ADDITION START
+		for(var/access in access_list)
+			if (access in airlock.req_one_access)
+				continue
+			airlock.req_one_access += access
+		// SS1984 ADDITION END
 
 /obj/effect/mapping_helpers/airlock/access/all/payload(obj/machinery/door/airlock/airlock)
 	if(airlock.req_one_access != null)
 		log_mapping("[src] at [AREACOORD(src)] tried to set req_one_access, but req_access was already set!")
 	else
 		var/list/access_list = get_access()
-		airlock.req_access += access_list
+		// SS1984 REMOVAL airlock.req_access += access_list
+		// SS1984 ADDITION START
+		for(var/access in access_list)
+			if (access in airlock.req_access)
+				continue
+			airlock.req_access += access
+		// SS1984 ADDITION END
 
 /obj/effect/mapping_helpers/airlock/access/proc/get_access()
 	var/list/access = list()
