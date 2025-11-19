@@ -562,6 +562,7 @@
 /obj/item/gun/ballistic/proc/load_gun(obj/item/ammo, mob/living/user)
 	if (chambered && !chambered.loaded_projectile)
 		chambered.forceMove(drop_location())
+		chambered.update_appearance() // SS1984 ADDITION
 		if(magazine && magazine.stored_ammo.len > 0 && chambered != magazine.stored_ammo[1]) // SS1984 EDIT, original: if(chambered != magazine?.stored_ammo[1])
 			magazine.stored_ammo -= chambered
 		set_chambered(null) // SS1984 EDIT, original: chambered = null
