@@ -219,7 +219,7 @@
 ///Alien tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/xeno
 	color_source = NONE
-	feature_key = FEATURE_TAIL // NOVA EDIT CHANGE - CUSTOMIZATION - ORIGINAL: feature_key = FEATURE_TAIL_XENO
+	feature_key = FEATURE_TAIL_XENO // SS1984 REVERT OF NOVA'S EDIT, original: feature_key = FEATURE_TAIL // NOVA EDIT CHANGE - CUSTOMIZATION - ORIGINAL: feature_key = FEATURE_TAIL_XENO
 	imprint_on_next_insertion = FALSE
 	/// We don't want to bother writing this in DNA, just use this appearance
 	var/default_appearance = "Xeno"
