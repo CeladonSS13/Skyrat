@@ -531,8 +531,10 @@
 /datum/sprite_accessory/tails/fish/chonky
 	name = "Chonky (Fish Infusion)"
 
-/datum/sprite_accessory/tails/xeno
-	feature_key_override = FEATURE_TAIL_XENO
+// SS1984 REMOVAL START
+// /datum/sprite_accessory/tails/xeno
+// 	feature_key_override = FEATURE_TAIL_XENO
+// SS1984 REMOVAL END
 
 /datum/sprite_accessory/tails/xeno/queen
 	locked = TRUE
