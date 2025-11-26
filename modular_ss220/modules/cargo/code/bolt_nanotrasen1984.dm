@@ -1,5 +1,8 @@
 /datum/supply_pack/companies/nanotrasen_and_bolt
 	group = BOLT_NANOTRASEN_DEFENSE_NAME_1984
+	special = FALSE // required to be shown in cargo
+	special_enabled = TRUE // required to be shown in cargo
+	dangerous = FALSE // required to be shown in cargo
 
 /datum/supply_pack/companies/nanotrasen_and_bolt/misc/nt_flag
 	contains = list(/obj/item/sign/flag/nanotrasen)

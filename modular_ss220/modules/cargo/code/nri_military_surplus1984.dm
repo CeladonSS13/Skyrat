@@ -1,5 +1,8 @@
 /datum/supply_pack/companies/nri_surplus
 	group = NRI_SURPLUS_COMPANY_NAME_1984
+	special = FALSE // required to be shown in cargo
+	special_enabled = TRUE // required to be shown in cargo
+	dangerous = FALSE // required to be shown in cargo
 
 // Various NRI clothing items
 

@@ -1,5 +1,8 @@
 /datum/supply_pack/companies/blacksteel
 	group = BLACKSTEEL_FOUNDATION_NAME_1984
+	special = FALSE // required to be shown in cargo
+	special_enabled = TRUE // required to be shown in cargo
+	dangerous = FALSE // required to be shown in cargo
 
 // A collection of melee weapons fitting the company's more exotic feeling weapon selection
 

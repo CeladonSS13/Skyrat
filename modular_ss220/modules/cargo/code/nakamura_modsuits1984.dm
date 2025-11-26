@@ -1,5 +1,8 @@
 /datum/supply_pack/companies/nakamura_modsuits
 	group = NAKAMURA_ENGINEERING_MODSUITS_NAME_1984
+	special = FALSE // required to be shown in cargo
+	special_enabled = TRUE // required to be shown in cargo
+	dangerous = FALSE // required to be shown in cargo
 
 /datum/supply_pack/companies/nakamura_modsuits/mod/civilian_mod
 	name = "Civilian Miniaturized Belt Modsuit"

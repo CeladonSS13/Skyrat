@@ -1,5 +1,8 @@
 /datum/supply_pack/companies/sol_defense
 	group = SOL_DEFENSE_NAME_1984
+	special = FALSE // required to be shown in cargo
+	special_enabled = TRUE // required to be shown in cargo
+	dangerous = FALSE // required to be shown in cargo
 
 // Beautiful SolFed clothing
 

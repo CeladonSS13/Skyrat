@@ -1,5 +1,8 @@
 /datum/supply_pack/companies/deforest
 	group = DEFOREST_MEDICAL_NAME_1984
+	special = FALSE // required to be shown in cargo
+	special_enabled = TRUE // required to be shown in cargo
+	dangerous = FALSE // required to be shown in cargo
 
 // Precompiled first aid kits, ready to go if you don't want to bother getting individual items
 

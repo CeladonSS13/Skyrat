@@ -1,5 +1,8 @@
 /datum/supply_pack/companies/donk
 	group = DONK_CO_NAME_1984
+	special = FALSE // required to be shown in cargo
+	special_enabled = TRUE // required to be shown in cargo
+	dangerous = FALSE // required to be shown in cargo
 
 // Donk Co foods, like donk pockets and ready donk
 
