@@ -202,3 +202,32 @@
 	crate_name = "centcom id card crate"
 	crate_type = /obj/structure/closet/crate/secure/centcom
 	access_any = list(ACCESS_HOP, ACCESS_HOS, ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
+
+//nova disable
+/datum/supply_pack/companies
+	special = TRUE
+	special_enabled = FALSE
+	dangerous = TRUE
+	group = "Outsourced"
+
+/datum/supply_pack/companies/tools_weapons
+	group = "Outsourced"
+/datum/supply_pack/companies/modsuits
+	group = "Outsourced"
+/datum/supply_pack/companies/medical
+	group = "Outsourced"
+/datum/supply_pack/companies/machines
+	group = "Outsourced"
+/datum/supply_pack/companies/general
+	group = "Outsourced"
+/datum/supply_pack/companies/energy
+	group = "Outsourced"
+/datum/supply_pack/companies/ballistics
+	group = "Outsourced"
+/datum/supply_pack/companies/armor
+	group = "Outsourced"
+/datum/supply_pack/companies/apparel
+	group = "Outsourced"
+/datum/supply_pack/companies/mags_and_ammo
+	group = "Outsourced"
+//nova disable end
