@@ -1,5 +1,14 @@
 [
   {
+    "date": "2025-11-27",
+    "author": "DenIS318",
+    "changes": [
+      "Revert \"Shotgun shells have been adjusted, with the most drastic change being on shotgun slugs, going from 30 damage 10 AP to 35 damage 30 AP, giving them more of an anti-armor niche. Some other shotguns may have been touched, see PR 6371 for details as they come along.\"",
+      "Revert \"The Sakhno SKS's damage multiplier was moved to 0.8x, up from 0.5x.\"",
+      "Revert \"Cmo no longer starts with a advanced health analyzer.\""
+    ]
+  },
+  {
     "date": "2025-11-22",
     "author": "DenIS318",
     "changes": [

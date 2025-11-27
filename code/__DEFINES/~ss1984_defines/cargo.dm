@@ -1,4 +1,3 @@
-
 #define FRONTIER_EQUIPMENT_NAME_1984 "Akhter Company Frontier Equipment"
 #define DEFOREST_MEDICAL_NAME_1984 "DeForest Medical Corporation"
 #define BLACKSTEEL_FOUNDATION_NAME_1984 "Jarnsmiour Blacksteel Foundation"

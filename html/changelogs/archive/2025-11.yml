@@ -1223,3 +1223,12 @@
   vinylspiders:
   - bugfix: fixes a bug that caused you to need to wear shoes in order to gain any
       defensive benefit from the sleeping carp martial art style
+2025-11-27:
+  DenIS318:
+  - balance: Revert "The Sakhno SKS's damage multiplier was moved to 0.8x, up from
+      0.5x."
+  - balance: Revert "Shotgun shells have been adjusted, with the most drastic change
+      being on shotgun slugs, going from 30 damage 10 AP to 35 damage 30 AP, giving
+      them more of an anti-armor niche. Some other shotguns may have been touched,
+      see PR 6371 for details as they come along."
+  - balance: Revert "Cmo no longer starts with a advanced health analyzer."

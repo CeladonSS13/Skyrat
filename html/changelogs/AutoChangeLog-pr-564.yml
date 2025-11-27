@@ -1,0 +1,5 @@
+author: "Arceniu"
+delete-after: True
+changes:
+  - rscadd: "Added combitool to med imports advanced(tier 2) combination of - bonesetter/bloodfilter"
+  - rscadd: "Added telescopic shield to imports"

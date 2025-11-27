@@ -145,18 +145,27 @@
 
 /datum/supply_pack/security/ammo
 	special = FALSE
+	express_lock = FALSE
 
 /datum/supply_pack/security/securityclothes
 	special = FALSE
+	express_lock = FALSE
 
 /datum/supply_pack/security/armory/ballistic
 	special = FALSE
+	express_lock = FALSE
 
 /datum/supply_pack/security/armory/thermal
 	special = FALSE
+	express_lock = FALSE
 
 /datum/supply_pack/imports/russian
 	special = FALSE
+	express_lock = FALSE
+
+/datum/supply_pack/service/survivalknives
+	special = FALSE
+	express_lock = FALSE
 
 /datum/supply_pack/security/armory/short_mod_laser
 	special = TRUE

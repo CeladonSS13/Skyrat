@@ -42,7 +42,6 @@
 		return FALSE
 	return ..()
 
-/* SS1984 REMOVAL START
 /obj/item/crafting_conversion_kit/c38_super
 	name = "\improper Nanotrasen NT/E Laevateinn conversion kit"
 	desc = "All the parts you need to convert a .38 revolver (including the Colt Detective Special) into a magnetically-accelerated beast of a revolver. \
@@ -85,4 +84,3 @@
 	if(the_piece.get_ammo())
 		return FALSE
 	return ..()
-SS1984 REMOVAL END */

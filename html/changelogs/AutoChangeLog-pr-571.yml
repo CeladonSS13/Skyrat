@@ -1,0 +1,4 @@
+author: "Arceniu"
+delete-after: True
+changes:
+  - balance: "disabled cult construct event random spawn, decreased max syndicate portal storm random event to 1"

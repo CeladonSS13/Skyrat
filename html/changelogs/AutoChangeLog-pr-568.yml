@@ -1,4 +1,0 @@
-author: "DenIS318"
-delete-after: True
-changes:
-  - balance: "Revert \"The Sakhno SKS's damage multiplier was moved to 0.8x, up from 0.5x.\""

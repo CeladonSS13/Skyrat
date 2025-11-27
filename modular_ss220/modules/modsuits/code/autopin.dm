@@ -15,3 +15,10 @@
 	default_pins[new_module.type] += REF(wearer)
 	new_module.pin(user)
 	return .
+
+//autopinned modules
+/obj/item/mod/module/jetpack
+	auto_pin = TRUE
+
+/obj/item/mod/module/jetpack/advanced
+	auto_pin = TRUE
