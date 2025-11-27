@@ -47,3 +47,10 @@
 	wound_bonus = 0
 	exposed_wound_bonus = 20
 
+/obj/projectile/bullet/pellet/flechette
+	damage = 2
+	damage_falloff_tile = -0.2
+	speed = 1.2
+
+/datum/embedding/bullet/flechette
+	embed_chance = 25
