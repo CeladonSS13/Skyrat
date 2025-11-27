@@ -6,7 +6,6 @@
 	icon = 'modular_nova/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_nova/master_files/icons/mob/clothing/belt.dmi'
 	stored_blade = /obj/item/melee/sabre/cargo
-	icon_state = "sheath" // SS1984 ADDITION, not moving to modular because upstream most likely would override it later (and should)
 
 /obj/item/melee/sabre
 	force = 20 // Original: 15
