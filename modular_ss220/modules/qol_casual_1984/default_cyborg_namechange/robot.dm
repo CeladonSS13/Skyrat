@@ -1,4 +1,4 @@
-/mob/living/silicon/robot/update_module_innate()
+/mob/living/silicon/transfer_silicon_prefs(client/player_client)
 	. = ..()
 
 	if(GLOB.current_anonymous_theme)
