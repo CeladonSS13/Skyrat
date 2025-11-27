@@ -9740,6 +9740,7 @@
 #include "modular_ss220\modules\qol_casual_1984\cellcharger_power_desc\cell_charger.dm"
 #include "modular_ss220\modules\qol_casual_1984\deathsquad_qol\ert.dm"
 #include "modular_ss220\modules\qol_casual_1984\deathsquad_qol\general_memories.dm"
+#include "modular_ss220\modules\qol_casual_1984\advanced_analyzer_cmo\medical.dm"
 #include "modular_ss220\modules\ghostroles_stuff\ds2_interdyne_shared\techweb_types.dm"
 #include "modular_ss220\modules\ghostroles_stuff\ds2_interdyne_shared\machine_circuits.dm"
 #include "modular_ss220\modules\ghostroles_stuff\ds2_interdyne_shared\interdyne_ds2_rnd.dm"
