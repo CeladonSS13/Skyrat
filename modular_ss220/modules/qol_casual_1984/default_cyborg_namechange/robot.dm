@@ -3,8 +3,6 @@
 
 	if(GLOB.current_anonymous_theme)
 		return .
-	if(custom_name)
-		return .
 	if(client && client.prefs.read_preference(/datum/preference/name/cyborg) == DEFAULT_CYBORG_NAME) // if no client - no namechange
 		addtimer(CALLBACK(src, PROC_REF(prompt_cyborg_namechange)), 0.5 SECONDS)
 
