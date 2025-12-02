@@ -56,7 +56,7 @@
 	job_templates.Cut()
 
 	// If the program isn't locked to a specific department or is_centcom and we have ACCESS_CHANGE_IDS in our auth card, we're not minor.
-	if((!target_dept || !is_centcom) && (ACCESS_CHANGE_IDS in auth_card.access) || (is_centcom && ((ACCESS_CENT_CAPTAIN in auth_card.access) || (ACCESS_CENT_ADMIRAL in auth_card.access)))) //ss1984 edit, original: if((!target_dept || is_centcom) && (ACCESS_CHANGE_IDS in auth_card.access))
+	if(((!target_dept || !is_centcom) && (ACCESS_CHANGE_IDS in auth_card.access)) || (is_centcom && ((ACCESS_CENT_CAPTAIN in auth_card.access) || (ACCESS_CENT_ADMIRAL in auth_card.access)))) //ss1984 edit, original: if((!target_dept || is_centcom) && (ACCESS_CHANGE_IDS in auth_card.access))
 		minor = FALSE
 		authenticated_card = "[auth_card.name]"
 		authenticated_user = auth_card.registered_name ? auth_card.registered_name : "Unknown"
