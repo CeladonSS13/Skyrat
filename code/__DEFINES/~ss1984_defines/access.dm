@@ -27,7 +27,7 @@
 /// Special Blackops+ Access
 #define ACCESS_CENT_BLACKOPS "cent_blackops"
 /// CentCom Cargo office access
-#define ACCESS_CENT_SUPPLY "cent_supply
+#define ACCESS_CENT_SUPPLY "cent_supply"
 /// CentCom Naval Admirals access
 #define ACCESS_CENT_ADMIRAL "cent_admiral"
 /// CentCom Naval Fleet Admiral access
@@ -47,7 +47,7 @@
 	ACCESS_CENT_SPECOPS, \
 	ACCESS_CENT_SPECOPS_LEADER, \
 	ACCESS_CENT_STORAGE, \
-	ACCESS_CENT_SUPPLY, 
+	ACCESS_CENT_SUPPLY, \
 )
 
 #define REGION_CENTCOM "Central Command"
