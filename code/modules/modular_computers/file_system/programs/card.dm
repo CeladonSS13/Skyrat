@@ -56,7 +56,7 @@
 	job_templates.Cut()
 
 	// If the program isn't locked to a specific department or is_centcom and we have ACCESS_CHANGE_IDS in our auth card, we're not minor.
-	if((!target_dept || is_centcom) && (ACCESS_CHANGE_IDS in auth_card.access))
+	if((!target_dept || !is_centcom) && (ACCESS_CHANGE_IDS in auth_card.access) || (is_centcom && ((ACCESS_CENT_CAPTAIN in auth_card.access) || (ACCESS_CENT_ADMIRAL in auth_card.access)))) //ss1984 edit, original: if((!target_dept || is_centcom) && (ACCESS_CHANGE_IDS in auth_card.access))
 		minor = FALSE
 		authenticated_card = "[auth_card.name]"
 		authenticated_user = auth_card.registered_name ? auth_card.registered_name : "Unknown"
@@ -67,11 +67,8 @@
 			job_templates = SSid_access.centcom_job_templates.Copy()
 			centcom_minor = FALSE
 			valid_access = SSid_access.get_region_access_list(list(REGION_CENTCOM))
-		else if((is_centcom) && ((ACCESS_CENT_LIVING in auth_card.access)))
-			centcom_minor = TRUE
-			job_templates = SSid_access.station_job_templates.Copy()
-			valid_access = SSid_access.get_region_access_list(list(REGION_NTR))
 		else if(is_centcom)
+			centcom_minor = TRUE
 			return FALSE
 		else
 			centcom_minor = FALSE
@@ -318,7 +315,10 @@
 	var/list/regions = list()
 	var/list/tgui_region_data = SSid_access.all_region_access_tgui
 	if(is_centcom && centcom_minor)					// SS1984 EDIT START, original: if(is_centcom)
-		regions = tgui_region_data[REGION_NTR]
+		for(var/region in SSid_access.station_regions)
+			if((minor || target_dept) && !(region in region_access))
+				continue
+			regions += tgui_region_data[region]
 	else if(is_centcom && (!(centcom_minor)))			// SS1984 EDIT END
 		regions += tgui_region_data[REGION_CENTCOM]
 	else
