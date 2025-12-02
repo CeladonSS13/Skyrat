@@ -21,6 +21,7 @@
 #define ACCESS_CENT_OFFICER "cent_officer"
 /// Special Ops Basic access, also Marauder and Seraph mechs.
 #define ACCESS_CENT_SPECOPS "cent_specops" */
+//our access add
 /// Special Ops Commander / blackops access(WIP)
 #define ACCESS_CENT_SPECOPS_LEADER "cent_specops_leader"
 /// Special Blackops+ Access
@@ -31,6 +32,36 @@
 #define ACCESS_CENT_ADMIRAL "cent_admiral"
 /// CentCom Naval Fleet Admiral access
 #define ACCESS_CENT_FLEET_ADMIRAL "cent_fleet_admiral"
+
+//centcom more access locations
+
+#define CENTCOM_ACCESS list( \
+	ACCESS_CENT_ADMIRAL, \
+	ACCESS_CENT_BAR, \
+	ACCESS_CENT_BLACKOPS, \
+	ACCESS_CENT_CAPTAIN, \
+	ACCESS_CENT_FLEET_ADMIRAL, \
+	ACCESS_CENT_GENERAL, \
+	ACCESS_CENT_LIVING, \
+	ACCESS_CENT_MEDICAL, \
+	ACCESS_CENT_SPECOPS, \
+	ACCESS_CENT_SPECOPS_LEADER, \
+	ACCESS_CENT_STORAGE, \
+	ACCESS_CENT_SUPPLY, 
+)
+
+#define REGION_CENTCOM "Central Command"
+#define REGION_ACCESS_CENTCOM CENTCOM_ACCESS
+
+#define REGION_AREA_CENTCOM list( \
+	REGION_COMMAND, \
+	REGION_ENGINEERING, \
+	REGION_GENERAL, \
+	REGION_MEDBAY, \
+	REGION_RESEARCH, \
+	REGION_SECURITY, \
+	REGION_SUPPLY, \
+)
 
 //nri
 #define ACCESS_NRI "nri"
