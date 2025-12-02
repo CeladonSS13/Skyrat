@@ -31,7 +31,8 @@ SUBSYSTEM_DEF(id_access)
 	var/list/station_pda_templates = list()
 	/// Helper list containing all station regions.
 	var/list/station_regions = list()
-
+	/// Helper list containing all centcom regions.
+	var/list/centcom_regions = list()
 	/// The roundstart generated code for the spare ID safe. This is given to the Captain on shift start. If there's no Captain, it's given to the HoP. If there's no HoP
 	var/spare_id_safe_code = ""
 
@@ -122,6 +123,7 @@ SUBSYSTEM_DEF(id_access)
 	accesses_by_region[REGION_CENTCOM] = REGION_ACCESS_CENTCOM
 	accesses_by_region[REGION_NTR] = REGION_ACCESS_NTR
 
+	centcom_regions = REGION_AREA_CENTCOM
 	station_regions = REGION_AREA_STATION
 
 /// Instantiate trim singletons and add them to a list.
@@ -202,6 +204,12 @@ SUBSYSTEM_DEF(id_access)
 			"pdas" = list(),
 		),
 		"[ACCESS_CENT_CAPTAIN]" = list(
+			"regions" = list(REGION_CENTCOM),
+			"head" = JOB_NAVAL_FLEET_ADMIRAL,
+			"templates" = list(),
+			"pdas" = list(),
+		),
+		"[ACCESS_CENT_ADMIRAL]" = list(
 			"regions" = list(REGION_CENTCOM),
 			"head" = JOB_NAVAL_FLEET_ADMIRAL,
 			"templates" = list(),
