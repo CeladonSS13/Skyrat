@@ -187,6 +187,18 @@
 #define ACCESS_CENT_OFFICER "cent_officer"
 /// Special Ops. Captain's display case, Marauder and Seraph mechs.
 #define ACCESS_CENT_SPECOPS "cent_specops"
+//ss1984 addiction start
+/// Special Ops Commander / blackops access(WIP)
+#define ACCESS_CENT_SPECOPS_LEADER "cent_specops_leader"
+/// Special Blackops+ Access
+#define ACCESS_CENT_BLACKOPS "cent_blackops"
+/// CentCom Cargo office access
+#define ACCESS_CENT_SUPPLY "cent_supply"
+/// CentCom Naval Admirals access
+#define ACCESS_CENT_ADMIRAL "cent_admiral"
+/// CentCom Naval Fleet Admiral access
+#define ACCESS_CENT_FLEET_ADMIRAL "cent_fleet_admiral"
+//ss1984 addiction end
 
 /// - - - ANTAGONIST - - -
 /// SYNDICATE
@@ -379,17 +391,23 @@
 )
 /// Centcom area stuff. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_CENTCOM)
 #define CENTCOM_ACCESS list( \
+	ACCESS_CENT_ADMIRAL, \
 	ACCESS_CENT_BAR, \
+	ACCESS_CENT_BLACKOPS, \
 	ACCESS_CENT_CAPTAIN, \
+	ACCESS_CENT_FLEET_ADMIRAL, \
 	ACCESS_CENT_GENERAL, \
 	ACCESS_CENT_LIVING, \
 	ACCESS_CENT_MEDICAL, \
 	ACCESS_CENT_SPECOPS, \
+	ACCESS_CENT_SPECOPS_LEADER,
+	ACCESS_CENT_SUPPLY, \
 	ACCESS_CENT_STORAGE, \
 	ACCESS_CENT_TELEPORTER, \
 	ACCESS_CENT_THUNDER, \
 	ACCESS_CENT_OFFICER, \
 )
+//ss1984 add - ACCESS_CENT_ADMIRAL, ACCESS_CENT_BLACKOPS, ACCESS_CENT_FLEET_ADMIRAL, ACCESS_CENT_SPECOPS_LEADER, ACCESS_CENT_SUPPLY
 
 /// Syndicate areas off station. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_SYNDICATE)
 #define SYNDICATE_ACCESS list( \
