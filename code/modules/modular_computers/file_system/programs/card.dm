@@ -158,6 +158,8 @@
 						"}
 
 			var/list/known_access_rights = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
+			if(is_centcom)
+				known_access_rights += SSid_access.get_region_access_list(list(REGION_CENTCOM))
 			for(var/A in modified_id.access)
 				if(A in known_access_rights)
 					contents += " [SSid_access.get_access_desc(A)]"
@@ -315,7 +317,7 @@
 	var/list/regions = list()
 	var/list/tgui_region_data = SSid_access.all_region_access_tgui
 	if(is_centcom && centcom_minor)					// SS1984 EDIT START, original: if(is_centcom)
-		for(var/region in SSid_access.station_regions)
+		for(var/region in SSid_access.centcom_regions)
 			if((minor || target_dept) && !(region in region_access))
 				continue
 			regions += tgui_region_data[region]
