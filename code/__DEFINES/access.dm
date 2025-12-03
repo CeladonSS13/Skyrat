@@ -192,6 +192,8 @@
 #define ACCESS_CENT_SPECOPS_LEADER "cent_specops_leader"
 /// Special Blackops+ Access
 #define ACCESS_CENT_BLACKOPS "cent_blackops"
+/// Special Operations officer Access
+#define ACCESS_CENT_SPECOPS_OFFICER "cent_specops_officer"
 /// CentCom Cargo office access
 #define ACCESS_CENT_SUPPLY "cent_supply"
 /// CentCom Naval Admirals access
@@ -391,23 +393,16 @@
 )
 /// Centcom area stuff. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_CENTCOM)
 #define CENTCOM_ACCESS list( \
-	ACCESS_CENT_ADMIRAL, \
 	ACCESS_CENT_BAR, \
-	ACCESS_CENT_BLACKOPS, \
-	ACCESS_CENT_CAPTAIN, \
-	ACCESS_CENT_FLEET_ADMIRAL, \
 	ACCESS_CENT_GENERAL, \
 	ACCESS_CENT_LIVING, \
 	ACCESS_CENT_MEDICAL, \
-	ACCESS_CENT_SPECOPS, \
-	ACCESS_CENT_SPECOPS_LEADER, \
 	ACCESS_CENT_SUPPLY, \
 	ACCESS_CENT_STORAGE, \
 	ACCESS_CENT_TELEPORTER, \
 	ACCESS_CENT_THUNDER, \
-	ACCESS_CENT_OFFICER, \
 )
-//ss1984 add - ACCESS_CENT_ADMIRAL, ACCESS_CENT_BLACKOPS, ACCESS_CENT_FLEET_ADMIRAL, ACCESS_CENT_SPECOPS_LEADER, ACCESS_CENT_SUPPLY
+//ss1984 edit - add ACCESS_CENT_SUPPLY, remove - ACCESS_CENT_CAPTAIN ACCESS_CENT_SPECOPS ACCESS_CENT_OFFICER
 
 /// Syndicate areas off station. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_SYNDICATE)
 #define SYNDICATE_ACCESS list( \
@@ -439,7 +434,7 @@
 /// Name for the Global region.
 #define REGION_ALL_GLOBAL "All"
 /// Used to seed the accesses_by_region list in SSid_access. A list of every single access in the game.
-#define REGION_ACCESS_ALL_GLOBAL REGION_ACCESS_ALL_STATION + CENTCOM_ACCESS + SYNDICATE_ACCESS + AWAY_ACCESS + CULT_ACCESS
+#define REGION_ACCESS_ALL_GLOBAL REGION_ACCESS_ALL_STATION + REGION_ACCESS_ALL_CENTCOM + SYNDICATE_ACCESS + AWAY_ACCESS + CULT_ACCESS
 /// Name for the Station All Access region.
 #define REGION_ALL_STATION "Station"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all station accesses.
@@ -561,13 +556,60 @@
 #define REGION_ACCESS_CENTCOM CENTCOM_ACCESS
 
 //ss1984 edit add
-///name for nanotrasen consultant "region".
-#define REGION_NTR "Nanotrasen Official"
-/// Used to seed the accesses_by_region list in SSid_access.
-#define REGION_ACCESS_NTR list( \
+//nrt access and region
+#define NTR_ACCESS list( \
 	ACCESS_CENT_GENERAL, \
 	ACCESS_COMMAND, \
 	ACCESS_VAULT, \
+)
+///name for nanotrasen consultant "region".
+#define REGION_CENTCOM_NTR "Nanotrasen Official"
+/// Used to seed the accesses_by_region list in SSid_access.
+#define REGION_ACCESS_CENTCOM_NTR NTR_ACCESS
+
+//fleet admiral access and region
+#define CENTCOM_NAVAL_ACCESS list( \
+	ACCESS_CENT_ADMIRAL, \
+	ACCESS_CENT_FLEET_ADMIRAL, \
+)
+/// Name for the NanoTrasen Naval region.
+#define REGION_CENTCOM_NAVAL "Nanotrasen Naval"
+/// Used to seed the accesses_by_region list in SSid_access. A list of all CENTCOM_NAVAL_ACCESS regional accesses.
+#define REGION_ACCESS_CENTCOM_NAVAL CENTCOM_NAVAL_ACCESS
+
+//centcom captain access and region
+#define CENTCOM_CAPTAIN_ACCESS list( \
+	ACCESS_CENT_CAPTAIN, \
+	ACCESS_CENT_OFFICER, \
+)
+/// Name for the CentCom Captain region.
+#define REGION_CENTCOM_CAPTAIN "Centcom Officer"
+/// Used to seed the accesses_by_region list in SSid_access. A list of all CENTCOM_CAPTAIN_ACCESS regional accesses.
+#define REGION_ACCESS_CENTCOM_CAPTAIN CENTCOM_CAPTAIN_ACCESS
+
+//specops officer access and region
+#define CENTCOM_SPECOPS_ACCESS list( \
+	ACCESS_CENT_BLACKOPS, \
+	ACCESS_CENT_SPECOPS_LEADER, \
+	ACCESS_CENT_SPECOPS, \
+)
+/// Name for the NanoTrasen SPEC ops region.
+#define REGION_CENTCOM_SPECOPS "Nanotrasen Specialops"
+/// Used to seed the accesses_by_region list in SSid_access. A list of all CENTCOM_SPECOPS_ACCESS regional accesses.
+#define REGION_ACCESS_CENTCOM_SPECOPS CENTCOM_SPECOPS_ACCESS
+
+
+//all centcom access
+#define REGION_ALL_CENTCOM "Centcom"
+/// Used to seed the accesses_by_region list in SSid_access. A list of all centcom accesses.
+#define REGION_ACCESS_ALL_CENTCOM NTR_ACCESS + CENTCOM_ACCESS + CENTCOM_SPECOPS_ACCESS + CENTCOM_CAPTAIN_ACCESS + CENTCOM_NAVAL_ACCESS
+
+#define REGION_AREA_CENTCOM list( \
+	REGION_CENTCOM_NTR, \
+	REGION_CENTCOM, \
+	REGION_CENTCOM_SPECOPS, \
+	REGION_CENTCOM_CAPTAIN, \
+	REGION_CENTCOM_NAVAL, \
 )
 //ss1984 edit end
 

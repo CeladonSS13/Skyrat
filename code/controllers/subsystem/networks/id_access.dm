@@ -122,7 +122,11 @@ SUBSYSTEM_DEF(id_access)
 	accesses_by_region[REGION_SUPPLY] = REGION_ACCESS_SUPPLY
 	accesses_by_region[REGION_COMMAND] = REGION_ACCESS_COMMAND
 	accesses_by_region[REGION_CENTCOM] = REGION_ACCESS_CENTCOM
-	accesses_by_region[REGION_NTR] = REGION_ACCESS_NTR
+	accesses_by_region[REGION_CENTCOM_NTR] = REGION_ACCESS_CENTCOM_NTR
+	accesses_by_region[REGION_CENTCOM_NAVAL] = REGION_ACCESS_CENTCOM_NAVAL
+	accesses_by_region[REGION_CENTCOM_CAPTAIN] = REGION_ACCESS_CENTCOM_CAPTAIN
+	accesses_by_region[REGION_CENTCOM_SPECOPS] = REGION_ACCESS_CENTCOM_SPECOPS
+	accesses_by_region[REGION_ALL_CENTCOM] = REGION_ACCESS_ALL_CENTCOM
 
 	centcom_regions = REGION_AREA_CENTCOM
 	station_regions = REGION_AREA_STATION
@@ -198,21 +202,33 @@ SUBSYSTEM_DEF(id_access)
 			"pdas" = list(),
 		),
 						// SS1984 ADDITION
-		"[ACCESS_CENT_LIVING]" = list(
-			"regions" = list(REGION_NTR),
-			"head" = JOB_NT_REP,
+		"[ACCESS_CENT_ADMIRAL]" = list(
+			"regions" = list(REGION_CENTCOM_NAVAL),
+			"head" = JOB_NAVAL_FLEET_ADMIRAL,
 			"templates" = list(),
 			"pdas" = list(),
 		),
 		"[ACCESS_CENT_CAPTAIN]" = list(
-			"regions" = list(REGION_CENTCOM),
-			"head" = JOB_NAVAL_FLEET_ADMIRAL,
+			"regions" = list(REGION_CENTCOM_CAPTAIN),
+			"head" = JOB_NAVAL_CAPTAIN,
 			"templates" = list(),
 			"pdas" = list(),
 		),
-		"[ACCESS_CENT_ADMIRAL]" = list(
+		"[ACCESS_CENT_OFFICER]" = list(
 			"regions" = list(REGION_CENTCOM),
-			"head" = JOB_NAVAL_FLEET_ADMIRAL,
+			"head" = JOB_CENTCOM_COMMANDER,
+			"templates" = list(),
+			"pdas" = list(),
+		),
+		"[ACCESS_CENT_SPECOPS_OFFICER]" = list(
+			"regions" = list(REGION_CENTCOM_SPECOPS),
+			"head" = JOB_CENTCOM_SPECIAL_OFFICER,
+			"templates" = list(),
+			"pdas" = list(),
+		),
+		"[ACCESS_CENT_LIVING]" = list(
+			"regions" = list(REGION_CENTCOM_NTR),
+			"head" = JOB_NT_REP,
 			"templates" = list(),
 			"pdas" = list(),
 		),
@@ -365,8 +381,9 @@ SUBSYSTEM_DEF(id_access)
 	desc_by_access["[ACCESS_BIT_DEN]"] = "Bitrunner Den"
 	desc_by_access["[ACCESS_BARBER]"] = "Barber" // NOVA EDIT ADDITION - BARBER UPDATE
 	desc_by_access["[ACCESS_CENT_SUPPLY]"] = "CentCom Supply" // ss1984 addiction start
-	desc_by_access["[ACCESS_CENT_SPECOPS_LEADER]"] = "CentCom SpecOps Leader"
 	desc_by_access["[ACCESS_CENT_BLACKOPS]"] = "CentCom Asset Protection"
+	desc_by_access["[ACCESS_CENT_SPECOPS_LEADER]"] = "CentCom SpecOps Leader"
+	desc_by_access["[ACCESS_CENT_SPECOPS_OFFICER]"] = "CentCom SpecOps Officer"
 	desc_by_access["[ACCESS_CENT_ADMIRAL]"] = "CentCom Admiral"
 	desc_by_access["[ACCESS_CENT_FLEET_ADMIRAL]"] = "CentCom Fleet Admiral" // ss1984 addiction end
 

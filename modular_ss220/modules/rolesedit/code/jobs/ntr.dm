@@ -200,7 +200,7 @@
 	desc = "Remotely controls airlocks. This remote has specific access. Despite that, holding it makes you feel insecure for some reason."
 	icon = 'modular_ss220/modules/rolesedit/icons/jobs/remote.dmi'
 	department = "ntr"
-	region_access = REGION_NTR
+	region_access = REGION_CENTCOM_NTR
 	our_domain = list( /area/station/ )
 
 /obj/item/card/id/departmental_budget/com
