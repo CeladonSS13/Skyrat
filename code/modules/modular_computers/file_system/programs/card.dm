@@ -309,26 +309,24 @@
 
 	var/list/regions = list()
 	var/list/tgui_region_data = SSid_access.all_region_access_tgui
-	if(is_centcom && centcom_minor)
-		for(var/region in SSid_access.centcom_regions) // SS1984 EDIT START
-			if(!(region in region_access))
-				continue
-			regions += tgui_region_data[region]
-	else if(is_centcom && !(minor))
-		for(var/region in SSid_access.centcom_regions)
-			regions += tgui_region_data[region]
-	else if(is_centcom)
-		for(var/region in SSid_access.centcom_regions)
-			if(!(region in region_access))
-				continue
-			regions += tgui_region_data[region]
-	else
-		if(centcom_minor)
-			regions += tgui_region_data[REGION_CENTCOM_NTR]
+
+	if(!is_centcom)
 		for(var/region in SSid_access.station_regions)
 			if((minor || target_dept) && !(region in region_access))
 				continue
-			regions += tgui_region_data[region] // SS1984 EDIT END
+			regions += tgui_region_data[region]
+		if(centcom_minor)
+			regions += tgui_region_data[REGION_CENTCOM_NTR] // SS1984 EDIT END
+	else
+		if(is_centcom)
+			if(is_centcom && !(minor) && !(centcom_minor))
+				for(var/region in SSid_access.centcom_regions)
+					regions += tgui_region_data[region]
+			else
+				for(var/region in SSid_access.centcom_regions) // SS1984 EDIT START
+					if(!(region in region_access))
+						continue
+					regions += tgui_region_data[region]
 
 	data["regions"] = regions
 
