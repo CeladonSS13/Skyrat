@@ -92,10 +92,10 @@
 
 	if(length(region_access))
 		minor = TRUE
-		if(ACCESS_CENT_LIVING in auth_card.access)
+		if(ACCESS_CENT_LIVING in auth_card.access)//ss1984 add start
 			centcom_minor = TRUE
 		else
-			centcom_minor = FALSE
+			centcom_minor = FALSE //ss1984 add end
 		valid_access |= SSid_access.get_region_access_list(region_access)
 		authenticated_card = "[auth_card.name] \[LIMITED ACCESS\]"
 		computer.update_static_data_for_all_viewers()
@@ -151,8 +151,8 @@
 						"}
 
 			var/list/known_access_rights = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
-			if(is_centcom)
-				known_access_rights += SSid_access.get_region_access_list(list(REGION_ALL_CENTCOM))
+			if(is_centcom)//ss1984 add start
+				known_access_rights += SSid_access.get_region_access_list(list(REGION_ALL_CENTCOM))//ss1984 add end
 			for(var/A in modified_id.access)
 				if(A in known_access_rights)
 					contents += " [SSid_access.get_access_desc(A)]"
@@ -310,18 +310,19 @@
 	var/list/regions = list()
 	var/list/tgui_region_data = SSid_access.all_region_access_tgui
 
-	if(!is_centcom)
+	if(is_centcom)
+		//regions += tgui_region_data[REGION_CENTCOM] //ss1984 disable
+		for(var/region in SSid_access.centcom_regions) // SS1984 EDIT START
+			if(!(region in region_access))
+				continue
+			regions += tgui_region_data[region]
+	else
 		for(var/region in SSid_access.station_regions)
 			if((minor || target_dept) && !(region in region_access))
 				continue
 			regions += tgui_region_data[region]
 		if(centcom_minor)
-			regions += tgui_region_data[REGION_CENTCOM_NTR]
-	else
-		for(var/region in SSid_access.centcom_regions)
-			if(!(region in region_access))
-				continue
-			regions += tgui_region_data[region] // SS1984 EDIT END
+			regions += tgui_region_data[REGION_CENTCOM_NTR] // SS1984 EDIT END
 
 	data["regions"] = regions
 
