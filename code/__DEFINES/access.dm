@@ -187,7 +187,7 @@
 #define ACCESS_CENT_OFFICER "cent_officer"
 /// Special Ops. Captain's display case, Marauder and Seraph mechs.
 #define ACCESS_CENT_SPECOPS "cent_specops"
-//ss1984 addiction start
+//SS1984 ADD START
 /// CentCom Naval Admirals access
 #define ACCESS_CENT_ADMIRAL "cent_admiral"
 /// CentCom Naval Fleet Admiral access
@@ -202,7 +202,7 @@
 #define ACCESS_CENT_SPECOPS_OFFICER "cent_specops_officer"
 /// CentCom Cargo office access
 #define ACCESS_CENT_SUPPLY "cent_supply"
-//ss1984 addiction end
+//SS1984 ADD END
 
 /// - - - ANTAGONIST - - -
 /// SYNDICATE
