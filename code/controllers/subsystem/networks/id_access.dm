@@ -101,6 +101,11 @@ SUBSYSTEM_DEF(id_access)
 	for(var/access in accesses_by_flag["[ACCESS_FLAG_SPECIAL]"])
 		flags_by_access |= list("[access]" = ACCESS_FLAG_SPECIAL)
 
+	accesses_by_flag["[ACCESS_FLAG_CENTCOM]"] = REGION_ACCESS_ALL_CENTCOM
+	for(var/access in accesses_by_flag["[ACCESS_FLAG_CENTCOM]"])
+		flags_by_access |= list("[access]" = ACCESS_FLAG_CENTCOM)
+//ss1984 add REGION_ACCESS_ALL_CENTCOM
+
 	access_flag_string_by_flag["[ACCESS_FLAG_COMMON]"] = ACCESS_FLAG_COMMON_NAME
 	access_flag_string_by_flag["[ACCESS_FLAG_COMMAND]"] = ACCESS_FLAG_COMMAND_NAME
 	access_flag_string_by_flag["[ACCESS_FLAG_PRV_COMMAND]"] = ACCESS_FLAG_PRV_COMMAND_NAME

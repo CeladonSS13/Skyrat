@@ -580,6 +580,7 @@
 //centcom captain access and region
 #define CENTCOM_CAPTAIN_ACCESS list( \
 	ACCESS_CENT_CAPTAIN, \
+	ACCESS_CENT_SPECOPS_OFFICER, \
 	ACCESS_CENT_OFFICER, \
 )
 /// Name for the CentCom Captain region.
