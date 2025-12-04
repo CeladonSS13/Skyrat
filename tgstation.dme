@@ -9391,6 +9391,7 @@
 #include "modular_ss220\modules\cargo\code\sol_defence1984.dm"
 #include "modular_ss220\modules\cargo\code\bolt_nanotrasen1984.dm"
 #include "modular_ss220\modules\cargo\code\vitezstvi_ammo1984.dm"
+#include "modular_ss220\modules\central_command\code\_landmarks.dm"
 #include "modular_ss220\modules\custom_bank_machine\code\machine.dm"
 #include "modular_ss220\modules\cyrillic_key_fixes\code\client_procs.dm"
 #include "modular_ss220\modules\cyrillic_key_fixes\code\communication.dm"

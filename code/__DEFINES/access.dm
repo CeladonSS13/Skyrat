@@ -188,18 +188,20 @@
 /// Special Ops. Captain's display case, Marauder and Seraph mechs.
 #define ACCESS_CENT_SPECOPS "cent_specops"
 //ss1984 addiction start
-/// Special Ops Commander / blackops access(WIP)
-#define ACCESS_CENT_SPECOPS_LEADER "cent_specops_leader"
-/// Special Blackops+ Access
-#define ACCESS_CENT_BLACKOPS "cent_blackops"
-/// Special Operations officer Access
-#define ACCESS_CENT_SPECOPS_OFFICER "cent_specops_officer"
-/// CentCom Cargo office access
-#define ACCESS_CENT_SUPPLY "cent_supply"
 /// CentCom Naval Admirals access
 #define ACCESS_CENT_ADMIRAL "cent_admiral"
 /// CentCom Naval Fleet Admiral access
 #define ACCESS_CENT_FLEET_ADMIRAL "cent_fleet_admiral"
+/// Special Blackops+ Access
+#define ACCESS_CENT_BLACKOPS "cent_blackops"
+/// Special Operations officer Access
+#define ACCESS_CENT_SECURITY "cent_security"
+/// Special Ops Commander / blackops access(WIP)
+#define ACCESS_CENT_SPECOPS_LEADER "cent_specops_leader"
+/// Special Operations officer Access
+#define ACCESS_CENT_SPECOPS_OFFICER "cent_specops_officer"
+/// CentCom Cargo office access
+#define ACCESS_CENT_SUPPLY "cent_supply"
 //ss1984 addiction end
 
 /// - - - ANTAGONIST - - -
@@ -397,12 +399,14 @@
 	ACCESS_CENT_GENERAL, \
 	ACCESS_CENT_LIVING, \
 	ACCESS_CENT_MEDICAL, \
+	ACCESS_CENT_SECURITY, \
+	ACCESS_CENT_SPECOPS, \
 	ACCESS_CENT_SUPPLY, \
 	ACCESS_CENT_STORAGE, \
 	ACCESS_CENT_TELEPORTER, \
 	ACCESS_CENT_THUNDER, \
 )
-//ss1984 edit - add ACCESS_CENT_SUPPLY, remove - ACCESS_CENT_CAPTAIN ACCESS_CENT_SPECOPS ACCESS_CENT_OFFICER
+//ss1984 edit - add ACCESS_CENT_SUPPLY, ACCESS_CENT_SECURITY remove - ACCESS_CENT_CAPTAIN, ACCESS_CENT_OFFICER
 
 /// Syndicate areas off station. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_SYNDICATE)
 #define SYNDICATE_ACCESS list( \
