@@ -127,6 +127,7 @@ SUBSYSTEM_DEF(id_access)
 	accesses_by_region[REGION_SUPPLY] = REGION_ACCESS_SUPPLY
 	accesses_by_region[REGION_COMMAND] = REGION_ACCESS_COMMAND
 	accesses_by_region[REGION_CENTCOM] = REGION_ACCESS_CENTCOM
+	//ss1984 add start
 	accesses_by_region[REGION_CENTCOM_NTR] = REGION_ACCESS_CENTCOM_NTR
 	accesses_by_region[REGION_CENTCOM_NAVAL] = REGION_ACCESS_CENTCOM_NAVAL
 	accesses_by_region[REGION_CENTCOM_CAPTAIN] = REGION_ACCESS_CENTCOM_CAPTAIN
@@ -134,6 +135,7 @@ SUBSYSTEM_DEF(id_access)
 	accesses_by_region[REGION_ALL_CENTCOM] = REGION_ACCESS_ALL_CENTCOM
 
 	centcom_regions = REGION_AREA_CENTCOM
+	//ss1984 add end
 	station_regions = REGION_AREA_STATION
 
 /// Instantiate trim singletons and add them to a list.
@@ -206,7 +208,7 @@ SUBSYSTEM_DEF(id_access)
 			"templates" = list(),
 			"pdas" = list(),
 		),
-						// SS1984 ADDITION
+						// SS1984 ADDITION START
 		"[ACCESS_CENT_ADMIRAL]" = list(
 			"regions" = list(REGION_CENTCOM_NAVAL),
 			"head" = JOB_NAVAL_FLEET_ADMIRAL,
@@ -237,7 +239,7 @@ SUBSYSTEM_DEF(id_access)
 			"templates" = list(),
 			"pdas" = list(),
 		),
-						// SS1984 ADDITION
+						// SS1984 ADDITION END
 	)
 
 	var/list/station_job_trims = subtypesof(/datum/id_trim/job)

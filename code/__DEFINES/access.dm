@@ -400,13 +400,12 @@
 	ACCESS_CENT_LIVING, \
 	ACCESS_CENT_MEDICAL, \
 	ACCESS_CENT_SECURITY, \
-	ACCESS_CENT_SPECOPS, \
 	ACCESS_CENT_SUPPLY, \
 	ACCESS_CENT_STORAGE, \
 	ACCESS_CENT_TELEPORTER, \
 	ACCESS_CENT_THUNDER, \
 )
-//ss1984 edit - add ACCESS_CENT_SUPPLY, ACCESS_CENT_SECURITY remove - ACCESS_CENT_CAPTAIN, ACCESS_CENT_OFFICER
+//ss1984 edit - add ACCESS_CENT_SUPPLY, ACCESS_CENT_SECURITY remove - ACCESS_CENT_CAPTAIN, ACCESS_CENT_OFFICER, ACCESS_CENT_SPECOPS
 
 /// Syndicate areas off station. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_SYNDICATE)
 #define SYNDICATE_ACCESS list( \
@@ -439,6 +438,7 @@
 #define REGION_ALL_GLOBAL "All"
 /// Used to seed the accesses_by_region list in SSid_access. A list of every single access in the game.
 #define REGION_ACCESS_ALL_GLOBAL REGION_ACCESS_ALL_STATION + REGION_ACCESS_ALL_CENTCOM + SYNDICATE_ACCESS + AWAY_ACCESS + CULT_ACCESS
+//ss1984 edit original #define REGION_ACCESS_ALL_GLOBAL REGION_ACCESS_ALL_STATION + CENTCOM_ACCESS + SYNDICATE_ACCESS + AWAY_ACCESS + CULT_ACCESS
 /// Name for the Station All Access region.
 #define REGION_ALL_STATION "Station"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all station accesses.

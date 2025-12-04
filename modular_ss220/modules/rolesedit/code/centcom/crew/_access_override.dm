@@ -37,7 +37,7 @@
 
 /datum/id_trim/centcom/naval/New()
 	. = ..()
-	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION)) - ACCESS_CENT_SPECOPS)
+	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION)))
 
 
 /datum/id_trim/centcom/naval/lieutenant
@@ -45,19 +45,19 @@
 
 /datum/id_trim/centcom/naval/lieutenant/New()
 	. = ..()
-	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION)))
+	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION)) + ACCESS_CENT_SPECOPS)
 
 /datum/id_trim/centcom/naval/ltcr
 	assignment = JOB_NAVAL_LTCR
 
 /datum/id_trim/centcom/naval/ltcr/New()
 	. = ..()
-	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION)) + ACCESS_CENT_SPECOPS_LEADER + ACCESS_CENT_OFFICER)
+	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION)) + ACCESS_CENT_SPECOPS + ACCESS_CENT_SPECOPS_LEADER + ACCESS_CENT_OFFICER)
 
 /datum/id_trim/centcom/commander/New()
 	. = ..()
 
-	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_CENTCOM_SPECOPS, REGION_ALL_STATION)) - ACCESS_CENT_SPECOPS + ACCESS_CENT_OFFICER)
+	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_CENTCOM_SPECOPS, REGION_ALL_STATION)) + ACCESS_CENT_OFFICER)
 
 /datum/id_trim/centcom/naval/commander
 	assignment = JOB_NAVAL_COMMANDER
@@ -65,7 +65,7 @@
 /datum/id_trim/centcom/naval/commander/New()
 	. = ..()
 
-	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_CENTCOM_SPECOPS, REGION_ALL_STATION)) - ACCESS_CENT_SPECOPS + ACCESS_CENT_OFFICER)
+	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_CENTCOM_SPECOPS, REGION_ALL_STATION)) + ACCESS_CENT_OFFICER)
 
 /datum/id_trim/centcom/specops_officer
 	assignment = JOB_CENTCOM_SPECIAL_OFFICER
@@ -74,7 +74,7 @@
 /datum/id_trim/centcom/specops_officer/New()
 	. = ..()
 
-	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_CENTCOM_SPECOPS, REGION_ALL_STATION)) - CENTCOM_SPECOPS_ACCESS + ACCESS_CENT_OFFICER + ACCESS_CENT_SPECOPS_OFFICER)
+	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_CENTCOM_SPECOPS, REGION_ALL_STATION)) + ACCESS_CENT_OFFICER + ACCESS_CENT_SPECOPS_OFFICER)
 
 /datum/id_trim/centcom/naval/captain
 	assignment = JOB_NAVAL_CAPTAIN
@@ -82,7 +82,7 @@
 /datum/id_trim/centcom/naval/captain/New()
 	. = ..()
 
-	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_CENTCOM_SPECOPS, REGION_CENTCOM_CAPTAIN, REGION_ALL_STATION)) - ACCESS_CENT_SPECOPS)
+	access = SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_CENTCOM_SPECOPS, REGION_CENTCOM_CAPTAIN, REGION_ALL_STATION))
 
 /datum/id_trim/centcom/naval/rear_admiral
 	assignment = JOB_NAVAL_REAR_ADMIRAL

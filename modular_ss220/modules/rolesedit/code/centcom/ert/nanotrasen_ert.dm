@@ -26,7 +26,7 @@
 /datum/id_trim/centcom/ert/commander/New()
 	. = ..()
 
-	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM)) + ACCESS_CENT_SPECOPS_LEADER) | (SSid_access.get_region_access_list(list(REGION_ALL_STATION)))
+	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION)) + ACCESS_CENT_SPECOPS + ACCESS_CENT_SPECOPS_LEADER)
 
 /datum/id_trim/centcom/ert/security
 	assignment = JOB_ERT_OFFICER
