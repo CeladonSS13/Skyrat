@@ -80,6 +80,7 @@
 			else if(ACCESS_CENT_LIVING in auth_card.access)
 				centcom_minor = TRUE
 				job_templates = SSid_access.station_job_templates.Copy()
+				valid_access += SSid_access.get_region_access_list(list(REGION_CENTCOM_NTR))
 		else
 			centcom_minor = FALSE
 			job_templates = SSid_access.station_job_templates.Copy()
@@ -331,11 +332,10 @@
 		if(centcom_minor)
 			regions += tgui_region_data[REGION_CENTCOM_NTR]
 	else
-		if(is_centcom)
-				for(var/region in SSid_access.centcom_regions)
-					if(!(region in region_access))
-						continue
-					regions += tgui_region_data[region] // SS1984 EDIT END
+		for(var/region in SSid_access.centcom_regions)
+			if(!(region in region_access))
+				continue
+			regions += tgui_region_data[region] // SS1984 EDIT END
 
 	data["regions"] = regions
 
