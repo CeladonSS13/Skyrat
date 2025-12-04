@@ -90,12 +90,12 @@
 /datum/id_trim/centcom/naval/rear_admiral/New()
 	. = ..()
 
-	access = (SSid_access.get_region_access_list(list(REGION_ACCESS_ALL_CENTCOM, REGION_ALL_STATION)) - NTR_ACCESS - ACCESS_CENT_FLEET_ADMIRAL)
+	access = (SSid_access.get_region_access_list(list(REGION_ACCESS_ALL_CENTCOM, REGION_ALL_STATION)) - ACCESS_CENT_FLEET_ADMIRAL)
 
 /datum/id_trim/centcom/admiral/New()
 	. = ..()
 
-	access = (SSid_access.get_region_access_list(list(REGION_ACCESS_ALL_CENTCOM, REGION_ALL_STATION)) - NTR_ACCESS - ACCESS_CENT_FLEET_ADMIRAL)
+	access = (SSid_access.get_region_access_list(list(REGION_ACCESS_ALL_CENTCOM, REGION_ALL_STATION)) - ACCESS_CENT_FLEET_ADMIRAL)
 
 /datum/id_trim/centcom/naval/admiral
 	assignment = JOB_NAVAL_ADMIRAL
@@ -103,7 +103,7 @@
 /datum/id_trim/centcom/naval/admiral/New()
 	. = ..()
 
-	access = (SSid_access.get_region_access_list(list(REGION_ACCESS_ALL_CENTCOM, REGION_ALL_STATION)) - NTR_ACCESS - ACCESS_CENT_FLEET_ADMIRAL)
+	access = (SSid_access.get_region_access_list(list(REGION_ACCESS_ALL_CENTCOM, REGION_ALL_STATION)) - ACCESS_CENT_FLEET_ADMIRAL)
 
 /datum/id_trim/centcom/naval/fleet_admiral
 	assignment = JOB_NAVAL_FLEET_ADMIRAL
@@ -111,4 +111,4 @@
 /datum/id_trim/centcom/naval/fleet_admiral/New()
 	. = ..()
 
-	access = (SSid_access.get_region_access_list(list(REGION_ACCESS_ALL_CENTCOM, REGION_ALL_STATION)) - NTR_ACCESS)
+	access = (SSid_access.get_region_access_list(list(REGION_ACCESS_ALL_CENTCOM, REGION_ALL_STATION)))
