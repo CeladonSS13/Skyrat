@@ -50,11 +50,31 @@
 		message_admins("Looks like there is no self destruct on station level. You might need to give deathsquad new nuke") // print only once (called per leader)
 	return ..()
 
+/datum/id_trim/centcom/deathsquad/New()
+	. = ..()
+
+	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM)) + ACCESS_CENT_SPECOPS_LEADER + ACCESS_CENT_BLACKOPS) | (SSid_access.get_region_access_list(list(REGION_ALL_STATION)))
+
 /datum/outfit/centcom/death_commando/New()
 	. = ..()
 	backpack_contents += list(
 		/obj/item/pinpointer/nuke = 1,
 	)
+
+/datum/id_trim/centcom/deathsquad/officer
+	assignment = JOB_ERT_DEATHSQUAD
+	trim_state = "trim_deathcommando"
+	sechud_icon_state = SECHUD_DEATH_COMMANDO
+	honorifics = list("Commando Cpt.", "Commando Captain", "Commando Officer")
+	honorific_positions = HONORIFIC_POSITION_LAST | HONORIFIC_POSITION_NONE
+
+/datum/id_trim/centcom/deathsquad/officer/New()
+	. = ..()
+
+	access = (SSid_access.get_region_access_list(list(REGION_CENTCOM)) + ACCESS_CENT_SPECOPS_LEADER + ACCESS_CENT_BLACKOPS + ACCESS_CENT_OFFICER) | (SSid_access.get_region_access_list(list(REGION_ALL_STATION)))
+
+/datum/outfit/centcom/death_commando/officer
+	id_trim = /datum/id_trim/centcom/deathsquad/officer
 
 /datum/outfit/centcom/death_commando/officer/New()
 	. = ..()
