@@ -25,8 +25,8 @@
 	var/list/job_templates = list()
 	/// Which departments this program has access to. See region defines.
 	var/target_dept
-	/// if used by someone with centcom living access	// SS1984 ADD
-	var/centcom_basic = FALSE							// SS1984 ADD
+	/// if used by someone with centcom living access	// SS1984 ADD START
+	var/centcom_basic = FALSE							// SS1984 ADD END
 
 /datum/computer_file/program/card_mod/on_install(datum/computer_file/source, obj/item/modular_computer/computer_installing)
 	. = ..()
