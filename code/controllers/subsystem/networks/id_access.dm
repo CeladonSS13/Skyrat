@@ -31,8 +31,8 @@ SUBSYSTEM_DEF(id_access)
 	var/list/station_pda_templates = list()
 	/// Helper list containing all station regions.
 	var/list/station_regions = list()
-	/// Helper list containing all centcom regions. // SS1984 ADDITION
-	var/list/centcom_regions = list() // SS1984 ADDITION
+	/// Helper list containing all centcom regions. // SS1984 ADD START
+	var/list/centcom_regions = list() // SS1984 ADD END
 
 	/// The roundstart generated code for the spare ID safe. This is given to the Captain on shift start. If there's no Captain, it's given to the HoP. If there's no HoP
 	var/spare_id_safe_code = ""

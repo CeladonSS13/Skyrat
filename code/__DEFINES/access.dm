@@ -405,7 +405,7 @@
 	ACCESS_CENT_TELEPORTER, \
 	ACCESS_CENT_THUNDER, \
 )
-//ss1984 edit - add ACCESS_CENT_SUPPLY, ACCESS_CENT_SECURITY remove - ACCESS_CENT_CAPTAIN, ACCESS_CENT_OFFICER, ACCESS_CENT_SPECOPS
+//SS1984 EDIT - Added ACCESS_CENT_SUPPLY, ACCESS_CENT_SECURITY Removed - ACCESS_CENT_CAPTAIN, ACCESS_CENT_OFFICER, ACCESS_CENT_SPECOPS
 
 /// Syndicate areas off station. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_SYNDICATE)
 #define SYNDICATE_ACCESS list( \
@@ -438,7 +438,7 @@
 #define REGION_ALL_GLOBAL "All"
 /// Used to seed the accesses_by_region list in SSid_access. A list of every single access in the game.
 #define REGION_ACCESS_ALL_GLOBAL REGION_ACCESS_ALL_STATION + REGION_ACCESS_ALL_CENTCOM + SYNDICATE_ACCESS + AWAY_ACCESS + CULT_ACCESS
-//ss1984 edit original #define REGION_ACCESS_ALL_GLOBAL REGION_ACCESS_ALL_STATION + CENTCOM_ACCESS + SYNDICATE_ACCESS + AWAY_ACCESS + CULT_ACCESS
+//SS1984 EDIT original #define REGION_ACCESS_ALL_GLOBAL REGION_ACCESS_ALL_STATION + CENTCOM_ACCESS + SYNDICATE_ACCESS + AWAY_ACCESS + CULT_ACCESS
 /// Name for the Station All Access region.
 #define REGION_ALL_STATION "Station"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all station accesses.
@@ -559,7 +559,7 @@
 /// Used to seed the accesses_by_region list in SSid_access. A list of all CENTCOM_ACCESS regional accesses.
 #define REGION_ACCESS_CENTCOM CENTCOM_ACCESS
 
-//ss1984 edit add
+//SS1984 ADD START
 //nrt access and region
 #define NTR_ACCESS list( \
 	ACCESS_CENT_GENERAL, \
@@ -615,7 +615,7 @@
 	REGION_CENTCOM_CAPTAIN, \
 	REGION_CENTCOM_NAVAL, \
 )
-//ss1984 edit end
+//SS1984 ADD END
 
 /**
  * A list of PDA paths that can be painted as well as the regional heads which should be able to paint them.
