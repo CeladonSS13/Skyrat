@@ -200,6 +200,8 @@
 #define ACCESS_CENT_SPECOPS_LEADER "cent_specops_leader"
 /// Special Operations officer Access
 #define ACCESS_CENT_SPECOPS_OFFICER "cent_specops_officer"
+/// CentCom Official access
+#define ACCESS_CENT_OFFICIAL "cent_official"
 /// CentCom Cargo office access
 #define ACCESS_CENT_SUPPLY "cent_supply"
 //SS1984 ADD END
@@ -399,13 +401,14 @@
 	ACCESS_CENT_GENERAL, \
 	ACCESS_CENT_LIVING, \
 	ACCESS_CENT_MEDICAL, \
+	ACCESS_CENT_OFFICIAL, \
 	ACCESS_CENT_SECURITY, \
 	ACCESS_CENT_SUPPLY, \
 	ACCESS_CENT_STORAGE, \
 	ACCESS_CENT_TELEPORTER, \
 	ACCESS_CENT_THUNDER, \
 )
-//SS1984 EDIT - Added ACCESS_CENT_SUPPLY, ACCESS_CENT_SECURITY Removed - ACCESS_CENT_CAPTAIN, ACCESS_CENT_OFFICER, ACCESS_CENT_SPECOPS
+//SS1984 EDIT - Added ACCESS_CENT_SUPPLY, ACCESS_CENT_SECURITY, ACCESS_CENT_OFFICIAL, Removed - ACCESS_CENT_CAPTAIN, ACCESS_CENT_OFFICER, ACCESS_CENT_SPECOPS
 
 /// Syndicate areas off station. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_SYNDICATE)
 #define SYNDICATE_ACCESS list( \
@@ -563,6 +566,7 @@
 //nrt access and region
 #define NTR_ACCESS list( \
 	ACCESS_CENT_GENERAL, \
+	ACCESS_CENT_LIVING, \
 	ACCESS_COMMAND, \
 	ACCESS_VAULT, \
 )
