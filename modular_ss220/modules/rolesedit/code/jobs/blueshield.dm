@@ -281,7 +281,6 @@
 		ACCESS_TELEPORTER,
 		ACCESS_WEAPONS,
 	)
-)
 	expanded_access = list(
 	ACCESS_CENT_LIVING,
 	)
