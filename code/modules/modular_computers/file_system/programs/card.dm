@@ -72,7 +72,7 @@
 			centcom_basic = FALSE
 			job_templates = SSid_access.station_job_templates.Copy()
 			valid_access = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
-			if(ACCESS_CENT_LIVING in auth_card.access)
+			if(ACCESS_CENT_OFFICIAL in auth_card.access)
 				centcom_basic = TRUE
 				valid_access += SSid_access.get_region_access_list(list(REGION_CENTCOM_NTR)) // SS1984 ADD END
 		computer.update_static_data_for_all_viewers()
@@ -93,7 +93,7 @@
 
 	if(length(region_access))
 		minor = TRUE
-		if(ACCESS_CENT_LIVING in auth_card.access)//SS1984 ADD START
+		if(ACCESS_CENT_OFFICIAL in auth_card.access)//SS1984 ADD START
 			centcom_basic = TRUE
 		else
 			centcom_basic = FALSE //SS1984 ADD END
