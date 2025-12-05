@@ -234,7 +234,7 @@ SUBSYSTEM_DEF(id_access)
 			"templates" = list(),
 			"pdas" = list(),
 		),
-		"[ACCESS_CENT_LIVING]" = list(
+		"[ACCESS_CENT_OFFICIAL]" = list(
 			"regions" = list(REGION_CENTCOM_NTR),
 			"head" = JOB_NT_REP,
 			"templates" = list(),
@@ -389,6 +389,7 @@ SUBSYSTEM_DEF(id_access)
 	desc_by_access["[ACCESS_BIT_DEN]"] = "Bitrunner Den"
 	desc_by_access["[ACCESS_BARBER]"] = "Barber" // NOVA EDIT ADDITION - BARBER UPDATE
 	desc_by_access["[ACCESS_CENT_SECURITY]"] = "CentCom Security" // SS1984 ADD END
+	desc_by_access["[ACCESS_CENT_OFFICIAL]"] = "CentCom Official"
 	desc_by_access["[ACCESS_CENT_SUPPLY]"] = "CentCom Supply"
 	desc_by_access["[ACCESS_CENT_BLACKOPS]"] = "CentCom Asset Protection"
 	desc_by_access["[ACCESS_CENT_SPECOPS_LEADER]"] = "CentCom SpecOps Leader"
