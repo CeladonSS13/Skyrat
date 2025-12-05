@@ -65,7 +65,7 @@
 	access_list += ACCESS_CENT_SECURITY
 	return access_list
 
-/// centcom specops leader
+/// centcom cargo office
 /obj/effect/mapping_helpers/airlock/access/any/admin/supply/get_access()
 	var/list/access_list = ..()
 	access_list += list(ACCESS_CENT_SUPPLY)
@@ -74,4 +74,15 @@
 /obj/effect/mapping_helpers/airlock/access/all/admin/supply/get_access()
 	var/list/access_list = ..()
 	access_list += ACCESS_CENT_SUPPLY
+	return access_list
+
+/// centcom official access
+/obj/effect/mapping_helpers/airlock/access/any/admin/official/get_access()
+	var/list/access_list = ..()
+	access_list += list(ACCESS_CENT_OFFICIAL)
+	return access_list
+
+/obj/effect/mapping_helpers/airlock/access/all/admin/official/get_access()
+	var/list/access_list = ..()
+	access_list += ACCESS_CENT_OFFICIAL
 	return access_list
