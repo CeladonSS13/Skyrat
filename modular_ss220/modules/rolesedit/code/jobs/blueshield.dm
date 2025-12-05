@@ -281,6 +281,10 @@
 		ACCESS_TELEPORTER,
 		ACCESS_WEAPONS,
 	)
+)
+	expanded_access = list(
+	ACCESS_CENT_LIVING,
+	)
 	minimal_wildcard_access = list(
 		ACCESS_CAPTAIN,
 		ACCESS_CENT_GENERAL,
