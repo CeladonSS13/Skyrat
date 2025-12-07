@@ -209,7 +209,7 @@
 	starting_frequency = MODLINK_FREQ_NANOTRASEN
 	applied_core = /obj/item/mod/core/standard
 	applied_cell = /obj/item/stock_parts/power_store/cell/high
-	req_access = list(ACCESS_CENT_LIVING)
+	req_access = list(ACCESS_CENT_OFFICIAL)
 	applied_modules = list(
 		/obj/item/mod/module/headprotector/inbuilt,
 		/obj/item/mod/module/megaphone/inbuild,

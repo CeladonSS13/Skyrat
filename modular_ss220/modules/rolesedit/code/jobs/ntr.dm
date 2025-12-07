@@ -213,6 +213,9 @@
 	departament_access = ACCESS_CENT_GENERAL
 	radio_channel = RADIO_CHANNEL_CENTCOM
 
+/obj/structure/closet/secure_closet/nanotrasen_consultant
+	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_LIVING)//blueshield now can access cc rep locker obly in lowpop
+
 /obj/structure/closet/secure_closet/nanotrasen_consultant/PopulateContents()
 	new /obj/item/storage/backpack/satchel/leather(src)
 	new /obj/item/clothing/neck/petcollar(src)
