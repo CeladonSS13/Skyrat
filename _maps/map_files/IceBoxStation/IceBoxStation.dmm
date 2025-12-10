@@ -58168,6 +58168,8 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"qnU" = (
+)
 "qnV" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/emergency{
@@ -264170,7 +264172,7 @@ eKl
 pxL
 lso
 hDb
-qWn
+qnU
 xZA
 dVt
 gHY
