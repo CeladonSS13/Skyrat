@@ -1,0 +1,4 @@
+author: "DenIS318"
+delete-after: True
+changes:
+  - balance: "Revert \"You can no longer print soup pots\""
