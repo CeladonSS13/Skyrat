@@ -9721,6 +9721,8 @@
 #include "modular_ss220\modules\disable_upstream_stuff\no_default_nif_examine\nifs.dm"
 #include "modular_ss220\modules\disable_upstream_stuff\no_light_flicker\lightning.dm"
 #include "modular_ss220\modules\disable_upstream_stuff\no_weird_tails_roundstart\sprite_accesories.dm"
+#include "modular_ss220\modules\disable_upstream_stuff\emitter_heal_sm_again\beam.dm"
+#include "modular_ss220\modules\disable_upstream_stuff\emitter_heal_sm_again\emitter.dm"
 #include "modular_ss220\modules\extended_smes\machine_circuitboards.dm"
 #include "modular_ss220\modules\extended_smes\smes.dm"
 #include "modular_ss220\modules\crew_manifest_colored\crewmanifest.dm"
