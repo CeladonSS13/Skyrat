@@ -55,7 +55,7 @@
 		/mob/living/simple_animal/hostile/ooze,
 		/mob/living/simple_animal/hostile/ooze/gelatinous,
 		/mob/living/simple_animal/hostile/ooze/grapes,
-		/mob/living/simple_animal/soulscythe,
+		// SS1984 ADDITION START
 		/mob/living/simple_animal/hostile/blackmesa,
 		/mob/living/simple_animal/hostile/blackmesa/xen,
 		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie,
@@ -78,6 +78,7 @@
 		/mob/living/simple_animal/hostile/blackmesa/sec/ranged,
 		/mob/living/simple_animal/hostile/blackmesa/blackops,
 		/mob/living/simple_animal/hostile/blackmesa/blackops/ranged,
+		// SS1984 ADDITION END
 
 		// MODULAR NOVA ENTRIES
 		// PLEASE REFACTOR THESE AS YOU CAN
