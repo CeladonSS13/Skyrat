@@ -1968,7 +1968,7 @@
 /obj/machinery/iv_drip,
 /obj/machinery/defibrillator_mount/loaded{
 	pixel_x = 28;
-    req_one_access = list()
+	req_one_access = list()
 	},
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/interdyne_planetary_base/med)
@@ -2665,15 +2665,15 @@
 	ailock = 1
 	},
 /obj/item/folder/syndicate/red/secretformula,
-/obj/item/circuitboard/computer/syndiepad{
+/obj/item/circuitboard/computer/ghostpad/interdyne{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/circuitboard/machine/syndiepad{
+/obj/item/circuitboard/machine/ghostpad/interdyne{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/circuitboard/computer/cargo/express/interdyne{
+/obj/item/circuitboard/computer/cargo/express/ghost/interdyne{
 	pixel_x = 6;
 	pixel_y = 6
 	},
@@ -5369,7 +5369,7 @@
 /obj/machinery/cryopod{
 	dir = 4
 	},
-/obj/machinery/computer/cryopod/interdyne/directional/west{
+/obj/machinery/computer/cryopod/directional/west{
 	req_one_access = list("syndicate")
 	},
 /turf/open/floor/catwalk_floor/iron_dark,
@@ -7537,7 +7537,6 @@
 "WA" = (
 /obj/item/gun/ballistic/rifle/sniper_rifle/syndicate,
 /obj/structure/rack/gunrack,
-/obj/item/ammo_workbench_reboot,
 /obj/item/ammo_workbench_module/lethal_super/evil,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/interdyne_planetary_base/main/vault)
