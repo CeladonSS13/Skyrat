@@ -43,8 +43,8 @@ mv "VoidRaptor_nanomap_z1.png" "Void Raptor_nanomap_z1.png"
 mv "wawastation_nanomap_z1.png" "Wawastation_nanomap_z1.png"
 mv "wawastation_nanomap_z2.png" "Wawastation_nanomap_z2.png"
 # Modular Centcom (stage 1)
-mv "CentCom_interlink_1984_z1.png" "The Interlink_nanomap_z1.png"
-mv "CentCom_1984_z1.png" "Fore CentCom Dock_nanomap_z1.png"
+mv "CentCom_interlink_1984_nanomap_z1.png" "The Interlink_nanomap_z1.png"
+mv "CentCom_1984_nanomap_z1.png" "Fore CentCom Dock_nanomap_z1.png"
 # TG-related (stage 2)
 cd "../../"
 # echo "Moving to..."
