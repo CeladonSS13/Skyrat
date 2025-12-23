@@ -1,0 +1,2 @@
+/datum/holiday/getStationPrefix()
+	return
