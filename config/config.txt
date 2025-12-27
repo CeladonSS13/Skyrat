@@ -669,3 +669,6 @@ TGUI_MAX_CHUNK_COUNT 32
 
 ## Minimum time before a heretic can ascend, in minutes
 # MINIMUM_ASCENSION_TIME 3
+
+## Max online when restart vote is available for players SS1984 ADDITION
+VOTE_RESTART_MAX_ONLINE 5
