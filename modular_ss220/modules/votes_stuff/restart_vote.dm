@@ -4,9 +4,6 @@
 	integer = TRUE
 	min_val = 0
 
-/datum/vote/restart_vote/is_config_enabled()
-	return CONFIG_GET(flag/allow_vote_restart) && GLOB.player_list.len < CONFIG_GET(number/vote_restart_max_online)
-
 /datum/vote/restart_vote/can_be_initiated(forced = FALSE)
 	. = ..()
 
