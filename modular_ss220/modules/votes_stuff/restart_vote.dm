@@ -1,3 +1,9 @@
+/// maximum online when restart vote is available to players
+/datum/config_entry/number/vote_restart_max_online
+	default = 999
+	integer = TRUE
+	min_val = 0
+
 /datum/vote/restart_vote/is_config_enabled()
 	return CONFIG_GET(flag/allow_vote_restart) && GLOB.player_list.len < CONFIG_GET(number/vote_restart_max_online)
 
