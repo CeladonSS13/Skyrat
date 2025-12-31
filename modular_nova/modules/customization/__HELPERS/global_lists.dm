@@ -133,7 +133,7 @@
 		var/datum/loadout_item/loadout_datum = GLOB.all_loadout_datums[loadout_path]
 		if(!loadout_datum.erp_item)
 			continue
-		qdel(loadout_datum) // This actually handles removing it from the list.
+		qdel(loadout_datum, TRUE) // SS1984 EDIT, original: qdel(loadout_datum) // This actually handles removing it from the list.
 		// Ensure this FULLY works later
 
 
