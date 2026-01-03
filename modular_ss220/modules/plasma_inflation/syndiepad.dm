@@ -1,3 +1,6 @@
+/obj/machinery/computer/piratepad_control
+	var/target_market_to_export = EXPORT_MARKET_STATION
+
 /obj/machinery/computer/piratepad_control/ghostpad
 	var/target_market_to_export = EXPORT_MARKET_PIRACY
 
