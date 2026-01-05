@@ -24,8 +24,10 @@
 
 	features += "~[players] player[players == 1 ? "": "s"]"
 
-	if (!host && hostedby)
-		features += "hosted by <b>[hostedby]</b>"
+	// SS1984 REMOVAL START
+	// if (!host && hostedby)
+	// 	features += "hosted by <b>[hostedby]</b>"
+	// SS1984 REMOVAL END
 
 	if(length(features))
 		new_status += "\[[jointext(features, ", ")]"
