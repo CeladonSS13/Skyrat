@@ -64,7 +64,7 @@
 		mapload, \
 		force_connect = force_connect_to_silo, \
 		mat_container_signals = local_signals \
-	) // SS1984 EDIT, added: force_connect = force_connect_to_silo, \
+	) // SS1984 EDIT, added: force_connect = force_connect_to_silo
 
 	//for reedeming points from items inserted into ore silo
 	RegisterSignal(src, COMSIG_SILO_ITEM_CONSUMED, TYPE_PROC_REF(/obj/machinery/mineral/ore_redemption, silo_redeem_points))
