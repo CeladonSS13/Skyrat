@@ -55,3 +55,6 @@
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/director
 	spawner_job_path = /datum/job/tarkon/command
+
+/obj/machinery/computer/cargo/express/ghost/tarkon
+	landingzone = /area/ruin/space/has_grav/port_tarkon/cargo
