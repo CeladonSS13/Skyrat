@@ -77,7 +77,7 @@
 // new
 
 /datum/preference/choiced/vocals/voice_type/init_possible_values()
-	var/list/possible_values = ..(VOICE_TYPE_TTS, VOICE_TYPE_BARK, VOICE_TYPE_NONE)
+	var/list/possible_values = ..()
 	if (islist(possible_values))
 		possible_values -= VOICE_TYPE_TTS
 	return possible_values
