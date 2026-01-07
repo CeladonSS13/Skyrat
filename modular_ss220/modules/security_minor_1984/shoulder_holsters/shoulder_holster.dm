@@ -10,6 +10,8 @@
 	var/obj/item/gun/holstered = null
 	actions_types = list(/datum/action/item_action/accessory/holster)
 	w_class = WEIGHT_CLASS_NORMAL // so it doesn't fit in pockets
+	var/holster_sound = 'modular_ss220/modules/return_prs/gunsgalore/sound/guns/interact/holster.ogg'
+	var/unholster_sound = 'modular_ss220/modules/return_prs/gunsgalore/sound/guns/interact/unholster.ogg'
 
 /obj/item/clothing/accessory/holster/Destroy()
 	if(holstered?.loc == src) // Gun still in the holster
@@ -48,6 +50,7 @@
 	holstered.forceMove(src)
 	holstered.add_fingerprint(user)
 	user.visible_message(span_notice("[user] holsters [holstered]."), span_notice("You holster [holstered]."))
+	playsound(user.loc, holster_sound, 50, TRUE)
 
 /obj/item/clothing/accessory/holster/proc/unholster(mob/living/carbon/human/user)
 	if(!holstered)
@@ -65,6 +68,7 @@
 		user.put_in_hands(holstered)
 		holstered.add_fingerprint(user)
 		holstered = null
+		playsound(user.loc, unholster_sound, 50, TRUE)
 
 /obj/item/clothing/accessory/holster/emp_act(severity)
 	if(holstered)

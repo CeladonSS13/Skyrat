@@ -9732,6 +9732,7 @@
 #include "modular_ss220\modules\security_minor_1984\shoulder_holsters\accessory_actions.dm"
 #include "modular_ss220\modules\security_minor_1984\shoulder_holsters\human_keybindings.dm"
 #include "modular_ss220\modules\security_minor_1984\shoulder_holsters\biogenerator_designs.dm"
+#include "modular_ss220\modules\security_minor_1984\holsters_sounds\modules_security.dm"
 #include "modular_nova\master_files\code\game\objects\structures\crates_lockers\secure\security.dm" // have to place it here for proper double stuff
 #include "modular_ss220\modules\vote_highlight\vote.dm"
 #include "modular_ss220\modules\vote_highlight\map_vote.dm"
