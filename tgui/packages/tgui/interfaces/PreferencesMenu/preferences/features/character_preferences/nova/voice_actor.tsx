@@ -67,12 +67,10 @@ export const voice_actor_color: Feature<string> = {
   component: FeatureColorInput,
 };
 
-// SS1984 REMOVAL START
-// export const voice_actor: FeatureChoiced = {
-//   name: 'TTS Voice',
-//   component: FeatureSecondVoiceDropdownInput,
-// };
-// SS1984 REMOVAL END
+export const voice_actor: FeatureChoiced = {
+  name: 'TTS Voice',
+  component: FeatureSecondVoiceDropdownInput,
+};
 
 export const voice_actor_pitch: FeatureNumeric = {
   name: 'TTS Pitch',
