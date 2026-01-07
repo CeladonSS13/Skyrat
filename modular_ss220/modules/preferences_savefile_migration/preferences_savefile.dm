@@ -40,8 +40,8 @@
 /datum/preferences/proc/update_religion_1984(list/save_data)
 	var/static/alist/religion_translations = GLOB.religion_names?.len > 30 ? alist(
 		"Apism" = GLOB.religion_names[1],
-		"Buddhism" =  GLOB.religion_names[2],
-		"Chaos" =  GLOB.religion_names[3],
+		"Buddhism" = GLOB.religion_names[2],
+		"Chaos" = GLOB.religion_names[3],
 		"Christianity" = GLOB.religion_names[4],
 		"Clownism" = GLOB.religion_names[5],
 		"Comedy" = GLOB.religion_names[6],
