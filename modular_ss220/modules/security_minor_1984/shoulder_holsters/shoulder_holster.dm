@@ -27,41 +27,41 @@
 
 /obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/living/carbon/human/user)
 	if(holstered)
-		to_chat(user, "<span class='warning'>There is already a [holstered] holstered here!</span>")
+		to_chat(user, span_warning("There is already a [holstered] holstered here!"))
 		return
 
 	var/obj/item/gun/W = I
 	if(!W)
-		to_chat(user, "<span class='warning'>Only guns can be holstered!</span>")
+		to_chat(user, span_warning("Only guns can be holstered!"))
 		return
 
 	if(!can_holster(W))
-		to_chat(user, "<span class='warning'>This [W.name] won't fit in [src]!</span>")
+		to_chat(user, span_warning("This [W.name] won't fit in [src]!"))
 		return
 
 	if(!user.canUnEquip(W, 0))
-		to_chat(user, "<span class='warning'>You can't let go of [W]!</span>")
+		to_chat(user, span_warning("You can't let go of [W]!"))
 		return
 
 	holstered = W
 	user.temporarilyRemoveItemFromInventory(holstered)
 	holstered.forceMove(src)
 	holstered.add_fingerprint(user)
-	user.visible_message("<span class='notice'>[user] holsters [holstered].</span>", "<span class='notice'>You holster [holstered].</span>")
+	user.visible_message(span_notice("[user] holsters [holstered]."), span_notice("You holster [holstered]."))
 
 /obj/item/clothing/accessory/holster/proc/unholster(mob/living/carbon/human/user)
 	if(!holstered)
 		return
 
 	if(isobj(user.get_active_held_item()) && isobj(user.get_inactive_held_item()))
-		to_chat(user, "<span class='warning'>You need an empty hand to draw [holstered]!</span>")
+		to_chat(user, span_warning("You need an empty hand to draw [holstered]!"))
 	else
 		if(user.combat_mode)
-			usr.visible_message("<span class='warning'>[user] draws [holstered], ready to shoot!</span>", \
-			"<span class='warning'>You draw [holstered], ready to shoot!</span>")
+			user.visible_message(span_warning("[user] draws [holstered], ready to shoot!"), \
+			span_warning("You draw [holstered], ready to shoot!"))
 		else
-			user.visible_message("<span class='notice'>[user] draws [holstered], pointing it at the ground.</span>", \
-			"<span class='notice'>You draw [holstered], pointing it at the ground.</span>")
+			user.visible_message(span_notice("[user] draws [holstered], pointing it at the ground."), \
+			span_notice("You draw [holstered], pointing it at the ground."))
 		user.put_in_hands(holstered)
 		holstered.add_fingerprint(user)
 		holstered = null
@@ -92,8 +92,17 @@
 	if(!holstered)
 		var/obj/item/gun/gun_in_hand = user.get_active_held_item()
 		if(!gun_in_hand)
-			to_chat(user, "<span class='warning'>You need your gun equipped to holster it.</span>")
+			to_chat(user, span_warning("You need your gun equipped to holster it."))
 			return
 		holster(gun_in_hand, user)
 	else
 		unholster(user)
+
+/obj/item/clothing/accessory/holster/can_attach_accessory(obj/item/clothing/under/attach_to, mob/living/user)
+	. = ..()
+	if (!.)
+		return .
+	if(locate(/obj/item/clothing/accessory/holster) in attach_to.attached_accessories)
+		. = FALSE
+		if(user)
+			attach_to.balloon_alert(user, "can't store more than 1 holster!")
