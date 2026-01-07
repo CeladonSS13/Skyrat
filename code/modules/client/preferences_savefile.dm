@@ -369,6 +369,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
 	load_character_nova(save_data) // NOVA EDIT ADDITION
+	load_character_1984(save_data) // SS1984 ADDITION
 
 	//try to fix any outdated data if necessary
 	//preference updating will handle saving the updated data for us.
@@ -431,6 +432,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	save_data["all_quirks"] = all_quirks
 	save_character_nova(save_data) // NOVA EDIT ADDITION
+	save_character_1984(save_data) // SS1984 ADDITION
 
 	return TRUE
 

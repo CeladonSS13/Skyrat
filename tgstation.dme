@@ -9847,4 +9847,5 @@
 #include "modular_ss220\modules\nanomaps\nanomap_datum.dm"
 #include "modular_ss220\modules\borers\cortical_borer.dm"
 #include "modular_ss220\modules\borers\cortical_borer_antag.dm"
+#include "modular_ss220\modules\preferences_savefile_migration\preferences_savefile.dm"
 // END_INCLUDE
