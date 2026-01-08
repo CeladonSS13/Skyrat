@@ -258,6 +258,7 @@ export function AdminFax(props) {
                 setPaperName('');
                 setStamp('');
                 stamps.shift();
+                setRawText('')
               } else {
                 const faxTemplate: FaxTemplate|undefined = fax_templates.find((template_temp) => template_temp.templateName === value);
                 if (faxTemplate && typeof(faxTemplate) !== 'undefined')
