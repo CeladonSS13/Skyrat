@@ -12,6 +12,9 @@
 	data += get_asset_datum(/datum/asset/simple/fax_templates_images)
 	return data
 
+/datum/fax_panel_interface/ui_host(mob/user)
+	return fax_paper ? fax_paper : ..()
+
 /datum/fax_panel_interface/ui_static_data(mob/user)
 	. = ..()
 	var/list/data = .
@@ -50,9 +53,9 @@
 			"paperName" = "Nanotrasen Official Report",
 			"stamp" = /obj/item/stamp/centcom::name,
 			"paperText" = {"\
-				<center><img src=resolveAsset("ntlogo.png") width="200" height="123"></center> \
+				<center><img src={resolveAsset("ntlogo.png")} width="200" height="123"></center> \
 				<font color="darkgreen"><center><h1>Уведомление</h1></center></font> <hr> <br> <div align="justify"> \
-				<center><img src=resolveAsset("keepwatching.jpeg") width="280"></center> \
+				<center><img src={resolveAsset("keepwatching.jpeg")} width="280"></center> \
 				</div> <br> <hr> <b>Место для штампа:</b> ◉ ◉ ◉ <hr> \
 				<p><font color="grey" size=1><div align="justify">- Содержимое данного документа следует считать конфиденциальным. Если не указано иное, распространение содержащейся в данном документе информации среди третьих лиц и сторонних организаций строго запрещено.</div></font></p> \
 				<p><font color="grey" size=1><div align="justify">- Невыполнение директив, содержащихся в данном документе, считается нарушением политики корпорации и может привести к наложению различных дисциплинарных взысканий.</div></font></p> \

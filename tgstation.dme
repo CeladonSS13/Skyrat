@@ -3730,6 +3730,7 @@
 #include "code\modules\asset_cache\asset_cache_client.dm"
 #include "code\modules\asset_cache\asset_cache_item.dm"
 #include "code\modules\asset_cache\asset_list.dm"
+#include "modular_ss220\modules\paperwork_and_faxes\asset_cache\fax_templates_images.dm"
 #include "code\modules\asset_cache\assets\achievements.dm"
 #include "code\modules\asset_cache\assets\adventure.dm"
 #include "code\modules\asset_cache\assets\arcade.dm"
@@ -9849,7 +9850,6 @@
 #include "modular_ss220\modules\borers\cortical_borer.dm"
 #include "modular_ss220\modules\borers\cortical_borer_antag.dm"
 #include "modular_ss220\modules\preferences_savefile_migration\preferences_savefile.dm"
-#include "modular_ss220\modules\paperwork_and_faxes\asset_cache\fax_templates_images.dm"
 #include "modular_ss220\modules\paperwork_and_faxes\topic.dm"
 #include "modular_ss220\modules\paperwork_and_faxes\admin_fax_panel.dm"
 // END_INCLUDE
