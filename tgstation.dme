@@ -534,6 +534,7 @@
 #include "modular_ss220\modules\nucleations\__DEFINES\traits.dm"
 #include "modular_ss220\modules\upstream-fixes\emotes_restrictions\__DEFINES\is_helpers.dm"
 #include "modular_ss220\modules\dynamic_tweaks\__DEFINES\role_preferences.dm"
+#include "modular_ss220\modules\paperwork_and_faxes\__DEFINES\fax.dm"
 #include "code\__HELPERS\_auxtools_api.dm"
 #include "code\__HELPERS\_dreamluau.dm"
 #include "code\__HELPERS\_lists.dm"
@@ -9848,4 +9849,7 @@
 #include "modular_ss220\modules\borers\cortical_borer.dm"
 #include "modular_ss220\modules\borers\cortical_borer_antag.dm"
 #include "modular_ss220\modules\preferences_savefile_migration\preferences_savefile.dm"
+#include "modular_ss220\modules\paperwork_and_faxes\asset_cache\fax_templates_images.dm"
+#include "modular_ss220\modules\paperwork_and_faxes\topic.dm"
+#include "modular_ss220\modules\paperwork_and_faxes\admin_fax_panel.dm"
 // END_INCLUDE
