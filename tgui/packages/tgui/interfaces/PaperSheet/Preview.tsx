@@ -154,9 +154,12 @@ export class PreviewView extends Component<PreviewViewProps> {
   }
 
   shouldComponentUpdate(nextProps: Readonly<PreviewViewProps>): boolean {
-    if (!this.props.canEdit) return true;
+    // SS1984 REMOVAL START
+    // if (!this.props.canEdit) return true;
 
-    return this.props.canEdit !== nextProps.canEdit;
+    // return this.props.canEdit !== nextProps.canEdit;
+    // SS1984 REMOVAL END
+    return false; // SS1984 ADDITION
   }
 
   // Creates the partial inline HTML for previewing or reading the paper from
