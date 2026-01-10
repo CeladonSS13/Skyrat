@@ -13,7 +13,6 @@ import {
 } from 'tgui-core/components';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { resolveAsset } from '../assets'; // SS1984 ADDITION
 
 // SS1984 ADDITION START
 type FaxTemplate = {
@@ -22,6 +21,8 @@ type FaxTemplate = {
   paperName: string;
   stamp: string;
   paperText: string;
+  stampX: number;
+  stampY: number;
 };
 // SS1984 ADDITION END
 
@@ -259,18 +260,20 @@ export function AdminFax(props) {
                 setStamp('');
                 stamps.shift();
                 setRawText('')
+                setStampCoordX(0);
+                setStampCoordY(0);
+                setStampAngle(0);
               } else {
                 const faxTemplate: FaxTemplate|undefined = fax_templates.find((template_temp) => template_temp.templateName === value);
                 if (faxTemplate && typeof(faxTemplate) !== 'undefined')
                 {
-                  const resolvedText = faxTemplate.paperText.replace(
-                    /resolveAsset\(([^)]+)\)/g,
-                    (match, arg) => resolveAsset(arg)
-                  );
                   setFromWho(faxTemplate.fromWho);
                   setPaperName(faxTemplate.paperName);
                   setStamp(faxTemplate.stamp);
-                  setRawText(resolvedText ? resolvedText : "");
+                  setRawText(faxTemplate.paperText);
+                  setStampCoordX(faxTemplate.stampX);
+                  setStampCoordY(faxTemplate.stampY);
+                  setStampAngle(0);
                 }
               }
             }}

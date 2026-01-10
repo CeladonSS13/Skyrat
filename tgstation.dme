@@ -9850,6 +9850,7 @@
 #include "modular_ss220\modules\borers\cortical_borer.dm"
 #include "modular_ss220\modules\borers\cortical_borer_antag.dm"
 #include "modular_ss220\modules\preferences_savefile_migration\preferences_savefile.dm"
+#include "modular_ss220\modules\paperwork_and_faxes\paper.dm"
 #include "modular_ss220\modules\paperwork_and_faxes\topic.dm"
 #include "modular_ss220\modules\paperwork_and_faxes\admin_fax_panel.dm"
 // END_INCLUDE
