@@ -524,10 +524,7 @@ export class PreviewView extends Component<PreviewViewProps> {
       .replace("[ntlogo]", `<img src="syndicatelogo.png" width='280' height='180'/>`)
       .replace("[keepwatching]", `<img src="keepwatching.png" width='280' height='180'/>`)
     ;
-    // const finalText = advanced_html ? previewText
-    //   .replace("[keepwatching]", `<img src="${resolveAsset('keepwatching.png')}" width='280'/>`)
-    // : previewText;
-    // // SS1984 ADDITION END
+    // SS1984 ADDITION END
 
     const textHTML = {
       __html: `<span className='paper-text'>${previewText}</span>`,
