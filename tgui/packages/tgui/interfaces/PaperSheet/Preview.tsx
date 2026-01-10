@@ -520,9 +520,9 @@ export class PreviewView extends Component<PreviewViewProps> {
 
     // SS1984 ADDITION START
     previewText = previewText
-      .replace("[syndicatelogo]", `<img src='tgui-core/assets/bg-syndicate.svg' width='200' height='123'/>`)
-      .replace("[ntlogo]", `<img src=${nt_logo} width='200' height='123'/>`)
-      .replace("[keepwatching]", `<img src="${resolveAsset('keepwatching.png')}" width='280'/>`)
+      .replace("[syndicatelogo]", `<img src="ntlogo.png" width='280' height='180'/>`)
+      .replace("[ntlogo]", `<img src="syndicatelogo.png" width='280' height='180'/>`)
+      .replace("[keepwatching]", `<img src="keepwatching.png" width='280' height='180'/>`)
     ;
     // const finalText = advanced_html ? previewText
     //   .replace("[keepwatching]", `<img src="${resolveAsset('keepwatching.png')}" width='280'/>`)
