@@ -520,9 +520,9 @@ export class PreviewView extends Component<PreviewViewProps> {
 
     // SS1984 ADDITION START
     previewText = previewText
-      .replace("[syndicatelogo]", `<img src="ntlogo.png" width='280' height='180'/>`)
-      .replace("[ntlogo]", `<img src="syndicatelogo.png" width='280' height='180'/>`)
-      .replace("[keepwatching]", `<img src="keepwatching.png" width='280' height='180'/>`)
+      .replace("[syndicatelogo]", `<img src="syndicatelogo.png" width='200' height='123'/>`)
+      .replace("[ntlogo]", `<img src="ntlogo.png" width='200' height='123'/>`)
+      .replace("[keepwatching]", `<img src="keepwatching.png" width='380' height='180'/>`)
     ;
     // SS1984 ADDITION END
 
