@@ -49,3 +49,6 @@
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
 	new /obj/item/detective_scanner(src) // QOL
+
+/datum/storage/security_belt
+	max_limited_store = 1 // can have 1 gun and 1 baton/other gun in belt (nova's value = 2)
