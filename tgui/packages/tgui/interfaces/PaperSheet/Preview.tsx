@@ -15,7 +15,7 @@ type PreviewViewProps = {
   handleOnScroll: (this: GlobalEventHandlers, ev: Event) => any;
   textArea: string;
   canEdit: boolean;
-  shouldUpdateUi: boolean // SS1984 ADDITION
+  uiVer: number; // SS1984 ADDITION
 };
 
 type FieldCreationReturn = {
@@ -157,7 +157,7 @@ export class PreviewView extends Component<PreviewViewProps> {
 
     // return this.props.canEdit !== nextProps.canEdit;
     // SS1984 REMOVAL END
-    return this.props.shouldUpdateUi; // SS1984 ADDITION
+    return this.props.uiVer != nextProps.uiVer; // SS1984 ADDITION
   }
 
   // Creates the partial inline HTML for previewing or reading the paper from
