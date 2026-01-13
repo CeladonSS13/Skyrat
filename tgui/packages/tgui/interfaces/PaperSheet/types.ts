@@ -15,6 +15,8 @@ export type PaperContext = {
 
   // ui_data
   held_item_details?: WritingImplement;
+
+  should_update_ui: boolean; // SS1984 ADDITION
 };
 
 export type FieldInput = {
