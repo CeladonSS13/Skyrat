@@ -222,7 +222,7 @@
 			mods[WHISPER_MODE] = MODE_WHISPER
 		else if(key == "%" && !mods[MODE_SING])
 			mods[MODE_SING] = TRUE
-		else if(key == ";" && !mods[MODE_HEADSET])
+		else if((key == ";" || (length(message) > 1 && message[2] == ";")) && !mods[MODE_HEADSET]) // SS1984 EDIT, original: else if(key == ";" && !mods[MODE_HEADSET])
 			if(stat == CONSCIOUS) //necessary indentation so it gets stripped of the semicolon anyway.
 				mods[MODE_HEADSET] = TRUE
 		else if((key in GLOB.department_radio_prefixes) && length(message) > length(key) + 1 && !mods[RADIO_EXTENSION])
