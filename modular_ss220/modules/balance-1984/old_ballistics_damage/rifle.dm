@@ -1,5 +1,7 @@
 /obj/projectile/bullet/c40sol
 	damage = 35
+	wound_bonus = 0
+	exposed_wound_bonus = 0
 
 /obj/projectile/bullet/c40sol/fragmentation
 	damage = 15
