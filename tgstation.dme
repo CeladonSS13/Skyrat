@@ -9713,6 +9713,7 @@
 #include "modular_ss220\modules\balance-1984\old_ballistics_damage\shotgun.dm"
 #include "modular_ss220\modules\balance-1984\old_ballistics_damage\submachinegun.dm"
 #include "modular_ss220\modules\balance-1984\holster_holdables\sec_clothing_overrides.dm"
+#include 'modular_ss220\modules\balance-1984\weakened_mmr\rifle.dm'
 #include "modular_ss220\modules\infinite_access_slots\infinite_access_slots_config.dm"
 #include "modular_ss220\modules\infinite_access_slots\cards_ids.dm"
 #include "modular_ss220\modules\access_console_buttons\card.dm"
