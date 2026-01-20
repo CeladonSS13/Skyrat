@@ -9625,6 +9625,7 @@
 #include "modular_ss220\modules\weapons_addon\code\qmgun.dm"
 #include "modular_ss220\modules\weapons_addon\code\solguns\magazines.dm"
 #include "modular_ss220\modules\weapons_addon\code\solguns\pistol.dm"
+#include "modular_ss220\modules\weapons_addon\code\tribal\arrow.dm"
 #include "modular_ss220\modules\enhanced_messaging\nttc_globals.dm"
 #include "modular_ss220\modules\enhanced_messaging\code\messaging_config.dm"
 #include "modular_ss220\modules\enhanced_messaging\code\nttc_configuration.dm"
