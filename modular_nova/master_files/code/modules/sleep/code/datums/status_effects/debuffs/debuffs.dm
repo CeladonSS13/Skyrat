@@ -24,7 +24,7 @@
 /datum/status_effect/incapacitating/sleeping/on_creation(mob/living/new_owner, set_duration, is_voluntary = FALSE)
 	voluntary = is_voluntary
 	// Sleep until the client logs-in again
-	if(isnull(new_owner.client))
+	if(isnull(new_owner.client) && new_owner.lastclienttime > 0) // SS1984 EDIT, original: if(isnull(new_owner.client))
 		pause_expiry = TRUE
 	// Hide sleep duration if permanent
 	if(set_duration == STATUS_EFFECT_PERMANENT)
