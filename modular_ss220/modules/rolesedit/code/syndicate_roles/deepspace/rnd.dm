@@ -4,6 +4,10 @@
 	organization = "Syndicate"
 	should_generate_points = TRUE
 
+/datum/techweb/deepspace/New()
+	. = ..()
+	research_node_id(TECHWEB_NODE_SYNDICATE_BASIC, TRUE, TRUE, FALSE)
+
 //server
 /obj/machinery/rnd/server/deepspace
 	name = "\improper Syndicate R&D Server"
