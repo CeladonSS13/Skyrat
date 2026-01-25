@@ -27,6 +27,9 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supplypod/loading/four)
+"bm" = (
+/turf/open/floor/iron/dark,
+/area/centcom)
 "bx" = (
 /obj/effect/turf_decal/tile/brown/anticorner/contrasted{
 	dir = 8
@@ -243,6 +246,9 @@
 /obj/effect/mapping_helpers/airlock/access/all/admin/supply,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/supplypod)
+"zw" = (
+/turf/closed/indestructible/riveted,
+/area/centcom)
 "zK" = (
 /obj/effect/turf_decal/tile/brown/anticorner/contrasted{
 	dir = 8
@@ -397,6 +403,10 @@
 /obj/effect/turf_decal/tile/brown/anticorner/contrasted,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supplypod/loading/four)
+"VX" = (
+/obj/machinery/telecomms/allinone/nuclear,
+/turf/open/floor/iron/dark,
+/area/centcom)
 "XS" = (
 /obj/effect/turf_decal/tile/brown/anticorner/contrasted{
 	dir = 8
@@ -37100,11 +37110,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+zw
+zw
+zw
+zw
+zw
 aa
 aa
 aa
@@ -37357,11 +37367,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+zw
+bm
+bm
+bm
+zw
 aa
 aa
 aa
@@ -37614,11 +37624,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+zw
+bm
+bm
+bm
+zw
 aa
 aa
 aa
@@ -37871,11 +37881,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+zw
+VX
+bm
+bm
+zw
 aa
 aa
 aa
@@ -38128,11 +38138,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+zw
+zw
+zw
+zw
+zw
 aa
 aa
 aa
