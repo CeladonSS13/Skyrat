@@ -12,14 +12,14 @@
 	if(!isatom(parent) && !istype(parent, /datum/reagent))
 		return COMPONENT_INCOMPATIBLE
 
+	LAZYINITLIST(eaten_lights)
+
 	. = ..()
 	if(!LAZYLEN(_eaten))
 		return
 
-	LAZYINITLIST(eaten_lights)
-	var/list/cached_eaten_lights = eaten_lights
 	for(var/morsel in _eaten)
-		LAZYSET(cached_eaten_lights, morsel, TRUE)
+		LAZYADD(eaten_lights, morsel)
 		RegisterSignal(morsel, COMSIG_QDELETING, PROC_REF(deref_eaten_light))
 
 /datum/component/light_eater/Destroy(force)
@@ -46,15 +46,14 @@
 		return
 
 	LAZYINITLIST(eaten_lights)
-	var/list/cached_eaten_lights = eaten_lights
 	for(var/morsel in _eaten)
 		RegisterSignal(morsel, COMSIG_QDELETING, PROC_REF(deref_eaten_light))
-		LAZYSET(cached_eaten_lights, morsel, TRUE)
+		LAZYADD(eaten_lights, morsel)
 
 /// Handles storing references to lights eaten by the light eater.
 /datum/component/light_eater/proc/on_devour(datum/source, atom/morsel)
 	SIGNAL_HANDLER
-	LAZYSET(eaten_lights, morsel, TRUE)
+	LAZYADD(eaten_lights, morsel)
 	RegisterSignal(morsel, COMSIG_QDELETING, PROC_REF(deref_eaten_light))
 	return NONE
 

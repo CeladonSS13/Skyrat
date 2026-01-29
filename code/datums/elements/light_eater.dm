@@ -97,7 +97,7 @@
 		return FALSE // Either the light eater can't eat it or it had special behaviors.
 
 	morsel.AddElement(/datum/element/light_eaten)
-	SEND_SIGNAL(src, COMSIG_LIGHT_EATER_DEVOUR, morsel)
+	SEND_SIGNAL(eater, COMSIG_LIGHT_EATER_DEVOUR, morsel)
 	return TRUE
 
 /////////////////////

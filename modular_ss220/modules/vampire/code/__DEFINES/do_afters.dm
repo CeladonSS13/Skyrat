@@ -1,0 +1,1 @@
+#define DOAFTER_SOURCE_VAMPIRE_SUCKING "doafter_vampire_sucking"

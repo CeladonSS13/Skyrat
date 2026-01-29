@@ -789,6 +789,24 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		to_chat(user, span_warning("You don't want to harm [target]!"))
 		return FALSE
 
+	//SKYRAT1984 EDIT START
+	//Vampire code
+	var/datum/antagonist/vampire/vamp = user?.mind?.has_antag_datum(/datum/antagonist/vampire)
+	if(vamp && !vamp.draining && user.zone_selected == BODY_ZONE_HEAD && target != user)
+		if(HAS_TRAIT(target, TRAIT_NOBLOOD) || !target.blood_volume)
+			to_chat(user, span_warning("Отсутствует кровь!"))
+			return
+		if(target.mind && (target.mind.has_antag_datum(/datum/antagonist/vampire) || target.mind.has_antag_datum(/datum/antagonist/thrall)))
+			to_chat(user, span_warning("Ваши клыки не могут пронзить холодную плоть [target]."))
+			return
+		if(isplasmaman(target) || isskeleton(target))
+			to_chat(user, span_warning("В скелете нет ни капли крови!"))
+			return
+		//we're good to suck the blood, blaah
+		vamp.handle_bloodsucking(target)
+		return
+	//SKYRAT1984 EDIT END
+
 	var/obj/item/organ/brain/brain = user.get_organ_slot(ORGAN_SLOT_BRAIN)
 	var/obj/item/bodypart/attacking_bodypart = attacker_style?.get_attacking_limb(user, target) || brain?.get_attacking_limb(target) || user.get_active_hand()
 
