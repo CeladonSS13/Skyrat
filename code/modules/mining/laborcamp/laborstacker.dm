@@ -64,7 +64,7 @@
 			data["status_info"] = "No goal set!"
 		else if(worn_prisoner_id.points >= worn_prisoner_id.goal)
 			can_go_home = TRUE
-			data["status_info"] = "Goal met!"
+			data["status_info"] = "Goal met! You can use \"Move Shuttle\" button on [/obj/machinery/mineral/labor_claim_console::name]." // SS1984 EDIT, original: data["status_info"] = "Goal met!"
 		else
 			data["status_info"] = "You are [(worn_prisoner_id.goal - worn_prisoner_id.points)] points away."
 	else
@@ -104,6 +104,15 @@
 
 		if("move_shuttle")
 			var/list/labor_shuttle_mobs = find_labor_shuttle_mobs()
+
+			// SS1984 ADDITION START
+			if (!labor_shuttle_mobs || length(labor_shuttle_mobs) < 1)
+				if(COOLDOWN_FINISHED(src, say_cooldown))
+					say("There is no prisoners on shuttle!")
+					COOLDOWN_START(src, say_cooldown, 2 SECONDS)
+				return
+			// SS1984 ADDITION END
+
 			if(length(labor_shuttle_mobs) > 1 || labor_shuttle_mobs[1] != user_mob)
 				if(COOLDOWN_FINISHED(src, say_cooldown))
 					say("Prisoners may only be released one at a time.")
