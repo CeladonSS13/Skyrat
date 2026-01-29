@@ -2363,7 +2363,7 @@
 /area/misc/operative_barracks)
 "Ee" = (
 /obj/structure/table/optable,
-/obj/machinery/defibrillator_mount/directional/south,
+/obj/machinery/defibrillator_mount/loaded/directional/south,
 /obj/item/autosurgeon/syndicate{
 	pixel_x = -3;
 	pixel_y = 9

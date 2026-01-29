@@ -6955,7 +6955,7 @@
 /turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "bJb" = (
-/obj/machinery/defibrillator_mount/directional/south,
+/obj/machinery/defibrillator_mount/loaded/directional/south,
 /obj/item/emergency_bed{
 	pixel_y = 6
 	},
@@ -76372,7 +76372,7 @@
 /turf/open/floor/iron,
 /area/station/maintenance/department/science)
 "sQX" = (
-/obj/machinery/defibrillator_mount/directional/north,
+/obj/machinery/defibrillator_mount/loaded/directional/north,
 /obj/item/reagent_containers/cup/bottle/epinephrine,
 /obj/item/reagent_containers/cup/bottle/multiver{
 	pixel_x = 6
@@ -93327,7 +93327,7 @@
 /turf/open/floor/iron,
 /area/station/security/prison/work)
 "xeZ" = (
-/obj/machinery/defibrillator_mount/directional/north,
+/obj/machinery/defibrillator_mount/loaded/directional/north,
 /obj/item/storage/box/bodybags{
 	pixel_x = 3;
 	pixel_y = 3
