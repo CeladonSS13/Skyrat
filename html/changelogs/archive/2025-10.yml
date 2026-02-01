@@ -1155,6 +1155,11 @@
       third of their original.
   - rscadd: The telescopic shield and the projectile dampener mod are now available
       in the Sol Fed and Nakamura mods Imports respectively.
+  RealWinterFrost:
+  - admin: BST's belt has been replaced with an adminspawned bluespace belt.
+  Stalkeros, Hollandaise for the sprites:
+  - image: Sandfox (Large) ears have been re-eared once again because I like foxes
+      actually.
   carpotoxin:
   - rscadd: Adds a weaponry tab to the loadout, including various improvised weapons
   - rscadd: Reverts the belt-ification of webbing accessories, they are once again
@@ -1169,6 +1174,10 @@
   - config: Cortical Borers temporaly disabled from dynamic, until they will be fixed
       (so you possibly can get other rulesets instead)
   - rscdel: Revert "Round ID now shows in the top byond window text"
+  Stalkeros, Hollandaise for the sprites:
+  - rscadd: Adds, a LOT of new food to the food replicator. Uh, something-something,
+      lore, new matrixes, I dunno.
+  - rscdel: Colonial nachos are gone. Good riddance!
 2025-10-31:
   Arceniu:
   - rscadd: Added nanotrasen&bolt import to cargo (basic and heavy armour, bolt guns,

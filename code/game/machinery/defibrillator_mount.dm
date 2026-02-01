@@ -22,11 +22,14 @@
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount/loaded, 28) // SS1984 ADDITION
 
+/obj/machinery/defibrillator_mount/Initialize(mapload)
+	. = ..()
+	if(mapload)
+		find_and_mount_on_atom()
+
 /obj/machinery/defibrillator_mount/loaded/Initialize(mapload) //loaded subtype for mapping use
 	. = ..()
 	defib = new/obj/item/defibrillator/loaded(src)
-	if(mapload)
-		find_and_hang_on_wall()
 	update_appearance() // SS1984 ADDITION, could be modular but i believe it's TG bugfix for defib overlays
 
 /obj/machinery/defibrillator_mount/Destroy()
@@ -230,10 +233,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount/loaded, 28) // SS
 	icon_state = "mobile"
 	anchored = FALSE
 	density = TRUE
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5.15, /datum/material/silver = SHEET_MATERIAL_AMOUNT, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 1.5)
 
 /obj/machinery/defibrillator_mount/mobile/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/noisy_movement)
+
+/obj/machinery/defibrillator_mount/mobile/find_and_mount_on_atom(mark_for_late_init, late_init)
+	return //its mobile
 
 /obj/machinery/defibrillator_mount/mobile/wrench_act_secondary(mob/living/user, obj/item/tool)
 	if(user.combat_mode)

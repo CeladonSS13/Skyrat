@@ -133,7 +133,7 @@
 
 /// Simply checks if the owner of the effect is in a valid state to absorb stuns.
 /datum/status_effect/stun_absorption/proc/can_absorb_stun()
-	if(owner.stat > SOFT_CRIT)
+	if(owner.stat != CONSCIOUS)
 		return FALSE
 	if(seconds_of_stuns_absorbed > max_seconds_of_stuns_blocked)
 		return FALSE

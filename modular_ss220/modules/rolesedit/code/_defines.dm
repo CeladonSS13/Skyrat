@@ -17,3 +17,6 @@
 		id_card.registered_account = offstation_bank_account
 	return
 
+//job code
+/datum/job
+	var/disable_all_loadout = FALSE

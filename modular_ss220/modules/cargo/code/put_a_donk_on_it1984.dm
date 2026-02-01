@@ -1,6 +1,5 @@
 /datum/armament_entry/company_import/donk
 	category = DONK_CO_NAME_1984
-	company_bitflag = CARGO_COMPANY_DONK_1984
 
 // Donk Co foods, like donk pockets and ready donk
 

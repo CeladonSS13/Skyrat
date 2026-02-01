@@ -1,6 +1,6 @@
 /datum/outfit/ashwalker/spear/double
 	name = "Ash Walker - Two Spears"
-	l_hand = /obj/item/spear
+	l_hand = /obj/item/spear/bonespear
 
 /datum/outfit/ashwalker/bow
 	name = "Ash Walker - With Bow"

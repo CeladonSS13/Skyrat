@@ -146,13 +146,13 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	var/say_radio_or_mode = saymode || message_mods[RADIO_EXTENSION]
 	if(say_radio_or_mode)
 		var/mob_stat_limit = GLOB.message_modes_stat_limits[say_radio_or_mode]
-		if(stat > (isnull(mob_stat_limit) ? SOFT_CRIT : mob_stat_limit)) // SS1984 EDIT, original: if(stat > (isnull(mob_stat_limit) ? CONSCIOUS : mob_stat_limit))
+		if(stat > (isnull(mob_stat_limit) ? CONSCIOUS : mob_stat_limit))
 			saymode = null
 			message_mods -= RADIO_EXTENSION
 
 	switch(stat)
-		//if(SOFT_CRIT) SS1984 EDIT
-		//	message_mods[WHISPER_MODE] = MODE_WHISPER
+		if(SOFT_CRIT)
+			message_mods[WHISPER_MODE] = MODE_WHISPER
 		if(UNCONSCIOUS)
 			return
 		if(HARD_CRIT)
@@ -327,7 +327,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			if(isliving(speaker))
 				var/mob/living/living_speaker = speaker
 				var/mouth_hidden = living_speaker.is_mouth_covered() || HAS_TRAIT(living_speaker, TRAIT_FACE_COVERED)
-				if(!HAS_TRAIT(src, TRAIT_EMPATH) && mouth_hidden) // Can't see them speak if their mouth is covered or hidden, unless we're an empath
+				if(mouth_hidden && !HAS_TRAIT(src, TRAIT_SEE_MASK_WHISPER)) // Can't see them speak if their mouth is covered or hidden, unless we're an empath
 					return FALSE
 
 			deaf_message = "[span_name("[speaker]")] [speaker.verb_whisper] something, but you are too far away to hear [speaker.p_them()]."
@@ -403,6 +403,8 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	for(var/atom/movable/listening_movable as anything in listening)
 		if(!(listening_movable in in_view) && !HAS_TRAIT(listening_movable, TRAIT_XRAY_HEARING))
 			listening.Remove(listening_movable)
+
+	SEND_SIGNAL(src, COMSIG_LIVING_SEND_SPEECH, listening)
 
 	if(imaginary_group)
 		listening |= imaginary_group
@@ -534,11 +536,13 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	return list("message" = message, "tts_message" = tts_message, "tts_filter" = tts_filter)
 
 /mob/living/proc/radio(message, list/message_mods = list(), list/spans, language)
-	//NOVA EDIT ADDITION BEGIN
-	if((message_mods[MODE_HEADSET] || message_mods[RADIO_EXTENSION]) && !(mobility_flags & MOBILITY_USE) && !isAI(src) && !ispAI(src) && !ismecha(loc)) // If can't use items, you can't press the button
-		to_chat(src, span_warning("You can't use the radio right now as you can't reach the button!"))
-		return ITALICS | REDUCE_RANGE
-	//NOVA EDIT END
+	// SS1984 REMOVAL START
+	// //NOVA EDIT ADDITION BEGIN
+	// if((message_mods[MODE_HEADSET] || message_mods[RADIO_EXTENSION]) && !(mobility_flags & MOBILITY_USE) && !isAI(src) && !ispAI(src) && !ismecha(loc)) // If can't use items, you can't press the button
+	// 	to_chat(src, span_warning("You can't use the radio right now as you can't reach the button!"))
+	// 	return ITALICS | REDUCE_RANGE
+	// //NOVA EDIT END
+	// SS1984 REMOVAL END
 	var/obj/item/implant/radio/imp = locate() in src
 	if(imp?.radio.is_on())
 		if(message_mods[MODE_HEADSET])

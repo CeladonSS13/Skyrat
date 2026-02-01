@@ -50,8 +50,7 @@
 		'modular_ss220/modules/return_prs/black_mesa/sound/mobs/vortigaunt/village_argue05.ogg',
 		'modular_ss220/modules/return_prs/black_mesa/sound/mobs/vortigaunt/village_argue05a.ogg',
 	)
-	var/follow_speed = 1
-	var/follow_distance = 2
+	follow_speed = 1
 
 /mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/Initialize(mapload)
 	. = ..()

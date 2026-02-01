@@ -14,7 +14,7 @@
 		return result
 
 	var/static/list/failsafe_spawnpoints = list( // should be list
-		/area/station/ai_monitored/turret_protected/aisat_interior,
+		/area/station/ai/satellite/interior,
 	)
 
 	result = try_find_latejoin_spawn_on_area(failsafe_spawnpoints, all_chargers)

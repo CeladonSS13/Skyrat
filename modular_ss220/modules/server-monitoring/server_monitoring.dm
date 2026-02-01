@@ -27,11 +27,17 @@ SUBSYSTEM_DEF(server_monitoring)
 	var/round_time = "[world.time > MIDNIGHT_ROLLOVER ? "[round(world.time/MIDNIGHT_ROLLOVER)]:[gameTimestamp(wtime=world.time)]" : gameTimestamp(wtime=world.time)]"
 	if (!round_time)
 		round_time = "?"
+	var/list/current_ckeys = list()
+	for(var/client/C in GLOB.clients)
+		if (!C)
+			continue
+		current_ckeys += C.ckey
 
 	savefile.set_entry("OnlineTotal", GLOB.clients.len)
 	savefile.set_entry("OnlineAdminStuff", adminstuff_count)
 	savefile.set_entry("RoundTime", round_time)
 	savefile.set_entry("UpdatedAt", time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss"))
 	savefile.set_entry("Map", map_name)
+	savefile.set_entry("CurrentCkeys", current_ckeys)
 
 	savefile.save()

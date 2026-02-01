@@ -50,7 +50,7 @@
 
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 
-	QUEUE_OR_CALL_VERB_FOR(VERB_CALLBACK(src, TYPE_PROC_REF(/mob, emote), "me", EMOTE_VISIBLE|EMOTE_AUDIBLE, message, TRUE), SSspeech_controller)
+	QUEUE_OR_CALL_VERB_FOR(VERB_CALLBACK(src, TYPE_PROC_REF(/mob, emote), "me", NONE, message, TRUE), SSspeech_controller)
 
 /mob/try_speak(message, ignore_spam = FALSE, forced = null, filterproof = FALSE)
 	var/list/filter_result
@@ -222,8 +222,8 @@
 			mods[WHISPER_MODE] = MODE_WHISPER
 		else if(key == "%" && !mods[MODE_SING])
 			mods[MODE_SING] = TRUE
-		else if(key == ";" && !mods[MODE_HEADSET])
-			if(stat < HARD_CRIT) // SS1984 EDIT, original: if(stat == CONSCIOUS) //necessary indentation so it gets stripped of the semicolon anyway.
+		else if((key == ";" || (length(message) > 1 && message[2] == ";")) && !mods[MODE_HEADSET]) // SS1984 EDIT, original: else if(key == ";" && !mods[MODE_HEADSET])
+			if(stat == CONSCIOUS) //necessary indentation so it gets stripped of the semicolon anyway.
 				mods[MODE_HEADSET] = TRUE
 		else if((key in GLOB.department_radio_prefixes) && length(message) > length(key) + 1 && !mods[RADIO_EXTENSION])
 			mods[RADIO_KEY] = LOWER_TEXT(message[1 + length(key)])

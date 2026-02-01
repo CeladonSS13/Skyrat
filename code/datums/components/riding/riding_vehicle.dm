@@ -97,7 +97,10 @@
 		return
 
 	step(movable_parent, direction)
-	COOLDOWN_START(src, vehicle_move_cooldown, vehicle_move_delay)
+	var/move_delay = vehicle_move_delay
+	if(NSCOMPONENT(direction) && EWCOMPONENT(direction))
+		move_delay = FLOOR(move_delay * sqrt(2), world.tick_lag)
+	COOLDOWN_START(src, vehicle_move_cooldown, move_delay)
 
 	if(QDELETED(src))
 		return
@@ -499,7 +502,7 @@
 		cart.set_movedelay_effect(2)
 	else
 		cart.set_movedelay_effect(1)
-	vehicle_move_delay = cart.movedelay
+	vehicle_move_delay = cart.get_movedelay()// SS1984 EDIT, original: vehicle_move_delay = cart.movedelay
 	return ..()
 
 /datum/component/riding/vehicle/golfcart/handle_ride(mob/user, direction)

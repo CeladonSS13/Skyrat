@@ -37,7 +37,7 @@
 	icon_state = "scientist_zombie"
 	icon_living = "scientist_zombie"
 	loot = list(/obj/effect/mob_spawn/corpse/human/scientist_zombie)
-	del_on_death = 1
+	del_on_death = TRUE
 
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/guard
@@ -48,7 +48,7 @@
 	maxHealth = 140 // Armor!
 	health = 140
 	loot = list(/obj/effect/mob_spawn/corpse/human/guard_zombie)
-	del_on_death = 1
+	del_on_death = TRUE
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hecu
 	name = "zombified marine"
@@ -58,7 +58,7 @@
 	maxHealth = 190 // More armor!
 	health = 190
 	loot = list(/obj/effect/mob_spawn/corpse/human/hecu_zombie)
-	del_on_death = 1
+	del_on_death = TRUE
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hev
 	name = "zombified hazardous environment specialist"

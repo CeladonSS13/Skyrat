@@ -2,7 +2,7 @@
 	signup_atom_appearance = /mob/living/basic/cortical_borer
 	false_alarm_able = TRUE
 	ruleset_flags = RULESET_INVADER
-	weight = list(
+	weight = alist(
 		DYNAMIC_TIER_LOW = 3,
 		DYNAMIC_TIER_LOWMEDIUM = 2,
 		DYNAMIC_TIER_MEDIUMHIGH = 1,

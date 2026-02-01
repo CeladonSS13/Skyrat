@@ -11,13 +11,26 @@ import {
   TextArea,
   Tooltip,
 } from 'tgui-core/components';
-
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+
+// SS1984 ADDITION START
+type FaxTemplate = {
+  templateName: string;
+  fromWho: string;
+  paperName: string;
+  stamp: string;
+  paperText: string;
+  stampX: number;
+  stampY: number;
+};
+// SS1984 ADDITION END
 
 type Data = {
   faxes: string[];
   stamps: string[];
+  preselected_fax_name: string; // SS1984 ADDITION
+  fax_templates: FaxTemplate[]; // SS1984 ADDITION
 };
 
 const paperNameOptions = [
@@ -29,9 +42,9 @@ const fromWhoOptions = ['Nanotrasen', 'Syndicate'] as const;
 
 export function AdminFax(props) {
   const { act, data } = useBackend<Data>();
-  const { faxes = [], stamps = [] } = data;
+  const { faxes = [], stamps = [], preselected_fax_name, fax_templates = [] } = data; // SS1984 EDIT, original: const { faxes = [], stamps = [] } = data;
 
-  const [fax, setFax] = useState('');
+  const [fax, setFax] = useState(preselected_fax_name ? preselected_fax_name : ''); // SS1984 EDIT, original: const [fax, setFax] = useState('');
   const [saved, setSaved] = useState(false);
   const [paperName, setPaperName] = useState('');
   const [fromWho, setFromWho] = useState('');
@@ -40,6 +53,7 @@ export function AdminFax(props) {
   const [stampCoordX, setStampCoordX] = useState(0);
   const [stampCoordY, setStampCoordY] = useState(0);
   const [stampAngle, setStampAngle] = useState(0);
+  const [selectedTemplate, setSelectedTemplate] = useState('Select Template') // SS1984 ADDITION
 
   if (stamp && stamps[0] !== 'None') {
     stamps.unshift('None');
@@ -231,6 +245,40 @@ export function AdminFax(props) {
           >
             Create paper
           </Button>
+          {/* SS1984 ADDITION START */}
+          <Dropdown
+            fluid
+            options={fax_templates.map((fax_template) => {
+              return fax_template.templateName;
+            })}
+            selected={selectedTemplate}
+            onSelected={(value) => {
+              setSelectedTemplate(value);
+              if (value === 'None' || value === "Blank") {
+                setFromWho('');
+                setPaperName('');
+                setStamp('');
+                stamps.shift();
+                setRawText('')
+                setStampCoordX(0);
+                setStampCoordY(0);
+                setStampAngle(0);
+              } else {
+                const faxTemplate: FaxTemplate|undefined = fax_templates.find((template_temp) => template_temp.templateName === value);
+                if (faxTemplate && typeof(faxTemplate) !== 'undefined')
+                {
+                  setFromWho(faxTemplate.fromWho);
+                  setPaperName(faxTemplate.paperName);
+                  setStamp(faxTemplate.stamp);
+                  setRawText(faxTemplate.paperText);
+                  setStampCoordX(faxTemplate.stampX);
+                  setStampCoordY(faxTemplate.stampY);
+                  setStampAngle(0);
+                }
+              }
+            }}
+          />
+          {/* SS1984 ADDITION END */}
         </Section>
       </Window.Content>
     </Window>

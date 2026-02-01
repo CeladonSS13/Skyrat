@@ -17,7 +17,7 @@
 	title = JOB_BRIDGE_ASSISTANT
 	description = "Watch over the Bridge, and spend your days commanding Bridge Assistants to brew coffee for higher-ups."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD | DEADMIN_POSITION_SECURITY
-	department_head = list(JOB_CAPTAIN, JOB_NT_REP)
+	supervisors = list(JOB_CAPTAIN, JOB_NT_REP)
 	faction = FACTION_STATION
 	total_positions = 0
 	spawn_positions = 0
@@ -185,7 +185,7 @@
 	title = JOB_BRIDGE_ASSISTANT_1984
 	description = "Watch over the Bridge, command its consoles, and spend your days brewing coffee for higher-ups."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
-	department_head = list(JOB_CAPTAIN, JOB_CENTCOM_OFFICIAL)
+	supervisors = list(JOB_CAPTAIN, JOB_CENTCOM_OFFICIAL)
 	faction = FACTION_STATION
 	total_positions = 0
 	spawn_positions = 0

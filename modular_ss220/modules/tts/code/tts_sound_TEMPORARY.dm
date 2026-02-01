@@ -1,3 +1,5 @@
+/* SS1984 REMOVAL START, we don't use TTS for now
+
 // TODO: SS220-TTS Remove this file when upstream `/mob/proc/playsound_local` supports passing `wait` as parameter.
 // Copypasted `/mob/proc/playsound_local` method with `wait` support.
 /mob/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel = 0, pressure_affected = TRUE, sound/sound_to_use, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1, use_reverb = TRUE, wait = FALSE)
@@ -75,3 +77,5 @@
 			sound_to_use.echo[4] = -1300 //RoomHF setting, 0 means normal reverb. //SKYRAT EDIT CHANGE
 
 	SEND_SOUND(src, sound_to_use)
+
+SS1984 REMOVAL END */

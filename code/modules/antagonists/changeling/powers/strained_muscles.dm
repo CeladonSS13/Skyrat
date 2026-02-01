@@ -40,7 +40,7 @@
 			return
 
 		user.add_movespeed_modifier(/datum/movespeed_modifier/strained_muscles)
-		if(user.stat > SOFT_CRIT || user.staminaloss >= 90)
+		if(user.stat != CONSCIOUS || user.staminaloss >= 90)
 			active = !active
 			to_chat(user, span_notice("Our muscles relax without the energy to strengthen them."))
 			user.Paralyze(40)
@@ -49,7 +49,7 @@
 
 		stacks++
 
-		user.adjustStaminaLoss(stacks * 1.3) //At first the changeling may regenerate stamina fast enough to nullify fatigue, but it will stack
+		user.adjust_stamina_loss(stacks * 1.3) //At first the changeling may regenerate stamina fast enough to nullify fatigue, but it will stack
 
 		if(stacks == 11) //Warning message that the stacks are getting too high
 			to_chat(user, span_warning("Our legs are really starting to hurt..."))

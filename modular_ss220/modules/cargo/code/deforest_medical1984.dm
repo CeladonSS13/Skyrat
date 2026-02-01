@@ -1,6 +1,5 @@
 /datum/armament_entry/company_import/deforest
 	category = DEFOREST_MEDICAL_NAME_1984
-	company_bitflag = CARGO_COMPANY_DEFOREST_1984
 
 // Precompiled first aid kits, ready to go if you don't want to bother getting individual items
 
@@ -276,6 +275,10 @@
 
 /datum/armament_entry/company_import/deforest/equipment/advanced_cautery
 	item_type = /obj/item/cautery/advanced
+	cost = PAYCHECK_COMMAND * 6
+
+/datum/armament_entry/company_import/deforest/equipment/advanced_blood_filter
+	item_type = /obj/item/blood_filter/advanced
 	cost = PAYCHECK_COMMAND * 6
 
 /datum/armament_entry/company_import/deforest/equipment/medigun_upgrade

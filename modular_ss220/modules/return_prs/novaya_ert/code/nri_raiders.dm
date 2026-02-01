@@ -309,7 +309,7 @@ GLOBAL_VAR(first_officer)
 	outfit = /datum/outfit/pirate/nri
 	fluff_spawn = null //no second spawner
 	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/synthetic)
-	random_appearance = FALSE
+	allow_custom_character = GHOSTROLE_TAKE_PREFS_APPEARANCE
 	show_flavor = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/nri_police/proc/apply_codename(mob/living/carbon/human/spawned_human)
@@ -330,7 +330,7 @@ GLOBAL_VAR(first_officer)
 		spawned_human.undershirt = "Nude"
 		spawned_human.socks = "Nude"
 		spawned_human.bra = "Nude"
-		if(random_appearance)
+		if(allow_custom_character & GHOSTROLE_TAKE_PREFS_APPEARANCE)
 			randomize_human_normie(spawned_human)
 		if(hairstyle)
 			spawned_human.set_hairstyle(hairstyle, update = FALSE)

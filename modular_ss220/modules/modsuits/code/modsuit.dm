@@ -189,7 +189,7 @@
 	charge_drain = DEFAULT_CHARGE_DRAIN
 	complexity_max = DEFAULT_MAX_COMPLEXITY - 5
 	slowdown_deployed = 0.25
-	inbuilt_modules = list(/obj/item/mod/module/hearing_protection)
+	hearing_protection = EAR_PROTECTION_NORMAL
 	allowed_suit_storage = list(
 		/obj/item/assembly/flash,
 		/obj/item/melee/baton,
@@ -209,7 +209,7 @@
 	starting_frequency = MODLINK_FREQ_NANOTRASEN
 	applied_core = /obj/item/mod/core/standard
 	applied_cell = /obj/item/stock_parts/power_store/cell/high
-	req_access = list(ACCESS_CENT_LIVING)
+	req_access = list(ACCESS_CENT_OFFICIAL)
 	applied_modules = list(
 		/obj/item/mod/module/headprotector/inbuilt,
 		/obj/item/mod/module/megaphone/inbuild,

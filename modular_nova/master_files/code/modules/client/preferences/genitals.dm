@@ -28,11 +28,14 @@
 		value = create_default_value()
 		. = FALSE
 
-	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
-		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = value, MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
+	var/datum/mutant_bodypart/mutant_bodypart = target.dna.mutant_bodyparts[relevant_mutant_bodypart]
+	if(mutant_bodypart)
+		mutant_bodypart.name = value
 		return TRUE
 
-	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
+	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
+	var/datum/species/current_species = GLOB.species_prototypes[species_type]
+	target.dna.mutant_bodyparts[relevant_mutant_bodypart] = current_species.build_mutant_part(value)
 	return TRUE
 
 /datum/preference/choiced/genital/is_accessible(datum/preferences/preferences)
@@ -49,7 +52,19 @@
  * * preferences - The relevant character preferences.
  */
 /datum/preference/choiced/genital/proc/is_visible(mob/living/carbon/human/target, datum/preferences/preferences)
-	return FALSE // ss1984 removal of erp
+	return FALSE // SS1984 ADDITION
+	// SS1984 REMOVAL START
+	// if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences) || !preferences.read_preference(/datum/preference/toggle/allow_genitals))
+	// 	return FALSE
+
+	// if(preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts))
+	// 	return TRUE
+
+	// var/species_type = preferences.read_preference(/datum/preference/choiced/species)
+	// var/datum/species/species = GLOB.species_prototypes[species_type]
+
+	// return (savefile_key in species.get_features())
+	// SS1984 REMOVAL END
 
 /datum/preference/choiced/genital/create_default_value()
 	return initial(default_accessory_type.name)
@@ -76,16 +91,22 @@
 	var/genital_pref_type
 
 /datum/preference/toggle/genital_skin_color/is_accessible(datum/preferences/preferences)
-	..(preferences)
+	// SS1984 ADDITION START
+	..()
 	return FALSE
+	// SS1984 ADDITION END
+	// SS1984 REMOVAL START
+	// var/passed_initial_check = ..(preferences)
+	// var/species_type = preferences.read_preference(/datum/preference/choiced/species)
+	// var/datum/species/species = GLOB.species_prototypes[species_type]
+	// if(!(TRAIT_USES_SKINTONES in species.inherent_traits))
+	// 	return FALSE
+	// SS1984 REMOVAL END
 
 /datum/preference/toggle/genital_skin_color/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	// If they're not using skintones, let's not apply this yeah?
-	var/datum/species/species = preferences?.read_preference(/datum/preference/choiced/species)
-	if(!species)
-		return FALSE
-
-	species = new species
+	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
+	var/datum/species/species = GLOB.species_prototypes[species_type]
 	if(!(TRAIT_USES_SKINTONES in species.inherent_traits))
 		return FALSE
 

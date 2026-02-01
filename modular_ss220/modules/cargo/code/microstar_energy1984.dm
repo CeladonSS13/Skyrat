@@ -1,6 +1,5 @@
 /datum/armament_entry/company_import/microstar
 	category = MICROSTAR_ENERGY_NAME_1984
-	company_bitflag = CARGO_COMPANY_MICROSTAR_1984
 
 // Basic lethal/disabler beam weapons
 

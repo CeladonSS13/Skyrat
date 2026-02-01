@@ -8,7 +8,8 @@
 	construction_path_type = "spaceship"
 	merge_type = /obj/item/stack/sheet/spaceship
 	walltype = /turf/closed/wall/mineral/titanium/spaceship
-	material_type = /datum/material/titanium
+	mats_per_unit = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT)
+	material_type = /datum/material/titanium // SS1984 ADDITION, tbh should be modular, in case someone will move it later
 
 /obj/item/stack/sheet/spaceshipglass
 	name = "spaceship window plates"

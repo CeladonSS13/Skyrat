@@ -1,3 +1,5 @@
+// legacy
+
 /datum/preferences/ui_static_data(mob/user)
 	var/list/data = ..()
 
@@ -71,3 +73,11 @@
 
 /datum/preference/numeric/sound_tts_radio/create_default_value()
 	return 50
+
+// new
+
+/datum/preference/choiced/vocals/voice_type/init_possible_values()
+	var/list/possible_values = ..()
+	if (islist(possible_values))
+		possible_values -= VOICE_TYPE_TTS
+	return possible_values

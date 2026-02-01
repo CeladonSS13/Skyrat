@@ -14,10 +14,12 @@
 
 /* RECIPES */
 
+// SS1984 REMOVAL REVERT /* NOVA EDIT REMOVAL START - Hulk Removal
 /datum/generecipe/hulk
 	input_one = /datum/mutation/strong
 	input_two = /datum/mutation/radioactive
 	result = /datum/mutation/hulk
+// SS1984 REMOVAL REVERT */ // NOVA EDIT REMOVAL END
 
 /datum/generecipe/mindread
 	input_one = /datum/mutation/antenna
@@ -64,10 +66,12 @@
 	input_two = /datum/mutation/stoner
 	result = /datum/mutation/heckacious
 
+// SS1984 REMOVAL REVERT /* NOVA EDIT REMOVAL START - Ork Removal
 /datum/generecipe/ork
 	input_one = /datum/mutation/hulk
 	input_two = /datum/mutation/clumsy
 	result = /datum/mutation/hulk/ork
+// SS1984 REMOVAL REVERT */ // NOVA EDIT REMOVAL - END
 
 /datum/generecipe/rock_absorber
 	input_one = /datum/mutation/rock_eater

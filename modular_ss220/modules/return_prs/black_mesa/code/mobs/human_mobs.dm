@@ -20,6 +20,7 @@
 	robust_searching = 1
 	maxHealth = 150
 	health = 150
+	gender = MALE
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 10
@@ -82,6 +83,7 @@
 	turns_per_move = 5
 	speed = 0
 	stat_attack = HARD_CRIT
+	gender = MALE
 	robust_searching = 1
 	maxHealth = 100
 	health = 100
@@ -94,7 +96,7 @@
 	loot = list(/obj/effect/gibspawner/human, /obj/item/clothing/suit/armor/vest/blueshirt)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
-	faction = list(FACTION_STATION, FACTION_NEUTRAL)
+	faction = list(FACTION_STATION, FACTION_NEUTRAL, FACTION_BLACKMESA)
 	check_friendly_fire = 1
 	status_flags = CANPUSH
 	del_on_death = TRUE
@@ -146,8 +148,7 @@
 		'modular_ss220/modules/return_prs/black_mesa/sound/mobs/security_guard/imstickinghere04.ogg',
 		'modular_ss220/modules/return_prs/black_mesa/sound/mobs/security_guard/imstickinghere05.ogg',
 	)
-	var/follow_speed = 2
-	var/follow_distance = 2
+	follow_speed = 2
 
 /mob/living/simple_animal/hostile/blackmesa/sec/Initialize(mapload)
 	. = ..()

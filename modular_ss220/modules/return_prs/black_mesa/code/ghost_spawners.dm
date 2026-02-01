@@ -8,7 +8,7 @@
 	flavour_text = "You are a scientist near the Ground Zero of a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	important_text = "Do not try to explore the level unless an expedition crew is already present and close to you, and even then, wait at least 20 minutes before leaving your area."
 	restricted_species = list(/datum/species/human)
-	random_appearance = FALSE
+	allow_custom_character = GHOSTROLE_TAKE_PREFS_APPEARANCE
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/special(mob/living/carbon/human/spawned_human)
 	. = ..()
@@ -111,8 +111,6 @@
 	worn_icon = 'modular_nova/master_files/icons/mob/clothing/under/syndicate.dmi'
 	icon_state = "urban_camo"
 	inhand_icon_state = "w_suit"
-	uses_advanced_reskins = FALSE
-	unique_reskin = null
 
 /obj/item/storage/backpack/ert/odst/hecu
 	name = "hecu backpack"
@@ -121,17 +119,21 @@
 	worn_icon_digi = 'modular_ss220/modules/return_prs/black_mesa/icons/misc/hecumob_digi.dmi'
 	icon_state = "hecu_pack"
 	worn_icon_state = "hecu_pack"
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Olive" = list(
-			RESKIN_ICON_STATE = "hecu_pack",
-			RESKIN_WORN_ICON_STATE = "hecu_pack"
-		),
-		"Black" = list(
-			RESKIN_ICON_STATE = "hecu_pack_black",
-			RESKIN_WORN_ICON_STATE = "hecu_pack_black"
-		),
-	)
+
+/datum/atom_skin/hecupack
+	abstract_type = /datum/atom_skin/hecupack
+
+/datum/atom_skin/hecupack/olive
+	preview_name = "Olive"
+	new_icon_state = "hecu_pack"
+
+/datum/atom_skin/hecupack/black
+	preview_name = "Black"
+	new_icon_state = "hecu_pack_black"
+
+/obj/item/storage/backpack/ert/odst/hecu/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/hecupack)
 
 /obj/item/storage/belt/military/assault/hecu
 	name = "hecu warbelt"
@@ -140,17 +142,21 @@
 	worn_icon_digi = 'modular_ss220/modules/return_prs/black_mesa/icons/misc/hecumob_digi.dmi'
 	icon_state = "hecu_belt"
 	worn_icon_state = "hecu_belt"
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Olive" = list(
-			RESKIN_ICON_STATE = "hecu_belt",
-			RESKIN_WORN_ICON_STATE = "hecu_belt"
-		),
-		"Black" = list(
-			RESKIN_ICON_STATE = "hecu_belt_black",
-			RESKIN_WORN_ICON_STATE = "hecu_belt_black"
-		),
-	)
+
+/datum/atom_skin/hecubelt
+	abstract_type = /datum/atom_skin/hecubelt
+
+/datum/atom_skin/hecubelt/olive
+	preview_name = "Olive"
+	new_icon_state = "hecu_belt"
+
+/datum/atom_skin/hecubelt/black
+	preview_name = "Black"
+	new_icon_state = "hecu_belt_black"
+
+/obj/item/storage/belt/military/assault/hecu/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/hecubelt)
 
 /datum/outfit/hecu
 	name = "HECU Grunt"

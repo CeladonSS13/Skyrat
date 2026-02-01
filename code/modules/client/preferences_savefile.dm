@@ -13,7 +13,7 @@
 /// You do not need to raise this if you are adding new values that have sane defaults.
 /// Only raise this value when changing the meaning/format/name/layout of an existing value
 /// where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX 50
+#define SAVEFILE_VERSION_MAX 51
 
 #define IS_DATA_OBSOLETE(version) (version == SAVE_DATA_OBSOLETE)
 #define SHOULD_UPDATE_DATA(version) (version >= SAVE_DATA_NO_ERROR && version < SAVEFILE_VERSION_MAX)
@@ -163,6 +163,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			quirk_to_migrate = "Spiritual",
 			new_typepath = /datum/personality/spiritual,
 		)
+	if(current_version < 51)
+		migrate_felinid_feature_keys(save_data)
 
 /// checks through keybindings for outdated unbound keys and updates them
 /datum/preferences/proc/check_keybindings()
@@ -367,6 +369,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
 	load_character_nova(save_data) // NOVA EDIT ADDITION
+	load_character_1984(save_data) // SS1984 ADDITION
 
 	//try to fix any outdated data if necessary
 	//preference updating will handle saving the updated data for us.
@@ -429,10 +432,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	save_data["all_quirks"] = all_quirks
 	save_character_nova(save_data) // NOVA EDIT ADDITION
+	save_character_1984(save_data) // SS1984 ADDITION
 
 	return TRUE
 
 /datum/preferences/proc/switch_to_slot(new_slot)
+	if(new_slot == default_slot) // sanity check, nothing to do here.
+		return
 	// SAFETY: `load_character` performs sanitization on the slot number
 	if (!load_character(new_slot))
 		tainted_character_profiles = TRUE
@@ -443,6 +449,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		preference_middleware.on_new_character(usr)
 
 	character_preview_view.update_body()
+	SSstatpanels.update_job_estimation(ckey = parent.ckey) // update the job estimations with their new char // NOVA EDIT ADDITION
 
 /datum/preferences/proc/remove_current_slot()
 	PRIVATE_PROC(TRUE)
@@ -489,6 +496,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 #undef SAVEFILE_VERSION_MIN
 #undef SAVE_DATA_NO_ERROR
 #undef SAVE_DATA_EMPTY
-#undef SAVE_DATA_OBSOLETE
+//#undef SAVE_DATA_OBSOLETE - NOVA EDIT REMOVAL - Used in [modular_nova\modules\admin\code\preferences_loadverb.dm]
 #undef IS_DATA_OBSOLETE
 #undef SHOULD_UPDATE_DATA

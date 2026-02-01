@@ -1,0 +1,151 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/centcom/interlink)
+"b" = (
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/centcom/interlink)
+"c" = (
+/obj/structure/closet/crate/centcom,
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/centcom/interlink)
+"e" = (
+/obj/structure/chair/comfy/shuttle/tactical{
+	dir = 1
+	},
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/centcom/interlink)
+"f" = (
+/obj/machinery/power/shuttle_engine/propulsion,
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/centcom/interlink)
+"l" = (
+/obj/machinery/door/airlock/titanium,
+/obj/docking_port/mobile{
+	dir = 8;
+	shuttle_id = "centcom_interlink";
+	name = "CentCom-Interlink shuttle";
+	dwidth = 1;
+	height = 6;
+	width = 12;
+	preferred_direction = 8
+	},
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/centcom/interlink)
+"p" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/turf/open/floor/plating,
+/area/shuttle/centcom/interlink)
+"s" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/centcom/interlink)
+"w" = (
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/centcom/interlink)
+"B" = (
+/obj/machinery/door/airlock/external,
+/obj/structure/fans/tiny,
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/centcom/interlink)
+"D" = (
+/obj/machinery/computer/shuttle/centcom/interlink,
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/centcom/interlink)
+"U" = (
+/turf/template_noop,
+/area/template_noop)
+"V" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 1
+	},
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/centcom/interlink)
+
+(1,1,1) = {"
+V
+s
+s
+p
+s
+p
+s
+p
+s
+s
+s
+f
+"}
+(2,1,1) = {"
+s
+s
+b
+w
+c
+c
+c
+c
+c
+s
+f
+U
+"}
+(3,1,1) = {"
+p
+D
+e
+w
+w
+w
+w
+w
+w
+B
+U
+U
+"}
+(4,1,1) = {"
+p
+w
+w
+w
+a
+a
+a
+a
+w
+B
+U
+U
+"}
+(5,1,1) = {"
+s
+s
+b
+w
+a
+a
+a
+a
+w
+s
+f
+U
+"}
+(6,1,1) = {"
+V
+s
+s
+p
+s
+p
+s
+p
+l
+s
+s
+f
+"}

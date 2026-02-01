@@ -13,6 +13,7 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 200
 	armor_type = /datum/armor/structure_bookcase
+	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 4)
 	var/state = BOOKCASE_UNANCHORED
 	/// When enabled, books_to_load number of random books will be generated for this bookcase
 	var/load_random_books = FALSE
@@ -195,7 +196,7 @@
 	var/obj/item/book/choice = tgui_input_list(user, "Book to remove from the shelf", "Remove Book", sort_names(contents.Copy()))
 	if(isnull(choice))
 		return
-	if(!(user.mobility_flags & MOBILITY_USE) || user.stat > SOFT_CRIT || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || !in_range(loc, user))
+	if(!(user.mobility_flags & MOBILITY_USE) || user.stat != CONSCIOUS || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || !in_range(loc, user))
 		return
 	if(ishuman(user))
 		if(!user.get_active_held_item())

@@ -64,7 +64,7 @@
 			data["status_info"] = "No goal set!"
 		else if(worn_prisoner_id.points >= worn_prisoner_id.goal)
 			can_go_home = TRUE
-			data["status_info"] = "Goal met!"
+			data["status_info"] = "Goal met! Use \"Move shuttle\" button to call shuttle." // SS1984 EDIT, original: data["status_info"] = "Goal met!"
 		else
 			data["status_info"] = "You are [(worn_prisoner_id.goal - worn_prisoner_id.points)] points away."
 	else
@@ -104,6 +104,15 @@
 
 		if("move_shuttle")
 			var/list/labor_shuttle_mobs = find_labor_shuttle_mobs()
+
+			// SS1984 ADDITION START
+			if (!labor_shuttle_mobs || length(labor_shuttle_mobs) < 1)
+				if(COOLDOWN_FINISHED(src, say_cooldown))
+					say("There is no prisoners on shuttle!")
+					COOLDOWN_START(src, say_cooldown, 2 SECONDS)
+				return
+			// SS1984 ADDITION END
+
 			if(length(labor_shuttle_mobs) > 1 || labor_shuttle_mobs[1] != user_mob)
 				if(COOLDOWN_FINISHED(src, say_cooldown))
 					say("Prisoners may only be released one at a time.")
@@ -222,7 +231,7 @@
 		return
 	say("ID: [prisoner_id.registered_name].")
 	say("Points Collected: [prisoner_id.points] / [prisoner_id.goal].")
-	say("Collect points by bringing smelted minerals to the Labor Shuttle stacking machine. Reach your quota to earn your release.")
+	say(prisoner_id.points < prisoner_id.goal ? "Collect points by bringing smelted minerals to the Labor Shuttle stacking machine or [/obj/machinery/mineral/ore_redemption/gulag_autolink::name] and claim points in it. Reach your quota to earn your release." : "You are reached quota and can use \"Move shuttle\" button on [/obj/machinery/mineral/labor_claim_console::name], that is located on labor shuttle. If shuttle not docked, you can call it with [/obj/machinery/computer/shuttle/labor/one_way::name].") // SS1984 EDIT, original: say("Collect points by bringing smelted minerals to the Labor Shuttle stacking machine. Reach your quota to earn your release.")
 
 /datum/aas_config_entry/security_labor_stacker
 	name = "Security Alert: Labor Camp Release"

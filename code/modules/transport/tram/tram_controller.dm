@@ -472,7 +472,7 @@
 	playsound(source = nav_beacon, soundin = 'sound/vehicles/car_crash.ogg', vol = 100, vary = FALSE, falloff_distance = DEFAULT_TRAM_LENGTH)
 	nav_beacon.audible_message(span_userdanger("You hear metal grinding as the tram comes to a sudden, complete stop!"))
 	for(var/mob/living/tram_passenger in range(DEFAULT_TRAM_LENGTH - 2, nav_beacon))
-		if(tram_passenger.stat > SOFT_CRIT) // SS1984 EDIT
+		if(tram_passenger.stat != CONSCIOUS)
 			continue
 		shake_camera(M = tram_passenger, duration = 0.2 SECONDS, strength = 3)
 
@@ -943,7 +943,7 @@
 	var/turf/drop_location = find_obstruction_free_location(1, src)
 
 	if(disassembled)
-		new /obj/item/wallframe/tram/controller(drop_location)
+		new /obj/item/wallframe/tram(drop_location)
 	else
 		new /obj/item/stack/sheet/mineral/titanium(drop_location, 2)
 		new /obj/item/stack/sheet/iron(drop_location)
@@ -1190,11 +1190,23 @@
 	controller_datum.set_home_controller(src)
 	RegisterSignal(SStransport, COMSIG_TRANSPORT_ACTIVE, PROC_REF(sync_controller))
 
-/obj/item/wallframe/tram/controller
+/obj/item/wallframe/tram
 	name = "tram controller cabinet"
 	desc = "A box that contains the equipment to control a tram. Just secure to the tram wall."
 	icon = 'icons/obj/tram/tram_controllers.dmi'
 	icon_state = "tram-controller"
-	custom_materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 4, /datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 2)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 20)
 	result_path = /obj/machinery/transport/tram_controller
 	pixel_shift = 32
+
+/obj/item/wallframe/tram/find_support_structure(atom/structure)
+	return astype(structure, /obj/structure/tram)
+
+/obj/item/wallframe/tram/try_build(obj/structure/tram/on_tram, mob/user)
+	var/turf/tram_turf = get_turf(user)
+	var/obj/structure/thermoplastic/tram_floor = locate() in tram_turf
+	if(!istype(tram_floor))
+		balloon_alert(user, "needs tram!")
+		return FALSE
+
+	return ..()

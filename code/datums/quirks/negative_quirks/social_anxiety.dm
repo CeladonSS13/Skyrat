@@ -51,7 +51,7 @@
 		var/list/new_message = list()
 		for(var/word in message_split)
 			if(prob(max(5, moodmod)) && word != message_split[1]) //Minimum 1/20 chance of filler
-				new_message += pick("uh,","erm,","um,")
+				new_message += pick("эээ,","эм,","ммм,") // SS1984 EDIT, original: new_message += pick("uh,","erm,","um,")
 				if(prob(min(5, moodmod))) //Max 1 in 20 chance of cutoff after a successful filler roll, for 50% odds in a 15 word sentence
 					quirk_holder.set_silence_if_lower(6 SECONDS)
 					to_chat(quirk_holder, span_danger("You feel self-conscious and stop talking. You need a moment to recover!"))
@@ -71,7 +71,7 @@
 				to_chat(quirk_holder, span_danger("You retreat into yourself. You <i>really</i> don't feel up to talking."))
 				quirk_holder.set_silence_if_lower(10 SECONDS)
 
-		speech_args[SPEECH_MESSAGE] = pick("Uh.","Erm.","Um.")
+		speech_args[SPEECH_MESSAGE] = pick("Эээ.","Эм.","Ммм.") // SS1984 EDIT, original: speech_args[SPEECH_MESSAGE] = pick("Uh.","Erm.","Um.")
 	else
 		speech_args[SPEECH_MESSAGE] = message
 

@@ -58,7 +58,7 @@
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 2, armor_mod = /datum/armor/armor_forging_upgrade)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_OCLOTHING)
-	AddComponent(/datum/component/adjust_fishing_difficulty, 4)
+	AddElement(/datum/element/adjust_fishing_difficulty, 4)
 
 	allowed += /obj/item/forging/reagent_weapon
 	allowed += /obj/item/kinetic_crusher
@@ -104,7 +104,7 @@
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 1, armor_mod = /datum/armor/armor_forging_upgrade)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_GLOVES)
-	AddComponent(/datum/component/adjust_fishing_difficulty, 4)
+	AddElement(/datum/element/adjust_fishing_difficulty, 4)
 
 // Helmets
 /obj/item/clothing/head/helmet/forging_plate_helmet
@@ -151,8 +151,52 @@
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 1, armor_mod = /datum/armor/armor_forging_upgrade)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
-	AddComponent(/datum/component/adjust_fishing_difficulty, 2)
+	AddElement(/datum/element/adjust_fishing_difficulty, 2)
 
 // Misc
-// SS1984 REMOVA OF LEWD ITEMS START, END
+// SS1984 REMOVAL START (LEWD ITEMS)
+// /obj/item/clothing/gloves/ring/reagent_clothing
+// 	name = "ring"
+// 	desc = "A tiny ring, sized to wrap around a finger."
+// 	icon_state = "ringsilver"
+// 	worn_icon_state = "sring"
+// 	inhand_icon_state = "ringsilver"
+// 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
+// 	obj_flags_nova = ANVIL_REPAIR
 
+// /obj/item/clothing/gloves/ring/reagent_clothing/Initialize(mapload)
+// 	. = ..()
+// 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_GLOVES)
+// 	AddElement(/datum/element/adjust_fishing_difficulty, -4)
+
+// /obj/item/clothing/neck/collar/reagent_clothing
+// 	name = "collar"
+// 	desc = "A collar that is ready to be worn for certain individuals."
+// 	icon = 'modular_nova/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
+// 	worn_icon = 'modular_nova/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
+// 	icon_state = "thick_strip"
+// 	greyscale_colors = null
+// 	greyscale_config = null
+// 	greyscale_config_worn = null
+// 	post_init_icon_state = null
+// 	inhand_icon_state = null
+// 	body_parts_covered = NECK
+// 	slot_flags = ITEM_SLOT_NECK
+// 	w_class = WEIGHT_CLASS_SMALL
+// 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
+// 	obj_flags_nova = ANVIL_REPAIR
+
+// /obj/item/clothing/neck/collar/reagent_clothing/Initialize(mapload)
+// 	. = ..()
+// 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_NECK)
+
+// /obj/item/restraints/handcuffs/reagent_clothing
+// 	name = "handcuffs"
+// 	desc = "A pair of handcuffs that are ready to keep someone captive."
+// 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
+// 	obj_flags_nova = ANVIL_REPAIR
+
+// /obj/item/restraints/handcuffs/reagent_clothing/Initialize(mapload)
+// 	. = ..()
+// 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_HANDCUFFED)
+// SS1984 REMOVAL END (LEWD ITEMS)

@@ -47,7 +47,7 @@
 		return
 
 	mob_occupant.flash_act(override_blindness_check = TRUE, visual = TRUE)
-	mob_occupant.adjustOrganLoss(ORGAN_SLOT_BRAIN, disconnect_damage)
+	mob_occupant.adjust_organ_loss(ORGAN_SLOT_BRAIN, disconnect_damage)
 	INVOKE_ASYNC(mob_occupant, TYPE_PROC_REF(/mob/living, emote), "scream")
 	to_chat(mob_occupant, span_danger("You've been forcefully disconnected from your avatar! Your thoughts feel scrambled!"))
 
@@ -111,6 +111,7 @@
 		server = server, \
 		pod = src, \
 		help_text = generated_domain.help_text, \
+		copy_body = copy_body, \
 	)
 
 	connected = TRUE
@@ -149,7 +150,7 @@
 		return FALSE
 
 	// Invalid
-	if(occupant != neo || isnull(neo.mind) || neo.stat > UNCONSCIOUS || avatar.stat == DEAD)
+	if(occupant != neo || isnull(neo.mind) || neo.stat > SOFT_CRIT || avatar.stat == DEAD)
 		return FALSE
 
 	return TRUE

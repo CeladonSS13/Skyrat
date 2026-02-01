@@ -69,7 +69,6 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/reagent_containers/cup/bottle, /obj/item/reagent_containers/cup/beaker, /obj/item/reagent_containers/applicator/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/baton/telescopic, /obj/item/soap, /obj/item/tank/internals/emergency_oxygen, /obj/item/gun, /obj/item/storage/medkit)
 	armor_type = /datum/armor/security_medic_hazardvest
-	unique_reskin = null
 	cold_protection = CHEST|GROIN
 	min_cold_protection_temperature = ARMOR_MIN_TEMP_PROTECT
 	heat_protection = CHEST|GROIN
@@ -144,16 +143,21 @@
 	worn_icon = 'modular_ss220/modules/return_prs/sec_haul/icons/beltworn.dmi'
 	worn_icon_state = "belt_medic"
 	icon_state = "belt_medic"
-	unique_reskin = list(
-		"Second Variant" = list(
-			RESKIN_ICON_STATE = "belt_medic_alt",
-			RESKIN_WORN_ICON_STATE = "belt_medic_alt"
-		),
-		"Basic Variant" = list(
-			RESKIN_ICON_STATE = "belt_medic",
-			RESKIN_WORN_ICON_STATE = "belt_medic"
-		),
-	)
+
+/datum/atom_skin/belt_secmed
+	abstract_type = /datum/atom_skin/belt_secmed
+
+/datum/atom_skin/belt_secmed/basic
+	preview_name = "Basic"
+	new_icon_state = "belt_medic"
+
+/datum/atom_skin/belt_secmed/second
+	preview_name = "Second"
+	new_icon_state = "belt_medic_alt"
+
+/obj/item/storage/belt/security/medic/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/belt_secmed)
 
 /obj/item/storage/belt/security/medic/full/PopulateContents()
 	new /obj/item/reagent_containers/spray/pepper(src)

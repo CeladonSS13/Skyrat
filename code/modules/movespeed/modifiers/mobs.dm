@@ -123,11 +123,9 @@
 	variable = TRUE
 	flags = IGNORE_NOSLOW
 
-// SS1984 EDIT START
-///datum/movespeed_modifier/carbon_softcrit
-//	multiplicative_slowdown = SOFTCRIT_ADD_SLOWDOWN
-//	flags = IGNORE_NOSLOW
-// SS1984 EDIT END
+/datum/movespeed_modifier/carbon_softcrit
+	multiplicative_slowdown = SOFTCRIT_ADD_SLOWDOWN
+	flags = IGNORE_NOSLOW
 
 /datum/movespeed_modifier/carbon_crawling
 	multiplicative_slowdown = CRAWLING_ADD_SLOWDOWN
@@ -165,10 +163,10 @@
 	variable = TRUE
 
 /datum/movespeed_modifier/goliath_mount
-	multiplicative_slowdown = -26
+	multiplicative_slowdown = -27.5
 
 /datum/movespeed_modifier/goldgrub_mount
-	multiplicative_slowdown = -3
+	multiplicative_slowdown = -4.5
 
 /datum/movespeed_modifier/settler
 	multiplicative_slowdown = 0.2
