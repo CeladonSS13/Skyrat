@@ -190,7 +190,7 @@
 	)
 	/// List of selectable large options
 	var/static/list/graffiti_large_h = list(
-		"furrypride" = CRAYON_COST_LARGE,
+		//"furrypride" = CRAYON_COST_LARGE, // SS1984 REMOVAL
 		"paint" = CRAYON_COST_LARGE,
 		"secborg" = CRAYON_COST_LARGE,
 		"yiffhell" = CRAYON_COST_LARGE,
@@ -548,15 +548,13 @@
 	if(length(text_buffer))
 		drawing = text_buffer[1]
 		// SS1984 ADDITION START
-		// DM также поддерживает кириллицу в .dmi изображениях, но тогда у ТГ надо модифицировать специальный тест в CI
+		// DM также поддерживает кириллицу в .dmi изображениях, но тогда у ТГ надо модифицировать специальный тест в CI-пайплайне
 
-		// Символ из кириллицы занимает 2 байта в UTF-8.
-		// За счет этого знания мы можем их с легкостью отсеивать от латиницы
+		// Мы же будем обрабатывать символы по их коду
 		// также весь текст на данном этапе уже в нижнем регистре -> [а-я + ё]
 		if(length(drawing) != length_char(drawing))
 			var/char_code = text2ascii(drawing)
 			if((char_code >= 1072 && char_code <= 1103) || char_code == 1105)
-				to_chat(user, char_code)
 				drawing = "u[char_code]"
 		// SS1984 ADDITION END
 
