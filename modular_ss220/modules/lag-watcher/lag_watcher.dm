@@ -3,12 +3,13 @@ SUBSYSTEM_DEF(lag_watcher)
 	flags = SS_NO_INIT
 	wait = 1 SECONDS // Default wait time before fire() invoked
 
-	var/default_threshold_ms = 600
+	var/default_threshold_ms = 800
 	var/required_fire_amount = 30
 	var/list/fire_amount = list()
 	var/list/custom_thresholds = list( // Name and ms threshold
-		"Atmospherics" = 700,
+		"Atmospherics" = 1200,
 		"Garbage" = 2000,
+		"Pathfinder" = 1000,
 	)
 	var/triggered = FALSE
 	var/min_clients_to_trigger = 2 // reduce to test alone

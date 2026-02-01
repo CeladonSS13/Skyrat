@@ -48,8 +48,10 @@
 
 /datum/component/follow/proc/toggle_follow(datum/source, mob/living/living_user)
 	SIGNAL_HANDLER
-	if(!istype(living_user) || !living_user.can_perform_action(parent_mob))
+	if(!istype(living_user) || !living_user.can_perform_action(parent_mob) || parent_mob.client)
 		return
+	if(!parent_mob.faction_check_atom(living_user, FALSE))
+		return //no more following enemy
 	following = !following
 	if(following)
 		if(follow_sounds)

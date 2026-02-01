@@ -389,7 +389,7 @@ SUBSYSTEM_DEF(ttsSilero)
 				cb.InvokeAsync()
 			tts_effects_queue -= voice
 
-	var/turf/turf_source = get_turf(speaker)
+	// SS1984 REMOVAL var/turf/turf_source = get_turf(speaker)
 
 	var/volume
 	var/channel
@@ -423,7 +423,7 @@ SUBSYSTEM_DEF(ttsSilero)
 	if(preSFX)
 		play_sfx(listener, preSFX, output.channel, output.volume, output.environment)
 
-	listener.playsound_local(turf_source, output, volume, sound_to_use = output, channel = channel, wait = TRUE)
+	// SS1984 REMOVAL TODO: fix once TTS used or remove entirely all subsystems listener.playsound_local(turf_source, output, volume, sound_to_use = output, channel = channel, wait = TRUE)
 
 	if(!output || output.volume <= 0)
 		return

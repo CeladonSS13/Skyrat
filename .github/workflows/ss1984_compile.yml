@@ -7,7 +7,7 @@ permissions:
 
 jobs:
   compile:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
 
     steps:
@@ -21,9 +21,9 @@ jobs:
         packages: gcc-multilib zlib1g-dev
         version: 1.0
     - name: Cache PYTHON
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
-        python-version: '3.9' # would be good, if match PYTHON_VERSION in dependencies.sh
+        python-version: '3.11.0' # would be good, if match PYTHON_VERSION in dependencies.sh
         cache: 'pip'
     - name: Setup part 1 (Bun)
       uses: ./.github/actions/setup_bun

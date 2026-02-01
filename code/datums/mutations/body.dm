@@ -15,7 +15,7 @@
 		trigger_seizure()
 
 /datum/mutation/epilepsy/proc/trigger_seizure()
-	if(owner.stat > SOFT_CRIT)
+	if(owner.stat != CONSCIOUS)
 		return
 	owner.visible_message(span_danger("[owner] starts having a seizure!"), span_userdanger("You have a seizure!"))
 	owner.Unconscious(200 * GET_MUTATION_POWER(src))
@@ -90,7 +90,7 @@
 	power_coeff = 1
 
 /datum/mutation/cough/on_life(seconds_per_tick, times_fired)
-	if(SPT_PROB(2.5 * GET_MUTATION_SYNCHRONIZER(src), seconds_per_tick) && owner.stat <= SOFT_CRIT)
+	if(SPT_PROB(2.5 * GET_MUTATION_SYNCHRONIZER(src), seconds_per_tick) && owner.stat == CONSCIOUS)
 		owner.drop_all_held_items()
 		owner.emote("cough")
 		if(GET_MUTATION_POWER(src) > 1)
@@ -107,7 +107,7 @@
 	text_lose_indication = span_notice("The screaming in your mind fades.")
 
 /datum/mutation/paranoia/on_life(seconds_per_tick, times_fired)
-	if(SPT_PROB(2.5, seconds_per_tick) && owner.stat <= SOFT_CRIT)
+	if(SPT_PROB(2.5, seconds_per_tick) && owner.stat == CONSCIOUS)
 		owner.emote("scream")
 		if(prob(25))
 			owner.adjust_hallucinations(40 SECONDS)
@@ -129,7 +129,7 @@
 	// NOVA EDIT BEGIN
 	if(owner.dna.features["body_size"] < 1 || isteshari(owner))
 		to_chat(owner, "You feel your body try to shrink, but your organs don't! Uh oh!")
-		owner.adjustBruteLoss(25)
+		owner.adjust_brute_loss(25)
 		return
 	// NOVA EDIT END
 	ADD_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
@@ -199,7 +199,7 @@
 	// NOVA EDIT ADDITION BEGIN
 	if(owner.dna.features["body_size"] > 1)
 		to_chat(owner, "You feel your body expanding even further, but it feels like your bones are expanding too much!")
-		owner.adjustBruteLoss(25) // take some DAMAGE
+		owner.adjust_brute_loss(25) // take some DAMAGE
 		return
 	// NOVA EDIT ADDITION END
 	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
@@ -238,7 +238,7 @@
 	synchronizer_coeff = 1
 
 /datum/mutation/tourettes/on_life(seconds_per_tick, times_fired)
-	if(SPT_PROB(5 * GET_MUTATION_SYNCHRONIZER(src), seconds_per_tick) && owner.stat <= SOFT_CRIT && !owner.IsStun())
+	if(SPT_PROB(5 * GET_MUTATION_SYNCHRONIZER(src), seconds_per_tick) && owner.stat == CONSCIOUS && !owner.IsStun())
 		switch(rand(1, 3))
 			if(1)
 				owner.emote("twitch")
@@ -729,9 +729,9 @@
 		return
 	// Gives you 30 seconds of being in soft crit... give or take
 	if(HAS_TRAIT(owner, TRAIT_TOXIMMUNE) || HAS_TRAIT(owner, TRAIT_TOXINLOVER))
-		owner.adjustBruteLoss(1 * seconds_per_tick * GET_MUTATION_SYNCHRONIZER(src), forced = TRUE)
+		owner.adjust_brute_loss(1 * seconds_per_tick * GET_MUTATION_SYNCHRONIZER(src), forced = TRUE)
 	else
-		owner.adjustToxLoss(0.5 * seconds_per_tick * GET_MUTATION_SYNCHRONIZER(src), forced = TRUE)
-		owner.adjustBruteLoss(0.5 * seconds_per_tick * GET_MUTATION_SYNCHRONIZER(src), forced = TRUE)
+		owner.adjust_tox_loss(0.5 * seconds_per_tick * GET_MUTATION_SYNCHRONIZER(src), forced = TRUE)
+		owner.adjust_brute_loss(0.5 * seconds_per_tick * GET_MUTATION_SYNCHRONIZER(src), forced = TRUE)
 	// Offsets suffocation but not entirely
-	owner.adjustOxyLoss(-0.5 * seconds_per_tick, forced = TRUE)
+	owner.adjust_oxy_loss(-0.5 * seconds_per_tick, forced = TRUE)

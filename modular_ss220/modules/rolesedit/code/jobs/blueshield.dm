@@ -83,7 +83,8 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	siemens_coefficient = 0
 	complexity_max = DEFAULT_MAX_COMPLEXITY + 3
-	inbuilt_modules = list(/obj/item/mod/module/shove_blocker/locked, /obj/item/mod/module/hearing_protection)
+	inbuilt_modules = list(/obj/item/mod/module/shove_blocker/locked)
+	hearing_protection = EAR_PROTECTION_NORMAL
 
 /obj/item/mod/control/pre_equipped/blueshield
 	req_access = list(ACCESS_CENT_GENERAL)
@@ -208,7 +209,7 @@
 	title = JOB_BLUESHIELD
 	description = "Protect heads of staff, get your fancy gun stolen, cry as the captain touches the supermatter."
 	supervisors = "Central Command and the Nanotrasen Consultant"
-	department_head = list(JOB_NT_REP)
+	supervisors = JOB_NT_REP
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	faction = FACTION_STATION
 	total_positions = 1
@@ -260,7 +261,7 @@
 	extra_access = list(
 		ACCESS_CHANGE_IDS,
 		ACCESS_COURT,
-
+		ACCESS_CENT_LIVING,
 	)
 	minimal_access = list(
 		ACCESS_ALL_PERSONAL_LOCKERS,

@@ -1,6 +1,5 @@
 /datum/armament_entry/company_import/nakamura_modsuits
 	category = NAKAMURA_ENGINEERING_MODSUITS_NAME_1984
-	company_bitflag = CARGO_COMPANY_NAKAMURA_MODSUITS_1984
 
 /datum/armament_entry/company_import/nakamura_modsuits/mod
 	subcategory = "MOD Suits"
@@ -95,6 +94,10 @@
 
 /datum/armament_entry/company_import/nakamura_modsuits/protection_modules/emp_shield
 	item_type = /obj/item/mod/module/emp_shield
+
+/datum/armament_entry/company_import/nakamura_modsuits/protection_modules/dampener
+	item_type = /obj/item/mod/module/projectile_dampener
+	restricted = TRUE
 
 // TODO: uncomment when return retractives
 // /datum/armament_entry/company_import/nakamura_modsuits/protection_modules/armor_plates

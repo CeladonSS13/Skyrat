@@ -86,10 +86,10 @@ DEFINE_BITFIELD(status_flags, list(
 
 //Health Defines
 #define HEALTH_THRESHOLD_CRIT 0
-#define HEALTH_THRESHOLD_FULLCRIT -100
-#define HEALTH_THRESHOLD_DEAD -130
+#define HEALTH_THRESHOLD_FULLCRIT -30
+#define HEALTH_THRESHOLD_DEAD -100
 
-#define HEALTH_THRESHOLD_NEARDEATH -120 //Not used mechanically, but to determine if someone is so close to death they hear the other side
+#define HEALTH_THRESHOLD_NEARDEATH -90 //Not used mechanically, but to determine if someone is so close to death they hear the other side
 
 //Actual combat defines
 
@@ -123,7 +123,7 @@ DEFINE_BITFIELD(status_flags, list(
 #define BASE_GRAB_RESIST_CHANCE 60 //base chance for whether or not you can escape from a grab
 
 //slowdown when in softcrit. Note that crawling slowdown will also apply at the same time!
-//#define SOFTCRIT_ADD_SLOWDOWN 2 // SS1984 EDIT
+#define SOFTCRIT_ADD_SLOWDOWN 2
 //slowdown when crawling
 #define CRAWLING_ADD_SLOWDOWN 4
 
@@ -354,7 +354,7 @@ GLOBAL_LIST_INIT(leg_zones, list(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG))
 /// Armor can't block more than this as a percentage
 #define ARMOR_MAX_BLOCK 90
 /// Calculates the new armour value after armour penetration. Can return negative values, and those must be caught.
-#define PENETRATE_ARMOUR(armour, penetration) (penetration == 100 ? 0 : 100 * (armour - penetration) / (100 - penetration))
+#define PENETRATE_ARMOUR(armour, penetration) (penetration >= 100 ? 0 : 100 * (armour - penetration) / (100 - penetration))
 
 // Defines for combo attack component
 /// LMB Attack

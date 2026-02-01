@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 				CRASH("Unimplemented interaction requirement '[requirement]'")
 	return TRUE
 
-/datum/interaction/proc/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/proc/act(mob/living/carbon/human/user, mob/living/carbon/human/target, use_subtler)
 	if(!allow_act(user, target))
 		return
 	if(!message)
@@ -108,12 +108,15 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 	// SS1984 REMOVAL START
 	// if(lewd)
-	// 	var/list/ignoring_mobs = list()
-	// 	for(var/mob/not_interested in get_hearers_in_view(DEFAULT_MESSAGE_RANGE, user))
-	// 		if(!not_interested.client?.prefs?.read_preference(/datum/preference/toggle/erp))
-	// 			ignoring_mobs += not_interested
-	// 	user.visible_message(span_purple("[user] [msg]"), ignored_mobs = ignoring_mobs)
-	// 	user.log_message(msg, LOG_EMOTE)
+	//	if(use_subtler)
+	//		user.emote("subtler", type_override = /datum/emote/living/subtler::emote_type | EMOTE_LEWD, message = msg, intentional = TRUE)
+	//	else
+		// 	var/list/ignoring_mobs = list()
+		// 	for(var/mob/not_interested in get_hearers_in_view(DEFAULT_MESSAGE_RANGE, user))
+		// 		if(!not_interested.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+		// 			ignoring_mobs += not_interested
+		// 	user.visible_message(span_purple("[user] [msg]"), ignored_mobs = ignoring_mobs)
+		// 	user.log_message(msg, LOG_EMOTE)
 	// else
 	// SS1984 REMOVAL END
 	user.manual_emote(msg)

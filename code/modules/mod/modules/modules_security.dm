@@ -137,10 +137,10 @@
 		if(mod.wearer.transferItemToLoc(holding, src, force = FALSE, silent = TRUE))
 			holstered = holding
 			balloon_alert(mod.wearer, "weapon holstered")
-			playsound(src, 'sound/items/weapons/gun/revolver/empty.ogg', 100, TRUE)
+			playsound(src.loc, holster_sound, 50, TRUE) // SS1984 EDIT, original: playsound(src, 'sound/items/weapons/gun/revolver/empty.ogg', 100, TRUE)
 	else if(mod.wearer.put_in_active_hand(holstered, forced = FALSE, ignore_animation = TRUE))
 		balloon_alert(mod.wearer, "weapon drawn")
-		playsound(src, 'sound/items/weapons/gun/revolver/empty.ogg', 100, TRUE)
+		playsound(src.loc, unholster_sound, 50, TRUE) // SS1984 EDIT, original: playsound(src, 'sound/items/weapons/gun/revolver/empty.ogg', 100, TRUE)
 	else
 		balloon_alert(mod.wearer, "holster full!")
 
@@ -304,8 +304,8 @@
 	. = ..()
 	do_sparks(rand(3, 6), FALSE, src)
 	if(thrower)
-		var/mob/living/simple_animal/hostile/illusion/mirage/mirage = new(get_turf(src))
-		mirage.Copy_Parent(thrower, 15 SECONDS)
+		var/mob/living/basic/illusion/mirage/mirage = new(get_turf(src))
+		mirage.mock_as(thrower, 15 SECONDS)
 	qdel(src)
 
 ///Projectile Dampener - Weakens projectiles in range.

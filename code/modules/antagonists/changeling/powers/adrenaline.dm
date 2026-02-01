@@ -6,7 +6,7 @@
 	chemical_cost = 25 // similar cost to biodegrade, as they serve similar purposes
 	dna_cost = 2
 	req_human = FALSE
-	req_stat = SOFT_CRIT
+	req_stat = CONSCIOUS
 	disabled_by_fire = TRUE
 
 //Recover from stuns.
@@ -15,7 +15,7 @@
 
 	// Get us standing up.
 	user.SetAllImmobility(0)
-	user.setStaminaLoss(0)
+	user.set_stamina_loss(0)
 	user.set_resting(FALSE, instant = TRUE)
 
 	user.reagents.add_reagent(/datum/reagent/medicine/changelingadrenaline, 4) //Tank 5 consecutive baton hits

@@ -61,7 +61,7 @@
 	owner.adjust_derpspeech_up_to(5 SECONDS * seconds_per_tick, 50 SECONDS)
 	if(SPT_PROB(1.5, seconds_per_tick))
 		owner.emote("drool")
-	else if(owner.stat <= SOFT_CRIT && SPT_PROB(1.5, seconds_per_tick))
+	else if(owner.stat == CONSCIOUS && SPT_PROB(1.5, seconds_per_tick))
 		owner.say(pick_list_replacements(BRAIN_DAMAGE_FILE, "brain_damage"), forced = "brain damage", filterproof = TRUE)
 
 /datum/brain_trauma/mild/dumbness/on_lose()
@@ -125,7 +125,7 @@
 	return ..()
 
 /datum/brain_trauma/mild/healthy/on_life(seconds_per_tick, times_fired)
-	owner.adjustStaminaLoss(-6 * seconds_per_tick) //no pain, no fatigue
+	owner.adjust_stamina_loss(-6 * seconds_per_tick) //no pain, no fatigue
 
 /datum/brain_trauma/mild/healthy/on_lose()
 	owner.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
@@ -155,7 +155,7 @@
 
 	else if(SPT_PROB(1.5, seconds_per_tick))
 		to_chat(owner, span_warning("You feel a sudden weakness in your muscles!"))
-		owner.adjustStaminaLoss(50)
+		owner.adjust_stamina_loss(50)
 	..()
 
 /datum/brain_trauma/mild/muscle_spasms
@@ -217,11 +217,11 @@
 				word = copytext(word, 1, suffix_foundon)
 			word = html_decode(word)
 
-			if(GLOB.most_common_words[LOWER_TEXT(word)])
+			if(GLOB.most_common_words_alphabetical[LOWER_TEXT(word)])
 				new_message += word + suffix
 			else
 				if(prob(30) && message_split.len > 2)
-					new_message += pick("uh","erm")
+					new_message += pick("эээ","эм") // SS1984 EDIT, original: new_message += pick("uh","erm")
 					break
 				else
 					var/list/charlist = text2charlist(word)

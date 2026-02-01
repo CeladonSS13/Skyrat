@@ -13,7 +13,7 @@
 		name = emote_key // SS1984 ADDITION
 	full_name = capitalize(name) // SS1984 EDIT, original: full_name = capitalize(initial(faketype.key))
 
-/datum/keybinding/emote/down(client/user, turf/target)
+/datum/keybinding/emote/down(client/user, turf/target, mousepos_x, mousepos_y)
 	. = ..()
 	if(.)
 		return

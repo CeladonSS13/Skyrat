@@ -79,6 +79,7 @@
 /datum/loadout_item/shoes/colonial_boots
 	name = "Boots - Colonial Half-Boots"
 	item_path = /obj/item/clothing/shoes/jackboots/colonial
+	species_blacklist = list(SPECIES_TESHARI)
 
 /datum/loadout_item/shoes/cowboy_recolorable
 	name = "Boots - Cowboy (Colorable)"
@@ -116,6 +117,10 @@
 /datum/loadout_item/shoes/kneeboot
 	name = "Boots - Jackboots, Knee"
 	item_path = /obj/item/clothing/shoes/jackboots/knee
+
+/datum/loadout_item/shoes/kneeboot/recolorable
+	name = "Boots - Jackboots, Knee (Colorable)"
+	item_path = /obj/item/clothing/shoes/jackboots/knee/recolorable
 
 /datum/loadout_item/shoes/jungle
 	name = "Boots - Jungle"
@@ -304,9 +309,31 @@
 /datum/loadout_item/shoes/clown_shoes/pink
 	name = "Pink Clown Shoes"
 	item_path = /obj/item/clothing/shoes/clown_shoes/pink
-	restricted_roles = list(JOB_CLOWN)
 
-// SS1984 REMOVAL ERP SHOES START
+// SS1984 REMOVAL START
+// /datum/loadout_item/shoes/clown_shoes/pink_heels
+// 	name = "Pink Clown Heels"
+// 	item_path = /obj/item/clothing/shoes/clown_shoes/pink/heels
+
+// /datum/loadout_item/shoes/clown_shoes/pink_heels_mute
+// 	name = "Pink Clown Heels (No Clown Effects)"
+// 	item_path = /obj/item/clothing/shoes/pink_clown_heels
+// 	restricted_roles = null
+//	group = "Costumes"
+
+// /datum/loadout_item/shoes/clown_shoes/pink_heels_mute/get_item_information()
+// 	. = ..()
+// 	.[FA_ICON_VOLUME_MUTE] = "No Clown Effects"
+
+/*
+*	erp_item
+*/
+
+// /datum/loadout_item/shoes/ballet_heels
+// 	name = "Ballet Heels"
+// 	item_path = /obj/item/clothing/shoes/ballet_heels
+// 	erp_item = TRUE
+
 // /datum/loadout_item/shoes/dominaheels
 // 	name = "Dominant Heels"
 // 	item_path = /obj/item/clothing/shoes/ballet_heels/domina_heels

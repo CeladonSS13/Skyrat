@@ -1,8 +1,471 @@
 [
   {
+    "date": "2026-01-29",
+    "author": "DenIS318",
+    "changes": [
+      "Missing defibs added back to maps",
+      "Labor point claim console now displays tooltip for Move Shuttle button if points not earned.",
+      "Labor console move shuttle button now says hint if trying to move shuttle without prisoners (it's designed to not work that way)",
+      "Labor points checking console now says hint how to get back to station once quota reached"
+    ]
+  },
+  {
+    "date": "2026-01-28",
+    "author": "DenIS318",
+    "changes": [
+      "chav mutation message ending \"mate\" localized",
+      "Fixed invisible cyborg model \"skin_hat_offset\""
+    ]
+  },
+  {
+    "date": "2026-01-26",
+    "author": "Arceniu",
+    "changes": [
+      "fixed some centcom map bugs",
+      "changed modular interlink, returned head of staff interlink room, separated interlink start area from other rooms",
+      "returned syndicate server to admin sector"
+    ]
+  },
+  {
+    "date": "2026-01-23",
+    "author": "Arceniu",
+    "changes": [
+      "returned slightly buffed cybersun modsuits armour and modules to deepspace modsuits(security prisoner transport bags) and added access requirement(still can be hacked by cutting wires)",
+      "DS-2 leader's lockers now have syndicate leader+deepspace access req instead of basic syndicate access",
+      "DS-2 Map now spawn at their own empty space sector",
+      "replaced syndicate modsuits with cybersun ones at DS-2 armory",
+      "DS-2 Admiral now get their own cybersun elite modsuit, while Liason get the basic elite modsuit",
+      "turret controllers icon at interdyne and DS-2 maps fixed"
+    ]
+  },
+  {
+    "date": "2026-01-23",
+    "author": "DenIS318",
+    "changes": [
+      "DS-2 (and interdyne, as they use same techweb) now starts with \"Illegal Technology\" node, which enables illegal researches."
+    ]
+  },
+  {
+    "date": "2026-01-22",
+    "author": "DenIS318",
+    "changes": [
+      "sleep is now properly expiring for non-player mobs"
+    ]
+  },
+  {
+    "date": "2026-01-20",
+    "author": "Arceniu",
+    "changes": [
+      "modified blackmarket trader area( weapons spawner replaced with mini vault, removet non rp nova shield)"
+    ]
+  },
+  {
+    "date": "2026-01-20",
+    "author": "DenIS318",
+    "changes": [
+      "Arrows are now weak against armor (armor is doubled when calculating damage, but it's done after armor penetration). Example: nuclear operative MOD received damage from arrow: 25 => 5, security officer with default loadout 36 => 22.",
+      "Revert \"balance: The SolFed Halo rifles now have regular damage multipliers (1x damage for the assault rifle, 1.1x damage for the battle rifle/DMR)\"",
+      "Revert \"Discovery that the foregrips and handguards on the Zaibas longarms are not decorative has led to a decrease in recoil of 50% (half)\"",
+      "Clown's car \"Thank the Clown Car Driver\" said words are localized"
+    ]
+  },
+  {
+    "date": "2026-01-16",
+    "author": "Arceniu",
+    "changes": [
+      "Added IP id upgrade machine",
+      "updated ds 2 and interdyne - replaced generators with less powerfull version, replaced chameleon mod on ice ip with interdyne mod. chameleon mod now in Deck Officer room. Added borg spawners"
+    ]
+  },
+  {
+    "date": "2026-01-16",
+    "author": "DenIS318",
+    "changes": [
+      "Talking to headset common channel now can be done both with: \"; text\" and \";text\"",
+      ".40 Sol bullets (and subtypes) damage against unarmored targets 10 => 0 and bonus to wounds 5 => 0, as it was before"
+    ]
+  },
+  {
+    "date": "2026-01-13",
+    "author": "Arceniu",
+    "changes": [
+      "Added centcom captain stamp and tarkon command(centcom) stamp",
+      "fixed some missed stamps on paper"
+    ]
+  },
+  {
+    "date": "2026-01-13",
+    "author": "DenIS318",
+    "changes": [
+      "Paper TGUI now show newly added stamps"
+    ]
+  },
+  {
+    "date": "2026-01-11",
+    "author": "DenIS318",
+    "changes": [
+      "Security belts can hold 3 => 2 baton/gun (1 baton + 1 gun OR 2 guns OR 2 batons)"
+    ]
+  },
+  {
+    "date": "2026-01-10",
+    "author": "DenIS318",
+    "changes": [
+      "Now tags [ntlogo] and [syndicatelogo] could be used in paper to show images of NT or syndicate",
+      "Admins now can reply to incoming fax by using button appearing on receiving fax (opens fax panel with selected destination fax)",
+      "Admins now can use templates for fax-panel",
+      "Experimentally fixed paper TGUI (no more flickering images while not editing text + can easily copy text)"
+    ]
+  },
+  {
+    "date": "2026-01-08",
+    "author": "DenIS318",
+    "changes": [
+      "Default deity and bible names translated in savefiles (for both new and already existing characters), also religion name if it's have translation."
+    ]
+  },
+  {
+    "date": "2026-01-07",
+    "author": "Arceniu",
+    "changes": [
+      "houndeye charge attack fixed",
+      "enemy vortigaunts no longer follow players",
+      "fixed lost gender on human npcs in mesa(sec, hecu, freeman zombie)",
+      "blackmesa turrets no longer attack sec guard npc",
+      "fixed centcom high ups access",
+      "fixed centcom armory button, added cent admin storage to captain office"
+    ]
+  },
+  {
+    "date": "2026-01-07",
+    "author": "DenIS318",
+    "changes": [
+      "Outfits now comes with traits. You can add traits to outfit in outfit manager (or code). Once outfit is equipped, all other outfit traits are removed and movement type is reset to initial.",
+      "Handgun shoulder holster no longer can be attached more than 1 per uniform",
+      "Handgun holster now plays sound on holster/unholster",
+      "Holster module also uses new holster/unholster sound"
+    ]
+  },
+  {
+    "date": "2026-01-06",
+    "author": "DenIS318",
+    "changes": [
+      "Revert \"Removed the recipe for the Hulk and Ork Gene\"",
+      "World name (such as displayed at top of game window) is now consistent and no longer uses station name",
+      "Shuttle call time on green & blue codes 15 -> 10 minutes",
+      "Shuttle call time starting on red code 15 -> 5 minutes"
+    ]
+  },
+  {
+    "date": "2026-01-03",
+    "author": "DenIS318",
+    "changes": [
+      "ghostpads (such as DS-2, Interdyne, Tarkon) selling is work again"
+    ]
+  },
+  {
+    "date": "2026-01-02",
+    "author": "Arceniu",
+    "changes": [
+      "replaces closets with cargo crates at centcom cargo, changed centcom locations - armory, cargo pods",
+      "fixed some centcom doors access"
+    ]
+  },
+  {
+    "date": "2025-12-31",
+    "author": "DenIS318",
+    "changes": [
+      "Transfer vote (in vote panel) now working as it's tooltip says"
+    ]
+  },
+  {
+    "date": "2025-12-31",
+    "author": "Arceniu",
+    "changes": [
+      "Added Press badge to loadout(awailable to Curator, HOP, Captain, NT Rep)",
+      "Removed rainbow western pin from loadout, now restricted by config"
+    ]
+  },
+  {
+    "date": "2025-12-30",
+    "author": "DenIS318",
+    "changes": [
+      "Translates default bible names and it's related stuff, applies only for new characters (for now)",
+      "Translates religion names, applies only for new characters (for now)",
+      "Localizes anxiety and speech trauma words such as: \"Uhm\", \"Erm\", \"Um\"."
+    ]
+  },
+  {
+    "date": "2025-12-29",
+    "author": "DenIS318",
+    "changes": [
+      "Missing cargo plates at DS2 added back"
+    ]
+  },
+  {
+    "date": "2025-12-27",
+    "author": "DenIS318",
+    "changes": [
+      "Restart vote is enabled",
+      "Restart vote is available to players only with < 5 online"
+    ]
+  },
+  {
+    "date": "2025-12-23",
+    "author": "DenIS318",
+    "changes": [
+      "Holidays are back. Merry XMAS!",
+      "Holidays no longer changes station name",
+      "Pride Week holiday disabled"
+    ]
+  },
+  {
+    "date": "2025-12-22",
+    "author": "Arceniu",
+    "changes": [
+      "fixed missing centcom ferry",
+      "fixed a not working main shuttle",
+      "changed interlink map(no longer contain shuttle dock)"
+    ]
+  },
+  {
+    "date": "2025-12-22",
+    "author": "DenIS318",
+    "changes": [
+      "Nanomaps are also shown for Centcom and Interlink"
+    ]
+  },
+  {
+    "date": "2025-12-21",
+    "author": "DenIS318",
+    "changes": [
+      "Paper UI two whitespaces no longer translated to {' \"} on writing",
+      "Returned some missing items on interdyne (cryopod, cargo express circuit boards)"
+    ]
+  },
+  {
+    "date": "2025-12-17",
+    "author": "Arceniu",
+    "changes": [
+      "Changed CentCom access system, centcom jobs now have separated access to match ranks",
+      "CentCom Official region now bound to cent_official access, so CentCom interns no longer can use centcom Access console(until they get access from officer)",
+      "TG modular fix - Head CentCom interns now have Head CentCom intern access(was basic intern access)",
+      "NTR can now add his region access, like office doors access to blueshield(if he lost access somehow)",
+      "Changed CentCom access system, centcom jobs now have separated access to match ranks",
+      "CentCom now separated from debug/start area",
+      "CentCom become sligtly edited, expanded cargo area, added security room"
+    ]
+  },
+  {
+    "date": "2025-12-17",
+    "author": "DenIS318",
+    "changes": [
+      "\"Compact defib is printable at protolathe again\""
+    ]
+  },
+  {
+    "date": "2025-12-15",
+    "author": "DenIS318",
+    "changes": [
+      "Revert \"Removes Mining ID's and Mining Headset Keys from the Conscript Kit. Makes the kit requires no access so you can be a yanky miner as you always dreamed! Replaces the Explorer suit with a Seva suit, better fitted for civilians trying to be a miner than real monster hunter miners.\"",
+      "Remove non-actual policy text for primitive catgirl ghostrole (ice-dwellers)",
+      "Revert \"Stamina Diode no longer restores SM integrity.\"",
+      "Revert \"You can no longer print soup pots\""
+    ]
+  },
+  {
+    "date": "2025-12-11",
+    "author": "Arceniu",
+    "changes": [
+      "ID upgrade machine(ghost role/event computer) no longer work while broken/not powered"
+    ]
+  },
+  {
+    "date": "2025-12-10",
+    "author": "Arceniu",
+    "changes": [
+      "fixed a icebox broken turf"
+    ]
+  },
+  {
+    "date": "2025-11-30",
+    "author": "DenIS318",
+    "changes": [
+      "Movement Delay 1.8 -> 1.5 (TG)",
+      "Mech movement delay 1.8 -> 1.5 (TG). Both can be changed back at 21.12.2025 (read PR or discord for more, needs Skyrat role)"
+    ]
+  },
+  {
+    "date": "2025-11-30",
+    "author": "Arceniu",
+    "changes": [
+      "Returned old crit",
+      "Removed \"RP\" crit"
+    ]
+  },
+  {
+    "date": "2025-11-27",
+    "author": "Arceniu",
+    "changes": [
+      "Added combitool to med imports advanced(tier 2) combination of - bonesetter/bloodfilter",
+      "Added telescopic shield to imports"
+    ]
+  },
+  {
+    "date": "2025-11-27",
+    "author": "Arceniu",
+    "changes": [
+      "disabled cult construct event random spawn, decreased max syndicate portal storm random event to 1"
+    ]
+  },
+  {
+    "date": "2025-11-27",
+    "author": "DenIS318",
+    "changes": [
+      "Now cyborg is prompted to change name on spawn if it doesn't have set it in preferences"
+    ]
+  },
+  {
+    "date": "2025-11-27",
+    "author": "DenIS318",
+    "changes": [
+      "Revert \"Shotgun shells have been adjusted, with the most drastic change being on shotgun slugs, going from 30 damage 10 AP to 35 damage 30 AP, giving them more of an anti-armor niche. Some other shotguns may have been touched, see PR 6371 for details as they come along.\"",
+      "Revert \"The Sakhno SKS's damage multiplier was moved to 0.8x, up from 0.5x.\"",
+      "Revert \"Cmo no longer starts with a advanced health analyzer.\""
+    ]
+  },
+  {
+    "date": "2025-11-22",
+    "author": "DenIS318",
+    "changes": [
+      "xeno tails is no longer spawn on random mobs",
+      "real xenomorph tails (such as Xeno Queen) no longer available on roundstart"
+    ]
+  },
+  {
+    "date": "2025-11-19",
+    "author": "DenIS318",
+    "changes": [
+      "Airlock access circuit no longer TGUI NTOS from invalid accesses"
+    ]
+  },
+  {
+    "date": "2025-11-19",
+    "author": "DenIS318",
+    "changes": [
+      "Spent ammo is now correctly shown as spent when reloaded with ammo box"
+    ]
+  },
+  {
+    "date": "2025-11-19",
+    "author": "Arceniu",
+    "changes": [
+      "Added new quirk - unholy (more debuffs from holy water. debuff in church, buff from unholy/hell water)",
+      "rebalanced fundamentally evil reaction to unholy water"
+    ]
+  },
+  {
+    "date": "2025-11-16",
+    "author": "Arceniu",
+    "changes": [
+      "oldstation spawners now have proper description in spawn menu and notify ghosts"
+    ]
+  },
+  {
+    "date": "2025-11-16",
+    "author": "DenIS318",
+    "changes": [
+      "Mass Traitors min_enemies 0 => 2",
+      "Mass Changelings min_enemies 0 => 3, restricted synthetic species",
+      "Sleeper Heretic light midround. Requires 3 min enemies of tier 1 dynamic, or 2 in tier2+. Starts from 10 population.",
+      "Sleeper Changeling light midround. Requires 3 min enemies of tier 1 dynamic, or 2 in tier2+. Starts from 15 population.",
+      "Mass Heretics heavy midround. Requires 3 min enemies. Starts from 25 population and spawns 2-4 heretics.",
+      "Heretic TGUI info is now scrollable"
+    ]
+  },
+  {
+    "date": "2025-11-13",
+    "author": "DenIS318",
+    "changes": [
+      "Adminwho now shows developers, mentors, moderators as well"
+    ]
+  },
+  {
+    "date": "2025-11-12",
+    "author": "DenIS318",
+    "changes": [
+      "THC overdose translation say-messages"
+    ]
+  },
+  {
+    "date": "2025-11-11",
+    "author": "DenIS318",
+    "changes": [
+      "Goliath hide plates no longer have error (purple) icon when worn, instead have invisible overlay",
+      "runechat with languages is no longer shows ('')",
+      "cryo now shows Unassigned for those who not in records instead of [NO DATA]",
+      "Hemophage heal ability healing brute AND burn per second 1.8 => 0.5",
+      "Hemophage heal ability blood consumption 0.9 => 1.0",
+      "Deathsquad now start with nuclear pinpointer",
+      "Deathsquad leader spawn with nuclear disk",
+      "Deathsquad all start with memory of nuclear code to station self-destruct terminal",
+      "Nuclear disk, energy sword, energy shield is no longer have purple error overlay when placed on suit storage (instead they are invisible)",
+      "Dynamic should probably check for alive players now, as it does for progressive dynamic"
+    ]
+  },
+  {
+    "date": "2025-11-10",
+    "author": "DenIS318",
+    "changes": [
+      "Revert \"a heavy duty rebalance of most station ballistics, raising their time to down by roughly around 35%, evening out to around 3-4s to down, instead of 2-2.5s\"",
+      "Revert \"Low pressure damage has been doubled\""
+    ]
+  },
+  {
+    "date": "2025-11-07",
+    "author": "Arceniu",
+    "changes": [
+      "Removed eng skillchip from oldstation eng",
+      "Added small blueprints to oldstation engineer",
+      "Added blueprints to bridge safe",
+      "Replaced eng skillchip in oldstation eng storage with both light bulb removing/ know wires prototype",
+      "Replaced psychologist chip in oldstation med crate with custom combined chip (maddness immune, coroner organs examine, speed buff while operating other, ability to do operations on yourself-without buff)"
+    ]
+  },
+  {
+    "date": "2025-11-07",
+    "author": "DenIS318",
+    "changes": [
+      "Throw-mode keybinding by default is R now (applies only when you don't have overrides for it)",
+      "Returned stunbaton's color chang based on cell (blue on bluespace cell and so on)"
+    ]
+  },
+  {
+    "date": "2025-11-06",
+    "author": "DenIS318",
+    "changes": [
+      "Everything that gives TRAIT_NOSOFTCRIT (such as luxury medipens at mining, hulk mutation and all others sources) now makes you ignore random stun probability from being in soft crit",
+      "Hulk mutation is losed on going hardcrit, instead of when going softcrit",
+      "Hulk is now properly removed on death (in case it get one-shot somehow bypassing hardcrit)",
+      "Voltaic heart's overdrive effect is now heals until hardcrit (instead of softcrit)"
+    ]
+  },
+  {
+    "date": "2025-11-05",
+    "author": "DenIS318",
+    "changes": [
+      "Plasma inflation price fixed after selling",
+      "non-handgun holsters now also can hold taser",
+      "Detective's holster now can properly hold some extra things (magazines, glock, banana), it's mostly fix"
+    ]
+  },
+  {
     "date": "2025-11-03",
     "author": "DenIS318",
     "changes": [
+      "Mech movement speed reduced accordingly to decreased carbon speed (~16% slower or +0.3 movedelay)",
+      "Ghost-roles engineering based roles now have engineering skillchip to see wires (DS2, Tarkon, Charlie Station)",
+      "Can use headset when restrained now",
       "Trim Access is properly shown at ID computer again"
     ]
   },

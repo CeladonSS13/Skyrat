@@ -42,7 +42,7 @@
 	if (!viewer.mind)
 		return
 	// If you're not conscious you're too busy or dead to look at propaganda
-	if (viewer.stat > SOFT_CRIT)
+	if (viewer.stat != CONSCIOUS)
 		return
 	if(viewer.is_blind())
 		return

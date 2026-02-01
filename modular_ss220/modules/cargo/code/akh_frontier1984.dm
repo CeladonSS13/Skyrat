@@ -1,6 +1,5 @@
 /datum/armament_entry/company_import/akh_frontier
 	category = FRONTIER_EQUIPMENT_NAME_1984
-	company_bitflag = CARGO_COMPANY_FRONTIER_EQUIPMENT_1984
 
 // Tools that you could use the rapid fabricator for, but you're too lazy to actually do that
 

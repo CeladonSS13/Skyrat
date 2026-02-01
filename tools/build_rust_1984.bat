@@ -1,4 +1,5 @@
 @echo off
+setlocal enabledelayedexpansion
 
 set REPO_URL=https://github.com/skyrat1984test/rust-skyrat-1984.git
 set TARGET_DIR="%~dp0\..\RUST_REMOTE"
@@ -6,17 +7,14 @@ set REQUIRED_FLAG_TO_BUILD=BUILD_LOCAL
 
 set buildLocal=false
 if exist "%~dp0\build_rust_config.txt" (
-    setlocal
-    setlocal enabledelayedexpansion
     set "firstLine="
     for /f "usebackq delims=" %%a in ("%~dp0\build_rust_config.txt") do (
         set "firstLine=%%a"
     )
     for /f "tokens=* delims= " %%x in ("!firstLine!") do set "firstLine=%%x"
-    if /i "!firstLine!"=="%REQUIRED_FLAG_TO_BUILD%" (
+    if /i "!firstLine!"=="!REQUIRED_FLAG_TO_BUILD!" (
         set buildLocal=true
     )
-    endlocal
 )
 
 if /i "%buildLocal%"=="false" (

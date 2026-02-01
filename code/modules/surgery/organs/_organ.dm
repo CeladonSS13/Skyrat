@@ -254,7 +254,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	var/message = check_damage_thresholds()
 	prev_damage = damage
 
-	if(message && owner && owner.stat <= UNCONSCIOUS) //SS1984 EDIT, original: if(message && owner && owner.stat <= SOFT_CRIT)
+	if(message && owner && owner.stat <= SOFT_CRIT)
 		to_chat(owner, message)
 
 ///SETS an organ's damage to the amount "damage_amount", and in doing so clears or sets the failing flag, good for when you have an effect that should fix an organ if broken
@@ -341,6 +341,8 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	// Delegate to species if possible.
 	if(dna?.species)
 		for(var/obj/item/organ/organ as anything in organs)
+			if(organ.organ_flags & ORGAN_EMP)
+				organ.organ_flags &= ~ORGAN_EMP
 			if(remove_hazardous && (organ.organ_flags & ORGAN_HAZARDOUS))
 				qdel(organ)
 				continue

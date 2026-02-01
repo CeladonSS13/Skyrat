@@ -168,6 +168,9 @@
  */
 #define rustg_dmi_inject_metadata(path, metadata) RUSTG_CALL(RUST_G, "dmi_inject_metadata")(path, metadata)
 
+#define rustg_create_qr_code_png(path, data) RUSTG_CALL(RUST_G, "create_qr_code_png")(path, data)
+#define rustg_create_qr_code_svg(data) RUSTG_CALL(RUST_G, "create_qr_code_svg")(data)
+
 #define rustg_file_read(fname) RUSTG_CALL(RUST_G, "file_read")(fname)
 #define rustg_file_exists(fname) (RUSTG_CALL(RUST_G, "file_exists")(fname) == "true")
 #define rustg_file_write(text, fname) RUSTG_CALL(RUST_G, "file_write")(text, fname)
@@ -203,17 +206,56 @@
 #define rustg_hash_generate_totp(seed) RUSTG_CALL(RUST_G, "generate_totp")(seed)
 #define rustg_hash_generate_totp_tolerance(seed, tolerance) RUSTG_CALL(RUST_G, "generate_totp_tolerance")(seed, tolerance)
 
+/// Creates a cryptographically-secure pseudorandom number generator using the OS-level PRNG as a seed
+/// n_bytes is the number of bytes provided to the RNG, the length of the string output varies by format
+/// The output string length and characters contained in each format is as follows:
+/// RUSTG_RNG_FORMAT_HEX: n_bytes * 2, [a-z0-9]
+/// RUSTG_RNG_FORMAT_ALPHANUMERIC: n_bytes, [A-Za-z0-9]
+/// RUSTG_RNG_FORMAT_BASE32: ceil(n_bytes / 5 * 8) [A-Z2-7]
+/// RUSTG_RNG_FORMAT_BASE32_PADDED: ceil(n_bytes / 5) * 8 [A-Z2-7=]
+/// RUSTG_RNG_FORMAT_BASE64: 4 * ceil(n_bytes/3), [A-Za-z0-9+/=]
+/// Outputs "ERROR: [reason]" if the format string provided is invalid, or n_bytes is not a positive non-zero integer
+#define rustg_csprng_chacha20(format, n_bytes) RUSTG_CALL(RUST_G, "csprng_chacha20")(format, "[n_bytes]")
+
+/// Creates a seeded pseudorandom number generator using the SHA256 hash output bytes of the seed string
+/// Note that this function is NOT suitable for use in cryptography and is intended for high-quality **predictable** RNG
+/// Use rustg_csprng_chacha20 for a cryptographically-secure PRNG.
+/// n_bytes is the number of bytes provided to the RNG, the length of the string output varies by format
+/// The output string length and characters contained in each format is as follows:
+/// RUSTG_RNG_FORMAT_HEX: n_bytes * 2, [a-z0-9]
+/// RUSTG_RNG_FORMAT_ALPHANUMERIC: n_bytes, [A-Za-z0-9]
+/// RUSTG_RNG_FORMAT_BASE32: ceil(n_bytes / 5 * 8) [A-Z2-7]
+/// RUSTG_RNG_FORMAT_BASE32_PADDED: ceil(n_bytes / 5) * 8 [A-Z2-7=]
+/// RUSTG_RNG_FORMAT_BASE64: 4 * ceil(n_bytes/3), [A-Za-z0-9+/=]
+/// Outputs "ERROR: [reason]" if the format string provided is invalid, or n_bytes is not a positive non-zero integer
+#define rustg_prng_chacha20_seeded(format, n_bytes, seed) RUSTG_CALL(RUST_G, "prng_chacha20_seeded")(format, "[n_bytes]", seed)
+
+#define RUSTG_RNG_FORMAT_HEX "hex"
+#define RUSTG_RNG_FORMAT_ALPHANUMERIC "alphanumeric"
+#define RUSTG_RNG_FORMAT_BASE32 "base32_rfc4648"
+#define RUSTG_RNG_FORMAT_BASE32_PADDED "base32_rfc4648_pad"
+#define RUSTG_RNG_FORMAT_BASE64 "base64"
+
 #define RUSTG_HASH_MD5 "md5"
 #define RUSTG_HASH_SHA1 "sha1"
 #define RUSTG_HASH_SHA256 "sha256"
 #define RUSTG_HASH_SHA512 "sha512"
 #define RUSTG_HASH_XXH64 "xxh64"
+#define RUSTG_HASH_BASE32 "base32_rfc4648"
+#define RUSTG_HASH_BASE32_PADDED "base32_rfc4648_pad"
 #define RUSTG_HASH_BASE64 "base64"
 
 /// Encode a given string into base64
 #define rustg_encode_base64(str) rustg_hash_string(RUSTG_HASH_BASE64, str)
 /// Decode a given base64 string
 #define rustg_decode_base64(str) RUSTG_CALL(RUST_G, "decode_base64")(str)
+
+/// Encode a given string into base32 (RFC4648)
+/// If padding set to FALSE, will not output padding characters.
+#define rustg_encode_base32(str, padding) rustg_hash_string(padding ? RUSTG_HASH_BASE32_PADDED : RUSTG_HASH_BASE32, str)
+/// Decode a given base32 (RFC4648) string
+/// If padding set to FALSE, decoding will not support padding characters.
+#define rustg_decode_base32(str, padding) RUSTG_CALL(RUST_G, "decode_base32")(str, "[padding ? 1 : 0]")
 
 #ifdef RUSTG_OVERRIDE_BUILTINS
 	#define md5(thing) (isfile(thing) ? rustg_hash_file(RUSTG_HASH_MD5, "[thing]") : rustg_hash_string(RUSTG_HASH_MD5, thing))
@@ -232,8 +274,8 @@
 /// This will either return "ok" or an error, as this does not create a job.
 #define rustg_http_request_fire_and_forget(method, url, body, headers, options) RUSTG_CALL(RUST_G, "http_request_fire_and_forget")(method, url, body, headers, options)
 
-/proc/rustg_create_async_http_client() return RUSTG_CALL(RUST_G, "start_http_client")()
-/proc/rustg_close_async_http_client() return RUSTG_CALL(RUST_G, "shutdown_http_client")()
+/proc/rustg_create_async_http_client() return RUSTG_CALL(RUST_G, "start_http_client")() // SS1984 ADDITION
+/proc/rustg_close_async_http_client() return RUSTG_CALL(RUST_G, "shutdown_http_client")() // SS1984 ADDITION
 
 /// Generates a spritesheet at: [file_path][spritesheet_name]_[size_id].[png or dmi]
 /// The resulting spritesheet arranges icons in a random order, with the position being denoted in the "sprites" return value.
@@ -283,6 +325,21 @@
 #define rustg_iconforge_generate(file_path, spritesheet_name, sprites, hash_icons, generate_dmi, flatten) RUSTG_CALL(RUST_G, "iconforge_generate")(file_path, spritesheet_name, sprites, "[hash_icons]", "[generate_dmi]", "[flatten]")
 /// Returns a job_id for use with rustg_iconforge_check()
 #define rustg_iconforge_generate_async(file_path, spritesheet_name, sprites, hash_icons, generate_dmi, flatten) RUSTG_CALL(RUST_G, "iconforge_generate_async")(file_path, spritesheet_name, sprites, "[hash_icons]", "[generate_dmi]", "[flatten]")
+/// Creates a single DMI or PNG using 'sprites' as a list of icon states / images.
+/// This function is intended for generating icons with only a few states that have little in common with each other, and only one size.
+/// For icons with a large number of states, potentially variable sizes, that re-use sets of transforms more than once, or that benefit from caching, use rustg_iconforge_generate.
+/// sprites - follows the same format as rustg_iconforge_generate.
+/// file_path - the full relative path at which the PNG or DMI will be written. It must be a full filepath such as tmp/my_icon.dmi or my_icon.png
+/// flatten - boolean (0 or 1) determines if the DMI output will be flattened to a single frame/dir if unscoped (null/0 dir or frame values).
+///
+/// Returns a HeadlessResult, decoded to a BYOND list (always, it's not possible for this to panic unless rustg itself has an issue) containing the following fields:
+/// list(
+///     "file_path" = "tmp/my_icon.dmi" // [whatever you input returned back to you, null if there was a fatal error]
+///     "width" = 32 // the width, which is determined by the first entry of 'sprites', null if there was a fatal error
+///     "height" = 32 // the height, which is determined by the first entry of 'sprites', null if there was a fatal error
+///     "error" = "[A string, null if there were no errors.]"
+/// )
+#define rustg_iconforge_generate_headless(file_path, sprites, flatten) json_decode(RUSTG_CALL(RUST_G, "iconforge_generate_headless")(file_path, sprites, "[flatten]"))
 /// Returns the status of an async job_id, or its result if it is completed. See RUSTG_JOB DEFINEs.
 #define rustg_iconforge_check(job_id) RUSTG_CALL(RUST_G, "iconforge_check")("[job_id]")
 /// Clears all cached DMIs and images, freeing up memory.
@@ -444,8 +501,8 @@
 #define rustg_sql_disconnect_pool(handle) RUSTG_CALL(RUST_G, "sql_disconnect_pool")(handle)
 #define rustg_sql_check_query(job_id) RUSTG_CALL(RUST_G, "sql_check_query")("[job_id]")
 
-#define rustg_cyrillic_to_latin(text) RUSTG_CALL(RUST_G, "cyrillic_to_latin")("[text]")
-#define rustg_latin_to_cyrillic(text) RUSTG_CALL(RUST_G, "latin_to_cyrillic")("[text]")
+#define rustg_cyrillic_to_latin(text) RUSTG_CALL(RUST_G, "cyrillic_to_latin")("[text]") // SS1984 ADDITION
+#define rustg_latin_to_cyrillic(text) RUSTG_CALL(RUST_G, "latin_to_cyrillic")("[text]") // SS1984 ADDITION
 
 #define rustg_time_microseconds(id) text2num(RUSTG_CALL(RUST_G, "time_microseconds")(id))
 #define rustg_time_milliseconds(id) text2num(RUSTG_CALL(RUST_G, "time_milliseconds")(id))
@@ -462,8 +519,6 @@
 /// Returns the timestamp as a string
 /proc/rustg_unix_timestamp()
 	return RUSTG_CALL(RUST_G, "unix_timestamp")()
-
-#define rustg_create_toast(title, body) RUSTG_CALL(RUST_G, "create_toast")(title, body)
 
 #define rustg_raw_read_toml_file(path) json_decode(RUSTG_CALL(RUST_G, "toml_file_to_json")(path) || "null")
 
@@ -483,8 +538,8 @@
 	else
 		CRASH(output["content"])
 
-#define rustg_unzip_download_async(url, unzip_directory) RUSTG_CALL(RUST_G, "unzip_download_async")(url, unzip_directory)
-#define rustg_unzip_check(job_id) RUSTG_CALL(RUST_G, "unzip_check")("[job_id]")
+#define rustg_unzip_download_async(url, unzip_directory) RUSTG_CALL(RUST_G, "unzip_download_async")(url, unzip_directory) // SS1984 ADDITION
+#define rustg_unzip_check(job_id) RUSTG_CALL(RUST_G, "unzip_check")("[job_id]") // SS1984 ADDITION
 
 #define rustg_url_encode(text) RUSTG_CALL(RUST_G, "url_encode")("[text]")
 #define rustg_url_decode(text) RUSTG_CALL(RUST_G, "url_decode")(text)

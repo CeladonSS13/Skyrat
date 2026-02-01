@@ -314,7 +314,7 @@
 	mouse_over_pointer = MOUSE_HAND_POINTER
 
 /atom/movable/screen/drop/Click()
-	if(usr.stat <= SOFT_CRIT)
+	if(usr.stat == CONSCIOUS)
 		usr.dropItemToGround(usr.get_active_held_item())
 
 /atom/movable/screen/combattoggle
@@ -1175,7 +1175,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
 
 	if(!isliving(source))
 		return
-	maptext = FORMAT_BLOOD_LEVEL_HUD_MAPTEXT(source.blood_volume)
+	maptext = FORMAT_BLOOD_LEVEL_HUD_MAPTEXT(source.get_blood_volume())
 
 #undef FORMAT_BLOOD_LEVEL_HUD_MAPTEXT
 

@@ -25,7 +25,6 @@
 	mutanteyes = /obj/item/organ/eyes/luminescent_crystal
 	mutantheart = /obj/item/organ/heart/strange_crystal
 
-	mutant_bodyparts = list("legs" = "Normal Legs") // nova stuff
 	lore_protected = TRUE
 
 	bodypart_overrides = list(

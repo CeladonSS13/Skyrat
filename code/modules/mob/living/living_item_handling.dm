@@ -1,6 +1,6 @@
 // Throwing stuff
 /mob/living/proc/toggle_throw_mode()
-	if(stat > SOFT_CRIT) // SS1984 EDIT
+	if(stat)
 		return
 	if(!HAS_TRAIT(src, TRAIT_CAN_THROW_ITEMS))
 		return
@@ -219,7 +219,6 @@
 					span_notice("You take [offered_item] from [offerer]."))
 	offered_item.do_pickup_animation(src, offerer)
 	put_in_hands(offered_item)
-
 
 /mob/living/click_ctrl_shift(mob/user)
 	if(HAS_TRAIT(src, TRAIT_CAN_HOLD_ITEMS))

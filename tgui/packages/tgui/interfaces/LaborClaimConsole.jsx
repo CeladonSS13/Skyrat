@@ -17,6 +17,12 @@ export const LaborClaimConsole = (props) => {
                 content="Move shuttle"
                 disabled={!can_go_home}
                 onClick={() => act('move_shuttle')}
+                // SS1984 ADDITION START
+                tooltip={
+                  data.can_go_home ? "" : "You didn't earn enough points yet"
+                }
+                tooltipPosition="top"
+                // SS1984 ADDITION END
               />
             </LabeledList.Item>
             <LabeledList.Item label="Points">{id_points}</LabeledList.Item>

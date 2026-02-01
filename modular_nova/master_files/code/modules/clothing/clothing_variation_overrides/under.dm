@@ -63,6 +63,7 @@
 
 /obj/item/clothing/under/rank/security/head_of_security/skirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/under/rank/security/head_of_security/alt/skirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
@@ -85,7 +86,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
-/obj/item/clothing/under/rank/civilian/head_of_personnel/suit/skirt
+/obj/item/clothing/under/costume/head_of_personnel/skirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
@@ -187,7 +188,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	gets_cropped_on_taurs = FALSE
 
-/obj/item/clothing/under/rank/captain/suit/skirt
+/obj/item/clothing/under/costume/captain/skirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
@@ -197,6 +198,39 @@
 
 /obj/item/clothing/under/changeling
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/under/rank/rnd/research_director/alt/skirt
+	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/under/costume/buttondown/skirt
+	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/under/costume/buttondown/skirt/service
+	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/under/rank/centcom/officer_skirt
+	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/under/rank/centcom/officer_skirt/replica
+	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/under/rank/centcom/centcom_skirt //idk why there are multiple of the same skirt, but here we are.
+	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/under/rank/civilian/lawyer/galaxy/skirt
+	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/under/rank/civilian/lawyer/galaxy/red
+	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/under/rank/engineering/chief_engineer/turtleneck/skirt
+	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/under/rank/medical/coroner/skirt
+	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck/skirt
+	gets_cropped_on_taurs = FALSE
 
 /**
  * NONE(Squash)
@@ -216,6 +250,11 @@
 /obj/item/clothing/under/color
 	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit/worn/digi
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/under/rank/civilian/curator/nasa // this is really just a black jumpsuit, with stupid pathing
+	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit/worn/digi
+	greyscale_config_worn_better_vox = /datum/greyscale_config/jumpsuit/worn/better_vox
+	greyscale_config_worn_teshari = /datum/greyscale_config/jumpsuit/worn/teshari
 
 /obj/item/clothing/under/suit/waiter
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION

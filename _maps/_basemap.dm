@@ -6,7 +6,8 @@
 #endif
 
 #ifndef ABSOLUTE_MINIMUM
-#include "map_files\generic\CentCom.dmm"
+//#include "map_files\generic\CentCom.dmm" //SS1984 REMOVAL
+#include "map_files\generic\CentCom_code_1984.dmm"	//SS1984 ADD START
 #else
 #include "map_files\generic\CentCom_minimal.dmm"
 #endif
@@ -34,4 +35,9 @@
 	#ifdef ALL_TEMPLATES
 		#include "templates.dm"
 	#endif
+	// NOVA EDIT ADDITION START
+	#ifdef NOVA_TEMPLATES
+		#include "templates_nova.dm"
+	#endif
+	// NOVA EDIT ADDITION END
 #endif

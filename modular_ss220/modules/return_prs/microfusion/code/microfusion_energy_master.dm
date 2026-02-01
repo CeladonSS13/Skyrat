@@ -106,7 +106,7 @@
 	recharge_newshot(TRUE)
 	AddElement(/datum/element/update_icon_updates_onmob)
 	update_appearance()
-	AddComponent(/datum/component/ammo_hud)
+	AddElement(/datum/element/ammo_hud)
 	RegisterSignal(src, COMSIG_ITEM_RECHARGED, PROC_REF(instant_recharge))
 	base_fire_delay = fire_delay
 	START_PROCESSING(SSobj, src)

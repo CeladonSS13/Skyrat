@@ -46,6 +46,12 @@
 	. = ..()
 	register_context()
 
+	if(centcom)//1984 ADD START
+		pda_types = SSid_access.station_pda_templates.Copy()
+		card_trims = SSid_access.centcom_job_templates.Copy()
+		return
+		//1984 ADD END
+
 	if(!target_dept)
 		pda_types = SSid_access.station_pda_templates.Copy()
 		card_trims = SSid_access.station_job_templates.Copy()

@@ -1,7 +1,5 @@
 /datum/armament_entry/company_import/nanotrasen_and_bolt
 	category = BOLT_NANOTRASEN_DEFENSE_NAME_1984
-	company_bitflag = CARGO_COMPANY_BOLT_NANOTRASEN_1984
-
 
 /datum/armament_entry/company_import/nanotrasen_and_bolt/misc
 	subcategory = "Miscellaneous Supplies"
@@ -9,6 +7,13 @@
 /datum/armament_entry/company_import/nanotrasen_and_bolt/misc/nt_flag
 	item_type = /obj/item/sign/flag/nanotrasen
 	cost = PAYCHECK_LOWER
+
+/datum/armament_entry/company_import/nanotrasen_and_bolt/misc/tele_shield
+	name = "Telescopic Shield"
+
+	cost = PAYCHECK_COMMAND * 4
+	item_type = /obj/item/shield/riot/tele
+	restricted = TRUE
 
 /datum/armament_entry/company_import/nanotrasen_and_bolt/helmet
 	subcategory = "Helmets"

@@ -128,7 +128,7 @@ ALLOW_ADMIN_ASAYCOLOR
 ID_CONSOLE_JOBSLOT_DELAY 30
 
 ## allow players to initiate a restart vote
-#ALLOW_VOTE_RESTART
+ALLOW_VOTE_RESTART
 
 ## allow players to initiate a map-change vote
 #ALLOW_VOTE_MAP
@@ -262,7 +262,7 @@ LOAD_JOBS_FROM_TXT
 POPUP_ADMIN_PM
 
 ## Uncomment to allow special 'Easter-egg' events on special holidays such as seasonal holidays and stuff like 'Talk Like a Pirate Day' :3 YAARRR
-#ALLOW_HOLIDAYS
+ALLOW_HOLIDAYS
 
 ## Uncomment to show the names of the admin sending a pm from IRC instead of showing as a stealthmin.
 #SHOW_IRC_NAME
@@ -662,3 +662,9 @@ TGUI_MAX_CHUNK_COUNT 32
 
 ## Disables all tutorials if uncommented
 DISABLE_TUTORIALS
+
+## Minimum time before a heretic can ascend, in minutes
+# MINIMUM_ASCENSION_TIME 3
+
+## Max online when restart vote is available for players SS1984 ADDITION
+VOTE_RESTART_MAX_ONLINE 5

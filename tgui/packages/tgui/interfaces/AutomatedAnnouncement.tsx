@@ -35,12 +35,13 @@ type nttc_configuration = {
 
 type Data = {
   config_entries: AASConfigEntry[];
+  max_announcement_len: number;
   nttc: nttc_configuration;
 };
 
 export const AutomatedAnnouncement = (props) => {
   const { act, data } = useBackend<Data>();
-  const { config_entries = [], nttc } = data;
+  const { config_entries = [], max_announcement_len, nttc } = data;
   const [search, setSearch] = useState('');
 
   const isEntryMatch = (entry: AASConfigEntry, search: string) => {
@@ -189,6 +190,7 @@ export const AutomatedAnnouncement = (props) => {
                                 fluid
                                 value={announcementLine}
                                 disabled={!entry.modifiable}
+                                maxLength={max_announcement_len}
                                 onBlur={(value) =>
                                   act('Text', {
                                     entryRef: entry.entryRef,

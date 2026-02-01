@@ -9,6 +9,8 @@
 	can_weld_shut = 0
 	cutting_tool = /obj/item/wirecutters
 	material_drop = /obj/item/stack/sheet/cardboard
+	material_drop_amount = 4
+	custom_materials = list(/datum/material/cardboard = SHEET_MATERIAL_AMOUNT * 4)
 	delivery_icon = "deliverybox"
 	anchorable = FALSE
 	open_sound = 'sound/machines/cardboard_box.ogg'
@@ -79,7 +81,7 @@
 	COOLDOWN_START(src, alert_cooldown, time_between_alerts)
 
 	for(var/mob/living/alerted_mob as anything in alerted)
-		if(alerted_mob.stat > SOFT_CRIT || alerted_mob.is_blind())
+		if(alerted_mob.stat != CONSCIOUS || alerted_mob.is_blind())
 			continue
 		if(!INCAPACITATED_IGNORING(alerted_mob, INCAPABLE_RESTRAINTS))
 			alerted_mob.face_atom(src)
@@ -118,4 +120,5 @@
 	close_sound = 'sound/machines/crate/crate_close.ogg'
 	open_sound_volume = 35
 	close_sound_volume = 50
+	custom_materials = list(/datum/material/alloy/plasteel = SHEET_MATERIAL_AMOUNT * 4)
 	material_drop = /obj/item/stack/sheet/plasteel

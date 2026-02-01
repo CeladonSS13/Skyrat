@@ -15,7 +15,6 @@
 /datum/supply_pack/imports/wt550
 	name = "WT-550 Autorifle Crate"
 	desc = ""
-	hidden = FALSE
 	access = ACCESS_ARMORY
 	access_view = ACCESS_ARMORY
 	cost = CARGO_CRATE_VALUE * 14
@@ -29,7 +28,6 @@
 /datum/supply_pack/imports/wt550ammo
 	name = "WT-550 Ammo Crate"
 	desc = ""
-	hidden = FALSE
 	access = ACCESS_SECURITY
 	access_view = ACCESS_ARMORY
 	cost = CARGO_CRATE_VALUE * 8
@@ -144,27 +142,28 @@
 	)
 
 /datum/supply_pack/security/ammo
-	special = FALSE
+	express_lock = FALSE
 
 /datum/supply_pack/security/securityclothes
-	special = FALSE
+	express_lock = FALSE
 
 /datum/supply_pack/security/armory/ballistic
-	special = FALSE
+	express_lock = FALSE
 
 /datum/supply_pack/security/armory/thermal
-	special = FALSE
+	express_lock = FALSE
 
 /datum/supply_pack/imports/russian
-	special = FALSE
+	express_lock = FALSE
+
+/datum/supply_pack/service/survivalknives
+	express_lock = FALSE
 
 /datum/supply_pack/security/armory/short_mod_laser
-	special = TRUE
-	hidden = TRUE
+	order_flags = ORDER_CONTRABAND
 
 /datum/supply_pack/security/armory/big_mod_laser
-	special = TRUE
-	hidden = TRUE
+	order_flags = ORDER_CONTRABAND
 
 /datum/supply_pack/security/armory/battle_rifle
 	cost = CARGO_CRATE_VALUE * 60
@@ -185,7 +184,7 @@
 		capable of holding almost all advanced levels of access from your Nanotrasen station in a handy wallet-sized form factor.\
 		P.S This id card designed only for representatives of the High Command(Captain, Blueshield, Nanotrasen Official and above) or Acting Captains, illegal purchase or use may affect the terms of your contract."
 	cost = CARGO_CRATE_VALUE * 25
-	dangerous = 1 // annonce admin
+	order_flags = ORDER_DANGEROUS
 	contains = list(/obj/item/card/id/advanced/gold)
 	crate_name = "gold id card crate"
 	crate_type = /obj/structure/closet/crate/secure/centcom
@@ -197,8 +196,35 @@
 		capable of holding all the access from entire Nanotrasen Central Command in a handy wallet-sized form factor.\
 		P.S This id card designed only for representatives of the central command (intern and above), illegal purchase or use may affect the terms of your contract."
 	cost = CARGO_CRATE_VALUE * 30
-	dangerous = 1 // annonce admin
+	order_flags = ORDER_DANGEROUS
 	contains = list(/obj/item/card/id/advanced/centcom)
 	crate_name = "centcom id card crate"
 	crate_type = /obj/structure/closet/crate/secure/centcom
 	access_any = list(ACCESS_HOP, ACCESS_HOS, ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
+
+//nova disable
+/datum/supply_pack/companies
+	order_flags = ORDER_SPECIAL | ORDER_DANGEROUS
+	group = "Outsourced"
+
+/datum/supply_pack/companies/tools_weapons
+	group = "Outsourced"
+/datum/supply_pack/companies/modsuits
+	group = "Outsourced"
+/datum/supply_pack/companies/medical
+	group = "Outsourced"
+/datum/supply_pack/companies/machines
+	group = "Outsourced"
+/datum/supply_pack/companies/general
+	group = "Outsourced"
+/datum/supply_pack/companies/energy
+	group = "Outsourced"
+/datum/supply_pack/companies/ballistics
+	group = "Outsourced"
+/datum/supply_pack/companies/armor
+	group = "Outsourced"
+/datum/supply_pack/companies/apparel
+	group = "Outsourced"
+/datum/supply_pack/companies/mags_and_ammo
+	group = "Outsourced"
+//nova disable end

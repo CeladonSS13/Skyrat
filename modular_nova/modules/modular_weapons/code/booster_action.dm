@@ -106,8 +106,3 @@
 	button_icon = 'modular_nova/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns32x.dmi'
 	button_icon_state = "hbarrel"
 	name = "Toggle Barrel Charger"
-
-// SS1984 REMOVAL START
-// /obj/item/gun/ballistic/revolver/c38/super/empty
-// 	spawn_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38/empty
-// SS1984 REMOVAL END

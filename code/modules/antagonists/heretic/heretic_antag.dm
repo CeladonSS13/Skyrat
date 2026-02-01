@@ -88,6 +88,8 @@
 	var/rewards_given = 0
 	/// Our heretic passive level. Tracked here in case of body moving shenanigans
 	var/passive_level = 1
+	/// How many points are needed to gain a visible heretic aura
+	var/points_to_aura = 8
 
 /datum/antagonist/heretic/Destroy()
 	LAZYNULL(sac_targets)
@@ -181,6 +183,7 @@
 
 	data["total_sacrifices"] = total_sacrifices
 	data["ascended"] = ascended
+	data["points_to_aura"] = points_to_aura
 
 	var/list/tree_data = list()
 	var/list/shop_knowledge = list()
@@ -768,14 +771,14 @@
  */
 /datum/antagonist/heretic/proc/passive_influence_gain()
 	adjust_knowledge_points(1)
-	if(owner?.current?.stat <= UNCONSCIOUS)
+	if(owner?.current?.stat <= SOFT_CRIT)
 		to_chat(owner.current, "[span_hear("You hear a whisper...")] [span_hypnophrase(pick_list(HERETIC_INFLUENCE_FILE, "drain_message"))]")
 	addtimer(CALLBACK(src, PROC_REF(passive_influence_gain)), passive_gain_timer)
 
 /datum/antagonist/heretic/proc/adjust_knowledge_points(amount, update = TRUE)
 	knowledge_points = max(0, knowledge_points + amount) // Don't allow negative knowledge points
 	knowledge_gained += max(0, amount)
-	if(knowledge_gained > 8 && !unlimited_blades)
+	if(knowledge_gained > points_to_aura && !unlimited_blades)
 		disable_blade_breaking()
 	if(update)
 		update_data_for_all_viewers()
@@ -1177,6 +1180,6 @@
 /datum/outfit/heretic
 	name = "Heretic (Preview only)"
 
-	suit = /obj/item/clothing/suit/hooded/cultrobes/eldritch
-	head = /obj/item/clothing/head/hooded/cult_hoodie/eldritch
+	suit = /obj/item/clothing/suit/hooded/cultrobes/eldritch/rust
+	head = /obj/item/clothing/head/hooded/cult_hoodie/eldritch/rust
 	r_hand = /obj/item/melee/touch_attack/mansus_fist

@@ -39,7 +39,7 @@
 	if (!LAZYLEN(hallucinations))
 		return
 	organ_owner.client?.images -= hallucinations
-	QDEL_NULL(hallucinations)
+	LAZYNULL(hallucinations)
 
 /obj/item/organ/eyes/corrupt/penlight_examine(mob/living/viewer, obj/item/examtool)
 	viewer.playsound_local(src, 'sound/effects/magic/magic_block_mind.ogg', 75, FALSE)
@@ -282,7 +282,7 @@
 
 /obj/item/organ/appendix/corrupt/on_life(seconds_per_tick, times_fired)
 	. = ..()
-	if (owner.stat > SOFT_CRIT || owner.has_reagent(/datum/reagent/water/holywater) || IS_IN_MANSUS(owner) || !SPT_PROB(worm_chance, seconds_per_tick))
+	if (owner.stat != CONSCIOUS || owner.has_reagent(/datum/reagent/water/holywater) || IS_IN_MANSUS(owner) || !SPT_PROB(worm_chance, seconds_per_tick))
 		return
 	owner.vomit(MOB_VOMIT_MESSAGE | MOB_VOMIT_HARM, vomit_type = /obj/effect/decal/cleanable/vomit/nebula/worms, distance = 0)
 	owner.Knockdown(0.5 SECONDS)

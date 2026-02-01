@@ -953,7 +953,7 @@
 /obj/item/clothing/head/utility/hardhat/welding,
 /obj/item/clothing/gloves/tinkerer,
 /obj/item/clothing/gloves/atmos,
-/obj/item/skillchip/job/engineer,
+/obj/item/skillchip/job/oldstation/engineering,
 /turf/open/floor/plating,
 /area/ruin/space/ancientstation/beta/supermatter)
 "ed" = (
@@ -1079,7 +1079,7 @@
 /turf/open/floor/iron/diagonal,
 /area/ruin/space/ancientstation/beta/gravity)
 "eF" = (
-/obj/machinery/computer/rdconsole,
+/obj/machinery/computer/rdconsole/unlocked,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white,
 /area/ruin/space/ancientstation/delta/rnd)
@@ -2398,7 +2398,7 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/mob_spawn/ghost_role/human/oldsec,
+/obj/effect/mob_spawn/ghost_role/human/oldstation/sec,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/ruin/space/ancientstation/charlie/dorms)
@@ -2640,7 +2640,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/mob_spawn/ghost_role/human/oldeng,
+/obj/effect/mob_spawn/ghost_role/human/oldstation/eng,
 /turf/open/floor/iron,
 /area/ruin/space/ancientstation/charlie/dorms)
 "lo" = (
@@ -2668,7 +2668,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/mob_spawn/ghost_role/human/oldsci,
+/obj/effect/mob_spawn/ghost_role/human/oldstation/sci,
 /turf/open/floor/iron,
 /area/ruin/space/ancientstation/charlie/dorms)
 "lw" = (
@@ -3182,7 +3182,7 @@
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/table,
 /obj/machinery/door/window/brigdoor/right/directional/east,
-/obj/item/computer_disk,
+/obj/item/disk/computer,
 /turf/open/floor/iron/dark,
 /area/ruin/space/ancientstation/delta/ai)
 "nI" = (
@@ -5403,6 +5403,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/safe/floor/charlie_captain,
+/obj/item/blueprints/oldstation,
 /obj/item/card/id/away/old/captains_spare,
 /obj/item/clothing/suit/space/nasavoid/captain,
 /obj/item/clothing/head/helmet/space/nasavoid/captain,
@@ -7231,7 +7232,7 @@
 /obj/effect/turf_decal/tile/purple/half/contrasted{
 	dir = 8
 	},
-/obj/machinery/light/built/directional/west,
+/obj/machinery/light/empty/directional/west,
 /turf/open/floor/iron/white/textured_edge{
 	dir = 4
 	},
@@ -8070,7 +8071,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/mob_spawn/ghost_role/human/oldmed,
+/obj/effect/mob_spawn/ghost_role/human/oldstation/med,
 /turf/open/floor/iron,
 /area/ruin/space/ancientstation/charlie/dorms)
 "TZ" = (
@@ -8137,7 +8138,7 @@
 "Up" = (
 /obj/structure/closet/crate/medical,
 /obj/item/circuitboard/machine/sleeper,
-/obj/item/skillchip/job/psychology,
+/obj/item/skillchip/job/oldstation/medical,
 /turf/open/floor/plating/airless,
 /area/ruin/space/ancientstation/beta/medbay)
 "Uq" = (

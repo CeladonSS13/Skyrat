@@ -46,6 +46,7 @@ export class PrimaryView extends Component {
       paper_color,
       held_item_details,
       max_length,
+      ui_ver, // SS1984 ADDITION
     } = data;
 
     const useFont = held_item_details?.font || default_pen_font;
@@ -89,6 +90,7 @@ export class PrimaryView extends Component {
               handleOnScroll={this.onScrollHandler}
               textArea={textAreaText}
               canEdit={canEdit}
+              uiVer={ui_ver} // SS1984 ADDITION
             />
           </Flex.Item>
           {canEdit && (

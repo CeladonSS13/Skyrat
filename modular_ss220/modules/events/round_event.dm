@@ -5,3 +5,9 @@
 /datum/round_event_control/wall_fungus
 	weight = 7
 	min_players = 30
+
+/datum/round_event_control/portal_storm_syndicate
+	max_occurrences = 1
+
+/datum/round_event_control/portal_storm_narsie
+	max_occurrences = 0

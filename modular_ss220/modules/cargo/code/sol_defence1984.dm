@@ -1,6 +1,5 @@
 /datum/armament_entry/company_import/sol_defense
 	category = SOL_DEFENSE_NAME_1984
-	company_bitflag = CARGO_COMPANY_SOL_DEFENSE_1984
 
 // Beautiful SolFed clothing
 

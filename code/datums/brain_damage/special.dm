@@ -392,7 +392,7 @@
 	if(get_dist(owner, beepsky) <= 1)
 		owner.playsound_local(owner, 'sound/items/weapons/egloves.ogg', 50)
 		owner.visible_message(span_warning("[owner]'s body jerks as if it was shocked."), span_userdanger("You feel the fist of the LAW."))
-		owner.adjustStaminaLoss(rand(40, 70))
+		owner.adjust_stamina_loss(rand(40, 70))
 		QDEL_NULL(beepsky)
 
 	if(prob(20) && get_dist(owner, beepsky) <= 8)
@@ -450,7 +450,7 @@
 	)
 
 /datum/brain_trauma/special/ptsd/on_life(seconds_per_tick, times_fired)
-	if(owner.stat > SOFT_CRIT)
+	if(owner.stat != CONSCIOUS)
 		return
 
 	if(!COOLDOWN_FINISHED(src, ptsd_hallucinations))

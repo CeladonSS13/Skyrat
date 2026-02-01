@@ -46,7 +46,11 @@
 	QDEL_NULL(charge)
 	return ..()
 
-/mob/living/simple_animal/hostile/blackmesa/xen/houndeye/OpenFire()
+/mob/living/simple_animal/hostile/blackmesa/xen/houndeye/bullet_act(obj/projectile/proj)
+	. = ..()
 	if(client)
-		return
-	charge.Trigger(target)
+		return .
+	if(QDELETED(proj)) 
+		return .	
+	charge.Trigger(proj.firer)
+	charge.do_charge(charge.owner, proj.firer, charge.charge_delay, charge.charge_past)

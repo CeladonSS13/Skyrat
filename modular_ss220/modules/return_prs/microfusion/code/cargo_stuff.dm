@@ -21,7 +21,7 @@
 	name = "MCR-01 Microfusion? Single-Pack"
 	desc = "Micron Contral Sistems Incarparated supplies MCR-001 Microfysion weapons platform. Comes with 1 Er#*or# gun!"
 	cost = CARGO_CRATE_VALUE * 9
-	contraband = TRUE
+	order_flags = ORDER_CONTRABAND
 	contains = list(
 		/obj/item/gun/microfusion/mcr01/surplus,
 	)
@@ -94,7 +94,7 @@
 	name = "HCR-01 Military Attachments Crate Type H"
 	desc = "Honkicron Clownery Systems Inhonkorated supplied HCR-01 Clownery spec attachments! This crate oddly smells of bananas."
 	cost = CARGO_CRATE_VALUE * 20
-	contraband = TRUE
+	order_flags = ORDER_CONTRABAND
 	access = ACCESS_THEATRE
 	contains = list(
 		/obj/item/microfusion_gun_attachment/barrel/honk = 3,

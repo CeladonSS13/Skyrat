@@ -102,7 +102,7 @@ Difficulty: Hard
 /mob/living/simple_animal/hostile/megafauna/hierophant/Initialize(mapload)
 	. = ..()
 	spawned_beacon_ref = WEAKREF(new /obj/effect/hierophant(loc))
-	AddComponent(/datum/component/boss_music, 'sound/music/boss/hiero_boss.ogg', 145 SECONDS)
+	AddComponent(/datum/component/boss_music, 'sound/music/boss/hiero_boss.ogg')
 
 /mob/living/simple_animal/hostile/megafauna/hierophant/Destroy()
 	QDEL_NULL(spawned_beacon_ref)
@@ -723,14 +723,14 @@ Difficulty: Hard
 		L.apply_damage(damage, BURN, limb_to_hit, armor, wound_bonus=CANT_WOUND)
 		if(ishostile(L))
 			var/mob/living/simple_animal/hostile/H = L //mobs find and damage you...
-			if(H.stat <= SOFT_CRIT && !H.target && H.AIStatus != AI_OFF && !H.client) // SS1984 EDIT, original: if(H.stat == CONSCIOUS && !H.target && H.AIStatus != AI_OFF && !H.client)
+			if(H.stat == CONSCIOUS && !H.target && H.AIStatus != AI_OFF && !H.client)
 				if(!QDELETED(caster))
 					if(get_dist(H, caster) <= H.aggro_vision_range)
 						H.FindTarget(list(caster))
 					else
 						H.Goto(get_turf(caster), H.move_to_delay, 3)
 		if(monster_damage_boost && (ismegafauna(L) || istype(L, /mob/living/simple_animal/hostile/asteroid)))
-			L.adjustBruteLoss(damage)
+			L.adjust_brute_loss(damage)
 		if(caster)
 			log_combat(caster, L, "struck with a [name]")
 	for(var/obj/vehicle/sealed/mecha/M in T.contents - hit_things) //also damage mechs.

@@ -1,6 +1,5 @@
 /datum/armament_entry/company_import/kahraman
 	category = KAHRAMAN_INDUSTRIES_NAME_1984
-	company_bitflag = CARGO_COMPANY_KAHRAMAN_1984
 
 /datum/armament_entry/company_import/kahraman/basic
 	subcategory = "Hand-Held Equipment"

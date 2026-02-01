@@ -1,5 +1,11 @@
 name: Deploy on server remotely
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      clean_build:
+        description: 'true for clearing cache and TGUI, always done for upstream merge, false otherwise'
+        required: false
+        default: 'false'
 jobs:
   changelog_gen:
     uses: ./.github/workflows/compile_changelogs.yml
@@ -12,11 +18,22 @@ jobs:
     environment:
       name: production
     steps:
-      - name: Execute remote SSH script
+      - name: Mark as pending deploy
         uses: appleboy/ssh-action@v1
         with:
+          sync: true
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: bash deploy.sh
+      - name: Mark as clean build on deploy
+        if: ${{ inputs.clean_build == 'true' }}
+        uses: appleboy/ssh-action@v1
+        with:
+          sync: true
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: bash fix_upstream_merge.sh

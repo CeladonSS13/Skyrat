@@ -6,7 +6,6 @@
 	icon = 'modular_nova/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_nova/master_files/icons/mob/clothing/belt.dmi'
 	stored_blade = /obj/item/melee/sabre/cargo
-	icon_state = "sheath" // SS1984 ADDITION, not moving to modular because upstream most likely would override it later (and should)
 
 /obj/item/melee/sabre
 	force = 20 // Original: 15
@@ -25,6 +24,14 @@
 
 // This is here so that people can't buy the Sabres and craft them into powercrepes
 /datum/crafting_recipe/food/powercrepe
+	blacklist = list(/obj/item/melee/sabre/cargo)
+
+// Prevents our common weapons from being used to easily craft stunswords
+// Claymore blacklists can be found in code\datums\components\crafting\melee_weapon.dm
+/datum/crafting_recipe/stunswordalt
+	blacklist = list(/obj/item/katana/weak/curator)
+
+/datum/crafting_recipe/stunswordalt2
 	blacklist = list(/obj/item/melee/sabre/cargo)
 
 /obj/item/melee/baton

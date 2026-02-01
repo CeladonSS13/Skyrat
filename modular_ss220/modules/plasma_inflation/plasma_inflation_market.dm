@@ -10,7 +10,7 @@
 	// Part 1. Update price after batch sale
 
 	if (quantity_sold_batch > 0)
-		current_price = quantity_sold_batch * (NUM_E ** (-SSplasma_inflation.decay_factor * quantity_sold_batch))
+		current_price = SSplasma_inflation.default_plasma_price * (NUM_E ** (-SSplasma_inflation.decay_factor * quantity_sold_batch))
 
 		if (current_price < 0) // not going negative price
 			current_price = 0

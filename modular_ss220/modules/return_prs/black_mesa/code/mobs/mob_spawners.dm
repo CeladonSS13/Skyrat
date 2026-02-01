@@ -2,6 +2,8 @@
 	var/list/alert_sounds
 	var/alert_cooldown = 3 SECONDS
 	var/alert_cooldown_time
+	var/follow_speed = 2
+	var/follow_distance = 2
 
 /mob/living/simple_animal/hostile/blackmesa/xen
 	faction = list(FACTION_XEN)

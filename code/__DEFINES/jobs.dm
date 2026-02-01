@@ -17,10 +17,10 @@
 #define JOB_AUTHORITY_HUMANS_ONLY "HUMANS_ONLY"
 #define JOB_AUTHORITY_NON_HUMANS_ALLOWED "NON_HUMANS_ALLOWED"
 
-#define DEFAULT_RELIGION "Christianity"
-#define DEFAULT_DEITY "Space Jesus"
-#define DEFAULT_BIBLE "Default Bible Name"
-#define DEFAULT_BIBLE_REPLACE(religion) "The Holy Book of [religion]"
+#define DEFAULT_RELIGION "Христианство" // SS1984 EDIT, original: #define DEFAULT_RELIGION "Christianity"
+#define DEFAULT_DEITY "Иисус" // SS1984 EDIT, original: #define DEFAULT_DEITY "Space Jesus"
+#define DEFAULT_BIBLE "Библия" // SS1984 EDIT, original: #define DEFAULT_BIBLE "Default Bible Name"
+#define DEFAULT_BIBLE_REPLACE(religion) "[religion], святое писание" // SS1984 EDIT, original: #define DEFAULT_BIBLE_REPLACE(religion) "The Holy Book of [religion]"
 
 #define JOB_DISPLAY_ORDER_DEFAULT 0
 

@@ -47,7 +47,7 @@
 		. += " (as [get_id_name("Unknown", honorifics = TRUE)])"
 
 /mob/living/carbon/human/binarycheck()
-	if(stat >= UNCONSCIOUS) //SS1984 EDIT
+	if(stat >= SOFT_CRIT)
 		return FALSE
 	var/area/our_area = get_area(src)
 	if(our_area.area_flags & BINARY_JAMMING)
