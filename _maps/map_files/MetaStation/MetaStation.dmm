@@ -60227,7 +60227,7 @@
 /area/station/medical/medbay/central)
 "uzK" = (
 /obj/machinery/button/door/directional/west{
-	id = SecureStorage;
+	id = "Secure Storage";
 	name = "Engineering Secure Storage";
 	req_access = list("engine_equip");
 	pixel_x = 6
