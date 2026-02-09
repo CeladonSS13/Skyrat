@@ -217,7 +217,7 @@ export class Changelog extends Component {
 
     const header = (
       <Section>
-        <h1>Skyrat 1984</h1> {/* Celadon EDIT */}
+        <h1>Skyrat Celadon</h1> {/* Celadon EDIT */}
         <p>
           <b>Thanks to: </b>
           Our upstreams: Nova Sector, /tg/station. {/* Celadon ADDITION */}

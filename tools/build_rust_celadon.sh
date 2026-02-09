@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO_URL="https://github.com/skyrat1984test/rust-skyrat_celadon.git"
+REPO_URL="https://github.com/skyrat1984test/rust-skyrat-1984.git"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 TARGET_DIR="$PROJECT_ROOT/RUST_REMOTE"
@@ -70,7 +70,7 @@ rustup target add i686-unknown-linux-gnu
 cargo build --release --target i686-unknown-linux-gnu
 
 if [ ! $? -eq 0 ]; then
-  echo "Failed to build modular rust 1984"
+  echo "Failed to build modular rust Celadon"
   exit 105
 fi
 

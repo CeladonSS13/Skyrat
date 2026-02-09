@@ -8,7 +8,7 @@ $include comms.txt
 $include logging.txt
 $include resources.txt
 $include nova/config_nova.txt
-$include ss220/celadon_config.txt
+$include celadon/celadon_config.txt
 $include interviews.txt
 $include lua.txt
 $include auxtools.txt

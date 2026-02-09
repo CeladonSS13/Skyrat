@@ -1,4 +1,4 @@
-/obj/structure/mob_spawner/ashwalker_tendril1984
+/obj/structure/mob_spawner/ashwalker_tendril_celadon
 	name = "necropolis tendril nest"
 	desc = "A vile tendril of corruption. It's surrounded by a nest of rapidly growing eggs..."
 
@@ -16,7 +16,7 @@
 	trigger_range = 30 // don't make it really huge for perfomance stuff
 	ghost_controllable = FALSE
 
-/obj/structure/mob_spawner/ashwalker_tendril1984/calculate_trigger_turfs()
+/obj/structure/mob_spawner/ashwalker_tendril_celadon/calculate_trigger_turfs()
 	for(var/turf/open/some_turf in range(trigger_range, src))
 		registered_turfs += some_turf
 		RegisterSignal(some_turf, COMSIG_ATOM_ENTERED, PROC_REF(proximity_trigger))

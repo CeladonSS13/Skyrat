@@ -1,4 +1,4 @@
-/datum/ai_controller/monkey/hostile_melee1984
+/datum/ai_controller/monkey/hostile_melee_celadon
 	ai_movement = /datum/ai_movement/jps
 	movement_delay = 0.4 SECONDS
 	planning_subtrees = list(
@@ -21,7 +21,7 @@
 	)
 	idle_behavior = null // no real need, let's save perfomance
 
-/datum/ai_controller/monkey/hostile_ranged1984
+/datum/ai_controller/monkey/hostile_ranged_celadon
 	ai_movement = /datum/ai_movement/jps
 	movement_delay = 0.4 SECONDS
 	planning_subtrees = list(

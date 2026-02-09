@@ -2,7 +2,7 @@
 /datum/map_template/ruin/space/nova/blackmarket_celadon
 	id = "blackmarket_celadon"
 	suffix = "blackmarket_celadon.dmm"
-	name = "Space-Ruin Shady Market1984"
+	name = "Space-Ruin Shady Market Celadon"
 	description = "Whaddya buyin'?"
 
 /datum/outfit/black_market

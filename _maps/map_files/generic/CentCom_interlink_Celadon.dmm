@@ -2630,7 +2630,7 @@
 	dir = 1;
 	icon_state = "tram_alt_controls";
 	density = 0;
-	specific_transport_id = "intl1984_1";
+	specific_transport_id = "intlceladon_1";
 	pixel_y = 18
 	},
 /obj/structure/chair/sofa/bench/tram/right,
@@ -5514,7 +5514,7 @@
 /obj/machinery/computer/tram_controls{
 	icon_state = "tram_alt_controls";
 	density = 0;
-	specific_transport_id = "intl1984_1";
+	specific_transport_id = "intlceladon_1";
 	pixel_y = -18
 	},
 /turf/open/floor/engine,
@@ -5871,7 +5871,7 @@
 	dir = 1;
 	icon_state = "tram_alt_controls";
 	density = 0;
-	specific_transport_id = "intl1984_1";
+	specific_transport_id = "intlceladon_1";
 	pixel_y = 18
 	},
 /turf/open/floor/engine,
@@ -8730,7 +8730,7 @@
 /obj/structure/transport/linear/tram,
 /obj/structure/thermoplastic/light,
 /obj/machinery/door/airlock/tram{
-	transport_linked_id = "intl1984_1"
+	transport_linked_id = "intlceladon_1"
 	},
 /turf/open/floor/engine,
 /area/centcom/interlink)
@@ -11654,7 +11654,7 @@
 	dir = 1;
 	icon_state = "tram_alt_controls";
 	density = 0;
-	specific_transport_id = "intl1984_1";
+	specific_transport_id = "intlceladon_1";
 	pixel_y = 18
 	},
 /obj/structure/chair/sofa/bench/tram/left,
@@ -12805,7 +12805,7 @@
 /obj/machinery/computer/tram_controls{
 	icon_state = "tram_alt_controls";
 	density = 0;
-	specific_transport_id = "intl1984_1";
+	specific_transport_id = "intlceladon_1";
 	pixel_y = -18
 	},
 /turf/open/floor/engine,
@@ -13811,7 +13811,7 @@
 /area/centcom/interlink)
 "pir" = (
 /obj/machinery/button/transport/tram{
-	specific_transport_id = "intl1984_1";
+	specific_transport_id = "intlceladon_1";
 	pixel_y = -21;
 	id = 3
 	},
@@ -14366,7 +14366,7 @@
 /obj/machinery/computer/tram_controls{
 	icon_state = "tram_alt_controls";
 	density = 0;
-	specific_transport_id = "intl1984_1";
+	specific_transport_id = "intlceladon_1";
 	pixel_y = -18;
 	pixel_x = 16
 	},
@@ -14438,7 +14438,7 @@
 /obj/machinery/computer/tram_controls{
 	icon_state = "tram_alt_controls";
 	density = 0;
-	specific_transport_id = "intl1984_1";
+	specific_transport_id = "intlceladon_1";
 	pixel_y = -18
 	},
 /obj/structure/chair/sofa/bench/tram/right{
@@ -15433,7 +15433,7 @@
 /obj/machinery/computer/tram_controls{
 	icon_state = "tram_alt_controls";
 	density = 0;
-	specific_transport_id = "intl1984_1";
+	specific_transport_id = "intlceladon_1";
 	pixel_y = -18;
 	pixel_x = -16
 	},
@@ -16575,7 +16575,7 @@
 	dir = 1;
 	icon_state = "tram_alt_controls";
 	density = 0;
-	specific_transport_id = "intl1984_1";
+	specific_transport_id = "intlceladon_1";
 	pixel_y = 18
 	},
 /turf/open/floor/engine,
@@ -16719,7 +16719,7 @@
 /obj/structure/table/reinforced/rglass,
 /obj/machinery/button/transport/tram{
 	pixel_y = 8;
-	specific_transport_id = "intl1984_1";
+	specific_transport_id = "intlceladon_1";
 	id = 2
 	},
 /turf/open/floor/iron/smooth_large,
@@ -17394,7 +17394,7 @@
 /obj/machinery/computer/tram_controls{
 	icon_state = "tram_alt_controls";
 	density = 0;
-	specific_transport_id = "intl1984_1";
+	specific_transport_id = "intlceladon_1";
 	pixel_y = -18
 	},
 /obj/structure/chair/sofa/bench/tram/left{

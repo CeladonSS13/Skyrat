@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set REPO_URL=https://github.com/skyrat1984test/rust-skyrat_celadon.git
+set REPO_URL=https://github.com/skyrat1984test/rust-skyrat-1984.git
 set TARGET_DIR="%~dp0\..\RUST_REMOTE"
 set REQUIRED_FLAG_TO_BUILD=BUILD_LOCAL
 
@@ -93,7 +93,7 @@ rustup target add i686-pc-windows-msvc
 cargo build --release --target i686-pc-windows-msvc
 
 IF %ERRORLEVEL% NEQ 0 (
-    ECHO Failed to build modular rust 1984
+    ECHO Failed to build modular rust Celadon
     exit 106
 )
 

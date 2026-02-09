@@ -1,4 +1,4 @@
-//1984 centcom areas
+// Celadon centcom areas
 /area/centcom
 	name = "CentCom"
 	icon = 'icons/area/areas_centcom.dmi'

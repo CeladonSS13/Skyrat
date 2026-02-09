@@ -16,10 +16,10 @@
 	return .
 
 /mob/living/carbon/human/species/lizard/ashwalker/hostile/melee
-	ai_controller = /datum/ai_controller/monkey/hostile_melee1984
+	ai_controller = /datum/ai_controller/monkey/hostile_melee_celadon
 	outfit = /datum/outfit/ashwalker/spear/double
 
 /mob/living/carbon/human/species/lizard/ashwalker/hostile/ranged
-	ai_controller = /datum/ai_controller/monkey/hostile_ranged1984
+	ai_controller = /datum/ai_controller/monkey/hostile_ranged_celadon
 	outfit = /datum/outfit/ashwalker/bow
 

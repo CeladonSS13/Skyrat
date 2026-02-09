@@ -46,11 +46,12 @@
 	. = ..()
 	register_context()
 
-	if(centcom)//1984 ADD START
+	// CELADON ADDITION START
+	if(centcom)
 		pda_types = SSid_access.station_pda_templates.Copy()
 		card_trims = SSid_access.centcom_job_templates.Copy()
 		return
-		//1984 ADD END
+	// CELADON ADDITION END
 
 	if(!target_dept)
 		pda_types = SSid_access.station_pda_templates.Copy()

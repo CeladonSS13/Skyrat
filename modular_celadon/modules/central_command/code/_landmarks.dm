@@ -89,7 +89,7 @@
 
 //interlink tram
 
-#define INTERLINK_CELADON_LINE_1 "intl1984_1"
+#define INTERLINK_CELADON_LINE_1 "intlceladon_1"
 
 
 #define INTERLINK_CELADON_PORT 1
