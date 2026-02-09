@@ -116,7 +116,7 @@
  * TODO: Make it not consume an event slot
  */
 /datum/round_event_control/aurora_caelus
-	max_occurrences = 0 // SS1984 edit temporaly disabled as it makes lightning controller go 8000+ ms
+	max_occurrences = 0 // Celadon edit temporaly disabled as it makes lightning controller go 8000+ ms
 	weight = HIGH_EVENT_FREQ
 
 /**

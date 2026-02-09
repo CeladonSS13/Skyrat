@@ -99,7 +99,7 @@ export type Quirk = {
   customizable: boolean;
   customization_options?: string[];
   nova_stars_only: boolean; // NOVA EDIT ADDITION - Nova star quirks
-  // SS1984 REMOVAL erp_quirk: boolean; // NOVA EDIT ADDITION - Purple ERP quirks
+  // Celadon REMOVAL erp_quirk: boolean; // NOVA EDIT ADDITION - Purple ERP quirks
 };
 
 // NOVA EDIT START
@@ -197,7 +197,7 @@ export type PreferencesMenuData = {
   preview_selection: string; // NOVA EDIT ADDITION
 
   is_nova_star: BooleanLike; // NOVA EDIT - Star status
-  // SS1984 REMOVAL erp_pref: BooleanLike; // NOVA EDIT ADDITION
+  // Celadon REMOVAL erp_pref: BooleanLike; // NOVA EDIT ADDITION
 
   character_preferences: {
     clothing: Record<string, string>;

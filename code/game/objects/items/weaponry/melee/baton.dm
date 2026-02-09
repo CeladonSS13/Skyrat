@@ -575,9 +575,9 @@
 	if(active)
 		icon_state = "[base_icon_state]_active"
 		if(active_changes_inhand)
-			if(tip_changes_color) // SS1984 ADDITION
-				inhand_icon_state = "[base_inhand]_active_[get_baton_tip_color()]" // SS1984 ADDITION
-			else // SS1984 ADDITION
+			if(tip_changes_color) // Celadon ADDITION
+				inhand_icon_state = "[base_inhand]_active_[get_baton_tip_color()]" // Celadon ADDITION
+			else // Celadon ADDITION
 				inhand_icon_state = "[base_inhand]_active"
 		return ..()
 	if(!cell)

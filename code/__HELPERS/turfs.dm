@@ -334,12 +334,12 @@ Turf and target are separate in case you want to teleport some distance from a t
 	//fix ratios being off due to screen width/height
 	var/x_ratio = sizex/screen_width
 	var/y_ratio = sizey/screen_height
-	// SS1984 EDIT START
+	// Celadon EDIT START
 	if (x_ratio != 0)
 		mousepos_x /= x_ratio
 	if (y_ratio != 0)
 		mousepos_y /= y_ratio
-	// SS1984 EDIT END
+	// Celadon EDIT END
 
 	//relative to bottom left corner of turf in the middle of the screen
 	var/relative_x = mousepos_x - (screen_width / 2) + (ICON_SIZE_X/2) + viewing_client.pixel_x + viewing_client.pixel_w

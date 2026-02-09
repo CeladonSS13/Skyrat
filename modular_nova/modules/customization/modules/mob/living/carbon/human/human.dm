@@ -25,7 +25,7 @@
 					to_chat(usr, span_notice("[jointext(line, "\n")]"))
 			if("open_examine_panel")
 				mob_examine_panel.ui_interact(usr) //datum has a examine_panel component, here we open the window
-			// SS1984 REMOVAL OF DIRECTORY
+			// Celadon REMOVAL OF DIRECTORY
 
 /mob/living/carbon/human/species/vox
 	race = /datum/species/vox

@@ -36,7 +36,7 @@ jobs:
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         uses: actions/checkout@v6
         with:
-          # SS1984 EDIT, original fetch-depth: 25
+          # Celadon EDIT, original fetch-depth: 25
           fetch-depth: 100
           persist-credentials: false
 
@@ -46,7 +46,7 @@ jobs:
           python tools/ss13_genchangelog.py html/changelogs
 
       - name: Commit
-        id: commit_changes # SS1984 ADDITION
+        id: commit_changes # Celadon ADDITION
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
           git config --local user.name "1984-ci-event[bot]"
@@ -62,15 +62,15 @@ jobs:
             echo "commit_made=true" >> $GITHUB_OUTPUT
           fi
 
-        # SS1984 ADDITION START
-      - name: Highlight Changes SS1984
+        # Celadon ADDITION START
+      - name: Highlight Changes Celadon
         id: highlight_changes
-        if: steps.value_holder.outputs.ACTIONS_ENABLED == 'true' && steps.commit_changes.outputs.commit_made == 'true' # SS1984 EDIT, original: if: steps.value_holder.outputs.ACTIONS_ENABLED
+        if: steps.value_holder.outputs.ACTIONS_ENABLED == 'true' && steps.commit_changes.outputs.commit_made == 'true' # Celadon EDIT, original: if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
           git pull origin master
-          python tools/ss1984_changelog_highlight.py
+          python tools/celadon_changelog_highlight.py
 
-          git add tools/ss1984_changelog_highlight_generated.json
+          git add tools/celadon_changelog_highlight_generated.json
           if git diff --cached --quiet; then
             echo "No new highlights"
             echo "highlight_made=false" >> $GITHUB_OUTPUT
@@ -83,7 +83,7 @@ jobs:
         run: |
           git commit -m "Automatic Changelog Highlight [ci skip]" -a || true
 
-      # SS1984 ADDITION END
+      # Celadon ADDITION END
 
       - name: Generate App Token
         id: app-token-generation

@@ -118,7 +118,7 @@
 	. = ..()
 	charges = max_charges
 	if(ammo_type)
-		set_chambered(new ammo_type(src)) // SS1984 EDIT, original: chambered = new ammo_type(src)
+		set_chambered(new ammo_type(src)) // Celadon EDIT, original: chambered = new ammo_type(src)
 	if(self_charging)
 		START_PROCESSING(SSobj, src)
 	RegisterSignal(src, COMSIG_ITEM_RECHARGED, PROC_REF(instant_recharge))

@@ -98,7 +98,7 @@
 	min_pop = 50
 	repeatable = TRUE
 	/// List of on-station vents
-	// SS1984 REMOVAL, also its possible would be harddel issue var/list/vents = list()
+	// Celadon REMOVAL, also its possible would be harddel issue var/list/vents = list()
 
 // Ripped from xenomorph ruleset
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/proc/find_vents()

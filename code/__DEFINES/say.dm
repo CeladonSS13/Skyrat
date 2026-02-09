@@ -115,7 +115,7 @@
 #define FOLLOW_OR_TURF_LINK(alice, bob, turfy) "<a href=byond://?src=[REF(alice)];follow=[REF(bob)];x=[turfy.x];y=[turfy.y];z=[turfy.z]>(F)</a>"
 
 //Don't set this very much higher then 1024 unless you like inviting people in to dos your server with message spam
-#define MAX_MESSAGE_LEN 1024 // SS1984 REVERT BACK TO TG 1024 instead of 2048 nova's
+#define MAX_MESSAGE_LEN 1024 // Celadon REVERT BACK TO TG 1024 instead of 2048 nova's
 #define MAX_NAME_LEN 42
 #define MAX_BROADCAST_LEN 512
 #define MAX_CHARTER_LEN 80

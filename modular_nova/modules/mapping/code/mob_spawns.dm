@@ -49,7 +49,7 @@
 
 	. = ..()
 
-	var/obj/item/shuttle_remote/bmd/remote = shady.get_item_by_slot(ITEM_SLOT_RPOCKET) //SS1984 EDIT ORIGINAL 	var/obj/item/shuttle_remote/bmd/remote = shady.get_item_by_slot(ITEM_SLOT_LPOCKET)
+	var/obj/item/shuttle_remote/bmd/remote = shady.get_item_by_slot(ITEM_SLOT_RPOCKET) //Celadon EDIT ORIGINAL 	var/obj/item/shuttle_remote/bmd/remote = shady.get_item_by_slot(ITEM_SLOT_LPOCKET)
 	if(!remote)
 		return
 	// we boldly assume only one Burst was spawned. Checking by Z-level defeats the purpose of this remote being used by latejoining BMD to retrieve stolen shuttle.
@@ -621,7 +621,7 @@
 	handlebank(crewman)
 	return ..()
 
-///datum/outfit/proc/handlebank(mob/living/carbon/human/owner) //ss1984 edit- moved to modular_ss220/modules/rolesedit/code/_defines.dm
+///datum/outfit/proc/handlebank(mob/living/carbon/human/owner) //celadon edit- moved to modular_celadon/modules/rolesedit/code/_defines.dm
 	// if(!owner.mind)
 	// 	return
 	// var/datum/bank_account/offstation_bank_account = new(owner.real_name, owner.mind.assigned_role)

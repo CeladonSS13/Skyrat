@@ -68,7 +68,7 @@ type Data = {
   latejoin_chance_maxxed: BooleanLike;
   next_dynamic_tick: number;
   antag_events_enabled: BooleanLike;
-  progressive_dynamic_enabled: BooleanLike; // SS1984 ADDITION
+  progressive_dynamic_enabled: BooleanLike; // Celadon ADDITION
 };
 
 function formatTime(seconds: number): string {
@@ -112,7 +112,7 @@ function readableRulesesetCategory(ruleset_category: string): string {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 }
-// SS1984 ADDITON START
+// Celadon ADDITON START
 const ProgressiveDynamicPanel = () => {
   const { data, act } = useBackend<Data>();
   const { progressive_dynamic_enabled, } = data;
@@ -144,7 +144,7 @@ const ProgressiveDynamicPanel = () => {
     </LabeledList.Item>
   );
 }
-// SS1984 ADDITION END
+// Celadon ADDITION END
 
 const StatusPanel = () => {
   const { data, act } = useBackend<Data>();
@@ -173,7 +173,7 @@ const StatusPanel = () => {
         <LabeledList.Item label="Current Tier">
           <Button onClick={() => act('set_tier')}>(Click to set)</Button>
         </LabeledList.Item>
-        <ProgressiveDynamicPanel /> {/* SS1984 ADDITION */}
+        <ProgressiveDynamicPanel /> {/* Celadon ADDITION */}
       </LabeledList>
     );
   }
@@ -409,7 +409,7 @@ const StatusPanel = () => {
           </LabeledList.Item>
         </>
       )}
-      <ProgressiveDynamicPanel /> {/* SS1984 ADDITION */}
+      <ProgressiveDynamicPanel /> {/* Celadon ADDITION */}
     </LabeledList>
   );
 };
@@ -730,7 +730,7 @@ export const DynamicAdmin = () => {
     <Window
       title="Dynamic Admin Panel"
       width={currentTab === TABS.Rulesets ? 800 : 500}
-      height={currentTab === TABS.Rulesets ? 600 : 500} // SS1984 EDIT, original: height={currentTab === TABS.Rulesets ? 600 : 400}
+      height={currentTab === TABS.Rulesets ? 600 : 500} // Celadon EDIT, original: height={currentTab === TABS.Rulesets ? 600 : 400}
     >
       <Window.Content>
         <Section

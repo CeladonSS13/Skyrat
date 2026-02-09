@@ -6,7 +6,7 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 	/datum/nifsoft/soulcatcher,
 	/datum/nifsoft/scryer,
 	/datum/nifsoft/summoner/book,
-	// SS1984 REMOVAL OF ERP HYPNOSIS
+	// Celadon REMOVAL OF ERP HYPNOSIS
 ))
 
 /datum/computer_file/program/nifsoft_downloader

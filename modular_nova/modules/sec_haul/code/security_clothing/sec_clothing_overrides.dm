@@ -147,7 +147,7 @@
 	max_slots = 4
 	max_total_storage = WEIGHT_CLASS_NORMAL + (WEIGHT_CLASS_SMALL * 3) // gun and 3 ammo
 
-// SS1984 REMOVAL START - Moved to non-modular, bcs it's not working modular that way
+// Celadon REMOVAL START - Moved to non-modular, bcs it's not working modular that way
 // /datum/storage/holster/detective/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound, list/holdables)
 // 	holdables = list(
 // 		/obj/item/gun/ballistic/automatic/pistol,
@@ -171,11 +171,11 @@
 // 		/obj/item/food/grown/banana,
 // 		/obj/item/gun/energy/recharge/kinetic_accelerator/variant/glock,
 // 		// NOVA EDIT ADDITION END
-// 		/obj/item/gun/energy/e_gun/advtaser, // SS1984 ADDITION
+// 		/obj/item/gun/energy/e_gun/advtaser, // Celadon ADDITION
 // 	)
 
 // 	return ..()
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
 ///Enables you to quickdraw weapons from security holsters
 /datum/storage/holster/open_storage(mob/to_show, can_reach_target)

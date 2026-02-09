@@ -123,7 +123,7 @@ export const NtosCardContent = (props) => {
                 selectedList={modified_card.access_on_card}
                 wildcardFlags={wildcard_flags}
                 wildcardSlots={modified_card.wildcard_slots}
-                trimAccess={modified_card.trim_access} // SS1984 EDIT, original: trim_access={modified_card.trim_access}
+                trimAccess={modified_card.trim_access} // Celadon EDIT, original: trim_access={modified_card.trim_access}
                 accessFlags={access_flags}
                 accessFlagNames={access_flag_names}
                 showBasic={!!show_basic}
@@ -141,13 +141,13 @@ export const NtosCardContent = (props) => {
                     access_wildcard: wildcard,
                   })
                 }
-                // SS1984 ADDITION START
+                // Celadon ADDITION START
                 extraActions={(action_name, accesses_list) =>
                   act(action_name, {
                     accesses: accesses_list,
                   })
                 }
-                // SS1984 ADDITION END
+                // Celadon ADDITION END
               />
             )}
           </Stack.Item>

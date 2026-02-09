@@ -28,7 +28,7 @@ function getColorValueClass(quirk: Quirk) {
     return 'positive';
   } else if (quirk.value < 0) {
     return 'negative';
-    // SS1984 REMOVAL OF ERP QUIRKS
+    // Celadon REMOVAL OF ERP QUIRKS
   } else {
     return 'neutral';
   }
@@ -374,8 +374,8 @@ function QuirkPage() {
     }
     // NOVA EDIT START - Nova star quirks
     if (quirk.nova_stars_only && !data.is_nova_star) {
-      { /* SS1984 REMOVAL return 'You need to be a Nova star to select this quirk, apply today!'; */ }
-      return 'You need to be a Veteran to select this quirk, apply today!'; { /* SS1984 ADDITION */ }
+      { /* Celadon REMOVAL return 'You need to be a Nova star to select this quirk, apply today!'; */ }
+      return 'You need to be a Veteran to select this quirk, apply today!'; { /* Celadon ADDITION */ }
     }
     // NOVA EDIT END
     const selectedQuirkNames = selectedQuirks.map((quirkKey) => {

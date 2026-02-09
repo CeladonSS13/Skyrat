@@ -85,7 +85,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	// NOVA EDIT ADDITION START - Donator icons in OOC
 	if(SSplayer_ranks.is_donator(src))
 		if(prefs.read_preference(/datum/preference/toggle/display_donator_status))
-			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[icon2html('modular_nova/master_files/icons/donator/donator_chat_icon.dmi', world, "ratge")][keyname]</font>" // SS1984 EDIT
+			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[icon2html('modular_nova/master_files/icons/donator/donator_chat_icon.dmi', world, "ratge")][keyname]</font>" // Celadon EDIT
 	// NOVA EDIT ADDITION END
 	if(prefs.hearted)
 		var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)
@@ -469,15 +469,15 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 
 	prefs.savefile.export_json_to_client(usr, ckey)
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /client/verb/map_vote_tally_count()
 // 	set name = "Show Map Vote Tallies"
 // 	set desc = "View the current map vote tally counts."
 // 	set category = "Server"
 // 	to_chat(mob, SSmap_vote.tally_printout)
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /client/verb/linkforumaccount()
 // 	set category = "OOC"
 // 	set name = "Link Forum Account"
@@ -508,9 +508,9 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 
 // 	to_chat(src, "Now opening a window to login to your forum account, your account will automatically be linked the moment you log in. If this window doesn't load, Please go to <a href=\"[uri]?token=[token]\">[uri]?token=[token]</a> - This link will expire in 30 minutes.")
 // 	src << link("[uri]?token=[token]")
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /client/proc/generate_account_link_token()
 // 	var/static/entropychain
 // 	if (!entropychain)
@@ -542,4 +542,4 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 
 // /client/proc/random_string_args(entropychain)
 // 	return "[entropychain][GUID()][rand()*rand(999999)][world.time][GUID()][rand()*rand(999999)][world.timeofday][GUID()][rand()*rand(999999)][world.realtime][GUID()][rand()*rand(999999)][time2text(world.timeofday)][GUID()][rand()*rand(999999)][world.tick_usage][computer_id][address][ckey][key][GUID()][rand()*rand(999999)]"
-// SS1984 REMOVAL END
+// Celadon REMOVAL END

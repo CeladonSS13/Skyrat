@@ -485,7 +485,7 @@
 
 /obj/item/borg/upgrade/transform/syndicatejack/marauder
 	new_model = /obj/item/robot_model/syndicatejack/marauder
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /// Dominatrix time
 // /obj/item/borg/upgrade/dominatrixmodule
 // 	name = "borg dominatrix module"
@@ -535,7 +535,7 @@
 // 		borg.model.remove_module(tickler)
 // 	for(var/obj/item/clothing/sextoy/fleshlight/fleshlight in borg.model.modules)
 // 		borg.model.remove_module(fleshlight)
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
 /obj/item/borg/upgrade/cargo_papermanipulator
 	name = "Cargo Cyborg Manipulator"

@@ -40,7 +40,7 @@ export const flavor_text: Feature<string> = {
   component: FeatureTextInput,
 };
 
-// SS1984 REMOVAL OF ERP FLAVOR START, END
+// Celadon REMOVAL OF ERP FLAVOR START, END
 
 export const silicon_flavor_text: Feature<string> = {
   name: 'Flavor Text (Silicon)',
@@ -49,7 +49,7 @@ export const silicon_flavor_text: Feature<string> = {
   component: FeatureTextInput,
 };
 
-// SS1984 REMOVAL OF ERP FLAVOR START, END
+// Celadon REMOVAL OF ERP FLAVOR START, END
 
 export const ooc_notes: Feature<string> = {
   name: 'OOC Notes',
@@ -58,7 +58,7 @@ export const ooc_notes: Feature<string> = {
   component: FeatureTextInput,
 };
 
-// SS1984 REMOVAL OF ERP NOTES START, END
+// Celadon REMOVAL OF ERP NOTES START, END
 
 export const character_ad: Feature<string> = {
   name: 'Character Advert',

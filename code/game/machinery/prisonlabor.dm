@@ -53,12 +53,12 @@
 	update_appearance()
 	to_chat(user, span_notice("You start pressing a new license plate!"))
 
-	if(!do_after(user, 4 SECONDS * speed_modifier, target = src, extra_checks = CALLBACK(src, PROC_REF(still_processing)))) // SS1984 EDIT, original: if(!do_after(user, 4 SECONDS, target = src))
+	if(!do_after(user, 4 SECONDS * speed_modifier, target = src, extra_checks = CALLBACK(src, PROC_REF(still_processing)))) // Celadon EDIT, original: if(!do_after(user, 4 SECONDS, target = src))
 		pressing = FALSE
 		update_appearance()
 		return FALSE
-	if (!pressing) // SS1984 ADDITION
-		return FALSE // SS1984
+	if (!pressing) // Celadon ADDITION
+		return FALSE // Celadon
 
 	use_energy(active_power_usage)
 	to_chat(user, span_notice("You finish pressing a new license plate!"))

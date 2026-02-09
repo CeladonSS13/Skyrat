@@ -1,4 +1,4 @@
-name: SS1984 Compile
+name: Celadon Compile
 on:
   - pull_request_target
 
@@ -50,9 +50,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: RUST_REMOTE # folder to cache
-        key: rust_remote_repo_1984 # key for the cache
+        key: rust_remote_repo_celadon # key for the cache
         restore-keys: |
-          rust_remote_repo_1984
+          rust_remote_repo_celadon
     - name: Setup part 7 (Rust Cache)
       uses: Swatinem/rust-cache@v2.8.0
       with:

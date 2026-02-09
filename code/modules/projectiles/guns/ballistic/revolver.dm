@@ -27,11 +27,11 @@
 	if(chambered)
 		UnregisterSignal(chambered, COMSIG_MOVABLE_MOVED)
 	if (spin_cylinder)
-		set_chambered(magazine.get_round()) // SS1984 EDIT, original: chambered = magazine.get_round()
+		set_chambered(magazine.get_round()) // Celadon EDIT, original: chambered = magazine.get_round()
 	else
-		set_chambered(magazine.stored_ammo[1]) // SS1984 EDIT, original: chambered = magazine.stored_ammo[1]
+		set_chambered(magazine.stored_ammo[1]) // Celadon EDIT, original: chambered = magazine.stored_ammo[1]
 		if (ispath(chambered))
-			set_chambered(new chambered(src)) // SS1984 EDIT, original: chambered = new chambered(src)
+			set_chambered(new chambered(src)) // Celadon EDIT, original: chambered = new chambered(src)
 			magazine.stored_ammo[1] = chambered
 	if(chambered)
 		RegisterSignal(chambered, COMSIG_MOVABLE_MOVED, PROC_REF(clear_chambered))

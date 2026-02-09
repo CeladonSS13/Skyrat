@@ -132,7 +132,7 @@
 			return "[jobtitle] is already filled to capacity."
 		//NOVA EDIT ADDITION
 		if(JOB_NOT_NOVA_STAR)
-			return "You need to be Veteran to join as [jobtitle]." // SS1984 EDIT, original: return "You need to be Nova star to join as [jobtitle]."
+			return "You need to be Veteran to join as [jobtitle]." // Celadon EDIT, original: return "You need to be Nova star to join as [jobtitle]."
 		if(JOB_UNAVAILABLE_QUIRK)
 			return "[jobtitle] is restricted due to your selected quirks."
 		if(JOB_UNAVAILABLE_LANGUAGE)
@@ -291,7 +291,7 @@
 	log_manifest(character.mind.key, character.mind, character, latejoin = TRUE)
 
 	// NOVA EDIT ADDITION START
-	if(humanc && !job.disable_all_loadout) // SS1984 EDIT, original: if(humanc)
+	if(humanc && !job.disable_all_loadout) // Celadon EDIT, original: if(humanc)
 		var/list/loadout = humanc.client?.get_loadout_datums()
 		for(var/datum/loadout_item/item as anything in loadout)
 			if (item.restricted_roles && length(item.restricted_roles) && !(job.title in item.restricted_roles))

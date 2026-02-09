@@ -1066,7 +1066,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 				if("South")
 					movement_keys[key] = SOUTH
 				if(ADMIN_CHANNEL)
-					if(holder && check_rights(R_ADMIN,show_msg=0)) // SS1984 EDIT
+					if(holder && check_rights(R_ADMIN,show_msg=0)) // Celadon EDIT
 						var/asay = tgui_say_create_open_command(ADMIN_CHANNEL)
 						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[asay]")
 					else

@@ -276,8 +276,8 @@ SUBSYSTEM_DEF(economy)
 			premium_record.price = premium_custom_price || extra_price
 
 /datum/controller/subsystem/economy/proc/inflict_moneybags(datum/bank_account/moneybags)
-	return FALSE // SS1984 ADDITION
-	// SS1984 REMOVAL START
+	return FALSE // Celadon ADDITION
+	// Celadon REMOVAL START
 	// if(!moneybags)
 	// 	return FALSE
 	// var/mob/living/card_holder
@@ -288,7 +288,7 @@ SUBSYSTEM_DEF(economy)
 	// 	return FALSE
 	// card_holder.adjust_timed_status_effect(wait, /datum/status_effect/spotlight_light)
 	// return TRUE
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 #undef ECON_DEPARTMENT_STEP
 #undef ECON_ACCOUNT_STEP

@@ -21,8 +21,8 @@
 		if(!apply_prefs)
 			var/datum/language_holder/holder = spawned_human.get_language_holder()
 			holder.get_selected_language() //we need this here so a language starts off selected
-			equip(spawned_mob) // SS1984 ADDITION
-			after_create_nova(spawned_human) // SS1984 ADDITION
+			equip(spawned_mob) // Celadon ADDITION
+			after_create_nova(spawned_human) // Celadon ADDITION
 			post_transfer_prefs(spawned_human)
 			return spawned_human
 
@@ -41,8 +41,8 @@
 		spawned_human?.equip_outfit_and_loadout(outfit, spawned_mob.client.prefs, FALSE, null, allow_mechanical_loadout_items)
 	else if (!isnull(spawned_human))
 		equip(spawned_human)
-	if (!isnull(spawned_mob)) // SS1984 ADDITION
-		after_create_nova(spawned_mob) // SS1984 ADDITION
+	if (!isnull(spawned_mob)) // Celadon ADDITION
+		after_create_nova(spawned_mob) // Celadon ADDITION
 	return spawned_mob
 
 // Anything that can potentially be overwritten by transferring prefs must go in this proc

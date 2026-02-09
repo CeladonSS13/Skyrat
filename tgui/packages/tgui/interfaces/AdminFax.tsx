@@ -14,7 +14,7 @@ import {
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
-// SS1984 ADDITION START
+// Celadon ADDITION START
 type FaxTemplate = {
   templateName: string;
   fromWho: string;
@@ -24,13 +24,13 @@ type FaxTemplate = {
   stampX: number;
   stampY: number;
 };
-// SS1984 ADDITION END
+// Celadon ADDITION END
 
 type Data = {
   faxes: string[];
   stamps: string[];
-  preselected_fax_name: string; // SS1984 ADDITION
-  fax_templates: FaxTemplate[]; // SS1984 ADDITION
+  preselected_fax_name: string; // Celadon ADDITION
+  fax_templates: FaxTemplate[]; // Celadon ADDITION
 };
 
 const paperNameOptions = [
@@ -42,9 +42,9 @@ const fromWhoOptions = ['Nanotrasen', 'Syndicate'] as const;
 
 export function AdminFax(props) {
   const { act, data } = useBackend<Data>();
-  const { faxes = [], stamps = [], preselected_fax_name, fax_templates = [] } = data; // SS1984 EDIT, original: const { faxes = [], stamps = [] } = data;
+  const { faxes = [], stamps = [], preselected_fax_name, fax_templates = [] } = data; // Celadon EDIT, original: const { faxes = [], stamps = [] } = data;
 
-  const [fax, setFax] = useState(preselected_fax_name ? preselected_fax_name : ''); // SS1984 EDIT, original: const [fax, setFax] = useState('');
+  const [fax, setFax] = useState(preselected_fax_name ? preselected_fax_name : ''); // Celadon EDIT, original: const [fax, setFax] = useState('');
   const [saved, setSaved] = useState(false);
   const [paperName, setPaperName] = useState('');
   const [fromWho, setFromWho] = useState('');
@@ -53,7 +53,7 @@ export function AdminFax(props) {
   const [stampCoordX, setStampCoordX] = useState(0);
   const [stampCoordY, setStampCoordY] = useState(0);
   const [stampAngle, setStampAngle] = useState(0);
-  const [selectedTemplate, setSelectedTemplate] = useState('Select Template') // SS1984 ADDITION
+  const [selectedTemplate, setSelectedTemplate] = useState('Select Template') // Celadon ADDITION
 
   if (stamp && stamps[0] !== 'None') {
     stamps.unshift('None');
@@ -245,7 +245,7 @@ export function AdminFax(props) {
           >
             Create paper
           </Button>
-          {/* SS1984 ADDITION START */}
+          {/* Celadon ADDITION START */}
           <Dropdown
             fluid
             options={fax_templates.map((fax_template) => {
@@ -278,7 +278,7 @@ export function AdminFax(props) {
               }
             }}
           />
-          {/* SS1984 ADDITION END */}
+          {/* Celadon ADDITION END */}
         </Section>
       </Window.Content>
     </Window>

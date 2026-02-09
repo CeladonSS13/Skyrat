@@ -1659,7 +1659,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	worn_icon = 'modular_nova/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "tactichill"
 
-// SS1984 REMOVA OF LEWD ITEMS START, END
+// Celadon REMOVA OF LEWD ITEMS START, END
 // Donation reward for thedragmeme and snailom
 
 // Donation reward for Razurath
@@ -2167,7 +2167,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	icon_state = "ignari_rem"
 	can_adjust = FALSE
 
-// SS1984 REMOVA OF LEWD ITEMS START, END
+// Celadon REMOVA OF LEWD ITEMS START, END
 
 /obj/item/clothing/under/bwake
 	name = "\improper Compression bodysuit"

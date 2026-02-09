@@ -2296,15 +2296,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust-1984"
-version = "1.0.0"
-dependencies = [
- "rust-g",
-]
-
-[[package]]
 name = "rust-g"
-version = "4.2.0-ss220"
+version = "4.2.0-celadon
 dependencies = [
  "aho-corasick",
  "ammonia",
@@ -2347,6 +2340,13 @@ dependencies = [
  "ureq",
  "url",
  "workerpool",
+]
+
+[[package]]
+name = "rust_celadon"
+version = "1.0.0"
+dependencies = [
+ "rust-g",
 ]
 
 [[package]]

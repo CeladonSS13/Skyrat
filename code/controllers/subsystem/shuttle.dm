@@ -156,10 +156,10 @@ SUBSYSTEM_DEF(shuttle)
 	while(length(pack_processing))
 		var/datum/supply_pack/pack = pack_processing[length(pack_processing)]
 		pack_processing.len--
-		// SS1984 EDIT ADDITION START
+		// Celadon EDIT ADDITION START
 		if(pack == /datum/supply_pack/armament)
 			continue
-		// SS1984 EDIT ADDITION END
+		// Celadon EDIT ADDITION END
 		if(ispath(pack, /datum/supply_pack))
 			pack = new pack
 

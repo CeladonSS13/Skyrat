@@ -316,8 +316,8 @@ LAW_WEIGHT custom,0
 ## standard-ish laws. These are fairly ok to run
 ## Unique AI station trait uses weights so we don't want asimov
 #NOVA EDIT ADDITION BEGIN
-# SS1984 REMOVAL: LAW_WEIGHT armadyne_safeguard,40
-# SS1984 REMOVAL: LAW_WEIGHT dagothbot,8
+# Celadon REMOVAL: LAW_WEIGHT armadyne_safeguard,40
+# Celadon REMOVAL: LAW_WEIGHT dagothbot,8
 #NOVA EDIT ADDITION END
 LAW_WEIGHT asimov,5
 #LAW_WEIGHT asimovpp,5
@@ -413,7 +413,7 @@ ROUNDSTART_RACES vox_primalis
 ROUNDSTART_RACES abductorweak
 ROUNDSTART_RACES hemophage
 
-## SS1984 RACES DOWN THERE
+## Celadon RACES DOWN THERE
 ROUNDSTART_RACES nucleation
 
 ##-------------------------------------------------------------------------------------------

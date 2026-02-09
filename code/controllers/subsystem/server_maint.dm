@@ -87,8 +87,8 @@ SUBSYSTEM_DEF(server_maint)
 	if (fexists("tmp/"))
 		fdel("tmp/")
 	kick_clients_in_lobby(span_boldannounce("The round came to an end with you in the lobby."), TRUE) //second parameter ensures only afk clients are kicked
-	try_reconnect_all_players() // SS1984 ADDITION
-	// SS1984 REMOVAL START
+	try_reconnect_all_players() // Celadon ADDITION
+	// Celadon REMOVAL START
 	// var/server = CONFIG_GET(string/server)
 	// for(var/thing in GLOB.clients)
 	// 	if(!thing)
@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(server_maint)
 	// 	C?.tgui_panel?.send_roundrestart()
 	// 	if(server) //if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 	// 		C << link("byond://[server]")
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 
 /datum/controller/subsystem/server_maint/proc/UpdateHubStatus()

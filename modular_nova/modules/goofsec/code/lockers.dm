@@ -1,4 +1,4 @@
-/* SS1984 REMOVAL START
+/* Celadon REMOVAL START
 // Departmental guard lockers
 /obj/structure/closet/secure_closet/security/cargo
 	name = "\proper customs agent's locker"
@@ -59,4 +59,4 @@
 	new /obj/item/restraints/handcuffs/cable/green(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/storage/bag/garment/service_guard(src)
-SS1984 REMOVAL END */
+Celadon REMOVAL END */

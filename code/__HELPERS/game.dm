@@ -167,8 +167,8 @@
 			var/mob/dead/observer/ghost_player = player_mob
 			if(ghost_player.started_as_observer) // Exclude people who started as observers
 				continue
-		if (alive_check && SSdynamic && !SSdynamic.is_mob_considered_as_valid(player_mob, player_mob.client, allow_ghost = FALSE)) // SS1984 ADDITION
-			continue // SS1984 ADDITION
+		if (alive_check && SSdynamic && !SSdynamic.is_mob_considered_as_valid(player_mob, player_mob.client, allow_ghost = FALSE)) // Celadon ADDITION
+			continue // Celadon ADDITION
 		active_players += player_mob
 	return active_players
 
@@ -247,10 +247,10 @@
 		var/area/player_area = get_area(character)
 		deadchat_broadcast(span_game(" has arrived at the station at [span_name(player_area.name)]."), span_game("[span_name(character.real_name)] ([rank])"), follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
 	if(character.mind && (character.mind.assigned_role.job_flags & JOB_ANNOUNCE_ARRIVAL))
-		// SS1984 ADDITION START
+		// Celadon ADDITION START
 		if (try_show_cryomessage_for_spawn(character, rank))
 			return
-		// SS1984 ADDITION END
+		// Celadon ADDITION END
 		aas_config_announce(/datum/aas_config_entry/arrival, list("PERSON" = character.real_name,"RANK" = rank))
 
 ///Check if the turf pressure allows specialized equipment to work

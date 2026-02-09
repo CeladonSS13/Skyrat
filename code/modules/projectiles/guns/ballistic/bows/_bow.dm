@@ -46,19 +46,19 @@
 		return CLICK_ACTION_BLOCKING
 
 	user.put_in_hands(chambered)
-	set_chambered(magazine.get_round()) // SS1984 EDIT, original: chambered = magazine.get_round()
+	set_chambered(magazine.get_round()) // Celadon EDIT, original: chambered = magazine.get_round()
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/gun/ballistic/bow/proc/drop_arrow()
 	chambered.forceMove(drop_location())
-	set_chambered(magazine.get_round()) // SS1984 EDIT, original: chambered = magazine.get_round()
+	set_chambered(magazine.get_round()) // Celadon EDIT, original: chambered = magazine.get_round()
 	update_appearance()
 
 /obj/item/gun/ballistic/bow/chamber_round(spin_cylinder, replace_new_round)
 	if(chambered || !magazine)
 		return
-	set_chambered(magazine.get_round()) // SS1984 EDIT, original: chambered = magazine.get_round()
+	set_chambered(magazine.get_round()) // Celadon EDIT, original: chambered = magazine.get_round()
 	RegisterSignal(chambered, COMSIG_MOVABLE_MOVED, PROC_REF(clear_chambered))
 	update_appearance()
 

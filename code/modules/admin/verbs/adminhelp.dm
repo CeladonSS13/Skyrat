@@ -280,7 +280,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/other_admins = jointext(admin_counts["noflags"], ", ")
 	var/admin_text = ""
 	var/player_count = "**Total**: [length(GLOB.clients)], **Living**: [length(GLOB.alive_player_list)], **Dead**: [length(GLOB.dead_player_list)], **Observers**: [length(GLOB.current_observers_list)]"
-	player_count += "**Population for Dynamic rolling**: [SSdynamic ? SSdynamic.get_population_for_dynamic_rolling(GLOB.alive_player_list) : length(GLOB.alive_player_list)]" // SS1984 ADDITION
+	player_count += "**Population for Dynamic rolling**: [SSdynamic ? SSdynamic.get_population_for_dynamic_rolling(GLOB.alive_player_list) : length(GLOB.alive_player_list)]" // Celadon ADDITION
 	if(stealth_admins)
 		admin_text += "**Stealthed**: [stealth_admins]\n"
 	if(afk_admins)

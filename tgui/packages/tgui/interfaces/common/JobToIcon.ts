@@ -12,7 +12,7 @@ const BASEICONS = {
   Bitrunner: 'gamepad',
   Botanist: 'seedling',
   'Bridge Officer': 'mug-hot', // NOVA EDIT CHANGE - ORIGINAL:  'Bridge Assistant': 'building-shield',
-  'Bridge Assistant': 'building-shield', // SS1984 Return
+  'Bridge Assistant': 'building-shield', // Celadon Return
   Captain: 'crown',
   'Cargo Gorilla': 'paw',
   'Cargo Technician': 'box',
@@ -52,7 +52,7 @@ const BASEICONS = {
   'Security Officer (Engineering)': 'shield-halved',
   'Security Officer (Medical)': 'shield-halved',
   'Security Officer (Science)': 'shield-halved',
-  'Security Officer (Service)': 'shield-halved', // SS1984 ADDITION
+  'Security Officer (Service)': 'shield-halved', // Celadon ADDITION
   'Security Officer': 'shield-halved',
   'Shaft Miner': 'digging',
   'Station Engineer': 'gears',
@@ -65,13 +65,13 @@ const BASEICONS = {
   Virologist: 'virus',
   Barber: 'scissors',
   Blueshield: 'shield-dog',
-  // SS1984 REMOVAL Bouncer: 'shield-heart',
+  // Celadon REMOVAL Bouncer: 'shield-heart',
   'Corrections Officer': 'hands-bound',
-  // SS1984 REMOVAL 'Customs Agent': 'shield-heart',
-  // SS1984 REMOVAL 'Engineering Guard': 'shield-heart',
+  // Celadon REMOVAL 'Customs Agent': 'shield-heart',
+  // Celadon REMOVAL 'Engineering Guard': 'shield-heart',
   'Nanotrasen Consultant': 'clipboard-check',
-  // SS1984 REMOVAL Orderly: 'shield-heart',
-  // SS1984 REMOVAL 'Science Guard': 'shield-heart',
+  // Celadon REMOVAL Orderly: 'shield-heart',
+  // Celadon REMOVAL 'Science Guard': 'shield-heart',
   'Security Medic': 'heart-pulse',
   // NOVA EDIT END
 } as const;
@@ -117,7 +117,7 @@ const ALTTITLES = {
   Herbalist: BASEICONS.Botanist,
   Florist: BASEICONS.Botanist,
   // Bouncer - shield-heart
-  // SS1984 REMOVAL 'Service Guard': BASEICONS.Bouncer,
+  // Celadon REMOVAL 'Service Guard': BASEICONS.Bouncer,
   // Captain - crown
   'Station Commander': BASEICONS.Captain,
   'Commanding Officer': BASEICONS.Captain,

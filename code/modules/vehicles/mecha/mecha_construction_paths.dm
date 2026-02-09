@@ -79,7 +79,7 @@
 
 /datum/component/construction/unordered/mecha_chassis/spawn_result()
 	var/atom/parent_atom = parent
-	parent_atom.icon = icon_for_spawn_result // SS1984 EDIT, original: parent_atom.icon = 'icons/mob/rideables/mech_construction.dmi'
+	parent_atom.icon = icon_for_spawn_result // Celadon EDIT, original: parent_atom.icon = 'icons/mob/rideables/mech_construction.dmi'
 	parent_atom.set_density(TRUE)
 	parent_atom.cut_overlays()
 	return ..()

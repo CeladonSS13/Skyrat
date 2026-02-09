@@ -108,7 +108,7 @@ SUBSYSTEM_DEF(persistence)
 
 /// Loads up the amount of times maps appeared to alter their appearance in voting and rotation.
 /datum/controller/subsystem/persistence/proc/load_recent_maps()
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// var/map_sav = FILE_RECENT_MAPS
 	// if(!fexists(FILE_RECENT_MAPS))
 	// 	return
@@ -128,7 +128,7 @@ SUBSYSTEM_DEF(persistence)
 	// 			run++
 	// 	if(run >= 2) //If run twice in the last KEEP_ROUNDS_MAP + 1 (including current) rounds, disable map for voting and rotation.
 	// 		blocked_maps += VM.map_name
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 ///Updates the list of the most recent maps.
 /datum/controller/subsystem/persistence/proc/collect_maps()

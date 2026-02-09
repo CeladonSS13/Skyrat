@@ -23,7 +23,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	"[FREQ_GUILD]" = "syndradio", //NOVA EDIT ADDITION - MAPPING
 	"[FREQ_TARKON]" = "engradio", //NOVA EDIT ADDITION - MAPPING
 	"[FREQ_SOLFED]" = "medradio", //NOVA EDIT ADDITION - SOLFED
-	"[FREQ_PRISON]" = "monkey", //SS1984 ADDITION - PRISONERS HEADSETS
+	"[FREQ_PRISON]" = "monkey", //Celadon ADDITION - PRISONERS HEADSETS
 	"[FREQ_CTF_RED]" = "redteamradio",
 	"[FREQ_CTF_BLUE]" = "blueteamradio",
 	"[FREQ_CTF_GREEN]" = "greenteamradio",
@@ -148,11 +148,11 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 /atom/movable/proc/compose_message(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), visible_name = FALSE)
 	//This proc uses [] because it is faster than continually appending strings. Thanks BYOND.
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	var/obj/machinery/announcement_system/announcer = get_announcement_system(/datum/aas_config_entry/nttc_job_indicator_type, speaker, radio_freq)
 	var/datum/nttc_configuration/nttc = announcer ? announcer.nttc : null
 	var/obj/item/card/id/id_card = null
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 	//Basic span
 	var/freq_color = get_radio_color(radio_freq, radio_freq_color)
 	var/spanpart1 = "<span class='[radio_freq ? get_radio_span(radio_freq) : "game say"]' [freq_color ? "style='color:[freq_color];'" : ""]>"
@@ -162,7 +162,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	var/freqpart = radio_freq ? "\[[get_radio_name(radio_freq, radio_freq_name)]\] " : ""
 	//Speaker name
 	var/namepart = speaker.get_message_voice(visible_name)
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	var/is_carbonspeaker = iscarbon(speaker)
 	var/speaker_source = is_carbonspeaker ? speaker : speaker.GetSource()
 	if(is_carbonspeaker || iscarbon(speaker_source)) //First, try to pull the modified title from a carbon's ID. This will override both visual and audible names.
@@ -170,7 +170,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		var/obj/item/id_slot = carbon_human.get_item_by_slot(ITEM_SLOT_ID)
 		if(id_slot)
 			id_card = id_slot?.GetID()
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 
 	//End name span.
 	var/endspanpart = "</span>"
@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	// The actual message part.
 	var/messagepart = speaker.generate_messagepart(raw_message, spans, message_mods)
 	messagepart = " <span class='message'>[messagepart]</span></span>"
-	// SS1984 EDIT START
+	// Celadon EDIT START
 	var/job = nttc ? retrieve_relevant_job(speaker_source, id_card, FALSE) : null
 	var/job_custom_name = nttc ? retrieve_relevant_job(speaker_source, id_card, TRUE) : null // so we getting both custom and non-custom
 	var/job_part = compose_job(speaker, raw_message, radio_freq, namepart, announcer, job, job_custom_name, speaker_source)
@@ -195,12 +195,12 @@ GLOBAL_LIST_INIT(freqtospan, list(
 			return "<b>[spanpart1][spanpart2][freqpart][languageicon][compose_track_href(speaker, namepart)][job_part][endspanpart][messagepart]</b>"
 	// basically same as above without <b>, written so for perfomance to avoid excess combining strings
 	return "[spanpart1][spanpart2][freqpart][languageicon][compose_track_href(speaker, namepart)][job_part][endspanpart][messagepart]"
-	// SS1984 EDIT END
+	// Celadon EDIT END
 
 /atom/movable/proc/compose_track_href(atom/movable/speaker, message_langs, raw_message, radio_freq)
 	return ""
 
-// SS1984 EDIT START, DONT FORGET TO UPDATE SAME METHOD IN ai_say.dm IF MODIFY PARAMS!
+// Celadon EDIT START, DONT FORGET TO UPDATE SAME METHOD IN ai_say.dm IF MODIFY PARAMS!
 /atom/movable/proc/compose_job(atom/movable/speaker, raw_message, radio_freq, namepart, obj/machinery/announcement_system/announcer, job, job_custom_name, speaker_source)
 	if (!radio_freq || !announcer)
 		return "[namepart]"
@@ -209,7 +209,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		return "[namepart]"
 
 	return nttc.compose_ntts_job(raw_message, namepart, announcer, job, job_custom_name, speaker_source)
-// SS1984 EDIT END
+// Celadon EDIT END
 
 /**
  * Works out and returns which prefix verb the passed message should use.

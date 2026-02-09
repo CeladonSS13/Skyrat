@@ -1,4 +1,4 @@
-name: SS1984 DreamChecker
+name: Celadon DreamChecker
 on:
   - pull_request_target
 jobs:

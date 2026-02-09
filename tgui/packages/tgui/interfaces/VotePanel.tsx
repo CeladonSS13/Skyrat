@@ -37,7 +37,7 @@ type ActiveVote = {
   question: string | null;
   timeRemaining: number;
   displayStatistics: boolean;
-  choicesHighlight: string[] | null; // SS1984 ADDITION
+  choicesHighlight: string[] | null; // Celadon ADDITION
   choices: Option[];
   countMethod: number;
 };
@@ -238,7 +238,7 @@ const VotersList = (props) => {
 const ChoicesPanel = (props) => {
   const { act, data } = useBackend<Data>();
   const { currentVote, user } = data;
-  // SS1984 ADDITION START
+  // Celadon ADDITION START
   if (currentVote && currentVote.choices && currentVote.choices.length > 0) {
     const highlightNames = currentVote.choicesHighlight;
     if (highlightNames && highlightNames.length > 0) {
@@ -254,7 +254,7 @@ const ChoicesPanel = (props) => {
       });
     }
   }
-  // SS1984 ADDITION END
+  // Celadon ADDITION END
 
   return (
     <Stack.Item grow>
@@ -269,14 +269,14 @@ const ChoicesPanel = (props) => {
             {currentVote.choices.map((choice) => (
               <Box key={choice.name}>
                 <LabeledList.Item
-                  // SS1984 REMOVAL label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
-                  // SS1984 ADDITION START
+                  // Celadon REMOVAL label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
+                  // Celadon ADDITION START
                   label={
                     <span style={{ fontWeight: currentVote.choicesHighlight?.includes(choice.name) ? 'bold' : 'normal' }}>
                       {choice.name.replace(/^\w/, (c) => c.toUpperCase())}
                     </span>
                   }
-                  // SS1984 ADDITION END
+                  // Celadon ADDITION END
                   textAlign="right"
                   buttons={
                     <Button
@@ -323,14 +323,14 @@ const ChoicesPanel = (props) => {
             {currentVote.choices.map((choice) => (
               <Box key={choice.name}>
                 <LabeledList.Item
-                  // SS1984 REMOVAL label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
-                  // SS1984 ADDITION START
+                  // Celadon REMOVAL label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
+                  // Celadon ADDITION START
                   label={
                     <span style={{ fontWeight: currentVote.choicesHighlight?.includes(choice.name) ? 'bold' : 'normal' }}>
                       {choice.name.replace(/^\w/, (c) => c.toUpperCase())}
                     </span>
                   }
-                  // SS1984 ADDITION END
+                  // Celadon ADDITION END
                   textAlign="right"
                   buttons={
                     <Button

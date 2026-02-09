@@ -23,13 +23,13 @@
 	return TRUE
 
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /datum/emote/living/nodnod
 // 	key = "nod2"
 // 	key_third_person = "nod2s"
 // 	message = "nods twice."
 // 	message_param = "nods twice at %t."
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
 /datum/emote/living/blush
 	sound = 'modular_nova/modules/emotes/sound/emotes/blush.ogg'

@@ -39,7 +39,7 @@ export const RADIO_PREFIXES = {
   ':i ': 'Guild',
   ':l ': 'SolFed',
   // NOVA EDIT ADDITION END
-  // //SS1984 ADDITION START
+  // //Celadon ADDITION START
   ':j ': 'Prison',
-  // //SS1984 ADDITION END
+  // //Celadon ADDITION END
 } as const;

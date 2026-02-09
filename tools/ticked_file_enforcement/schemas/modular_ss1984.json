@@ -1,6 +1,6 @@
 {
 	"file": "tgstation.dme",
-	"scannable_directory": "modular_ss220/",
+	"scannable_directory": "modular_celadon/",
 	"subdirectories": true,
 	"excluded_files": [
 		"modular_nova/modules/verbs/code/subtle.dm"

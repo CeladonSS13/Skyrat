@@ -167,7 +167,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		tainted_character_profiles = FALSE
 	//NOVA EDIT ADDITION BEGIN
 	data["preview_selection"] = preview_pref
-	// SS1984 REMOVAL ERP PREFS
+	// Celadon REMOVAL ERP PREFS
 	data["quirk_points_enabled"] = !CONFIG_GET(flag/disable_quirk_points)
 	data["quirks_balance"] = GetQuirkBalance()
 	data["positive_quirk_count"] = GetPositiveQuirkCount()

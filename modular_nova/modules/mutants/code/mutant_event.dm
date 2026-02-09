@@ -24,10 +24,10 @@
 /datum/dynamic_ruleset/midround/mutant_infestation/false_alarm()
 	announce_mutant_infestation()
 
-// SS1984 REMOVAL START, this proc is handled by parent
+// Celadon REMOVAL START, this proc is handled by parent
 // /datum/dynamic_ruleset/midround/mutant_infestation/collect_candidates()
 // 	return GLOB.alive_player_list
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
 /datum/dynamic_ruleset/midround/mutant_infestation/is_valid_candidate(mob/candidate, client/candidate_client)
 	. = ..()

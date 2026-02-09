@@ -103,8 +103,8 @@
 #define PRESSURE_DAMAGE_COEFFICIENT 2
 #define MAX_HIGH_PRESSURE_DAMAGE 2
 /// The amount of damage someone takes when in a low pressure area scales up over time, starting at BASE_LOW_PRESSURE_DAMAGE, up to MAX_LOW_PRESSURE_DAMAGE.
-#define BASE_LOW_PRESSURE_DAMAGE 1 // SS1984 EDIT, original: define BASE_LOW_PRESSURE_DAMAGE 2
-#define MAX_LOW_PRESSURE_DAMAGE (BASE_LOW_PRESSURE_DAMAGE * 2) // SS1984 EDIT, original: #define MAX_LOW_PRESSURE_DAMAGE (BASE_LOW_PRESSURE_DAMAGE * 2.5)
+#define BASE_LOW_PRESSURE_DAMAGE 1 // Celadon EDIT, original: define BASE_LOW_PRESSURE_DAMAGE 2
+#define MAX_LOW_PRESSURE_DAMAGE (BASE_LOW_PRESSURE_DAMAGE * 2) // Celadon EDIT, original: #define MAX_LOW_PRESSURE_DAMAGE (BASE_LOW_PRESSURE_DAMAGE * 2.5)
 
 /// Humans are slowed by the difference between bodytemp and BODYTEMP_COLD_DAMAGE_LIMIT divided by this
 #define COLD_SLOWDOWN_FACTOR 20

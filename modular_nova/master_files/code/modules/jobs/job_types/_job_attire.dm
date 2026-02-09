@@ -77,7 +77,7 @@
 /datum/job/corrections_officer
 	akula_outfit = /datum/outfit/akula/security_officer
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /datum/job/orderly
 // 	akula_outfit = /datum/outfit/akula/security_officer
 
@@ -92,4 +92,4 @@
 
 // /datum/job/engineering_guard
 // 	akula_outfit = /datum/outfit/akula/security_officer
-// SS1984 REMOVAL END
+// Celadon REMOVAL END

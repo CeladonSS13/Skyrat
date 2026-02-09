@@ -4,4 +4,4 @@
 /datum/config_entry/flag/disable_lewd_items
 	default = FALSE
 
-// SS1984 REMOVAL OF ERP START, END, KEEP UNUSED CONFIGS
+// Celadon REMOVAL OF ERP START, END, KEEP UNUSED CONFIGS

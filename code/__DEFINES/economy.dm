@@ -14,7 +14,7 @@
 #define PAYCHECK_CREW 50
 ///Paygrade for Heads of Staff.
 #define PAYCHECK_COMMAND 100
-///ss1984 add Paygrade limit, doesnt increase paycheck, this used in code\modules\economy\account.dm to limit paycheck
+///celadon add Paygrade limit, doesnt increase paycheck, this used in code\modules\economy\account.dm to limit paycheck
 #define PAYCHECK_LIMIT 250
 
 

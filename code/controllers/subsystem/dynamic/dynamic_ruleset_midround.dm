@@ -41,7 +41,7 @@
 	return ..() && (GLOB.ghost_role_flags & GHOSTROLE_MIDROUND_EVENT) && !isnull(find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = TRUE))
 
 /datum/dynamic_ruleset/midround/spiders/execute()
-	var/num_egg = get_antag_cap(SSdynamic ? SSdynamic.get_population_for_dynamic_rolling(GLOB.alive_player_list) : length(GLOB.alive_player_list), egg_count) // SS1984 EDIT, original: var/num_egg = get_antag_cap(length(GLOB.alive_player_list), egg_count)
+	var/num_egg = get_antag_cap(SSdynamic ? SSdynamic.get_population_for_dynamic_rolling(GLOB.alive_player_list) : length(GLOB.alive_player_list), egg_count) // Celadon EDIT, original: var/num_egg = get_antag_cap(length(GLOB.alive_player_list), egg_count)
 	while(num_egg > 0)
 		var/turf/spawn_loc = find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = TRUE)
 		if(isnull(spawn_loc))
@@ -1081,8 +1081,8 @@
 	// checks for stuff like bitrunner avatars and ghost mafia
 	if(HAS_TRAIT(candidate, TRAIT_MIND_TEMPORARILY_GONE) || HAS_TRAIT(candidate, TRAIT_TEMPORARY_BODY))
 		return FALSE
-	if(!SSdynamic?.is_mob_considered_as_valid(candidate, candidate_client, allow_ghost = FALSE)) // SS1984 ADDTIION, no modular because it's before SEND_SIGNAL
-		return FALSE // SS1984 ADDITION
+	if(!SSdynamic?.is_mob_considered_as_valid(candidate, candidate_client, allow_ghost = FALSE)) // Celadon ADDTIION, no modular because it's before SEND_SIGNAL
+		return FALSE // Celadon ADDITION
 	if(SEND_SIGNAL(candidate, COMSIG_MOB_MIND_BEFORE_MIDROUND_ROLL, src, pref_flag) & CANCEL_ROLL)
 		return FALSE
 	return ..()

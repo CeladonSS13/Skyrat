@@ -139,8 +139,8 @@
 #endif
 
 #ifndef PRELOAD_RSC //set to:
-//#define PRELOAD_RSC 0 // 0 to allow using external resources or on-demand behaviour; //SS220 EDIT CHANGE
-#define PRELOAD_RSC 1 // SS1984 SKYRAT EVENT ADDITION, ORIGINAL ABOVE
+//#define PRELOAD_RSC 0 // 0 to allow using external resources or on-demand behaviour; //Celadon EDIT CHANGE
+#define PRELOAD_RSC 1 // Celadon SKYRAT EVENT ADDITION, ORIGINAL ABOVE
 #endif // 1 to use the default behaviour;
 								// 2 for preloading absolutely everything;
 

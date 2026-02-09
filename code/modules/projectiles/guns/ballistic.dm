@@ -156,7 +156,7 @@
 		return
 	if (!magazine)
 		magazine = new spawn_magazine_type(src)
-		magazine.set_chamber_source(src) // SS1984 ADDITION
+		magazine.set_chamber_source(src) // Celadon ADDITION
 		if(!istype(magazine, accepted_magazine_type))
 			CRASH("[src] spawned with a magazine type that isn't allowed by its accepted_magazine_type!")
 	if(bolt_type == BOLT_TYPE_STANDARD || internal_magazine) //Internal magazines shouldn't get magazine + 1.
@@ -324,7 +324,7 @@
 	if(istype(casing)) //there's a chambered round
 		if(QDELING(casing))
 			stack_trace("Trying to move a qdeleted casing of type [casing.type]!")
-			set_chambered(null) // SS1984 EDIT, original: chambered = null
+			set_chambered(null) // Celadon EDIT, original: chambered = null
 		else if(casing_ejector || !from_firing)
 			casing.forceMove(drop_location()) //Eject casing onto ground.
 			if(!QDELETED(casing))
@@ -417,7 +417,7 @@
 	if (chambered || !magazine)
 		return
 	if (magazine.ammo_count())
-		set_chambered((bolt_type == BOLT_TYPE_OPEN && !bolt_locked) || bolt_type == BOLT_TYPE_NO_BOLT ? magazine.get_and_shuffle_round() : magazine.get_round()) // SS1984 EDIT, original: chambered = (bolt_type == BOLT_TYPE_OPEN && !bolt_locked) || bolt_type == BOLT_TYPE_NO_BOLT ? magazine.get_and_shuffle_round() : magazine.get_round()
+		set_chambered((bolt_type == BOLT_TYPE_OPEN && !bolt_locked) || bolt_type == BOLT_TYPE_NO_BOLT ? magazine.get_and_shuffle_round() : magazine.get_round()) // Celadon EDIT, original: chambered = (bolt_type == BOLT_TYPE_OPEN && !bolt_locked) || bolt_type == BOLT_TYPE_NO_BOLT ? magazine.get_and_shuffle_round() : magazine.get_round()
 		if (bolt_type != BOLT_TYPE_OPEN && !(internal_magazine && bolt_type == BOLT_TYPE_NO_BOLT))
 			chambered.forceMove(src)
 		else
@@ -428,7 +428,7 @@
 /obj/item/gun/ballistic/proc/clear_chambered(datum/source)
 	SIGNAL_HANDLER
 	UnregisterSignal(chambered, COMSIG_MOVABLE_MOVED)
-	set_chambered(null) // SS1984 EDIT, original: chambered = null
+	set_chambered(null) // Celadon EDIT, original: chambered = null
 
 ///updates a bunch of racking related stuff and also handles the sound effects and the like
 /obj/item/gun/ballistic/proc/rack(mob/user = null)
@@ -466,7 +466,7 @@
 		return FALSE
 	if(user.transferItemToLoc(AM, src))
 		magazine = AM
-		magazine.set_chamber_source(src) // SS1984 ADDITION
+		magazine.set_chamber_source(src) // Celadon ADDITION
 		if (display_message)
 			balloon_alert(user, "[magazine_wording] loaded")
 		if (magazine.ammo_count())
@@ -484,7 +484,7 @@
 ///Handles all the logic of magazine ejection, if tac_load is set that magazine will be tacloaded in the place of the old eject
 /obj/item/gun/ballistic/proc/eject_magazine(mob/user, display_message = TRUE, obj/item/ammo_box/magazine/tac_load = null)
 	if(bolt_type == BOLT_TYPE_OPEN)
-		set_chambered(null) // SS1984 EDIT, original: chambered = null
+		set_chambered(null) // Celadon EDIT, original: chambered = null
 	if (magazine.ammo_count())
 		playsound(src, eject_sound, eject_sound_volume, eject_sound_vary)
 	else
@@ -562,10 +562,10 @@
 /obj/item/gun/ballistic/proc/load_gun(obj/item/ammo, mob/living/user)
 	if (chambered && !chambered.loaded_projectile)
 		chambered.forceMove(drop_location())
-		chambered.update_appearance() // SS1984 ADDITION
-		if(magazine && magazine.stored_ammo.len > 0 && chambered != magazine.stored_ammo[1]) // SS1984 EDIT, original: if(length(magazine?.stored_ammo) && chambered != magazine.stored_ammo[1])
+		chambered.update_appearance() // Celadon ADDITION
+		if(magazine && magazine.stored_ammo.len > 0 && chambered != magazine.stored_ammo[1]) // Celadon EDIT, original: if(length(magazine?.stored_ammo) && chambered != magazine.stored_ammo[1])
 			magazine.stored_ammo -= chambered
-		set_chambered(null) // SS1984 EDIT, original: chambered = null
+		set_chambered(null) // Celadon EDIT, original: chambered = null
 
 	var/num_loaded = magazine?.try_load(user, ammo, silent = TRUE)
 	if (!num_loaded)
@@ -862,7 +862,7 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 		if(!spawn_magazine_type)
 			return
 		magazine = new spawn_magazine_type(src)
-		magazine.set_chamber_source(src) // SS1984 ADDITION
+		magazine.set_chamber_source(src) // Celadon ADDITION
 	chamber_round()
 	update_appearance()
 

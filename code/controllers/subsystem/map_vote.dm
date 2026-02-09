@@ -79,7 +79,7 @@ SUBSYSTEM_DEF(map_vote)
 
 	var/winner
 	var/winner_amount = 0
-	// SS1984 EDIT START
+	// Celadon EDIT START
 	for(var/map in map_vote.choices)
 		var/amount_for_map = map_vote.choices[map] // Yes it completly ignores weights and all that shit
 		if (amount_for_map > winner_amount)
@@ -87,10 +87,10 @@ SUBSYSTEM_DEF(map_vote)
 			winner_amount = amount_for_map
 	if (!winner)
 		winner = pick(map_vote.choices)
-	// SS1984 EDIT END
+	// Celadon EDIT END
 	ASSERT(winner, "No winner found in map vote.")
 	set_next_map(config.maplist[winner])
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	var/list/messages = list("Map Selected - [span_bold(next_map_config.map_name)] ([winner_amount])")
 	for(var/map in map_vote.choices)
 		if(map == winner)
@@ -98,8 +98,8 @@ SUBSYSTEM_DEF(map_vote)
 		var/vote_amount = map_vote.choices[map]
 		var/datum/map_config/map_cfg = config.maplist[map]
 		messages += "[map_cfg.map_name] - [vote_amount] votes"
-	// SS1984 ADDITION END
-	// SS1984 REMOVAL START
+	// Celadon ADDITION END
+	// Celadon REMOVAL START
 	// messages += "Tallies at the time of selection:"
 	// messages += tally_printout
 
@@ -110,7 +110,7 @@ SUBSYSTEM_DEF(map_vote)
 	// 	update_tally_printout()
 	// else
 	// 	messages += "Only one map was possible, tallies were not reset."
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 	send_map_vote_notice(arglist(messages))
 
@@ -131,12 +131,12 @@ SUBSYSTEM_DEF(map_vote)
 	var/list/maps = shuffle(global.config.maplist)
 	for(var/map in maps)
 		var/datum/map_config/possible_config = config.maplist[map]
-		// SS1984 REMOVAL START
+		// Celadon REMOVAL START
 		// // NOVA EDIT ADDITION START - Can't vote for the current map
 		// if(possible_config.map_name == SSmapping.current_map?.map_name)
 		// 	continue
 		// // NOVA EDIT ADDITION END
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 		if(!possible_config.votable || (possible_config.map_name in SSpersistence.blocked_maps))
 			continue
 		if(possible_config.config_min_users > 0 && filter_threshold < possible_config.config_min_users)

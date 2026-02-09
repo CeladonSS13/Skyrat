@@ -131,12 +131,12 @@
 			continue
 		if(possible_target.current.stat == DEAD)
 			continue
-		// SS1984 REMOVAL START
+		// Celadon REMOVAL START
 		// // NOVA EDIT ADDITION BEGIN - Antag opt-in (Only security and command can be targetted)
 		// if (!CONFIG_GET(flag/disable_antag_opt_in_preferences) && !possible_target.assigned_role?.heretic_sac_target)
 		// 	continue
 		// // NOVA EDIT ADDITION END
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 
 		valid_targets += possible_target
 

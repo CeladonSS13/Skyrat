@@ -1438,11 +1438,11 @@
 			FAX.receive(locate(href_list["print_fax"]), href_list["sender_name"])
 			return
 
-	// SS1984 ADDITION START, non-modular because of potential perfomance degradation without else-if and checks at beginning would be need to done again
+	// Celadon ADDITION START, non-modular because of potential perfomance degradation without else-if and checks at beginning would be need to done again
 	else if (href_list["reply_fax"])
 		reply_fax_topic(href_list["reply_fax"], usr)
 		return
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 
 	else if(href_list["play_internet"])
 		if(!check_rights(R_SOUND))

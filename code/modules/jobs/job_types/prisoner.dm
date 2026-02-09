@@ -43,7 +43,7 @@
 	var/datum/prisoner_crime/crime = GLOB.prisoner_crimes[crime_name]
 	var/datum/crime/past_crime = new(crime.name, crime.desc, "Central Command", "Indefinite.")
 	var/datum/record/crew/target_record = find_record(crewmember.real_name)
-	if (target_record) // SS1984 ADDITION
+	if (target_record) // Celadon ADDITION
 		target_record.crimes += past_crime
 		target_record.recreate_manifest_photos(add_height_chart = TRUE)
 	to_chat(crewmember, span_warning("You are imprisoned for \"[crime_name]\"."))

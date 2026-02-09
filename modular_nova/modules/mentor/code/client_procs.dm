@@ -1,5 +1,5 @@
-/client/New(TopicData) // SS1984 EDIT
-	. = ..(TopicData) // SS1984 EDIT
+/client/New(TopicData) // Celadon EDIT
+	. = ..(TopicData) // Celadon EDIT
 	mentor_datum_set()
 
 /client/Destroy()

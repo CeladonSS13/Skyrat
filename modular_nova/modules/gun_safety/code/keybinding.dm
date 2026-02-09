@@ -1,4 +1,4 @@
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /datum/keybinding/carbon/toggle_safety
 // 	hotkey_keys = list("ShiftF")
 // 	name = "toggle_safety"
@@ -18,4 +18,4 @@
 // 	if(!safety)
 // 		return
 // 	safety.toggle_safeties(owner)
-// SS1984 REMOVAL END
+// Celadon REMOVAL END

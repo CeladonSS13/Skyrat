@@ -64,7 +64,7 @@
 		mapload, \
 		force_connect = force_connect_to_silo, \
 		mat_container_signals = local_signals \
-	) // SS1984 EDIT, added: force_connect = force_connect_to_silo
+	) // Celadon EDIT, added: force_connect = force_connect_to_silo
 
 	//for reedeming points from items inserted into ore silo
 	RegisterSignal(src, COMSIG_SILO_ITEM_CONSUMED, TYPE_PROC_REF(/obj/machinery/mineral/ore_redemption, silo_redeem_points))
@@ -330,11 +330,11 @@
 			//we have points
 			if(points)
 				user_id_card.registered_account.mining_points += points
-				// SS1984 ADDITION START
+				// Celadon ADDITION START
 				if (istype(user_id_card, /obj/item/card/id/advanced/prisoner))
 					var/obj/item/card/id/advanced/prisoner/worn_prisoner_id = user_id_card
 					worn_prisoner_id.points += points
-				// SS1984 ADDITION END
+				// Celadon ADDITION END
 				points = 0
 				return TRUE
 

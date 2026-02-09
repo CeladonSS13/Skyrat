@@ -10,19 +10,19 @@
 	antagonist_restricted = TRUE
 
 /datum/job/head_of_personnel
-	antagonist_restricted = FALSE // SS1984 EDIT, original(for nova): TRUE
+	antagonist_restricted = FALSE // Celadon EDIT, original(for nova): TRUE
 
 /datum/job/chief_engineer
-	antagonist_restricted = FALSE // SS1984 EDIT, original(for nova): TRUE
+	antagonist_restricted = FALSE // Celadon EDIT, original(for nova): TRUE
 
 /datum/job/chief_medical_officer
-	antagonist_restricted = FALSE // SS1984 EDIT, original(for nova): TRUE
+	antagonist_restricted = FALSE // Celadon EDIT, original(for nova): TRUE
 
 /datum/job/research_director
-	antagonist_restricted = FALSE // SS1984 EDIT, original(for nova): TRUE
+	antagonist_restricted = FALSE // Celadon EDIT, original(for nova): TRUE
 
 /datum/job/quartermaster
-	antagonist_restricted = FALSE // SS1984 EDIT, original(for nova): TRUE
+	antagonist_restricted = FALSE // Celadon EDIT, original(for nova): TRUE
 
 /datum/job/blueshield
 	antagonist_restricted = TRUE
@@ -30,7 +30,7 @@
 /datum/job/corrections_officer
 	antagonist_restricted = TRUE
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /datum/job/orderly
 // 	antagonist_restricted = TRUE
 
@@ -45,7 +45,7 @@
 
 // /datum/job/science_guard
 // 	antagonist_restricted = TRUE
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
 /datum/job/bridge_assistant
 	antagonist_restricted = TRUE

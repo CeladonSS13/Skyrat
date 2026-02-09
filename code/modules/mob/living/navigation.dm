@@ -74,9 +74,9 @@
 		return
 
 	var/list/path = get_path_to(src, navigate_target, MAX_NAVIGATE_RANGE, mintargetdist = 1, access = get_access(), skip_first = FALSE)
-	var/display_found_path_alert = TRUE // SS1984 ADDITION
+	var/display_found_path_alert = TRUE // Celadon ADDITION
 	if(!length(path))
-		// SS1984 EDIT START
+		// Celadon EDIT START
 		// no path with current access
 		var/list/access_all_station = SSid_access.get_region_access_list(list(REGION_ALL_STATION)) // tbh it can be cached if needed
 		path = get_path_to(src, navigate_target, MAX_NAVIGATE_RANGE, mintargetdist = 1, access = access_all_station, skip_first = FALSE) // same invocation as above, just with other access
@@ -86,7 +86,7 @@
 		else
 			balloon_alert(src, "found valid path, but your current access may not be sufficient!")
 			display_found_path_alert = FALSE
-		// SS1984 EDIT END
+		// Celadon EDIT END
 	path |= get_turf(navigate_target)
 	for(var/i in 1 to length(path))
 		var/turf/current_turf = path[i]
@@ -114,12 +114,12 @@
 	RegisterSignal(src, COMSIG_LIVING_DEATH, PROC_REF(cut_navigation))
 	if(finding_zchange)
 		RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(cut_navigation))
-	if (display_found_path_alert) // SS1984 ADDITION
+	if (display_found_path_alert) // Celadon ADDITION
 		balloon_alert(src, "navigation path created")
 
 /mob/living/proc/shine_navigation()
-	if (!client) // SS1984 ADDITION
-		return // SS1984 ADDITION
+	if (!client) // Celadon ADDITION
+		return // Celadon ADDITION
 	for(var/i in 1 to length(client.navigation_images))
 		if(!length(client.navigation_images))
 			return

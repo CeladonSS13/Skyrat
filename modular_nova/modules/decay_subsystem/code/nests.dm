@@ -110,7 +110,7 @@
 	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, PROC_REF(mob_death))
 
 	visible_message(span_danger("[spawned_mob] emerges from [src]."))
-	return spawned_mob // SS1984 ADDITION
+	return spawned_mob // Celadon ADDITION
 
 /obj/structure/mob_spawner/proc/mob_death(mob/living/dead_guy, gibbed)
 	SIGNAL_HANDLER

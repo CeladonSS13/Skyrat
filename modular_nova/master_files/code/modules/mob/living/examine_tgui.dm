@@ -55,16 +55,16 @@
 	var/custom_species_lore
 	var/obscured
 	var/ooc_notes = ""
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// var/ideal_antag_optin_status
 	// var/current_antag_optin_status
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 	var/headshot = ""
 
 	// OOC notes go first
-	// SS1984 REMOVAL if(preferences)
-		// SS1984 REMOVAL OF ERP EXAMINE START, END
-		// SS1984 REMOVAL START
+	// Celadon REMOVAL if(preferences)
+		// Celadon REMOVAL OF ERP EXAMINE START, END
+		// Celadon REMOVAL START
 		// if(!CONFIG_GET(flag/disable_antag_opt_in_preferences))
 		// 	var/antag_prefs = holder.mind?.ideal_opt_in_level
 		// 	var/effective_opt_in_level = holder.mind?.get_effective_opt_in_level()
@@ -72,7 +72,7 @@
 		// 		antag_prefs = preferences.read_preference(/datum/preference/choiced/antag_opt_in_status)
 		// 	current_antag_optin_status = GLOB.antag_opt_in_strings[num2text(effective_opt_in_level)]
 		// 	ideal_antag_optin_status = GLOB.antag_opt_in_strings[num2text(antag_prefs)]
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 
 	// Now we handle silicon and/or human, order doesn't matter as both obviously can't fire.
 	// If other variants of mob/living need to be handled at some point, put them here.
@@ -81,9 +81,9 @@
 		custom_species_lore = "A silicon unit, like a cyborg or pAI."
 		if(preferences)
 			flavor_text = preferences.read_preference(/datum/preference/text/silicon_flavor_text)
-			// SS1984 REMOVAL flavor_text_nsfw = preferences.read_preference(/datum/preference/text/silicon_flavor_text_nsfw)
+			// Celadon REMOVAL flavor_text_nsfw = preferences.read_preference(/datum/preference/text/silicon_flavor_text_nsfw)
 			ooc_notes += preferences.read_preference(/datum/preference/text/ooc_notes)
-			// SS1984 REMOVAL  ooc_notes_nsfw += preferences.read_preference(/datum/preference/text/ooc_notes_nsfw)
+			// Celadon REMOVAL  ooc_notes_nsfw += preferences.read_preference(/datum/preference/text/ooc_notes_nsfw)
 			headshot += preferences.read_preference(/datum/preference/text/headshot/silicon)
 
 	if(ishuman(holder))
@@ -92,10 +92,10 @@
 		obscured = !can_bypass_obscure && ((holder_human.wear_mask && (holder_human.wear_mask.flags_inv & HIDEFACE)) || (holder_human.head && (holder_human.head.flags_inv & HIDEFACE)))
 		custom_species = obscured ? "Obscured" : holder_human.dna.species.lore_protected ? holder_human.dna.species.name : holder_human.dna.features["custom_species"]
 		flavor_text = obscured ? "Obscured" : holder_human.dna.features[EXAMINE_DNA_FLAVOR_TEXT]
-		// SS1984 REMOVAL OF ERP EXAMINE START, END
+		// Celadon REMOVAL OF ERP EXAMINE START, END
 		custom_species_lore = obscured ? "Obscured" : holder_human.dna.species.lore_protected ? holder_human.dna.species.get_species_lore().Join("\n") : holder_human.dna.features["custom_species_lore"]
 		ooc_notes += holder_human.dna.features[EXAMINE_DNA_OOC_NOTES]
-		// SS1984 REMOVAL OF ERP EXAMINE START, END
+		// Celadon REMOVAL OF ERP EXAMINE START, END
 		if(!obscured)
 			headshot += holder_human.dna.features[EXAMINE_DNA_HEADSHOT]
 
@@ -111,19 +111,19 @@
 		"ooc_notes" = ooc_notes,
 		"custom_species" = custom_species,
 		"custom_species_lore" = custom_species_lore,
-		// SS1984 REMOVAL OF ERP EXAMINE START, END
+		// Celadon REMOVAL OF ERP EXAMINE START, END
 		// Antaggery
-		// SS1984 REMOVAL START
+		// Celadon REMOVAL START
 		// "ideal_antag_optin_status" = ideal_antag_optin_status, // Our opt-in status from prefs when we joined the game
 		// "current_antag_optin_status" = current_antag_optin_status, // What it's being forced to if applicable
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 	)
 	return data
 
 /datum/examine_panel/ui_static_data(mob/user)
 	var/list/data = list(
 		"nova_star_status" = !!(holder.client && SSplayer_ranks.is_nova_star(holder.client, admin_bypass = FALSE)),
-		// SS1984 REMOVAL "opt_in_colors" = GLOB.antag_opt_in_colors,
+		// Celadon REMOVAL "opt_in_colors" = GLOB.antag_opt_in_colors,
 	)
 	return data
 

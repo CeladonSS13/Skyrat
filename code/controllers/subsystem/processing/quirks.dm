@@ -94,7 +94,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 		if(initial(quirk_type.abstract_parent_type) == type)
 			continue
-		// SS1984 REMOVAL OF ERP QUIRK
+		// Celadon REMOVAL OF ERP QUIRK
 		// NOVA EDIT ADDITION START
 		// Hidden quirks aren't visible to TGUI or the player
 		if (initial(quirk_type.hidden_quirk))

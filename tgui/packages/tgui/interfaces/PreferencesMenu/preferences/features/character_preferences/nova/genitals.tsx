@@ -1,5 +1,5 @@
 // THIS IS A NOVA SECTOR UI FILE
-// SS1984 ADDITION START
+// Celadon ADDITION START
 import {
   FeatureNumberInput,
   type FeatureNumeric,
@@ -9,8 +9,8 @@ export const body_size: FeatureNumeric = {
   name: 'Body Size',
   component: FeatureNumberInput,
 };
-// SS1984 ADDITION END
-/* SS1984 REMOVAL START
+// Celadon ADDITION END
+/* Celadon REMOVAL START
 export const feature_penis: Feature<string> = {
   name: 'Penis Choice',
   component: (
@@ -234,4 +234,4 @@ export const erp_status_pref_mechanics: FeatureChoiced = {
   name: 'ERP Mechanical Status',
   component: FeatureDropdownInput,
 };
-SS1984 REMOVAL END */
+Celadon REMOVAL END */

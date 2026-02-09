@@ -309,10 +309,10 @@
 		flavor_text_link = span_notice("<a href='byond://?src=[REF(src)];lookup_info=open_examine_panel'>\[Examine closely...\]</a>")
 	if (flavor_text_link)
 		. += flavor_text_link
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// if (!face_obscured && !HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE) && client?.prefs.read_preference(/datum/preference/text/character_ad))
 	// 	. += span_notice("[t_He] [t_has] an ad in the character directory... <a href='byond://?src=[REF(src)];lookup_info=open_character_ad'>\[Open directory?\]</a>")
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 	//Temporary flavor text addition:
 	if(temporary_flavor_text)
@@ -323,14 +323,14 @@
 
 	. += EXAMINE_SECTION_BREAK
 
-	// SS1984 REMOVAL OF ERP STATUS START, END
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL OF ERP STATUS START, END
+	// Celadon REMOVAL START
 	// if (!CONFIG_GET(flag/disable_antag_opt_in_preferences))
 	// 	var/opt_in_status = mind?.get_effective_opt_in_level()
 	// 	if (!isnull(opt_in_status))
 	// 		var/stringified_optin = GLOB.antag_opt_in_strings["[opt_in_status]"]
 	// 		. += span_info("Antag Opt-in Status: <b><font color='[GLOB.antag_opt_in_colors[stringified_optin]]'>[stringified_optin]</font></b>")
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 	// NOVA EDIT ADDITION END
 
 	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE, user, .)
@@ -554,7 +554,7 @@
 	. = list()
 	var/perpname = get_face_name(get_id_name(""))
 	var/title = ""
-	if(perpname && (HAS_TRAIT(user, TRAIT_SECURITY_HUD) || HAS_TRAIT(user, TRAIT_MEDICAL_HUD)) && (user.stat == CONSCIOUS || isobserver(user))) // SS1984 EDIT, original: if(perpname && (HAS_TRAIT(user, TRAIT_SECURITY_HUD) || HAS_TRAIT(user, TRAIT_MEDICAL_HUD)) && (user.stat == CONSCIOUS || isobserver(user)) && user != src)
+	if(perpname && (HAS_TRAIT(user, TRAIT_SECURITY_HUD) || HAS_TRAIT(user, TRAIT_MEDICAL_HUD)) && (user.stat == CONSCIOUS || isobserver(user))) // Celadon EDIT, original: if(perpname && (HAS_TRAIT(user, TRAIT_SECURITY_HUD) || HAS_TRAIT(user, TRAIT_MEDICAL_HUD)) && (user.stat == CONSCIOUS || isobserver(user)) && user != src)
 		var/datum/record/crew/target_record = find_record(perpname)
 		if(target_record)
 			. += "Rank: [target_record.rank]"

@@ -46,7 +46,7 @@ echo "Using bun $INSTALLED_BUN_VERSION (minimum required: $BUN_VERSION)"
 # update rust-g
 if [ ! -d "rust-g" ]; then
 	echo "Cloning rust-g..."
-	git clone https://github.com/ss220-space/rust-g-tg
+	git clone https://github.com/skyrat1984test/rust-skyrat-1984
 	cd rust-g
 	~/.cargo/bin/rustup target add i686-unknown-linux-gnu
 else

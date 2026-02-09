@@ -1,4 +1,4 @@
-/* SS1984 REMOVAL START
+/* Celadon REMOVAL START
 /obj/item/gun/energy/ionrifle
 	icon = 'modular_nova/modules/aesthetics/guns/icons/energy.dmi'
 	// also covers the ion carbine
@@ -65,4 +65,4 @@
 	icon = 'modular_nova/modules/aesthetics/guns/icons/energy.dmi'
 	shaded_charge = TRUE
 	// also covers disabler SMG.
-SS1984 REMOVAL END */
+Celadon REMOVAL END */

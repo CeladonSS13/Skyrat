@@ -1,5 +1,5 @@
 #define DEFAULT_WHO_CELLS_PER_ROW 4
-#define NO_ADMINS_ONLINE_MESSAGE "Однако вы по прежнему можете создавать тикеты." //SS1984 EDIT
+#define NO_ADMINS_ONLINE_MESSAGE "Однако вы по прежнему можете создавать тикеты." //Celadon EDIT
 
 /client/verb/who()
 	set name = "Who"
@@ -19,25 +19,25 @@
 			for(var/client/client in GLOB.clients)
 				var/entry = "\t[client.key]"
 				if(client.holder && client.holder.fakekey)
-					entry += " <i>(как [client.holder.fakekey])</i>" //SS1984 EDIT
+					entry += " <i>(как [client.holder.fakekey])</i>" //Celadon EDIT
 				if (isnewplayer(client.mob))
-					entry += " - <font color='darkgray'><b>В лобби</b></font>" //SS1984 EDIT
+					entry += " - <font color='darkgray'><b>В лобби</b></font>" //Celadon EDIT
 				else
-					entry += " - Играет за [client.mob.real_name]" //SS1984 EDIT
+					entry += " - Играет за [client.mob.real_name]" //Celadon EDIT
 					switch(client.mob.stat)
 						if(UNCONSCIOUS, HARD_CRIT)
-							entry += " - <font color='darkgray'><b>Без сознания</b></font>" //SS1984 EDIT
+							entry += " - <font color='darkgray'><b>Без сознания</b></font>" //Celadon EDIT
 						if(DEAD)
 							if(isobserver(client.mob))
 								var/mob/dead/observer/O = client.mob
 								if(O.started_as_observer)
-									entry += " - <font color='gray'>Наблюдает</font>" //SS1984 EDIT
+									entry += " - <font color='gray'>Наблюдает</font>" //Celadon EDIT
 								else
-									entry += " - <font color='black'><b>МЕРТВ</b></font>" //SS1984 EDIT
+									entry += " - <font color='black'><b>МЕРТВ</b></font>" //Celadon EDIT
 							else
-								entry += " - <font color='black'><b>МЕРТВ</b></font>" //SS1984 EDIT
+								entry += " - <font color='black'><b>МЕРТВ</b></font>" //Celadon EDIT
 					if(client.mob.is_antag())
-						entry += " - <b><font color='red'>Антагонист</font></b>" //SS1984 EDIT
+						entry += " - <b><font color='red'>Антагонист</font></b>" //Celadon EDIT
 				entry += " [ADMIN_QUE(client.mob)]"
 				entry += " ([round(client.avgping, 1)]ms)"
 				Lines += entry
@@ -45,7 +45,7 @@
 			for(var/client/client in GLOB.clients)
 				var/entry = "[client.key]"
 				if(client.holder && client.holder.fakekey)
-					entry += " <i>(как [client.holder.fakekey])</i>" //SS1984 EDIT
+					entry += " <i>(как [client.holder.fakekey])</i>" //Celadon EDIT
 				entry += " ([round(client.avgping, 1)]ms)"
 				Lines += entry
 	else
@@ -66,8 +66,8 @@
 			msg += "</tr><tr>"
 	msg += "</tr></table>"
 
-	msg += "<b>Всего игроков: [length(Lines)]</b>" //SS1984 EDIT
-	to_chat(src, fieldset_block(span_bold("Текущие игроки"), span_infoplain(msg), "boxed_message"), type = MESSAGE_TYPE_INFO) //SS1984 EDIT
+	msg += "<b>Всего игроков: [length(Lines)]</b>" //Celadon EDIT
+	to_chat(src, fieldset_block(span_bold("Текущие игроки"), span_infoplain(msg), "boxed_message"), type = MESSAGE_TYPE_INFO) //Celadon EDIT
 
 /client/verb/adminwho()
 	set category = "Admin"
@@ -75,11 +75,11 @@
 
 	var/list/lines = list()
 	var/payload_string = generate_adminwho_string()
-	var/header = (payload_string == NO_ADMINS_ONLINE_MESSAGE) ? "Никого из админсостава нет онлайн" : "Онлайн из админсостава" //SS1984 EDIT
+	var/header = (payload_string == NO_ADMINS_ONLINE_MESSAGE) ? "Никого из админсостава нет онлайн" : "Онлайн из админсостава" //Celadon EDIT
 
 	lines += span_bold(header)
 
-	// SS1984 EDIT
+	// Celadon EDIT
 	payload_string = replacetext(payload_string, "\[Host\]", "\[<font color='#1ABC9C'>Хост</font>\]")
 	payload_string = replacetext(payload_string, "\[Head Admin\]", "\[<font color='#f02f2f'>Главный Администратор</font>\]")
 	payload_string = replacetext(payload_string, "\[Admin\]",	"\[<font color='#ee8f29'>Админ</font>\]")
@@ -89,16 +89,16 @@
 	payload_string = replacetext(payload_string, "\[Head Developer\]", "\[<font color='#2ecc71'>Главный Разработчик</font>\]")
 	payload_string = replacetext(payload_string, "\[Developer\]",	"\[<font color='#2ecc71'>Разработчик</font>\]")
 	payload_string = replacetext(payload_string, "\[Eventologist\]",	"\[<font color='#0000FF'>Ивентолог</font>\]")
-	// SS1984 EDIT END
+	// Celadon EDIT END
 
 	lines += payload_string
 
-	to_chat(src, fieldset_block(span_bold("Админсостав"), jointext(lines, "\n"), "boxed_message"), type = MESSAGE_TYPE_INFO) //SS1984 EDIT
+	to_chat(src, fieldset_block(span_bold("Админсостав"), jointext(lines, "\n"), "boxed_message"), type = MESSAGE_TYPE_INFO) //Celadon EDIT
 
 /// Proc that generates the applicable string to dispatch to the client for adminwho.
 /client/proc/generate_adminwho_string()
 	var/list/list_of_admins = get_list_of_admins()
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	for(var/client/client_retrieved in GLOB.clients)
 		var/datum/admins/D = client_retrieved.holder
 		if (!D)
@@ -111,7 +111,7 @@
 					list_of_admins = list()
 				list_of_admins.Add(client_retrieved)
 				break // skip to next ckey
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 	if(isnull(list_of_admins) || list_of_admins.len < 1)
 		return NO_ADMINS_ONLINE_MESSAGE
 
@@ -150,7 +150,7 @@
 		if(admin.is_afk() || !isnull(admin.holder.fakekey))
 			continue //Don't show afk or fakekeyed admins to adminwho
 
-		returnable_list += "[get_linked_admin_name(admin)] \[[admin.holder.rank_names()]\]" //SS1984 EDIT ADMINWHO
+		returnable_list += "[get_linked_admin_name(admin)] \[[admin.holder.rank_names()]\]" //Celadon EDIT ADMINWHO
 
 	return returnable_list
 
@@ -162,27 +162,27 @@
 	for(var/client/admin in checkable_admins)
 		var/list/admin_strings = list()
 
-		admin_strings += "[get_linked_admin_name(admin)] \[[admin.holder.rank_names()]\]" //SS1984 EDIT ADMINWHO
+		admin_strings += "[get_linked_admin_name(admin)] \[[admin.holder.rank_names()]\]" //Celadon EDIT ADMINWHO
 
 		if(admin.holder.fakekey)
-			admin_strings += "<i>(как [admin.holder.fakekey])</i>" //SS1984 EDIT
+			admin_strings += "<i>(как [admin.holder.fakekey])</i>" //Celadon EDIT
 
 		if(isobserver(admin.mob))
-			admin_strings += "- Наблюдает" //SS1984 EDIT
+			admin_strings += "- Наблюдает" //Celadon EDIT
 		else if(isnewplayer(admin.mob))
 			if(SSticker.current_state <= GAME_STATE_PREGAME)
 				var/mob/dead/new_player/lobbied_admin = admin.mob
 				if(lobbied_admin.ready == PLAYER_READY_TO_PLAY)
-					admin_strings += "- В лобби (Готов)" //SS1984 EDIT
+					admin_strings += "- В лобби (Готов)" //Celadon EDIT
 				else
-					admin_strings += "- В Лобби (Не готов)" //SS1984 EDIT
+					admin_strings += "- В Лобби (Не готов)" //Celadon EDIT
 			else
-				admin_strings += "- В Лобби" //SS1984 EDIT
+				admin_strings += "- В Лобби" //Celadon EDIT
 		else
-			admin_strings += "- Играет" //SS1984 EDIT
+			admin_strings += "- Играет" //Celadon EDIT
 
 		if(admin.is_afk())
-			admin_strings += "(АФК)" //SS1984 EDIT
+			admin_strings += "(АФК)" //Celadon EDIT
 
 		returnable_list += jointext(admin_strings, " ")
 

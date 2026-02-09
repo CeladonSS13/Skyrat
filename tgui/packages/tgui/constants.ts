@@ -32,8 +32,8 @@ export const COLORS = {
     centcom: '#00c100',
     other: '#c38312',
     prisoner: '#FFC2C2', // NOVA EDIT ADDITION
-    command: '#F6F743', // SS1984 ADDITION
-    medical: '#3498db', // SS1984 ADDITION
+    command: '#F6F743', // Celadon ADDITION
+    medical: '#3498db', // Celadon ADDITION
   },
   // Damage type colors
   damageType: {
@@ -166,12 +166,12 @@ export const RADIO_CHANNELS = [
     freq: 1459,
     color: '#1ecc43',
   },
-  /* //SS1984 ADDITION START - PRISONERS HEADSETS */
+  /* //Celadon ADDITION START - PRISONERS HEADSETS */
   {
     name: 'Prison',
     freq: 1473,
     color: '#975032',
-  } /* //SS1984 ADDITION END - PRISONERS HEADSETS */,
+  } /* //Celadon ADDITION END - PRISONERS HEADSETS */,
 ] as const;
 
 const GASES = [

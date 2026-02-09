@@ -68,13 +68,13 @@
 			bolt_locked = TRUE
 			update_icon()
 			casing.forceMove(drop_location())
-			set_chambered(null) // SS1984 EDIT, original: chambered = null
+			set_chambered(null) // Celadon EDIT, original: chambered = null
 		else if(isnull(casing.loaded_projectile) && !casing.newshot())
 			// Lock the bolt back when the pulse cell fails to create a new shot
 			bolt_locked = TRUE
 			update_icon()
 			casing.forceMove(drop_location())
-			set_chambered(null) // SS1984 EDIT, original: chambered = null
+			set_chambered(null) // Celadon EDIT, original: chambered = null
 		// Update HUD after processing pulse casing
 		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 		return

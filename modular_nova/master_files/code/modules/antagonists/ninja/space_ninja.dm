@@ -43,16 +43,16 @@
 	for(var/datum/objective/assassinate/headhunter/obj in owner.objectives)
 		existing_targets |= obj.target
 
-	// SS1984 REMOVAL var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences)
+	// Celadon REMOVAL var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences)
 	for(var/mob/living/possible_target in get_active_player_list(TRUE, TRUE, TRUE))
 		if(possible_target.mind in existing_targets)
 			continue
 		if(!is_valid_target(possible_target.mind))
 			continue
-		// SS1984 REMOVAL START
+		// Celadon REMOVAL START
 		// if(!opt_in_disabled && !opt_in_valid(possible_target.mind))
 		// 	continue
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 		possible_targets += possible_target.mind
 
 	target = pick(possible_targets)

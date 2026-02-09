@@ -47,11 +47,11 @@ export function ExaminePanel(props) {
     custom_species_lore,
     headshot,
     nova_star_status,
-    // SS1984 REMOVAL START
+    // Celadon REMOVAL START
     // ideal_antag_optin_status,
     // current_antag_optin_status,
     // opt_in_colors,
-    // SS1984 REMOVAL END
+    // Celadon REMOVAL END
   } = data;
   const [oocNotesIndex, setOocNotesIndex] = useState('SFW');
   const [flavorTextIndex, setFlavorTextIndex] = useState('SFW');
@@ -127,7 +127,7 @@ export function ExaminePanel(props) {
                       title="OOC Notes"
                       preserveWhitespace
                       buttons={
-                        // SS1984 REMOVAL <>
+                        // Celadon REMOVAL <>
                           <Button
                             selected={oocNotesIndex === 'SFW'}
                             bold={oocNotesIndex === 'SFW'}
@@ -137,7 +137,7 @@ export function ExaminePanel(props) {
                           >
                             SFW
                           </Button>
-                          // SS1984 REMOVAL START
+                          // Celadon REMOVAL START
                           // <Button
                           //   selected={oocNotesIndex === 'NSFW'}
                           //   disabled={!ooc_notes_nsfw}
@@ -149,7 +149,7 @@ export function ExaminePanel(props) {
                           //   NSFW
                           // </Button>
                           // </>
-                          // SS1984 REMOVAL END
+                          // Celadon REMOVAL END
                       }
                     >
                       {!!nova_star_status && (
@@ -160,11 +160,11 @@ export function ExaminePanel(props) {
                               fontWeight: 'bold',
                             }}
                           >
-                            Player is a Veteran. { /* SS1984 EDIT, original: Nova Star! ⭐ */ }
+                            Player is a Veteran. { /* Celadon EDIT, original: Nova Star! ⭐ */ }
                           </span>
                         </Stack.Item>
                       )}
-                      {/* SS1984 EDIT START */}
+                      {/* Celadon EDIT START */}
                       {(<Stack.Item>
                       {/*
                       {oocNotesIndex === 'SFW' && (
@@ -195,7 +195,7 @@ export function ExaminePanel(props) {
                             </Stack.Item>
                           )}
                         */}
-                        {/* SS1984 EDIT END */}
+                        {/* Celadon EDIT END */}
                           {formatURLs(ooc_notes)}
                         </Stack.Item>
                       )}

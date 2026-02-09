@@ -190,7 +190,7 @@
 	)
 	/// List of selectable large options
 	var/static/list/graffiti_large_h = list(
-		//"furrypride" = CRAYON_COST_LARGE, // SS1984 REMOVAL
+		//"furrypride" = CRAYON_COST_LARGE, // Celadon REMOVAL
 		"paint" = CRAYON_COST_LARGE,
 		"secborg" = CRAYON_COST_LARGE,
 		"yiffhell" = CRAYON_COST_LARGE,
@@ -431,7 +431,7 @@
 
 /obj/item/toy/crayon/proc/crayon_text_strip(text)
 	text = copytext(text, 1, MAX_MESSAGE_LEN)
-	var/static/regex/crayon_regex = new /regex(@"[^\wА-Яа-яЁё!?,.=&%#+/\-]", "ig") // SS1984 EDIT, original: var/static/regex/crayon_regex = new /regex(@"[^\w!?,.=&%#+/\-]", "ig")
+	var/static/regex/crayon_regex = new /regex(@"[^\wА-Яа-яЁё!?,.=&%#+/\-]", "ig") // Celadon EDIT, original: var/static/regex/crayon_regex = new /regex(@"[^\w!?,.=&%#+/\-]", "ig")
 	return LOWER_TEXT(crayon_regex.Replace(text, ""))
 
 /// Is this a valid object for use_on to run on?
@@ -454,10 +454,10 @@
 	var/drawing = drawtype
 	switch(drawtype)
 		if(RANDOM_LETTER)
-			if(rand(0,1)) // SS1984 ADDITION
+			if(rand(0,1)) // Celadon ADDITION
 				drawing = ascii2text(rand(97, 122)) // a-z
-			else // SS1984 ADDITION
-				drawing = ascii2text(rand(1072, 1103)) // а-я // SS1984 ADDITION
+			else // Celadon ADDITION
+				drawing = ascii2text(rand(1072, 1103)) // а-я // Celadon ADDITION
 		if(RANDOM_PUNCTUATION)
 			drawing = pick(punctuation)
 		if(RANDOM_SYMBOL)
@@ -494,10 +494,10 @@
 	var/ascii = (length(drawing) == 1)
 	if(ascii && is_lowercase_character(drawing))
 		temp = "letter"
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	else if(((text2ascii(drawing) >= 1072) && (text2ascii(drawing) <= 1103)) || text2ascii(drawing) == 1105)
 		temp = "сyrillic letter"
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 	else if(ascii && is_digit(drawing))
 		temp = "number"
 	else if(drawing in punctuation)
@@ -549,7 +549,7 @@
 
 	if(length(text_buffer))
 		drawing = text_buffer[1]
-		// SS1984 ADDITION START
+		// Celadon ADDITION START
 		// DM также поддерживает кириллицу в .dmi изображениях, но тогда у ТГ надо модифицировать специальный тест в CI-пайплайне
 
 		// Мы же будем обрабатывать символы по их коду
@@ -558,7 +558,7 @@
 			var/char_code = text2ascii(drawing)
 			if((char_code >= 1072 && char_code <= 1103) || char_code == 1105)
 				drawing = "u[char_code]"
-		// SS1984 ADDITION END
+		// Celadon ADDITION END
 
 	var/list/turf/affected_turfs = list(target)
 
@@ -868,11 +868,11 @@
 	var/used = min(charges_left, 10)
 	if(is_capped || !actually_paints || !use_charges(user, 10, FALSE))
 		user.visible_message(span_suicide("[user] shakes up [src] with a rattle and lifts it to [user.p_their()] mouth, but nothing happens!"))
-		user.say("БЕЗДАРНОСТЬ!!", forced = "spraycan suicide") // SS1984 EDIT, original: user.say("MEDIOCRE!!", forced = "spraycan suicide")
+		user.say("БЕЗДАРНОСТЬ!!", forced = "spraycan suicide") // Celadon EDIT, original: user.say("MEDIOCRE!!", forced = "spraycan suicide")
 		return SHAME
 
 	user.visible_message(span_suicide("[user] shakes up [src] with a rattle and lifts it to [user.p_their()] mouth, spraying paint across [user.p_their()] teeth!"))
-	user.say("ЗАПОМНИТЕ МЕНЯ!!", forced = "spraycan suicide") // SS1984 EDIT, original: user.say("WITNESS ME!!", forced = "spraycan suicide")
+	user.say("ЗАПОМНИТЕ МЕНЯ!!", forced = "spraycan suicide") // Celadon EDIT, original: user.say("WITNESS ME!!", forced = "spraycan suicide")
 	if(pre_noise || post_noise)
 		playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 5)
 	if(can_change_colour)

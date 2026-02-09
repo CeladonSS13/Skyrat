@@ -2,7 +2,7 @@
 
 #define CHARGE_MESSAGE "Equipped with a trickle-charge microcell. Regains a shot every couple of minutes without external power. Dont expect it to keep up with heavy use."
 
-/* SS1984 REMOVAL START (non modular because of examine)
+/* Celadon REMOVAL START (non modular because of examine)
 
 // disabler
 /obj/item/gun/energy/disabler
@@ -65,5 +65,5 @@
 	. = ..()
 	. += span_notice(CHARGE_MESSAGE)
 
-SS1984 REMOVAL END*/
+Celadon REMOVAL END*/
 #undef CHARGE_MESSAGE

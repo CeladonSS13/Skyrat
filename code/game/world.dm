@@ -379,8 +379,8 @@ GLOBAL_VAR(restart_counter)
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
 	QDEL_NULL(Tracy)
 	QDEL_NULL(Debugger)
-	try_reconnect_all_players() // SS1984 ADDITION
-	//SS220 EDIT CHANGE BEGIN - SHUTDOWN
+	try_reconnect_all_players() // Celadon ADDITION
+	//Celadon EDIT CHANGE BEGIN - SHUTDOWN
 	if(CONFIG_GET(flag/shutdown_on_reboot))
 		if(CONFIG_GET(string/shutdown_shell_command))
 			shell(CONFIG_GET(string/shutdown_shell_command))
@@ -389,8 +389,8 @@ GLOBAL_VAR(restart_counter)
 		return
 	else
 		TgsReboot() // TGS can decide to kill us right here, so it's important to do it last
-	//SS220 EDIT CHANGE END
-	TryAutoHardReboot() // SS1984 ADDITION
+	//Celadon EDIT CHANGE END
+	TryAutoHardReboot() // Celadon ADDITION
 	..()
 	#endif
 

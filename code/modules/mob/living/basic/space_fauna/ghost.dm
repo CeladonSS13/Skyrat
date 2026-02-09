@@ -91,7 +91,7 @@
 			if(0)
 				name = "ghost of [pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
 			if(1)
-				name = "ghost of [pick(GLOB.first_names_female)] [pick(GLOB.last_names_female)]" // SS1984 EDIT, original: name = "ghost of [pick(GLOB.first_names_female)] [pick(GLOB.last_names)]"
+				name = "ghost of [pick(GLOB.first_names_female)] [pick(GLOB.last_names_female)]" // Celadon EDIT, original: name = "ghost of [pick(GLOB.first_names_female)] [pick(GLOB.last_names)]"
 
 /datum/ai_controller/basic_controller/ghost
 	blackboard = list(

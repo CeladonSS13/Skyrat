@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 	///All possible announcements and their local configurations
 	var/list/datum/aas_config_entry/config_entries = list()
-	var/datum/nttc_configuration/nttc = new() //SS1984 ADDITION
+	var/datum/nttc_configuration/nttc = new() //Celadon ADDITION
 	///The headset that we use for broadcasting
 	var/obj/item/radio/headset/radio
 	///AIs headset support all stations channels, but it may require an override for away site or syndie AASs.
@@ -110,7 +110,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 /obj/machinery/announcement_system/ui_data()
 	var/list/configs = list()
-	// SS1984 EDIT START
+	// Celadon EDIT START
 	var/list/data = list()
 	var/list/nttc_data = list(
 		"toggle_jobs" = nttc.toggle_jobs,
@@ -132,7 +132,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	data["config_entries"] = configs
 	data["nttc"] = nttc_data
 	return data
-	// SS1984 EDIT END
+	// Celadon EDIT END
 
 /obj/machinery/announcement_system/ui_static_data(mob/user)
 	var/list/data = list()
@@ -154,7 +154,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 	add_fingerprint(usr)
 	var/datum/aas_config_entry/config = locate(params["entryRef"]) in config_entries
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	switch(action) // another switch before config check
 		// NTTC Toggles
 		if("nttc_toggle_jobs")
@@ -200,14 +200,14 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 			usr.log_message(new_language == "--DISABLE--" ? "disabled NTTC language conversion" : "set NTTC language conversion to [new_language]", LOG_GAME)
 			update_appearance()
 			return
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 	if(!config || !config.modifiable)
 		return
 
 	switch(action)
 		if("Toggle")
 			config.enabled = !config.enabled
-			if (config.type in list(/datum/aas_config_entry/arrival, /datum/aas_config_entry/newhead, /datum/aas_config_entry/newcentcom)) //SS1984 EDIT ADD original: 			if (config.type in list(/datum/aas_config_entry/arrival, /datum/aas_config_entry/newhead))
+			if (config.type in list(/datum/aas_config_entry/arrival, /datum/aas_config_entry/newhead, /datum/aas_config_entry/newcentcom)) //Celadon EDIT ADD original: 			if (config.type in list(/datum/aas_config_entry/arrival, /datum/aas_config_entry/newhead))
 				update_appearance()
 		if("Text")
 			if(!(params["lineKey"] in config.announcement_lines_map))
@@ -376,7 +376,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		"ER)#R - B*@ TEXT F*O(ND!",
 		"AAS.exe is not responding. NanoOS is searching for a solution to the problem.")
 
-// SS1984 ADD START
+// Celadon ADD START
 /datum/aas_config_entry/newcentcom
 	name = "Departmental CentCom Announcement"
 	announcement_lines_map = list(
@@ -394,7 +394,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	announcement_lines_map["Message"] = pick("OV#RL()D: \[UNKNOWN??\] DET*#CT)D!",
 		"ER)#R - B*@ TEXT F*O(ND!",
 		"AAS.exe is not responding. NanoOS is searching for a solution to the problem.")
-// SS1984 ADD END
+// Celadon ADD END
 
 /datum/aas_config_entry/researched_node
 	name = "Science Alert: Research Node Announcement"

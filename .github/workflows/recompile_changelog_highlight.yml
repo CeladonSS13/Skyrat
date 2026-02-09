@@ -52,7 +52,7 @@ jobs:
       - name: Delete current highlights
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
-          FILE_TO_REMOVE="tools/ss1984_changelog_highlight_generated.json"
+          FILE_TO_REMOVE="tools/celadon_changelog_highlight_generated.json"
           if [ -f "$FILE_TO_REMOVE" ]; then
             rm "$FILE_TO_REMOVE" &
             count=0
@@ -69,16 +69,16 @@ jobs:
             echo "File '$FILE_TO_REMOVE' does not exist. Skipping removal."
           fi
 
-      - name: Highlight Changes SS1984
+      - name: Highlight Changes Celadon
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
-          python tools/ss1984_changelog_highlight.py
+          python tools/celadon_changelog_highlight.py
 
       - name: Commit Highlighted Changes
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
           git pull origin master
-          git add tools/ss1984_changelog_highlight_generated.json
+          git add tools/celadon_changelog_highlight_generated.json
           git commit -m "Automatic Changelog Highlight [ci skip]" -a || true
 
       - name: Generate App Token

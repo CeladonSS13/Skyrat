@@ -12,7 +12,7 @@
 #ifndef UNIT_TESTS
 /obj/machinery/light_switch/post_machine_initialize()
 	. = ..()
-	// SS1984 REMOVAL START, END)
+	// Celadon REMOVAL START, END)
 #endif
 
 /obj/machinery/light_switch/proc/turn_off()

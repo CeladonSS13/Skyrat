@@ -136,7 +136,7 @@
 	var/list/special_pool = list() //The special list, for quirk-based
 	var/chosen_victim  //The obsession target
 
-	// SS1984 REMOVAL var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // NOVA EDIT ADDITION - ANTAG OPT-IN
+	// Celadon REMOVAL var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // NOVA EDIT ADDITION - ANTAG OPT-IN
 	for(var/mob/player as anything in GLOB.player_list)//prevents crew members falling in love with nuke ops they never met, and other annoying hijinks
 		if(!player.client || !player.mind || isnewplayer(player) || player.stat == DEAD || isbrain(player) || player == owner)
 			continue
@@ -146,10 +146,10 @@
 		// NOVA EDIT ADDITION START - Players in the interlink can't be obsession targets + Antag Optin
 		if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
 			continue
-		// SS1984 REMOVAL START
+		// Celadon REMOVAL START
 		// if (!opt_in_disabled && player.mind?.get_effective_opt_in_level() < OPT_IN_YES_KILL)
 		// 	continue
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 		// NOVA EDIT ADDITION END
 		viable_minds += player.mind
 	for(var/datum/mind/possible_target as anything in viable_minds)

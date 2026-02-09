@@ -42,11 +42,11 @@ const TAB2NAME = [
 
 const lineHeightNormal = 2.79;
 const buttonWidthNormal = 12.9;
-const lineHeightDebug = 3.09; // SS1984 EDIT, original: 6.09
+const lineHeightDebug = 3.09; // Celadon EDIT, original: 6.09
 
 const DebuggingTab = (props) => {
-  const { act, data } = useBackend(); // SS1984 ADDITION, added data
-  const { is_pregame, is_infinity_wildcard_disabled } = data; // SS1984 ADDITION
+  const { act, data } = useBackend(); // Celadon ADDITION, added data
+  const { is_pregame, is_infinity_wildcard_disabled } = data; // Celadon ADDITION
   return (
     <Stack fill vertical>
       <Stack.Item>
@@ -79,7 +79,7 @@ const DebuggingTab = (props) => {
           onClick={() => act('infinite_sec')}
         />
       </Stack.Item>
-      { /* SS1984 ADDITION START */ }
+      { /* Celadon ADDITION START */ }
       <Stack.Item>
         <Button
           color="average"
@@ -102,7 +102,7 @@ const DebuggingTab = (props) => {
           <span> round </span>
         </Button>
       </Stack.Item>
-      { /* SS1984 ADDITION END */ }
+      { /* Celadon ADDITION END */ }
     </Stack>
   );
 };

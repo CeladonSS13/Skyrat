@@ -310,7 +310,7 @@
 	name = "Pink Clown Shoes"
 	item_path = /obj/item/clothing/shoes/clown_shoes/pink
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /datum/loadout_item/shoes/clown_shoes/pink_heels
 // 	name = "Pink Clown Heels"
 // 	item_path = /obj/item/clothing/shoes/clown_shoes/pink/heels
@@ -343,7 +343,7 @@
 // 	name = "Latex Socks"
 // 	item_path = /obj/item/clothing/shoes/latex_socks
 // 	erp_item = TRUE
-// SS1984 REMOVAL ERP SHOES END
+// Celadon REMOVAL ERP SHOES END
 
 /*
 *	DONATOR

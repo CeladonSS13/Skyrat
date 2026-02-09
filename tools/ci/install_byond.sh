@@ -14,14 +14,14 @@ else
   rm -rf "$HOME/BYOND"
   mkdir -p "$HOME/BYOND"
   cd "$HOME/BYOND"
-	# SS1984 EDIT START
+	# Celadon EDIT START
 	curl --fail -H "User-Agent: tgstation/1.0 CI Script" \
   "http://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip" -o byond.zip \
   || {
     echo "Byond download failed, trying mirror..."
 		curl "https://github.com/skyrat1984test/skyrat1984test/releases/latest/download/byond_linux.zip" -L -o byond.zip
   }
-	# SS1984 EDIT END
+	# Celadon EDIT END
   unzip byond.zip
   rm byond.zip
   cd byond

@@ -401,7 +401,7 @@
 	. = ..()
 	guns_left = 0
 	magazine = null
-	set_chambered(null) // SS1984 EDIT, original: chambered = null
+	set_chambered(null) // Celadon EDIT, original: chambered = null
 
 /obj/item/gun/ballistic/rifle/enchanted/proc/discard_gun(mob/living/user)
 	user.throw_item(pick(oview(7,get_turf(user))))

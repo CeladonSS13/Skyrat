@@ -319,8 +319,8 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
                 if (species.nova_stars_only && !data.is_nova_star) {
                   const tooltipContent =
                     species.name +
-                    { /* SS1984 REMOVAL ' - You need to be a Nova star to select this race, apply today!'; */ };
-                    ' - You need to be a Veteran to select this race, apply today!'; { /* SS1984 ADDITION */ }
+                    { /* Celadon REMOVAL ' - You need to be a Nova star to select this race, apply today!'; */ };
+                    ' - You need to be a Veteran to select this race, apply today!'; { /* Celadon ADDITION */ }
                   speciesPage = (
                     <Tooltip content={tooltipContent}>{speciesPage}</Tooltip>
                   );

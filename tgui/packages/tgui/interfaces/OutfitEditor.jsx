@@ -39,14 +39,14 @@ export const OutfitEditor = (props) => {
                 {outfit.name}
               </Stack.Item>
               <Stack.Item align="end" shrink={0}>
-                {/* SS1984 ADDITION START */}
+                {/* Celadon ADDITION START */}
                 <Button
                   tooltipPosition="bottom-start"
                   onClick={() => act('open_trait_window')}
                 >
                   Traits
                 </Button>
-                {/* SS1984 ADDITION END */}
+                {/* Celadon ADDITION END */}
                 <Button
                   color="transparent"
                   icon="info"

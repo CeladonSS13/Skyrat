@@ -199,8 +199,8 @@
 /datum/job/proc/announce_job(mob/living/joining_mob, job_title) // NOVA EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: /datum/job/proc/announce_job(mob/living/joining_mob)
 	if(head_announce)
 		announce_head(joining_mob, list(head_announce), job_title) // NOVA EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: announce_head(joining_mob, list(head_announce))
-	if(centcom_announce)											//SS1984 ADD START
-		announce_centcom(joining_mob, centcom_announce, job_title)	//SS1984 ADD END
+	if(centcom_announce)											//Celadon ADD START
+		announce_centcom(joining_mob, centcom_announce, job_title)	//Celadon ADD END
 
 //Used for a special check of whether to allow a client to latejoin as this job.
 /datum/job/proc/special_check_latejoin(client/latejoin)
@@ -250,11 +250,11 @@
 		//timer because these should come after the captain announcement
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(aas_config_announce), /datum/aas_config_entry/newhead, list("PERSON" = human.real_name, "RANK" = human.job), null, channels, null, TRUE), 1)) // NOVA EDIT CHANGE - Alternative job titles, change human.job to job_title - Original: SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(aas_config_announce), /datum/aas_config_entry/newhead, list("PERSON" = human.real_name, "RANK" = human.job), null, channels, null, TRUE), 1))
 
-//SS1984 ADD START
+//Celadon ADD START
 /datum/job/proc/announce_centcom(mob/living/carbon/human/human, channels)
 	if(human)
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(aas_config_announce), /datum/aas_config_entry/newcentcom, list("PERSON" = human.real_name, "RANK" = human.job), null, channels, null, TRUE), 1))
-//SS1984 ADD END
+//Celadon ADD END
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/player)
@@ -341,7 +341,7 @@
 		info += span_boldnotice("As this station was initially staffed with a \
 			[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
 			have been added to your ID card.")
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	//NOVA EDIT ADDITION BEGIN - ANTAG OPT IN
 	// if (!CONFIG_GET(flag/disable_antag_opt_in_preferences))
 	// 	if (isnum(minimum_opt_in_level) && minimum_opt_in_level > OPT_IN_NOT_TARGET)
@@ -351,7 +351,7 @@
 	// 	if (contractable)
 	// 		info += span_bolddanger("This job can be targeted by contractors.")
 	// //NOVA EDIT ADDITION END
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 	//NOVA EDIT ADDITION START - ALTERNATIVE_JOB_TITLES
 	if(alt_title != title)
 		info += span_warning("Remember that alternate titles are purely for flavor and roleplay.")

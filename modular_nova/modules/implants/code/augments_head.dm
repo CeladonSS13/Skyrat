@@ -137,8 +137,8 @@
 		/obj/item/circuitboard/computer/communications,
 		/obj/machinery/computer/arcade,
 		/obj/item/circuitboard/computer/arcade,
-//		/obj/machinery/computer/cargo, //SS1984 Removal
-//		/obj/item/circuitboard/computer/cargo, //SS1984 Removal
+//		/obj/machinery/computer/cargo, //Celadon Removal
+//		/obj/item/circuitboard/computer/cargo, //Celadon Removal
 		/obj/machinery/computer/holodeck,
 		/obj/machinery/computer/emergency_shuttle,
 		/obj/machinery/recycler,

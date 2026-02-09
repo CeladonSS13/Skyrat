@@ -166,7 +166,7 @@
 				return
 
 			gloves = equipping
-			// SS1984 REMOVAL OF ERP GLOVES
+			// Celadon REMOVAL OF ERP GLOVES
 			update_worn_gloves()
 		if(ITEM_SLOT_FEET)
 			if(shoes)
@@ -236,7 +236,7 @@
 			if(belt && !can_equip(belt, ITEM_SLOT_BELT, TRUE, ignore_equipped = TRUE))
 				dropItemToGround(belt)
 	else if(item_dropping == gloves)
-		// SS1984 REMOVAL OF ERP GLOVES
+		// Celadon REMOVAL OF ERP GLOVES
 		gloves = null
 		if(!QDELETED(src))
 			update_worn_gloves()

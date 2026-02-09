@@ -70,10 +70,10 @@
 			to_chat(ghost, "[FOLLOW_LINK(ghost, user)] [subtle_message]")
 
 	for(var/mob/receiver in viewers)
-		// SS1984 REMOVAL START
+		// Celadon REMOVAL START
 		// if((running_emote_type & EMOTE_LEWD) && !pref_check_emote(receiver, preference = /datum/emote/living/lewd::pref_to_check))
 		// 	continue
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 		receiver.show_message(subtle_message, alt_msg = subtle_message)
 		// Optional sound notification
 		if(!isobserver(receiver))
@@ -163,10 +163,10 @@
 	if(istype(target, /mob))
 		var/mob/target_mob = target
 		user.show_message(subtler_message, alt_msg = subtler_message)
-		// SS1984 REMOVAL START
+		// Celadon REMOVAL START
 		// if((running_emote_type & EMOTE_LEWD) && !pref_check_emote(target_mob, preference = /datum/emote/living/lewd::pref_to_check))
 		// 	return FALSE
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 		var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
 		if((get_dist(user.loc, target_mob.loc) <= subtler_range) || (hologram && get_dist(hologram.loc, target_mob.loc) <= subtler_range))
 			target_mob.show_message(subtler_message, alt_msg = subtler_message)
@@ -178,10 +178,10 @@
 	else if(istype(target, /obj/effect/overlay/holo_pad_hologram))
 		var/obj/effect/overlay/holo_pad_hologram/hologram = target
 		if(hologram.Impersonation?.client)
-			// SS1984 REMOVAL START
+			// Celadon REMOVAL START
 			// if((running_emote_type & EMOTE_LEWD) && !pref_check_emote(client = hologram.Impersonation.client, preference = /datum/emote/living/lewd::pref_to_check))
 			// 	return FALSE
-			// SS1984 REMOVAL END
+			// Celadon REMOVAL END
 			hologram.Impersonation.show_message(subtler_message, alt_msg = subtler_message)
 			var/datum/preferences/prefs = hologram.Impersonation.client?.prefs
 			if(prefs && prefs.read_preference(/datum/preference/toggle/subtler_sound))
@@ -201,10 +201,10 @@
 			ghostless += dullahan.owner
 
 		for(var/mob/receiver in ghostless)
-			// SS1984 REMOVAL START
+			// Celadon REMOVAL START
 			// if((running_emote_type & EMOTE_LEWD) && !pref_check_emote(receiver, preference = /datum/emote/living/lewd::pref_to_check))
 			// 	continue
-			// SS1984 REMOVAL END
+			// Celadon REMOVAL END
 			receiver.show_message(subtler_message, alt_msg = subtler_message)
 			var/datum/preferences/prefs = receiver.client?.prefs
 			if(prefs && prefs.read_preference(/datum/preference/toggle/subtler_sound))

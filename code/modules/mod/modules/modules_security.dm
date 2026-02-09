@@ -26,7 +26,7 @@
 			/obj/item/gun/chem,
 			/obj/item/gun/syringe,
 			/obj/item/kinetic_crusher,
-			/obj/item/gun/microfusion, // SS1984 ADDITION, TODO: make it modular later
+			/obj/item/gun/microfusion, // Celadon ADDITION, TODO: make it modular later
 		))
 
 /obj/item/mod/module/magnetic_harness/on_install()
@@ -137,10 +137,10 @@
 		if(mod.wearer.transferItemToLoc(holding, src, force = FALSE, silent = TRUE))
 			holstered = holding
 			balloon_alert(mod.wearer, "weapon holstered")
-			playsound(src.loc, holster_sound, 50, TRUE) // SS1984 EDIT, original: playsound(src, 'sound/items/weapons/gun/revolver/empty.ogg', 100, TRUE)
+			playsound(src.loc, holster_sound, 50, TRUE) // Celadon EDIT, original: playsound(src, 'sound/items/weapons/gun/revolver/empty.ogg', 100, TRUE)
 	else if(mod.wearer.put_in_active_hand(holstered, forced = FALSE, ignore_animation = TRUE))
 		balloon_alert(mod.wearer, "weapon drawn")
-		playsound(src.loc, unholster_sound, 50, TRUE) // SS1984 EDIT, original: playsound(src, 'sound/items/weapons/gun/revolver/empty.ogg', 100, TRUE)
+		playsound(src.loc, unholster_sound, 50, TRUE) // Celadon EDIT, original: playsound(src, 'sound/items/weapons/gun/revolver/empty.ogg', 100, TRUE)
 	else
 		balloon_alert(mod.wearer, "holster full!")
 

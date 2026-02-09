@@ -194,4 +194,4 @@
 	name = "Panties - Fishnet (Greyscale)"
 	icon_state = "fishnet_lower_alt"
 
-// SS1984 REMOVAL OF ERP accessory
+// Celadon REMOVAL OF ERP accessory

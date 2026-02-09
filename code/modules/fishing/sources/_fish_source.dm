@@ -531,9 +531,9 @@ GLOBAL_LIST_INIT(specific_fish_icons, generate_specific_fish_icons())
 	examine_text += span_info("[info]: [english_list(known_fishes)].")
 
 ///How much the explosive_fishing_score impacts explosive fishing. The higher the value, the stronger the malus for repeated calls
-#define EXPLOSIVE_FISHING_MALUS_EXPONENT 1.488 // SS1984 EDIT, original: #define EXPLOSIVE_FISHING_MALUS_EXPONENT 0.55
+#define EXPLOSIVE_FISHING_MALUS_EXPONENT 1.488 // Celadon EDIT, original: #define EXPLOSIVE_FISHING_MALUS_EXPONENT 0.55
 ///How much the explosive_fishing_score is reduced each second.
-#define EXPLOSIVE_FISHING_RECOVERY_RATE 0.8 // SS1984 EDIT, original: #define EXPLOSIVE_FISHING_RECOVERY_RATE 0.18
+#define EXPLOSIVE_FISHING_RECOVERY_RATE 0.8 // Celadon EDIT, original: #define EXPLOSIVE_FISHING_RECOVERY_RATE 0.18
 
 /datum/fish_source/proc/spawn_reward_from_explosion(atom/location, severity)
 	SIGNAL_HANDLER

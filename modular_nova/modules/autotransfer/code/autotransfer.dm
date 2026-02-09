@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(autotransfer)
 		return
 	if(maxvotes == NO_MAXVOTES_CAP || maxvotes > curvotes)
 		SSvote.initiate_vote(/datum/vote/transfer_vote, "automatic transfer", forced = TRUE)
-		targettime = REALTIMEOFDAY + voteinterval // SS1984 EDIT, original: targettime = targettime + voteinterval
+		targettime = REALTIMEOFDAY + voteinterval // Celadon EDIT, original: targettime = targettime + voteinterval
 		curvotes++
 	else
 		SSshuttle.autoEnd()

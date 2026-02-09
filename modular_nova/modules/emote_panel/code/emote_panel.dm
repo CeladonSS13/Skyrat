@@ -38,7 +38,7 @@
 		/mob/living/proc/emote_laugh,
 		/mob/living/proc/emote_look,
 		/mob/living/proc/emote_nod,
-		// SS1984 REMOVAL /mob/living/proc/emote_nodnod,
+		// Celadon REMOVAL /mob/living/proc/emote_nodnod,
 		/mob/living/proc/emote_point,
 		/mob/living/proc/emote_pout,
 		/mob/living/proc/emote_scream,
@@ -99,7 +99,7 @@
 	all_emotes += human_emotes
 
 	// modular_nova\modules\emotes\code\emote.dm
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// var/static/list/nova_living_emotes = list(
 	// 	/mob/living/proc/emote_peep,
 	// 	/mob/living/proc/emote_peep2,
@@ -171,7 +171,7 @@
 		// /mob/living/proc/emote_gecker,
 	// )
 	// all_emotes += nova_living_emotes
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 	// code\modules\mob\living\brain\emote.dm
 	var/static/list/brain_emotes = list(
@@ -192,7 +192,7 @@
 	all_emotes += alien_emotes
 
 	// modular_nova\modules\emotes\code\synth_emotes.dm
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// var/static/list/synth_emotes = list(
 	// 	/mob/living/proc/emote_dwoop,
 	// 	/mob/living/proc/emote_yes,
@@ -213,10 +213,10 @@
 	// var/static/list/allowed_species_synth = list(
 	// 	/datum/species/synthetic
 	// )
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 	// modular_nova\modules\emotes\code\additionalemotes\overlay_emote.dm
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// var/static/list/nova_living_emotes_overlay = list(
 	// 	/mob/living/proc/emote_sweatdrop,
 	// 	/mob/living/proc/emote_exclaim,
@@ -226,10 +226,10 @@
 	// 	/mob/living/proc/emote_glasses
 	// )
 	// all_emotes += nova_living_emotes_overlay
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 	// modular_nova\modules\emotes\code\additionalemotes\turf_emote.dm
-	// SS1984 REMOVAL all_emotes += /mob/living/proc/emote_mark_turf
+	// Celadon REMOVAL all_emotes += /mob/living/proc/emote_mark_turf
 
 	// Clearing all emotes before applying new ones
 	verbs -= all_emotes
@@ -249,14 +249,14 @@
 			available_emotes += mob_emotes
 		if(isliving(src))
 			available_emotes += living_emotes
-			// SS1984 REMOVAL START
+			// Celadon REMOVAL START
 			// available_emotes += nova_living_emotes
 			// available_emotes += nova_living_emotes_overlay
 			// available_emotes += /mob/living/proc/emote_mark_turf
 			// Checking if should apply Synth emotes
 			// if(HAS_TRAIT(src, TRAIT_SILICON_EMOTES_ALLOWED))
 			// 	available_emotes += synth_emotes
-			// SS1984 REMOVAL END
+			// Celadon REMOVAL END
 		if(iscarbon(src))
 			available_emotes += carbon_emotes
 		if(ishuman(src))
@@ -282,385 +282,385 @@
 
 // code\modules\mob\emote.dm
 /mob/proc/emote_flip()
-	set name = "| Кувырок |" // SS1984 EDIT
+	set name = "| Кувырок |" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("flip", intentional = TRUE)
 
 /mob/proc/emote_spin()
-	set name = "| Крутиться |" // SS1984 EDIT
+	set name = "| Крутиться |" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("spin", intentional = TRUE)
 
 // code\modules\mob\living\emote.dm
 
 /mob/living/proc/emote_blush()
-	set name = "~ Краснеть" // SS1984 EDIT
+	set name = "~ Краснеть" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("blush", intentional = TRUE)
 
 /mob/living/proc/emote_bow()
-	set name = "~ Поклониться" // SS1984 EDIT
+	set name = "~ Поклониться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("bow", intentional = TRUE)
 
 /mob/living/proc/emote_burp()
-	set name = "> Отрыгнуть" // SS1984 EDIT
+	set name = "> Отрыгнуть" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("burp", intentional = TRUE)
 
 /mob/living/proc/emote_choke()
-	set name = "~ Подавиться" // SS1984 EDIT
+	set name = "~ Подавиться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("choke", intentional = TRUE)
 
 /mob/living/proc/emote_cross()
-	set name = "~ Скрестить руки" // SS1984 EDIT
+	set name = "~ Скрестить руки" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("cross", intentional = TRUE)
 
 /mob/living/proc/emote_chuckle()
-	set name = "~ Посмеиваться" // SS1984 EDIT
+	set name = "~ Посмеиваться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("chuckle", intentional = TRUE)
 
 /mob/living/proc/emote_collapse()
-	set name = "~ Потерять сознание" // SS1984 EDIT
+	set name = "~ Потерять сознание" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("collapse", intentional = TRUE)
 
 /mob/living/proc/emote_cough()
-	set name = "> Кашлять" // SS1984 EDIT
+	set name = "> Кашлять" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("cough", intentional = TRUE)
 
 /mob/living/proc/emote_dance()
-	set name = "~ Танцевать" // SS1984 EDIT
+	set name = "~ Танцевать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("dance", intentional = TRUE)
 
 /mob/living/proc/emote_drool()
-	set name = "~ Нести чепуху" // SS1984 EDIT
+	set name = "~ Нести чепуху" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("drool", intentional = TRUE)
 
 /mob/living/proc/emote_faint()
-	set name = "~ Упасть в обморок" // SS1984 EDIT
+	set name = "~ Упасть в обморок" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("faint", intentional = TRUE)
 
 /mob/living/proc/emote_flap()
-	set name = "~ Махать крыльями" // SS1984 EDIT
+	set name = "~ Махать крыльями" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("flap", intentional = TRUE)
 
 /mob/living/proc/emote_aflap()
-	set name = "~ Агрессивно махать крыльями" // SS1984 EDIT
+	set name = "~ Агрессивно махать крыльями" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("aflap", intentional = TRUE)
 
 /mob/living/proc/emote_frown()
-	set name = "~ Хмуриться" // SS1984 EDIT
+	set name = "~ Хмуриться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("frown", intentional = TRUE)
 
 /mob/living/proc/emote_gag()
-	set name = "~ Выворачивать наизнанку" // SS1984 EDIT
+	set name = "~ Выворачивать наизнанку" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("gag", intentional = TRUE)
 
 /mob/living/proc/emote_giggle()
-	set name = "~ Хихикать" // SS1984 EDIT
+	set name = "~ Хихикать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("giggle", intentional = TRUE)
 
 
 /mob/living/proc/emote_glare()
-	set name = "~ Свирепо смотреть" // SS1984 EDIT
+	set name = "~ Свирепо смотреть" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("glare", intentional = TRUE)
 
 /mob/living/proc/emote_grin()
-	set name = "~ Скалиться в улыбке" // SS1984 EDIT
+	set name = "~ Скалиться в улыбке" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("grin", intentional = TRUE)
 
 /mob/living/proc/emote_groan()
-	set name = "~ Болезненно вздыхать" // SS1984 EDIT
+	set name = "~ Болезненно вздыхать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("groan", intentional = TRUE)
 
 /mob/living/proc/emote_grimace()
-	set name = "~ Изобразить гримасу" // SS1984 EDIT
+	set name = "~ Изобразить гримасу" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("grimace", intentional = TRUE)
 
 /mob/living/proc/emote_jump()
-	set name = "~ Прыгать" // SS1984 EDIT
+	set name = "~ Прыгать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("jump", intentional = TRUE)
 
 /mob/living/proc/emote_kiss()
-	set name = "| Воздушный поцелуй |" // SS1984 EDIT
+	set name = "| Воздушный поцелуй |" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("kiss", intentional = TRUE)
 
 /mob/living/proc/emote_laugh()
-	set name = "> Смеяться" // SS1984 EDIT
+	set name = "> Смеяться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("laugh", intentional = TRUE)
 
 /mob/living/proc/emote_look()
-	set name = "~ Смотреть" // SS1984 EDIT
+	set name = "~ Смотреть" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("look", intentional = TRUE)
 
 /mob/living/proc/emote_nod()
-	set name = "~ Кивать" // SS1984 EDIT
+	set name = "~ Кивать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("nod", intentional = TRUE)
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /mob/living/proc/emote_nodnod()
 // 	set name = "~ Nodnod"
 // 	set category = "Emotes"
 // 	usr.emote("nod2", intentional = TRUE)
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
 /mob/living/proc/emote_point()
-	set name = "~ Указывать" // SS1984 EDIT
+	set name = "~ Указывать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("point", intentional = TRUE)
 
 /mob/living/proc/emote_pout()
-	set name = "~ Надуть губы" // SS1984 EDIT
+	set name = "~ Надуть губы" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("pout", intentional = TRUE)
 
 /mob/living/proc/emote_scream()
-	set name = "> Кричать" // SS1984 EDIT
+	set name = "> Кричать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("scream", intentional = TRUE)
 
 /mob/living/proc/emote_scowl()
-	set name = "~ Мрачно смотреть"// SS1984 EDIT
+	set name = "~ Мрачно смотреть"// Celadon EDIT
 	set category = "Emotes"
 	usr.emote("scowl", intentional = TRUE)
 
 /mob/living/proc/emote_shake()
-	set name = "~ Трясти головой" // SS1984 EDIT
+	set name = "~ Трясти головой" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("shake", intentional = TRUE)
 
 /mob/living/proc/emote_shiver()
-	set name = "~ Дрожать" // SS1984 EDIT
+	set name = "~ Дрожать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("shiver", intentional = TRUE)
 
 /mob/living/proc/emote_sigh()
-	set name = "> Вздохнуть"// SS1984 EDIT
+	set name = "> Вздохнуть"// Celadon EDIT
 	set category = "Emotes"
 	usr.emote("sigh", intentional = TRUE)
 
 /mob/living/proc/emote_sit()
-	set name = "~ Сесть" // SS1984 EDIT
+	set name = "~ Сесть" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("sit", intentional = TRUE)
 
 /mob/living/proc/emote_smile()
-	set name = "~ Улыбаться" // SS1984 EDIT
+	set name = "~ Улыбаться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("smile", intentional = TRUE)
 
 /mob/living/proc/emote_sneeze()
-	set name = "> Чихать" // SS1984 EDIT
+	set name = "> Чихать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("sneeze", intentional = TRUE)
 
 /mob/living/proc/emote_smug()
-	set name = "~ Ухмыляться" // SS1984 EDIT
+	set name = "~ Ухмыляться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("smug", intentional = TRUE)
 
 /mob/living/proc/emote_sniff()
-	set name = "> Нюхать" // SS1984 EDIT
+	set name = "> Нюхать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("sniff", intentional = TRUE)
 
 /mob/living/proc/emote_stare()
-	set name = "~ Пялиться" // SS1984 EDIT
+	set name = "~ Пялиться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("stare", intentional = TRUE)
 
 /mob/living/proc/emote_strech()
-	set name = "~ Размять конечности" // SS1984 EDIT
+	set name = "~ Размять конечности" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("stretch", intentional = TRUE)
 
 /mob/living/proc/emote_sulk()
-	set name = "~ Дуться" // SS1984 EDIT
+	set name = "~ Дуться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("sulk", intentional = TRUE)
 
 /mob/living/proc/emote_sway()
-	set name = "~ Кружиться" // SS1984 EDIT
+	set name = "~ Кружиться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("sway", intentional = TRUE)
 
 /mob/living/proc/emote_tilt()
-	set name = "~ Наклонить голову" // SS1984 EDIT
+	set name = "~ Наклонить голову" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("tilt", intentional = TRUE)
 
 /mob/living/proc/emote_tremble()
-	set name = "~ Дрожать в ужасе" // SS1984 EDIT
+	set name = "~ Дрожать в ужасе" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("tremble", intentional = TRUE)
 
 /mob/living/proc/emote_twitch()
-	set name = "~ Сильно дергаться" // SS1984 EDIT
+	set name = "~ Сильно дергаться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("twitch", intentional = TRUE)
 
 /mob/living/proc/emote_twitch_s()
-	set name = "~ Дергаться" // SS1984 EDIT
+	set name = "~ Дергаться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("twitch_s", intentional = TRUE)
 
 /mob/living/proc/emote_wave()
-	set name = "~ Махать рукой" // SS1984 EDIT
+	set name = "~ Махать рукой" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("wave", intentional = TRUE)
 
 /mob/living/proc/emote_whimper()
-	set name = "~ Хныкать" // SS1984 EDIT
+	set name = "~ Хныкать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("whimper", intentional = TRUE)
 
 /mob/living/proc/emote_wsmile()
-	set name = "~ Слабо улыбнуться" // SS1984 EDIT
+	set name = "~ Слабо улыбнуться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("wsmile", intentional = TRUE)
 
 /mob/living/proc/emote_yawn()
-	set name = "~ Зевать" // SS1984 EDIT
+	set name = "~ Зевать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("yawn", intentional = TRUE)
 
 /mob/living/proc/emote_gurgle()
-	set name = "~ Булькать" // SS1984 EDIT
+	set name = "~ Булькать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("gurgle", intentional = TRUE)
 
 /mob/living/proc/emote_inhale()
-	set name = "~ Вдохнуть" // SS1984 EDIT
+	set name = "~ Вдохнуть" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("inhale", intentional = TRUE)
 
 /mob/living/proc/emote_exhale()
-	set name = "~ Выдохнуть" // SS1984 EDIT
+	set name = "~ Выдохнуть" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("exhale", intentional = TRUE)
 
 /mob/living/proc/emote_swear()
-	set name = "~ Ругаться" // SS1984 EDIT
+	set name = "~ Ругаться" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("swear", intentional = TRUE)
 
 // code\modules\mob\living\carbon\emote.dm
 
 /mob/living/carbon/proc/emote_airguitar()
-	set name = "~ Играть на гитаре" // SS1984 EDIT
+	set name = "~ Играть на гитаре" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("airguitar", intentional = TRUE)
 
 /mob/living/carbon/proc/emote_blink()
-	set name = "~ Моргать" // SS1984 EDIT
+	set name = "~ Моргать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("blink", intentional = TRUE)
 
 /mob/living/carbon/proc/emote_blink_r()
-	set name = "~ Быстро моргать" // SS1984 EDIT
+	set name = "~ Быстро моргать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("blink_r", intentional = TRUE)
 
 /mob/living/carbon/proc/emote_crack()
-	set name = "> Хрустеть кистями" // SS1984 EDIT
+	set name = "> Хрустеть кистями" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("crack", intentional = TRUE)
 
 /mob/living/carbon/proc/emote_circle()
-	set name = "| Нарисовать круг |" // SS1984 EDIT
+	set name = "| Нарисовать круг |" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("circle", intentional = TRUE)
 
 /mob/living/carbon/proc/emote_moan()
-	set name = "~ Стонать" // SS1984 EDIT
+	set name = "~ Стонать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("moan", intentional = TRUE)
 
 /mob/living/carbon/proc/emote_slap()
-	set name = "| Шлёпнуть |" // SS1984 EDIT
+	set name = "| Шлёпнуть |" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("slap", intentional = TRUE)
 
 /mob/living/carbon/proc/emote_wink()
-	set name = "~ Трясти хвостом" // SS1984 EDIT
+	set name = "~ Трясти хвостом" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("wink", intentional = TRUE)
 
 // code\modules\mob\living\carbon\human\emote.dm
 
 /mob/living/carbon/human/proc/emote_cry()
-	set name = "~ Плакать" // SS1984 EDIT
+	set name = "~ Плакать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("cry", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_eyebrow()
-	set name = "~ Поднять брови" // SS1984 EDIT
+	set name = "~ Поднять брови" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("eyebrow", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_grumble()
-	set name = "~ Ворчать" // SS1984 EDIT
+	set name = "~ Ворчать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("grumble", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_mumble()
-	set name = "~ Бормотать" // SS1984 EDIT
+	set name = "~ Бормотать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("mumble", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_pale()
-	set name = "~ Бледнеть" // SS1984 EDIT
+	set name = "~ Бледнеть" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("pale", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_raise()
-	set name = "~ Поднять руку" // SS1984 EDIT
+	set name = "~ Поднять руку" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("raise", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_salute()
-	set name = "~ Салютовать" // SS1984 EDIT
+	set name = "~ Салютовать" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("salute", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_shrug()
-	set name = "~ Пожать плечами" // SS1984 EDIT
+	set name = "~ Пожать плечами" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("shrug", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_wag()
-	set name = "| Вилять хвостом |" // SS1984 EDIT
+	set name = "| Вилять хвостом |" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("wag", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_wing()
-	set name = "| Расправить крылья |" // SS1984 EDIT
+	set name = "| Расправить крылья |" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("wing", intentional = TRUE)
 
-/* SS1984 REMOVAL START
+/* Celadon REMOVAL START
 // modular_nova\modules\emotes\code\emote.dm
 
 /mob/living/proc/emote_peep()
@@ -1002,127 +1002,127 @@
 	set category = "Emotes+"
 	usr.emote("teshtrill", intentional = TRUE)
 
-SS1984 REMOVAL END */
+Celadon REMOVAL END */
 
 // code\modules\mob\living\brain\emote.dm
 
 /mob/living/brain/proc/emote_alarm()
-	set name = "< Издать предупреждающий звук >" // SS1984 EDIT
+	set name = "< Издать предупреждающий звук >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("alarm", intentional = TRUE)
 
 /mob/living/brain/proc/emote_alert()
-	set name = "< Издать тревожный шум >" // SS1984 EDIT
+	set name = "< Издать тревожный шум >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("alert", intentional = TRUE)
 
 /mob/living/brain/proc/emote_flash()
-	set name = "< Мерцать светом >" // SS1984 EDIT
+	set name = "< Мерцать светом >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("flash", intentional = TRUE)
 
 /mob/living/brain/proc/emote_notice()
-	set name = "< Издать громкий звук >" // SS1984 EDIT
+	set name = "< Издать громкий звук >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("notice", intentional = TRUE)
 
 /mob/living/brain/proc/emote_whistle_brain()
-	set name = "< Свистеть >" // SS1984 EDIT
+	set name = "< Свистеть >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("whistle", intentional = TRUE)
 
 // code\modules\mob\living\carbon\alien\emote.dm
 
 /mob/living/carbon/alien/proc/emote_gnarl()
-	set name = "< Обнажить зубы >" // SS1984 EDIT
+	set name = "< Обнажить зубы >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("gnarl", intentional = TRUE)
 
 /mob/living/carbon/alien/proc/emote_hiss()
-	set name = "< Шипеть >" // SS1984 EDIT
+	set name = "< Шипеть >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("hiss", intentional = TRUE)
 
 /mob/living/carbon/alien/proc/emote_roar()
-	set name = "< Рычать >" // SS1984 EDIT
+	set name = "< Рычать >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("roar", intentional = TRUE)
 
 //modular_nova\modules\emotes\code\synth_emotes.dm
 
-/* SS1984 REMOVAL START
+/* Celadon REMOVAL START
 /mob/living/proc/emote_dwoop()
-	set name = "< Dwoop >" // SS1984 EDIT
+	set name = "< Dwoop >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("dwoop", intentional = TRUE)
 
 /mob/living/proc/emote_yes()
-	set name = "< Yes >" // SS1984 EDIT
+	set name = "< Yes >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("yes", intentional = TRUE)
 
 /mob/living/proc/emote_no()
-	set name = "< No >" // SS1984 EDIT
+	set name = "< No >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("no", intentional = TRUE)
 
 /mob/living/proc/emote_boop()
-	set name = "< Boop >" // SS1984 EDIT
+	set name = "< Boop >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("boop", intentional = TRUE)
 
 /mob/living/proc/emote_buzz()
-	set name = "< Buzz >" // SS1984 EDIT
+	set name = "< Buzz >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("buzz", intentional = TRUE)
 
 /mob/living/proc/emote_beep()
-	set name = "< Beep >" // SS1984 EDIT
+	set name = "< Beep >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("beep", intentional = TRUE)
 
 /mob/living/proc/emote_beep2()
-	set name = "< Beep Sharply >" // SS1984 EDIT
+	set name = "< Beep Sharply >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("beep2", intentional = TRUE)
 
 /mob/living/proc/emote_buzz2()
-	set name = "< Buzz Twice >" // SS1984 EDIT
+	set name = "< Buzz Twice >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("buzz2", intentional = TRUE)
 
 /mob/living/proc/emote_chime()
-	set name = "< Chime >" // SS1984 EDIT
+	set name = "< Chime >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("chime", intentional = TRUE)
 
 /mob/living/proc/emote_honk()
-	set name = "< Honk >" // SS1984 EDIT
+	set name = "< Honk >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("honk", intentional = TRUE)
 
 /mob/living/proc/emote_ping()
-	set name = "< Ping >" // SS1984 EDIT
+	set name = "< Ping >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("ping", intentional = TRUE)
 
 /mob/living/proc/emote_sad()
-	set name = "< Sad >" // SS1984 EDIT
+	set name = "< Sad >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("sad", intentional = TRUE)
 
 /mob/living/proc/emote_warn()
-	set name = "< Warn >" // SS1984 EDIT
+	set name = "< Warn >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("warn", intentional = TRUE)
 
 /mob/living/proc/emote_slowclap()
-	set name = "< Slow Clap >" // SS1984 EDIT
+	set name = "< Slow Clap >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("slowclap", intentional = TRUE)
-SS1984 REMOVAL END */
+Celadon REMOVAL END */
 
-/* SS1984 REMOVAL START
+/* Celadon REMOVAL START
 
 // modular_nova\modules\emotes\code\additionalemotes\overlay_emote.dm
 /mob/living/proc/emote_sweatdrop()
@@ -1161,4 +1161,4 @@ SS1984 REMOVAL END */
 	set category = "Emotes+"
 	usr.emote("turf", intentional = TRUE)
 
-SS1984 REMOVAL END */
+Celadon REMOVAL END */

@@ -14,8 +14,8 @@
 	VAR_PRIVATE/datum/weakref/beam_weakref
 	/// We need to track who was the ORIGINAL firer of the projectile specifically to ensure deflects work correctly
 	VAR_PRIVATE/datum/weakref/initial_firer_weakref
-	VAR_PROTECTED/apply_tase_effect = TRUE // SS1984 ADDITION, should tase status effect even be applied?
-	VAR_PROTECTED/show_beam_effect = TRUE // SS1984 ADDITION, should beam be shown once fired?
+	VAR_PROTECTED/apply_tase_effect = TRUE // Celadon ADDITION, should tase status effect even be applied?
+	VAR_PROTECTED/show_beam_effect = TRUE // Celadon ADDITION, should beam be shown once fired?
 
 /obj/projectile/energy/electrode/is_hostile_projectile()
 	return TRUE

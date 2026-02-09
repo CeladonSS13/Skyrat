@@ -163,10 +163,10 @@
 		if(design.build_type & MECHFAB)
 			cached_designs |= design
 
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	for(var/datum/design/illegal_disign in illegal_local_designs)
 		cached_designs |= illegal_disign
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 
 	var/design_delta = cached_designs.len - previous_design_count
 
@@ -436,7 +436,7 @@
 				if(!istext(design_id))
 					continue
 
-				if(!(stored_research.researched_designs.Find(design_id) || is_type_in_list(SSresearch.techweb_design_by_id(design_id), illegal_local_designs))) // SS1984 EDIT, original: if(!stored_research.researched_designs.Find(design_id))
+				if(!(stored_research.researched_designs.Find(design_id) || is_type_in_list(SSresearch.techweb_design_by_id(design_id), illegal_local_designs))) // Celadon EDIT, original: if(!stored_research.researched_designs.Find(design_id))
 					continue
 				var/datum/design/design = SSresearch.techweb_design_by_id(design_id)
 

@@ -111,7 +111,7 @@
 		log_dynamic("Bad config edit rejected: [new_var]")
 		return FALSE
 
-	if(islist(new_val) && (new_var == NAMEOF(src, weight) || new_var == NAMEOF(src, min_pop) || new_var == NAMEOF(src, min_enemies))) // SS1984 EDIT, original: if(islist(new_val) && (new_var == NAMEOF(src, weight) || new_var == NAMEOF(src, min_pop)))
+	if(islist(new_val) && (new_var == NAMEOF(src, weight) || new_var == NAMEOF(src, min_pop) || new_var == NAMEOF(src, min_enemies))) // Celadon EDIT, original: if(islist(new_val) && (new_var == NAMEOF(src, weight) || new_var == NAMEOF(src, min_pop)))
 		new_val = load_tier_list(new_val)
 
 	vars[new_var] = new_val

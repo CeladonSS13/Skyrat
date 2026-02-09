@@ -39,7 +39,7 @@
 	return no_nulls_ammo
 
 /obj/item/ammo_box/magazine/internal/cylinder/give_round(obj/item/ammo_casing/R, replace_spent = 0)
-	if(!R || !(caliber ? (caliber == R.caliber || (caliber == CALIBER_SHOTGUN && R.caliber == CALIBER_JUNK)) : (ammo_type == R.type))) // SS1984 EDIT, original: if(!R || !(caliber ? (caliber == R.caliber) : (ammo_type == R.type)))
+	if(!R || !(caliber ? (caliber == R.caliber || (caliber == CALIBER_SHOTGUN && R.caliber == CALIBER_JUNK)) : (ammo_type == R.type))) // Celadon EDIT, original: if(!R || !(caliber ? (caliber == R.caliber) : (ammo_type == R.type)))
 		return FALSE
 
 	for(var/i in 1 to stored_ammo.len)

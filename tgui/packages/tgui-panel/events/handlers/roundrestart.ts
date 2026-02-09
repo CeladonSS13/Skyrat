@@ -5,9 +5,9 @@ import { store } from '../store';
 export function roundrestart() {
   store.set(roundRestartedAtAtom, Date.now());
   saveChatToStorage();
-  startAsyncReconnect(); // SS1984 ADDITION
+  startAsyncReconnect(); // Celadon ADDITION
 }
-// SS1984 ADDITION START
+// Celadon ADDITION START
 function delay_reconnect(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -17,4 +17,4 @@ async function startAsyncReconnect(): Promise<void> {
     Byond.command('.reconnect');
   }
 }
-// SS1984 ADDITION END
+// Celadon ADDITION END

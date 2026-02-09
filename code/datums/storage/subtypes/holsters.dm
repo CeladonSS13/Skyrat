@@ -58,7 +58,7 @@
 		/obj/item/ammo_box/magazine/recharge/plasma_battery,
 		/obj/item/gun/energy/recharge/kinetic_accelerator/variant/glock,
 		// NOVA EDIT END
-		/obj/item/gun/energy/e_gun/advtaser, // SS1984 ADDITION
+		/obj/item/gun/energy/e_gun/advtaser, // Celadon ADDITION
 	)
 
 	return ..()
@@ -100,7 +100,7 @@
 		/obj/item/food/grown/banana,
 		/obj/item/gun/energy/recharge/kinetic_accelerator/variant/glock,
 		// NOVA EDIT ADDITION END
-		/obj/item/gun/energy/e_gun/advtaser, // SS1984 ADDITION
+		/obj/item/gun/energy/e_gun/advtaser, // Celadon ADDITION
 	)
 
 	return ..()
@@ -128,7 +128,7 @@
 		/obj/item/gun/energy/laser/captain,
 		/obj/item/gun/energy/laser/pistol,
 		/obj/item/gun/energy/e_gun/hos,
-		/obj/item/gun/energy/e_gun/advtaser, // SS1984 ADDITION
+		/obj/item/gun/energy/e_gun/advtaser, // Celadon ADDITION
 	)
 
 	return ..()

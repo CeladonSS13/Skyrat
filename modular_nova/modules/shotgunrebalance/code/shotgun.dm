@@ -345,18 +345,18 @@
 		if(range > 0)
 			return BULLET_ACT_FORCE_PIERCE
 		return ..()
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// if(!isliving(target) || (damage > initial(damage)))
 	// 	return ..()
 	// var/mob/living/target_mob = target
 	// if(target_mob.mob_biotypes & biotype_we_look_for || istype(target_mob, /mob/living/simple_animal/hostile/megafauna))
 	// 	damage *= biotype_damage_multiplier
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 	return ..()
 
 /obj/projectile/bullet/shotgun_slug/hunter/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/bane, mob_biotypes = biotype_we_look_for, damage_multiplier = biotype_damage_multiplier, requires_combat_mode = FALSE) // SS1984 EDIT, original: AddElement(/datum/element/bane, mob_biotypes = MOB_BEAST, damage_multiplier = 5)
+	AddElement(/datum/element/bane, mob_biotypes = biotype_we_look_for, damage_multiplier = biotype_damage_multiplier, requires_combat_mode = FALSE) // Celadon EDIT, original: AddElement(/datum/element/bane, mob_biotypes = MOB_BEAST, damage_multiplier = 5)
 
 /obj/item/ammo_casing/shotgun/honkshot
 	name = "confetti shell"

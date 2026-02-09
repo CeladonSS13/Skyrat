@@ -16,7 +16,7 @@ enum TAB {
   Requests = 'active requests',
   Cart = 'cart',
   Help = 'help',
-  CompanyImports = 'company_import_window', // SS1984 EDIT ADD
+  CompanyImports = 'company_import_window', // Celadon EDIT ADD
 }
 
 export function Cargo(props) {
@@ -82,7 +82,7 @@ export function CargoContent(props) {
             >
               Requests ({requests.length})
             </Tabs.Tab>
-	            {/* SS1984 EDIT ADD START */}
+	            {/* Celadon EDIT ADD START */}
             <Tabs.Tab
               icon="clipboard-list"
               selected={tab === TAB.CompanyImports}
@@ -90,7 +90,7 @@ export function CargoContent(props) {
             >
               Company Imports
             </Tabs.Tab>
-            {/* SS1984 EDIT ADD END */}
+            {/* Celadon EDIT ADD END */}
             {!requestonly && (
               <>
                 <Tabs.Tab

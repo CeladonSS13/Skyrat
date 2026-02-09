@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	msg = replacetext(replacetext(msg, "%TARGET_PRONOUN_THEM%", target.p_them()), "%USER_PRONOUN_THEM%", user.p_them())
 	msg = replacetext(replacetext(msg, "%TARGET_PRONOUN_THEY%", target.p_they()), "%USER_PRONOUN_THEY%", user.p_they())
 
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// if(lewd)
 	//	if(use_subtler)
 	//		user.emote("subtler", type_override = /datum/emote/living/subtler::emote_type | EMOTE_LEWD, message = msg, intentional = TRUE)
@@ -118,7 +118,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		// 	user.visible_message(span_purple("[user] [msg]"), ignored_mobs = ignoring_mobs)
 		// 	user.log_message(msg, LOG_EMOTE)
 	// else
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 	user.manual_emote(msg)
 
 	if(user_messages.len)
@@ -147,18 +147,18 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 			message_admins("Deprecated sound handling for '[html_encode(name)]'. Correct format is a list with one entry. This message will only show once.")
 			sound_possible = list(sound_possible)
 		sound_cache = pick(sound_possible)
-		// SS1984 REMOVAL START
+		// Celadon REMOVAL START
 		// if (lewd)
 		// 	playsound_if_pref(target.loc, sound_cache, 50, sound_vary, max(0, -SOUND_RANGE + sound_range), pref_to_check = /datum/preference/toggle/erp/sounds)
 		// else
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 		playsound(target.loc, sound_cache, 50, sound_vary, max(0, -SOUND_RANGE + sound_range))
 
 	INVOKE_ASYNC(src, PROC_REF(apply_effects), user, target)
 
 /// Applies side effects to the user and/or target of the interaction.
 /datum/interaction/proc/apply_effects(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	// SS1984 REMOVAL OF ERP PAIN
+	// Celadon REMOVAL OF ERP PAIN
 	return
 
 /datum/interaction/proc/load_from_json(path)

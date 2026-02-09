@@ -416,8 +416,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 		var/mob/living/silicon/robot/borg = occupant
 		announce_rank = "[borg.designation] Cyborg"
 
-	if(!announce_rank) // SS1984 ADDITION - not in manifest (visitor ID or removed from manifest)
-		announce_rank = "Unassigned[occupant_rank ? " (as [occupant_rank])" : ""]" // SS1984 ADDITION
+	if(!announce_rank) // Celadon ADDITION - not in manifest (visitor ID or removed from manifest)
+		announce_rank = "Unassigned[occupant_rank ? " (as [occupant_rank])" : ""]" // Celadon ADDITION
 
 	var/obj/machinery/computer/cryopod/control_computer = control_computer_weakref?.resolve()
 	if(!control_computer)
@@ -630,13 +630,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
 	/// For figuring out where the local cryopod computer is. Must be set for cryo computer announcements.
 	var/area/computer_area
 
-/obj/effect/mob_spawn/ghost_role/proc/after_create_nova(mob/living/spawned_mob) // SS1984 EDIT, original: /obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname, apply_prefs)
+/obj/effect/mob_spawn/ghost_role/proc/after_create_nova(mob/living/spawned_mob) // Celadon EDIT, original: /obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname, apply_prefs)
 	var/obj/machinery/computer/cryopod/control_computer = find_control_computer()
 
 	var/alt_name = get_spawner_outfit_name()
 	alt_name = alt_name ? alt_name : name
 	GLOB.ghost_records.Add(list(list("name" = spawned_mob.real_name, "rank" = alt_name)))
-	if(control_computer && ishuman(spawned_mob)) // SS1984 EDIT, original: if(control_computer)
+	if(control_computer && ishuman(spawned_mob)) // Celadon EDIT, original: if(control_computer)
 		// Due ghost often have only channel, I decide to not send awakening message if we sending head announcement
 		var/datum/job/ghost_job = SSjob.get_job_type(spawner_job_path)
 		if (ghost_job.head_announce)

@@ -17,7 +17,7 @@ PROCESSING_SUBSYSTEM_DEF(reagents)
 	GLOB.fake_reagent_blacklist = list(/datum/reagent/medicine/c2, /datum/reagent/medicine, /datum/reagent/reaction_agent)
 	//Build GLOB lists - see holder.dm
 	build_chemical_reactions_lists()
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// // NOVA EDIT ADDITION START
 	// if(CONFIG_GET(flag/disable_erp_preferences))
 	// 	for(var/reaction_path in GLOB.chemical_reactions_list)
@@ -30,7 +30,7 @@ PROCESSING_SUBSYSTEM_DEF(reagents)
 	// 			if(reaction_list)
 	// 				reaction_list -= reaction_datum
 	// // NOVA EDIT ADDITION END
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/processing/reagents/fire(resumed = FALSE)

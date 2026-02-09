@@ -200,7 +200,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 #undef COMBAT_NOTICE_COOLDOWN
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /datum/keybinding/living/combat_indicator
 // 	hotkey_keys = list("C")
 // 	name = "combat_indicator"
@@ -214,7 +214,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 // 		return
 // 	var/mob/living/L = user.mob
 // 	L.user_toggle_combat_indicator()
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
 /datum/config_entry/flag/combat_indicator
 

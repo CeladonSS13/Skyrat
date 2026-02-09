@@ -33,9 +33,9 @@
 		/area/station/command/vault, 									/*aka Vault since it's QM's special thing*/
 		/area/station/ai/satellite/chamber,	// these are areas exclusive to RD
 		/area/station/ai/upload,			// but sometimes mappers might misconfig their doors with our several dozen access helpers
-		/area/centcom/central_command_areas/admin,						//ss1984 add start
+		/area/centcom/central_command_areas/admin,						//celadon add start
 		/area/centcom/central_command_areas/armory,
-		/area/centcom/central_command_areas/ferry,						// ss1984 add end
+		/area/centcom/central_command_areas/ferry,						// celadon add end
 	)
 	COOLDOWN_DECLARE(shock_cooldown)
 	/// sound played when mode is switched

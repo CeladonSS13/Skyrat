@@ -60,7 +60,7 @@
 			. += "There's [charging] cell in the charger, current charge: [round(charging.percent(), 1)]%."
 	if(in_range(user, src) || isobserver(user))
 		. += span_notice("The status display reads: Charging power: <b>[display_power(charge_rate, convert = FALSE)]</b> per cell.")
-		. += get_powermonitoring_desc(src) // SS1984 ADDITION
+		. += get_powermonitoring_desc(src) // Celadon ADDITION
 	. += span_notice("Alt click it to remove all the cells at once!")
 
 /obj/machinery/cell_charger_multi/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)

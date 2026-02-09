@@ -440,7 +440,7 @@
 		update_button_status(current_button)
 		return
 	full_key = tgui_input_keycombo(user, "Please bind a key for this action.")
-	full_key = convert_ru_key_to_en_key(full_key) // SS1984 ADDITION
+	full_key = convert_ru_key_to_en_key(full_key) // Celadon ADDITION
 	update_button_status(current_button)
 
 /datum/action/proc/keydown(mob/source, key, client/client, full_key)
