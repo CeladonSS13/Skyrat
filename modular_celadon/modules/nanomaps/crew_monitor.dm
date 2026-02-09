@@ -16,7 +16,7 @@
 	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "CrewConsole1984")
+		ui = new(user, src, "CrewConsoleCeladon")
 		ui.open()
 
 /obj/machinery/computer/crew/ui_data(mob/user)
@@ -33,7 +33,7 @@
 	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "CrewConsole1984")
+		ui = new(user, src, "CrewConsoleCeladon")
 		ui.open()
 
 /obj/item/sensor_device/ui_data(mob/user)

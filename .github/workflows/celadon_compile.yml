@@ -1,0 +1,73 @@
+name: Celadon Compile
+on:
+  - pull_request_target
+
+permissions:
+  contents: write
+
+jobs:
+  compile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    steps:
+    - uses: actions/checkout@v4
+      with: # to make it work on pull requests
+        ref: ${{github.event.pull_request.head.ref}}
+        repository: ${{github.event.pull_request.head.repo.full_name}}
+    - name: Cache APT packages
+      uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: gcc-multilib zlib1g-dev
+        version: 1.0
+    - name: Cache PYTHON
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.11.0' # would be good, if match PYTHON_VERSION in dependencies.sh
+        cache: 'pip'
+    - name: Setup part 1 (Bun)
+      uses: ./.github/actions/setup_bun
+    - name: Setup part 2 (.NET SDK)
+      uses: actions/setup-dotnet@v4.2.0
+      with:
+        dotnet-version: 9.x
+    - name: Setup part 3 (Install OpenDream)
+      uses: robinraju/release-downloader@v1.12
+      with:
+        repository: "OpenDreamProject/OpenDream"
+        tag: "latest"
+        fileName: "DMCompiler_linux-x64.tar.gz"
+        extract: true
+    - name: Setup part 4 (Install Tools)
+      run: |
+        pip3 install setuptools
+        tools/bootstrap/python -c ''
+    - name: Setup part 5 (Install BYOND)
+      run: tools/ci/install_byond.sh STABLE
+    - name: Setup part 6 (Install Dreamluau)
+      run: tools/ci/install_dreamluau.sh
+    - name: Cache RUST_REMOTE folder
+      uses: actions/cache@v4
+      with:
+        path: RUST_REMOTE # folder to cache
+        key: rust_remote_repo_celadon # key for the cache
+        restore-keys: |
+          rust_remote_repo_celadon
+    - name: Setup part 7 (Rust Cache)
+      uses: Swatinem/rust-cache@v2.8.0
+      with:
+        workspaces: |
+          RUST_REMOTE
+          RUST
+        cache-all-crates: true
+    - name: Setup part 8 (Give Linters A Go)
+      id: linter-setup
+      run: ":"
+    - name: Compile with OpenDream
+      if: steps.linter-setup.conclusion == 'success' && !cancelled()
+      run: ./DMCompiler_linux-x64/DMCompiler tgstation.dme --suppress-unimplemented --version=516.1662 --define=CIBUILDING | bash tools/ci/annotate_od.sh
+    - name: Compile with DM
+      if: steps.linter-setup.conclusion == 'success' && !cancelled()
+      run: |
+        source $HOME/BYOND/byond/bin/byondsetup
+        tools/ci/dm.sh -DCIBUILDING tgstation.dme

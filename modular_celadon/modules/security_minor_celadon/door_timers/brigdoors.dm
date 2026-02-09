@@ -15,7 +15,7 @@
 	// don't call base
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "BrigTimer1984", name)
+		ui = new(user, src, "BrigTimerCeladon", name)
 		ui.open()
 
 /obj/machinery/status_display/door_timer/ui_static_data(mob/user)

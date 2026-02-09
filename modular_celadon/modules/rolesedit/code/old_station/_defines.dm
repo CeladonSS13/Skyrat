@@ -122,9 +122,9 @@ GLOBAL_LIST_EMPTY(safes)
 
 //map changes
 
-/datum/map_template/ruin/space/oldstation1984
-	id = "oldstation1984"
-	suffix = "oldstation1984.dmm"
+/datum/map_template/ruin/space/oldstation_celadon
+	id = "oldstation_celadon"
+	suffix = "oldstation_celadon.dmm"
 	name = "Space-Ruin Ancient Space Station (1984 edit)"
 	description = "The crew of a space station awaken one hundred years after a crisis. Awaking to a derelict space station on the verge of collapse, and a hostile force of invading \
 	hivebots. Can the surviving crew overcome the odds and survive and rebuild, or will the cold embrace of the stars become their new home?"

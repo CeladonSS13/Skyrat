@@ -14,7 +14,7 @@
 	id = "ice-base1984"
 	description = "A planetside Interdyne research facility developing biological weapons; it is closely guarded by an elite team of agents."
 	prefix = "_maps/RandomRuins/IceRuins/nova/"
-	suffix = "icemoon_underground_interdyne_base1984.dmm"
+	suffix = "icemoon_underground_interdyne_base_celadon.dmm"
 	allow_duplicates = FALSE
 	never_spawn_with = list(/datum/map_template/ruin/lavaland/nova/interdyne_base1984)
 	always_place = TRUE
