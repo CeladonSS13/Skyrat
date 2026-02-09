@@ -96,30 +96,30 @@
 #define INTERLINK_CELADON_CENTRAL 2
 #define INTERLINK_CELADON_STARBOARD 3
 
-/obj/effect/landmark/transport/transport_id/interlink_tram_CELADON
+/obj/effect/landmark/transport/transport_id/interlink_tram_celadon
 	specific_transport_id = INTERLINK_CELADON_LINE_1
 
-/obj/effect/landmark/transport/nav_beacon/tram/nav/interlink_tram_CELADON
+/obj/effect/landmark/transport/nav_beacon/tram/nav/interlink_tram_celadon
 	name = INTERLINK_CELADON_LINE_1
 	specific_transport_id = TRAM_NAV_BEACONS
 
-/obj/effect/landmark/transport/nav_beacon/tram/platform/interlink_tram_CELADON/left
+/obj/effect/landmark/transport/nav_beacon/tram/platform/interlink_tram_celadon/left
 	name = "Port"
 	specific_transport_id = INTERLINK_CELADON_LINE_1
 	platform_code = INTERLINK_CELADON_PORT
 	tgui_icons = list("Reception" = "briefcase", "Botany" = "leaf", "Chemistry" = "flask")
 
-/obj/effect/landmark/transport/nav_beacon/tram/platform/interlink_tram_CELADON/middle
+/obj/effect/landmark/transport/nav_beacon/tram/platform/interlink_tram_celadon/middle
 	name = "Central"
 	specific_transport_id = INTERLINK_CELADON_LINE_1
 	platform_code = INTERLINK_CELADON_CENTRAL
 	tgui_icons = list("Shuttle" = "plane-departure", "Security" = "gavel")
 
-/obj/effect/landmark/transport/nav_beacon/tram/platform/interlink_tram_CELADON/right
+/obj/effect/landmark/transport/nav_beacon/tram/platform/interlink_tram_celadon/right
 	name = "Starboard"
 	specific_transport_id = INTERLINK_CELADON_LINE_1
 	platform_code = INTERLINK_CELADON_STARBOARD
 	tgui_icons = list("Medical" = "plus", "Engineering" = "wrench", "Dormitories" = "bed")
 
-/obj/machinery/transport/tram_controller/interlink_tram_CELADON
+/obj/machinery/transport/tram_controller/interlink_tram_celadon
 	configured_transport_id = INTERLINK_CELADON_LINE_1
