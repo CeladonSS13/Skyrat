@@ -160,6 +160,7 @@ ADMIN_VERB(log_viewer_new, R_ADMIN|R_DEBUG, "View Round Logs", "View the rounds 
 /// Tells the log_holder to not allow any more logging to be done, and dumps all categories to their json file
 /datum/log_holder/proc/shutdown_logging()
 	if(shutdown)
+		TryAutoHardReboot() // SS1984 ADDITION
 		CRASH("Attempted to call shutdown_logging twice!")
 	shutdown = TRUE
 
