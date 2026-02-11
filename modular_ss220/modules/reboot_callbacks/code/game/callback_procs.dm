@@ -19,4 +19,17 @@
 /proc/TryAutoHardReboot()
 	if (world.system_type != UNIX)
 		return // not supported, write your own if needed
-	shell("pkill -USR1 DreamDaemon") // linux magic
+	var/proc_pid = GetHostProcessPID()
+	if (proc_pid)
+		var/pid_s = num2text(proc_pid)
+		if (pid_s != null)
+			shell("kill -s USR1 [pid_s]") // linux magic
+
+/proc/GetHostProcessPID()
+	if (!fexists(CUSTOM_DREAMDAEMON_PID_PATH))
+		return null
+	var/pid_str = file2text(CUSTOM_DREAMDAEMON_PID_PATH)
+	if (!pid_str)
+		return null
+	pid_str = trim(pid_str)
+	return text2num(pid_str)
