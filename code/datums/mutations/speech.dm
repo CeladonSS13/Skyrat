@@ -263,8 +263,8 @@
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message)
 		message = " [message] "
-		var/list/medieval_words = strings("medieval_replacement.json", "medieval")
-		var/list/startings = strings("medieval_replacement.json", "startings")
+		var/list/medieval_words = strings("medieval_replacement_ru.json", "medieval") // SS1984 EDIT, original:
+		var/list/startings = strings("medieval_replacement_ru.json", "startings") // SS1984 EDIT, original:
 		for(var/key in medieval_words)
 			var/value = medieval_words[key]
 			if(islist(value))
