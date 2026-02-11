@@ -273,7 +273,7 @@
 				value = uppertext(value)
 			if(capitalize(key) == key)
 				value = capitalize(value)
-			message = replacetextEx(message,regex("[REGEX_QUOTE(key)]","ig"), value) // SS1984 EDIT, original: message = replacetextEx(message,regex("\b[REGEX_QUOTE(key)]\b","ig"), value)
+			message = replacetextEx(message, regex(@"([^a-zA-Zа-яёА-ЯЁ])" + "[REGEX_QUOTE(key)]" + @"([^a-zA-Zа-яёА-ЯЁ])", "ig"), " [value]") // SS1984 EDIT, original: message = replacetextEx(message,regex("\b[REGEX_QUOTE(key)]\b","ig"), value)
 		message = trim(message)
 		var/chosen_starting = pick(startings)
 		message = "[chosen_starting] [message]"
