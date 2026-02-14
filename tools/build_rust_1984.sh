@@ -83,7 +83,7 @@ fi
 if command -v rsync >/dev/null 2>&1; then
     rsync -a --mkpath "$TARGET_DIR/target/i686-unknown-linux-gnu/release/librust_g.so" "$PROJECT_ROOT/"
 else
-    cp -f "$TARGET_DIR/RUST_REMOTE/target/i686-unknown-linux-gnu/release/librust_g.so" "$PROJECT_ROOT/librust_g.so"
+    cp -f "$TARGET_DIR/target/i686-unknown-linux-gnu/release/librust_g.so" "$PROJECT_ROOT/librust_g.so"
 fi
 
 if [ ! $? -eq 0 ]; then
@@ -96,7 +96,7 @@ cd $PROJECT_ROOT
 if command -v rsync >/dev/null 2>&1; then
     rsync -a --mkpath "$SRC_DIR/target/i686-unknown-linux-gnu/release/librust_1984.so" "$PROJECT_ROOT/"
 else
-    cp -f "$SRC_DIR/RUST_REMOTE/target/i686-unknown-linux-gnu/release/librust_1984.so" "$PROJECT_ROOT/librust_1984.so"
+    cp -f "$SRC_DIR/target/i686-unknown-linux-gnu/release/librust_1984.so" "$PROJECT_ROOT/librust_1984.so"
 fi
 
 if [ ! $? -eq 0 ]; then
