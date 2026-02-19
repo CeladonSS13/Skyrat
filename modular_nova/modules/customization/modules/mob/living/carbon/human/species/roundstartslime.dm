@@ -344,7 +344,8 @@
 	new_body.domutcheck()
 	new_body.forceMove(get_turf(src))
 	new_body.set_blood_volume(BLOOD_VOLUME_SAFE + 60)
-	SSquirks.AssignQuirks(new_body, brainmob.client)
+	brainmob.transfer_quirk_datums(new_body) // SS1984 ADDITION
+	// SS1984 REMOVAL SSquirks.AssignQuirks(new_body, brainmob.client)
 	src.replace_into(new_body)
 	for(var/obj/item/bodypart/bodypart as anything in new_body.bodyparts)
 		if(!istype(bodypart, /obj/item/bodypart/chest))
