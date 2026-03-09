@@ -10,7 +10,7 @@
   <li>Временно: <b>VPN разрешен, но только на данном сервере</b></li>
 </ul>
 
-<p><b>Для подключения адрес сервера: </b>89.169.0.84:7731</p>
+<p><b>Для подключения адрес сервера: </b>sky.celadon.pro:7731</p>
 <b>Discord:</b> <a href="https://discord.gg/rxsggTJzY3">https://discord.gg/rxsggTJzY3</a>
 <br>
 <b>Github:</b> <a href="https://github.com/skyrat1984test/skyrat1984test">https://github.com/skyrat1984test/skyrat1984test</a>

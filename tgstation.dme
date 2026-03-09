@@ -9652,7 +9652,6 @@
 #include "modular_celadon\modules\rolesedit\code\jobs\chief_medical_officer.dm"
 #include "modular_celadon\modules\rolesedit\code\jobs\command.dm"
 #include "modular_celadon\modules\rolesedit\code\jobs\engineering.dm"
-#include "modular_celadon\modules\rolesedit\code\jobs\medical.dm"
 #include "modular_celadon\modules\rolesedit\code\jobs\misc.dm"
 #include "modular_celadon\modules\rolesedit\code\jobs\ntr.dm"
 #include "modular_celadon\modules\rolesedit\code\jobs\prisoner.dm"
