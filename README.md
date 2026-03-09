@@ -8,7 +8,7 @@
 | Guide to Modularization | [./modular_nova/readme.md](./modular_nova/readme.md)                                                                                   |
 | Guide to Mirroring      | [./modular_nova/mirroring_guide.md](./modular_nova/mirroring_guide.md)                                                                 |
 | Upstream (Novasector)   | [https://github.com/NovaSector/NovaSector](https://github.com/NovaSector/NovaSector)                                                   |
-| Wiki                    | [https://skyrat.ss220.space/index.php](https://skyrat.ss220.space/index.php)                                                           |
+| Wiki                    | [https://skyrat.celadon.pro/index.php](https://skyrat.celadon.pro/index.php)                                                           |
 | Codedocs                | [https://NovaSector.github.io/NovaSector/](https://NovaSector.github.io/NovaSector/)                                                   |
 | Celadon Discord          | [https://discord.gg/rxsggTJzY3](https://discord.gg/rxsggTJzY3)                                                                                 |
 | Coderbus Discord        | [https://discord.gg/Vh8TJp9](https://discord.gg/Vh8TJp9)                                                                               |

@@ -3,7 +3,7 @@
 <h1>Добро пожаловать на Celadon Skyrat</h1>
 <br>
 <b>Действующие правила: </b><br>
-<p><a href="https://skyrat.ss220.space/index.php/Правила_Сервера">https://skyrat.ss220.space/index.php/Правила_Сервера</a></p>
+<p><a href="https://skyrat.celadon.pro/index.php/Правила_Сервера">https://skyrat.celadon.pro/index.php/Правила_Сервера</a></p>
 <ul>
   <li>У сервера отдельная база данных</li>
   <li>На сервере отключен TTS</li>

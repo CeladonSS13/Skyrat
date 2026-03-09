@@ -201,10 +201,10 @@ GUEST_BAN
 # FORUMURL http://tgstation13.org/phpBB/index.php
 
 ## Wiki address
-WIKIURL https://skyrat.ss220.space/index.php
+WIKIURL https://skyrat.celadon.pro/index.php
 
 ## Rules address
-RULESURL https://skyrat.ss220.space/index.php/Правила_Сервера
+RULESURL https://skyrat.celadon.pro/index.php/Правила_Сервера
 
 ## Github address
 GITHUBURL https://github.com/skyrat1984test/skyrat1984test
