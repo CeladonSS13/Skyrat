@@ -5,7 +5,6 @@
 GLOBAL_LIST_INIT(total_ui_len_by_block, populate_total_ui_len_by_block())
 
 GLOBAL_LIST_INIT(standard_mutation_sources, list(MUTATION_SOURCE_ACTIVATED, MUTATION_SOURCE_MUTATOR, MUTATION_SOURCE_TIMED_INJECTOR))
-GLOBAL_LIST_EMPTY(races_valid_for_spawn_dead) // SS1984 ADDITION
 
 /proc/populate_total_ui_len_by_block()
 	. = list()

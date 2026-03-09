@@ -35,7 +35,7 @@
 		species_type = GLOB.species_list[override_species]
 
 	else if(prob(species_probability))
-		species_type = GLOB.species_list[pick(get_selectable_species())]
+		species_type = GLOB.species_list[pick(get_roundstart_spawnable_dead_races())] // SS1984 EDIT, original: species_type = GLOB.species_list[pick(get_selectable_species())]
 
 		if(!species_type)
 			stack_trace("failed to spawn cadaver with species ID [species_type]") //if it's invalid they'll just be a human, so no need to worry too much aside from yelling at the server owner lol.
