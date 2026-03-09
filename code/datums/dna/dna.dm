@@ -524,7 +524,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 /mob/living/carbon/proc/create_dna()
 	dna = new /datum/dna(src)
 	if(!dna.species)
-		var/rando_race = pick(get_roundstart_spawnable_dead_races()) // SS1984 EDIT, original: var/rando_race = pick(get_selectable_species())
+		var/rando_race = pick(get_roundstart_spawnable_dead_races()) // Celadon EDIT, original: var/rando_race = pick(get_selectable_species())
 		dna.species = new rando_race()
 
 //proc used to update the mob's appearance after its dna UI has been changed

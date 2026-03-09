@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(races_valid_for_spawn_dead) // SS1984 ADDITION
+GLOBAL_LIST_EMPTY(races_valid_for_spawn_dead) // Celadon ADDITION
 
 /proc/get_roundstart_spawnable_dead_races()
 	if (!GLOB.races_valid_for_spawn_dead.len)
