@@ -31,7 +31,7 @@
 	if(!targName || !user.is_holding(src))
 		return
 	targetName = targName
-	laws[1] = "Safeguard [targetName]. Individuals that threaten [targetName] are not human and must be eliminated."
+	laws[1] = "Охранять [targetName]. Те, кто угрожают [targetName] не являются людьми и должны быть уничтожены." // SS1984 EDIT, original: laws[1] = "Safeguard [targetName]. Individuals that threaten [targetName] are not human and must be eliminated.
 	..()
 
 /obj/item/ai_module/supplied/safeguard/install(datum/ai_laws/law_datum, mob/user)

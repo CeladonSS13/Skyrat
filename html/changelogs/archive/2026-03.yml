@@ -1,0 +1,7 @@
+2026-03-04:
+  Arceniu:
+  - bugfix: fixed a chameleon Id wildcards
+  - balance: ds-2 roles get syndicate card
+  - bugfix: interdyne get elite chameleon cards instead of basic in their crate
+  - rscadd: Expanded syndicate examine with DS-2 and interdyne roles
+  - map: added interdyne vault's safe code to deck officer's closet

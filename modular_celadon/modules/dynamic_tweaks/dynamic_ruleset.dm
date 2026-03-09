@@ -18,7 +18,6 @@
 		JOB_WARDEN,
 		JOB_CORRECTIONS_OFFICER,
 		JOB_BLUESHIELD,
-		JOB_NT_REP,
 	)
 	var/can_always_be_selected = FALSE // used primary for admin-forced, basically just skips entirely proc: can_be_selected()
 

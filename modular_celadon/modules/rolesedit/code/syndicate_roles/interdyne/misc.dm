@@ -33,3 +33,12 @@
 //shuttle
 /obj/machinery/computer/shuttle/interdyne_cargo
 	req_one_access = list(ACCESS_SYNDICATE_IP, ACCESS_SYNDICATE_DS)
+
+//safecode
+/obj/item/paper/paperslip/corporate/fluff/safe_code/interdyne_vault
+	name = "IP-Vault safe code"
+	owner = "interdyne_vault"
+
+/obj/item/folder/biscuit/confidential/safe_code/interdyne_vault
+	name = "Interdyne Base safe code biscuit card"
+	contained_slip = /obj/item/paper/paperslip/corporate/fluff/safe_code/interdyne_vault

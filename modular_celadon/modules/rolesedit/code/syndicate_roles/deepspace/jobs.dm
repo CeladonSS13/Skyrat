@@ -18,8 +18,8 @@
 /datum/outfit/ds2/prisoner
 	role_job = /datum/job/ds2/prisoner
 
-/datum/outfit/ds2/syndicate_command
-	role_job = /datum/job/ds2/command
+/datum/outfit/ds2/syndicate
+	id = /obj/item/card/id/advanced/black/syndicate_command
 
 /datum/outfit/ds2/syndicate/miner
 	role_job = /datum/job/ds2/mining
@@ -39,6 +39,13 @@
 
 /datum/outfit/ds2/syndicate/brigoff
 	role_job = /datum/job/ds2/enforce
+
+/datum/outfit/ds2/syndicate_command
+	id = /obj/item/card/id/advanced/black/syndicate_command
+	role_job = /datum/job/ds2/command
+
+/datum/outfit/ds2/syndicate_command/admiral
+	id = /obj/item/card/id/advanced/gold/generic/syndicate
 
 //closets
 /obj/structure/closet/secure_closet/des_two/sa_locker

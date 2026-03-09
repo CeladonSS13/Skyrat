@@ -27,7 +27,7 @@
 /mob/living/brain/proc/create_dna()
 	stored_dna = new /datum/dna/stored(src)
 	if(!stored_dna.species)
-		var/rando_race = pick(get_selectable_species())
+		var/rando_race = pick(get_roundstart_spawnable_dead_races()) // SS1984 EDIT, original: var/rando_race = pick(get_selectable_species())
 		stored_dna.species = new rando_race()
 
 /mob/living/brain/Destroy()

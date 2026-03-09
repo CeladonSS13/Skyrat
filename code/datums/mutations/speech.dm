@@ -263,8 +263,8 @@
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message)
 		message = " [message] "
-		var/list/medieval_words = strings("medieval_replacement.json", "medieval")
-		var/list/startings = strings("medieval_replacement.json", "startings")
+		var/list/medieval_words = strings("medieval_replacement_ru.json", "medieval") // SS1984 EDIT, original: var/list/medieval_words = strings("medieval_replacement.json", "medieval")
+		var/list/startings = strings("medieval_replacement_ru.json", "startings") // SS1984 EDIT, original: var/list/startings = strings("medieval_replacement.json", "startings")
 		for(var/key in medieval_words)
 			var/value = medieval_words[key]
 			if(islist(value))
@@ -273,7 +273,8 @@
 				value = uppertext(value)
 			if(capitalize(key) == key)
 				value = capitalize(value)
-			message = replacetextEx(message,regex("\b[REGEX_QUOTE(key)]\b","ig"), value)
+			message = replacetextEx(message, regex(@"([^a-zA-Zа-яёА-ЯЁ])" + "[REGEX_QUOTE(key)]" + @"([^a-zA-Zа-яёА-ЯЁ])", "ig"), " [value] ") // SS1984 EDIT, original: message = replacetextEx(message,regex("\b[REGEX_QUOTE(key)]\b","ig"), value)
+			message = replacetext(message, "  ", " ") // SS1984 ADDITION, removes double-quotes produced by previous code
 		message = trim(message)
 		var/chosen_starting = pick(startings)
 		message = "[chosen_starting] [message]"

@@ -1,5 +1,56 @@
 [
   {
+    "date": "2026-03-04",
+    "author": "Arceniu",
+    "changes": [
+      "fixed a chameleon Id wildcards",
+      "ds-2 roles get syndicate card",
+      "interdyne get elite chameleon cards instead of basic in their crate",
+      "added interdyne vault's safe code to deck officer's closet",
+      "Expanded syndicate examine with DS-2 and interdyne roles"
+    ]
+  },
+  {
+    "date": "2026-02-21",
+    "author": "Arceniu",
+    "changes": [
+      "infinity wildcards now add special wildcard limit for some cards, also it now add only Captain wildcard instead of admin to station cards(the prisoner is exception from wildcards)",
+      "station cards no longer can have centcom wildcards (as they have different wildcard for centcom)"
+    ]
+  },
+  {
+    "date": "2026-02-19",
+    "author": "DenIS318",
+    "changes": [
+      "Slimepeople no longer dupe items on revival with quirks (such as Lunchbox and so on)"
+    ]
+  },
+  {
+    "date": "2026-02-18",
+    "author": "DenIS318",
+    "changes": [
+      "Required amount of slime jelly to split body for slimepeople: 1120 -> 950 (maximum jelly is 1000)",
+      "Split Body ability of Slimepeople now properly updates when available (no longer always shown as grayed)"
+    ]
+  },
+  {
+    "date": "2026-02-16",
+    "author": "Artemchik542",
+    "changes": [
+      "ru laws for AI on Interdyne and DS-2",
+      "AI laws now translated more correctly"
+    ]
+  },
+  {
+    "date": "2026-02-11",
+    "author": "DenIS318",
+    "changes": [
+      "Nanotrasen Consultant no longer considered as \"enemy\" for dynamic (not treated same way as 1 security required for most rulesets)",
+      "Obsessed ruleset now require 3 enemy roles (such as security) to be applyable for security/NTR as candidates. Still require 1 enemy, if rolling for other candidates.",
+      "Medieval mutation words and phrases changed to old russian/old slavic phrases/words."
+    ]
+  },
+  {
     "date": "2026-02-06",
     "author": "DenIS318",
     "changes": [
