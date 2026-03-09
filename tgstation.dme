@@ -9802,6 +9802,7 @@
 #include "modular_ss220\modules\upstream-fixes\split_slime_icon\action.dm"
 #include "modular_ss220\modules\upstream-fixes\split_slime_icon\jellypeople.dm"
 #include "modular_ss220\modules\upstream-fixes\split_slime_icon\living.dm"
+#include "modular_ss220\modules\upstream-fixes\dead_spawnable_races\dna.dm"
 #include "modular_ss220\modules\vendors\code\dorms.dm"
 #include "modular_ss220\modules\restrict-species\restrict_species.dm"
 #include "modular_ss220\modules\disabled_station_traits\negative_traits.dm"
