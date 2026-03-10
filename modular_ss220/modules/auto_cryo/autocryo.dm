@@ -9,6 +9,8 @@
 		var/turf/T = get_turf(src)
 		if(!is_station_level(T.z))
 			return
+		if (!mind || !mind.assigned_role || !(mind.assigned_role.job_flags & JOB_CREW_MEMBER))
+			return
 		send_to_cryo()
 
 /mob/living/carbon/Logout()
