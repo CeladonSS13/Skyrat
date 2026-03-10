@@ -207,7 +207,8 @@ weight.3 = 2
 weight.4 = 2
 min_pop = 8
 blacklisted_roles = []
-min_antag_cap = 1
+min_antag_cap = 0
+# min antag cap should be 0, otherwise won't spawn!
 # max_antag_cap = min_antag_cap
 repeatable_weight_decrease = 2
 repeatable = 1
