@@ -84,17 +84,15 @@
 	// basically copy-paste from /datum/dynamic_ruleset/midround/from_living/collect_candidates()
 	// ideally, it should be /datum/dynamic_ruleset/midround/from_living/span_spiders
 	// yet it is for upstream to fix
-    var/readable_poll_role = candidate_role || pref_flag
-    if(isnull(readable_poll_role))
-        stack_trace("[config_tag]: No candidate role or pref_flag set, give it a human readable candidate roll at the bare minimum.")
-        readable_poll_role = "Some Midround Antagonist Without A Role Set (Yell At Coders)"
+	var/readable_poll_role = candidate_role || pref_flag
+	if(isnull(readable_poll_role))
+		stack_trace("[config_tag]: No candidate role or pref_flag set, give it a human readable candidate roll at the bare minimum.")
+		readable_poll_role = "Some Midround Antagonist Without A Role Set (Yell At Coders)"
 
-    return SSpolling.poll_candidates(
-        group = trim_candidates(GLOB.dead_player_list | GLOB.current_observers_list),
-        question = "Looking for volunteers to become [span_notice(readable_poll_role)] for [span_danger(name)]",
-        // check_jobban = list(ROLE_SYNDICATE, jobban_flag || pref_flag), // Not necessary, handled in trim_candidates()
-        // role = pref_flag, // Not necessary, handled in trim_candidates()
-        poll_time = 1 MINUTES, // NOVA EDIT CHANGE - ORIGINAL: poll_time = 30 SECONDS,
-        alert_pic = signup_atom_appearance,
-        role_name_text = readable_poll_role,
-    )
+	return SSpolling.poll_candidates(
+		group = trim_candidates(GLOB.dead_player_list | GLOB.current_observers_list),
+		question = "Looking for volunteers to become [span_notice(readable_poll_role)] for [span_danger(name)]",
+		poll_time = 1 MINUTES, // NOVA EDIT CHANGE - ORIGINAL: poll_time = 30 SECONDS,
+		alert_pic = signup_atom_appearance,
+		role_name_text = readable_poll_role,
+	)
