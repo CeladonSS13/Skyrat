@@ -164,7 +164,7 @@
 /area/ruin/interdyne_planetary_base/main)
 "bs" = (
 /obj/machinery/porta_turret/syndicate{
-	faction = list("Syndicate","neutral")
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral")
 	},
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/ruin/interdyne_planetary_base)
@@ -1031,7 +1031,7 @@
 /area/lavaland/surface/outdoors)
 "jb" = (
 /obj/machinery/porta_turret/syndicate{
-	faction = list("Syndicate","neutral");
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral");
 	dir = 8
 	},
 /turf/closed/wall/mineral/titanium/nodiagonal,
@@ -1223,6 +1223,9 @@
 	},
 /obj/item/bedsheet/brown/double{
 	dir = 1
+	},
+/obj/effect/mob_spawn/ghost_role/human/interdyne_planetary_base/deck_officer{
+	dir = 8
 	},
 /turf/open/floor/wood,
 /area/ruin/interdyne_planetary_base/cargo/deck)
@@ -2209,7 +2212,7 @@
 "su" = (
 /obj/machinery/porta_turret/syndicate{
 	dir = 4;
-	faction = list("Syndicate","neutral")
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral")
 	},
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ruin/interdyne_planetary_base)
@@ -3403,9 +3406,7 @@
 /turf/open/floor/iron/textured_large,
 /area/ruin/interdyne_planetary_base/main)
 "Cq" = (
-/obj/effect/mob_spawn/ghost_role/human/interdyne_planetary_base/deck_officer{
-	dir = 8
-	},
+/obj/machinery/suit_storage_unit/interdyne,
 /turf/open/floor/wood,
 /area/ruin/interdyne_planetary_base/cargo/deck)
 "Cr" = (
@@ -5171,7 +5172,7 @@
 "QD" = (
 /obj/machinery/porta_turret/syndicate{
 	dir = 8;
-	faction = list("Syndicate","neutral")
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral")
 	},
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/ruin/interdyne_planetary_base)
@@ -6310,7 +6311,7 @@
 "Ys" = (
 /obj/machinery/porta_turret/syndicate{
 	dir = 1;
-	faction = list("Syndicate","neutral")
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral")
 	},
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/ruin/interdyne_planetary_base)

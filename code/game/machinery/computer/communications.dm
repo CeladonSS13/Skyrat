@@ -33,12 +33,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	/// Whether syndicate mode is enabled or not.
 	var/syndicate = FALSE
 
-	/// Whether away mode is enabled or not. celadon add
-	var/away = FALSE
-
-	/// Whether console can see  call 911 button or not. celadon add
-	var/can_call_911 = TRUE
-
 	/// The current state of the UI
 	var/state = STATE_MAIN
 
@@ -246,7 +240,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				return
 			make_announcement(user)
 		if ("messageAssociates")
-			if (!authenticated_as_ai_or_captain(user)) // NOVA EDIT CHANGE - Allows AI and Captain to send messages - ORIGINAL: if (!authenticated_as_non_silicon_captain(user))
+			if (!authenticated_as_ai_or_captain(user) && !away)	// Celadon EDIT, original: if (!authenticated_as_ai_or_captain(user)) // NOVA EDIT CHANGE - Allows AI and Captain to send messages - ORIGINAL: if (!authenticated_as_non_silicon_captain(user))
 				return
 			if (!COOLDOWN_FINISHED(src, important_action_cooldown))
 				return
@@ -624,9 +618,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["authorizeName"] = authorize_name
 				data["canLogOut"] = !HAS_SILICON_ACCESS(user)
 				data["shuttleCanEvacOrFailReason"] = SSshuttle.canEvac()
-
 				if(syndicate || away) //celadon edit original 'if(syndicate)'
 					data["shuttleCanEvacOrFailReason"] = "You cannot summon the shuttle from this console!"
+
 				if (authenticated_as_non_silicon_captain(user))
 					data["canMessageAssociates"] = TRUE
 					data["canRequestNuke"] = TRUE

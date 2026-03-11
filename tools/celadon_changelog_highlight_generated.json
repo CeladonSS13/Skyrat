@@ -1,5 +1,24 @@
 [
   {
+    "date": "2026-03-11",
+    "author": "Arceniu",
+    "changes": [
+      "Added more factions to ds-2 and interdyne turrets, removed neutral(techically almost everyone) faction from ds-2 armory turret",
+      "moved chameleon modsuit from icemoon interdyne deck officer room into vault's safe, deck officer gets interdyne modsuit",
+      "fixed a missing interdyne and ds-2 announcer machine on maps",
+      "away and away synd comm console properly work again"
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "author": "DenIS318",
+    "changes": [
+      "Non-initial station crewmembers are no longer sent to cryo when SSD long time outside of game",
+      "Spiders ruleset now can be executed",
+      "Nucleations no longer spawn dead in morgue"
+    ]
+  },
+  {
     "date": "2026-03-04",
     "author": "Arceniu",
     "changes": [

@@ -12,7 +12,7 @@
 "ae" = (
 /obj/machinery/porta_turret/syndicate{
 	dir = 9;
-	faction = list("Syndicate","neutral")
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral")
 	},
 /turf/closed/wall/r_wall/plastitanium/syndicate{
 	fixed_underlay = list(icon='icons/turf/snow.dmi', icon_state="snow")
@@ -42,7 +42,7 @@
 /area/ruin/interdyne_planetary_base/cargo)
 "aj" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/suit_storage_unit/syndicate/chameleon,
+/obj/machinery/suit_storage_unit/interdyne,
 /turf/open/floor/wood,
 /area/ruin/interdyne_planetary_base/cargo/deck)
 "ak" = (
@@ -363,7 +363,7 @@
 "bk" = (
 /obj/machinery/porta_turret/syndicate{
 	dir = 5;
-	faction = list("Syndicate","neutral")
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral")
 	},
 /turf/closed/wall/r_wall/plastitanium/syndicate{
 	fixed_underlay = list(icon='icons/turf/snow.dmi', icon_state="snow")
@@ -1561,7 +1561,7 @@
 "ej" = (
 /obj/machinery/porta_turret/syndicate{
 	dir = 10;
-	faction = list("Syndicate","neutral")
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral")
 	},
 /turf/closed/wall/r_wall/plastitanium/syndicate,
 /area/ruin/interdyne_planetary_base)
@@ -2684,7 +2684,6 @@
 	control_area = "/area/ruin/interdyne_planetary_base";
 	ailock = 1
 	},
-/obj/item/folder/syndicate/red/secretformula,
 /obj/item/circuitboard/computer/ghostpad/interdyne{
 	pixel_x = 2;
 	pixel_y = 2
@@ -2697,6 +2696,8 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
+/obj/structure/rack,
+/obj/item/flatpack/ammo_workbench,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/interdyne_planetary_base/main/vault)
 "hi" = (
@@ -2729,7 +2730,7 @@
 "ho" = (
 /obj/machinery/porta_turret/syndicate{
 	dir = 6;
-	faction = list("Syndicate","neutral")
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral")
 	},
 /turf/closed/wall/r_wall/plastitanium/syndicate,
 /area/ruin/interdyne_planetary_base)
@@ -2865,7 +2866,6 @@
 /area/ruin/interdyne_planetary_base/main)
 "hI" = (
 /obj/machinery/light/small/directional/east,
-/obj/machinery/suit_storage_unit/syndicate/chameleon,
 /obj/machinery/suit_storage_unit/interdyne,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/interdyne_planetary_base/main/vault)
@@ -4360,7 +4360,7 @@
 "ln" = (
 /obj/machinery/porta_turret/syndicate{
 	dir = 10;
-	faction = list("Syndicate","neutral")
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral")
 	},
 /turf/closed/wall/r_wall/plastitanium/syndicate{
 	fixed_underlay = list(icon='icons/turf/snow.dmi', icon_state="snow")
@@ -4369,7 +4369,7 @@
 "lo" = (
 /obj/machinery/porta_turret/syndicate{
 	dir = 6;
-	faction = list("Syndicate","neutral")
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral")
 	},
 /turf/closed/wall/r_wall/plastitanium/syndicate{
 	fixed_underlay = list(icon='icons/turf/snow.dmi', icon_state="snow")
@@ -6898,7 +6898,7 @@
 "ua" = (
 /obj/machinery/porta_turret/syndicate{
 	dir = 5;
-	faction = list("Syndicate","neutral")
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral")
 	},
 /turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
 /area/ruin/interdyne_planetary_base)
@@ -7009,7 +7009,7 @@
 "Ak" = (
 /obj/machinery/porta_turret/syndicate{
 	dir = 9;
-	faction = list("Syndicate","neutral")
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral")
 	},
 /turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
 /area/ruin/interdyne_planetary_base)
@@ -7153,7 +7153,7 @@
 /area/icemoon/underground/explored)
 "Fi" = (
 /obj/machinery/light/small/directional/west,
-/obj/item/flatpack/ammo_workbench,
+/obj/machinery/announcement_system,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/interdyne_planetary_base/main/vault)
 "FH" = (
@@ -7581,7 +7581,7 @@
 "Wm" = (
 /obj/machinery/porta_turret/syndicate{
 	dir = 9;
-	faction = list("Syndicate","neutral")
+	faction = list("Syndicate DS-2 Crew","Syndicate","Interdyne Lavaland Personnel","neutral")
 	},
 /obj/effect/baseturf_helper/reinforced_plating,
 /obj/effect/baseturf_helper/reinforced_plating/ceiling,
@@ -7627,6 +7627,10 @@
 /obj/item/suppressor,
 /obj/item/toy/redbutton,
 /obj/item/folder/syndicate/mining,
+/obj/item/clothing/mask/gas/syndicate,
+/obj/item/mod/control/pre_equipped/nuclear/chameleon,
+/obj/item/tank/jetpack/harness,
+/obj/item/folder/syndicate/red/secretformula,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/interdyne_planetary_base/main/vault)
 "WZ" = (

@@ -5,3 +5,17 @@
   - bugfix: interdyne get elite chameleon cards instead of basic in their crate
   - rscadd: Expanded syndicate examine with DS-2 and interdyne roles
   - map: added interdyne vault's safe code to deck officer's closet
+2026-03-10:
+  DenIS318:
+  - bugfix: Nucleations no longer spawn dead in morgue
+  - config: Spiders ruleset now can be executed
+  - bugfix: Non-initial station crewmembers are no longer sent to cryo when SSD long
+      time outside of game
+2026-03-11:
+  Arceniu:
+  - bugfix: away and away synd comm console properly work again
+  - map: Added more factions to ds-2 and interdyne turrets, removed neutral(techically
+      almost everyone) faction from ds-2 armory turret
+  - map: moved chameleon modsuit from icemoon interdyne deck officer room into vault's
+      safe, deck officer gets interdyne modsuit
+  - bugfix: fixed a missing interdyne and ds-2 announcer machine on maps

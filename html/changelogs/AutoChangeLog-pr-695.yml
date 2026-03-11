@@ -1,4 +1,0 @@
-author: "DenIS318"
-delete-after: True
-changes:
-  - bugfix: "Nucleations no longer spawn dead in morgue"
