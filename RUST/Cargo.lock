@@ -2297,7 +2297,7 @@ dependencies = [
 
 [[package]]
 name = "rust-g"
-version = "4.2.0-ss220"
+version = "4.2.0-celadon"
 dependencies = [
  "aho-corasick",
  "ammonia",
