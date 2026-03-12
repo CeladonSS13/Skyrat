@@ -7,10 +7,9 @@ GLOBAL_PROTECT(topic_ip_cooldown)
 	if (IsAdminAdvancedProcCall()) // imagine someone will actually try to exploit it that way and spoof ip
 		return
 	var/is_cooldown_for_address = GLOB.topic_ip_cooldown[addr]
-	if (is_cooldown_for_address && world.time < is_cooldown_for_address + COOLDOWN_TOPIC_PER_IP)
+	if (!isnull(is_cooldown_for_address) && world.time < is_cooldown_for_address)
 		return // no DOS
-
-	GLOB.topic_ip_cooldown[addr] = world.time
+	GLOB.topic_ip_cooldown[addr] = world.time + COOLDOWN_TOPIC_PER_IP
 
 	// EVERYTHING GOES FURTHER, IS CUSTOM LOGIC. IF REQUIREMENTS NOT SATISFIED - IT'S FALLBACK TO TOPIC HANDLERS!
 	// So it's basically to silent continue execution in ALL cases when our requirements are not satisfied
