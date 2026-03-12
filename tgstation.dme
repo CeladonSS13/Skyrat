@@ -4917,7 +4917,7 @@
 #include "code\modules\language\xenocommon.dm"
 #include "code\modules\library\admin_only.dm"
 #include "code\modules\library\barcode_scanner.dm"
-#include "code\modules\library\bibles.dm"
+#include "modular_ss220\modules\holy_and_unholy\code\bibles.dm"
 #include "code\modules\library\book.dm"
 #include "code\modules\library\book_info.dm"
 #include "code\modules\library\bookcase.dm"

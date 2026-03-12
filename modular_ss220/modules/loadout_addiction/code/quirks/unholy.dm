@@ -82,9 +82,9 @@
 	/// Amount of fire stacks to add when igniting
 	var/firestacks_amt = 2
 	/// Amount of disgust added per tick
-	var/disgust_amt = 3
+	var/disgust_amt = 4
 	/// Amount of stamina loss applied per tick
-	var/stanmloss_amt = 2.5
+	var/stanmloss_amt = 4.5
 	// Phrase said to the holder when entering the chapel
 	var/phrase_enter = "The darkness around you has begun to dissipate. Divine punishment is trying to punish you for your sins!"
 	// Phrase said to the holder when exiting the chapel
