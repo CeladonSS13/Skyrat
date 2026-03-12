@@ -1,16 +1,19 @@
 /datum/world_topic/status/Run(list/input)
-	. = ..()
-	var/list/admins = list()
-	for(var/client/C in GLOB.clients)
-		if(C.holder)
-			if(C.holder.fakekey)
-				continue	//so stealthmins aren't revealed by the hub
-			admins += list(list(C.key, join_admin_ranks(C.holder.ranks)))
-	if(key_valid)
-		for(var/i in 1 to admins.len)
-			var/list/A = admins[i]
-			.["admin[i - 1]"] = A[1]
-			.["adminrank[i - 1]"] = A[2]
+	. = list()
+
+	.["round_id"] = GLOB.round_id
+	.["players"] = GLOB.clients.len
+
+	var/list/adm = get_admin_counts()
+	var/list/presentmins = adm["present"]
+	var/list/afkmins = adm["afk"]
+
+	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
+	.["security_level"] = SSsecurity_level.get_current_level_as_text()
+	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
+	.["time_dilation_current"] = SStime_track.time_dilation_current
+	.["time_dilation_avg"] = SStime_track.time_dilation_avg
+	.["gamestate"] = SSticker.current_state
 
 /datum/world_topic/fixtts
 	keyword = "fixtts"
