@@ -22,14 +22,14 @@
 	// Simple sanity check to prevent a user doing this too often
 	var/cached_one_time_token = SSdiscord.reverify_cache[usr.ckey]
 	if(cached_one_time_token && cached_one_time_token != "")
-		message = "Токен для привязки уже создан: [cached_one_time_token]. Новый токен будет доступен лишь с началом следующего раунда. Для привязки дискорда, в любой из следующих каналов: #skyrat-bot, #bot-chat на Discord-сервере Celadon ([CONFIG_GET(string/discord_link)]), либо в личные сообщения бота Skyrat Event#0701 следующее сообщение: <span class='code user-select'>[prefix]привязать_аккаунт [cached_one_time_token]</span>" // CELADON EDIT, original: message = "You already generated your one time token, it is [cached_one_time_token]. If you need a new one, you will have to wait until the round ends, or switch to another server; try verifying yourself on Discord by copying this command: <span class='code user-select'>[prefix]verify [cached_one_time_token]</span> and pasting it into the verification channel."
+		message = "Токен для привязки уже создан: [cached_one_time_token]. Новый токен будет доступен лишь с началом следующего раунда. Для привязки дискорда, в любой из следующих каналов: #skyrat-bot, #bot-chat на Discord-сервере Celadon ([CONFIG_GET(string/discord_link)]), отправьте следующее сообщение: <span class='code user-select'>[prefix]привязать_аккаунт [cached_one_time_token]</span>" // CELADON EDIT, original: message = "You already generated your one time token, it is [cached_one_time_token]. If you need a new one, you will have to wait until the round ends, or switch to another server; try verifying yourself on Discord by copying this command: <span class='code user-select'>[prefix]verify [cached_one_time_token]</span> and pasting it into the verification channel."
 
 
 	else
 		// Will generate one if an expired one doesn't exist already, otherwise will grab existing token
 		var/one_time_token = SSdiscord.get_or_generate_one_time_token_for_ckey(ckey)
 		SSdiscord.reverify_cache[usr.ckey] = one_time_token
-		message = "Токен: [one_time_token]. Для привязки дискорда, в любой из следующих каналов: #skyrat-bot, #bot-chat на Discord-сервере Celadon ([CONFIG_GET(string/discord_link)]), либо в личные сообщения бота Skyrat Event#0701 следующее сообщение: <span class='code user-select'>[prefix]привязать_аккаунт [one_time_token]</span>" // CELADON EDIT, original: message = "Your one time token is: [one_time_token]. Assuming you have the required living minutes in game, you can now verify yourself on Discord by using the command: <span class='code user-select'>[prefix]verify [one_time_token]</span>"
+		message = "Для привязки дискорда, в любой из следующих каналов: #skyrat-bot, #bot-chat на Discord-сервере Celadon ([CONFIG_GET(string/discord_link)]), отправьте следующее сообщение: <span class='code user-select'>[prefix]привязать_аккаунт [one_time_token]</span>" // CELADON EDIT, original: message = "Your one time token is: [one_time_token]. Assuming you have the required living minutes in game, you can now verify yourself on Discord by using the command: <span class='code user-select'>[prefix]verify [one_time_token]</span>"
 
 	//Now give them a browse window so they can't miss whatever we told them
 	var/datum/browser/window = new /datum/browser(usr, "discordverification", "Discord Verification")
