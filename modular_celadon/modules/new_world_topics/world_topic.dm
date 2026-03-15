@@ -8,9 +8,13 @@
 	var/list/presentmins = adm["present"]
 	var/list/afkmins = adm["afk"]
 
+	var/round_time = "[world.time > MIDNIGHT_ROLLOVER ? "[round(world.time/MIDNIGHT_ROLLOVER)]:[gameTimestamp(wtime=world.time)]" : gameTimestamp(wtime=world.time)]"
+	if (!round_time)
+		round_time = "?"
+
 	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
 	.["security_level"] = SSsecurity_level.get_current_level_as_text()
-	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
+	.["round_duration"] = round_time
 	.["time_dilation_current"] = SStime_track.time_dilation_current
 	.["time_dilation_avg"] = SStime_track.time_dilation_avg
 	.["gamestate"] = SSticker.current_state
