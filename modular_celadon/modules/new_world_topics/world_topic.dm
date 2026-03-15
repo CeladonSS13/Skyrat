@@ -12,12 +12,17 @@
 	if (!round_time)
 		round_time = "?"
 
+	var/map_name = SSmapping.current_map?.map_name
+	if (!map_name)
+		map_name = "?"
+
 	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
 	.["security_level"] = SSsecurity_level.get_current_level_as_text()
 	.["round_duration"] = round_time
 	.["time_dilation_current"] = SStime_track.time_dilation_current
 	.["time_dilation_avg"] = SStime_track.time_dilation_avg
 	.["gamestate"] = SSticker.current_state
+	.["map_name"] = map_name
 
 /datum/world_topic/fixtts
 	keyword = "fixtts"
