@@ -19,6 +19,9 @@
 	holstered = null
 	return ..()
 
+/obj/item/clothing/accessory/holster/attack_self_secondary(mob/user)
+	return TRUE // doesn't allow to wear "below" suit, as it's not working that way anyway
+
 //subtypes can override this to specify what can be holstered
 /obj/item/clothing/accessory/holster/proc/can_holster(obj/item/gun/W)
 	if(W.w_class > holster_allow_size)
