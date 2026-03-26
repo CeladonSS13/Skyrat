@@ -149,14 +149,21 @@ SUBSYSTEM_DEF(discord)
  */
 /datum/controller/subsystem/discord/proc/generate_one_time_token(ckey_for)
 
-	var/not_unique = TRUE
-	var/one_time_token = ""
-	// While there's a collision in the token, generate a new one (should rarely happen)
-	while(not_unique)
-		//Column is varchar 100, so we trim just in case someone does us the dirty later
-		one_time_token = trim("[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]", 100)
+	// CELADON REMOVAL START
+	// var/not_unique = TRUE
+	// var/one_time_token = ""
+	// // While there's a collision in the token, generate a new one (should rarely happen)
+	// while(not_unique)
+	// 	//Column is varchar 100, so we trim just in case someone does us the dirty later
+	// 	one_time_token = trim("[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]", 100)
 
-		not_unique = find_discord_link_by_token(one_time_token, timebound = TRUE)
+	// 	not_unique = find_discord_link_by_token(one_time_token, timebound = TRUE)
+	// CELADON REMOVAL END
+	// CELADON ADDITION START
+	var/realtime = world.realtime
+	var/texttime = time2text(realtime, "YYYY/MM/DD/hh/mm/ss", TIMEZONE_UTC)
+	var/one_time_token = rustg_hash_string(RUSTG_HASH_BASE64, "[texttime]_[ckey_for]") // seems to be unique enough, BASE64 should be fully collision-resistant. Ckey should be max 32 char. 100 chars are more than enough for it
+	// CELADON ADDITION END
 
 	// Insert into the table, null in the discord id, id and timestamp and valid fields so the db fills them out where needed
 	var/datum/db_query/query_insert_link_record = SSdbcore.NewQuery(
