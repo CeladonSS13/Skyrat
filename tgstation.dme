@@ -9944,4 +9944,8 @@
 #include "modular_ss220\modules\paperwork_and_faxes\paper.dm"
 #include "modular_ss220\modules\paperwork_and_faxes\topic.dm"
 #include "modular_ss220\modules\paperwork_and_faxes\admin_fax_panel.dm"
+#include "modular_ss220\modules\robot_hare_boss\code\robot_hare.dm"
+#include "modular_ss220\modules\robot_hare_boss\code\station_stuff.dm"
+#include "modular_ss220\modules\robot_hare_boss\code\crate.dm"
+#include "modular_ss220\modules\robot_hare_boss\code\map.dm"
 // END_INCLUDE

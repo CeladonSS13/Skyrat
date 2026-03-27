@@ -1,0 +1,2525 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"au" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/machinery/power/solar,
+/obj/structure/cable,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"aH" = (
+/obj/structure/window/reinforced/plasma/spawner/directional/west,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"bp" = (
+/obj/machinery/airalarm/directional/south,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"bs" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/gloves,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"bM" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"bN" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/plating/reinforced,
+/area/ruin/soviet_space_ship)
+"bX" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/sign/warning/secure_area/directional/east,
+/obj/structure/sign/warning/secure_area/directional/west,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"cp" = (
+/obj/effect/decal/cleanable/blood/trail{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"cH" = (
+/obj/structure/cable,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"dM" = (
+/turf/closed/mineral/volcanic/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"eT" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"eU" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/sign/poster/contraband/soviet_propaganda/directional/east,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"fC" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/under/costume/soviet,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"fI" = (
+/obj/machinery/door/airlock/external,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/tech_storage,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"fS" = (
+/turf/open/floor/engine/air,
+/area/ruin/soviet_space_ship)
+"go" = (
+/obj/structure/shipping_container/kosmologistika,
+/turf/open/floor/engine/air,
+/area/ruin/soviet_space_ship)
+"gy" = (
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"gz" = (
+/obj/machinery/power/shieldwallgen,
+/obj/structure/cable,
+/turf/open/floor/engine/air,
+/area/ruin/soviet_space_ship)
+"gG" = (
+/obj/machinery/door/airlock/external,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/tech_storage,
+/obj/effect/mapping_helpers/airlock/welded,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"gI" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 1
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"gU" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"hj" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	dir = 8
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"hL" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/soviet_space_ship)
+"iF" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/plasticflaps,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"jj" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"ju" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"ke" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"kL" = (
+/obj/machinery/door/window,
+/obj/structure/cable,
+/turf/open/floor/plating/reinforced,
+/area/ruin/soviet_space_ship)
+"kN" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"kO" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"kZ" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/cable,
+/turf/open/floor/plating/reinforced,
+/area/ruin/soviet_space_ship)
+"lI" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"lY" = (
+/obj/machinery/power/shieldwallgen,
+/obj/structure/cable,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"mI" = (
+/obj/structure/cable,
+/obj/machinery/power/shieldwallgen,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"nf" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"no" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/gloves/color/black,
+/obj/item/clothing/gloves/color/black,
+/obj/item/clothing/glasses/meson/engine,
+/obj/item/clothing/glasses/meson/engine,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"nt" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating/airless,
+/area/ruin/soviet_space_ship)
+"od" = (
+/obj/machinery/power/shuttle_engine/large{
+	dir = 1
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"ot" = (
+/obj/item/fireaxe,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"oY" = (
+/obj/structure/lattice/catwalk/mining,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"pj" = (
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"po" = (
+/obj/structure/cable,
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"pw" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer4{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"py" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"pW" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/airlock/centcom,
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/ce,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"qu" = (
+/obj/structure/cable,
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/engine/air,
+/area/ruin/soviet_space_ship)
+"qw" = (
+/obj/machinery/door/poddoor{
+	name = "Dock Blast Door";
+	id = "sovietdock"
+	},
+/turf/open/floor/engine/air,
+/area/ruin/soviet_space_ship)
+"rm" = (
+/obj/structure/closet/crate/large,
+/obj/structure/cable,
+/turf/open/floor/engine/air,
+/area/ruin/soviet_space_ship)
+"sp" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"sr" = (
+/obj/structure/rack,
+/obj/item/soap,
+/obj/item/reagent_containers/spray/cleaner,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"sD" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/soviet_space_ship)
+"sE" = (
+/obj/item/stack/cable_coil/cut,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"sW" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"tt" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"tu" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/door/directional/south{
+	id = "hopqueue";
+	name = "Queue Shutters Control";
+	pixel_x = -6;
+	pixel_y = -34;
+	req_access = list("hop")
+	},
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"ty" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"tL" = (
+/obj/machinery/atmospherics/components/trinary/filter,
+/turf/open/floor/plating/rust,
+/area/ruin/soviet_space_ship)
+"uP" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	dir = 4
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"vN" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"wv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating/rust,
+/area/ruin/soviet_space_ship)
+"wB" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/broken_machine,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"wF" = (
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"wT" = (
+/obj/structure/cable,
+/obj/structure/fireaxecabinet/directional/east,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"wV" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"wZ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"xk" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"xF" = (
+/obj/machinery/atmospherics/components/unary/airlock_pump/unbolt_only{
+	dir = 1
+	},
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"yr" = (
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/effect/mapping_helpers/apc/no_charge,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"yS" = (
+/obj/item/gas_filter/damaged,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"yZ" = (
+/obj/structure/cable,
+/obj/machinery/light/directional/west,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"zz" = (
+/obj/structure/sign/warning/vacuum/directional/south,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden/layer4,
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"zX" = (
+/turf/template_noop,
+/area/template_noop)
+"Ab" = (
+/obj/machinery/power/energy_accumulator/grounding_rod/anchored,
+/obj/structure/window/reinforced/plasma/spawner/directional/west,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"Af" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/airlock/vault,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/tech_storage,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/welded,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"Bb" = (
+/obj/structure/tank_frame,
+/obj/effect/mapping_helpers/broken_floor,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating/rust,
+/area/ruin/soviet_space_ship)
+"Bg" = (
+/obj/structure/sign/warning/vacuum/directional/south,
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"BL" = (
+/obj/structure/sign/warning/no_smoking/directional/south,
+/obj/machinery/atmospherics/pipe/smart/manifold4w,
+/obj/effect/mapping_helpers/broken_floor,
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating/rust,
+/area/ruin/soviet_space_ship)
+"BV" = (
+/obj/structure/closet/crate/large,
+/turf/open/floor/engine/air,
+/area/ruin/soviet_space_ship)
+"Ci" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "bridgesoviet";
+	name = "Bridge Soviet Shutters"
+	},
+/turf/open/floor/plating,
+/area/ruin/soviet_space_ship)
+"EP" = (
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/structure/closet/crate/internals,
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"ES" = (
+/obj/effect/mapping_helpers/broken_floor,
+/obj/item/stack/rods,
+/turf/open/floor/plating/rust,
+/area/ruin/soviet_space_ship)
+"Ft" = (
+/turf/closed/wall/r_wall/plastitanium,
+/area/ruin/soviet_space_ship)
+"FL" = (
+/obj/structure/cable,
+/obj/structure/closet/crate/secure/science/robo,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"FO" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"Gl" = (
+/obj/machinery/power/energy_accumulator/grounding_rod/anchored,
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"GB" = (
+/obj/machinery/power/solar_control{
+	dir = 8;
+	id = "aftport";
+	name = "Port Quarter Solar Control"
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"GO" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden/layer4,
+/obj/machinery/meter/layer4,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"Hx" = (
+/obj/structure/cable,
+/mob/living/simple_animal/hostile/asteroid/robothare,
+/turf/open/floor/plating/reinforced,
+/area/ruin/soviet_space_ship)
+"HE" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/effect/decal/cleanable/blood/gibs/robot_debris,
+/turf/open/floor/plating/reinforced,
+/area/ruin/soviet_space_ship)
+"HZ" = (
+/obj/structure/broken_flooring/plating,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Ig" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"IS" = (
+/obj/effect/decal/cleanable/blood/gibs/robot_debris,
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"Jj" = (
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"Jp" = (
+/obj/structure/cable,
+/turf/open/floor/iron/solarpanel{
+	initial_gas_mix = "LAVALAND_ATMOS"
+	},
+/area/lavaland/surface/outdoors)
+"JC" = (
+/obj/structure/lattice,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"JL" = (
+/obj/machinery/atmospherics/components/tank/air/layer4,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"Ld" = (
+/obj/structure/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"Ln" = (
+/obj/structure/cable,
+/turf/closed/wall/r_wall/plastitanium,
+/area/ruin/soviet_space_ship)
+"LP" = (
+/obj/structure/cable,
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"LX" = (
+/obj/machinery/button/door/directional/east{
+	id = "sovietdock";
+	name = "Dock Shutters Control"
+	},
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/engine/air,
+/area/ruin/soviet_space_ship)
+"MM" = (
+/turf/open/floor/plating/rust,
+/area/ruin/soviet_space_ship)
+"Nm" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/door/directional/east{
+	id = "bridgesoviet";
+	name = "Bridge Shutters Control"
+	},
+/obj/item/paper/ruins/soviet,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"ND" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"Op" = (
+/obj/structure/lattice,
+/obj/structure/fluff/sat_dish{
+	name = "scanner array";
+	icon = 'icons/obj/exploration.dmi';
+	icon_state = "scanner_off"
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Ot" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/south,
+/turf/open/floor/plating/reinforced,
+/area/ruin/soviet_space_ship)
+"Ox" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/south,
+/turf/open/floor/plating/reinforced,
+/area/ruin/soviet_space_ship)
+"OL" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/structure/cable,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"OW" = (
+/turf/closed/wall/r_wall/plastitanium,
+/area/lavaland/surface/outdoors)
+"Pk" = (
+/obj/item/solar_assembly,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Pt" = (
+/turf/closed/wall/r_wall/plastitanium/nodiagonal,
+/area/ruin/soviet_space_ship)
+"PO" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"PQ" = (
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"PU" = (
+/obj/item/multitool,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"Qt" = (
+/obj/structure/rack,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"QD" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/pen{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"Rj" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"RU" = (
+/obj/item/stack/rods{
+	amount = 25
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Sn" = (
+/obj/machinery/vending/sovietsoda,
+/obj/effect/mapping_helpers/broken_machine,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"Su" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/soviet_space_ship)
+"Sv" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/effect/decal/cleanable/blood/gibs/robot_debris,
+/turf/open/floor/plating/reinforced,
+/area/ruin/soviet_space_ship)
+"ST" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/machinery/door/airlock/colony_prefab,
+/obj/machinery/door/firedoor,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"SZ" = (
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard{
+	pixel_x = -6;
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/blood/trail{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/soviet_space_ship)
+"Tb" = (
+/obj/structure/table/reinforced,
+/obj/item/wrench,
+/obj/item/crowbar,
+/obj/item/pipe_dispenser,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"Ul" = (
+/obj/structure/cable,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"UA" = (
+/obj/machinery/power/solar,
+/obj/structure/cable,
+/turf/open/floor/iron/solarpanel{
+	initial_gas_mix = "LAVALAND_ATMOS"
+	},
+/area/lavaland/surface/outdoors)
+"Wo" = (
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"Wu" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"Xd" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden/layer4,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"Xg" = (
+/obj/machinery/door/airlock/centcom,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/machinery/door/firedoor,
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"Xm" = (
+/obj/item/clothing/mask/gas/soviet,
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"Xs" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"Xt" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/decal/cleanable/blood/gibs/robot_debris/up,
+/turf/open/floor/plating/reinforced,
+/area/ruin/soviet_space_ship)
+"Xx" = (
+/obj/structure/table/reinforced,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/stack/cable_coil,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"XA" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/airlock/vault,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/tech_storage,
+/obj/machinery/door/firedoor,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"XE" = (
+/obj/structure/cable,
+/obj/item/food/grown/carrot{
+	pixel_x = 10
+	},
+/obj/item/food/grown/carrot,
+/obj/item/food/grown/carrot{
+	pixel_x = -5
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"XF" = (
+/obj/structure/cable,
+/obj/item/storage/toolbox/emergency/old/ancientbundle,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"Ym" = (
+/turf/open/floor/oldshuttle,
+/area/ruin/soviet_space_ship)
+"Yu" = (
+/obj/item/clothing/head/beret/sec/engineering,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"YH" = (
+/obj/structure/sign/warning/electric_shock/directional/north,
+/obj/structure/cable,
+/obj/machinery/light/directional/north,
+/turf/open/floor/engine,
+/area/ruin/soviet_space_ship)
+"Zf" = (
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Zz" = (
+/obj/structure/cable,
+/turf/open/floor/engine/air,
+/area/ruin/soviet_space_ship)
+"ZH" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating/rust,
+/area/ruin/soviet_space_ship)
+
+(1,1,1) = {"
+zX
+zX
+Zf
+Zf
+UA
+UA
+UA
+UA
+OL
+UA
+UA
+UA
+UA
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(2,1,1) = {"
+zX
+zX
+Zf
+au
+OL
+OL
+OL
+OL
+OL
+OL
+OL
+OL
+OL
+au
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(3,1,1) = {"
+zX
+zX
+Zf
+Zf
+UA
+UA
+UA
+UA
+OL
+UA
+UA
+UA
+UA
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(4,1,1) = {"
+zX
+zX
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+OL
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(5,1,1) = {"
+zX
+zX
+Zf
+Zf
+UA
+UA
+UA
+UA
+OL
+UA
+UA
+UA
+UA
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(6,1,1) = {"
+zX
+zX
+Zf
+au
+OL
+OL
+OL
+OL
+OL
+OL
+OL
+OL
+OL
+au
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(7,1,1) = {"
+zX
+zX
+Zf
+Zf
+UA
+UA
+UA
+UA
+OL
+UA
+UA
+UA
+UA
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(8,1,1) = {"
+zX
+zX
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+OL
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(9,1,1) = {"
+zX
+zX
+Zf
+Zf
+UA
+UA
+UA
+UA
+OL
+UA
+UA
+UA
+UA
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(10,1,1) = {"
+zX
+zX
+Zf
+au
+OL
+OL
+OL
+OL
+OL
+OL
+OL
+OL
+OL
+au
+Zf
+Zf
+Zf
+Zf
+Zf
+JC
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(11,1,1) = {"
+zX
+zX
+Zf
+Zf
+UA
+UA
+UA
+UA
+OL
+UA
+UA
+UA
+UA
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+JC
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(12,1,1) = {"
+zX
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+OL
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+JC
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(13,1,1) = {"
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Ft
+fI
+Ft
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+JC
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+zX
+zX
+"}
+(14,1,1) = {"
+Zf
+Zf
+Zf
+Ft
+Ft
+Ft
+Ft
+Ft
+pj
+Ft
+Ft
+Ft
+Ft
+JC
+JC
+Su
+Su
+qw
+qw
+qw
+qw
+qw
+Su
+Su
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+JC
+JC
+JC
+JC
+Op
+Zf
+Zf
+zX
+"}
+(15,1,1) = {"
+Zf
+Zf
+Zf
+Ft
+mI
+pj
+wB
+Ft
+gG
+Ft
+ES
+Bb
+Ft
+hj
+Zf
+Su
+fS
+go
+fS
+go
+fS
+go
+BV
+Su
+Su
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+JC
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+"}
+(16,1,1) = {"
+Zf
+Zf
+Zf
+Ln
+pj
+gy
+Xs
+pj
+pj
+wv
+tL
+BL
+Pt
+Ft
+JC
+Su
+fS
+fS
+fS
+fS
+fS
+fS
+BV
+gz
+Su
+JC
+JC
+JC
+Su
+hL
+Su
+hL
+Su
+HZ
+RU
+Zf
+Zf
+Zf
+Zf
+Zf
+"}
+(17,1,1) = {"
+Zf
+Zf
+gI
+Ft
+XF
+gy
+gy
+gy
+gy
+ZH
+ES
+MM
+Xm
+Ft
+Zf
+Su
+fS
+fS
+fS
+fS
+fS
+fS
+BV
+rm
+Su
+Zf
+Su
+Su
+ND
+ND
+ND
+Ym
+JL
+nt
+HZ
+JC
+Zf
+Zf
+Zf
+Zf
+"}
+(18,1,1) = {"
+Zf
+Zf
+od
+Ft
+pj
+gy
+wF
+Gl
+IS
+ke
+gy
+gy
+Ig
+Ft
+Zf
+Su
+LX
+Zz
+qu
+Zz
+Zz
+Zz
+rm
+rm
+Su
+Zf
+Su
+po
+Ym
+Ym
+tt
+Xd
+GO
+pw
+Su
+JC
+JC
+JC
+Zf
+Zf
+"}
+(19,1,1) = {"
+Zf
+Zf
+Zf
+Ft
+pj
+PQ
+Sv
+HE
+Ox
+gU
+bM
+yr
+Pt
+Ft
+Ft
+Su
+Su
+Xg
+Su
+Su
+Su
+Su
+Su
+Su
+Su
+Su
+Su
+cH
+Ym
+Ym
+nf
+zz
+sD
+Su
+Su
+JC
+Zf
+Zf
+Zf
+Zf
+"}
+(20,1,1) = {"
+Zf
+Zf
+OW
+Ft
+YH
+LP
+kZ
+Hx
+kL
+Wu
+Wu
+Wu
+Af
+bX
+XA
+iF
+FO
+FO
+eU
+FO
+FO
+FO
+PO
+FO
+ST
+FO
+ST
+FO
+ty
+ty
+eT
+Rj
+jj
+xF
+kN
+JC
+Zf
+Zf
+Zf
+Zf
+"}
+(21,1,1) = {"
+Zf
+Zf
+od
+Ft
+FL
+PQ
+Xt
+bN
+Ot
+Wo
+wZ
+bp
+Pt
+Ft
+Ft
+Su
+Su
+Su
+Su
+Su
+Su
+Su
+pW
+Su
+Su
+Su
+Su
+cH
+Ym
+wV
+Ym
+Bg
+sD
+Su
+Su
+JC
+Zf
+Zf
+Zf
+Zf
+"}
+(22,1,1) = {"
+Zf
+Zf
+Zf
+Ft
+Xx
+gy
+aH
+Ab
+aH
+gy
+gy
+gy
+gy
+Ft
+Zf
+Su
+Sn
+Ym
+Ym
+yZ
+kO
+Ym
+FO
+sp
+Su
+Zf
+Su
+wT
+Ym
+PU
+Ym
+Ym
+Ym
+EP
+Su
+JC
+JC
+JC
+Zf
+Zf
+"}
+(23,1,1) = {"
+Zf
+Zf
+gI
+Ft
+Tb
+gy
+gy
+gy
+gy
+gy
+gy
+Yu
+Jj
+Ft
+Zf
+Su
+tu
+Ym
+yS
+Ul
+vN
+ty
+FO
+sr
+Su
+Zf
+Su
+Su
+sW
+Ym
+sW
+sW
+sW
+Su
+Su
+JC
+Zf
+Zf
+Zf
+Zf
+"}
+(24,1,1) = {"
+Zf
+Zf
+Zf
+Ft
+no
+gy
+ju
+pj
+pj
+pj
+pj
+lI
+Pt
+Ft
+JC
+Su
+QD
+Ld
+Ym
+Ul
+Ul
+py
+Ul
+lY
+Su
+JC
+JC
+JC
+Su
+SZ
+Su
+hL
+Su
+Su
+Zf
+Zf
+Zf
+Zf
+Zf
+zX
+"}
+(25,1,1) = {"
+Zf
+Zf
+dM
+Ft
+mI
+pj
+wB
+Ft
+fI
+Ft
+XE
+GB
+Ft
+uP
+Zf
+Su
+xk
+bs
+fC
+Nm
+Qt
+Qt
+Ym
+Su
+Su
+Zf
+Zf
+Zf
+Zf
+cp
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+zX
+zX
+zX
+"}
+(26,1,1) = {"
+Zf
+Zf
+dM
+Ft
+Ft
+Ft
+Ft
+Ft
+pj
+Ft
+Ft
+Ft
+Ft
+JC
+JC
+Su
+Su
+Su
+Ci
+Su
+Ci
+Su
+Su
+Su
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+ot
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+zX
+zX
+zX
+"}
+(27,1,1) = {"
+Zf
+dM
+dM
+dM
+dM
+Zf
+Zf
+Ft
+fI
+Ft
+Zf
+Zf
+dM
+dM
+Zf
+Zf
+Zf
+Zf
+Zf
+JC
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+"}
+(28,1,1) = {"
+Zf
+dM
+dM
+dM
+Zf
+Zf
+Zf
+Zf
+OL
+Zf
+Zf
+dM
+dM
+dM
+Zf
+Zf
+Zf
+Zf
+Zf
+JC
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(29,1,1) = {"
+dM
+dM
+dM
+Zf
+Jp
+UA
+UA
+UA
+OL
+Jp
+UA
+UA
+Jp
+dM
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(30,1,1) = {"
+Zf
+dM
+dM
+dM
+dM
+dM
+OL
+OL
+OL
+OL
+OL
+Zf
+dM
+sE
+dM
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(31,1,1) = {"
+Zf
+Zf
+Zf
+dM
+dM
+dM
+UA
+UA
+OL
+UA
+Jp
+Zf
+sE
+dM
+dM
+Zf
+Zf
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(32,1,1) = {"
+dM
+Zf
+Zf
+sE
+dM
+dM
+Zf
+Zf
+OL
+Zf
+Zf
+Zf
+sE
+sE
+dM
+Zf
+Zf
+dM
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(33,1,1) = {"
+dM
+dM
+Zf
+Zf
+sE
+dM
+Zf
+Jp
+OL
+UA
+UA
+Zf
+Zf
+dM
+dM
+Zf
+dM
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(34,1,1) = {"
+dM
+dM
+Zf
+Zf
+OL
+OL
+Zf
+OL
+OL
+OL
+OL
+Zf
+dM
+dM
+Zf
+dM
+dM
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(35,1,1) = {"
+dM
+dM
+Zf
+Zf
+Zf
+Zf
+dM
+Zf
+OL
+Jp
+dM
+Zf
+Zf
+dM
+dM
+dM
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(36,1,1) = {"
+dM
+dM
+dM
+sE
+Zf
+Zf
+Zf
+dM
+dM
+dM
+dM
+dM
+sE
+dM
+dM
+Zf
+dM
+dM
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(37,1,1) = {"
+dM
+dM
+dM
+Zf
+Zf
+Zf
+Pk
+dM
+dM
+dM
+dM
+dM
+dM
+dM
+dM
+Zf
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(38,1,1) = {"
+Zf
+dM
+dM
+dM
+Zf
+dM
+sE
+Zf
+oY
+dM
+dM
+dM
+dM
+dM
+dM
+Pk
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(39,1,1) = {"
+Zf
+Zf
+Zf
+dM
+dM
+Zf
+Zf
+Zf
+Zf
+Zf
+oY
+oY
+dM
+dM
+Zf
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
+(40,1,1) = {"
+Zf
+Pk
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+dM
+dM
+Zf
+Zf
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+"}
