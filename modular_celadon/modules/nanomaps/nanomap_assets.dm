@@ -17,7 +17,7 @@
 		"Void Raptor_nanomap_z1.png" = 'icons/_nanomaps/Void Raptor_nanomap_z1.png',
 		"Wawastation_nanomap_z1.png" = 'icons/_nanomaps/Wawastation_nanomap_z1.png',
 		"Wawastation_nanomap_z2.png" = 'icons/_nanomaps/Wawastation_nanomap_z2.png',
-		"Ocean Pubby_nanomap_z1.png" = 'icons/_nanomaps/Ocean Pubby_nanomap_z1.png',
+		"Pubby Station_nanomap_z1.png" = 'icons/_nanomaps/Pubby Station_nanomap_z1.png',
 		// Centcom modular
 		"The Interlink_nanomap_z1.png" = 'icons/_nanomaps/The Interlink_nanomap_z1.png',
 		"Fore CentCom Dock_nanomap_z1.png" = 'icons/_nanomaps/Fore CentCom Dock_nanomap_z1.png',
