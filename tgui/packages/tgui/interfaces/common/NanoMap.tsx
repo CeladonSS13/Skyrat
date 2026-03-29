@@ -127,7 +127,8 @@ export function NanoMap(props: Props) {
     const { name, lavalandLevel, minFloor } = mapData;
     const image =
       level === lavalandLevel && lavalandLevel !== minFloor
-        ? 'Lavaland_nanomap_z1.png' : `${name}_nanomap_z${level - 1}.png`;
+        ? 'Lavaland_nanomap_z1.png'
+        : `${name}_nanomap_z${level - 1}.png`;
 
     return (
       <Image

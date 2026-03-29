@@ -20,7 +20,7 @@
 		map_ui_data["minFloor"] = min_station_z_level
 		map_ui_data["mainFloor"] = main_station_z_level
 		map_ui_data["maxFloor"] = max_station_z_level
-		map_ui_data["lavalandLevel"] = lavaland_z_levell
+		map_ui_data["lavalandLevel"] = lavaland_z_level
 
 		// Add ladders and stairs for navigator UI
 		var/list/ladders_and_stairs = list()
