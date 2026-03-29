@@ -8903,7 +8903,7 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/supply)
 "aMj" = (
-/obj/structure/closet/secure_closet/security/cargo,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/structure/cable,
 /obj/effect/turf_decal/siding/red{
 	dir = 1
@@ -18320,7 +18320,7 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/science)
 "bEY" = (
-/obj/structure/closet/secure_closet/security/science,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/structure/cable,
 /obj/effect/turf_decal/siding/red{
@@ -21873,7 +21873,7 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/engineering)
 "bWC" = (
-/obj/structure/closet/secure_closet/security/engine,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /obj/effect/turf_decal/siding/red{
 	dir = 6
@@ -39792,7 +39792,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
 "mpV" = (
-/obj/structure/closet/secure_closet/security/med,
+/obj/structure/closet/secure_closet/security/sec,
 /obj/machinery/airalarm/directional/east,
 /obj/machinery/requests_console/auto_name/directional/south{
 	department = "Security"
@@ -53270,7 +53270,7 @@
 /area/station/engineering/storage/tech)
 "vyL" = (
 /obj/machinery/stasis,
-/obj/machinery/defibrillator_mount/directional/east,
+/obj/machinery/defibrillator_mount/loaded/directional/east,
 /turf/open/floor/iron/white/small,
 /area/station/medical/treatment_center)
 "vzg" = (
@@ -54014,7 +54014,7 @@
 /obj/machinery/stasis{
 	dir = 1
 	},
-/obj/machinery/defibrillator_mount/directional/west,
+/obj/machinery/defibrillator_mount/loaded/directional/west,
 /turf/open/floor/iron/white/small,
 /area/station/medical/treatment_center)
 "vZJ" = (
@@ -54062,7 +54062,7 @@
 /area/station/service/bar)
 "waG" = (
 /obj/structure/table/optable,
-/obj/machinery/defibrillator_mount/directional/north,
+/obj/machinery/defibrillator_mount/loaded/directional/north,
 /obj/effect/turf_decal/trimline/blue/line{
 	dir = 1
 	},
@@ -54141,7 +54141,7 @@
 /area/station/engineering/supermatter/room)
 "wcx" = (
 /obj/structure/table/optable,
-/obj/machinery/defibrillator_mount/directional/south,
+/obj/machinery/defibrillator_mount/loaded/directional/south,
 /obj/effect/turf_decal/trimline/blue/line,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/theatre)

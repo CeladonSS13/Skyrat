@@ -12078,7 +12078,7 @@
 	pixel_x = 6
 	},
 /obj/item/reagent_containers/syringe,
-/obj/machinery/defibrillator_mount/directional/east,
+/obj/machinery/defibrillator_mount/loaded/directional/loaded/east,
 /obj/effect/turf_decal/tile/blue/full,
 /turf/open/floor/iron/large,
 /area/station/medical/treatment_center)
