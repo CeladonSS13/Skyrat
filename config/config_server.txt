@@ -158,7 +158,7 @@ VOTE_PERIOD 600
 ALLOW_RESPAWN 2
 
 ## Respawn delay (deciseconds), which doesn't allow to return to lobby
-RESPAWN_DELAY 12000
+RESPAWN_DELAY 6000
 
 ## Uncomment this to stop people connecting to your server without a registered ckey. (i.e. guest-* are all blocked from connecting)
 GUEST_BAN
