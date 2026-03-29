@@ -14,6 +14,7 @@
 /obj/item/clothing/mask/fakemoustache/italian/Initialize(mapload)
 	. = ..()
 	// Celadon CHANGE BEGIN (april_fools_day)
+	// AddComponent(/datum/component/speechmod, replacements = strings("italian_replacement.json", "italian"), end_string = list(" Ravioli, ravioli, give me the formuoli!"," Mamma-mia!"," Mamma-mia! That's a spicy meat-ball!", " La la la la la funiculi funicula!"), end_string_chance = 3, slots = ITEM_SLOT_MASK)
 	if (check_holidays(APRIL_FOOLS))
 		AddComponent(/datum/component/speechmod, replacements = strings("celadon/oguzok.json", "oguzok"), end_string = list(" Предатель!"," Иуды!"," Инвалиды!", " Уроды!"), end_string_chance = 3, slots = ITEM_SLOT_MASK)
 	else
