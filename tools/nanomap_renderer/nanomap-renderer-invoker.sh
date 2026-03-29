@@ -18,9 +18,6 @@ tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_fil
 tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/VoidRaptor/VoidRaptor.dmm"
 tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/wawastation/wawastation.dmm"
 tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/oceanpubby/oceanpubby.dmm"
-# Modular Centcom
-tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/generic/CentCom_interlink_Celadon.dmm"
-tools/nanomap_renderer/nanomap-renderer minimap -w 2040 -h 2040 "./_maps/map_files/generic/CentCom_Celadon.dmm"
 # Move and rename files so the game understands them (filename => map name in _maps .json files, in case they different)
 # TG-related (stage 1)
 cd "data/nanomaps"
@@ -44,9 +41,6 @@ mv "VoidRaptor_nanomap_z1.png" "Void Raptor_nanomap_z1.png"
 mv "wawastation_nanomap_z1.png" "Wawastation_nanomap_z1.png"
 mv "wawastation_nanomap_z2.png" "Wawastation_nanomap_z2.png"
 mv "oceanpubby_nanomap_z1.png" "Pubby Station_nanomap_z1.png"
-# Modular Centcom (stage 1)
-mv "CentCom_interlink_Celadon_nanomap_z1.png" "The Interlink_nanomap_z1.png"
-mv "CentCom_Celadon_nanomap_z1.png" "Fore CentCom Dock_nanomap_z1.png"
 # TG-related (stage 2)
 cd "../../"
 # echo "Moving to..."
@@ -69,9 +63,6 @@ cp "data/nanomaps/Void Raptor_nanomap_z1.png" "icons/_nanomaps"
 cp "data/nanomaps/Wawastation_nanomap_z1.png" "icons/_nanomaps"
 cp "data/nanomaps/Wawastation_nanomap_z2.png" "icons/_nanomaps"
 cp "data/nanomaps/Pubby Station_nanomap_z1.png" "icons/_nanomaps"
-# Modular Centcom (stage 2)
-cp "data/nanomaps/The Interlink_nanomap_z1.png" "icons/_nanomaps"
-cp "data/nanomaps/Fore CentCom Dock_nanomap_z1.png" "icons/_nanomaps"
 # # Debug stuff
 # cd "icons/_nanomaps"
 # echo "At..."
