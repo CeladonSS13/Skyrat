@@ -40,12 +40,14 @@
 		if(is_banned_from(ckey, BAN_LOOC))
 			to_chat(src, span_warning("You are LOOC banned!"))
 			return
-		if(mob.stat == DEAD)
-			to_chat(src, span_danger("You cannot use LOOC while dead."))
-			return
-		if(istype(mob, /mob/dead))
-			to_chat(src, span_danger("You cannot use LOOC while ghosting."))
-			return
+		// CELADON REMOVAL START
+		// if(mob.stat == DEAD)
+		// 	to_chat(src, span_danger("You cannot use LOOC while dead."))
+		// 	return
+		// if(istype(mob, /mob/dead))
+		// 	to_chat(src, span_danger("You cannot use LOOC while ghosting."))
+		// 	return
+		// CELADON REMOVAL END
 
 	msg = emoji_parse(msg)
 
