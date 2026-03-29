@@ -318,7 +318,7 @@ function NanoMapLevelSelector() {
           />
         </Stack.Item>
       )}
-      {interlinkLevel && (
+      {interlinkLevel && currentLevel === interlinkLevel && (
         <Stack.Item>
           <Button
             icon="person-military-pointing"
@@ -332,7 +332,7 @@ function NanoMapLevelSelector() {
           />
         </Stack.Item>
       )}
-      {centcomLevel && (
+      {centcomLevel && currentLevel === centcomLevel && (
         <Stack.Item>
           <Button
             icon="building-shield"
