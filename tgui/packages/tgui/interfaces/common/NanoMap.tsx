@@ -29,8 +29,6 @@ export type MapData = {
   mainFloor: number;
   maxFloor: number;
   lavalandLevel: number;
-  centcomLevel: number;
-  interlinkLevel: number;
   stairs: Stair[];
 };
 
@@ -126,13 +124,10 @@ export function NanoMap(props: Props) {
   });
 
   function getMapImage(level: number) {
-    const { name, lavalandLevel, centcomLevel, interlinkLevel, minFloor } = mapData;
+    const { name, lavalandLevel, minFloor } = mapData;
     const image =
       level === lavalandLevel && lavalandLevel !== minFloor
-        ? 'Lavaland_nanomap_z1.png'
-        : level === centcomLevel ? 'Fore CentCom Dock_nanomap_z1.png'
-        : level === interlinkLevel ? 'The Interlink_nanomap_z1.png'
-        : `${name}_nanomap_z${level - 1}.png`;
+        ? 'Lavaland_nanomap_z1.png' : `${name}_nanomap_z${level - 1}.png`;
 
     return (
       <Image
@@ -277,7 +272,7 @@ function NanoMapLevelSelector() {
   }
 
   const { mapData, mapState, setMapState } = context;
-  const { minFloor, maxFloor, mainFloor, lavalandLevel, centcomLevel, interlinkLevel } = mapData;
+  const { minFloor, maxFloor, mainFloor, lavalandLevel } = mapData;
   const { currentLevel } = mapState;
 
   function setLevel(level: number) {
@@ -313,34 +308,6 @@ function NanoMapLevelSelector() {
             onClick={() =>
               setLevel(
                 currentLevel === lavalandLevel ? mainFloor : lavalandLevel,
-              )
-            }
-          />
-        </Stack.Item>
-      )}
-      {interlinkLevel && currentLevel === interlinkLevel && (
-        <Stack.Item>
-          <Button
-            icon="person-military-pointing"
-            selected={currentLevel === interlinkLevel}
-            tooltip="Интерлинк"
-            onClick={() =>
-              setLevel(
-                currentLevel === interlinkLevel ? mainFloor : interlinkLevel,
-              )
-            }
-          />
-        </Stack.Item>
-      )}
-      {centcomLevel && currentLevel === centcomLevel && (
-        <Stack.Item>
-          <Button
-            icon="building-shield"
-            selected={currentLevel === centcomLevel}
-            tooltip="ЦК"
-            onClick={() =>
-              setLevel(
-                currentLevel === centcomLevel ? mainFloor : centcomLevel,
               )
             }
           />
