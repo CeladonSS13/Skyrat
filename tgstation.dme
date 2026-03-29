@@ -9833,6 +9833,7 @@
 #include "modular_celadon\modules\balance_celadon\old_pulse_recoil\pulse_rifle.dm"
 #include "modular_celadon\modules\balance_celadon\heretic_balance\starting_lore.dm"
 #include "modular_celadon\modules\balance_celadon\heretic_balance\ash_jaunt.dm"
+#include "modular_celadon\modules\balance_celadon\quirks\genetic_freak.dm"
 #include "modular_celadon\modules\infinite_access_slots\infinite_access_slots_config.dm"
 #include "modular_celadon\modules\infinite_access_slots\cards_ids.dm"
 #include "modular_celadon\modules\access_console_buttons\card.dm"
