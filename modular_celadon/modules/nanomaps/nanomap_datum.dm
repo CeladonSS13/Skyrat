@@ -16,11 +16,19 @@
 		var/list/mining_levels = levels_by_trait(ZTRAIT_MINING)
 		var/lavaland_z_level = length(mining_levels) ? mining_levels[1] : null
 
+		var/list/centcom_station_maps = levels_by_trait(ZTRAIT_CENTCOM_MAP)
+		var/centcom_z_level = length(centcom_station_maps) ? centcom_station_maps[1] : null
+
+		var/list/interlink_station_maps = levels_by_trait(ZTRAIT_INTERLINK_MAP)
+		var/interlink_z_level = length(interlink_station_maps) ? interlink_station_maps[1] : null
+
 		map_ui_data["name"] = current_map.map_name
 		map_ui_data["minFloor"] = min_station_z_level
 		map_ui_data["mainFloor"] = main_station_z_level
 		map_ui_data["maxFloor"] = max_station_z_level
 		map_ui_data["lavalandLevel"] = lavaland_z_level
+		map_ui_data["centcomLevel"] = centcom_z_level
+		map_ui_data["interlinkLevel"] = interlink_z_level
 
 		// Add ladders and stairs for navigator UI
 		var/list/ladders_and_stairs = list()

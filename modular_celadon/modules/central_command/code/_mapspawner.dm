@@ -3,7 +3,7 @@
 /datum/controller/subsystem/mapping/loadWorld()
 	. = ..()
 	var/list/FailedZsRatCeladon_interlink = list()
-	LoadGroup(FailedZsRatCeladon_interlink, "The Interlink", "map_files/generic", "CentCom_interlink_Celadon.dmm", default_traits = ZTRAITS_CENTCOM)
+	LoadGroup(FailedZsRatCeladon_interlink, "The Interlink", "map_files/generic", "CentCom_interlink_Celadon.dmm", default_traits = ZTRAITS_INTERLINK_MAP)
 	if(LAZYLEN(FailedZsRatCeladon_interlink))
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZsRatCeladon_interlink[1]]"
 		if(FailedZsRatCeladon_interlink.len > 1)
@@ -12,7 +12,7 @@
 		msg += ". Yell at your server host!"
 		INIT_ANNOUNCE(msg)
 	var/list/FailedZsRatCeladon_centcom = list()
-	LoadGroup(FailedZsRatCeladon_centcom, "CentCom_Station", "map_files/generic", "CentCom_Celadon.dmm", default_traits = ZTRAITS_CENTCOM)
+	LoadGroup(FailedZsRatCeladon_centcom, "CentCom_Station", "map_files/generic", "CentCom_Celadon.dmm", default_traits = ZTRAITS_CENTCOM_MAP)
 	if(LAZYLEN(FailedZsRatCeladon_centcom))
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZsRatCeladon_centcom[1]]"
 		if(FailedZsRatCeladon_centcom.len > 1)
