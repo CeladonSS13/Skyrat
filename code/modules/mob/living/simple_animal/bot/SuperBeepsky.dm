@@ -123,7 +123,16 @@
 			continue
 		target = C
 		oldtarget_name = C.name
-		// Celadon CHANGE BEGIN (april_fools_day)
+
+		// Celadon REMOVAL START - april_fools_day
+		// speak("Level [threatlevel] infraction alert!")
+		// playsound(src, pick(
+		// 	'sound/mobs/non-humanoids/beepsky/criminal.ogg',
+		// 	'sound/mobs/non-humanoids/beepsky/justice.ogg',
+		// 	'sound/mobs/non-humanoids/beepsky/freeze.ogg',
+		// ), 50, FALSE)
+		// Celadon REMOVAL END
+		// Celadon ADDITION START
 		if(check_holidays(APRIL_FOOLS))
 			speak("Угроза [threatlevel]-го уровня!")
 			playsound(src, pick(
@@ -138,7 +147,7 @@
 				'sound/mobs/non-humanoids/beepsky/justice.ogg',
 				'sound/mobs/non-humanoids/beepsky/freeze.ogg',
 			), 50, FALSE)
-		// Celadon CHANGE END
+		// Celadon ADDITION END
 		playsound(src,'sound/items/weapons/saberon.ogg',50,TRUE,-1)
 		visible_message(span_warning("[src] ignites his energy swords!"))
 		icon_state = "grievous-c"

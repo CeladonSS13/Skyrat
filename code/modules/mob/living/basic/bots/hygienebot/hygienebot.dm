@@ -74,6 +74,9 @@
 	return ..()
 
 /mob/living/basic/bot/hygienebot/generate_speak_list()
+	// Celadon REMOVAL START - april_fools_day
+	//var/static/list/finalized_speak_list = (found_announcements + threat_announcements + cleaned_announcements)
+	// Celadon REMOVAL END
 	// Celadon EDIT START - april_fools_day
 	var/static/list/finalized_speak_list
 	if(check_holidays(APRIL_FOOLS))

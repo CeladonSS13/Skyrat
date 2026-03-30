@@ -166,12 +166,15 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 
 /obj/item/clothing/mask/gas/sechailer/proc/select_phrase()
 	if(!safety)
-		// Celadon CHANGE BEGIN (april_fools_day)
+		// Celadon REMOVAL START - april_fools_day
+		//return EMAG_PHRASE
+		// Celadon REMOVAL END
+		// Celadon ADDITION START
 		if(check_holidays(APRIL_FOOLS))
 			return pick(EMAG_PHRASE, 20)
 		else
 			return EMAG_PHRASE
-		// Celadon CHANGE END (april_fools_day)
+		// Celadon ADDITION END
 	else
 		var/upper_limit
 		switch (aggressiveness)

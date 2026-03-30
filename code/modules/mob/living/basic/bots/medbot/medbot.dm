@@ -119,7 +119,7 @@
 	if(isnull(ai_controller))
 		return
 
-	// Celadon CHANGE BEGIN (april_fools_day)
+	// Celadon ADDITION START - april_fools_day
 	if (check_holidays(APRIL_FOOLS))
 		ai_controller.set_blackboard_key(BB_NEAR_DEATH_SPEECH, ru_near_death_announcements)
 		ai_controller.set_blackboard_key(BB_WAIT_SPEECH, ru_wait_announcements)
@@ -128,7 +128,7 @@
 		ai_controller.set_blackboard_key(BB_EMAGGED_SPEECH, ru_emagged_announcements)
 		ai_controller.set_blackboard_key(BB_WORRIED_ANNOUNCEMENTS, ru_worried_announcements)
 		return
-	// Celadon CHANGE END
+	// Celadon ADDITION END
 
 	ai_controller.set_blackboard_key(BB_NEAR_DEATH_SPEECH, near_death_announcements)
 	ai_controller.set_blackboard_key(BB_WAIT_SPEECH, wait_announcements)
@@ -215,15 +215,16 @@
 
 //this is sin
 /mob/living/basic/bot/medbot/generate_speak_list()
-	// Celadon CHANGE BEGIN (april_fools_day)
+	// CELADON REMOVAL START - april_fools_day
 	// var/static/list/finalized_speak_list = (idle_lines + wait_announcements + afterheal_announcements + near_death_announcements + emagged_announcements + tipped_announcements + untipped_announcements + worried_announcements + misc_announcements)
-
+	// CELADON REMOVAL END
+	// Celadon ADDITION START
 	var/static/list/finalized_speak_list
 	if(check_holidays(APRIL_FOOLS))
 		finalized_speak_list = (ru_idle_lines + ru_wait_announcements + ru_afterheal_announcements + ru_near_death_announcements + ru_emagged_announcements + ru_tipped_announcements + ru_untipped_announcements + ru_worried_announcements + ru_misc_announcements)
 	else
 		finalized_speak_list = (idle_lines + wait_announcements + afterheal_announcements + near_death_announcements + emagged_announcements + tipped_announcements + untipped_announcements + worried_announcements + misc_announcements)
-	// Celadon CHANGE END
+	// Celadon ADDITION END
 	return finalized_speak_list
 
 
