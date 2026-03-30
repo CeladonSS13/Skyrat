@@ -89,7 +89,6 @@
 	payload_string = replacetext(payload_string, "\[Head Developer\]", "\[<font color='#2ecc71'>Главный Разработчик</font>\]")
 	payload_string = replacetext(payload_string, "\[Developer\]",	"\[<font color='#2ecc71'>Разработчик</font>\]")
 	payload_string = replacetext(payload_string, "\[Eventologist\]",	"\[<font color='#0000FF'>Ивентолог</font>\]")
-	payload_string = replacetext(payload_string, "\[Discord Moderator\]",	"\[<font color='#FFFFFF'>Discord-модератор</font>\]")
 	// Celadon EDIT END
 
 	lines += payload_string
