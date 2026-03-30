@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	/datum/hailer_phrase/shutup,
 	/datum/hailer_phrase/super,
 	/datum/hailer_phrase/dredd,
-	/datum/hailer_phrase/ubludok // Celadon ADD (april_fools_day)
+	/datum/hailer_phrase/ubludok // Celadon ADDITION - april_fools_day
 ))
 
 /obj/item/clothing/mask/gas/sechailer
@@ -189,7 +189,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	COOLDOWN_START(src, hailer_cooldown, PHRASE_COOLDOWN)
 	user.audible_message("[user]'s Compli-o-Nator: <font color='red' size='4'><b>[initial(phrase.phrase_text)]</b></font>")
 	// Celadon ADD BEGIN (april_fools_day)
-	if (phrase.phrase_sound == "ubludok" && check_holidays(APRIL_FOOLS))
+	if (phrase.phrase_sound == /datum/hailer_phrase/ubludok::phrase_sound && check_holidays(APRIL_FOOLS))
 		playsound(src, "modular_celadon/modules/april_fools_day/beepsky/sounds/ubludok_short.ogg", 100, FALSE, 4)
 		return TRUE
 	// Celadon ADD END (april_fools_day)
