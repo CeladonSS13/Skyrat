@@ -188,11 +188,11 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 		return
 	COOLDOWN_START(src, hailer_cooldown, PHRASE_COOLDOWN)
 	user.audible_message("[user]'s Compli-o-Nator: <font color='red' size='4'><b>[initial(phrase.phrase_text)]</b></font>")
-	// Celadon ADD BEGIN (april_fools_day)
+	// Celadon ADDITION START - april_fools_day
 	if (phrase.phrase_sound == /datum/hailer_phrase/ubludok::phrase_sound && check_holidays(APRIL_FOOLS))
 		playsound(src, "modular_celadon/modules/april_fools_day/beepsky/sounds/ubludok_short.ogg", 100, FALSE, 4)
 		return TRUE
-	// Celadon ADD END (april_fools_day)
+	// Celadon ADDITION END
 	playsound(src, "sound/runtime/complionator/[initial(phrase.phrase_sound)].ogg", 100, FALSE, 4)
 	return TRUE
 

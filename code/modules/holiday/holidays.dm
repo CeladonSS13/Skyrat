@@ -285,16 +285,9 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 /datum/holiday/april_fools
 	name = APRIL_FOOLS
-	// Celadon CHANGE BEGIN (april_fools_day)
-	// begin_month = APRIL
-	// begin_day = 1
-
-	// Немного подольше сделаем первое апреля
-	begin_month = MARCH
-	begin_day = 31
-	end_month = APRIL
-	end_day = 3
-	// Celadon CHANGE END
+	begin_month = APRIL
+	begin_day = 1
+	end_day = 2
 	holiday_hat = /obj/item/clothing/head/chameleon/broken
 	holiday_mail = list(
 		/obj/item/clothing/head/costume/whoopee,

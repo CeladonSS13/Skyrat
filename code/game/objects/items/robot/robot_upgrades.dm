@@ -880,19 +880,10 @@
 
 	if(borgo.mind)
 		borgo.mind.grab_ghost()
-		// Celadon CHANGE BEGIN (april_fools_day)
-		if(check_holidays(APRIL_FOOLS))
-			playsound(loc, 'modular_celadon/modules/april_fools_day/borgs/sound/windows-xp-logon-moddif.ogg', 75, TRUE)
-		else
-			playsound(loc, 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE)
-		// Celadon CHANGE END
+		playsound(loc, check_holidays(APRIL_FOOLS) ? 'modular_celadon/modules/april_fools_day/borgs/sound/windows-xp-logon-moddif.ogg' : 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE) // Celadon EDIT - april_fools_day, original: playsound(loc, 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE)
 	else
-		// Celadon CHANGE BEGIN (april_fools_day)
-		if(check_holidays(APRIL_FOOLS))
-			playsound(loc, 'modular_celadon/modules/april_fools_day/borgs/sound/windows-xp-hardware-insert.ogg', 75, TRUE)
-		else
-			playsound(loc, 'sound/machines/ping.ogg', 75, TRUE)
-		// Celadon CHANGE END
+
+		playsound(loc, check_holidays(APRIL_FOOLS) ? 'modular_celadon/modules/april_fools_day/borgs/sound/windows-xp-hardware-insert.ogg' : 'sound/machines/ping.ogg', 75, TRUE) // Celadon EDIT - april_fools_day, original: playsound(loc, 'sound/machines/ping.ogg', 75, TRUE)
 
 	borgo.revive()
 	borgo.logevent("WARN -- System recovered from unexpected shutdown.")

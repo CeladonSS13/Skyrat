@@ -134,13 +134,6 @@
 		commence_wash(human)
 
 /mob/living/basic/bot/hygienebot/proc/generate_ai_speech()
-	// Celadon CHANGE BEGIN (april_fools_day)
-	if (check_holidays(APRIL_FOOLS))
-		ai_controller.set_blackboard_key(BB_WASH_FOUND, ru_found_announcements)
-		ai_controller.set_blackboard_key(BB_WASH_THREATS, ru_threat_announcements)
-		ai_controller.set_blackboard_key(BB_WASH_DONE, ru_cleaned_announcements)
-		return
-	// Celadon CHANGE END
 	ai_controller.set_blackboard_key(BB_WASH_FOUND, found_announcements)
 	ai_controller.set_blackboard_key(BB_WASH_THREATS, threat_announcements)
 	ai_controller.set_blackboard_key(BB_WASH_DONE, cleaned_announcements)

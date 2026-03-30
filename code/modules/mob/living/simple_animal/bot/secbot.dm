@@ -349,12 +349,7 @@
 		return FALSE
 	if(!current_target.handcuffed)
 		current_target.set_handcuffed(new cuff_type(current_target))
-		// Celadon CHANGE BEGIN (april_fools_day)
-		if (check_holidays(APRIL_FOOLS))
-			playsound(src, "law_april", 50, FALSE)
-		else
-			playsound(src, SFX_LAW, 50, FALSE)
-		// Celadon CHANGE END (april_fools_day)
+		playsound(src, check_holidays(APRIL_FOOLS) ? "law_april" : SFX_LAW, 50, FALSE) // Celadon EDIT - april_fools_day, original: playsound(src, SFX_LAW, 50, FALSE)
 		back_to_idle()
 
 /mob/living/simple_animal/bot/secbot/proc/stun_attack(mob/living/carbon/current_target, harm = FALSE)

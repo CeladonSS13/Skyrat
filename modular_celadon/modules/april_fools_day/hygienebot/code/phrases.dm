@@ -32,3 +32,13 @@
 		RU_HYGIENEBOT_VOICED_THANK_GOD = 'modular_celadon/modules/april_fools_day/hygienebot/sound/thankgod.ogg',
 		RU_HYGIENEBOT_VOICED_DEGENERATE = 'modular_celadon/modules/april_fools_day/hygienebot/sound/degenerate.ogg',
 	)
+
+
+
+/mob/living/basic/bot/hygienebot/generate_ai_speech()
+	if (check_holidays(APRIL_FOOLS))
+		ai_controller.set_blackboard_key(BB_WASH_FOUND, ru_found_announcements)
+		ai_controller.set_blackboard_key(BB_WASH_THREATS, ru_threat_announcements)
+		ai_controller.set_blackboard_key(BB_WASH_DONE, ru_cleaned_announcements)
+		return
+	..()

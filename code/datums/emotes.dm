@@ -111,11 +111,7 @@
 	if(user.client)
 		user.log_message(msg, LOG_EMOTE)
 
-	var/tmp_sound = check_holidays(APRIL_FOOLS) ? get_sound_april(user) : get_sound(user) // CELADON EDIT, original: var/tmp_sound = get_sound(user)
-	// Celadon ADDITION START - april_fools_day
-	if(check_holidays(APRIL_FOOLS))
-		tmp_sound = get_sound_april(user)
-	// Celadon ADDITION END
+	var/tmp_sound = get_sound(user)
 	if(tmp_sound && should_play_sound(user, intentional) && TIMER_COOLDOWN_FINISHED(user, "general_emote_audio_cooldown") && TIMER_COOLDOWN_FINISHED(user, type))
 		TIMER_COOLDOWN_START(user, type, specific_emote_audio_cooldown)
 		TIMER_COOLDOWN_START(user, "general_emote_audio_cooldown", general_emote_audio_cooldown)
