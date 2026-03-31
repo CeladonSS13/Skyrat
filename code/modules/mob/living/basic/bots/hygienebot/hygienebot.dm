@@ -75,13 +75,13 @@
 
 /mob/living/basic/bot/hygienebot/generate_speak_list()
 	// CELADON REMOVAL var/static/list/finalized_speak_list = (found_announcements + threat_announcements + cleaned_announcements)
-	// Celadon EDIT START - april_fools_day
+	// Celadon ADDITION START - april_fools_day
 	var/static/list/finalized_speak_list
 	if(check_holidays(APRIL_FOOLS))
 		finalized_speak_list = (ru_found_announcements + ru_threat_announcements + ru_cleaned_announcements)
 	else
 		finalized_speak_list = (found_announcements + threat_announcements + cleaned_announcements)
-	// Celadon EDIT END
+	// Celadon ADDITIONcode/modules/mob/living/basic/bots/medbot/medbot.dm END
 	return finalized_speak_list
 
 /mob/living/basic/bot/hygienebot/update_icon_state()

@@ -215,10 +215,8 @@
 
 //this is sin
 /mob/living/basic/bot/medbot/generate_speak_list()
-	// CELADON REMOVAL START - april_fools_day
-	// var/static/list/finalized_speak_list = (idle_lines + wait_announcements + afterheal_announcements + near_death_announcements + emagged_announcements + tipped_announcements + untipped_announcements + worried_announcements + misc_announcements)
-	// CELADON REMOVAL END
-	// Celadon ADDITION START
+	// CELADON REMOVAL var/static/list/finalized_speak_list = (idle_lines + wait_announcements + afterheal_announcements + near_death_announcements + emagged_announcements + tipped_announcements + untipped_announcements + worried_announcements + misc_announcements)
+	// Celadon ADDITION START - april_fools_day
 	var/static/list/finalized_speak_list
 	if(check_holidays(APRIL_FOOLS))
 		finalized_speak_list = (ru_idle_lines + ru_wait_announcements + ru_afterheal_announcements + ru_near_death_announcements + ru_emagged_announcements + ru_tipped_announcements + ru_untipped_announcements + ru_worried_announcements + ru_misc_announcements)
