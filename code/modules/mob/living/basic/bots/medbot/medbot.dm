@@ -29,27 +29,27 @@
 	path_image_color = "#d9d9f4"
 
 	///anouncements when we find a target to heal
-	var/static/list/wait_announcements = list(
+	var/list/wait_announcements = list( // Celadon CHANGE Orig: var/static/list/wait_announcements = list(
 		MEDIBOT_VOICED_HOLD_ON = 'sound/mobs/non-humanoids/medbot/coming.ogg',
 		MEDIBOT_VOICED_WANT_TO_HELP = 'sound/mobs/non-humanoids/medbot/help.ogg',
 		MEDIBOT_VOICED_YOU_ARE_INJURED = 'sound/mobs/non-humanoids/medbot/injured.ogg',
 	)
 
 	///announcements after we heal someone
-	var/static/list/afterheal_announcements = list(
+	var/list/afterheal_announcements = list(
 		MEDIBOT_VOICED_ALL_PATCHED_UP = 'sound/mobs/non-humanoids/medbot/patchedup.ogg',
 		MEDIBOT_VOICED_APPLE_A_DAY = 'sound/mobs/non-humanoids/medbot/apple.ogg',
 		MEDIBOT_VOICED_FEEL_BETTER = 'sound/mobs/non-humanoids/medbot/feelbetter.ogg',
 	)
 
 	///announcements when we are healing someone near death
-	var/static/list/near_death_announcements = list(
+	var/list/near_death_announcements = list(
 		MEDIBOT_VOICED_STAY_WITH_ME = 'sound/mobs/non-humanoids/medbot/no.ogg',
 		MEDIBOT_VOICED_LIVE = 'sound/mobs/non-humanoids/medbot/live.ogg',
 		MEDIBOT_VOICED_NEVER_LOST = 'sound/mobs/non-humanoids/medbot/lost.ogg',
 	)
 	///announcements when we are idle
-	var/static/list/idle_lines = list(
+	var/list/idle_lines = list(
 		MEDIBOT_VOICED_DELICIOUS = 'sound/mobs/non-humanoids/medbot/delicious.ogg',
 		MEDIBOT_VOICED_PLASTIC_SURGEON = 'sound/mobs/non-humanoids/medbot/surgeon.ogg',
 		MEDIBOT_VOICED_MASK_ON = 'sound/mobs/non-humanoids/medbot/radar.ogg',
@@ -58,7 +58,7 @@
 		MEDIBOT_VOICED_SUFFER = 'sound/mobs/non-humanoids/medbot/why.ogg',
 	)
 	///announcements when we are emagged
-	var/static/list/emagged_announcements = list(
+	var/list/emagged_announcements = list(
 		MEDIBOT_VOICED_FUCK_YOU = 'sound/mobs/non-humanoids/medbot/fuck_you.ogg',
 		MEDIBOT_VOICED_NOT_A_GAME = 'sound/mobs/non-humanoids/medbot/turn_off.ogg',
 		MEDIBOT_VOICED_IM_DIFFERENT = 'sound/mobs/non-humanoids/medbot/im_different.ogg',
@@ -66,7 +66,7 @@
 		MEDIBOT_VOICED_SHINDEMASHOU = 'sound/mobs/non-humanoids/medbot/shindemashou.ogg',
 	)
 	///announcements when we are being tipped
-	var/static/list/tipped_announcements = list(
+	var/list/tipped_announcements = list(
 		MEDIBOT_VOICED_WAIT = 'sound/mobs/non-humanoids/medbot/hey_wait.ogg',
 		MEDIBOT_VOICED_DONT = 'sound/mobs/non-humanoids/medbot/please_dont.ogg',
 		MEDIBOT_VOICED_TRUSTED_YOU = 'sound/mobs/non-humanoids/medbot/i_trusted_you.ogg',
@@ -74,13 +74,13 @@
 		MEDIBOT_VOICED_OH_FUCK = 'sound/mobs/non-humanoids/medbot/oh_fuck.ogg',
 	)
 	///announcements when we are being untipped
-	var/static/list/untipped_announcements = list(
+	var/list/untipped_announcements = list(
 		MEDIBOT_VOICED_FORGIVE = 'sound/mobs/non-humanoids/medbot/forgive.ogg',
 		MEDIBOT_VOICED_THANKS = 'sound/mobs/non-humanoids/medbot/thank_you.ogg',
 		MEDIBOT_VOICED_GOOD_PERSON = 'sound/mobs/non-humanoids/medbot/youre_good.ogg',
 	)
 	///announcements when we are worried
-	var/static/list/worried_announcements = list(
+	var/list/worried_announcements = list(
 		MEDIBOT_VOICED_PUT_BACK = 'sound/mobs/non-humanoids/medbot/please_put_me_back.ogg',
 		MEDIBOT_VOICED_IM_SCARED = 'sound/mobs/non-humanoids/medbot/please_im_scared.ogg',
 		MEDIBOT_VOICED_NEED_HELP = 'sound/mobs/non-humanoids/medbot/dont_like.ogg',
@@ -88,7 +88,7 @@
 		MEDIBOT_VOICED_THE_END = 'sound/mobs/non-humanoids/medbot/is_this_the_end.ogg',
 		MEDIBOT_VOICED_NOOO = 'sound/mobs/non-humanoids/medbot/nooo.ogg',
 	)
-	var/static/list/misc_announcements= list(
+	var/list/misc_announcements= list(
 		MEDIBOT_VOICED_CHICKEN = 'sound/mobs/non-humanoids/medbot/i_am_chicken.ogg',
 	)
 	/// drop determining variable

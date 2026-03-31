@@ -9948,4 +9948,9 @@
 #include "modular_celadon\modules\paperwork_and_faxes\paper.dm"
 #include "modular_celadon\modules\paperwork_and_faxes\topic.dm"
 #include "modular_celadon\modules\paperwork_and_faxes\admin_fax_panel.dm"
+#include "modular_celadon\modules\april_fools_day\beepsky\code\hailer_phrase.dm"
+#include "modular_celadon\modules\april_fools_day\beepsky\code\secbot.dm"
+#include "modular_celadon\modules\april_fools_day\borgs\code\deathsound.dm"
+#include "modular_celadon\modules\april_fools_day\cook\code\undersuit.dm"
+#include "modular_celadon\modules\april_fools_day\medibot\code\phrases.dm"
 // END_INCLUDE

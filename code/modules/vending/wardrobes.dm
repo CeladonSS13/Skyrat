@@ -421,6 +421,7 @@ GLOBAL_VAR_INIT(roaches_deployed, FALSE)
 		/obj/item/circuitboard/machine/dish_drive = 1,
 		/obj/item/rag = 2,
 		/obj/item/radio/headset/headset_srv = 2,
+		/obj/item/clothing/under/artisan = 2, // Celadon ADD (april_fools_day)
 	)
 	premium = list(
 		/obj/item/storage/box/dishdrive = 1,
