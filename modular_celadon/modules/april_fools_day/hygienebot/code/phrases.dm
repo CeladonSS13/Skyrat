@@ -14,7 +14,7 @@
 
 /mob/living/basic/bot/hygienebot
 	var/static/list/ru_found_announcements = list(
-		RU_HYGIENEBOT_VOICED_UNHYGIENIC = 'sound/mobs/non-humanoids/hygienebot/unhygienicclient.ogg',
+		RU_HYGIENEBOT_VOICED_UNHYGIENIC = 'modular_celadon/modules/april_fools_day/hygienebot/sound/unhygienicclient.ogg',
 	)
 	///announcements we say when the target keeps moving away
 	var/static/list/ru_threat_announcements = list(

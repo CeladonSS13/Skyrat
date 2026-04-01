@@ -882,14 +882,14 @@
 		borgo.mind.grab_ghost()
 		// Celadon CHANGE BEGIN (april_fools_day)
 		if(check_holidays(APRIL_FOOLS))
-			playsound(loc, 'modular_celadon/modules/april_fools_day/borgs/sounds/windows-xp-startup.ogg', 75, TRUE)
+			playsound(loc, 'modular_celadon/modules/april_fools_day/borgs/sound/windows-xp-logon-moddif.ogg', 75, TRUE)
 		else
 			playsound(loc, 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE)
 		// Celadon CHANGE END
 	else
 		// Celadon CHANGE BEGIN (april_fools_day)
 		if(check_holidays(APRIL_FOOLS))
-			playsound(loc, 'modular_celadon/modules/april_fools_day/borgs/sounds/windows-xp-hardware-insert.ogg', 75, TRUE)
+			playsound(loc, 'modular_celadon/modules/april_fools_day/borgs/sound/windows-xp-hardware-insert.ogg', 75, TRUE)
 		else
 			playsound(loc, 'sound/machines/ping.ogg', 75, TRUE)
 		// Celadon CHANGE END

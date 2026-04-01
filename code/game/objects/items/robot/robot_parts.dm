@@ -321,7 +321,7 @@
 
 			// Celadon CHANGE BEGIN (april_fools_day)
 			if(check_holidays(APRIL_FOOLS))
-				playsound(O.loc, 'modular_celadon/modules/april_fools_day/borgs/sounds/windows-xp-startup.ogg', 75, TRUE)
+				playsound(O.loc, 'modular_celadon/modules/april_fools_day/borgs/sound/windows-xp-sad-moddif.ogg', 75, TRUE)
 			else
 				playsound(O.loc, 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE)
 			// Celadon CHANGE END
