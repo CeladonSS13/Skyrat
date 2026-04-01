@@ -318,7 +318,13 @@
 			// This canonizes that MMI'd cyborgs have memories of their previous life
 			brainmob.add_mob_memory(/datum/memory/was_cyborged, protagonist = brainmob.mind, deuteragonist = user)
 			brainmob.mind.transfer_to(O)
-			playsound(O.loc, 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE)
+
+			// Celadon CHANGE BEGIN (april_fools_day)
+			if(check_holidays(APRIL_FOOLS))
+				playsound(O.loc, 'modular_celadon/modules/april_fools_day/borgs/sounds/windows-xp-startup.ogg', 75, TRUE)
+			else
+				playsound(O.loc, 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE)
+			// Celadon CHANGE END
 
 			if(O.is_antag())
 				to_chat(O, span_userdanger("You have been robotized!"))

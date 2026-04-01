@@ -74,7 +74,13 @@
 	return ..()
 
 /mob/living/basic/bot/hygienebot/generate_speak_list()
-	var/static/list/finalized_speak_list = (found_announcements + threat_announcements + cleaned_announcements)
+	// Celadon CHANGE BEGIN (april_fools_day)
+	var/static/list/finalized_speak_list
+	if(check_holidays(APRIL_FOOLS))
+		finalized_speak_list = (ru_found_announcements + ru_threat_announcements + ru_cleaned_announcements)
+	else
+		finalized_speak_list = (found_announcements + threat_announcements + cleaned_announcements)
+	// Celadon CHANGE END
 	return finalized_speak_list
 
 /mob/living/basic/bot/hygienebot/update_icon_state()
@@ -128,6 +134,13 @@
 		commence_wash(human)
 
 /mob/living/basic/bot/hygienebot/proc/generate_ai_speech()
+	// Celadon CHANGE BEGIN (april_fools_day)
+	if (check_holidays(APRIL_FOOLS))
+		ai_controller.set_blackboard_key(BB_WASH_FOUND, ru_found_announcements)
+		ai_controller.set_blackboard_key(BB_WASH_THREATS, ru_threat_announcements)
+		ai_controller.set_blackboard_key(BB_WASH_DONE, ru_cleaned_announcements)
+		return
+	// Celadon CHANGE END
 	ai_controller.set_blackboard_key(BB_WASH_FOUND, found_announcements)
 	ai_controller.set_blackboard_key(BB_WASH_THREATS, threat_announcements)
 	ai_controller.set_blackboard_key(BB_WASH_DONE, cleaned_announcements)

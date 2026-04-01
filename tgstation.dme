@@ -9953,4 +9953,5 @@
 #include "modular_celadon\modules\april_fools_day\borgs\code\deathsound.dm"
 #include "modular_celadon\modules\april_fools_day\cook\code\undersuit.dm"
 #include "modular_celadon\modules\april_fools_day\medibot\code\phrases.dm"
+#include "modular_celadon\modules\april_fools_day\hygienebot\code\phrases.dm"
 // END_INCLUDE

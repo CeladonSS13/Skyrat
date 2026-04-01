@@ -9,7 +9,7 @@
 	else
 		..()
 
-/datum/sound_effect/law
+/datum/sound_effect/law_april
 	key = "law_april"
 	file_paths = list(
 		'modular_celadon/modules/april_fools_day/beepsky/sounds/zasranets.ogg',
