@@ -591,15 +591,15 @@
 
 /datum/emote/silicon/boop
 	name = "буп"
-	message = "boops."
+	message = "бупает."
 
 /datum/emote/silicon/beep
-	name = "буп"
-	message = "бупает."
-	message_param = "бупает в сторону %t."
+	name = "бип"
+	message = "бипает."
+	message_param = "бипает в сторону %t."
 
 /datum/emote/silicon/buzz
-	name = "жужжать"
+	name = "звук жужжания"
 	message = "жужжит."
 	message_param = "жужжит в сторону %t."
 
@@ -621,7 +621,7 @@
 	message_param = "сигналит в сторону %t."
 
 /datum/emote/silicon/sad
-	name = "звук грустного тромбон"
+	name = "звук грустного тромбона"
 	message = "играет грустный тромбон..."
 
 /datum/emote/silicon/warn

@@ -1070,21 +1070,22 @@ Celadon REMOVAL END */
 	set name = "< No >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("no", intentional = TRUE)
-
+CELADON REMOVAL END*/
 /mob/living/proc/emote_boop()
-	set name = "< Boop >" // Celadon EDIT
+	set name = "< Буп >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("boop", intentional = TRUE)
 
 /mob/living/proc/emote_buzz()
-	set name = "< Buzz >" // Celadon EDIT
+	set name = "< Звук жужжания >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("buzz", intentional = TRUE)
 
 /mob/living/proc/emote_beep()
-	set name = "< Beep >" // Celadon EDIT
+	set name = "< Бип >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("beep", intentional = TRUE)
+/* CELADON REMOVAL START
 
 /mob/living/proc/emote_beep2()
 	set name = "< Beep Sharply >" // Celadon EDIT
@@ -1096,36 +1097,37 @@ Celadon REMOVAL END */
 	set category = "Emotes"
 	usr.emote("buzz2", intentional = TRUE)
 
+CELADON REMOVAL END*/
+
 /mob/living/proc/emote_chime()
-	set name = "< Chime >" // Celadon EDIT
+	set name = "< Звенеть >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("chime", intentional = TRUE)
 
 /mob/living/proc/emote_honk()
-	set name = "< Honk >" // Celadon EDIT
+	set name = "< Хонк >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("honk", intentional = TRUE)
 
 /mob/living/proc/emote_ping()
-	set name = "< Ping >" // Celadon EDIT
+	set name = "< Сигналить >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("ping", intentional = TRUE)
 
 /mob/living/proc/emote_sad()
-	set name = "< Sad >" // Celadon EDIT
+	set name = "< Звук грустного тромбона >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("sad", intentional = TRUE)
 
 /mob/living/proc/emote_warn()
-	set name = "< Warn >" // Celadon EDIT
+	set name = "< Звук предупреждения >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("warn", intentional = TRUE)
 
 /mob/living/proc/emote_slowclap()
-	set name = "< Slow Clap >" // Celadon EDIT
+	set name = "< Звук хлопания >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("slowclap", intentional = TRUE)
-Celadon REMOVAL END */
 
 /* Celadon REMOVAL START
 
