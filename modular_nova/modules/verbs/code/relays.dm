@@ -7,6 +7,7 @@
 	splitter = ","
 
 /client/proc/connect_to_relay()
+/* CELADON REMOVAL START, keeping the proc name to avoid potential upstream issues
 	set name = "Connect to Relay"
 	set category = "OOC"
 	if(!CONFIG_GET(flag/enable_relays))
@@ -31,3 +32,4 @@
 	usr << link(address)
 	sleep(1 SECONDS)
 	winset(usr, null, "command=.quit")
+CELADON REMOVAL END */
