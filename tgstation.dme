@@ -9943,6 +9943,7 @@
 #include "modular_celadon\modules\qol_casual_celadon\cellcharger_power_desc\cell_charger.dm"
 #include "modular_celadon\modules\qol_casual_celadon\default_cyborg_namechange\robot.dm"
 #include "modular_celadon\modules\qol_casual_celadon\disable_some_holidays\holidays.dm"
+#include "modular_celadon\modules\qol_casual_celadon\wooden_tv_construction\computer_circuitboards.dm"
 #include "modular_celadon\modules\ghostroles_stuff\shuttles_stuff\shuttles.dm"
 #include "modular_celadon\modules\rust_g_custom\test.dm"
 #include "modular_celadon\modules\admin_stuff\man_up\admin.dm"
