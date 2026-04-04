@@ -210,10 +210,23 @@
 	// 	/mob/living/proc/emote_warn,
 	// 	/mob/living/proc/emote_slowclap
 	// )
-	// all_emotes += synth_emotes
-	// var/static/list/allowed_species_synth = list(
-	// 	/datum/species/synthetic
-	// )
+	// CELADON ADDITION START
+	var/static/list/synth_emotes = list(
+		/mob/living/proc/emote_boop,
+		/mob/living/proc/emote_buzz,
+		/mob/living/proc/emote_beep,
+		/mob/living/proc/emote_chime,
+		/mob/living/proc/emote_honk,
+		/mob/living/proc/emote_ping,
+		/mob/living/proc/emote_sad,
+		/mob/living/proc/emote_warn,
+		/mob/living/proc/emote_slowclap
+	)
+	// CELADON ADDITION END
+	all_emotes += synth_emotes
+	var/static/list/allowed_species_synth = list(
+		/datum/species/synthetic
+	)
 	// Celadon REMOVAL END
 
 	// modular_nova\modules\emotes\code\additionalemotes\overlay_emote.dm
@@ -254,10 +267,10 @@
 			// available_emotes += nova_living_emotes
 			// available_emotes += nova_living_emotes_overlay
 			// available_emotes += /mob/living/proc/emote_mark_turf
-			// Checking if should apply Synth emotes
-			// if(HAS_TRAIT(src, TRAIT_SILICON_EMOTES_ALLOWED))
-			// 	available_emotes += synth_emotes
 			// Celadon REMOVAL END
+			// Checking if should apply Synth emotes
+			if(HAS_TRAIT(src, TRAIT_SILICON_EMOTES_ALLOWED))
+				available_emotes += synth_emotes
 		if(iscarbon(src))
 			available_emotes += carbon_emotes
 		if(ishuman(src))
