@@ -1,6 +1,6 @@
 // THIS IS A NOVA SECTOR UI FILE
 import { useBackend } from '../../backend';
-import { BooleanLike } from 'tgui-core/react';
+import type { BooleanLike } from 'tgui-core/react';
 import { useState } from 'react';
 import {
   Button,
@@ -15,12 +15,12 @@ type Interaction = {
   erp_interaction: BooleanLike;
 }
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // import {
 //   InteractionsTab,
 //   LewdItemsTab,
 // } from './tabs';
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
 export const MainContent = () => {
   const [searchText, setSearchText] = useState('');
@@ -85,7 +85,7 @@ export const MainContent = () => {
             )}
           </Stack>
         </Stack.Item>
-        { /* SS1984 REMOVAL START
+        { /* Celadon REMOVAL START
         <Stack.Item grow mb={-1.6}>
           <Section fill>
             {tabIndex === 1 ? (
@@ -98,7 +98,7 @@ export const MainContent = () => {
             )}
           </Section>
         </Stack.Item>
-        SS1984 REMOVAL END*/ }
+        Celadon REMOVAL END*/ }
       </Stack>
     </Section>
   );

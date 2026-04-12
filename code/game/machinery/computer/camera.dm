@@ -63,9 +63,9 @@
 			playsound(src, 'sound/machines/terminal/terminal_on.ogg', 25, FALSE)
 			use_energy(active_power_usage)
 		// Open UI
-		ui = new(user, src, "CameraConsole1984", name) // SS1984 EDIT, original: ui = new(user, src, "CameraConsole", name)
+		ui = new(user, src, "CameraConsoleCeladon", name) // Celadon EDIT, original: ui = new(user, src, "CameraConsole", name)
 		ui.open()
-		ui.set_autoupdate(FALSE) // SS1984 ADDITION
+		ui.set_autoupdate(FALSE) // Celadon ADDITION
 		// Register map objects
 		cam_screen.display_to(user, ui.window)
 

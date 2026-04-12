@@ -36,7 +36,7 @@
 		/obj/item/reagent_containers/cup/glass/bottle/champagne = 10
 	)
 
-	nova_stars_only = FALSE // SS1984 EDIT
+	nova_stars_only = FALSE // Celadon EDIT
 	job_flags = STATION_JOB_FLAGS | JOB_BOLD_SELECT_TEXT | JOB_CANNOT_OPEN_SLOTS | JOB_ANTAG_PROTECTED
 
 /datum/outfit/job/nanotrasen_consultant
@@ -126,7 +126,8 @@
 	new /obj/item/clothing/suit/hooded/wintercoat/centcom/nt_consultant(src)
 	new /obj/item/clothing/under/rank/nanotrasen_consultant(src)
 	new /obj/item/clothing/under/rank/nanotrasen_consultant/skirt(src)
-	new /obj/item/clothing/under/rank/nanotrasen_consultant/naval(src)
+	new /obj/item/clothing/under/imperial/nanotrasen_consultant(src)
+	new /obj/item/clothing/under/imperialskirt/nanotrasen_consultant(src)
 	new /obj/item/clothing/under/rank/centcom/officer(src)
 	new /obj/item/clothing/under/rank/centcom/officer_skirt(src)
 	new /obj/item/clothing/head/nanotrasen_consultant(src)

@@ -219,7 +219,7 @@
 				user.log_message("accepted a shuttle loan event.", LOG_GAME)
 				. = TRUE
 		if("add")
-			var/id = text2path(params["id"])
+			var/id = text2path(params["id"]) || params["id"]
 			var/datum/supply_pack/pack = SSshuttle.supply_packs[id]
 			if(!istype(pack))
 				return
@@ -341,7 +341,7 @@
 		if("toggleprivate")
 			self_paid = !self_paid
 			. = TRUE
-		//SS1984 EDIT START
+		//Celadon EDIT START
 		if("company_import_window")
 			var/datum/component/armament/company_imports/gun_comp = computer.GetComponent(/datum/component/armament/company_imports)
 			if(!gun_comp)
@@ -350,7 +350,7 @@
 			gun_comp.parent_prog ||= src
 			gun_comp.ui_interact(usr)
 			. = TRUE
-		//SS1984 EDIT END
+		//Celadon EDIT END
 	if(.)
 		post_signal(cargo_shuttle)
 

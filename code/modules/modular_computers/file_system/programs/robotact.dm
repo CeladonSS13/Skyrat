@@ -160,8 +160,8 @@
 		if("toggleSensors")
 			cyborg.toggle_sensors()
 
-		// if("changeVoice") // SS1984 ADDITION (removed cuz of no tts)
-		// 	cyborg.change_voice() // SS1984 ADDITION (removed cuz of no tts)
+		// if("changeVoice") // Celadon ADDITION (removed cuz of no tts)
+		// 	cyborg.change_voice() // Celadon ADDITION (removed cuz of no tts)
 
 		if("viewImage")
 			if(cyborg.connected_ai)

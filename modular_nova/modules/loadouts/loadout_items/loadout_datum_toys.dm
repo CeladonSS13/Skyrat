@@ -4,7 +4,7 @@
 	category_name = "Toys"
 	category_ui_icon = FA_ICON_TROPHY
 	type_to_generate = /datum/loadout_item/toys
-	tab_order = /datum/loadout_category/inhands::tab_order + 1 // SS1984 EDIT (non modular bcs of runtime), original: tab_order = /datum/loadout_category/weapons::tab_order + 1
+	tab_order = /datum/loadout_category/inhands::tab_order + 1 // Celadon EDIT (non modular bcs of runtime), original: tab_order = /datum/loadout_category/weapons::tab_order + 1
 	/// How many toys are allowed at maximum.
 	VAR_PRIVATE/max_allowed = 3
 

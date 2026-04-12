@@ -34,12 +34,13 @@
 	if(our_hud)
 		our_hud.master_groups -= key
 		hide_hud()
+	var/datum/hud/old_hud = our_hud
 	our_hud = new_hud
 	if(new_hud)
 		our_hud.master_groups[key] = src
 		show_hud()
 		build_planes_offset(our_hud, active_offset)
-	SEND_SIGNAL(src, COMSIG_GROUP_HUD_CHANGED, our_hud)
+	SEND_SIGNAL(src, COMSIG_GROUP_HUD_CHANGED, old_hud, our_hud)
 
 /// Display a plane master group to some viewer, so show all our planes to it
 /datum/plane_master_group/proc/attach_to(datum/hud/viewing_hud)
@@ -47,15 +48,7 @@
 		stack_trace("Hey brother, our key [key] is already in use by a plane master group on the passed in hud, belonging to [viewing_hud.mymob]. Ya fucked up, why are there dupes")
 		return
 
-#if MIN_COMPILER_VERSION > 516
-	#warn Fully change default relay_loc to "1,1", rather than changing it based on client version
-#endif
-
-	if(viewing_hud.mymob?.client?.byond_version > 515)
-		relay_loc = "1,1"
-		rebuild_plane_masters()
-
-	our_hud = viewing_hud
+	set_hud(viewing_hud)
 	our_hud.master_groups[key] = src
 	show_hud()
 	build_planes_offset(our_hud, active_offset)
@@ -195,17 +188,6 @@
 /// This is because it's annoying to get turfs to position inside it correctly
 /// If you wanna try someday feel free, but I can't manage it
 /datum/plane_master_group/popup
-
-/// Note do not use return ..() because it will cause client crush when screen gets deleted
-/// TOOD: Remove this entirely when 516 is stable
-/datum/plane_master_group/popup/attach_to(datum/hud/viewing_hud)
-	if(viewing_hud.master_groups[key])
-		stack_trace("[key] is already in use by a plane master group on the passed in hud, belonging to [viewing_hud.mymob]!")
-		return
-	relay_loc = "1,1"
-	rebuild_plane_masters()
-	set_hud(viewing_hud)
-	show_hud()
 
 /datum/plane_master_group/popup/build_planes_offset(datum/hud/source, new_offset, use_scale = TRUE)
 	return ..(source, new_offset, FALSE)

@@ -1,0 +1,37 @@
+name: Celadon DreamChecker
+on:
+  - pull_request_target
+jobs:
+  dreamchecker:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+        with: # to make it work on pull requests
+          ref: ${{github.event.pull_request.head.ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
+      - name: Setup part 1 (Bun)
+        uses: ./.github/actions/setup_bun
+      - name: Setup part 2 (.NET SDK)
+        uses: actions/setup-dotnet@v4.2.0
+        with:
+          dotnet-version: 9.x
+      - name: Setup part 3 (Install Tools)
+        run: |
+          pip3 install setuptools
+          bash tools/ci/install_spaceman_dmm.sh dreamchecker
+          tools/bootstrap/python -c ''
+      - name: Setup part 4 (Give Linters A Go)
+        id: linter-setup
+        run: ":"
+      - name: Check Define Sanity
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: tools/bootstrap/python -m define_sanity.check
+      - name: Check Trait Validity
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: tools/bootstrap/python -m trait_validity.check
+      - name: Run DreamChecker
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        shell: bash
+        run: ~/dreamchecker 2>&1 | bash tools/ci/annotate_dm.sh

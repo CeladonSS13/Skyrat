@@ -21,7 +21,7 @@ export type CargoData = {
   requestonly: BooleanLike;
   self_paid: BooleanLike;
   supplies: Record<string, SupplyCategory>;
-  current_plasma_cost: number; // SS1984 ADDITION
+  current_plasma_cost: number; // Celadon ADDITION
 };
 
 export type SupplyCategory = {

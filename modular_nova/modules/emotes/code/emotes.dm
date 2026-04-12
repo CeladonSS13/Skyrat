@@ -23,13 +23,13 @@
 	return TRUE
 
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /datum/emote/living/nodnod
 // 	key = "nod2"
 // 	key_third_person = "nod2s"
 // 	message = "nods twice."
 // 	message_param = "nods twice at %t."
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
 /datum/emote/living/blush
 	sound = 'modular_nova/modules/emotes/sound/emotes/blush.ogg'
@@ -834,3 +834,21 @@
 
 /datum/emote/living/carbon/human/blink
 	sound = 'modular_nova/modules/emotes/sound/voice/blink.ogg'
+
+// CELADON REMOVAL START
+// /datum/emote/rolld20
+// 	key = "rolld20"
+// 	affected_by_pitch = FALSE
+
+// /datum/emote/rolld20/run_emote(mob/user, params, type_override, intentional)
+// 	. = ..()
+// 	var/result = roll(20)
+// 	user.client?.looc_message("[user] rolls a d20 and gets [result].")
+// CELADON REMOVAL END
+
+/datum/emote/living/mar
+	key = "mar"
+	key_third_person = "mars"
+	message = "lets out a mar!"
+	vary = TRUE
+	sound = 'modular_nova/modules/emotes/sound/voice/mar.ogg'

@@ -76,7 +76,7 @@ export const AutomatedAnnouncement = (props) => {
     <Window title="Automated Announcement System" width={500} height={400}>
       <Window.Content>
         <Stack fill vertical>
-          {/* SS1984 EDIT ADDITION START */}
+          {/* Celadon EDIT ADDITION START */}
           <Section title="Radio Configuration">
             <LabeledList>
               <LabeledList.Item label="Job Announcements">
@@ -126,7 +126,7 @@ export const AutomatedAnnouncement = (props) => {
               </LabeledList.Item>
             </LabeledList>
           </Section>
-          {/* SS1984 EDIT ADDITION END */}
+          {/* Celadon EDIT ADDITION END */}
           <Stack.Item>
             <LabeledList>
               <LabeledList.Item label="Search">

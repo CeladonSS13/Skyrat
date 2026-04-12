@@ -368,7 +368,7 @@
 *	erp_item
 */
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /datum/loadout_item/under/miscellaneous/black_bunnysuit
 // 	name = "Bunny Suit"
 // 	item_path = /obj/item/clothing/under/costume/bunnylewd
@@ -392,4 +392,4 @@
 // 	item_path = /obj/item/clothing/under/tearaway_garments
 // 	erp_item = TRUE
 // 	group = "Costumes"
-// SS1984 REMOVAL END
+// Celadon REMOVAL END

@@ -1,6 +1,6 @@
 
 /datum/config_entry/flag/show_job_estimation
-	//default = TRUE // SS1984 REMOVAL
+	//default = TRUE // Celadon REMOVAL
 
 /datum/preference/toggle/ready_job
 	savefile_key = "ready_job"
@@ -51,8 +51,8 @@
 /datum/controller/subsystem/statpanels/proc/add_job_estimation(mob/dead/new_player/player)
 	if(isnull(player.client))
 		return
-	// if(!CONFIG_GET(flag/show_job_estimation)) // SS1984 REMOVAL
-	// 	return  // SS1984 REMOVAL
+	// if(!CONFIG_GET(flag/show_job_estimation)) // Celadon REMOVAL
+	// 	return  // Celadon REMOVAL
 
 	var/datum/preferences/prefs = player.client?.prefs
 	var/datum/job/player_job = prefs?.get_highest_priority_job()

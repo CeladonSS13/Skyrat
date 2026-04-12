@@ -170,7 +170,12 @@
 	var/displayed_key = key
 	if(client?.holder?.fakekey)
 		displayed_key = null
-	deadchat_broadcast(rendered, source, follow_target = src, speaker_key = displayed_key, original_message = message) //NOVA EDIT - Original: deadchat_broadcast(rendered, source, follow_target = src, speaker_key = displayed_key)
+	deadchat_broadcast(rendered, source, follow_target = src, speaker_key = displayed_key, original_message = message) // NOVA EDIT CHANGE - ORIGINAL: deadchat_broadcast(rendered, source, follow_target = src, speaker_key = displayed_key)
+	for(var/mob/mobs_hearing as anything in GLOB.player_list)
+		if(SSticker.current_state != GAME_STATE_FINISHED && (mobs_hearing.see_invisible < invisibility || !isdead(mobs_hearing)))
+			continue
+		if(runechat_prefs_check(mobs_hearing))
+			mobs_hearing.create_chat_message(src, /datum/language/common, message)
 
 ///Check if this message is an emote
 /mob/proc/check_emote(message, forced)
@@ -222,7 +227,7 @@
 			mods[WHISPER_MODE] = MODE_WHISPER
 		else if(key == "%" && !mods[MODE_SING])
 			mods[MODE_SING] = TRUE
-		else if((key == ";" || (length(message) > 1 && message[2] == ";")) && !mods[MODE_HEADSET]) // SS1984 EDIT, original: else if(key == ";" && !mods[MODE_HEADSET])
+		else if((key == ";" || (length(message) > 1 && message[2] == ";")) && !mods[MODE_HEADSET]) // Celadon EDIT, original: else if(key == ";" && !mods[MODE_HEADSET])
 			if(stat == CONSCIOUS) //necessary indentation so it gets stripped of the semicolon anyway.
 				mods[MODE_HEADSET] = TRUE
 		else if((key in GLOB.department_radio_prefixes) && length(message) > length(key) + 1 && !mods[RADIO_EXTENSION])

@@ -41,7 +41,7 @@
 *	COLLARS
 */
 
-// SS1984 REMOVAL OF ERP COLLARS START
+// Celadon REMOVAL OF ERP COLLARS START
 // /// THIN
 // /datum/loadout_item/neck/thinchoker
 // 	name = "Choker"
@@ -122,7 +122,7 @@
 // 	name = "Collar (Spiked)"
 // 	item_path = /obj/item/clothing/neck/collar/spike
 // 	erp_item = TRUE
-// SS1984 REMOVAL OF ERP COLLARS END
+// Celadon REMOVAL OF ERP COLLARS END
 
 /*
 *	SCARVES

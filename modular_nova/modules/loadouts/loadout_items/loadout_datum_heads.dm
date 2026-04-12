@@ -226,6 +226,11 @@
 	item_path = /obj/item/clothing/head/cone_of_shame
 	group = "Miscellaneous"
 
+/datum/loadout_item/head/warning_cone
+	name = "Warning Cone"
+	item_path = /obj/item/clothing/head/cone
+	group = "Miscellaneous"
+
 /datum/loadout_item/head/wig //TG overwrite so that we can have both fake/natural wigs
 	name = "Wig"
 	item_path = /obj/item/clothing/head/wig
@@ -592,10 +597,6 @@
 *	TREK/STAR WARS
 */
 
-/datum/loadout_item/head/blasthelmet
-	name = "Officer's Blast Helmet"
-	item_path = /obj/item/clothing/head/hats/imperial/helmet
-
 /datum/loadout_item/head/trekcap
 	name = "Officer's Cap (White)"
 	item_path = /obj/item/clothing/head/hats/caphat/parade/fedcap
@@ -633,21 +634,8 @@
 	item_path = /obj/item/clothing/head/hats/caphat/naval/custom/gold
 
 /datum/loadout_item/head/imperial_generic
-	name = "Naval Officer Cap (Grey)"
+	name = "Naval Officer Cap"
 	item_path = /obj/item/clothing/head/hats/imperial
-
-/datum/loadout_item/head/imperial_grey
-	name = "Naval Officer Cap (Dark Grey)"
-	item_path = /obj/item/clothing/head/hats/imperial/grey
-
-/datum/loadout_item/head/imperial_red
-	name = "Naval Officer Cap (Red)"
-	item_path = /obj/item/clothing/head/hats/imperial/red
-
-/datum/loadout_item/head/imperial_white
-	name = "Naval Officer Cap (White)"
-	item_path = /obj/item/clothing/head/hats/imperial/white
-
 /*
 *	JOB-LOCKED
 */
@@ -757,12 +745,12 @@
 *	erp_item
 */
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /datum/loadout_item/head/domina_cap
 // 	name = "Dominant Cap"
 // 	item_path = /obj/item/clothing/head/domina_cap
 // 	erp_item = TRUE
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
 /*
 *	DONATOR
@@ -791,9 +779,9 @@
 	. = ..()
 	.[FA_ICON_DICE] = TOOLTIP_RANDOM_COLOR
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /datum/loadout_item/head/domina_cap
 // 	name = "Dominant Cap"
 // 	item_path = /obj/item/clothing/head/domina_cap
 // 	erp_item = TRUE
-// SS1984 REMOVAL END
+// Celadon REMOVAL END

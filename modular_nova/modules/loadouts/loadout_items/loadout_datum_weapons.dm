@@ -1,4 +1,4 @@
-/* SS1984 REMOVAL START
+/* Celadon REMOVAL START
 /datum/loadout_category/weapons
 	category_name = "Weapons"
 	category_ui_icon = FA_ICON_GUN
@@ -92,4 +92,4 @@
 /datum/loadout_item/weapons/assorted_weapons/lead_pipe
 	name = /obj/item/lead_pipe::name
 	item_path = /obj/item/lead_pipe
-SS1984 REMOVAL END */
+Celadon REMOVAL END */

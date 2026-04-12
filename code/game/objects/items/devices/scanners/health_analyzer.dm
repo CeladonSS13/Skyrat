@@ -102,22 +102,22 @@
 	switch (scanmode)
 		if (SCANMODE_HEALTH)
 			last_scan_text = healthscan(user, M, mode, advanced, tochat = readability_check)
-			// SS1984 ADDITION START
+			// Celadon ADDITION START
 			last_scan_title = "Analyzing results for <b>[M]</b>"
 			if(readability_check)
 				show_results(user)
-			// SS1984 ADDITION END
+			// Celadon ADDITION END
 			if((M.health / M.maxHealth) > CLEAN_BILL_OF_HEALTH_RATIO)
 				last_healthy_scanned = WEAKREF(M)
 			else
 				last_healthy_scanned = null
 		if (SCANMODE_WOUND)
 			if(readability_check)
-				last_scan_text = woundscan(user, M, src) // SS1984 EDIT, original: woundscan(user, M, src)
-				// SS1984 ADDITION START
+				last_scan_text = woundscan(user, M, src) // Celadon EDIT, original: woundscan(user, M, src)
+				// Celadon ADDITION START
 				last_scan_title = "Wound analyze results for <b>[M]</b>"
 				show_results(user)
-				// SS1984 ADDITION END
+				// Celadon ADDITION END
 
 	add_fingerprint(user)
 
@@ -238,7 +238,7 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/carbontarget = target
 		var/any_damage = brute_loss > 0 || fire_loss > 0 || oxy_loss > 0 || tox_loss > 0 || fire_loss > 0
-		var/any_missing = length(carbontarget.bodyparts) < (carbontarget.dna?.species?.max_bodypart_count || 6)
+		var/any_missing = length(carbontarget.get_missing_limbs())
 		var/any_wounded = length(carbontarget.all_wounds)
 		var/any_embeds = carbontarget.has_embedded_objects()
 		if(any_damage || (mode == SCANNER_VERBOSE && (any_missing || any_wounded || any_embeds)))
@@ -477,30 +477,6 @@
 				render_list += consequences_trauma.get_health_analyzer_link_text(user)
 	// NOVA EDIT ADDITION END
 
-	// Lungs
-	var/obj/item/organ/lungs/lungs = target.get_organ_slot(ORGAN_SLOT_LUNGS)
-	if (lungs)
-		var/initial_pressure_mult = lungs::received_pressure_mult
-		if (lungs.received_pressure_mult != initial_pressure_mult)
-			var/tooltip
-			var/dilation_text
-			var/beginning_text = "Lung Dilation: "
-			if (lungs.received_pressure_mult > initial_pressure_mult) // higher than usual
-				beginning_text = span_blue("<b>[beginning_text]</b>")
-				dilation_text = span_blue("[(lungs.received_pressure_mult * 100) - 100]%")
-				tooltip = "Subject's lungs are dilated and breathing more air than usual. Increases the effectiveness of healium and other gases."
-			else
-				beginning_text = span_danger("<b>[beginning_text]</b>")
-				if (lungs.received_pressure_mult <= 0) // lethal
-					dilation_text = span_bolddanger("[lungs.received_pressure_mult * 100]%")
-					tooltip = "Subject's lungs are completely shut. Subject is unable to breathe and requires emergency surgery. If asthmatic, perform asthmatic bypass surgery and adminster albuterol inhalant. Otherwise, replace lungs."
-				else
-					dilation_text = span_danger("[lungs.received_pressure_mult * 100]%")
-					tooltip = "Subject's lungs are partially shut. If unable to breathe, administer a high-pressure internals tank or replace lungs. If asthmatic, inhaled albuterol or bypass surgery will likely help."
-
-			var/lung_message = beginning_text + conditional_tooltip(dilation_text, tooltip, TRUE)
-			render_list += lung_message
-
 	// Time of death
 	if(target.station_timestamp_timeofdeath && !target.appears_alive())
 		render_list += "<hr>"
@@ -706,16 +682,16 @@
 			playsound(simple_scanner, 'sound/machines/ping.ogg', 50, FALSE)
 			to_chat(user, span_notice("\The [simple_scanner] makes a happy ping and briefly displays a smiley face with several exclamation points! It's really excited to report that [patient] has no wounds!"))
 			simple_scanner.show_emotion(AID_EMOTION_HAPPY)
-		var/to_return_msg = "<span class='notice ml-1'>No wounds detected in subject.</span>" // SS1984 ADDITION
-		to_chat(user, to_return_msg) // SS1984 EDIT, original: to_chat(user, "<span class='notice ml-1'>No wounds detected in subject.</span>")
-		return to_return_msg // SS1984 ADDITION
+		var/to_return_msg = "<span class='notice ml-1'>No wounds detected in subject.</span>" // Celadon ADDITION
+		to_chat(user, to_return_msg) // Celadon EDIT, original: to_chat(user, "<span class='notice ml-1'>No wounds detected in subject.</span>")
+		return to_return_msg // Celadon ADDITION
 	else
 		to_chat(user, custom_boxed_message("blue_box", jointext(render_list, "")), type = MESSAGE_TYPE_INFO)
 		if(simple_scan)
 			var/obj/item/healthanalyzer/simple/simple_scanner = scanner
 			simple_scanner.show_emotion(AID_EMOTION_WARN)
 			playsound(simple_scanner, 'sound/machines/beep/twobeep.ogg', 50, FALSE)
-		return render_list // SS1984 ADDITION
+		return render_list // Celadon ADDITION
 
 
 /obj/item/healthanalyzer/simple

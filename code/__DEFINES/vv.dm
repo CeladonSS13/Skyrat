@@ -108,7 +108,7 @@
 #define VV_HK_DEADCHAT_PLAYS "deadchat_plays"
 #define VV_HK_ADD_REMOVE_FACTION "add_remove_faction"
 #define VV_HK_GET_FACTIONS "add_remove_factions"
-#define VV_HK_SELECT_TTS_VOICE "select_tts_voice" // SS1984 ADDITION
+#define VV_HK_SELECT_TTS_VOICE "select_tts_voice" // Celadon ADDITION
 
 // /obj
 #define VV_HK_OSAY "osay"

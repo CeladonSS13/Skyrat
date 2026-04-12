@@ -2,10 +2,10 @@
 #define EXAMINE_DNA_HEADSHOT "headshot"
 /// Examine Panel flavor text
 #define EXAMINE_DNA_FLAVOR_TEXT "flavor_text"
-// SS1984 REMOVAL OF ERP DNA EXAMINE START, END
+// Celadon REMOVAL OF ERP DNA EXAMINE START, END
 /// Examine Panel OOC notes
 #define EXAMINE_DNA_OOC_NOTES "ooc_notes"
-// SS1984 REMOVAL OF ERP EXAMINE START, END
+// Celadon REMOVAL OF ERP EXAMINE START, END
 
 //We start from 30 to not interfere with TG species defines, should they add more
 /// We're using all three mutcolor features for our skin coloration
@@ -64,8 +64,8 @@
 #define MAXIMUM_MARKINGS_PER_LIMB 3
 
 #define BODY_SIZE_NORMAL 1.00
-#define BODY_SIZE_MAX 1.2 // SS1984 EDIT, original: #define BODY_SIZE_MAX 1.5
-#define BODY_SIZE_MIN 0.9 //SS220 EDIT CHANGE
+#define BODY_SIZE_MAX 1.2 // Celadon EDIT, original: #define BODY_SIZE_MAX 1.5
+#define BODY_SIZE_MIN 0.9 //Celadon EDIT CHANGE
 
 //In inches
 #define PENIS_MIN_GIRTH PENIS_MIN_LENGTH
@@ -75,14 +75,10 @@
 #define PENIS_DEFAULT_GIRTH 5 // a lil big but not by much
 #define PENIS_MIN_LENGTH 1
 #define PENIS_MAX_LENGTH 86
-/// for non oversized mobs with a 'normal' body size
-#define PENIS_MAX_LENGTH_NORMAL_SIZED 25
 #define PENIS_DEFAULT_LENGTH 6 //still a lil long but not insane
 
 #define TESTICLES_MIN_SIZE 0
-#define TESTICLES_MAX_SIZE 6
-/// for non oversized mobs with a 'normal' body size
-#define TESTICLES_MAX_NORMAL_SIZED 3
+#define TESTICLES_MAX_SIZE 8
 
 #define SHEATH_NONE	SPRITE_ACCESSORY_NONE
 #define SHEATH_NORMAL "Sheath"
@@ -180,6 +176,7 @@
 #define SPECIES_KOBOLD "kobold"
 #define SPECIES_KOBOLD_PRIMITIVE "lizard_monkey"
 #define SPECIES_RAMATAE "ramatan"
+#define SPECIES_SHADEKIN "shadekin"
 #define SPECIES_INSECTOID "insectoid"
 
 #define SPECIES_MUTANT "mutant"

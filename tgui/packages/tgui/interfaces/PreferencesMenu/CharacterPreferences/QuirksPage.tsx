@@ -11,6 +11,7 @@ import {
   Tooltip,
 } from 'tgui-core/components';
 import { createSearch } from 'tgui-core/string';
+import { CharacterPreview } from '../../common/CharacterPreview'; // NOVA EDIT ADDITION
 
 import {
   type PreferencesMenuData,
@@ -28,7 +29,7 @@ function getColorValueClass(quirk: Quirk) {
     return 'positive';
   } else if (quirk.value < 0) {
     return 'negative';
-    // SS1984 REMOVAL OF ERP QUIRKS
+    // Celadon REMOVAL OF ERP QUIRKS
   } else {
     return 'neutral';
   }
@@ -99,6 +100,7 @@ function QuirkDisplay(props: QuirkDisplayProps) {
   const { icon, value, name, description, customizable, failTooltip } = quirk;
 
   const [customizationExpanded, setCustomizationExpanded] = useState(false);
+  const { data } = useBackend<PreferencesMenuData>(); // NOVA EDIT ADDITION
 
   const className = 'PreferencesMenu__Quirks__QuirkList__quirk';
 
@@ -374,8 +376,8 @@ function QuirkPage() {
     }
     // NOVA EDIT START - Nova star quirks
     if (quirk.nova_stars_only && !data.is_nova_star) {
-      { /* SS1984 REMOVAL return 'You need to be a Nova star to select this quirk, apply today!'; */ }
-      return 'You need to be a Veteran to select this quirk, apply today!'; { /* SS1984 ADDITION */ }
+      { /* Celadon REMOVAL return 'You need to be a Nova star to select this quirk, apply today!'; */ }
+      return 'You need to be a Veteran to select this quirk, apply today!'; { /* Celadon ADDITION */ }
     }
     // NOVA EDIT END
     const selectedQuirkNames = selectedQuirks.map((quirkKey) => {
@@ -485,7 +487,27 @@ function QuirkPage() {
       </Stack.Item>
 
       <Stack.Item align="center">
-        <Icon name="exchange-alt" size={1.5} ml={2} mr={2} />
+        { /* <Icon name="exchange-alt" size={1.5} ml={2} mr={2} /> // NOVA EDIT REMOVAL - moved down */ }
+        {/* NOVA EDIT ADDITION START */}
+        <Stack vertical fill align="center">
+          {/* Keep the CharacterPreview alive but "hidden", so that traits that affect appearance (e.g. Oversized) refresh rendering calculations immediately. */}
+          <Stack.Item
+            style={{
+              padding: '-1px',
+              width: 1,
+              height: 1,
+              opacity: 0.0,
+            }}
+          >
+            <CharacterPreview
+              id={data.character_preview_view}
+              height="1px"
+              width="1px"
+            />
+          </Stack.Item>
+          <Icon name="exchange-alt" size={1.5} ml={2} mr={2} />
+        </Stack>
+        {/* NOVA EDIT ADDITION END */}
       </Stack.Item>
 
       <Stack.Item basis="50%">

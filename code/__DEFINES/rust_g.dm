@@ -274,8 +274,8 @@
 /// This will either return "ok" or an error, as this does not create a job.
 #define rustg_http_request_fire_and_forget(method, url, body, headers, options) RUSTG_CALL(RUST_G, "http_request_fire_and_forget")(method, url, body, headers, options)
 
-/proc/rustg_create_async_http_client() return RUSTG_CALL(RUST_G, "start_http_client")() // SS1984 ADDITION
-/proc/rustg_close_async_http_client() return RUSTG_CALL(RUST_G, "shutdown_http_client")() // SS1984 ADDITION
+/proc/rustg_create_async_http_client() return RUSTG_CALL(RUST_G, "start_http_client")() // Celadon ADDITION
+/proc/rustg_close_async_http_client() return RUSTG_CALL(RUST_G, "shutdown_http_client")() // Celadon ADDITION
 
 /// Generates a spritesheet at: [file_path][spritesheet_name]_[size_id].[png or dmi]
 /// The resulting spritesheet arranges icons in a random order, with the position being denoted in the "sprites" return value.
@@ -501,8 +501,8 @@
 #define rustg_sql_disconnect_pool(handle) RUSTG_CALL(RUST_G, "sql_disconnect_pool")(handle)
 #define rustg_sql_check_query(job_id) RUSTG_CALL(RUST_G, "sql_check_query")("[job_id]")
 
-#define rustg_cyrillic_to_latin(text) RUSTG_CALL(RUST_G, "cyrillic_to_latin")("[text]") // SS1984 ADDITION
-#define rustg_latin_to_cyrillic(text) RUSTG_CALL(RUST_G, "latin_to_cyrillic")("[text]") // SS1984 ADDITION
+#define rustg_cyrillic_to_latin(text) RUSTG_CALL(RUST_G, "cyrillic_to_latin")("[text]") // Celadon ADDITION
+#define rustg_latin_to_cyrillic(text) RUSTG_CALL(RUST_G, "latin_to_cyrillic")("[text]") // Celadon ADDITION
 
 #define rustg_time_microseconds(id) text2num(RUSTG_CALL(RUST_G, "time_microseconds")(id))
 #define rustg_time_milliseconds(id) text2num(RUSTG_CALL(RUST_G, "time_milliseconds")(id))
@@ -538,8 +538,8 @@
 	else
 		CRASH(output["content"])
 
-#define rustg_unzip_download_async(url, unzip_directory) RUSTG_CALL(RUST_G, "unzip_download_async")(url, unzip_directory) // SS1984 ADDITION
-#define rustg_unzip_check(job_id) RUSTG_CALL(RUST_G, "unzip_check")("[job_id]") // SS1984 ADDITION
+#define rustg_unzip_download_async(url, unzip_directory) RUSTG_CALL(RUST_G, "unzip_download_async")(url, unzip_directory) // Celadon ADDITION
+#define rustg_unzip_check(job_id) RUSTG_CALL(RUST_G, "unzip_check")("[job_id]") // Celadon ADDITION
 
 #define rustg_url_encode(text) RUSTG_CALL(RUST_G, "url_encode")("[text]")
 #define rustg_url_decode(text) RUSTG_CALL(RUST_G, "url_decode")(text)

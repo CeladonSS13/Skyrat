@@ -41,29 +41,29 @@
 		equipped_outfit = outfit
 	else
 		CRASH("Outfit passed to equip_outfit_and_loadout was neither a path nor an instantiated type!")
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	if (equipping_job && equipping_job.disable_all_loadout)
 		equipOutfit(equipped_outfit, visuals_only) // equip only outfit
 		regenerate_icons()
 		return TRUE
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 	var/override_preference = preference_source.read_preference(/datum/preference/choiced/loadout_override_preference)
 
 	var/list/item_details = preference_source.read_preference(/datum/preference/loadout)
 	var/list/loadout_list = item_details[preference_source.read_preference(/datum/preference/loadout_index)]
 	var/list/loadout_datums = loadout_list_to_datums(loadout_list)
 	var/obj/item/storage/briefcase/empty/briefcase
-	// SS1984 REMOVAL OF ERP BOX START, END
+	// Celadon REMOVAL OF ERP BOX START, END
 	if(override_preference == LOADOUT_OVERRIDE_CASE && !visuals_only)
 		briefcase = new(loc)
 		for(var/datum/loadout_item/item as anything in loadout_datums)
-			// SS1984 REMOVAL START
+			// Celadon REMOVAL START
 			// if (erp_enabled && item.erp_box)
 			// 	if (isnull(erpbox))
 			// 		erpbox = new(loc)
 			// 	new item.item_path(erpbox)
 			// else
-			// SS1984 REMOVAL END
+			// Celadon REMOVAL END
 			if (!item.can_be_applied_to(src, preference_source, equipping_job, allow_mechanical_loadout_items, visuals_only))
 				continue
 			new item.item_path(briefcase)
@@ -73,13 +73,13 @@
 		INVOKE_ASYNC(src, PROC_REF(put_in_hands), briefcase)
 	else
 		for(var/datum/loadout_item/item as anything in loadout_datums)
-			// SS1984 REMOVAL START
+			// Celadon REMOVAL START
 			// if (erp_enabled && item.erp_box)
 			// 	if (isnull(erpbox))
 			// 		erpbox = new(loc)
 			// 	new item.item_path(erpbox)
 			// else
-			// SS1984 REMOVAL END
+			// Celadon REMOVAL END
 			if (!item.can_be_applied_to(src, preference_source, equipping_job, allow_mechanical_loadout_items, visuals_only))
 				continue
 
@@ -99,13 +99,13 @@
 		if(item.restricted_roles && equipping_job && !(equipping_job.title in item.restricted_roles))
 			continue
 
-		var/obj/item/equipped = locate(item.item_path) in new_contents // SS1984 EDIT, original: var/obj/item/equipped
-		// SS1984 REMOVAL START
+		var/obj/item/equipped = locate(item.item_path) in new_contents // Celadon EDIT, original: var/obj/item/equipped
+		// Celadon REMOVAL START
 		// if(erpbox && item.erp_box)
 		// 	equipped = locate(item.item_path) in erpbox
 		// else
 		// 	equipped = locate(item.item_path) in new_contents
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 
 		if(isnull(equipped))
 			continue
@@ -122,7 +122,7 @@
 		var/obj/item/clothing/under/uniform = w_uniform
 		uniform?.attach_accessory(new /obj/item/clothing/accessory/green_pin(), src, FALSE)
 
-	// SS1984 REMOVAL OF ERP EDIT START
+	// Celadon REMOVAL OF ERP EDIT START
 
 	if(update)
 		update_clothing(update)

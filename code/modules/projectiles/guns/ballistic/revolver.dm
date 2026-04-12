@@ -27,11 +27,11 @@
 	if(chambered)
 		UnregisterSignal(chambered, COMSIG_MOVABLE_MOVED)
 	if (spin_cylinder)
-		set_chambered(magazine.get_round()) // SS1984 EDIT, original: chambered = magazine.get_round()
+		set_chambered(magazine.get_round()) // Celadon EDIT, original: chambered = magazine.get_round()
 	else
-		set_chambered(magazine.stored_ammo[1]) // SS1984 EDIT, original: chambered = magazine.stored_ammo[1]
+		set_chambered(magazine.stored_ammo[1]) // Celadon EDIT, original: chambered = magazine.stored_ammo[1]
 		if (ispath(chambered))
-			set_chambered(new chambered(src)) // SS1984 EDIT, original: chambered = new chambered(src)
+			set_chambered(new chambered(src)) // Celadon EDIT, original: chambered = new chambered(src)
 			magazine.stored_ammo[1] = chambered
 	if(chambered)
 		RegisterSignal(chambered, COMSIG_MOVABLE_MOVED, PROC_REF(clear_chambered))
@@ -368,6 +368,11 @@
 	)
 	shoot_self(user, check_zone(user.zone_selected))
 	return .
+
+/obj/item/gun/ballistic/revolver/russian/on_mail_unwrap(atom/source, mob/user, obj/item/mail/traitor/letter)
+	if((get_ammo(FALSE, FALSE) > 1) || (get_ammo(TRUE, TRUE) < 6))
+		return NONE
+	return ..()
 
 /// Called after successfully(if you can call it that) shooting ourselves
 /obj/item/gun/ballistic/revolver/russian/proc/shoot_self(mob/living/carbon/human/user, affecting = BODY_ZONE_HEAD)

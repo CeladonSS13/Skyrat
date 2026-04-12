@@ -28,7 +28,7 @@
 	for(var/iterating_interaction_id in GLOB.interaction_instances)
 		var/datum/interaction/interaction = GLOB.interaction_instances[iterating_interaction_id]
 		if(interaction.lewd)
-			continue // SS1984 REMOVAL OF ERP INTERACTIONS
+			continue // Celadon REMOVAL OF ERP INTERACTIONS
 		interactions.Add(interaction)
 
 /datum/component/interactable/RegisterWithParent()
@@ -54,7 +54,7 @@
 /datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/carbon/human/target)
 	if(!interaction.allow_act(target, self))
 		return FALSE
-	if(interaction.lewd) // SS1984 EDIT NO INTERACTIONS WITH ERP
+	if(interaction.lewd) // Celadon EDIT NO INTERACTIONS WITH ERP
 		return FALSE
 	if(!interaction.distance_allowed && !target.Adjacent(self))
 		return FALSE
@@ -124,10 +124,10 @@
 	data["self"] = self.name
 	data["block_interact"] = interact_next >= world.time
 	data["use_subtler"] = use_subtler
-	data["erp_interaction"] = FALSE // SS1984 EDIT, original: data["erp_interaction"] = self.client?.prefs?.read_preference(/datum/preference/toggle/erp)
+	data["erp_interaction"] = FALSE // Celadon EDIT, original: data["erp_interaction"] = self.client?.prefs?.read_preference(/datum/preference/toggle/erp)
 	data["has_erp_interaction"] = has_erp_interaction
 
-	// SS1984 REMOVAL var/mob/living/carbon/human/human_user = user
+	// Celadon REMOVAL var/mob/living/carbon/human/human_user = user
 
 	data["isTargetSelf"] = (user == self)
 
@@ -137,11 +137,11 @@
 	var/user_pain = 0
 
 	if(user)
-		// SS1984 REMOVAL START
+		// Celadon REMOVAL START
 		// user_pleasure = human_user.pleasure
 		// user_arousal = human_user.arousal
 		// user_pain = human_user.pain
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 
 		data["pleasure"] = user_pleasure
 		data["arousal"] = user_arousal
@@ -150,11 +150,11 @@
 
 	// self - the one who the interaction component belongs to, aka who it's opened on (confusing var name yep)
 	if(user != self)
-		data["theirPleasure"] = 0 // SS1984 EDIT, original: data["theirPleasure"] = self.pleasure
-		data["theirArousal"] = 0 // SS1984 EDIT, original: data["theirArousal"] = self.arousal
-		data["theirPain"] = 0 // SS1984 EDIT, original: data["theirPain"] = self.pain
+		data["theirPleasure"] = 0 // Celadon EDIT, original: data["theirPleasure"] = self.pleasure
+		data["theirArousal"] = 0 // Celadon EDIT, original: data["theirArousal"] = self.arousal
+		data["theirPain"] = 0 // Celadon EDIT, original: data["theirPain"] = self.pain
 
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// var/list/parts = list()
 
 	// if(ishuman(user) && can_lewd_strip(user, self))
@@ -168,11 +168,11 @@
 	// 		parts += list(generate_strip_entry(ORGAN_SLOT_NIPPLES, self, user, self.nipples))
 
 	// data["lewd_slots"] = parts
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 	return data
 
-// SS1984 REMOVAL OF ERP STRIP
+// Celadon REMOVAL OF ERP STRIP
 
 /datum/component/interactable/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -182,11 +182,11 @@
 	if(!ishuman(ui.user))
 		return
 
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// if(action == "toggle_subtler")
 	// 	use_subtler = !use_subtler
 	// 	return TRUE
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 	if(params["interaction"])
 		var/interaction_id = params["interaction"]
@@ -202,7 +202,7 @@
 			return TRUE
 
 	if(params["item_slot"])
-		// SS1984 REMOVAL START
+		// Celadon REMOVAL START
 		// // This code should be easy enough to follow... I hope.
 		// var/item_index = params["item_slot"]
 		// var/mob/living/carbon/human/source = locate(params["userref"])
@@ -249,10 +249,10 @@
 
 		// else
 		// 	source.show_message(span_warning("Failed to adjust [target.name]'s toys!"))
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 
 		return TRUE
 
 	message_admins("Unhandled interaction '[params["interaction"]]'. Inform coders.")
 
-// SS1984 REMOVAL OF ERP START, END
+// Celadon REMOVAL OF ERP START, END

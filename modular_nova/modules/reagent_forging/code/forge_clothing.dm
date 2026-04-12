@@ -154,7 +154,7 @@
 	AddElement(/datum/element/adjust_fishing_difficulty, 2)
 
 // Misc
-// SS1984 REMOVAL START (LEWD ITEMS)
+// Celadon REMOVAL START (LEWD ITEMS)
 // /obj/item/clothing/gloves/ring/reagent_clothing
 // 	name = "ring"
 // 	desc = "A tiny ring, sized to wrap around a finger."
@@ -199,4 +199,4 @@
 // /obj/item/restraints/handcuffs/reagent_clothing/Initialize(mapload)
 // 	. = ..()
 // 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_HANDCUFFED)
-// SS1984 REMOVAL END (LEWD ITEMS)
+// Celadon REMOVAL END (LEWD ITEMS)

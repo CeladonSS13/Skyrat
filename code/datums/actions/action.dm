@@ -119,7 +119,7 @@
 	if(check_flags & AB_CHECK_OPEN_TURF)
 		RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(update_status_on_signal))
 
-	RegisterExtraSignals(owner) // SS1984 ADDITION, can't make it modular without doing double checks that could be changed by upstream
+	RegisterExtraSignals(owner) // Celadon ADDITION, can't make it modular without doing double checks that could be changed by upstream
 
 	if(owner_has_control)
 		RegisterSignal(grant_to, COMSIG_MOB_KEYDOWN, PROC_REF(keydown), override = TRUE)
@@ -157,7 +157,7 @@
 		SIGNAL_REMOVETRAIT(TRAIT_INCAPACITATED),
 		SIGNAL_REMOVETRAIT(TRAIT_MAGICALLY_PHASED),
 	))
-	UnregisterExtraSignals(owner) // SS1984 ADDITION, can't make it modular without doing double checks that could be changed by upstream
+	UnregisterExtraSignals(owner) // Celadon ADDITION, can't make it modular without doing double checks that could be changed by upstream
 
 	if(target == owner)
 		RegisterSignal(target, COMSIG_QDELETING, PROC_REF(clear_ref))
@@ -444,7 +444,7 @@
 		update_button_status(current_button)
 		return
 	full_key = tgui_input_keycombo(user, "Please bind a key for this action.")
-	full_key = convert_ru_key_to_en_key(full_key) // SS1984 ADDITION
+	full_key = convert_ru_key_to_en_key(full_key) // Celadon ADDITION
 	update_button_status(current_button)
 
 /datum/action/proc/keydown(mob/source, key, client/client, full_key)

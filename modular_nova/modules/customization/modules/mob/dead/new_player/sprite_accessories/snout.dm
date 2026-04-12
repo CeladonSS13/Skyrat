@@ -30,6 +30,8 @@
 	return draw_color
 
 /datum/bodypart_overlay/mutant/snout/can_draw_on_bodypart(obj/item/bodypart/bodypart_owner)
+	if(!..())
+		return FALSE
 	var/mob/living/carbon/human/human = bodypart_owner.owner
 	if(!istype(human))
 		return TRUE
@@ -527,6 +529,10 @@
 	icon_state = "leporid"
 	color_src = USE_MATRIXED_COLORS
 	flags_for_organ = NONE
+
+/datum/sprite_accessory/snouts/mammal/snaggletooth
+	name = "Snaggletooth"
+	icon_state = "snaggletooth"
 
 /datum/sprite_accessory/snouts/mammal/acrador
 	name = "Acrador (Short)"

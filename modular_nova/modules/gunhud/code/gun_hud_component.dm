@@ -11,10 +11,10 @@
 		RegisterSignals(target, list(COMSIG_UPDATE_AMMO_HUD, COMSIG_GUN_CHAMBER_PROCESSED), PROC_REF(update_ballistic))
 	else if(istype(target, /obj/item/gun/energy))
 		RegisterSignals(target, list(COMSIG_UPDATE_AMMO_HUD, COMSIG_GUN_CHAMBER_PROCESSED), PROC_REF(update_energy))
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	else if(istype(target, /obj/item/gun/microfusion))
 		RegisterSignals(target, list(COMSIG_UPDATE_AMMO_HUD, COMSIG_GUN_CHAMBER_PROCESSED), PROC_REF(update_microfusion))
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 	else // non guns don't need the chamber_processed signal registered
 		RegisterSignal(target, COMSIG_UPDATE_AMMO_HUD, PROC_REF(update_welder))
 

@@ -1,5 +1,5 @@
 import dateformat from 'dateformat';
-import DOMPurify from 'dompurify'; // SS1984 ADDITION
+import DOMPurify from 'dompurify'; // Celadon ADDITION
 import yaml from 'js-yaml';
 import { Component, Fragment } from 'react';
 import {
@@ -55,8 +55,8 @@ export class Changelog extends Component {
       selectedIndex: 0,
     };
     this.dateChoices = [];
-    this.lookupSet = new Set(); // SS1984 ADDITION
-    this.icon_sanitized; // SS1984 ADDITION
+    this.lookupSet = new Set(); // Celadon ADDITION
+    this.icon_sanitized; // Celadon ADDITION
   }
 
   setData(data) {
@@ -100,7 +100,7 @@ export class Changelog extends Component {
 
   componentDidMount() {
     const {
-      data: { dates = [], our_changelogs, our_icon_html }, // SS1984 EDIT, original: data: { dates = [] },
+      data: { dates = [], our_changelogs, our_icon_html }, // Celadon EDIT, original: data: { dates = [] },
     } = useBackend();
 
     if (dates) {
@@ -110,7 +110,7 @@ export class Changelog extends Component {
       this.setSelectedDate(this.dateChoices[0]);
       this.getData(dates[0]);
     }
-    // SS1984 ADDITION START
+    // Celadon ADDITION START
     if (our_icon_html) {
       const sanitizeConfig = {
         // Allow the img tag and common attributes relevant to the image
@@ -125,10 +125,10 @@ export class Changelog extends Component {
     if (our_changelogs) {
       this.lookupSet = this.buildLookupSet(our_changelogs);
     }
-    // SS1984 ADDITION END
+    // Celadon ADDITION END
   }
 
-  // SS1984 ADDITION START
+  // Celadon ADDITION START
   buildLookupSet(our_changelogs) {
     const s = new Set();
     for (const entry of our_changelogs) {
@@ -140,7 +140,7 @@ export class Changelog extends Component {
     }
     return s;
   }
-  // SS1984 ADDITION END
+  // Celadon ADDITION END
 
   render() {
     const { data, selectedDate, selectedIndex } = this.state;
@@ -217,20 +217,20 @@ export class Changelog extends Component {
 
     const header = (
       <Section>
-        <h1>Skyrat 1984</h1> {/* SS1984 EDIT */}
+        <h1>Skyrat Celadon</h1> {/* Celadon EDIT */}
         <p>
           <b>Thanks to: </b>
-          Our upstreams: Nova Sector, /tg/station. {/* SS1984 ADDITION */}
+          Our upstreams: Nova Sector, /tg/station. {/* Celadon ADDITION */}
           Traditional Games 13, Skyrat Station 13, Baystation 12, /vg/station,
           NTstation, CDK Station devs, FacepunchStation, GoonStation devs, the
           original Space Station 13 developers, Invisty for the title image and
           the countless others who have contributed to the game.
         </p>
         <p>
-          {/* SS1984 REMOVAL {'Current project maintainers can be found '} */}
-          {/* SS1984 REMOVAL <a href="https://github.com/NovaSector?tab=members">here</a> */}
-          {'Recent GitHub contributors can be found '} {/* SS1984 EDIT */}
-          <a href="https://github.com/skyrat1984test/skyrat1984test/pulse/monthly"> {/* SS1984 EDIT */}
+          {/* Celadon REMOVAL {'Current project maintainers can be found '} */}
+          {/* Celadon REMOVAL <a href="https://github.com/NovaSector?tab=members">here</a> */}
+          {'Recent GitHub contributors can be found '} {/* Celadon EDIT */}
+          <a href="https://github.com/skyrat1984test/skyrat1984test/pulse/monthly"> {/* Celadon EDIT */}
             here
           </a>
           .
@@ -345,11 +345,11 @@ export class Changelog extends Component {
                     <Table>
                       {changes.map((change) => {
                         const changeType = Object.keys(change)[0];
-                        // SS1984 ADDITION START
+                        // Celadon ADDITION START
                         const changeText = change[changeType];
                         const keyChangelog = `${date}|${name}|${changeText}`;
                         const isInOurChangelogs = this.icon_sanitized && this.lookupSet.has(keyChangelog);
-                        // SS1984 ADDITION END
+                        // Celadon ADDITION END
                         return (
                           <Table.Row key={changeType + change[changeType]}>
                             <Table.Cell
@@ -357,15 +357,15 @@ export class Changelog extends Component {
                                 'Changelog__Cell',
                                 'Changelog__Cell--Icon',
                               ])}
-                              // SS1984 ADDITION START
+                              // Celadon ADDITION START
                               style={
                                 isInOurChangelogs
                                   ? { minHeight: '16px', padding: '4px', verticalAlign: 'top' }
                                   : undefined
                               }
-                              // SS1984 ADDITION END
+                              // Celadon ADDITION END
                             >
-                              {/* SS1984 REMOVAL START
+                              {/* Celadon REMOVAL START
                               <Icon
                                 color={
                                   icons[changeType]
@@ -378,8 +378,8 @@ export class Changelog extends Component {
                                     : icons.unknown.icon
                                 }
                               />
-                              SS1984 REMOVAL END */}
-                              {/* SS1984 ADDITION START*/}
+                              Celadon REMOVAL END */}
+                              {/* Celadon ADDITION START*/}
                               <Box bold style={{ display: 'inline-flex', alignItems: 'flex-start' }}>
                                 {isInOurChangelogs && (
                                   <Box style={{
@@ -399,7 +399,7 @@ export class Changelog extends Component {
                                       : icons['unknown'].icon
                                   }
                                 />
-                              {/* SS1984 ADDITION END*/}
+                              {/* Celadon ADDITION END*/}
                               </Box>
                             </Table.Cell>
                             <Table.Cell className="Changelog__Cell">

@@ -38,7 +38,8 @@
 	var/datum/team/cortical_borers/borers
 
 /datum/antagonist/cortical_borer/get_preview_icon()
-	return finish_preview_icon(icon('modular_nova/modules/cortical_borer/icons/animal.dmi', "brainslug"))
+	var/datum/universal_icon/borer_icon = uni_icon(/mob/living/basic/cortical_borer::icon, /mob/living/basic/cortical_borer::icon_state)
+	return finish_preview_icon(borer_icon)
 
 /datum/antagonist/cortical_borer/get_team()
 	return borers
@@ -98,7 +99,7 @@
 	min_pop = 50
 	repeatable = TRUE
 	/// List of on-station vents
-	// SS1984 REMOVAL, also its possible would be harddel issue var/list/vents = list()
+	// Celadon REMOVAL, also its possible would be harddel issue var/list/vents = list()
 
 // Ripped from xenomorph ruleset
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/proc/find_vents()

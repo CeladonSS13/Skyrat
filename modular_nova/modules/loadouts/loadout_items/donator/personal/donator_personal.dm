@@ -237,7 +237,7 @@
 /datum/loadout_item/mask/wolf_mask
 	name = "Wolf Mask"
 	item_path = /obj/item/clothing/mask/animal/wolf
-	ckeywhitelist = list("theooz")
+	ckeywhitelist = list("hauntme")
 
 /datum/loadout_item/head/drake_skull
 	name = "Skull of an ashdrake"
@@ -1031,3 +1031,20 @@
 /datum/loadout_item/toys/plush/plushe_percy
 	name = "Dr. Percival Plushie"
 	item_path = /obj/item/toy/plush/nova/donator/percy
+
+/datum/loadout_item/pocket_items/espatier
+	name = "dated Espatier holster"
+	item_path = /obj/item/storage/belt/espatier
+	ckeywhitelist = list("pyriteChimera", "darkinite", "deadmon_wonderland", "nonplayer775", "rilomatic")
+
+/datum/loadout_item/head/stachelm
+	name = "Stachelm"
+	item_path = /obj/item/clothing/head/helmet/donator/stachelm
+	ckeywhitelist = list("ghostof93")
+	restricted_roles = list(JOB_CAPTAIN, JOB_BLUESHIELD)
+
+/datum/loadout_item/suit/duke_armored_coat
+	name = "Duke's Armored Coat"
+	item_path = /obj/item/clothing/suit/armor/donator/duke_armored_coat
+	ckeywhitelist = list("ambermane")
+	restricted_roles = list(JOB_CAPTAIN)

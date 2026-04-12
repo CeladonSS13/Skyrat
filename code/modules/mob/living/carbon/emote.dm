@@ -1,4 +1,5 @@
 /datum/emote/living/carbon
+	abstract_type = /datum/emote/living/carbon
 	mob_type_allowed_typecache = list(/mob/living/carbon)
 
 /datum/emote/living/carbon/airguitar
@@ -6,7 +7,7 @@
 	message = "is strumming the air and headbanging like a safari chimp."
 	hands_use_check = TRUE
 
-// SS1984 REVERT OF NOVA REMOVAL START
+// Celadon REVERT OF NOVA REMOVAL START
 /datum/emote/living/carbon/clap
 	key = "clap"
 	key_third_person = "claps"
@@ -25,7 +26,7 @@
 		'sound/mobs/humanoids/human/clap/clap3.ogg',
 		'sound/mobs/humanoids/human/clap/clap4.ogg',
 	)
-// SS1984 REVERT OF NOVA REMOVAL END
+// Celadon REVERT OF NOVA REMOVAL END
 
 /datum/emote/living/carbon/crack
 	key = "crack"

@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(dynamic)
 	name = "Dynamic"
-	flags = SS_NO_INIT
+	ss_flags = SS_NO_INIT
 	wait = 5 MINUTES
 
 	// These vars just exist for admins interfacing with dynamic
@@ -336,7 +336,7 @@ SUBSYSTEM_DEF(dynamic)
 	midround_admin_reroll = FALSE
 	COOLDOWN_RESET(src, midround_admin_cancel_period)
 
-	var/player_count = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) // SS1984 EDIT, original: var/player_count = get_active_player_count(afk_check = TRUE)
+	var/player_count = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) // Celadon EDIT, original: var/player_count = get_active_player_count(afk_check = TRUE)
 	var/list/rulesets_weighted = get_midround_rulesets(player_count, range)
 	var/datum/dynamic_ruleset/midround/picked_ruleset = pick_weight(rulesets_weighted)
 	if(isnull(picked_ruleset))
@@ -419,7 +419,7 @@ SUBSYSTEM_DEF(dynamic)
 		CRASH("force_run_midround() was called with an invalid midround type: [midround_typepath]")
 
 	var/datum/dynamic_ruleset/midround/running = new midround_typepath(dynamic_config)
-	running.can_always_be_selected = TRUE // SS1984 ADDITION
+	running.can_always_be_selected = TRUE // Celadon ADDITION
 	if(isnum(forced_max_cap) && forced_max_cap > 0)
 		running.min_antag_cap = min(forced_max_cap, running.min_antag_cap)
 		running.max_antag_cap = forced_max_cap
@@ -485,7 +485,7 @@ SUBSYSTEM_DEF(dynamic)
 		log_dynamic("Latejoin: Ruleset chance failed ([latejoin_chance]% chance)")
 		return FALSE
 
-	var/player_count = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) // SS1984 EDIT, original: var/player_count = get_active_player_count(afk_check = TRUE)
+	var/player_count = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) // Celadon EDIT, original: var/player_count = get_active_player_count(afk_check = TRUE)
 	var/list/rulesets_weighted = get_latejoin_rulesets(player_count)
 	// Note, we make no effort to actually pick a valid ruleset here
 	// We pick a ruleset, and they player might not even have that antag selected. And that's fine
@@ -540,6 +540,10 @@ SUBSYSTEM_DEF(dynamic)
 		CRASH("queue_ruleset() was called with an invalid type: [ruleset_typepath]")
 
 	queued_rulesets += new ruleset_typepath(dynamic_config)
+	// NOVA EDIT ADDITION START - menu latejoin tracker
+	if(SSticker.current_state > GAME_STATE_SETTING_UP) // Don't flash this while we are assigning roundstart antags
+		SStitle.show_title_screen()
+	// NOVA EDIT ADDITION END - menu latejoin tracker
 
 /**
  * Unqueues a ruleset because it has executed
@@ -549,6 +553,10 @@ SUBSYSTEM_DEF(dynamic)
 		CRASH("queue_ruleset() was called with an invalid type: [ruleset.type]")
 
 	queued_rulesets -= ruleset
+	// NOVA EDIT ADDITION START - menu latejoin tracker
+	if(SSticker.current_state > GAME_STATE_SETTING_UP) // Don't flash this while we are assigning roundstart antags
+		SStitle.show_title_screen()
+	// NOVA EDIT ADDITION END - menu latejoin tracker
 
 /**
  * Get the cooldown between attempts to spawn a ruleset of the given type
@@ -574,7 +582,7 @@ SUBSYSTEM_DEF(dynamic)
 	var/chance = 0
 	var/num_antags = length(GLOB.current_living_antags)
 	var/num_dead = length(GLOB.dead_player_list)
-	var/num_alive = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) // SS1984 EDIT, original: var/num_alive = get_active_player_count(afk_check = TRUE)
+	var/num_alive = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) // Celadon EDIT, original: var/num_alive = get_active_player_count(afk_check = TRUE)
 	if(num_dead + num_alive <= 0)
 		return 0
 
@@ -594,7 +602,7 @@ SUBSYSTEM_DEF(dynamic)
 	var/chance = 0
 	var/num_antags = length(GLOB.current_living_antags)
 	var/num_dead = length(GLOB.dead_player_list)
-	var/num_alive = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) // SS1984 EDIT, original: var/num_alive = get_active_player_count(afk_check = TRUE)
+	var/num_alive = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) // Celadon EDIT, original: var/num_alive = get_active_player_count(afk_check = TRUE)
 	if(num_dead + num_alive <= 0)
 		return 0
 
@@ -722,13 +730,13 @@ SUBSYSTEM_DEF(dynamic)
 				data += "min_pop.[i] = [ruleset.min_pop[i]]\n"
 		else
 			data += "min_pop = [ruleset.min_pop || 0]\n"
-		// SS1984 ADDITION START
+		// Celadon ADDITION START
 		if(islist(ruleset.min_enemies))
 			for(var/i in 1 to length(ruleset.min_enemies))
 				data += "min_enemies.[i] = [ruleset.min_enemies[i]]\n"
 		else
 			data += "min_enemies = [ruleset.min_enemies || 0]\n"
-		// SS1984 ADDITION END
+		// Celadon ADDITION END
 		if(length(ruleset.blacklisted_roles))
 			data += "blacklisted_roles = \[\n"
 			for(var/i in ruleset.blacklisted_roles)

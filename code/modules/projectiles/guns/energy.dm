@@ -82,7 +82,7 @@
 	. = ..()
 	if(!(. & EMP_PROTECT_CONTENTS))
 		cell.use(round(cell.charge / emp_resistance / severity))
-		set_chambered(null) // SS1984 EDIT, original: chambered = null
+		set_chambered(null) // Celadon EDIT, original: chambered = null
 		recharge_newshot() //and try to charge a new shot
 		update_appearance()
 
@@ -211,7 +211,7 @@
 	if(!chambered)
 		var/obj/item/ammo_casing/energy/AC = ammo_type[select]
 		if(cell.charge >= AC.e_cost) //if there's enough power in the cell cell...
-			set_chambered(AC) // SS1984 EDIT, original: chambered = AC //...prepare a new shot based on the current ammo type selected
+			set_chambered(AC) // Celadon EDIT, original: chambered = AC //...prepare a new shot based on the current ammo type selected
 			if(!chambered.loaded_projectile)
 				chambered.newshot()
 
@@ -219,7 +219,7 @@
 	if(chambered && !chambered.loaded_projectile) //if loaded_projectile is null, i.e the shot has been fired...
 		var/obj/item/ammo_casing/energy/shot = chambered
 		cell.use(shot.e_cost)//... drain the cell cell
-	set_chambered(null) // SS1984 EDIT, original: chambered = null
+	set_chambered(null) // Celadon EDIT, original: chambered = null
 	recharge_newshot() //try to charge a new shot
 
 /obj/item/gun/energy/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
@@ -243,7 +243,7 @@
 		set_light_color(shot.muzzle_flash_color)
 	if (shot.select_name && user)
 		balloon_alert(user, "set to [shot.select_name]")
-	set_chambered(null) // SS1984 EDIT, original: chambered = null
+	set_chambered(null) // Celadon EDIT, original: chambered = null
 	recharge_newshot(TRUE)
 	update_appearance()
 	if(fire_mode_switch_sound)

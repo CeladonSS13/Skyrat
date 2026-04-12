@@ -508,11 +508,11 @@
 	. = list()
 	if(isnull(eyelid)) // Can't blink if we don't have an eyelid
 		return
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	if(CONFIG_GET(flag/disable_blinking))
 		animate(eyelid, alpha = 0, time = 0, loop = 0) // only eyelid, nothing more
 		return .
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 	var/prevent_loops = HAS_TRAIT(parent, TRAIT_PREVENT_BLINK_LOOPS)
 	animate(eyelid, alpha = 0, time = 0, loop = (prevent_loops ? 0 : -1))
 
@@ -566,7 +566,7 @@
 		addtimer(CALLBACK(src, PROC_REF(animate_eyelids), owner), blink_delay + duration)
 
 /obj/item/organ/eyes/proc/animate_eyelids(mob/living/carbon/human/parent)
-	// SS1984 REMOVAL if(CONFIG_GET(flag/disable_blinking)) return // NOVA EDIT ADDITION - CONFIG BLINKING
+	// Celadon REMOVAL if(CONFIG_GET(flag/disable_blinking)) return // NOVA EDIT ADDITION - CONFIG BLINKING
 	var/sync_blinking = synchronized_blinking && (parent.get_organ_loss(ORGAN_SLOT_BRAIN) < BRAIN_DAMAGE_ASYNC_BLINKING)
 	// Randomize order for unsynched animations
 	if (sync_blinking || prob(50))

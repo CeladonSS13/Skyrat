@@ -440,12 +440,7 @@
 		if(tgui_alert(usr, "Send [key_name(M)] to Prison?", "Message", list("Yes", "No")) != "Yes")
 			return
 
-		// NOVA EDIT ADDITION START - Immersion-friendly Admin Prison
-		var/datum/effect_system/spark_spread/quantum/sparks = new
-		sparks.set_up(10, 1, M)
-		sparks.attach(M.loc)
-		sparks.start()
-		// NOVA EDIT ADDITION END
+		do_sparks(10, TRUE, M, spark_type = /datum/effect_system/basic/spark_spread/quantum) // NOVA EDIT ADDITION - Immersion-friendly Admin Prison
 		M.forceMove(pick(GLOB.prisonwarp))
 		to_chat(M, span_adminnotice("You have been sent to Prison!"), confidential = TRUE)
 
@@ -1438,11 +1433,11 @@
 			FAX.receive(locate(href_list["print_fax"]), href_list["sender_name"])
 			return
 
-	// SS1984 ADDITION START, non-modular because of potential perfomance degradation without else-if and checks at beginning would be need to done again
+	// Celadon ADDITION START, non-modular because of potential perfomance degradation without else-if and checks at beginning would be need to done again
 	else if (href_list["reply_fax"])
 		reply_fax_topic(href_list["reply_fax"], usr)
 		return
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 
 	else if(href_list["play_internet"])
 		if(!check_rights(R_SOUND))

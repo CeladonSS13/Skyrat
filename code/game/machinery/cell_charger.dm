@@ -34,7 +34,7 @@ NOVA EDIT END */
 		. += "Current charge: [round(charging.percent(), 1)]%."
 	if(in_range(user, src) || isobserver(user))
 		. += span_notice("The status display reads: Charging power: <b>[display_power(charge_rate, convert = FALSE)]</b>.")
-		. += get_powermonitoring_desc(src) // SS1984 ADDITION
+		. += get_powermonitoring_desc(src) // Celadon ADDITION
 
 /obj/machinery/cell_charger/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()

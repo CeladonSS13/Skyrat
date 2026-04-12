@@ -13,6 +13,7 @@
 	clumsy_check = FALSE
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL // Has no trigger at all, uses magic instead
 	pin = /obj/item/firing_pin/magic
+	about_to_shoot_inside_mail_text = "It's humming with energy!"
 	/// If true, our fire sound gets lower as our charges decrease
 	var/pitch_with_charges = TRUE
 	/// What kind of magic is this
@@ -118,7 +119,7 @@
 	. = ..()
 	charges = max_charges
 	if(ammo_type)
-		set_chambered(new ammo_type(src)) // SS1984 EDIT, original: chambered = new ammo_type(src)
+		set_chambered(new ammo_type(src)) // Celadon EDIT, original: chambered = new ammo_type(src)
 	if(self_charging)
 		START_PROCESSING(SSobj, src)
 	RegisterSignal(src, COMSIG_ITEM_RECHARGED, PROC_REF(instant_recharge))

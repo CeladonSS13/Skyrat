@@ -81,7 +81,7 @@ export const Crayon = (props) => {
           </LabeledList>
         </Section>
         {!!is_literate_user && (
-          <Section title="Текст"> {/* SS1984 EDIT, original: <Section title="Text"> */}
+          <Section title="Текст"> {/* Celadon EDIT, original: <Section title="Text"> */}
             <LabeledList>
               <LabeledList.Item label="Current Buffer">
                 {text_buffer}

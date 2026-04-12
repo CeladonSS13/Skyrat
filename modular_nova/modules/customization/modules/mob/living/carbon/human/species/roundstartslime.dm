@@ -282,8 +282,7 @@
 * Procs the ethereal jaunt liquid effect when the slime dissolves on death.
 */
 /obj/item/organ/brain/slime/proc/do_steam_effects(turf/loc)
-	var/datum/effect_system/steam_spread/steam = new()
-	steam.set_up(10, FALSE, loc)
+	var/datum/effect_system/basic/steam_spread/steam = new(loc, 10, FALSE)
 	steam.start()
 
 /**
@@ -344,8 +343,8 @@
 	new_body.domutcheck()
 	new_body.forceMove(get_turf(src))
 	new_body.set_blood_volume(BLOOD_VOLUME_SAFE + 60)
-	brainmob.transfer_quirk_datums(new_body) // SS1984 ADDITION
-	// SS1984 REMOVAL SSquirks.AssignQuirks(new_body, brainmob.client)
+	brainmob.transfer_quirk_datums(new_body) // Celadon ADDITION
+	// Celadon REMOVAL SSquirks.AssignQuirks(new_body, brainmob.client)
 	src.replace_into(new_body)
 	for(var/obj/item/bodypart/bodypart as anything in new_body.bodyparts)
 		if(!istype(bodypart, /obj/item/bodypart/chest))
@@ -1012,7 +1011,7 @@
 			replacement_organ.sprite_accessory_flags = selected_sprite_accessory.flags_for_organ
 			replacement_organ.relevant_layers = selected_sprite_accessory.relevent_layers
 
-			var/datum/mutant_bodypart/new_mutant_bodypart = alterer.dna.species.build_mutant_part(
+			var/datum/mutant_bodypart/new_mutant_bodypart = build_mutant_part(
 				selected_sprite_accessory.name,
 				selected_sprite_accessory.get_default_color(alterer.dna.features, alterer.dna.species)
 			)
@@ -1023,7 +1022,7 @@
 			replacement_organ.build_from_dna(alterer.dna, chosen_key)
 			replacement_organ.Insert(alterer, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 		else
-			var/datum/mutant_bodypart/new_mutant_bodypart = alterer.dna.species.build_mutant_part(
+			var/datum/mutant_bodypart/new_mutant_bodypart = build_mutant_part(
 				selected_sprite_accessory.name,
 				selected_sprite_accessory.get_default_color(alterer.dna.features, alterer.dna.species)
 			)

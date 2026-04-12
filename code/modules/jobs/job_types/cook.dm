@@ -91,6 +91,10 @@
 			head = /obj/item/clothing/head/soft/mime
 		if(!visuals_only)
 			other_chefs.cooks++
+	// Celadron ADDITION START - april_fools_day
+	if(check_holidays(APRIL_FOOLS))
+		uniform = /obj/item/clothing/under/artisan
+	// Celadron ADDITION END
 
 /datum/outfit/job/cook/post_equip(mob/living/carbon/human/user, visuals_only = FALSE)
 	. = ..()

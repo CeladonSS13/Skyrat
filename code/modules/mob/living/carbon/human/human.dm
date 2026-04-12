@@ -55,6 +55,8 @@
 /mob/living/carbon/human/proc/setup_organless_effects()
 	// All start without eyes, and get them via set species
 	become_blind(NO_EYES)
+	// And no ears, and get them via set species
+	ADD_TRAIT(src, TRAIT_DEAF, NO_EARS)
 	// Mobs cannot taste anything without a tongue; the tongue organ removes this on Insert
 	ADD_TRAIT(src, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
 
@@ -105,7 +107,7 @@
 		if(!same_id || (text2num(href_list["examine_time"]) + viable_time) < world.time)
 			to_chat(viewer, span_notice("You don't have that good of a memory. Examine [p_them()] again."))
 			return
-		if(HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE))
+		if(!isobserver(viewer) && HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE))
 			to_chat(viewer, span_notice("You can't make out that ID anymore."))
 			return
 		if(!isobserver(viewer) && get_dist(viewer, src) > ID_EXAMINE_DISTANCE + 1) // leeway, ignored if the viewer is a ghost
@@ -192,8 +194,7 @@
 				var/status = ""
 				if(get_brute_loss())
 					to_chat(human_user, "<b>Physical trauma analysis:</b>")
-					for(var/X in bodyparts)
-						var/obj/item/bodypart/BP = X
+					for(var/obj/item/bodypart/BP as anything in get_bodyparts())
 						var/brutedamage = BP.brute_dam
 						if(brutedamage > 0)
 							status = "received minor physical injuries."
@@ -208,8 +209,7 @@
 							to_chat(human_user, "<span class='[span]'>[BP] appears to have [status]</span>")
 				if(get_fire_loss())
 					to_chat(human_user, "<b>Analysis of skin burns:</b>")
-					for(var/X in bodyparts)
-						var/obj/item/bodypart/BP = X
+					for(var/obj/item/bodypart/BP as anything in get_bodyparts())
 						var/burndamage = BP.burn_dam
 						if(burndamage > 0)
 							status = "signs of minor burns."
@@ -258,9 +258,9 @@
 					to_chat(usr,  "<span class='notice ml-1'>No physiological traits found.</span>")
 			//NOVA EDIT ADDITION BEGIN - EXAMINE RECORDS
 			if(href_list["medrecords"])
-				to_chat(usr, "<b>Medical Record:</b> [target_record.past_medical_records]")
+				to_chat(usr, fieldset_block("Medical Record", span_info(target_record.past_medical_records), "boxed_message"), type = MESSAGE_TYPE_INFO)
 			if(href_list["genrecords"])
-				to_chat(usr, "<b>General Record:</b> [target_record.past_general_records]")
+				to_chat(usr, fieldset_block("General Record", span_info(target_record.past_general_records), "boxed_message"), type = MESSAGE_TYPE_INFO)
 			//NOVA EDIT END
 			return //Medical HUD ends here.
 
@@ -270,7 +270,7 @@
 				return
 			if(ishuman(human_or_ghost_user))
 				var/mob/living/carbon/human/human_user = human_or_ghost_user
-				if(human_user.stat) // SS1984 EDIT, original: if(human_user.stat || human_user == src) //|| !human_user.canmove || human_user.restrained()) Fluff: Sechuds have eye-tracking technology and sets 'arrest' to people that the wearer looks and blinks at.
+				if(human_user.stat) // Celadon EDIT, original: if(human_user.stat || human_user == src) //|| !human_user.canmove || human_user.restrained()) Fluff: Sechuds have eye-tracking technology and sets 'arrest' to people that the wearer looks and blinks at.
 					return   //Non-fluff: This allows sec to set people to arrest as they get disarmed or beaten
 			// Checks the user has security clearence before allowing them to change arrest status via hud, comment out to enable all access
 				var/obj/item/clothing/glasses/hud/security/user_glasses = human_user.glasses
@@ -299,13 +299,13 @@
 				if(!new_status || !target_record || !human_user.canUseHUD() || !HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
 					return
 
-				// SS1984 REMOVAL START
+				// Celadon REMOVAL START
 				// if(new_status == WANTED_ARREST)
 				// 	var/datum/crime/new_crime = new(author = human_user, details = "Set by SecHUD.")
 				// 	target_record.crimes += new_crime
 				// 	investigate_log("SecHUD auto-crime | Added to [target_record.name] by [key_name(human_user)]", INVESTIGATE_RECORDS)
-				// SS1984 REMOVAL END
-				// SS1984 ADDITION START
+				// Celadon REMOVAL END
+				// Celadon ADDITION START
 				var/reason_text = tgui_input_text(usr, "Comment:", "Add comment", "", MAX_DESC_LEN, encode = FALSE)
 				if(isnull(reason_text))
 					return
@@ -331,9 +331,9 @@
 				var/datum/crime/new_crime = new(author = "SecHUD", details = "Set status from [target_record.wanted_status] to [new_status] by [found_name][found_rank ? " ([found_rank])" : ""]. Comment: [reason_text]")
 				target_record.crimes += new_crime
 				investigate_log("SecHUD status change to [target_record.name] by [key_name(human_user)]. Comment: [reason_text]", INVESTIGATE_RECORDS)
-				// SS1984 ADDITION END
+				// Celadon ADDITION END
 
-				// SS1984 REMOVAL investigate_log("has been set from [target_record.wanted_status] to [new_status] via HUD by [key_name(human_user)].", INVESTIGATE_RECORDS)
+				// Celadon REMOVAL investigate_log("has been set from [target_record.wanted_status] to [new_status] via HUD by [key_name(human_user)].", INVESTIGATE_RECORDS)
 				target_record.wanted_status = new_status
 				update_matching_security_huds(target_record.name)
 				return
@@ -372,7 +372,7 @@
 						return
 				else if(!isobserver(usr))
 					return
-				to_chat(usr, "<b>General Record:</b> [target_record.past_general_records]")
+				to_chat(usr, fieldset_block("General Record", span_info(target_record.past_general_records), "boxed_message"), type = MESSAGE_TYPE_INFO)
 			if(href_list["secrecords"])
 				if(ishuman(usr))
 					var/mob/living/carbon/human/human_user = usr
@@ -382,7 +382,7 @@
 						return
 				else if(!isobserver(usr))
 					return
-				to_chat(usr, "<b>Security Record:</b> [target_record.past_security_records]")
+				to_chat(usr, fieldset_block("Security Record", span_info(target_record.past_security_records), "boxed_message"), type = MESSAGE_TYPE_INFO)
 			// NOVA EDIT ADDITION END - EXAMINE RECORDS
 			if(ishuman(human_or_ghost_user))
 				var/mob/living/carbon/human/human_user = human_or_ghost_user
@@ -429,16 +429,16 @@
 		if(isobserver(usr) || usr.mind.can_see_exploitables || usr.mind.has_exploitables_override)
 			var/examined_name = get_face_name(get_id_name(""))
 			var/datum/record/crew/target_record = find_record(examined_name)
-			to_chat(usr, "<b>Background information:</b> [target_record.background_information]")
+			to_chat(usr, fieldset_block("Background Information", span_info(target_record.background_information), "boxed_message"), type = MESSAGE_TYPE_INFO)
 	if(href_list["exprecords"])
 		if(isobserver(usr) || usr.mind.can_see_exploitables || usr.mind.has_exploitables_override)
 			var/examined_name = get_face_name(get_id_name("")) //Named as such because this is the name we see when we examine
 			var/datum/record/crew/target_record = find_record(examined_name)
-			to_chat(usr, "<b>Exploitable information:</b> [target_record.exploitable_information]")
+			to_chat(usr, fieldset_block("Exploitable Information", span_info(target_record.exploitable_information), "boxed_message"), type = MESSAGE_TYPE_INFO)
 	if(href_list["medrecords"])
 		var/examined_name = get_face_name(get_id_name("")) //Named as such because this is the name we see when we examine
 		var/datum/record/crew/target_record = find_record(examined_name)
-		to_chat(usr, "<b>Medical Record:</b> [target_record.past_medical_records]")
+		to_chat(usr, fieldset_block("Medical Record", span_info(target_record.past_medical_records), "boxed_message"), type = MESSAGE_TYPE_INFO)
 	//NOVA EDIT ADDITION END
 
 	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
@@ -727,10 +727,8 @@
 	// If we have a species, we need to handle mutant parts and stuff
 	if(dna?.species)
 		add_atom_colour(COLOR_BLACK, TEMPORARY_COLOUR_PRIORITY)
-		var/static/mutable_appearance/shock_animation_dna
-		if(!shock_animation_dna)
-			shock_animation_dna = mutable_appearance(icon, "electrocuted_base")
-			shock_animation_dna.appearance_flags |= RESET_COLOR|KEEP_APART
+		var/mutable_appearance/shock_animation_dna = mutable_appearance(icon, "electrocuted_base", appearance_flags = RESET_COLOR|KEEP_APART)
+		apply_height_filters(shock_animation_dna)
 		zap_appearance = shock_animation_dna
 
 	// Otherwise do a generic animation
@@ -877,11 +875,14 @@
 		if(!check_rights(R_SPAWN))
 			return
 		var/list/options = list("Clear"="Clear")
-		for(var/type in subtypesof(/datum/quirk))
+		for(var/type in valid_subtypesof(/datum/quirk))
 			var/datum/quirk/quirk_type = type
-			if(initial(quirk_type.abstract_parent_type) == type)
-				continue
-			// SS1984 REMOVAL OF ERP QUIRK
+			// CELADON REMOVAL START
+			// // NOVA EDIT ADDITION START
+			// if(initial(quirk_type.erp_quirk) && CONFIG_GET(flag/disable_erp_preferences))
+			// 	continue
+			// // NOVA EDIT ADDITION END
+			// CELADON REMOVAL END
 			var/qname = initial(quirk_type.name)
 			options[has_quirk(quirk_type) ? "[qname] (Remove)" : "[qname] (Add)"] = quirk_type
 		var/result = input(usr, "Choose quirk to add/remove","Quirk Mod") as null|anything in sort_list(options)

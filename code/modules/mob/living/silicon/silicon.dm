@@ -42,7 +42,6 @@
 
 	var/law_change_counter = 0
 	var/obj/machinery/camera/silicon/builtInCamera
-	var/updating = FALSE //portable camera camerachunk update
 	///Whether we have been emagged
 	var/emagged = FALSE
 	var/hack_software = FALSE //Will be able to use hacking actions
@@ -287,7 +286,7 @@
 	var/list/lawcache_hackedcheck = hackedcheck.Copy()
 	var/forced_log_message = "stating laws[force ? ", forced" : ""]"
 	//"radiomod" is inserted before a hardcoded message to change if and how it is handled by an internal radio.
-	say("[radiomod] Действующие законы:", forced = forced_log_message) // SS1984 EDIT, original: say("[radiomod] Current Active Laws:", forced = forced_log_message)
+	say("[radiomod] Действующие законы:", forced = forced_log_message) // Celadon EDIT, original: say("[radiomod] Current Active Laws:", forced = forced_log_message)
 	sleep(1 SECONDS)
 
 	if (lawcache_zeroth)

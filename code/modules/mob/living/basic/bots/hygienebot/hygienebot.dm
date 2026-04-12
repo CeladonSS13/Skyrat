@@ -68,13 +68,18 @@
 	RegisterSignal(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, PROC_REF(on_attack))
 
 /mob/living/basic/bot/hygienebot/explode()
-	var/datum/effect_system/fluid_spread/foam/foam = new
-	foam.set_up(2, holder = src, location = loc)
-	foam.start()
+	do_foam(2, src, loc)
 	return ..()
 
 /mob/living/basic/bot/hygienebot/generate_speak_list()
-	var/static/list/finalized_speak_list = (found_announcements + threat_announcements + cleaned_announcements)
+	// CELADON REMOVAL var/static/list/finalized_speak_list = (found_announcements + threat_announcements + cleaned_announcements)
+	// Celadon ADDITION START - april_fools_day
+	var/static/list/finalized_speak_list
+	if(check_holidays(APRIL_FOOLS))
+		finalized_speak_list = (ru_found_announcements + ru_threat_announcements + ru_cleaned_announcements)
+	else
+		finalized_speak_list = (found_announcements + threat_announcements + cleaned_announcements)
+	// Celadon ADDITION END
 	return finalized_speak_list
 
 /mob/living/basic/bot/hygienebot/update_icon_state()

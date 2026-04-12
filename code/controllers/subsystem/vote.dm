@@ -4,7 +4,7 @@
 SUBSYSTEM_DEF(vote)
 	name = "Vote"
 	wait = 1 SECONDS
-	flags = SS_KEEP_TIMING
+	ss_flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
 	/// A list of all generated action buttons
@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(vote)
 	var/to_display = current_vote.get_result_text(winners, final_winner, non_voters)
 
 	var/total_votes = 0
-	var/list/vote_choice_data = current_vote.choices?.len > 0 ? list() : null // SS1984 EDIT, prevent runtime caused by empty list by passing null instead. Original: var/list/vote_choice_data = list()
+	var/list/vote_choice_data = current_vote.choices?.len > 0 ? list() : null // Celadon EDIT, prevent runtime caused by empty list by passing null instead. Original: var/list/vote_choice_data = list()
 	for(var/choice in current_vote.choices)
 		var/choice_votes = current_vote.choices[choice]
 		total_votes += choice_votes
@@ -343,7 +343,7 @@ SUBSYSTEM_DEF(vote)
 				"countMethod" = current_vote.count_method,
 				"displayStatistics" = current_vote.display_statistics,
 				"choices" = choices,
-				"choicesHighlight" = current_vote.choices_highlight, // SS1984 ADDITION
+				"choicesHighlight" = current_vote.choices_highlight, // Celadon ADDITION
 				"vote" = vote_data,
 			)
 

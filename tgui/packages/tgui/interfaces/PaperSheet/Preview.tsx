@@ -15,7 +15,7 @@ type PreviewViewProps = {
   handleOnScroll: (this: GlobalEventHandlers, ev: Event) => any;
   textArea: string;
   canEdit: boolean;
-  uiVer: number; // SS1984 ADDITION
+  uiVer: number; // Celadon ADDITION
 };
 
 type FieldCreationReturn = {
@@ -152,12 +152,12 @@ export class PreviewView extends Component<PreviewViewProps> {
   }
 
   shouldComponentUpdate(nextProps: Readonly<PreviewViewProps>): boolean {
-    // SS1984 REMOVAL START
+    // Celadon REMOVAL START
     // if (!this.props.canEdit) return true;
 
     // return this.props.canEdit !== nextProps.canEdit;
-    // SS1984 REMOVAL END
-    return this.props.uiVer != nextProps.uiVer; // SS1984 ADDITION
+    // Celadon REMOVAL END
+    return this.props.uiVer != nextProps.uiVer; // Celadon ADDITION
   }
 
   // Creates the partial inline HTML for previewing or reading the paper from
@@ -519,13 +519,13 @@ export class PreviewView extends Component<PreviewViewProps> {
       );
     }
 
-    // SS1984 ADDITION START
+    // Celadon ADDITION START
     previewText = previewText
       .replace("[syndicatelogo]", `<img src="syndicatelogo.png" width='200' height='123'/>`)
       .replace("[ntlogo]", `<img src="ntlogo.png" width='200' height='123'/>`)
       .replace("[keepwatching]", `<img src="keepwatching.png" width='380' height='180'/>`)
     ;
-    // SS1984 ADDITION END
+    // Celadon ADDITION END
 
     const textHTML = {
       __html: `<span className='paper-text'>${previewText}</span>`,

@@ -1,0 +1,11 @@
+2026-04-04:
+  DenIS318:
+  - rscdel: Remove "Connect to relay" option in "File" menu and OOC verb. They were
+      not used anyway.
+  - rscdel: Roll 20 emote removed (it's just says text to LOOC that can be easily
+      faked)
+  - rscadd: Added removed earlier silicon emotes. Synthetics also can use them.
+  - spellcheck: Silicon sounds localized
+  - qol: Detective wooden TV console can be assembled from circuit, instead of normal
+      security camera console. The difference is only visual
+  - bugfix: Parallax (space overlay) fixed and now shown

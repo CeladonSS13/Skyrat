@@ -7,10 +7,10 @@
 
 /obj/machinery/materials_market/item_interaction(mob/living/user, obj/item/stack/exportable, list/modifiers)
 	if(isstack(exportable))
-		// SS1984 ADDITION START
+		// Celadon ADDITION START
 		if (CONFIG_GET(flag/allow_galactic_market_sell))
 			return ..()
-		// SS1984 ADDITION END
+		// Celadon ADDITION END
 		say("Selling materials to the GMM is no longer available due to volatile logistics conditions in frontier space. Please export your materials via standard Union-NT cargo arrangements.")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, FALSE)
 		return TRUE

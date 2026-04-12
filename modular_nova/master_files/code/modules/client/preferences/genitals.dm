@@ -33,9 +33,7 @@
 		mutant_bodypart.name = value
 		return TRUE
 
-	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
-	var/datum/species/current_species = GLOB.species_prototypes[species_type]
-	target.dna.mutant_bodyparts[relevant_mutant_bodypart] = current_species.build_mutant_part(value)
+	target.dna.mutant_bodyparts[relevant_mutant_bodypart] = build_mutant_part(value)
 	return TRUE
 
 /datum/preference/choiced/genital/is_accessible(datum/preferences/preferences)
@@ -52,8 +50,8 @@
  * * preferences - The relevant character preferences.
  */
 /datum/preference/choiced/genital/proc/is_visible(mob/living/carbon/human/target, datum/preferences/preferences)
-	return FALSE // SS1984 ADDITION
-	// SS1984 REMOVAL START
+	return FALSE // Celadon ADDITION
+	// Celadon REMOVAL START
 	// if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences) || !preferences.read_preference(/datum/preference/toggle/allow_genitals))
 	// 	return FALSE
 
@@ -64,7 +62,7 @@
 	// var/datum/species/species = GLOB.species_prototypes[species_type]
 
 	// return (savefile_key in species.get_features())
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 /datum/preference/choiced/genital/create_default_value()
 	return initial(default_accessory_type.name)
@@ -91,17 +89,17 @@
 	var/genital_pref_type
 
 /datum/preference/toggle/genital_skin_color/is_accessible(datum/preferences/preferences)
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	..()
 	return FALSE
-	// SS1984 ADDITION END
-	// SS1984 REMOVAL START
+	// Celadon ADDITION END
+	// Celadon REMOVAL START
 	// var/passed_initial_check = ..(preferences)
 	// var/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	// var/datum/species/species = GLOB.species_prototypes[species_type]
 	// if(!(TRAIT_USES_SKINTONES in species.inherent_traits))
 	// 	return FALSE
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 /datum/preference/toggle/genital_skin_color/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	// If they're not using skintones, let's not apply this yeah?
@@ -173,23 +171,8 @@
 	..(preferences)
 	return FALSE
 
-/// The difference between the absolute max length and the length for normal sized mobs
-#define PENIS_LENGTH_ABOVE_NORMAL PENIS_MAX_LENGTH - PENIS_MAX_LENGTH_NORMAL_SIZED
-
 /datum/preference/numeric/penis_length/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	// Adjust allowed size based on character size
-	var/body_size = preferences?.read_preference(/datum/preference/numeric/body_size) || BODY_SIZE_NORMAL
-	var/has_oversized_quirk = preferences?.all_quirks.Find(/datum/quirk/oversized::name)
-	// Clamp this for normal sized characters. Max allowed size is proportional to the mob's body_size, rounded up.
-	if(!has_oversized_quirk)
-		var/adjusted_size = PENIS_MAX_LENGTH_NORMAL_SIZED
-		if(body_size > 1)
-			adjusted_size = ceil(round(PENIS_MAX_LENGTH_NORMAL_SIZED, step) + ((((body_size - round(1, step)) * round(2, step))) * round(PENIS_LENGTH_ABOVE_NORMAL, step))) // floating point inaccuracy fun
-		if(value > adjusted_size)
-			value = adjusted_size
 	target.dna.features["penis_size"] = value
-
-#undef PENIS_LENGTH_ABOVE_NORMAL
 
 /datum/preference/numeric/penis_length/create_default_value() // if you change from this to PENIS_MAX_LENGTH the game should laugh at you
 	return round(max(PENIS_MIN_LENGTH, PENIS_DEFAULT_LENGTH))
@@ -316,7 +299,7 @@
 	savefile_key = "balls_size"
 	relevant_mutant_bodypart = ORGAN_SLOT_TESTICLES
 	minimum = 0
-	maximum = 6
+	maximum = TESTICLES_MAX_SIZE
 
 /datum/preference/numeric/balls_size/is_accessible(datum/preferences/preferences)
 	..(preferences)

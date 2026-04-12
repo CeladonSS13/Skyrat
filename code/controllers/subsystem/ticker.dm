@@ -4,8 +4,8 @@
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
 	priority = FIRE_PRIORITY_TICKER
-	flags = SS_KEEP_TIMING
-	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME
+	ss_flags = SS_KEEP_TIMING
+	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	/// state of current round (used by process()) Use the defines GAME_STATE_* !
 	var/current_state = GAME_STATE_STARTUP
@@ -69,6 +69,8 @@ SUBSYSTEM_DEF(ticker)
 	/// Why an emergency shuttle was called
 	var/emergency_reason
 
+	///The display of how much time is left before a reboot, given to all clients post-game.
+	var/atom/movable/screen/reboot_timer/reboot_hud
 	/// ID of round reboot timer, if it exists
 	var/reboot_timer = null
 	var/real_round_start_time = 0 // NOVA EDIT ADDITION
@@ -132,7 +134,7 @@ SUBSYSTEM_DEF(ticker)
 		GLOB.syndicate_code_response_regex = codeword_match
 
 	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * (1 SECONDS))
-	// SS1984 REMOVAL round_start_time = start_at // May be changed later, but prevents the time from jumping back when the round actually starts
+	// Celadon REMOVAL round_start_time = start_at // May be changed later, but prevents the time from jumping back when the round actually starts
 	if(CONFIG_GET(flag/randomize_shift_time))
 		gametime_offset = rand(0, 23) * (1 HOURS)
 	else if(CONFIG_GET(flag/shift_time_realtime))
@@ -162,10 +164,10 @@ SUBSYSTEM_DEF(ticker)
 				send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.current_map.map_name]!"), channel_tag)
 			*/ // NOVA EDIT REMOVAL END
 			current_state = GAME_STATE_PREGAME
-			// SS1984 ADDITION FIX NOVA NOT READY TITLE SCREEN
+			// Celadon ADDITION FIX NOVA NOT READY TITLE SCREEN
 			for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
 				player.title_screen_is_ready = TRUE // nova title screens be like...
-			// SS1984 ADDITION END
+			// Celadon ADDITION END
 			SStitle.change_title_screen() // NOVA EDIT ADDITION - Title screen
 			addtimer(CALLBACK(SStitle, TYPE_PROC_REF(/datum/controller/subsystem/title, change_title_screen)), 1 SECONDS) // NOVA EDIT ADDITION - Title screen
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
@@ -181,7 +183,7 @@ SUBSYSTEM_DEF(ticker)
 			for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
 				if(player.ready == PLAYER_READY_TO_PLAY)
 					++totalPlayersReady
-					if(player.client?.holder && (player.client in GLOB.admins)) // SS1984 EDIT, original: if(player.client?.holder)
+					if(player.client?.holder && (player.client in GLOB.admins)) // Celadon EDIT, original: if(player.client?.holder)
 						++total_admins_ready
 
 			if(start_immediately)
@@ -223,6 +225,13 @@ SUBSYSTEM_DEF(ticker)
 				declare_completion(force_ending)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 				SEND_SIGNAL(src, COMSIG_TICKER_ROUND_ENDED) // NOVA EDIT ADDITION
+
+		if(GAME_STATE_FINISHED)
+			if(ready_for_reboot)
+				if(isnull(reboot_timer))
+					reboot_hud.maptext = MAPTEXT_PIXELLARI("<center>Server reboot \n\ DELAYED</center>")
+				else
+					reboot_hud.maptext = MAPTEXT_PIXELLARI("<center>Server rebooting in:\n\ [DisplayTimeText(timeleft(SSticker.reboot_timer), 1)]</center>")
 
 /// Checks if the round should be ending, called every ticker tick
 /datum/controller/subsystem/ticker/proc/check_finished()
@@ -585,7 +594,7 @@ SUBSYSTEM_DEF(ticker)
 		if(ishuman(new_player_living))
 			SEND_SIGNAL(new_player_living, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED)
 			// NOVA EDIT ADDITION START
-			if (!player_assigned_role.disable_all_loadout) // SS1984 ADDITION
+			if (!player_assigned_role.disable_all_loadout) // Celadon ADDITION
 				var/list/loadout = new_player_living.client?.get_loadout_datums()
 				for(var/datum/loadout_item/item as anything in loadout)
 					if (item.restricted_roles && length(item.restricted_roles) && !(player_assigned_role.title in item.restricted_roles))
@@ -883,6 +892,8 @@ SUBSYSTEM_DEF(ticker)
 
 	var/start_wait = world.time
 	UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2)) //don't wait forever
+	if(!isnull(reboot_timer)) //Override existing reboot timers.
+		deltimer(reboot_timer)
 	reboot_timer = addtimer(CALLBACK(src, PROC_REF(reboot_callback), reason, end_string), delay - (world.time - start_wait), TIMER_STOPPABLE)
 
 

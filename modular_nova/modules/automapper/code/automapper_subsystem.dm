@@ -14,7 +14,7 @@
 
 SUBSYSTEM_DEF(automapper)
 	name = "Automapper"
-	flags = SS_NO_FIRE
+	ss_flags = SS_NO_FIRE
 
 	/// The path to our TOML file
 	var/config_file = "_maps/nova/automapper/automapper_config.toml"
@@ -79,7 +79,7 @@ SUBSYSTEM_DEF(automapper)
 		else if(!(iterating_template.required_map in map_names))
 			continue
 		if(iterating_template.load(iterating_template.load_turf, FALSE))
-			//add_startup_message("Loaded [iterating_template.name] at [iterating_template.load_turf.x], [iterating_template.load_turf.y], [iterating_template.load_turf.z]!") //SS1984 EDIT
+			//add_startup_message("Loaded [iterating_template.name] at [iterating_template.load_turf.x], [iterating_template.load_turf.y], [iterating_template.load_turf.z]!") //Celadon EDIT
 			log_world("AUTOMAPPER: Successfully loaded map template [iterating_template.name] at [iterating_template.load_turf.x], [iterating_template.load_turf.y], [iterating_template.load_turf.z]!")
 
 /**

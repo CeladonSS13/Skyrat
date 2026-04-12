@@ -79,7 +79,7 @@
 
 /datum/component/construction/unordered/mecha_chassis/spawn_result()
 	var/atom/parent_atom = parent
-	parent_atom.icon = icon_for_spawn_result // SS1984 EDIT, original: parent_atom.icon = 'icons/mob/rideables/mech_construction.dmi'
+	parent_atom.icon = icon_for_spawn_result // Celadon EDIT, original: parent_atom.icon = 'icons/mob/rideables/mech_construction.dmi'
 	parent_atom.set_density(TRUE)
 	parent_atom.cut_overlays()
 	return ..()
@@ -615,7 +615,7 @@
 /datum/component/construction/mecha/honker/custom_action(obj/item/I, mob/living/user, diff)
 	if(istype(I, /obj/item/bikehorn))
 		playsound(parent, 'sound/items/bikehorn.ogg', 50, TRUE)
-		user.balloon_alert_to_viewers("HONK!")
+		user.balloon_alert_to_hearers("*HONK*")
 		return TRUE
 
 	return ..()

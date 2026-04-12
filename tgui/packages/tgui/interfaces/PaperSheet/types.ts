@@ -16,7 +16,7 @@ export type PaperContext = {
   // ui_data
   held_item_details?: WritingImplement;
 
-  ui_ver: number; // SS1984 ADDITION
+  ui_ver: number; // Celadon ADDITION
 };
 
 export type FieldInput = {

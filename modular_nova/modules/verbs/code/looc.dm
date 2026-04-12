@@ -40,12 +40,14 @@
 		if(is_banned_from(ckey, BAN_LOOC))
 			to_chat(src, span_warning("You are LOOC banned!"))
 			return
-		if(mob.stat == DEAD)
-			to_chat(src, span_danger("You cannot use LOOC while dead."))
-			return
-		if(istype(mob, /mob/dead))
-			to_chat(src, span_danger("You cannot use LOOC while ghosting."))
-			return
+		// CELADON REMOVAL START
+		// if(mob.stat == DEAD)
+		// 	to_chat(src, span_danger("You cannot use LOOC while dead."))
+		// 	return
+		// if(istype(mob, /mob/dead))
+		// 	to_chat(src, span_danger("You cannot use LOOC while ghosting."))
+		// 	return
+		// CELADON REMOVAL END
 
 	msg = emoji_parse(msg)
 
@@ -77,8 +79,10 @@
 			admin_seen[hearing_client] = TRUE
 			// dont continue here, still need to show runechat
 
-		if (isobserver(hearing) && !is_holder)
-			continue //ghosts dont hear looc, apparantly
+		// CELADON REMOVAL START
+		// if (isobserver(hearing) && !is_holder)
+		// 	continue //ghosts dont hear looc, apparantly
+		// CELADON REMOVAL END
 
 		// do the runetext here so admins can still get the runetext
 		if(mob.runechat_prefs_check(hearing_client.mob) && hearing_client.prefs.read_preference(/datum/preference/toggle/enable_looc_runechat))
@@ -86,13 +90,13 @@
 			// I wish it didn't include the asterisk but it's modular this way.
 			hearing_client.mob?.create_chat_message(mob, raw_message = "(LOOC: [msg])", runechat_flags = EMOTE_MESSAGE)
 
-		if (is_holder && (hearing_client in GLOB.admins)) // SS1984 EDIT. Mentors don't see LOOC as they are not in GLOB.admins. Original: if (is_holder)
+		if (is_holder && (hearing_client in GLOB.admins)) // Celadon EDIT. Mentors don't see LOOC as they are not in GLOB.admins. Original: if (is_holder)
 			continue //admins are handled afterwards
 
-		to_chat(hearing_client, span_looc(span_prefix("LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]")))
+		to_chat(hearing_client, span_looc(span_prefix("LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]")), avoid_highlighting = (hearing_client == src))
 
 	for(var/client/cli_client as anything in GLOB.admins)
 		if (admin_seen[cli_client])
-			to_chat(cli_client, span_looc("[ADMIN_FLW(usr)] <span class='prefix'>LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"))
+			to_chat(cli_client, span_looc("[ADMIN_FLW(usr)] <span class='prefix'>LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"), avoid_highlighting = (cli_client == src))
 		else if (cli_client.prefs.read_preference(/datum/preference/toggle/admin/see_looc))
-			to_chat(cli_client, span_rlooc("[ADMIN_FLW(usr)] <span class='prefix'>(R)LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"))
+			to_chat(cli_client, span_rlooc("[ADMIN_FLW(usr)] <span class='prefix'>(R)LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"), avoid_highlighting = (cli_client == src))

@@ -74,11 +74,11 @@
 		living_mob.soundbang_act(SOUNDBANG_OVERWHELMING, 20 SECONDS, 10, 15)
 		return
 
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// if(distance <= 1) // Adds more stun as to not prime n' pull (#45381)
 	// 	living_mob.soundbang_act(SOUNDBANG_STRONG, 3 SECONDS, 5)
 	// 	return
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 	if(distance <= sweetspot_range)
 		living_mob.soundbang_act(SOUNDBANG_NORMAL, max(20 SECONDS / max(1, distance), 60), rand(0, 5))

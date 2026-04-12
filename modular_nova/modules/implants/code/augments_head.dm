@@ -54,15 +54,20 @@
 
 	owner.log_message("triggered their qani-laaca implant in [(injection_amount > 10) ? "overdose" : "normal"] mode", LOG_ATTACK)
 
-	human_owner.reagents.add_reagent(/datum/reagent/drug/twitch, injection_amount)
+	if(human_owner.is_neuroware_compatible())
+		human_owner.reagents.add_reagent(/datum/reagent/drug/twitch/synth, injection_amount)
+		owner.visible_message(span_danger("[owner.name] jolts suddenly as their Qani-Laaca system whirs to life, uploading a program into their computing matrix."), \
+				span_userdanger("You jolt suddenly as your Qani-Laaca system begins uploading a sensory acceleration program into your computing matrix."))
+		playsound(human_owner, 'sound/items/hypospray.ogg', 50, TRUE)
+	else
+		human_owner.reagents.add_reagent(/datum/reagent/drug/twitch, injection_amount)
+		owner.visible_message(span_danger("[owner.name] jolts suddenly as two small glass vials are fired from ports in the implant on their spine, shattering as they land."), \
+				span_userdanger("You jolt suddenly as your Qani-Laaca system ejects two empty glass vials rearward, shattering as they land."))
+		playsound(human_owner, 'sound/items/hypospray.ogg', 50, TRUE)
 
-	owner.visible_message(span_danger("[owner.name] jolts suddenly as two small glass vials are fired from ports in the implant on their spine, shattering as they land."), \
-			span_userdanger("You jolt suddenly as your Qani-Laaca system ejects two empty glass vials rearward, shattering as they land."))
-	playsound(human_owner, 'sound/items/hypospray.ogg', 50, TRUE)
-
-	var/obj/item/telegraph_vial = new /obj/item/qani_laaca_telegraph(get_turf(owner))
-	var/turf/turf_we_throw_at = get_step(owner, REVERSE_DIR(owner.dir))
-	telegraph_vial.throw_at(turf_we_throw_at, 1, 3, gentle = FALSE, quickstart = TRUE)
+		var/obj/item/telegraph_vial = new /obj/item/qani_laaca_telegraph(get_turf(owner))
+		var/turf/turf_we_throw_at = get_step(owner, REVERSE_DIR(owner.dir))
+		telegraph_vial.throw_at(turf_we_throw_at, 1, 3, gentle = FALSE, quickstart = TRUE)
 
 /obj/item/qani_laaca_telegraph
 	name = "spent Qani-Laaca cartridge"
@@ -137,8 +142,8 @@
 		/obj/item/circuitboard/computer/communications,
 		/obj/machinery/computer/arcade,
 		/obj/item/circuitboard/computer/arcade,
-//		/obj/machinery/computer/cargo, //SS1984 Removal
-//		/obj/item/circuitboard/computer/cargo, //SS1984 Removal
+//		/obj/machinery/computer/cargo, //Celadon Removal
+//		/obj/item/circuitboard/computer/cargo, //Celadon Removal
 		/obj/machinery/computer/holodeck,
 		/obj/machinery/computer/emergency_shuttle,
 		/obj/machinery/recycler,

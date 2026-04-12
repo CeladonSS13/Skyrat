@@ -153,14 +153,14 @@
   Arceniu:
   - rscadd: cargodise 1984
   - rscadd: Edited oldstation
-  - config: added/enabled oldstation1984.dmm spawn, disabled oldstation1984.dmm spawn
+  - config: added/enabled oldstation_celadon.dmm spawn, disabled oldstation_celadon.dmm spawn
   BigAganoo:
   - rscadd: Adds Skaag to your loadout. Plushmaxx today!
   DenIS318:
   - bugfix: Throw items in softcrit now works properly
   - config: Min players for roundstart spies 10 -> 5
   - rscdel: Remove Nova's swap servers from title screen
-  - image: nova logo replaced by ss1984 logo
+  - image: nova logo replaced by celadon logo
   - image: nova logo in-chat replaced by ratge
   - image: Skyrat event title screen
   Ezel/Improvedname, Toriate, JohnFulpWillard:

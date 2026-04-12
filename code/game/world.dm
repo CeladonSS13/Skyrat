@@ -29,7 +29,7 @@ GLOBAL_VAR(restart_counter)
  *   - config.Load()
  *   - world.InitTgs() =>
  *     - TgsNew() *may sleep
- *     - GLOB.rev_data.load_tgs_info()
+ *     - GLOB.rev_data.load_tgs_info() *may sleep
  *   - world.ConfigLoaded() =>
  *     - SSdbcore.InitializeRound()
  *     - world.SetupLogs()
@@ -276,6 +276,12 @@ GLOBAL_VAR(restart_counter)
 		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
 #endif
 
+/// The world.time we last ran maptick, used for stupid reasons
+GLOBAL_VAR_INIT(last_maptick_time, 0)
+/world/Tick()
+	// We need a hook for if maptick has happen yet
+	GLOB.last_maptick_time = world.time
+
 /world/Topic(T, addr, master, key)
 	TGS_TOPIC //redirect to server tools if necessary
 
@@ -379,8 +385,8 @@ GLOBAL_VAR(restart_counter)
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
 	QDEL_NULL(Tracy)
 	QDEL_NULL(Debugger)
-	try_reconnect_all_players() // SS1984 ADDITION
-	//SS220 EDIT CHANGE BEGIN - SHUTDOWN
+	try_reconnect_all_players() // Celadon ADDITION
+	//Celadon EDIT CHANGE BEGIN - SHUTDOWN
 	if(CONFIG_GET(flag/shutdown_on_reboot))
 		if(CONFIG_GET(string/shutdown_shell_command))
 			shell(CONFIG_GET(string/shutdown_shell_command))
@@ -389,8 +395,8 @@ GLOBAL_VAR(restart_counter)
 		return
 	else
 		TgsReboot() // TGS can decide to kill us right here, so it's important to do it last
-	//SS220 EDIT CHANGE END
-	TryAutoHardReboot() // SS1984 ADDITION
+	//Celadon EDIT CHANGE END
+	TryAutoHardReboot() // Celadon ADDITION
 	..()
 	#endif
 
@@ -501,8 +507,8 @@ GLOBAL_VAR(restart_counter)
 	LISTASSERTLEN(global_area.turfs_by_zlevel, map_load_z_cutoff, list())
 	for (var/zlevel in 1 to map_load_z_cutoff)
 		var/list/to_add = block(
-			1, old_maxy + 1, 1,
-			maxx, maxy, map_load_z_cutoff
+			1, old_maxy + 1, zlevel,
+			maxx, maxy, zlevel
 		)
 		global_area.turfs_by_zlevel[zlevel] += to_add
 

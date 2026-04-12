@@ -47,6 +47,7 @@
 #define PARALLAX_HIGH "High"
 #define PARALLAX_MED "Medium"
 #define PARALLAX_LOW "Low"
+#define PARALLAX_BOOMER "Old"
 #define PARALLAX_DISABLE "Disabled"
 
 #define SCALING_METHOD_NORMAL "normal"
@@ -62,7 +63,7 @@
 #define SEC_DEPT_MEDICAL "Medical"
 #define SEC_DEPT_SCIENCE "Science"
 #define SEC_DEPT_SUPPLY "Supply"
-#define SEC_DEPT_SERVICE "Service" // SS1984 ADDITION
+#define SEC_DEPT_SERVICE "Service" // Celadon ADDITION
 
 // Playtime tracking system, see jobs_exp.dm
 #define EXP_TYPE_LIVING "Living"

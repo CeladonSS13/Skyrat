@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 ))
 
 //NOVA EDIT - ADDITION - ERP ICONS FIX
-// SS1984 EDIT REMOVE ERP STYLES START, END
+// Celadon EDIT REMOVE ERP STYLES START, END
 
 //NOVA EDIT - ADDITION - ERP ICONS FIX - END
 
@@ -26,7 +26,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	return GLOB.available_ui_styles[ui_style] || GLOB.available_ui_styles[GLOB.available_ui_styles[1]]
 
 //NOVA EDIT - ADDITION - ERP ICONS FIX
-// SS1984 EDIT REMOVE ERP STYLES START, END
+// Celadon EDIT REMOVE ERP STYLES START, END
 
 //NOVA EDIT - ADDITION - ERP ICONS FIX - END
 
@@ -109,7 +109,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 
 	/// Subtypes can override this to force a specific UI style
 	var/ui_style
-	// SS1984 REMOVAL OF ERP STYLE
+	// Celadon REMOVAL OF ERP STYLE
 
 	/// List of weakrefs to objects that we add to our screen that we don't expect to DO anything
 	/// They typically use * in their render target. They exist solely so we can reuse them,
@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	if (!ui_style)
 		// will fall back to the default if any of these are null
 		ui_style = ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style))
-		// SS1984 REMOVAL OF ERP STYLE
+		// Celadon REMOVAL OF ERP STYLE
 
 	toggle_palette = new()
 	toggle_palette.set_hud(src)
@@ -373,9 +373,6 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 				screenmob.client.screen += open_containers
 			screenmob.client.screen += toggle_palette
 
-			if(action_intent)
-				action_intent.screen_loc = initial(action_intent.screen_loc) //Restore intent selection to the original position
-
 		if(HUD_STYLE_REDUCED) //Reduced HUD
 			hud_shown = FALSE //Governs behavior of other procs
 			if(static_inventory.len)
@@ -420,7 +417,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	screenmob.reload_fullscreen()
 
 	if(screenmob == mymob)
-		update_parallax_pref(screenmob)
+		update_parallax_pref()
 	else
 		viewmob.hud_used.update_parallax_pref()
 

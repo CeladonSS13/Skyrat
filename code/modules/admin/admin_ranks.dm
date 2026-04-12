@@ -289,6 +289,10 @@ GLOBAL_PROTECT(protected_ranks)
 				if(admin_ranks.len == 0)
 					message_admins("[admin_ckey] loaded with invalid admin rank [admin_rank].")
 					skip = 1
+				// CELADON ADDITION START
+				if(admin_rank == "Discord Moderator")
+					skip = 1
+				// CELADON ADDITION END
 				if(GLOB.admin_datums[admin_ckey] || GLOB.deadmins[admin_ckey])
 					skip = 1
 				if(!skip)

@@ -114,8 +114,9 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			<a class="menu_button" href='byond://?src=[text_ref(src)];character_setup=1'>SETUP CHARACTER (<span id="character_slot">[uppertext(client.prefs.read_preference(/datum/preference/name/real_name))]</span>)</a>
 			<a class="menu_button" href='byond://?src=[text_ref(src)];game_options=1'>GAME OPTIONS</a>
 			<a id="be_antag" class="menu_button" href='byond://?src=[text_ref(src)];toggle_antag=1'>[client.prefs.read_preference(/datum/preference/toggle/be_antag) ? "<span class='checked'>☑</span> BE ANTAGONIST" : "<span class='unchecked'>☒</span> BE ANTAGONIST"]</a>
+			<!-- Celadon REMOVAL <span class="menu_button info_display">LATEJOIN QUEUE: [SStitle.get_latejoin_queue_count()]</span> -->
 			<hr>
-			<!-- SS1984 REMOVAL <a class="menu_button" href='byond://?src=[text_ref(src)];server_swap=1'>SWAP SERVERS</a> -->
+			<!-- Celadon REMOVAL <a class="menu_button" href='byond://?src=[text_ref(src)];server_swap=1'>SWAP SERVERS</a> -->
 		"}
 
 		if(!is_guest_key(src.key))
@@ -174,7 +175,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		</script>
 	"}
 
-	// SS1984 ADDITION FIX KEYBOARD HOTKEYS AT LOADING SCREEN
+	// Celadon ADDITION FIX KEYBOARD HOTKEYS AT LOADING SCREEN
 	dat += {"
 		<script language="JavaScript">
 			function route_key_down(event) {
@@ -191,7 +192,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			window.addEventListener("keydown", route_key_down);
 		</script>
 	"}
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 
 	dat += "</body></html>"
 

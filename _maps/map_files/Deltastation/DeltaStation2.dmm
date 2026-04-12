@@ -10552,10 +10552,10 @@
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/rd)
 "czO" = (
-/obj/item/stack/sticky_tape/surgical,
+/obj/item/stack/medical/wrap/sticky_tape/surgical,
 /obj/structure/table/glass,
 /obj/item/radio/intercom/directional/north,
-/obj/item/stack/sticky_tape/surgical,
+/obj/item/stack/medical/wrap/sticky_tape/surgical,
 /obj/item/stack/medical/bone_gel,
 /obj/machinery/light/directional/north,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -14768,6 +14768,7 @@
 /turf/open/floor/wood,
 /area/station/service/electronic_marketing_den)
 "dEm" = (
+/obj/item/wrench/medical,
 /obj/item/reagent_containers/cup/beaker/cryoxadone{
 	pixel_x = -6;
 	pixel_y = 10
@@ -15669,7 +15670,7 @@
 /area/station/commons/fitness/recreation)
 "dOc" = (
 /obj/structure/table,
-/obj/item/stack/medical/gauze,
+/obj/item/stack/medical/wrap/gauze,
 /obj/item/stack/medical/mesh,
 /obj/item/stack/medical/suture,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -39800,7 +39801,7 @@
 /area/station/science/research)
 "jKm" = (
 /obj/structure/rack,
-/obj/item/stack/medical/gauze,
+/obj/item/stack/medical/wrap/gauze,
 /obj/item/stack/medical/suture,
 /obj/item/stack/medical/mesh,
 /obj/item/reagent_containers/syringe/epinephrine{
@@ -48507,7 +48508,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
 "lQX" = (
-/obj/item/stack/medical/gauze,
+/obj/item/stack/medical/wrap/gauze,
 /obj/item/stack/medical/suture,
 /obj/machinery/camera/directional/north{
 	c_tag = "Medbay - Treatment Center";
@@ -65787,7 +65788,7 @@
 /turf/open/floor/plating,
 /area/station/medical/abandoned)
 "qgs" = (
-/obj/item/stack/medical/gauze,
+/obj/item/stack/medical/wrap/gauze,
 /obj/item/stack/medical/mesh,
 /obj/structure/table/reinforced/rglass,
 /obj/effect/turf_decal/tile/blue/fourcorners,
@@ -77103,10 +77104,6 @@
 	dir = 4
 	},
 /obj/machinery/newscaster/directional/west,
-/obj/item/wrench/medical{
-	pixel_x = 2;
-	pixel_y = 4
-	},
 /obj/effect/turf_decal/bot_red,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,

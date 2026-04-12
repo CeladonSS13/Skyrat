@@ -1,4 +1,4 @@
-/* SS1984 REMOVAL START
+/* Celadon REMOVAL START
 // /datum/ai_laws/dagothbot
 // 	name = "God Complex"
 // 	id = "dagothbot"
@@ -21,4 +21,4 @@
 // 					"Only those present on the Crew Manifest can be considered law abiding citizens.", \
 // 					"Those who break the law, must be punished according to the law at your discretion."
 // 					)
-SS1984 REMOVAL END */
+Celadon REMOVAL END */

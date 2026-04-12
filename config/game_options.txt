@@ -93,8 +93,11 @@ ROUNDSTART_BLUE_ALERT 1
 
 ## GAME MODES ###
 
-## Uncomment to not send a roundstart intercept report. Gamemodes may override this.
+## Uncomment to not send a roundstart intercept report.
 #NO_INTERCEPT_REPORT
+
+## Uncomment to exclude dynamic info in the roundstart report.
+#NO_DYNAMIC_REPORT
 
 ## Percent weight reductions for three of the most recent modes
 
@@ -316,8 +319,8 @@ LAW_WEIGHT custom,0
 ## standard-ish laws. These are fairly ok to run
 ## Unique AI station trait uses weights so we don't want asimov
 #NOVA EDIT ADDITION BEGIN
-# SS1984 REMOVAL: LAW_WEIGHT armadyne_safeguard,40
-# SS1984 REMOVAL: LAW_WEIGHT dagothbot,8
+# Celadon REMOVAL: LAW_WEIGHT armadyne_safeguard,40
+# Celadon REMOVAL: LAW_WEIGHT dagothbot,8
 #NOVA EDIT ADDITION END
 LAW_WEIGHT asimov,5
 #LAW_WEIGHT asimovpp,5
@@ -412,8 +415,9 @@ ROUNDSTART_RACES teshari
 ROUNDSTART_RACES vox_primalis
 ROUNDSTART_RACES abductorweak
 ROUNDSTART_RACES hemophage
+ROUNDSTART_RACES shadekin
 
-## SS1984 RACES DOWN THERE
+## Celadon RACES DOWN THERE
 ROUNDSTART_RACES nucleation
 
 ##-------------------------------------------------------------------------------------------

@@ -39,7 +39,7 @@
 	var/list/redeemed_coupons
 	/// How many paychecks to skip when payday is called.
 	var/paydays_to_skip = 0
-	var/paycheck_desc = "Nanotrasen: Salary" // SS1984 ADDITION, desk while giving paycheck
+	var/paycheck_desc = "Nanotrasen: Salary" // Celadon ADDITION, desk while giving paycheck
 
 /datum/bank_account/New(newname, job, modifier = 1, player_account = TRUE)
 	account_holder = newname
@@ -171,7 +171,7 @@
 		var/reason_from = "Transfer: To [account_holder]"
 
 		if(IS_DEPARTMENTAL_ACCOUNT(from))
-			reason_to = "[paycheck_desc]" // ss1984 edit, original *reason_to = "Nanotrasen: Salary"*
+			reason_to = "[paycheck_desc]" // celadon edit, original *reason_to = "Nanotrasen: Salary"*
 			reason_from = ""
 
 		if(transfer_reason)
@@ -208,7 +208,7 @@
 
 	var/money_to_transfer = round(account_job.paycheck * payday_modifier * amount_of_paychecks)
 	if(amount_of_paychecks == 1)
-		money_to_transfer = clamp(money_to_transfer, 0, PAYCHECK_LIMIT) //We want to limit single, passive paychecks to regular crew income. //ss1984 edit, original- PAYCHECK_CREW
+		money_to_transfer = clamp(money_to_transfer, 0, PAYCHECK_LIMIT) //We want to limit single, passive paychecks to regular crew income. //celadon edit, original- PAYCHECK_CREW
 	if(free)
 		adjust_money(money_to_transfer, "Nanotrasen: Shift Payment")
 		SSblackbox.record_feedback("amount", "free_income", money_to_transfer)
@@ -245,7 +245,7 @@
 			if(!card_holder.client || (!(get_chat_toggles(card_holder.client) & CHAT_BANKCARD) && !force))
 				return
 
-			if(card_holder.can_hear())
+			if(!HAS_TRAIT(card_holder, TRAIT_DEAF))
 				card_holder.playsound_local(get_turf(card_holder), 'sound/machines/beep/twobeep_high.ogg', 50, TRUE)
 				to_chat(card_holder, "[icon2html(icon_source, card_holder)] [span_notice("[message]")]")
 		else if(isturf(card.loc)) //If on the ground
@@ -253,7 +253,7 @@
 			for(var/mob/potential_hearer in hearers(1,card_location))
 				if(!potential_hearer.client || (!(get_chat_toggles(potential_hearer.client) & CHAT_BANKCARD) && !force))
 					continue
-				if(potential_hearer.can_hear())
+				if(!HAS_TRAIT(potential_hearer, TRAIT_DEAF))
 					potential_hearer.playsound_local(card_location, 'sound/machines/beep/twobeep_high.ogg', 50, TRUE)
 					to_chat(potential_hearer, "[icon2html(icon_source, potential_hearer)] [span_notice("[message]")]")
 		else
@@ -263,7 +263,7 @@
 					continue
 				if(!sound_atom)
 					sound_atom = card.drop_location() //in case we're inside a bodybag in a crate or something. doing this here to only process it if there's a valid mob who can hear the sound.
-				if(potential_hearer.can_hear())
+				if(!HAS_TRAIT(potential_hearer, TRAIT_DEAF))
 					potential_hearer.playsound_local(get_turf(sound_atom), 'sound/machines/beep/twobeep_high.ogg', 50, TRUE)
 					to_chat(potential_hearer, "[icon2html(icon_source, potential_hearer)] [span_notice("[message]")]")
 

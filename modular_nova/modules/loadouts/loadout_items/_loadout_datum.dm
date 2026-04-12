@@ -143,7 +143,7 @@
 
 	if(nova_stars_only && !SSplayer_ranks.is_nova_star(client))
 		if(!visuals_only)
-			message_client(client, target, "Veteran") // SS1984 EDIT, original: message_client(client, target, "Nova star")
+			message_client(client, target, "Veteran") // Celadon EDIT, original: message_client(client, target, "Nova star")
 		return FALSE
 
 	// ckey restrictions

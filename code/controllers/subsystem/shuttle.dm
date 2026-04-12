@@ -5,6 +5,9 @@
 /// If we're under load we want to allow for cycling, but if not we want to preserve already generated docks for use
 #define SOFT_TRANSIT_RESERVATION_THRESHOLD (100 ** 2)
 
+/// Points to turfs on the cargo shuttle that have flaps automatically installed if an upgrade is purchased
+GLOBAL_LIST_EMPTY(cargo_shuttle_flaps_landmarks)
+
 
 SUBSYSTEM_DEF(shuttle)
 	name = "Shuttle"
@@ -14,7 +17,7 @@ SUBSYSTEM_DEF(shuttle)
 		/datum/controller/subsystem/atoms,
 		/datum/controller/subsystem/air,
 	)
-	flags = SS_KEEP_TIMING
+	ss_flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_SETUP | RUNLEVEL_GAME
 
 	/// A list of all the mobile docking ports.
@@ -149,6 +152,9 @@ SUBSYSTEM_DEF(shuttle)
 	/// List of express consoles that are waiting for pack initialization
 	var/list/obj/machinery/computer/cargo/express/express_consoles = list()
 
+	/// If TRUE, automatically refills the cargo shuttle's air when it docks
+	var/renew_cargo_air = FALSE
+
 /datum/controller/subsystem/shuttle/Initialize()
 	order_number = rand(1, 9000)
 
@@ -156,10 +162,10 @@ SUBSYSTEM_DEF(shuttle)
 	while(length(pack_processing))
 		var/datum/supply_pack/pack = pack_processing[length(pack_processing)]
 		pack_processing.len--
-		// SS1984 EDIT ADDITION START
+		// Celadon EDIT ADDITION START
 		if(pack == /datum/supply_pack/armament)
 			continue
-		// SS1984 EDIT ADDITION END
+		// Celadon EDIT ADDITION END
 		if(ispath(pack, /datum/supply_pack))
 			pack = new pack
 

@@ -73,3 +73,8 @@ Name = Eventologist
 Include = BUILDMODE BUILD ADMIN FUN SERVER POSSESS POLL VAREDIT SOUND SPAWN AUTOLOGIN
 Exclude =
 Edit =
+
+Name = Discord Moderator
+Include =
+Exclude =
+Edit =

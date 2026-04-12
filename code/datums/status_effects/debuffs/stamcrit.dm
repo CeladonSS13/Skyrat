@@ -16,7 +16,7 @@
 
 	// This should be in on apply but we need it to happen AFTER being added to the mob
 	// (Because we need to wait until the status effect is in their status effect list, or we'll add two)
-	if(owner.get_stamina_loss() < 120) // SS1984 REVERT OF NOVA'S CHANGE: NOVA EDIT CHANGE - Original: if(owner.get_stamina_loss() < 120)
+	if(owner.get_stamina_loss() < 120) // Celadon REVERT OF NOVA'S CHANGE: NOVA EDIT CHANGE - Original: if(owner.get_stamina_loss() < 120)
 		// Puts you a little further into the initial stamcrit, makes stamcrit harder to outright counter with chems.
 		owner.adjust_stamina_loss(30, FALSE)
 

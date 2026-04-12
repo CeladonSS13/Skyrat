@@ -137,4 +137,4 @@
 	icon_state = "fishnet_body_alt"
 	use_static = FALSE
 
-// SS1984 REMOVAL OF ERP accessory
+// Celadon REMOVAL OF ERP accessory

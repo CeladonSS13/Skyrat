@@ -233,7 +233,7 @@
 				new_message += word + suffix
 			else
 				if(prob(30) && message_split.len > 2)
-					new_message += pick("эээ","эм") // SS1984 EDIT, original: new_message += pick("uh","erm")
+					new_message += pick("эээ","эм") // Celadon EDIT, original: new_message += pick("uh","erm")
 					break
 				else
 					var/list/charlist = text2charlist(word)
@@ -256,7 +256,7 @@
 	var/list/speak_dejavu = list()
 
 /datum/brain_trauma/mild/mind_echo/handle_hearing(datum/source, list/hearing_args)
-	if(!owner.can_hear() || owner == hearing_args[HEARING_SPEAKER])
+	if(HAS_TRAIT(owner, TRAIT_DEAF) || owner == hearing_args[HEARING_SPEAKER])
 		return
 
 	if(hear_dejavu.len >= 5)

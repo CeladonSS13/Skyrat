@@ -38,7 +38,7 @@
 		/obj/item/clothing/head/collectable/captain = 4,
 	)
 
-	nova_stars_only = FALSE // SS1984 EDIT
+	nova_stars_only = FALSE // Celadon EDIT
 	job_flags = STATION_JOB_FLAGS | JOB_CANNOT_OPEN_SLOTS | JOB_ANTAG_PROTECTED
 
 /datum/outfit/job/blueshield

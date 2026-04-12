@@ -155,11 +155,11 @@
 		// Target lacks a robotic brain, so use the NIF
 		slot_name = "[nif_implant] slot"
 
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// if(is_lewd && !(target.client?.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
 	// 	balloon_alert(user, "installation failed!")
 	// 	return
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 	if(target != user)
 		target.visible_message(

@@ -86,7 +86,7 @@
 			"customizable" = constant_data?.is_customizable(),
 			"customization_options" = customization_options,
 			"nova_stars_only" = initial(quirk.nova_stars_only), // NOVA EDIT ADDITION - Veteran quirks
-			// SS1984 REMOVAL "erp_quirk" = initial(quirk.erp_quirk), // NOVA EDIT ADDITION - Purple ERP quirks
+			// Celadon REMOVAL "erp_quirk" = initial(quirk.erp_quirk), // NOVA EDIT ADDITION - Purple ERP quirks
 		)
 
 	return list(

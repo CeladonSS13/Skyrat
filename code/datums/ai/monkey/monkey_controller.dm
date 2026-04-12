@@ -170,14 +170,14 @@ have ways of interacting with a specific mob and control it.
 	for(var/obj/item/item in living_pawn.held_items) // If we've got some garbage in out hands that's going to stop us from effectively attacking, we should get rid of it.
 		if(item.force < 2)
 			living_pawn.dropItemToGround(item)
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	var/obj/item/item_at_back = living_pawn.get_item_by_slot(ITEM_SLOT_BACK)
 	if (item_at_back)
 		nearby_items += item_at_back
 	var/obj/item/item_at_belt = living_pawn.get_item_by_slot(ITEM_SLOT_BELT)
 	if (item_at_belt)
 		nearby_items += item_at_belt
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 	weapon = GetBestWeapon(src, nearby_items, living_pawn.held_items)
 
 	var/pickpocket = FALSE

@@ -38,7 +38,7 @@
 		// drugs
 		/datum/reagent/drug/space_drugs = list(5, 60 SECONDS, TRUE),
 		/datum/reagent/toxin/mindbreaker = list(5, 60 SECONDS, FALSE),
-		// SS1984 REMOVAL OF ERP STUFF
+		// Celadon REMOVAL OF ERP STUFF
 )
 	var/static/list/milkable_venoms = generate_milkable_venom_list()
 	var/static/filter_immune_string = generate_filter_immune_string()

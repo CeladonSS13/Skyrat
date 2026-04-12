@@ -587,6 +587,18 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 		return created_joining_mob
 	return created_joining_mob
 
+/obj/effect/landmark/flaps_install
+	name = "plastic flaps install point"
+	icon_state = "flap-install"
+
+/obj/effect/landmark/flaps_install/Initialize(mapload)
+	. = ..()
+	GLOB.cargo_shuttle_flaps_landmarks += src
+
+/obj/effect/landmark/flaps_install/Destroy()
+	GLOB.cargo_shuttle_flaps_landmarks -= src
+	return ..()
+
 //Landmark that creates destinations for the navigate verb to path to
 /obj/effect/landmark/navigate_destination
 	name = "navigate verb destination"
@@ -598,13 +610,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/effect/landmark/navigate_destination/LateInitialize()
-	// SS1984 REMOVAL START, look at modular_navigation
+	// Celadon REMOVAL START, look at modular_navigation
 	// if(!location)
 	// 	var/obj/machinery/door/airlock/A = locate(/obj/machinery/door/airlock) in loc
 	// 	location = A ? format_text(A.name) : get_area_name(src, format_text = TRUE)
 
 	// GLOB.navigate_destinations[loc] = location
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 	qdel(src)
 

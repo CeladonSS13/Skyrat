@@ -612,9 +612,7 @@
 	var/prev_lockcharge = borg.lockcharge
 	borg.SetLockdown(TRUE)
 	borg.set_anchored(TRUE)
-	var/datum/effect_system/fluid_spread/smoke/smoke = new
-	smoke.set_up(1, holder = borg, location = borg.loc)
-	smoke.start()
+	do_smoke(1, borg, borg.loc)
 	sleep(0.2 SECONDS)
 	for(var/i in 1 to 4)
 		playsound(borg, pick(
@@ -880,9 +878,10 @@
 
 	if(borgo.mind)
 		borgo.mind.grab_ghost()
-		playsound(loc, 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE)
+		playsound(loc, check_holidays(APRIL_FOOLS) ? 'modular_celadon/modules/april_fools_day/borgs/sound/windows-xp-logon-moddif.ogg' : 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE) // Celadon EDIT - april_fools_day, original: playsound(loc, 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE)
 	else
-		playsound(loc, 'sound/machines/ping.ogg', 75, TRUE)
+
+		playsound(loc, check_holidays(APRIL_FOOLS) ? 'modular_celadon/modules/april_fools_day/borgs/sound/windows-xp-hardware-insert.ogg' : 'sound/machines/ping.ogg', 75, TRUE) // Celadon EDIT - april_fools_day, original: playsound(loc, 'sound/machines/ping.ogg', 75, TRUE)
 
 	borgo.revive()
 	borgo.logevent("WARN -- System recovered from unexpected shutdown.")

@@ -194,9 +194,9 @@
 	. = ..()
 	var/obj/item/organ/tail/oranges_accessory = user.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(oranges_accessory.wag_flags & WAG_WAGGING)
-		. = "прекращает " + message // SS1984 EDIT, original: . = "stops wagging " + message
+		. = "прекращает " + message // Celadon EDIT, original: . = "stops wagging " + message
 	else
-		. = "начинает " + message // SS1984 EDIT, original: . = "wags " + message
+		. = "начинает " + message // Celadon EDIT, original: . = "wags " + message
 
 /datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check, intentional, params)
 	var/obj/item/organ/tail/tail = user.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)

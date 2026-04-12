@@ -55,7 +55,7 @@ would only be recognisable with someone that had the syndicate trait.
 			if(EXAMINE_CHECK_SYNDICATE)
 				if(user.mind)
 					var/datum/mind/M = user.mind
-					if((ROLE_TRAITOR in M.special_roles) || user.has_faction(list(ROLE_SYNDICATE, ROLE_INTERDYNE_PLANETARY_BASE, ROLE_INTERDYNE_PLANETARY_BASE_ICEBOX, ROLE_DS2), FALSE))	//SS1984 EDIT ORIGINAL if((ROLE_TRAITOR in M.special_roles) || user.has_faction(ROLE_SYNDICATE))
+					if((ROLE_TRAITOR in M.special_roles) || user.has_faction(list(ROLE_SYNDICATE, ROLE_INTERDYNE_PLANETARY_BASE, ROLE_INTERDYNE_PLANETARY_BASE_ICEBOX, ROLE_DS2), FALSE))	//Celadon EDIT ORIGINAL if((ROLE_TRAITOR in M.special_roles) || user.has_faction(ROLE_SYNDICATE))
 						composed_message = "You note the following because of your <span class='red'><b>[special_desc_affiliation ? special_desc_affiliation : "Syndicate Affiliation"]</b></span>: <br>"
 						composed_message += special_desc
 						. += composed_message

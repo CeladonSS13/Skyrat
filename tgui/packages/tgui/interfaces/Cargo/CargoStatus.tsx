@@ -24,14 +24,14 @@ export function CargoStatus(props) {
     points,
     requestonly,
     can_send,
-    current_plasma_cost, // SS1984 ADDITION
+    current_plasma_cost, // Celadon ADDITION
   } = data;
 
   return (
     <Section
       title={department}
       buttons={
-      // SS1984 REMOVAL START
+      // Celadon REMOVAL START
       //     // <Box inline bold verticalAlign="middle">
       //     //   <AnimatedNumber
       //     //     value={points}
@@ -40,8 +40,8 @@ export function CargoStatus(props) {
       //     //   {' credits'}
       //     // </Box>
       //   }
-      // SS1984 REMOVAL END
-      // SS1984 ADDITION START
+      // Celadon REMOVAL END
+      // Celadon ADDITION START
         <>
           <Box inline bold verticalAlign="middle" style={{ marginRight: '1em' }}>
             <span style={{ color: '#BA3692' }}>Plasma</span> cost: {current_plasma_cost}
@@ -55,7 +55,7 @@ export function CargoStatus(props) {
           </Box>
         </>
       }
-      // SS1984 ADDITION END
+      // Celadon ADDITION END
     >
       <LabeledList>
         <LabeledList.Item label="Shuttle">

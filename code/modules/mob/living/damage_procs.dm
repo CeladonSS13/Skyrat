@@ -65,7 +65,7 @@
 				damage_dealt = actual_hit.get_damage() - delta // Unfortunately bodypart receive_damage doesn't return damage dealt so we do it manually
 			else
 				damage_dealt = -1 * adjust_brute_loss(damage_amount, forced = forced)
-			// SS1984 REMOVAL INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // NOVA EDIT ADDITION - ERP Pain
+			// Celadon REMOVAL INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // NOVA EDIT ADDITION - ERP Pain
 		if(BURN)
 			if(isbodypart(def_zone))
 				var/obj/item/bodypart/actual_hit = def_zone
@@ -85,7 +85,7 @@
 				damage_dealt = actual_hit.get_damage() - delta // See above
 			else
 				damage_dealt = -1 * adjust_fire_loss(damage_amount, forced = forced)
-			// SS1984 REMOVAL INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // NOVA EDIT ADDITION - ERP Pain
+			// Celadon REMOVAL INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // NOVA EDIT ADDITION - ERP Pain
 		if(TOX)
 			damage_dealt = -1 * adjust_tox_loss(damage_amount, forced = forced)
 		if(OXY)
@@ -124,20 +124,20 @@
  * Simply a wrapper for calling mob adjustXLoss() procs to heal a certain damage type,
  * when you don't know what damage type you're healing exactly.
  */
-/mob/living/proc/heal_damage_type(heal_amount = 0, damagetype = BRUTE)
+/mob/living/proc/heal_damage_type(heal_amount = 0, damagetype = BRUTE, update_health = TRUE)
 	heal_amount = abs(heal_amount) * -1
 
 	switch(damagetype)
 		if(BRUTE)
-			return adjust_brute_loss(heal_amount)
+			return adjust_brute_loss(heal_amount, update_health)
 		if(BURN)
-			return adjust_fire_loss(heal_amount)
+			return adjust_fire_loss(heal_amount, update_health)
 		if(TOX)
-			return adjust_tox_loss(heal_amount)
+			return adjust_tox_loss(heal_amount, update_health)
 		if(OXY)
-			return adjust_oxy_loss(heal_amount)
+			return adjust_oxy_loss(heal_amount, update_health)
 		if(STAMINA)
-			return adjust_stamina_loss(heal_amount)
+			return adjust_stamina_loss(heal_amount, update_health)
 
 /// return the damage amount for the type given
 /**
@@ -282,7 +282,7 @@
 	if (!can_adjust_brute_loss(amount, forced, required_bodytype))
 		return 0
 	. = bruteloss
-	bruteloss = clamp((bruteloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 3) // SS1984 EDIT, original: bruteloss = clamp((bruteloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	bruteloss = clamp((bruteloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 3) // Celadon EDIT, original: bruteloss = clamp((bruteloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
 	. -= bruteloss
 	if(!.) // no change, no need to update
 		return 0
@@ -329,7 +329,7 @@
 	if(!can_adjust_oxy_loss(amount, forced, required_biotype, required_respiration_type))
 		return 0
 	. = oxyloss
-	oxyloss = clamp((oxyloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 3) // SS1984 EDIT, original: oxyloss = clamp((oxyloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	oxyloss = clamp((oxyloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 3) // Celadon EDIT, original: oxyloss = clamp((oxyloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
 	. -= oxyloss
 	if(!.) // no change, no need to update
 		return FALSE
@@ -383,7 +383,7 @@
 		amount = min(amount, 0)
 
 	. = toxloss
-	toxloss = clamp((toxloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 3) // SS1984 EDIT, original: toxloss = clamp((toxloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	toxloss = clamp((toxloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 3) // Celadon EDIT, original: toxloss = clamp((toxloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
 	. -= toxloss
 
 	if(!.) // no change, no need to update
@@ -420,7 +420,7 @@
 	if(!can_adjust_fire_loss(amount, forced, required_bodytype))
 		return 0
 	. = fireloss
-	fireloss = clamp((fireloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 3) // SS1984 EDII, original: fireloss = clamp((fireloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	fireloss = clamp((fireloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 3) // Celadon EDII, original: fireloss = clamp((fireloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
 	. -= fireloss
 	if(. == 0) // no change, no need to update
 		return
@@ -538,12 +538,14 @@
 		updatehealth()
 
 ///heal up to amount damage, in a given order
-/mob/living/proc/heal_ordered_damage(amount, list/damage_types)
+/mob/living/proc/heal_ordered_damage(amount, list/damage_types, update_health = TRUE)
 	. = 0 //we'll return the amount of damage healed
 	for(var/damagetype in damage_types)
 		var/amount_to_heal = min(abs(amount), get_current_damage_of_type(damagetype)) //heal only up to the amount of damage we have
 		if(amount_to_heal)
-			. += heal_damage_type(amount_to_heal, damagetype)
+			. += heal_damage_type(amount_to_heal, damagetype, FALSE)
 			amount -= amount_to_heal //remove what we healed from our current amount
 		if(!amount)
 			break
+	if(. && update_health)
+		updatehealth()

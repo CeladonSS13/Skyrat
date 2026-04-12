@@ -72,11 +72,11 @@
 	name = "Lantern"
 	item_path = /obj/item/flashlight/lantern
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /datum/loadout_item/belts/thigh_satchel
 // 	name = "Thigh Satchel"
 // 	item_path = /obj/item/storage/belt/thigh_satchel
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
 // HOLSTERS
 
@@ -90,7 +90,7 @@
 
 // RIGS/WEBBING (for military larpers)
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /datum/loadout_item/belts/webbing
 // 	name = "Webbing - Basic"
 // 	item_path = /obj/item/storage/belt/webbing
@@ -141,4 +141,4 @@
 // 	item_path = /obj/item/storage/belt/webbing/vest
 // 	can_be_reskinned = TRUE
 
-// SS1984 REMOVAL END
+// Celadon REMOVAL END

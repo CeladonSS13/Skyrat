@@ -14,14 +14,14 @@
 	// Hotkey
 	if(LAZYLEN(instance.hotkey_keys))
 		for(var/bound_key in instance.hotkey_keys)
-			if (bound_key == "Unbound")
+			if (bound_key == UNBOUND_KEY)
 				LAZYADD(GLOB.default_hotkeys[instance.name], list())
 			else
 				LAZYADD(GLOB.default_hotkeys[instance.name], list(bound_key))
 
 /proc/init_emote_keybinds()
-	// SS1984 ADDITION START
-	var/list/emotes_list = subtypesof(/datum/emote)
+	// Celadon ADDITION START
+	var/list/emotes_list = valid_subtypesof(/datum/emote)
 	if (!emotes_list || length(emotes_list) < 1)
 		log_runtime("Emotes list is null or empty! Will skip keybindings init")
 		return
@@ -39,8 +39,8 @@
 		if (c1 < "А" || c1 > "я")
 			continue
 		cyrillic_emotes_list += faketype
-	// SS1984 ADDITION END
-	for(var/i in cyrillic_emotes_list) // SS1984 EDIT, original: for(var/i in subtypesof(/datum/emote))
+	// Celadon ADDITION END
+	for(var/i in cyrillic_emotes_list) // Celadon EDIT, original: for(var/i in valid_subtypesof(/datum/emote))
 		var/datum/emote/faketype = i
 		if(!initial(faketype.key))
 			continue

@@ -63,7 +63,7 @@ _maps/RandomRuins/SpaceRuins/film_studio.dmm
 #_maps/RandomRuins/SpaceRuins/old_infiltrator.dmm
 #_maps/RandomRuins/SpaceRuins/oldAIsat.dmm
 _maps/RandomRuins/SpaceRuins/oldstation.dmm
-#_maps/RandomRuins/SpaceRuins/oldstation1984.dmm
+#_maps/RandomRuins/SpaceRuins/oldstation_celadon.dmm
 #_maps/RandomRuins/SpaceRuins/oldteleporter.dmm
 #_maps/RandomRuins/SpaceRuins/onehalf.dmm
 #_maps/RandomRuins/SpaceRuins/originalcontent.dmm
@@ -93,15 +93,15 @@ _maps/RandomRuins/SpaceRuins/spacehotel.dmm
 ##Custom Ruins
 #_maps/RandomRuins/SpaceRuins/nova/alientoollab.dmm
 _maps/RandomRuins/SpaceRuins/nova/blackmarket.dmm
-#_maps/RandomRuins/SpaceRuins/nova/blackmarket1984.dmm
+#_maps/RandomRuins/SpaceRuins/nova/blackmarket_celadon.dmm
 _maps/RandomRuins/SpaceRuins/nova/cargodiselost.dmm
-#_maps/RandomRuins/SpaceRuins/nova/cargodiselost1984.dmm
+#_maps/RandomRuins/SpaceRuins/nova/cargodiselost_celadon.dmm
 #_maps/RandomRuins/SpaceRuins/nova/clothing_facility.dmm
 #_maps/RandomRuins/SpaceRuins/nova/codealpha.dmm
 #_maps/RandomRuins/SpaceRuins/nova/crash.dmm
 #_maps/RandomRuins/SpaceRuins/nova/derelictferry.dmm
 _maps/RandomRuins/SpaceRuins/nova/des_two.dmm
-#_maps/RandomRuins/SpaceRuins/nova/des_two1984.dmm
+#_maps/RandomRuins/SpaceRuins/nova/des_two_celadon.dmm
 #_maps/RandomRuins/SpaceRuins/nova/drones_derelict.dmm
 #_maps/RandomRuins/SpaceRuins/nova/film_studio.dmm
 #_maps/RandomRuins/SpaceRuins/nova/ghostship.dmm

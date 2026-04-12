@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(objectives) //NOVA EDIT ADDITION
 		var/datum/mind/O = I
 		if(O.late_joiner)
 			try_target_late_joiners = TRUE
-	// SS1984 REMOVAL var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // NOVA EDIT ADDITION - ANTAG OPT-IN
+	// Celadon REMOVAL var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // NOVA EDIT ADDITION - ANTAG OPT-IN
 	for(var/datum/mind/possible_target in get_crewmember_minds())
 		if(possible_target in owners)
 			continue
@@ -171,12 +171,12 @@ GLOBAL_LIST_EMPTY(objectives) //NOVA EDIT ADDITION
 			continue
 		if(!is_valid_target(possible_target))
 			continue
-		// SS1984 REMOVAL START
+		// Celadon REMOVAL START
 		// // NOVA EDIT ADDITION START - Antag Opt In
 		// if (!opt_in_disabled && !opt_in_valid(possible_target))
 		// 	continue
 		// // NOVA EDIT ADDITION END
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 		possible_targets += possible_target
 	if(try_target_late_joiners)
 		var/list/all_possible_targets = possible_targets.Copy()
@@ -887,8 +887,8 @@ GLOBAL_LIST_EMPTY(possible_items)
 /datum/objective/destroy/find_target(dupe_search_range, list/blacklist)
 	var/list/possible_targets = active_ais(TRUE)
 	possible_targets -= blacklist
-	var/mob/living/silicon/ai/target_ai = pick(possible_targets) // SS1984 RESTORE TO ORIGINAL FROM NOVA
-	// SS1984 REMOVAL START
+	var/mob/living/silicon/ai/target_ai = pick(possible_targets) // Celadon RESTORE TO ORIGINAL FROM NOVA
+	// Celadon REMOVAL START
 	// NOVA EDIT ADDITION BEGIN - ANTAG OPTIN
 	// var/mob/living/silicon/ai/target_ai
 	// var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // NOVA EDIT ADDITION - ANTAG OPT-IN
@@ -897,7 +897,7 @@ GLOBAL_LIST_EMPTY(possible_items)
 	// 		continue
 	// 	target_ai = possible_target
 	// // NOVA EDIT ADDITION END
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 	target = target_ai.mind
 	update_explanation_text()
 	return target

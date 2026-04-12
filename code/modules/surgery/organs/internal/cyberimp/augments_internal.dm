@@ -48,6 +48,7 @@
 
 /datum/bodypart_overlay/augment
 	layers = EXTERNAL_ADJACENT
+	draw_on_husks = HUSK_OVERLAY_NORMAL
 	/// Implant that owns this overlay
 	var/obj/item/organ/cyberimp/implant
 
@@ -61,8 +62,8 @@
 
 /datum/bodypart_overlay/augment/generate_icon_cache()
 	. = ..()
-	if (!implant) // SS1984 ADDITION
-		return . // SS1984 ADDITION
+	if (!implant) // Celadon ADDITION
+		return . // Celadon ADDITION
 	. += implant.get_overlay_state()
 
 /datum/bodypart_overlay/augment/get_overlay(layer, obj/item/bodypart/limb)
@@ -216,9 +217,7 @@
 	owner.set_stamina_loss(0)
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/living, set_stamina_loss), 0), stun_resistance_time)
 
-	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
-	sparks.set_up(5, 1, src)
-	sparks.start()
+	do_sparks(5, TRUE, src)
 
 	give_stun_buffs(owner)
 	addtimer(CALLBACK(src, PROC_REF(remove_stun_buffs), owner), stun_resistance_time)

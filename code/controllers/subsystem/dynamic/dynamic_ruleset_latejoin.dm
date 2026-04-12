@@ -64,7 +64,7 @@
 	var/heads_necessary = 3
 
 /datum/dynamic_ruleset/latejoin/revolution/can_be_selected()
-	. = ..()// SS1984 ADDITION
+	. = ..()// Celadon ADDITION
 	if (!.)
 		return .
 	if(GLOB.revolution_handler)

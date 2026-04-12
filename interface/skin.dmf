@@ -14,21 +14,6 @@ menu "menu"
 		name = "&File"
 		command = ""
 		saved-params = "is-checked"
-	elem
-		name = "&Quick screenshot\tF2"
-		command = ".screenshot auto"
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = "&Save screenshot as...\tShift+F2"
-		command = ".screenshot"
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = ""
-		command = ""
-		category = "&File"
-		saved-params = "is-checked"
 	elem "reconnectbutton"
 		name = "&Reconnect"
 		command = ".reconnect"
@@ -65,7 +50,7 @@ window "mainwindow"
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
-		icon = 'modular_nova\\master_files\\icons\\ui_icons\\common\\ss1984logo.png'
+		icon = 'modular_nova\\master_files\\icons\\ui_icons\\common\\celadon_logo.png'
 		macro = "default"
 		menu = "menu"
 	elem "split"
