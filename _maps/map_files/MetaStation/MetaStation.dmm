@@ -60185,15 +60185,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
-"uzK" = (
-/obj/machinery/button/door/directional/west{
-	id = "Secure Storage";
-	name = "Engineering Secure Storage";
-	req_access = list("engine_equip");
-	pixel_x = 6
-	},
-/turf/closed/wall/r_wall,
-/area/station/engineering/main)
 "uAg" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
@@ -111288,7 +111279,7 @@ mww
 kEs
 xsd
 uXd
-uzK
+uXd
 hnG
 hnG
 uXd

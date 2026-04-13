@@ -83,6 +83,14 @@ required_map = "MetaStation.dmm"
 coordinates = [141, 149, 1]
 trait_name = "Station"
 
+# METASTATION CELADON engineering storage
+[templates.metastation_celadon_engineering_storage]
+map_files = ["metastation_celadon_engineering_storage.dmm"]
+directory = "_maps/nova/automapper/templates/metastation/"
+required_map = "MetaStation.dmm"
+coordinates = [157, 156, 1]
+trait_name = "Station"
+
 # DELTASTATION MAP EDITS
 # Deltastation Arrivals
 [templates.deltastation_arrivals]
@@ -237,6 +245,14 @@ required_map = "IceBoxStation.dmm"
 coordinates = [59, 143, 3]
 trait_name = "Station"
 
+# ICEBOX CELADON engineering storage
+[templates.icebox_celadon_engineering_storage]
+map_files = ["icebox_celadon_engineering_storage.dmm"]
+directory = "_maps/nova/automapper/templates/icebox/"
+required_map = "IceBoxStation.dmm"
+coordinates = [104, 78, 3]
+trait_name = "Station"
+
 # TRAMSTATION MAP EDITS
 # Tramstation Arrivals
 [templates.tramstation_arrivals]
@@ -292,6 +308,14 @@ map_files = ["tramstation_garden.dmm"]
 directory = "_maps/nova/automapper/templates/tramstation/"
 required_map = "tramstation.dmm"
 coordinates = [46, 109, 2]
+trait_name = "Station"
+
+# TRAM CELADON engineering storage
+[templates.tramstation_celadon_engineering_storage]
+map_files = ["tramstation_celadon_engineering_storage.dmm"]
+directory = "_maps/nova/automapper/templates/tramstation/"
+required_map = "tramstation.dmm"
+coordinates = [115, 99, 1]
 trait_name = "Station"
 
 # Lavaland NE Ashwalker Fortress

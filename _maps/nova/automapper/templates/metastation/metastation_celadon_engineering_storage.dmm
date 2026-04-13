@@ -1,0 +1,17 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/table,
+/obj/item/airlock_painter,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/button/door/directional/west{
+	id = "engstorage";
+	name = "Engineering Secure Storage Control";
+	pixel_y = 6;
+	req_access = list("engine_equip")
+	},
+/turf/open/floor/iron,
+/area/station/engineering/main)
+
+(1,1,1) = {"
+a
+"}
