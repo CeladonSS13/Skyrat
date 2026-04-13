@@ -12,7 +12,7 @@
 /obj/structure/cable,
 /obj/machinery/button/door/directional/north{
 	req_access = list("engine_equip");
-	id = engstorage;
+	id = "Secure Storage";
 	name = "Engineering Secure Storage Control";
 	pixel_y = 25;
 	pixel_x = -10

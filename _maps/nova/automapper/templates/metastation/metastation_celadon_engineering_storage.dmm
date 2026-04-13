@@ -4,7 +4,7 @@
 /obj/item/airlock_painter,
 /obj/effect/turf_decal/delivery,
 /obj/machinery/button/door/directional/west{
-	id = "engstorage";
+	id = "Secure Storage";
 	name = "Engineering Secure Storage Control";
 	pixel_y = 6;
 	req_access = list("engine_equip")
