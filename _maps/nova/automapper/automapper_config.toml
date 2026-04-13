@@ -140,6 +140,14 @@ required_map = "DeltaStation2.dmm"
 coordinates = [151, 175, 1]
 trait_name = "Station"
 
+# DELTA CELADON engineering storage
+[templates.deltastation_celadon_engineering_storage]
+map_files = ["deltastation_celadon_engineering_storage.dmm"]
+directory = "_maps/nova/automapper/templates/deltastation/"
+required_map = "DeltaStation2.dmm"
+coordinates = [102, 119, 1]
+trait_name = "Station"
+
 # ICEBOX MAP EDITS
 # Icebox Arrivals
 [templates.icebox_arrivals]
