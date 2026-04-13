@@ -9851,6 +9851,7 @@
 #include "modular_celadon\modules\upstream-fixes\split_slime_icon\living.dm"
 #include "modular_celadon\modules\upstream-fixes\dead_spawnable_races\dna.dm"
 #include "modular_celadon\modules\upstream-fixes\dice-no-rotation\fix_dice.dm"
+#include "modular_celadon\modules\upstream-fixes\epizza\pizza.dm"
 #include "modular_celadon\modules\vendors\code\dorms.dm"
 #include "modular_celadon\modules\restrict-species\restrict_species.dm"
 #include "modular_celadon\modules\disabled_station_traits\negative_traits.dm"
