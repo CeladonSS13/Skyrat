@@ -10009,4 +10009,5 @@
 #include "modular_celadon\modules\robot_hare_boss\code\station_stuff.dm"
 #include "modular_celadon\modules\robot_hare_boss\code\crate.dm"
 #include "modular_celadon\modules\robot_hare_boss\code\map.dm"
+#include "modular_celadon\modules\robot_hare_boss\code\awards.dm"
 // END_INCLUDE
