@@ -86,7 +86,7 @@
             to_chat(user, span_userdanger("[src] overheats! The cooling rod extends. Wait for cooldown!"))
             addtimer(CALLBACK(src, PROC_REF(reset_overheat)), 5 SECONDS)
     update_overlays()
-	update_icon()
+    update_icon()
 /obj/item/gun/ballistic/automatic/automatically_weapon/proc/overheat()
     overheated = TRUE
     rod_extended = FALSE
@@ -117,8 +117,8 @@
         mag_overlay.layer = FLOAT_LAYER
         add_overlay(mag_overlay)
         add_overlay("mag_overlay", mag_overlay)
-	update_icon()
+    update_icon()
 /obj/item/gun/ballistic/automatic/automatically_weapon/attack_self(mob/user)
     . = ..()
     update_overlays()
-	update_icon()
+    update_icon()
