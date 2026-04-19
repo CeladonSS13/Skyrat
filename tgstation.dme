@@ -10007,4 +10007,6 @@
 #include "modular_celadon\modules\april_fools_day\cook\code\wardrobes.dm"
 #include "modular_celadon\modules\april_fools_day\medibot\code\phrases.dm"
 #include "modular_celadon\modules\april_fools_day\hygienebot\code\phrases.dm"
+#include "code\modules\projectiles\ammunition\ballistic\pzh.dm"
+#include "code\modules\projectiles\guns\ballistic\automatically_weapon.dm"
 // END_INCLUDE
