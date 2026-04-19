@@ -1,0 +1,103 @@
+name: Compile changelogs
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  compile:
+    name: "Compile changelogs"
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: "Check for ACTION_ENABLER secret and pass true to output if it exists to be checked by later steps"
+        id: value_holder
+        env:
+          ENABLER_SECRET: ${{ secrets.ACTION_ENABLER }}
+        run: |
+          unset SECRET_EXISTS
+          if [ -n "$ENABLER_SECRET" ]; then SECRET_EXISTS=true ; fi
+          echo "ACTIONS_ENABLED=$SECRET_EXISTS" >> $GITHUB_OUTPUT
+
+      - name: "Setup python"
+        if: steps.value_holder.outputs.ACTIONS_ENABLED
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+
+      - name: "Install deps"
+        if: steps.value_holder.outputs.ACTIONS_ENABLED
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyyaml
+
+      - name: "Checkout"
+        if: steps.value_holder.outputs.ACTIONS_ENABLED
+        uses: actions/checkout@v6
+        with:
+          # Celadon EDIT, original fetch-depth: 25
+          fetch-depth: 100
+          persist-credentials: false
+
+      - name: "Compile"
+        if: steps.value_holder.outputs.ACTIONS_ENABLED
+        run: |
+          python tools/ss13_genchangelog.py html/changelogs
+
+      - name: Commit
+        id: commit_changes # Celadon ADDITION
+        if: steps.value_holder.outputs.ACTIONS_ENABLED
+        run: |
+          git config --local user.name "1984-ci-event[bot]"
+          git config --local user.email "1283078+1984-ci-event[bot]@users.noreply.github.com"
+          git pull origin master
+          git add html/changelogs
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            echo "commit_made=false" >> $GITHUB_OUTPUT
+          else
+            git commit -m "Automatic changelog compile [ci skip]"
+            echo "commit_made=true" >> $GITHUB_OUTPUT
+          fi
+
+        # Celadon ADDITION START
+      - name: Highlight Changes Celadon
+        id: highlight_changes
+        if: steps.value_holder.outputs.ACTIONS_ENABLED == 'true' && steps.commit_changes.outputs.commit_made == 'true' # Celadon EDIT, original: if: steps.value_holder.outputs.ACTIONS_ENABLED
+        run: |
+          git pull origin master
+          python tools/celadon_changelog_highlight.py
+
+          git add tools/celadon_changelog_highlight_generated.json
+          if git diff --cached --quiet; then
+            echo "No new highlights"
+            echo "highlight_made=false" >> $GITHUB_OUTPUT
+          else
+            echo "highlight_made=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit Highlighted Changes
+        if: steps.value_holder.outputs.ACTIONS_ENABLED == 'true' && steps.highlight_changes.outputs.highlight_made == 'true'
+        run: |
+          git commit -m "Automatic Changelog Highlight [ci skip]" -a || true
+
+      # Celadon ADDITION END
+
+      - name: Generate App Token
+        id: app-token-generation
+        uses: actions/create-github-app-token@v3
+        if: env.APP_PRIVATE_KEY != '' && env.APP_ID != ''
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+        env:
+          APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
+          APP_ID: ${{ secrets.APP_ID }}
+
+      - name: "Push"
+        if: steps.value_holder.outputs.ACTIONS_ENABLED
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ steps.app-token-generation.outputs.token || secrets.GITHUB_TOKEN }}

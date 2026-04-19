@@ -1,0 +1,12 @@
+{
+	"name": "Пожать руку",
+	"description": "Пожмите друг другу руки",
+	"usage": "other",
+	"category": "Miscellaneous",
+	"distance_allowed": 0,
+	"message": ["%USER% жмет руку %TARGET%."],
+	"sound_use": 0,
+	"sound_possible": [],
+	"sound_range": 7,
+	"interaction_requires": ["self_hand", "target_hand"]
+}

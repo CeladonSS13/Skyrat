@@ -1,0 +1,27 @@
+﻿## Text-to-speech
+#TTS_TOKEN_SILERO mytoken
+#TTS_URL_SILERO https://example.com
+#TTS_ENABLED
+#TTS_CACHE
+
+## CPU Affinity for FFmpeg. Check out taskset man page.
+## Example valid values: "0-3" or "1,4-7"
+#FFMPEG_CPUAFFINITY 24-31
+
+AUTO_CRYO_SSD_MIN 25
+
+## Uncomment this to shut down the world any time it would normally reboot
+#SHUTDOWN_ON_REBOOT
+
+## A command to run prior to the world shutting down, only used if the above option is enabled
+## This default value will kill Dream Daemon on Windows machines
+#SHUTDOWN_SHELL_COMMAND taskkill /f /im dreamdaemon.exe
+
+# Uncomment to allow send to galactic market as it was forbidden by nova
+ALLOW_GALACTIC_MARKET_SELL
+
+# Uncomment to allow all cards regardless of their type (platinum, gold, silver...) to have infinity wildcard slots
+INFINITE_ACCESS_SLOTS
+
+# Uncomment to enable plasma inflation system in cargo
+PLASMA_INFLATION

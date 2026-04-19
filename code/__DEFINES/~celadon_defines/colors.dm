@@ -1,0 +1,2 @@
+#define COLOR_NRI_POLICE_BLUE "#1f3347"
+#define COLOR_NRI_POLICE_SILVER "#c0c0c0"

@@ -1,0 +1,1956 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ap" = (
+/obj/machinery/camera/autoname/directional/south,
+/turf/open/floor/engine/hull,
+/area/shuttle/nri_police)
+"ay" = (
+/obj/machinery/porta_turret/syndicate/nri_police{
+	dir = 5
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"be" = (
+/obj/structure/table/reinforced,
+/obj/item/modular_computer/laptop/preset/civilian,
+/obj/item/modular_computer/laptop/preset/civilian{
+	pixel_y = 4
+	},
+/obj/item/modular_computer/laptop/preset/civilian{
+	pixel_y = 8
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"bg" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/obj/machinery/porta_turret/syndicate/nri_police{
+	dir = 4
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"bw" = (
+/obj/structure/closet/crate/secure/weapon{
+	anchored = 1
+	},
+/obj/item/mod/module/headprotector,
+/obj/item/mod/module/headprotector,
+/obj/item/mod/module/headprotector,
+/obj/item/mod/module/ert_auto_doc,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin,
+/obj/item/mod/module/visor/night,
+/obj/item/mod/module/visor/night,
+/obj/item/mod/module/visor/thermal,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"bE" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/sign/flag/nri/directional/north,
+/obj/effect/mob_spawn/ghost_role/human/pirate/nri_police/officer,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"bG" = (
+/obj/machinery/light/floor,
+/obj/machinery/camera/autoname/directional/west,
+/obj/effect/turf_decal/stripes/end,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"bM" = (
+/obj/machinery/light/very_dim/directional/south,
+/obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"bQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/machinery/porta_turret/syndicate/nri_police{
+	dir = 8
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"cc" = (
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 8
+	},
+/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/area/shuttle/nri_police)
+"co" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south{
+	name = "blast shield"
+	},
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 8;
+	pixel_x = 32
+	},
+/turf/open/floor/engine/hull,
+/area/shuttle/nri_police)
+"cZ" = (
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/nri_police)
+"du" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/deployable_barricade/guardrail{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/nri_police)
+"dy" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"dS" = (
+/obj/structure/cable,
+/obj/machinery/power/shieldwallgen/unlocked/anchored{
+	shield_range = 12;
+	max_integrity = 600;
+	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
+	name = "defense shield generator";
+	req_access = list("nri_police")
+	},
+/obj/effect/turf_decal/bot,
+/obj/structure/sign/warning/secure_area/directional/north,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"et" = (
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/structure/reagent_dispensers/fueltank/large{
+	anchored = 1;
+	desc = "A tank full of a high quantity of liquid hydrogen fuel. Keep away from open flames and 57mm mortar shells.";
+	icon_state = "vat"
+	},
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"ew" = (
+/obj/machinery/camera/autoname/directional/south,
+/obj/machinery/light/floor,
+/turf/open/floor/engine/hull,
+/area/shuttle/nri_police)
+"ey" = (
+/obj/machinery/porta_turret/syndicate/nri_police{
+	dir = 6
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"fB" = (
+/obj/structure/rack/shelf,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/small/red/directional/north,
+/obj/item/ammo_box/c27_54cesarzowa,
+/obj/item/ammo_box/c27_54cesarzowa,
+/obj/item/ammo_box/c27_54cesarzowa/rubber{
+	pixel_y = 6
+	},
+/obj/item/ammo_box/c27_54cesarzowa/rubber{
+	pixel_y = 6
+	},
+/obj/item/ammo_box/magazine/miecz,
+/obj/item/ammo_box/magazine/miecz,
+/obj/item/ammo_box/magazine/miecz,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"fJ" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"gR" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"hl" = (
+/obj/structure/table/reinforced,
+/obj/machinery/light/small/red/directional/south,
+/obj/structure/showcase/machinery/microwave,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"hn" = (
+/obj/machinery/door/airlock/survival_pod/glass{
+	dir = 4;
+	req_access = list("nri_police")
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/iron/dark,
+/area/shuttle/nri_police)
+"hH" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"hK" = (
+/obj/machinery/door/airlock/survival_pod/glass{
+	dir = 1;
+	req_access = list("nri_police")
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/nri_police)
+"hP" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/carpet/green,
+/area/shuttle/nri_police)
+"hU" = (
+/obj/structure/cable,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"ie" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "nripoliceship2";
+	req_access = list("nri_police")
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/docking_port/mobile/pirate/nri_police{
+	launch_status = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"iq" = (
+/obj/structure/table/reinforced,
+/obj/machinery/fax{
+	fax_name = "NRI Police Ship";
+	name = "NRI Police ship fax machine"
+	},
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"iC" = (
+/turf/open/floor/plating/airless,
+/area/shuttle/nri_police)
+"jx" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/computer/shuttle/pirate/nri{
+	dir = 8;
+	req_access = list("nri_police");
+	icon_keyboard = "tech_key";
+	icon_screen = "shuttle"
+	},
+/turf/open/floor/carpet/green,
+/area/shuttle/nri_police)
+"jJ" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution{
+	dir = 8
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"kb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"kq" = (
+/obj/structure/rack/gunrack,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/item/gun/ballistic/automatic/akm/civvie,
+/obj/item/gun/ballistic/automatic/akm/civvie,
+/obj/item/gun/ballistic/automatic/akm/civvie,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"kQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/machinery/suit_storage_unit/nri_police,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"kX" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"lc" = (
+/obj/machinery/light/small/red/directional/north,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/nri_police)
+"lv" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south{
+	name = "blast shield"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north{
+	name = "blast shield"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"lU" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"lV" = (
+/obj/machinery/light/warm/directional/north,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"ma" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"mG" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/carpet/green,
+/area/shuttle/nri_police)
+"mJ" = (
+/obj/structure/table/optable,
+/obj/machinery/defibrillator_mount/loaded/directional/east,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"nX" = (
+/obj/machinery/light/floor,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"od" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"ot" = (
+/turf/template_noop,
+/area/template_noop)
+"ov" = (
+/obj/effect/turf_decal/caution/stand_clear,
+/obj/structure/cable,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"oW" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution{
+	dir = 4
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"pb" = (
+/obj/machinery/porta_turret/syndicate/nri_police{
+	dir = 5
+	},
+/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/area/shuttle/nri_police)
+"pe" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/machinery/recharge_station,
+/obj/structure/cable,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"pg" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/closet/crate/secure/weapon{
+	name = "footlocker";
+	desc = "A secure crate to keep all your personal belongings in.";
+	anchored = 1
+	},
+/obj/item/clothing/mask/balaclava/adjustable,
+/obj/item/clothing/glasses/meson/engine,
+/obj/item/storage/belt/military/cin_surplus/marine,
+/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
+/obj/item/clothing/head/helmet/nri_police,
+/obj/item/clothing/suit/armor/vest/nri_police,
+/obj/item/encryptionkey/headset_faction{
+	special_channels = null;
+	channels = list("Command" = 1, "SolFed" = 1, "Security" = 1, "AI Private" = 1, "Prison" = 1, "Engineering" = 1, "Science" = 1, "Medical" = 1, "Supply" = 1, "Service" = 1, "Entertainment" = 1);
+	desc = "An  NRI grade modified encryption key for a radio headset.";
+	name = "NRI radar type radio encryption key"
+	},
+/obj/item/melee/baton/security/stun_gun/loaded,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"pQ" = (
+/obj/machinery/light/small/red/directional/north,
+/obj/machinery/autolathe/hacked,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"ql" = (
+/obj/structure/closet/emcloset/anchored,
+/obj/machinery/light/small/red/directional/west,
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"qp" = (
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"qz" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/machinery/anesthetic_machine,
+/obj/item/tank/internals/anesthetic,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"qE" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/colonial_rations{
+	pixel_y = 12
+	},
+/obj/item/storage/box/colonial_rations{
+	pixel_y = 6
+	},
+/obj/item/storage/box/colonial_rations,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"qJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate{
+	dir = 8;
+	name = "police shuttle navigation computer";
+	desc = "Used to designate a precise transit location for the police shuttle.";
+	x_offset = -2;
+	y_offset = -5;
+	icon_keyboard = "tech_key";
+	icon_screen = "comm_monitor"
+	},
+/turf/open/floor/carpet/green,
+/area/shuttle/nri_police)
+"qQ" = (
+/obj/machinery/ntnet_relay,
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"rd" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/cell_charger_multi,
+/obj/item/stock_parts/power_store/cell/super/empty,
+/obj/item/stock_parts/power_store/cell/super/empty,
+/obj/item/stock_parts/power_store/cell/super/empty,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"rg" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/small/red/directional/north,
+/obj/machinery/recharger,
+/obj/item/gun/energy/taser/crank/militia,
+/obj/item/gun/energy/taser/crank/militia,
+/obj/item/gun/energy/taser/crank/militia,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"rp" = (
+/obj/effect/turf_decal/delivery,
+/obj/structure/cable,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"rO" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/iv_drip,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"sK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/machinery/shuttle_scrambler/nri,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"tk" = (
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"tl" = (
+/obj/machinery/power/apc/auto_name/directional/east{
+	cell_type = /obj/item/stock_parts/power_store/battery/super
+	},
+/obj/effect/mapping_helpers/apc/syndicate_access,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/plastic/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"tm" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal,
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"ts" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/flashes{
+	pixel_x = -2
+	},
+/obj/item/storage/box/zipties{
+	pixel_x = 2
+	},
+/obj/item/melee/baton,
+/obj/item/melee/baton,
+/obj/item/melee/baton,
+/obj/item/storage/box/flashbangs,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"ty" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"tG" = (
+/obj/structure/deployable_barricade/guardrail,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/airless,
+/area/shuttle/nri_police)
+"uh" = (
+/obj/structure/rack/gunrack,
+/obj/item/gun/ballistic/automatic/lanca,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/item/gun/ballistic/rifle/boltaction,
+/obj/item/gun/ballistic/automatic/miecz,
+/obj/item/gun/ballistic/shotgun/riot{
+	pixel_x = -4
+	},
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"ui" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/small/red/directional/east,
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"uo" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "nripoliceship2";
+	req_access = list("nri_police")
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"uw" = (
+/obj/machinery/light/very_dim/directional/north,
+/obj/structure/sign/flag/nri/directional/north,
+/obj/machinery/computer/centcom_announcement/nri_police,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"uU" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/closet/crate/engineering/electrical,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/construction/rcd/loaded/upgraded,
+/obj/item/inducer,
+/obj/item/stack/cable_coil,
+/obj/item/storage/belt/utility/full/engi,
+/obj/item/clothing/glasses/meson/engine,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"uY" = (
+/obj/structure/deployable_barricade/guardrail{
+	dir = 1
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"vh" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"vj" = (
+/obj/structure/cable,
+/obj/machinery/power/micro_reactor/bapgm,
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"wh" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/table/reinforced,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"wj" = (
+/obj/machinery/light/floor,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/airless,
+/area/shuttle/nri_police)
+"wM" = (
+/obj/machinery/door/airlock/survival_pod/glass{
+	req_access = list("nri_police")
+	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"wQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/light/small/red/directional/west,
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/nri_police)
+"wT" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/cable,
+/obj/machinery/recharge_station,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"xg" = (
+/obj/machinery/door/airlock/survival_pod/glass{
+	req_access = list("nri_police")
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/nri_police)
+"xp" = (
+/obj/machinery/door/airlock/survival_pod{
+	dir = 8;
+	req_access = list("nri_police")
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/nri_police)
+"xL" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/carpet/green,
+/area/shuttle/nri_police)
+"xX" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"yE" = (
+/obj/machinery/porta_turret/syndicate/nri_police{
+	dir = 10
+	},
+/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/area/shuttle/nri_police)
+"yP" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/item/ammo_box/advanced/s12gauge/magnum,
+/obj/item/ammo_box/advanced/s12gauge/magnum,
+/obj/item/ammo_box/advanced/s12gauge/magnum,
+/obj/item/ammo_box/advanced/s12gauge/beehive,
+/obj/item/ammo_box/advanced/s12gauge/beehive,
+/obj/item/ammo_box/advanced/s12gauge/beehive,
+/obj/item/ammo_box/advanced/s12gauge/bean,
+/obj/item/ammo_box/advanced/s12gauge/bean,
+/obj/item/ammo_box/advanced/s12gauge/magnum,
+/obj/item/ammo_box/advanced/s12gauge/express,
+/obj/structure/rack/shelf,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"zb" = (
+/obj/structure/deployable_barricade/guardrail,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"ze" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"zy" = (
+/obj/machinery/porta_turret/syndicate/nri_police{
+	dir = 9
+	},
+/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/area/shuttle/nri_police)
+"zA" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/deployable_barricade/guardrail{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/nri_police)
+"zJ" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/gloves/latex/nitrile{
+	pixel_y = 3
+	},
+/obj/item/wrench/medical{
+	pixel_x = 16;
+	pixel_y = 4
+	},
+/obj/item/healthanalyzer{
+	pixel_x = 10;
+	pixel_y = 9
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/storage/medkit/surgery,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"AX" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Be" = (
+/obj/structure/window/reinforced/shuttle/spaceship,
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"Bj" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Bk" = (
+/obj/machinery/power/shieldwallgen/unlocked/anchored{
+	max_integrity = 600;
+	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
+	name = "defense shield generator";
+	req_access = list("nri_police")
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/bot,
+/obj/structure/sign/warning/secure_area/directional/north,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Bm" = (
+/obj/structure/cable,
+/obj/machinery/suit_storage_unit/nri_police,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"Bw" = (
+/obj/structure/sign/flag/ssc/directional/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/machinery/light/small/red/directional/north,
+/obj/effect/mob_spawn/ghost_role/human/pirate/nri_police/officer,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"Bz" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Ci" = (
+/obj/structure/closet/crate/secure/weapon{
+	anchored = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/item/grenade/c4{
+	pixel_x = 10
+	},
+/obj/item/grenade/c4{
+	pixel_x = 6
+	},
+/obj/item/grenade/c4{
+	pixel_x = 2
+	},
+/obj/item/grenade/c4{
+	pixel_x = -2
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"Cy" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/nri_police)
+"CP" = (
+/obj/machinery/newscaster/directional/north,
+/obj/structure/frame/computer,
+/obj/item/circuitboard/computer/advanced_camera,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"Dl" = (
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "nripoliceship";
+	req_access = list("nri_police")
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"DD" = (
+/obj/machinery/camera/autoname/directional/west,
+/obj/effect/turf_decal/stripes/end{
+	dir = 1
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"DL" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/closet/crate/secure/weapon{
+	name = "footlocker";
+	desc = "A secure crate to keep all your personal belongings in.";
+	anchored = 1
+	},
+/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
+/obj/item/clothing/mask/balaclava/adjustable,
+/obj/item/storage/belt/military/cin_surplus/marine,
+/obj/item/clothing/head/helmet/nri_police,
+/obj/item/clothing/suit/armor/vest/nri_police,
+/obj/item/encryptionkey/headset_faction{
+	special_channels = null;
+	channels = list("Command" = 1, "SolFed" = 1, "Security" = 1, "AI Private" = 1, "Prison" = 1, "Engineering" = 1, "Science" = 1, "Medical" = 1, "Supply" = 1, "Service" = 1, "Entertainment" = 1);
+	desc = "An  NRI grade modified encryption key for a radio headset.";
+	name = "NRI radar type radio encryption key"
+	},
+/obj/item/melee/baton/security/stun_gun/loaded,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"Eh" = (
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"EG" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Fa" = (
+/obj/structure/deployable_barricade/guardrail{
+	dir = 1
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/airless,
+/area/shuttle/nri_police)
+"Fm" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Fv" = (
+/obj/machinery/camera/autoname/directional/north,
+/obj/machinery/light/floor,
+/turf/open/floor/engine/hull,
+/area/shuttle/nri_police)
+"FS" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 8
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"GO" = (
+/turf/open/floor/engine/hull,
+/area/shuttle/nri_police)
+"Hh" = (
+/obj/structure/rack/shelf,
+/obj/effect/turf_decal/stripes/line,
+/obj/item/ammo_box/c310_cargo_box/piercing{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/item/ammo_box/c310_cargo_box/piercing{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/item/ammo_box/c310_cargo_box/rubber{
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/obj/item/ammo_box/c310_cargo_box/rubber{
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/obj/item/ammo_box/c310_cargo_box,
+/obj/item/ammo_box/c310_cargo_box,
+/obj/item/ammo_box/magazine/lanca,
+/obj/item/ammo_box/magazine/lanca,
+/obj/item/ammo_box/magazine/lanca,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"Hl" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Hs" = (
+/obj/structure/lattice,
+/turf/open/floor/plating/airless,
+/area/shuttle/nri_police)
+"Hu" = (
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/reagent_dispensers/fueltank/large{
+	anchored = 1;
+	desc = "A tank full of a high quantity of liquid hydrogen fuel. Keep away from open flames and 57mm mortar shells.";
+	icon_state = "vat"
+	},
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"Hz" = (
+/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/area/shuttle/nri_police)
+"HO" = (
+/obj/machinery/door/airlock/survival_pod/glass{
+	dir = 1;
+	req_access = list("nri_police")
+	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/nri_police)
+"HV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"Ib" = (
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"Iu" = (
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"Iv" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/shuttle/spaceship,
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"IJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/turretid{
+	req_access = list("nri_police");
+	pixel_x = -32
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/carpet/green,
+/area/shuttle/nri_police)
+"IT" = (
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/nri_police)
+"IY" = (
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"JB" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/closet/crate/secure/weapon{
+	anchored = 1
+	},
+/obj/machinery/light/small/red/directional/south,
+/obj/item/ammo_box/magazine/akm/civvie,
+/obj/item/ammo_box/magazine/akm/civvie,
+/obj/item/ammo_box/magazine/akm/civvie,
+/obj/item/ammo_box/magazine/akm/civvie,
+/obj/item/ammo_box/magazine/akm/civvie,
+/obj/item/ammo_box/magazine/akm/civvie,
+/obj/item/ammo_box/magazine/akm/civvie,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"JS" = (
+/obj/structure/cable,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Kb" = (
+/obj/machinery/light/small/red/directional/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/closet/crate/secure/weapon{
+	name = "footlocker";
+	desc = "A secure crate to keep all your personal belongings in.";
+	anchored = 1
+	},
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
+/obj/item/clothing/mask/balaclava/adjustable,
+/obj/item/storage/belt/military/cin_surplus/marine,
+/obj/item/clothing/head/helmet/nri_police,
+/obj/item/clothing/suit/armor/vest/nri_police,
+/obj/item/encryptionkey/headset_faction{
+	special_channels = null;
+	channels = list("Command" = 1, "SolFed" = 1, "Security" = 1, "AI Private" = 1, "Prison" = 1, "Engineering" = 1, "Science" = 1, "Medical" = 1, "Supply" = 1, "Service" = 1, "Entertainment" = 1);
+	desc = "An  NRI grade modified encryption key for a radio headset.";
+	name = "NRI radar type radio encryption key"
+	},
+/obj/item/melee/baton/security/stun_gun/loaded,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"Kc" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Kq" = (
+/obj/machinery/light/warm/directional/south,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"Lp" = (
+/obj/machinery/door/window/survival_pod/left/directional/east,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"Lr" = (
+/obj/structure/closet/crate/secure/engineering,
+/obj/item/mod/module/active_sonar,
+/obj/item/mod/module/megaphone,
+/obj/item/mod/module/projectile_dampener,
+/obj/item/mod/module/holster,
+/obj/item/mod/module/holster,
+/obj/item/mod/module/holster,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"LA" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/medkit/brute{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/obj/item/storage/medkit/fire{
+	pixel_y = 9
+	},
+/obj/item/storage/medkit/o2{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"Ms" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/photocopier/prebuilt,
+/turf/open/floor/carpet/green,
+/area/shuttle/nri_police)
+"MR" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 1
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Nu" = (
+/obj/machinery/light/small/red/directional/west,
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/nri_police)
+"NE" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"NO" = (
+/obj/structure/closet/crate/secure/weapon{
+	anchored = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/item/stack/medical/wrap/sticky_tape,
+/obj/item/stack/medical/wrap/sticky_tape,
+/obj/item/storage/box/medipens,
+/obj/item/book/manual/wiki/surgery,
+/obj/item/stack/medical/wrap/sticky_tape/surgical,
+/obj/item/stack/medical/wrap/sticky_tape/surgical,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"NW" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north{
+	name = "blast shield"
+	},
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 8;
+	pixel_x = 32
+	},
+/turf/open/floor/engine/hull,
+/area/shuttle/nri_police)
+"Oc" = (
+/obj/machinery/light/small/red/directional/south,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/nri_police)
+"Pi" = (
+/obj/effect/turf_decal/stripes/corner,
+/obj/machinery/dish_drive/bullet,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"Pp" = (
+/obj/machinery/door/airlock/survival_pod{
+	dir = 8;
+	req_access = list("nri_police")
+	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"PO" = (
+/obj/effect/turf_decal/loading_area,
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"PV" = (
+/obj/machinery/camera/autoname/directional/north,
+/turf/open/floor/engine/hull,
+/area/shuttle/nri_police)
+"PW" = (
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "nripoliceship";
+	req_access = list("nri_police")
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"PZ" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution/stand_clear,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Qg" = (
+/obj/machinery/computer/operating{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"QX" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Rb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"RG" = (
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/airless,
+/area/shuttle/nri_police)
+"Su" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/survival_pod{
+	dir = 8;
+	req_access = list("nri_police")
+	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/nri_police)
+"SQ" = (
+/obj/machinery/porta_turret/syndicate/nri_police{
+	dir = 6
+	},
+/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/area/shuttle/nri_police)
+"Te" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/deployable_barricade/guardrail,
+/turf/open/floor/plating/airless,
+/area/shuttle/nri_police)
+"Tg" = (
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/turf/open/floor/plating,
+/area/shuttle/nri_police)
+"Tj" = (
+/obj/structure/plaque/static_plaque/golden/commission/ks13/nri_police,
+/obj/structure/cable,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"TF" = (
+/obj/structure/sign/flag/mars/directional/north,
+/obj/effect/mob_spawn/ghost_role/human/pirate/nri_police/officer,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"TR" = (
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 4
+	},
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 8
+	},
+/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/area/shuttle/nri_police)
+"UO" = (
+/obj/structure/closet/crate/freezer/blood{
+	anchored = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/light/small/red/directional/north,
+/obj/machinery/button/door/directional/north{
+	id = "nripoliceship2";
+	name = "External Bolt Control";
+	normaldoorcontrol = 1;
+	specialfunctions = 4
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"UP" = (
+/obj/machinery/light/floor,
+/turf/open/floor/engine/hull,
+/area/shuttle/nri_police)
+"UY" = (
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/nri_police)
+"Va" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/suit_storage_unit/nri_police,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"Vm" = (
+/obj/machinery/holopad/secure,
+/turf/open/floor/carpet/green,
+/area/shuttle/nri_police)
+"VN" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/small/red/directional/east,
+/obj/machinery/health_station/directional/east,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"Wa" = (
+/obj/machinery/biogenerator/food_replicator,
+/turf/open/floor/pod/light,
+/area/shuttle/nri_police)
+"Wr" = (
+/obj/machinery/camera/autoname/directional/east,
+/turf/open/floor/engine/hull,
+/area/shuttle/nri_police)
+"Xe" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/survival_pod{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/nri_police)
+"Xh" = (
+/obj/machinery/power/shieldwallgen/unlocked/anchored{
+	max_integrity = 600;
+	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
+	name = "defense shield generator";
+	req_access = list("nri_police")
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/bot,
+/obj/structure/sign/warning/secure_area/directional/south,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"XA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/carpet/green,
+/area/shuttle/nri_police)
+"XY" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/machinery/porta_turret/syndicate/nri_police{
+	dir = 8
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Yd" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/turf/open/floor/pod,
+/area/shuttle/nri_police)
+"Yy" = (
+/obj/structure/cable,
+/obj/machinery/power/shieldwallgen/unlocked/anchored{
+	shield_range = 12;
+	max_integrity = 600;
+	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
+	name = "defense shield generator";
+	req_access = list("nri_police")
+	},
+/obj/effect/turf_decal/bot,
+/obj/structure/sign/warning/secure_area/directional/south,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+"Ze" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/light/small/red/directional/south,
+/obj/structure/closet/crate/secure/weapon{
+	anchored = 1
+	},
+/obj/machinery/button/door/directional/south{
+	id = "nripoliceship";
+	name = "External Bolt Control";
+	normaldoorcontrol = 1;
+	specialfunctions = 4
+	},
+/obj/item/mod/module/injector,
+/obj/item/mod/module/quick_carry,
+/obj/item/mod/module/health_analyzer,
+/obj/item/mod/module/defibrillator,
+/obj/item/mod/module/thread_ripper,
+/turf/open/floor/pod/dark,
+/area/shuttle/nri_police)
+"Zw" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north{
+	name = "blast shield"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south{
+	name = "blast shield"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/nri_police)
+
+(1,1,1) = {"
+ot
+ot
+ot
+ot
+ot
+IY
+nX
+iC
+nX
+IY
+ot
+ot
+ot
+ot
+ot
+"}
+(2,1,1) = {"
+ot
+ot
+ot
+ot
+IY
+IY
+IY
+iC
+IY
+IY
+IY
+ot
+ot
+ot
+ot
+"}
+(3,1,1) = {"
+ot
+ot
+bQ
+NE
+iC
+IY
+iC
+iC
+iC
+IY
+iC
+Fm
+XY
+ot
+ot
+"}
+(4,1,1) = {"
+ot
+dy
+Hl
+Bz
+lv
+Wr
+UY
+Cy
+cZ
+Wr
+Zw
+ze
+EG
+hH
+ot
+"}
+(5,1,1) = {"
+ot
+GO
+GO
+GO
+cc
+Hz
+TR
+cc
+TR
+Hz
+cc
+GO
+GO
+GO
+ot
+"}
+(6,1,1) = {"
+ot
+GO
+GO
+ap
+Hz
+vj
+Hu
+qQ
+et
+vj
+Hz
+PV
+GO
+GO
+ot
+"}
+(7,1,1) = {"
+ot
+iC
+iC
+UP
+Hz
+tm
+Tg
+Lp
+Eh
+ty
+Hz
+UP
+iC
+iC
+ot
+"}
+(8,1,1) = {"
+GO
+iC
+iC
+IY
+Hz
+HV
+kQ
+rp
+sK
+HV
+Hz
+IY
+iC
+iC
+GO
+"}
+(9,1,1) = {"
+UP
+NW
+co
+IY
+Hz
+lV
+lU
+hU
+od
+Kq
+Hz
+IY
+NW
+co
+UP
+"}
+(10,1,1) = {"
+zy
+Hz
+Hz
+Hz
+Hz
+Bm
+Va
+hU
+uU
+Lr
+Hz
+Hz
+Hz
+Hz
+yE
+"}
+(11,1,1) = {"
+Hz
+Pi
+kq
+uh
+Hz
+Iv
+Iv
+hn
+Iv
+Iv
+Hz
+qE
+Yd
+Wa
+Hz
+"}
+(12,1,1) = {"
+Hz
+yP
+qp
+qp
+wM
+kb
+wQ
+IT
+Nu
+IT
+HO
+IT
+qp
+qp
+Hz
+"}
+(13,1,1) = {"
+Hz
+fB
+qp
+JB
+Hz
+rd
+pe
+hU
+wT
+be
+Hz
+Bw
+qp
+DL
+Hz
+"}
+(14,1,1) = {"
+Hz
+Hh
+qp
+Ci
+Hz
+tk
+lU
+Tj
+od
+bw
+Hz
+bE
+qp
+pg
+Hz
+"}
+(15,1,1) = {"
+Hz
+rg
+qp
+ts
+Hz
+pQ
+tl
+hU
+wh
+hl
+Hz
+TF
+qp
+Kb
+Hz
+"}
+(16,1,1) = {"
+Hz
+Hz
+Hz
+Hz
+Hz
+Hz
+Hz
+Xe
+Hz
+Hz
+Hz
+Hz
+Hz
+Hz
+Hz
+"}
+(17,1,1) = {"
+Hz
+ql
+Hz
+Ib
+Hz
+UO
+rO
+IT
+NO
+Ze
+Hz
+Ib
+Hz
+ql
+Hz
+"}
+(18,1,1) = {"
+ie
+PO
+uo
+ov
+xg
+IT
+IT
+IT
+IT
+IT
+hK
+Iu
+Dl
+vh
+PW
+"}
+(19,1,1) = {"
+pb
+Hz
+Hz
+xp
+Hz
+zJ
+xX
+qp
+qz
+Qg
+Hz
+xp
+Hz
+Hz
+SQ
+"}
+(20,1,1) = {"
+IY
+Hz
+lc
+IT
+Hz
+LA
+ui
+qp
+VN
+mJ
+Hz
+IT
+Oc
+Hz
+IY
+"}
+(21,1,1) = {"
+ew
+Hz
+Be
+Su
+Hz
+Hz
+Hz
+Pp
+Hz
+Hz
+Hz
+Su
+Iv
+Hz
+Fv
+"}
+(22,1,1) = {"
+IY
+Hz
+Bk
+IT
+Hz
+CP
+IJ
+Vm
+hP
+iq
+Hz
+IT
+Xh
+Hz
+IY
+"}
+(23,1,1) = {"
+ot
+Hz
+oW
+RG
+Hz
+uw
+XA
+xL
+mG
+bM
+Hz
+RG
+oW
+Hz
+ot
+"}
+(24,1,1) = {"
+ot
+Fa
+PZ
+RG
+Iv
+Iv
+qJ
+jx
+Ms
+Iv
+Iv
+RG
+MR
+tG
+ot
+"}
+(25,1,1) = {"
+ot
+Fa
+IT
+Te
+ot
+Iv
+Iv
+Iv
+Iv
+Iv
+ot
+zA
+IT
+tG
+ot
+"}
+(26,1,1) = {"
+ot
+uY
+jJ
+wj
+du
+du
+du
+du
+du
+du
+du
+wj
+jJ
+zb
+ot
+"}
+(27,1,1) = {"
+ot
+Hz
+dS
+QX
+JS
+FS
+IT
+IT
+IT
+FS
+JS
+fJ
+Yy
+Hz
+ot
+"}
+(28,1,1) = {"
+ot
+ay
+Hz
+Hz
+Kc
+AX
+ma
+bg
+ma
+AX
+kX
+Hz
+Hz
+ey
+ot
+"}
+(29,1,1) = {"
+ot
+ot
+DD
+ma
+Rb
+Hs
+Hs
+Hs
+Hs
+Hs
+gR
+Bj
+bG
+ot
+ot
+"}

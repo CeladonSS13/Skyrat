@@ -1,0 +1,258 @@
+
+/datum/component/interactable
+	/// A hard reference to the parent
+	var/mob/living/carbon/human/self = null
+	/// A list of interactions that the user can engage in.
+	var/list/datum/interaction/interactions
+	var/interact_last = 0
+	var/interact_next = 0
+	/// Whether or not we are using subtler for lewd interactions.
+	var/use_subtler = TRUE
+	/// Whether or not we have an erp interaction available to us right now
+	var/has_erp_interaction = FALSE
+
+/datum/component/interactable/Initialize(...)
+	if(QDELETED(parent))
+		qdel(src)
+		return
+
+	if(!ishuman(parent))
+		return COMPONENT_INCOMPATIBLE
+
+	self = parent
+
+	build_interactions_list()
+
+/datum/component/interactable/proc/build_interactions_list()
+	interactions = list()
+	for(var/iterating_interaction_id in GLOB.interaction_instances)
+		var/datum/interaction/interaction = GLOB.interaction_instances[iterating_interaction_id]
+		if(interaction.lewd)
+			continue // Celadon REMOVAL OF ERP INTERACTIONS
+		interactions.Add(interaction)
+
+/datum/component/interactable/RegisterWithParent()
+	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT, PROC_REF(open_interaction_menu))
+
+/datum/component/interactable/UnregisterFromParent()
+	UnregisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT)
+
+/datum/component/interactable/Destroy(force)
+	self = null
+	interactions = null
+	return ..()
+
+/datum/component/interactable/proc/open_interaction_menu(datum/source, mob/user)
+	SIGNAL_HANDLER
+
+	if(!ishuman(user))
+		return
+	build_interactions_list()
+	INVOKE_ASYNC(src, PROC_REF(ui_interact), user)
+	return CLICK_ACTION_SUCCESS
+
+/datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/carbon/human/target)
+	if(!interaction.allow_act(target, self))
+		return FALSE
+	if(interaction.lewd) // Celadon EDIT NO INTERACTIONS WITH ERP
+		return FALSE
+	if(!interaction.distance_allowed && !target.Adjacent(self))
+		return FALSE
+	if(interaction.category == INTERACTION_CAT_HIDE)
+		return FALSE
+	if(self == target && interaction.usage == INTERACTION_OTHER)
+		return FALSE
+	return TRUE
+
+/// UI Control
+/datum/component/interactable/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "InteractionPanel")
+		ui.open()
+
+/datum/component/interactable/ui_status(mob/user, datum/ui_state/state)
+	if(!ishuman(user))
+		return UI_CLOSE
+
+	return UI_INTERACTIVE // This UI is always interactive as we handle distance flags via can_interact
+
+/datum/component/interactable/ui_static_data(mob/user)
+	var/list/data = list()
+	data["arousalLimit"] = AROUSAL_LIMIT
+	return data
+
+/datum/component/interactable/ui_data(mob/user)
+	var/list/data = list()
+	var/list/descriptions = list()
+	var/list/categories = list()
+	var/list/colors = list()
+
+	has_erp_interaction = FALSE
+
+	for (var/datum/interaction/interaction in interactions)
+		if (!can_interact(interaction, user))
+			continue
+
+		if (interaction.lewd)
+			has_erp_interaction = TRUE
+
+		var/category = interaction.category
+		var/list/category_list = categories[category]
+
+		if (isnull(category_list))
+			category_list = list()
+			categories[category] = category_list
+
+		category_list += interaction.name
+
+		descriptions[interaction.name] = interaction.description
+		colors[interaction.name] = interaction.color
+
+	// Sort category contents once
+	for (var/category in categories)
+		categories[category] = sort_list(categories[category])
+
+	// Build and sort category names
+	data["categories"] = sort_list(assoc_to_keys(categories))
+	data["interactions"] = categories
+	data["descriptions"] = descriptions
+	data["colors"] = colors
+
+	data["ref_user"] = REF(user)
+	data["ref_self"] = REF(self)
+	data["self"] = self.name
+	data["block_interact"] = interact_next >= world.time
+	data["use_subtler"] = use_subtler
+	data["erp_interaction"] = FALSE // Celadon EDIT, original: data["erp_interaction"] = self.client?.prefs?.read_preference(/datum/preference/toggle/erp)
+	data["has_erp_interaction"] = has_erp_interaction
+
+	// Celadon REMOVAL var/mob/living/carbon/human/human_user = user
+
+	data["isTargetSelf"] = (user == self)
+
+	// user (the one who opened the ui)
+	var/user_pleasure = 0
+	var/user_arousal = 0
+	var/user_pain = 0
+
+	if(user)
+		// Celadon REMOVAL START
+		// user_pleasure = human_user.pleasure
+		// user_arousal = human_user.arousal
+		// user_pain = human_user.pain
+		// Celadon REMOVAL END
+
+		data["pleasure"] = user_pleasure
+		data["arousal"] = user_arousal
+		data["pain"] = user_pain
+
+
+	// self - the one who the interaction component belongs to, aka who it's opened on (confusing var name yep)
+	if(user != self)
+		data["theirPleasure"] = 0 // Celadon EDIT, original: data["theirPleasure"] = self.pleasure
+		data["theirArousal"] = 0 // Celadon EDIT, original: data["theirArousal"] = self.arousal
+		data["theirPain"] = 0 // Celadon EDIT, original: data["theirPain"] = self.pain
+
+	// Celadon REMOVAL START
+	// var/list/parts = list()
+
+	// if(ishuman(user) && can_lewd_strip(user, self))
+	// 	if(self.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	// 		if(self.has_vagina())
+	// 			parts += list(generate_strip_entry(ORGAN_SLOT_VAGINA, self, user, self.vagina))
+	// 		if(self.has_penis())
+	// 			parts += list(generate_strip_entry(ORGAN_SLOT_PENIS, self, user, self.penis))
+	// 		if(self.has_anus())
+	// 			parts += list(generate_strip_entry(ORGAN_SLOT_ANUS, self, user, self.anus))
+	// 		parts += list(generate_strip_entry(ORGAN_SLOT_NIPPLES, self, user, self.nipples))
+
+	// data["lewd_slots"] = parts
+	// Celadon REMOVAL END
+
+	return data
+
+// Celadon REMOVAL OF ERP STRIP
+
+/datum/component/interactable/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	if(!ishuman(ui.user))
+		return
+
+	// Celadon REMOVAL START
+	// if(action == "toggle_subtler")
+	// 	use_subtler = !use_subtler
+	// 	return TRUE
+	// Celadon REMOVAL END
+
+	if(params["interaction"])
+		var/interaction_id = params["interaction"]
+		if(GLOB.interaction_instances[interaction_id])
+			var/mob/living/carbon/human/user = locate(params["userref"])
+			if(!can_interact(GLOB.interaction_instances[interaction_id], user))
+				return FALSE
+			GLOB.interaction_instances[interaction_id].act(user, locate(params["selfref"]), use_subtler)
+			var/datum/component/interactable/interaction_component = user.GetComponent(/datum/component/interactable)
+			interaction_component.interact_last = world.time
+			interact_next = interaction_component.interact_last + INTERACTION_COOLDOWN
+			interaction_component.interact_next = interact_next
+			return TRUE
+
+	if(params["item_slot"])
+		// Celadon REMOVAL START
+		// // This code should be easy enough to follow... I hope.
+		// var/item_index = params["item_slot"]
+		// var/mob/living/carbon/human/source = locate(params["userref"])
+		// var/mob/living/carbon/human/target = locate(params["selfref"])
+		// var/obj/item/clothing/sextoy/new_item = source.get_active_held_item()
+		// var/obj/item/clothing/sextoy/existing_item = target.vars[item_index]
+
+		// if(!existing_item && !new_item)
+		// 	source.show_message(span_warning("No item to insert or remove!"))
+		// 	return
+
+		// if(!existing_item && !istype(new_item))
+		// 	source.show_message(span_warning("The item you're holding is not a toy!"))
+		// 	return
+
+		// if(can_lewd_strip(source, target, item_index) && is_toy_compatible(new_item, item_index))
+		// 	var/internal = (item_index in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_ANUS))
+		// 	var/insert_or_attach = internal ? "insert" : "attach"
+		// 	var/into_or_onto = internal ? "into" : "onto"
+
+		// 	if(existing_item)
+		// 		source.visible_message(span_purple("[source.name] starts trying to remove something from [target.name]'s [item_index]."), span_purple("You start to remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone trying to remove something from someone nearby."), vision_distance = 1, ignored_mobs = list(target))
+		// 	else if (new_item)
+		// 		source.visible_message(span_purple("[source.name] starts trying to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You start to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone trying to [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1, ignored_mobs = list(target))
+		// 	if (source != target)
+		// 		target.show_message(span_warning("[source.name] is trying to [existing_item ? "remove the [existing_item.name] [internal ? "in" : "on"]" : new_item ? "is trying to [insert_or_attach] the [new_item.name] [into_or_onto]" : span_alert("What the fuck, impossible condition? interaction_component.dm!")] your [item_index]!"))
+		// 	if(do_after(
+		// 		source,
+		// 		5 SECONDS,
+		// 		target,
+		// 		interaction_key = "interaction_[item_index]"
+		// 		) && can_lewd_strip(source, target, item_index))
+
+		// 		if(existing_item)
+		// 			source.visible_message(span_purple("[source.name] removes [existing_item.name] from [target.name]'s [item_index]."), span_purple("You remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone remove something from someone nearby."), vision_distance = 1)
+		// 			target.dropItemToGround(existing_item, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
+		// 			target.vars[item_index] = null
+		// 		else if (new_item)
+		// 			source.visible_message(span_purple("[source.name] [internal ? "inserts" : "attaches"] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1)
+		// 			target.vars[item_index] = new_item
+		// 			new_item.forceMove(target)
+		// 			new_item.lewd_equipped(target, item_index)
+		// 		target.update_inv_lewd()
+
+		// else
+		// 	source.show_message(span_warning("Failed to adjust [target.name]'s toys!"))
+		// Celadon REMOVAL END
+
+		return TRUE
+
+	message_admins("Unhandled interaction '[params["interaction"]]'. Inform coders.")
+
+// Celadon REMOVAL OF ERP START, END

@@ -1,0 +1,199 @@
+name: CI Suite
+
+on:
+  workflow_call:
+  push:
+    branches:
+    - master
+    - 'project/**'
+    - 'gh-readonly-queue/master/**'
+    - 'gh-readonly-queue/project/**'
+  pull_request:
+    branches:
+      - master
+      - "project/**"
+  merge_group:
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  start_gate:
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
+    name: Start Gate
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Mandatory Empty Step
+        run: exit 0
+
+  run_linters:
+    name: Run Linters
+    needs: start_gate
+    uses: ./.github/workflows/run_linters.yml
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore SpacemanDMM cache
+        uses: actions/cache@v4
+        with:
+          path: ~/SpacemanDMM
+          key: ${{ runner.os }}-spacemandmm-${{ hashFiles('dependencies.sh') }}
+          restore-keys: |
+            ${{ runner.os }}-spacemandmm-
+      - name: Restore Yarn cache
+        uses: actions/cache@v4
+        with:
+          path: tgui/.yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('tgui/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Restore Node cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.nvm
+          key: ${{ runner.os }}-node-${{ hashFiles('dependencies.sh') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Restore Bootstrap cache
+        uses: actions/cache@v4
+        with:
+          path: tools/bootstrap/.cache
+          key: ${{ runner.os }}-bootstrap-${{ hashFiles('tools/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-bootstrap-
+      - name: Restore Rust cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-rust-${{ hashFiles('tools/ci/ci_dependencies.sh')}}
+          restore-keys: |
+            ${{ runner.os }}-rust-
+      - name: Restore Cutter cache
+        uses: actions/cache@v4
+        with:
+          path: tools/icon_cutter/cache
+          key: ${{ runner.os }}-cutter-${{ hashFiles('dependencies.sh') }}
+      - name: Install OpenDream
+        uses: robinraju/release-downloader@v1.11
+        with:
+          repository: "OpenDreamProject/OpenDream"
+          tag: "latest"
+          fileName: "DMCompiler_linux-x64.tar.gz"
+          extract: true
+      - name: Install Tools
+        run: |
+          pip3 install setuptools
+          bash tools/ci/install_node.sh
+          bash tools/ci/install_spaceman_dmm.sh dreamchecker
+          bash tools/ci/install_ripgrep.sh
+          tools/bootstrap/python -c ''
+      - name: Give Linters A Go
+        id: linter-setup
+        run: ':'
+      - name: Run Grep Checks
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: |
+          bash tools/ci/check_grep.sh
+          bash modular_nova/tools/nova_check_grep.sh # NOVA EDIT ADDITION - checking modular_nova code
+          bash modular_celadon/tools/celadon_check_grep.sh # Celadon EDIT ADDITION - checking modular_celadon code
+      - name: Ticked File Enforcement
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: |
+          tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/tgstation_dme.json
+          tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/unit_tests.json
+          tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/modular_nova.json # NOVA EDIT ADDITION - modular tick enforcement
+      - name: Check Define Sanity
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: tools/bootstrap/python -m define_sanity.check
+      - name: Check Trait Validity
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: tools/bootstrap/python -m trait_validity.check
+      - name: Run DreamChecker
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        shell: bash
+        run: ~/dreamchecker 2>&1 | bash tools/ci/annotate_dm.sh
+      - name: Run OpenDream
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: ./DMCompiler_linux-x64/DMCompiler tgstation.dme --suppress-unimplemented --define=CIBUILDING | bash tools/ci/annotate_od.sh
+      - name: Run Map Checks
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: |
+          tools/bootstrap/python -m mapmerge2.dmm_test
+          tools/bootstrap/python -m tools.maplint.source
+      - name: Check Cutter
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: tools/bootstrap/python -m tools.icon_cutter.check
+      - name: Run DMI Tests
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: tools/bootstrap/python -m dmi.test
+      - name: Check File Directories
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: bash tools/ci/check_filedirs.sh tgstation.dme
+      - name: Check Changelogs
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: bash tools/ci/check_changelogs.sh
+      - name: Check Miscellaneous Files
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: bash tools/ci/check_misc.sh
+      - name: Run TGUI Checks
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: tools/build/build --ci lint tgui-test
+
+  compile_all_maps:
+    name: Compile Maps
+    needs: collect_data
+    uses: ./.github/workflows/compile_all_maps.yml
+    with:
+      max_required_byond_client: ${{ needs.collect_data.outputs.max_required_byond_client }}
+
+  setup_build_artifacts:
+    name: Setup build artifacts
+    needs: collect_data
+    uses: ./.github/workflows/setup_build_artifacts.yml
+    with:
+      build_versions: ${{ needs.collect_data.outputs.required_build_versions }}
+
+  run_all_tests:
+    name: Integration Tests
+    needs: [collect_data, setup_build_artifacts]
+    uses: ./.github/workflows/perform_regular_version_tests.yml
+    with:
+      maps: ${{ needs.collect_data.outputs.maps }}
+      max_required_byond_client: ${{ needs.collect_data.outputs.max_required_byond_client }}
+
+  run_alternate_tests:
+    if: needs.collect_data.outputs.alternate_tests != '[]'
+    name: Alternate Tests
+    needs: [collect_data, setup_build_artifacts]
+    uses: ./.github/workflows/perform_alternate_version_tests.yml
+    with:
+      alternate_tests: ${{ needs.collect_data.outputs.alternate_tests }}
+      default_max_required_byond_client: ${{ needs.collect_data.outputs.max_required_byond_client }}
+
+  compare_screenshots:
+    if: needs.collect_data.outputs.alternate_tests == '[]' || needs.run_alternate_tests.result == 'success'
+    needs: [collect_data, run_all_tests, run_alternate_tests]
+    name: Compare Screenshot Tests
+    uses: ./.github/workflows/compare_screenshots.yml
+
+  completion_gate: # Serves as a non-moving target for branch rulesets
+    if: always() && !cancelled()
+    name: Completion Gate
+    needs:
+      [
+        compare_screenshots,
+        compile_all_maps,
+        run_all_tests,
+        run_alternate_tests,
+        run_linters,
+      ]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}
+          allowed-skips: compare_screenshots

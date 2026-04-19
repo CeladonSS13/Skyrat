@@ -1,0 +1,35 @@
+<!-- Write **BELOW** The Headers and **ABOVE** The comments else it may not be viewable. -->
+<!-- You can view Contributing.MD for a detailed description of the pull request process. -->
+
+## Описание
+
+
+
+## Changelog
+
+:cl:
+add: Added new mechanics or gameplay changes
+add: Added more things
+del: Removed old things
+qol: made something easier to use
+balance: rebalanced something
+fix: fixed a few things
+sound: added/modified/removed audio or sound effects
+image: added/modified/removed some icons or images
+map: added/modified/removed map content
+spellcheck: fixed a few typos
+code: changed some code
+refactor: refactored some code
+config: changed some config setting
+admin: messed with admin stuff
+server: something server ops should know
+/:cl:
+
+<!-- Both :cl:'s are required for the changelog to work! You can put your name to the right of the first :cl: if you want to overwrite your GitHub username as author ingame. -->
+<!-- You can use multiple of the same prefix (they're only used for the icon ingame) and delete the unneeded ones. Despite some of the tags, changelogs should generally represent how a player might be affected by the changes rather than a summary of the PR's contents. -->
+****
+<!-- Все PRы за редкими исключениями необходимо проверять на локалке -->
+<!-- 
+- [x] Проверено на локалке
+-->
+- [ ] Проверено на локалке

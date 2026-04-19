@@ -1,0 +1,114 @@
+
+SUBSYSTEM_DEF(ore_generation)
+	name = "Ore Generation"
+	wait = 60 SECONDS
+	dependencies = list(
+		/datum/controller/subsystem/atoms,
+	)
+	runlevels = RUNLEVEL_GAME
+
+	/// All ore vents that are currently producing boulders.
+	var/list/obj/structure/ore_vent/processed_vents = list()
+	/// All the ore vents that are currently in the game, not just the ones that are producing boulders.
+	var/list/obj/structure/ore_vent/possible_vents = list()
+	/// All the boulders that have been produced by ore vents to be pulled by BRM machines.
+	var/list/obj/item/boulder/available_boulders = list()
+	/**
+	 * A list of all the minerals that are being mined by ore vents. We reset this list every time cave generation is done.
+	 * Generally Should be empty by the time initialize ends on lavaland.
+	 * Each key value is the number of vents that will have this ore as a unique possible choice.
+	 * If we call cave_generation more than once, we copy a list from the lists in lists/ores_spawned.dm
+	 */
+	var/list/ore_vent_minerals = list()
+
+/datum/controller/subsystem/ore_generation/Initialize()
+	/// First, lets sort each ore_vent here based on their distance to the landmark, then we'll assign sizes.
+	var/list/sort_vents = list()
+	for(var/obj/structure/ore_vent/vent as anything in possible_vents)
+
+		var/obj/landmark_anchor //We need to find the mining epicenter to gather distance from.
+		for(var/obj/possible_landmark as anything in GLOB.mining_center) // have to check multiple due to icebox
+			if(possible_landmark.z == vent.z)
+				landmark_anchor = possible_landmark
+				break
+
+		if(!landmark_anchor) //We're missing a mining epicenter landmark, but it's not crash-worthy.
+			vent.vent_size_setup(random = TRUE, force_size = null, map_loading = TRUE)
+			continue
+
+		sort_vents.Insert(length(sort_vents), vent)
+		sort_vents[vent] = get_dist(get_turf(vent),get_turf(landmark_anchor))
+
+	sortTim(sort_vents, GLOBAL_PROC_REF(cmp_numeric_asc), associative = TRUE) // Should sort list from closest to farthest.
+	possible_vents = sort_vents // Now we can work with the main list
+
+	var/cutoff = round((length(possible_vents) / 3))
+	var/vent_size_level = SMALL_VENT_TYPE
+
+	for(var/obj/structure/ore_vent/vent as anything in possible_vents)
+		vent.vent_size_setup(random = FALSE, force_size = vent_size_level, map_loading = TRUE)
+		cutoff--
+		if(cutoff > 0 || vent_size_level == LARGE_VENT_TYPE)
+			continue
+		cutoff = round((length(possible_vents) / 3))
+		switch(vent_size_level)
+			if(SMALL_VENT_TYPE)
+				vent_size_level = MEDIUM_VENT_TYPE
+			if(MEDIUM_VENT_TYPE)
+				vent_size_level = LARGE_VENT_TYPE
+
+	//Finally, we're going to round robin through the list of ore vents and assign a mineral to them until complete.
+	//Basically, we're going to round robin through the list of ore vents and assign a mineral to them until complete.
+	for(var/obj/structure/ore_vent/vent as anything in possible_vents)
+		if(vent.unique_vent)
+			continue //Ya'll already got your minerals.
+		vent.generate_mineral_breakdown(map_loading = TRUE)
+
+
+	/// Handles roundstart logging
+	logger.Log(
+		LOG_CATEGORY_CAVE_GENERATION,
+		"Ore Generation spawned the following ores based on vent proximity",
+		list(
+			"[ORE_WALL_FAR]" = GLOB.post_ore_random["[ORE_WALL_FAR]"],
+			"[ORE_WALL_LOW]" = GLOB.post_ore_random["[ORE_WALL_LOW]"],
+			"[ORE_WALL_MEDIUM]" = GLOB.post_ore_random["[ORE_WALL_MEDIUM]"],
+			"[ORE_WALL_HIGH]" = GLOB.post_ore_random["[ORE_WALL_HIGH]"],
+			"[ORE_WALL_VERY_HIGH]" = GLOB.post_ore_random["[ORE_WALL_VERY_HIGH]"],
+		),
+	)
+	logger.Log(
+		LOG_CATEGORY_CAVE_GENERATION,
+		"Ore Generation spawned the following ores randomly",
+		list(
+			"[ORE_WALL_FAR]" = GLOB.post_ore_manual["[ORE_WALL_FAR]"],
+			"[ORE_WALL_LOW]" = GLOB.post_ore_manual["[ORE_WALL_LOW]"],
+			"[ORE_WALL_MEDIUM]" = GLOB.post_ore_manual["[ORE_WALL_MEDIUM]"],
+			"[ORE_WALL_HIGH]" = GLOB.post_ore_manual["[ORE_WALL_HIGH]"],
+			"[ORE_WALL_VERY_HIGH]" = GLOB.post_ore_manual["[ORE_WALL_VERY_HIGH]"],
+		),
+	)
+	logger.Log(
+		LOG_CATEGORY_CAVE_GENERATION,
+		"Ore Generation spawned the following vent sizes",
+		list(
+			"large" = LAZYACCESS(GLOB.ore_vent_sizes, LARGE_VENT_TYPE),
+			"medium" = LAZYACCESS(GLOB.ore_vent_sizes, MEDIUM_VENT_TYPE),
+			"small" = LAZYACCESS(GLOB.ore_vent_sizes, SMALL_VENT_TYPE),
+		),
+	)
+	return SS_INIT_SUCCESS
+
+/datum/controller/subsystem/ore_generation/fire(resumed)
+	available_boulders.Cut() // reset upon new fire.
+	for(var/obj/structure/ore_vent/current_vent as anything in processed_vents)
+
+		var/local_vent_count = 0
+		for(var/obj/item/boulder/old_rock in current_vent.loc)
+			available_boulders += old_rock
+			local_vent_count++
+
+		if(local_vent_count >= MAX_BOULDERS_PER_VENT)
+			continue //We don't want to be accountable for literally hundreds of unprocessed boulders for no reason.
+
+		available_boulders += current_vent.produce_boulder()

@@ -1,0 +1,47 @@
+name: Deploy on server remotely
+on:
+  workflow_dispatch:
+    inputs:
+      clean_build:
+        description: 'true for clearing cache and TGUI, always done for upstream merge, false otherwise'
+        required: false
+        default: 'false'
+jobs:
+  changelog_gen:
+    uses: ./.github/workflows/compile_changelogs.yml
+    secrets: inherit
+  build:
+    if: ${{ always() }}
+    needs: [changelog_gen]
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+      - name: Mark as pending deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          sync: true
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          proxy_host: ${{ secrets.PROXY_HOST }}
+          proxy_username: ${{ secrets.PROXY_USER }}
+          proxy_password: ${{ secrets.PROXY_PASSWORD }}
+          proxy_port: ${{ secrets.PROXY_PORT }}
+          script: bash deploy.sh
+      - name: Mark as clean build on deploy
+        if: ${{ inputs.clean_build == 'true' }}
+        uses: appleboy/ssh-action@v1
+        with:
+          sync: true
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          proxy_host: ${{ secrets.PROXY_HOST }}
+          proxy_username: ${{ secrets.PROXY_USER }}
+          proxy_password: ${{ secrets.PROXY_PASSWORD }}
+          proxy_port: ${{ secrets.PROXY_PORT }}
+          script: bash fix_upstream_merge.sh

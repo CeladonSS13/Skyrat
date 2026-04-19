@@ -1,0 +1,16 @@
+<!-- Most valid html will work in here, but you have to use URL links for images. -->
+
+<h1>Добро пожаловать на Celadon Skyrat</h1>
+<br>
+<b>Действующие правила: </b><br>
+<p><a href="https://skyrat.celadon.pro/index.php/Правила_Сервера">https://skyrat.celadon.pro/index.php/Правила_Сервера</a></p>
+<ul>
+  <li>У сервера отдельная база данных</li>
+  <li>На сервере отключен TTS</li>
+  <li>Временно: <b>VPN разрешен, но только на данном сервере</b></li>
+</ul>
+
+<p><b>Для подключения адрес сервера: </b>sky.celadon.pro:7731</p>
+<b>Discord:</b> <a href="https://discord.gg/rxsggTJzY3">https://discord.gg/rxsggTJzY3</a>
+<br>
+<b>Github:</b> <a href="https://github.com/skyrat1984test/skyrat1984test">https://github.com/skyrat1984test/skyrat1984test</a>

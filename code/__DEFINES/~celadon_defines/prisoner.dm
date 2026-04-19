@@ -1,0 +1,5 @@
+#define RADIO_CHANNEL_PRISON "Prison"
+#define RADIO_KEY_PRISON "j"
+#define RADIO_TOKEN_PRISON ":j"
+
+#define FREQ_PRISON 1473

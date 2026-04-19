@@ -1,0 +1,36 @@
+/world/proc/update_status()
+
+	var/list/features = list()
+
+	var/new_status = ""
+	// Celadon REMOVAL var/hostedby
+	if(config)
+		var/server_name = CONFIG_GET(string/servername)
+		if (server_name)
+			new_status += "<b>[server_name]</b> &#8212; "
+		// Celadon REMOVAL hostedby = CONFIG_GET(string/hostedby)
+
+	new_status += " ("
+	new_status += "<a href=\"[CONFIG_GET(string/discord_link)]\">"
+	new_status += "Discord"
+	new_status += "</a>)\]" //Celadon EDIT CHANGE
+	new_status += "<br>[CONFIG_GET(string/servertagline)]<br>"
+
+
+	var/players = GLOB.clients.len
+
+	if(SSmapping.current_map)
+		features += "[SSmapping.current_map.map_name]"
+
+	features += "~[players] player[players == 1 ? "": "s"]"
+
+	// Celadon REMOVAL START
+	// if (!host && hostedby)
+	// 	features += "hosted by <b>[hostedby]</b>"
+	// Celadon REMOVAL END
+
+	if(length(features))
+		new_status += "\[[jointext(features, ", ")]"
+
+	status = new_status
+

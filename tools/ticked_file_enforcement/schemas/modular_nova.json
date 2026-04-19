@@ -1,0 +1,16 @@
+{
+	"file": "tgstation.dme",
+	"scannable_directory": "modular_nova/",
+	"subdirectories": true,
+	"excluded_files": [],
+	"forbidden_includes": ["modular_nova/master_files/code/modules/cargo/packs/companies/ammo.dm",
+		"modular_nova/master_files/code/modules/cargo/packs/companies/apparel.dm",
+		"modular_nova/master_files/code/modules/cargo/packs/companies/armor.dm",
+		"modular_nova/master_files/code/modules/cargo/packs/companies/ballistics.dm",
+		"modular_nova/master_files/code/modules/cargo/packs/companies/energy.dm",
+		"modular_nova/master_files/code/modules/cargo/packs/companies/general.dm",
+		"modular_nova/master_files/code/modules/cargo/packs/companies/machines.dm",
+		"modular_nova/master_files/code/modules/cargo/packs/companies/medical.dm",
+		"modular_nova/master_files/code/modules/cargo/packs/companies/modsuits.dm",
+		"modular_nova/master_files/code/modules/cargo/packs/companies/tools_weapons.dm"]
+}

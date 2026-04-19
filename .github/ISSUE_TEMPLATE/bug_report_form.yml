@@ -1,0 +1,62 @@
+name: Bug Report
+description: Create a report to help reproduce and fix the issue.
+body:
+  - type: input
+    id: reporting-version
+    attributes:
+      label: "Версия BYOND:"
+      description: |
+        Какая версия BYOND у вас была при наблюдении бага. Может не заполняться если взято с баг-репортов с дискорда/неизвестна
+      placeholder: "xxx.xxxx"
+    validations:
+      required: false
+  - type: textarea
+    id: issue-summary
+    attributes:
+      label: "Описание:"
+      description: |
+        Краткое описание.
+      placeholder: |
+        "Когда я делаю A, происхоит B вместо C."
+        "На карте A проблема B."
+    validations:
+      required: true
+  - type: input
+    id: round-id
+    attributes:
+      label: "Round ID:"
+      description: |
+        Если найдено на локалке/неизвестно, тогда не заполняется.
+      placeholder: "XXXXXX"
+    validations:
+      required: false
+  - type: textarea
+    id: test-merges
+    attributes:
+      label: "Server Revision:"
+      description: |
+        Желательно указать всю информацию из вкладки OOC -> Show Server Revision. Если берется баг-репорт из дискорда, можно не заполнять
+    validations:
+      required: false
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: "Шаги по воспроизведению:"
+      description: |
+        Опишите как воспроизвести баг. Если у вас есть права кодера (Debug - View Runtimes), желательно прикрепить текст рантайма сюда.
+      placeholder: |
+        1. Подойти в зону (по названию APC) A
+        2. Сделать B
+        3. Получить результат C
+    validations:
+      required: true
+  - type: input
+    id: discord-link-report
+    attributes:
+      label: "Ссылка на баг-репорт в дискорде:"
+      description: |
+        Заполняется в случае, если сам репорт был сделан в дискорде и переносится сюда. Вставьте ссылку на сообщение
+      placeholder: "https://discord.com/channels/617003227182792704/1448076088541712485/1448076088541712485"
+    validations:
+      required: false
+

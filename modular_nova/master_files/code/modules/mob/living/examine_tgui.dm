@@ -1,0 +1,129 @@
+/datum/examine_panel
+	/// Mob that the examine panel belongs to.
+	var/mob/living/holder
+	/// The screen containing the appearance of the mob
+	var/atom/movable/screen/map_view/examine_panel_screen/examine_panel_screen
+
+/datum/examine_panel/New(mob/holder_mob)
+	holder = holder_mob
+
+/datum/examine_panel/Destroy(force)
+	holder = null
+	QDEL_NULL(examine_panel_screen)
+	return ..()
+
+/datum/examine_panel/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/examine_panel/ui_close(mob/user)
+	examine_panel_screen.hide_from(user)
+
+/atom/movable/screen/map_view/examine_panel_screen
+	name = "examine panel screen"
+
+/datum/examine_panel/ui_interact(mob/user, datum/tgui/ui)
+	if(!examine_panel_screen)
+		examine_panel_screen = new
+		examine_panel_screen.name = "screen"
+		examine_panel_screen.assigned_map = "examine_panel_[REF(holder)]_map"
+		examine_panel_screen.del_on_map_removal = FALSE
+		examine_panel_screen.screen_loc = "[examine_panel_screen.assigned_map]:1,1"
+
+	var/mutable_appearance/current_mob_appearance = new(holder)
+	current_mob_appearance.setDir(SOUTH)
+	current_mob_appearance.transform = matrix() // We reset their rotation, in case they're lying down.
+
+	// In case they're pixel-shifted, we bring 'em back!
+	current_mob_appearance.pixel_x = 0
+	current_mob_appearance.pixel_y = 0
+
+	examine_panel_screen.cut_overlays()
+	examine_panel_screen.add_overlay(current_mob_appearance)
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ExaminePanel")
+		ui.open()
+		examine_panel_screen.display_to(user, ui.window)
+
+/datum/examine_panel/ui_data(mob/user)
+
+	var/datum/preferences/preferences = holder.client?.prefs
+
+	var/flavor_text
+	var/custom_species
+	var/custom_species_lore
+	var/obscured
+	var/ooc_notes = ""
+	// Celadon REMOVAL START
+	// var/ideal_antag_optin_status
+	// var/current_antag_optin_status
+	// Celadon REMOVAL END
+	var/headshot = ""
+
+	// OOC notes go first
+	// Celadon REMOVAL if(preferences)
+		// Celadon REMOVAL OF ERP EXAMINE START, END
+		// Celadon REMOVAL START
+		// if(!CONFIG_GET(flag/disable_antag_opt_in_preferences))
+		// 	var/antag_prefs = holder.mind?.ideal_opt_in_level
+		// 	var/effective_opt_in_level = holder.mind?.get_effective_opt_in_level()
+		// 	if(isnull(antag_prefs))
+		// 		antag_prefs = preferences.read_preference(/datum/preference/choiced/antag_opt_in_status)
+		// 	current_antag_optin_status = GLOB.antag_opt_in_strings[num2text(effective_opt_in_level)]
+		// 	ideal_antag_optin_status = GLOB.antag_opt_in_strings[num2text(antag_prefs)]
+		// Celadon REMOVAL END
+
+	// Now we handle silicon and/or human, order doesn't matter as both obviously can't fire.
+	// If other variants of mob/living need to be handled at some point, put them here.
+	if(issilicon(holder))
+		custom_species = "Silicon"
+		custom_species_lore = "A silicon unit, like a cyborg or pAI."
+		if(preferences)
+			flavor_text = preferences.read_preference(/datum/preference/text/silicon_flavor_text)
+			// Celadon REMOVAL flavor_text_nsfw = preferences.read_preference(/datum/preference/text/silicon_flavor_text_nsfw)
+			ooc_notes += preferences.read_preference(/datum/preference/text/ooc_notes)
+			// Celadon REMOVAL  ooc_notes_nsfw += preferences.read_preference(/datum/preference/text/ooc_notes_nsfw)
+			headshot += preferences.read_preference(/datum/preference/text/headshot/silicon)
+
+	if(ishuman(holder))
+		var/mob/living/carbon/human/holder_human = holder
+		var/can_bypass_obscure = holder == user || (user?.client?.holder && isobserver(user)) // A variable for bypassing data hide due to a mask, for the player themselves (against themselves) or for the administration as an observer.
+		obscured = !can_bypass_obscure && ((holder_human.wear_mask && (holder_human.wear_mask.flags_inv & HIDEFACE)) || (holder_human.head && (holder_human.head.flags_inv & HIDEFACE)))
+		custom_species = obscured ? "Obscured" : holder_human.dna.species.lore_protected ? holder_human.dna.species.name : holder_human.dna.features["custom_species"]
+		flavor_text = obscured ? "Obscured" : holder_human.dna.features[EXAMINE_DNA_FLAVOR_TEXT]
+		// Celadon REMOVAL OF ERP EXAMINE START, END
+		custom_species_lore = obscured ? "Obscured" : holder_human.dna.species.lore_protected ? holder_human.dna.species.get_species_lore().Join("\n") : holder_human.dna.features["custom_species_lore"]
+		ooc_notes += holder_human.dna.features[EXAMINE_DNA_OOC_NOTES]
+		// Celadon REMOVAL OF ERP EXAMINE START, END
+		if(!obscured)
+			headshot += holder_human.dna.features[EXAMINE_DNA_HEADSHOT]
+
+	var/list/data = list(
+		// Danger—do not touch
+		"assigned_map" = examine_panel_screen.assigned_map,
+		// Identity
+		"character_name" = obscured ? "Unknown" : holder.name,
+		"headshot" = headshot,
+		"obscured" = obscured ? TRUE : FALSE,
+		// Descriptions
+		"flavor_text" = flavor_text,
+		"ooc_notes" = ooc_notes,
+		"custom_species" = custom_species,
+		"custom_species_lore" = custom_species_lore,
+		// Celadon REMOVAL OF ERP EXAMINE START, END
+		// Antaggery
+		// Celadon REMOVAL START
+		// "ideal_antag_optin_status" = ideal_antag_optin_status, // Our opt-in status from prefs when we joined the game
+		// "current_antag_optin_status" = current_antag_optin_status, // What it's being forced to if applicable
+		// Celadon REMOVAL END
+	)
+	return data
+
+/datum/examine_panel/ui_static_data(mob/user)
+	var/list/data = list(
+		"nova_star_status" = !!(holder.client && SSplayer_ranks.is_nova_star(holder.client, admin_bypass = FALSE)),
+		// Celadon REMOVAL "opt_in_colors" = GLOB.antag_opt_in_colors,
+	)
+	return data
+
