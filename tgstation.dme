@@ -10006,6 +10006,7 @@
 #include "modular_celadon\modules\april_fools_day\medibot\code\phrases.dm"
 #include "modular_celadon\modules\april_fools_day\hygienebot\code\phrases.dm"
 #include "modular_celadon\modules\robot_hare_boss\code\robot_hare.dm"
+#include "modular_celadon\modules\robot_hare_boss\code\hare_actions.dm"
 #include "modular_celadon\modules\robot_hare_boss\code\station_stuff.dm"
 #include "modular_celadon\modules\robot_hare_boss\code\crate.dm"
 #include "modular_celadon\modules\robot_hare_boss\code\map.dm"

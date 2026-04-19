@@ -920,7 +920,13 @@ NOVA EDIT REMOVAL END */
 			var/icon/mob_mask = icon(icon, icon_state)
 			if(get_cached_height() > ICON_SIZE_Y || get_cached_width() > ICON_SIZE_X)
 				var/health_doll_icon_state = health_doll_icon ? health_doll_icon : "megasprite"
-				mob_mask = icon('icons/hud/screen_gen.dmi', health_doll_icon_state) //swap to something generic if they have no special doll
+				// Celadon REMOVAL mob_mask = icon('icons/hud/screen_gen.dmi', health_doll_icon_state) //swap to something generic if they have no special doll
+				// Celadon AADDITION START (robot_hare_boss)
+				if(health_doll_icon == "robothare")
+					mob_mask = icon('modular_celadon/modules/robot_hare_boss/icons/screen_gen.dmi', health_doll_icon_state)
+				else
+					mob_mask = icon('icons/hud/screen_gen.dmi', health_doll_icon_state) //swap to something generic if they have no special doll
+				// Celadon AADDITION END
 			livingdoll.add_filter("mob_shape_mask", 1, alpha_mask_filter(icon = mob_mask))
 			livingdoll.add_filter("inset_drop_shadow", 2, drop_shadow_filter(size = -1))
 	if(severity > 0)
