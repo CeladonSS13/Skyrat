@@ -28,6 +28,7 @@
     var/rod_extended = FALSE
     var/cooling_timer = null
     var/image/current_rod_overlay
+    var/image/current_mag_overlay
 /obj/item/gun/ballistic/automatic/automatically_weapon/Initialize(mapload)
     . = ..()
     AddComponent(/datum/component/automatic_fire, 0.2 SECONDS)
@@ -108,17 +109,29 @@
     else if(rod_extended)
         . += span_info("The cooling rod is extended. The weapon is hot but still operational.")
 /obj/item/gun/ballistic/automatic/automatically_weapon/update_overlays()
-    . = ..()
-    cut_overlay(list("mag_overlay"))
-    if(magazine && magazine.stored_ammo.len > 0)
-        var/ammo = magazine.stored_ammo.len
-        var/mag_icon = "automatically_mag-[round(ammo, 5)]"
-        var/image/mag_overlay = image(icon, mag_icon)
-        mag_overlay.layer = FLOAT_LAYER
-        add_overlay(mag_overlay)
-        add_overlay("mag_overlay", mag_overlay)
-    update_icon()
-/obj/item/gun/ballistic/automatic/automatically_weapon/attack_self(mob/user)
-    . = ..()
-    update_overlays()
-    update_icon()
+    if(current_mag_overlay)
+        cut_overlay(current_mag_overlay)
+        current_mag_overlay = null
+
+    if(magazine)
+        var/ammo = magazine.ammo_count(TRUE)
+        var/mag_icon_state = "automatically_mag"
+
+        if(ammo > 25)
+            mag_icon_state = "automatically_mag-30"
+        else if(ammo > 20)
+            mag_icon_state = "automatically_mag-25"
+        else if(ammo > 15)
+            mag_icon_state = "automatically_mag-20"
+        else if(ammo > 10)
+            mag_icon_state = "automatically_mag-15"
+        else if(ammo > 5)
+            mag_icon_state = "automatically_mag-10"
+        else if(ammo > 0)
+            mag_icon_state = "automatically_mag-5"
+        else
+            mag_icon_state = "automatically_mag-0"
+
+        current_mag_overlay = image(icon, mag_icon_state)
+        current_mag_overlay.layer = FLOAT_LAYER
+        add_overlay(current_mag_overlay)
