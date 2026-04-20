@@ -4,7 +4,7 @@
 	damage = 50
 	armour_penetration = 40
 	icon_state = "bullet"
-	wound_bonus = 50
+	wound_bonus = 40
 ///////////////////////////
 // gulza/patron
 /obj/item/ammo_casing/a762_phaze
