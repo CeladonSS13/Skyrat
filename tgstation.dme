@@ -10012,5 +10012,5 @@
 #include "modular_celadon\modules\weapons_addon\code\weapon_PZH\ammo\magazine.dm"
 #include "modular_celadon\modules\weapons_addon\code\weapon_PZH\ammo\ammo_box.dm"
 #include "modular_celadon\modules\weapons_addon\code\weapon_PZH\weapon\automatically_weapon.dm"
-#include "modular_celadon\modules\weapons_addon\code\weapon_PZH\cargo\cargo.dm"
+#include "modular_celadon\modules\cargo\code\weapon_PZH.dm"
 // END_INCLUDE
