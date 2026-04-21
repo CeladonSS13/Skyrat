@@ -16,7 +16,7 @@
     icon = 'modular_celadon/modules/weapons_addon/code/weapon_PZH/icon/phz.dmi'
     icon_state = "plasma_jet"
     damage_type = BURN
-	armor_flag = BULLET
+    armor_flag = BULLET
     wound_bonus = 30
 
 /obj/projectile/energy/a762_phaze/energy
