@@ -14,7 +14,7 @@
     icon = 'modular_celadon/modules/weapons_addon/code/weapon_PZH/icon/phz.dmi'
     icon_state = "762_casing_phaze_energy"
     caliber = PHAZE762
-    projectile_type = /obj/projectile/energy/a762_phaze_energy
+    projectile_type = /obj/projectile/energy/a762_phaze/energy
     harmful = TRUE
 
 /obj/item/ammo_casing/a762_phaze_plasma
@@ -23,5 +23,5 @@
     icon = 'modular_celadon/modules/weapons_addon/code/weapon_PZH/icon/phz.dmi'
     icon_state = "762_casing_phaze_plasma"
     caliber = PHAZE762
-    projectile_type = /obj/projectile/plasma/a762_phaze_plasma
+    projectile_type = /obj/projectile/energy/a762_phaze/plasma
     harmful = TRUE
