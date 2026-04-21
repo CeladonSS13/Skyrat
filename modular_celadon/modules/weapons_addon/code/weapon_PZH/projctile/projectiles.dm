@@ -13,7 +13,7 @@
     name = "7.62x39mm plasma"
     damage = 25
     armour_penetration = 70
-    icon = 'modular_celadon/modules/weapons_addon/code/weapon_PZH/icon/phz.dmi'
+    icon = 'modular_celadon/modules/weapons_addon/icons/phz.dmi'
     icon_state = "plasma_jet"
     damage_type = BURN
     armor_flag = BULLET
@@ -24,7 +24,7 @@
     damage = 15
     armour_penetration = 10
     wound_bonus= 15
-    icon = 'modular_celadon/modules/weapons_addon/code/weapon_PZH/icon/phz.dmi'
+    icon = 'modular_celadon/modules/weapons_addon/icons/phz.dmi'
     icon_state = "energy"
     damage_type = BURN
     armor_flag = ENERGY

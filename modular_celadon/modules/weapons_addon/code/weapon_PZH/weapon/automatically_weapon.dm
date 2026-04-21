@@ -4,7 +4,7 @@
 /obj/item/gun/ballistic/automatic/automatically_weapon
     name = "Phaze Shift T-9"
     desc = "A high-precision automatic rifle equipped with an active heat dissipation system. When a critical temperature is reached in the receiver, the internal mechanism pushes the rod into the groove outside the weapon."
-    icon = 'modular_celadon/modules/weapons_addon/code/weapon_PZH/icon/phz.dmi'
+    icon = 'modular_celadon/modules/weapons_addon/icons/phz.dmi'
     icon_state = "automatically"
     base_icon_state = "automatically"
     inhand_icon_state = "automatically"
