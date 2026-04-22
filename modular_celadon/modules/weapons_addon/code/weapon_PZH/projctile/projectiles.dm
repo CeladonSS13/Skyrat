@@ -1,6 +1,6 @@
 /obj/projectile/bullet/a762_phaze
     name = "7.62x39mm bullet"
-    damage = 40
+    damage = 30
     armour_penetration = 25
     icon_state = "bullet"
     wound_bonus = 30
