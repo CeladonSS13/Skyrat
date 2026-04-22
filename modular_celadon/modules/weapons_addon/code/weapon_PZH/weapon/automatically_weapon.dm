@@ -111,11 +111,9 @@
     else if(rod_extended)
         . += span_info("The cooling rod is extended. The weapon is hot but still operational.")
 /obj/item/gun/ballistic/automatic/automatically_weapon/update_overlays()
-    . = ..()
     if(current_mag_overlay)
         cut_overlay(current_mag_overlay)
         current_mag_overlay = null
-
     if(magazine)
         var/ammo = magazine.ammo_count(TRUE)
         var/mag_icon_state = "automatically_mag"
@@ -134,7 +132,6 @@
             mag_icon_state = "automatically_mag-5"
         else
             mag_icon_state = "automatically_mag-0"
-
         current_mag_overlay = image(icon, mag_icon_state)
         current_mag_overlay.layer = FLOAT_LAYER
         add_overlay(current_mag_overlay)
