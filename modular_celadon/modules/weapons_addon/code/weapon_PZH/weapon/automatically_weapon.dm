@@ -19,12 +19,13 @@
     mag_display = TRUE
     mag_display_ammo = TRUE
     empty_indicator = TRUE
-    fire_sound = "modular_celadon/modules/weapons_addon/code/weapon_PZH/sound/bad-explosion.ogg"
+    fire_sound = 'modular_celadon/modules/weapons_addon/code/weapon_PZH/sound/bad-explosion.ogg'
+    fire_sound_volume = 100
     // System heat
     var/current_heat = 0
     var/max_heat = 100
     var/heat_per_shot = 5
-    var/cool_down_per_second = 5
+    var/cool_down_per_second = 2
     var/overheated = FALSE
     var/rod_extended = FALSE
     var/cooling_timer = null
@@ -86,7 +87,7 @@
         update_heat_state()
         if(current_heat >= max_heat)
             to_chat(user, span_userdanger("[src] overheats! The cooling rod extends. Wait for cooldown!"))
-            addtimer(CALLBACK(src, PROC_REF(reset_overheat)), 10 SECONDS)
+            addtimer(CALLBACK(src, PROC_REF(reset_overheat)), 5 SECONDS)
     update_overlays()
     update_icon()
 /obj/item/gun/ballistic/automatic/automatically_weapon/proc/overheat()
@@ -110,7 +111,6 @@
     else if(rod_extended)
         . += span_info("The cooling rod is extended. The weapon is hot but still operational.")
 /obj/item/gun/ballistic/automatic/automatically_weapon/update_overlays()
-    . = ..()
     if(current_mag_overlay)
         cut_overlay(current_mag_overlay)
         current_mag_overlay = null
