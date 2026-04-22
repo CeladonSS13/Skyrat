@@ -18,6 +18,7 @@
     damage_type = BURN
     armor_flag = BULLET
     wound_bonus = 30
+    impact_effect_type = /obj/effect/temp_visual/impact_effect/energy
 
 /obj/projectile/energy/a762_phaze/energy
     name = "7.62x39mm energy"
@@ -28,3 +29,4 @@
     icon_state = "energy"
     damage_type = BURN
     armor_flag = ENERGY
+    impact_effect_type = /obj/effect/temp_visual/impact_effect/energy
