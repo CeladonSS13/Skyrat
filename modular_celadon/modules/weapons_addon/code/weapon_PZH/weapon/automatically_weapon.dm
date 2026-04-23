@@ -33,7 +33,7 @@
     var/image/current_mag_overlay
 /obj/item/gun/ballistic/automatic/automatically_weapon/Initialize(mapload)
     . = ..()
-    AddComponent(/datum/component/automatic_fire, 0.2 SECONDS)
+    AddComponent(/datum/component/automatic_fire, 0.4 SECONDS)
     start_cooling_loop()
     update_overlays()
 /obj/item/gun/ballistic/automatic/automatically_weapon/Destroy()
