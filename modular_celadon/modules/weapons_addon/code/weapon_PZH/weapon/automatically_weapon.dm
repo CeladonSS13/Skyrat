@@ -33,7 +33,7 @@
     var/image/current_mag_overlay
 /obj/item/gun/ballistic/automatic/automatically_weapon/Initialize(mapload)
     . = ..()
-    AddComponent(/datum/component/automatic_fire, 0.2 SECONDS)
+    AddComponent(/datum/component/automatic_fire, 0.4 SECONDS)
     start_cooling_loop()
     update_overlays()
 /obj/item/gun/ballistic/automatic/automatically_weapon/Destroy()
@@ -110,14 +110,13 @@
         . += span_warning("The cooling rod is fully extended! The weapon is too hot to fire.")
     else if(rod_extended)
         . += span_info("The cooling rod is extended. The weapon is hot but still operational.")
-/obj/item/gun/ballistic/automatic/automatically_weapon/update_overlays()
+/obj/item/gun/ballistic/automatic/automatically_weapon/update_overlays() // Etot kysok nysjno bydat sdelat small
     if(current_mag_overlay)
         cut_overlay(current_mag_overlay)
         current_mag_overlay = null
     if(magazine)
         var/ammo = magazine.ammo_count(TRUE)
         var/mag_icon_state = "automatically_mag"
-
         if(ammo > 25)
             mag_icon_state = "automatically_mag-30"
         else if(ammo > 20)
