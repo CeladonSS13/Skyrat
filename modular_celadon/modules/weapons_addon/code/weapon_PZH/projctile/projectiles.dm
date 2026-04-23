@@ -8,8 +8,7 @@
     armor_flag = BULLET
     hitsound_wall = SFX_RICOCHET
     sharpness = SHARP_POINTY
-
-/obj/projectile/energy/a762_phaze/plasma
+/obj/projectile/energy/a762_phaze/a762_phaze_plasma
     name = "7.62x39mm plasma"
     damage = 25
     armour_penetration = 70
@@ -19,8 +18,7 @@
     armor_flag = BULLET
     wound_bonus = 30
     impact_effect_type = /obj/effect/temp_visual/impact_effect/energy
-
-/obj/projectile/energy/a762_phaze/energy
+/obj/projectile/energy/a762_phaze/a762_phaze_energy
     name = "7.62x39mm energy"
     damage = 15
     armour_penetration = 10

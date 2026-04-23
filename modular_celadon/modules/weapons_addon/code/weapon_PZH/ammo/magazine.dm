@@ -5,7 +5,7 @@
     icon_state = "magazine_phaze-30"
     base_icon_state="magazine_phaze"
     ammo_type = /obj/item/ammo_casing/a762_phaze
-    caliber = "762_phaze"
+    caliber = PHAZE762
     max_ammo = 30
 //Update magazine icons
 /obj/item/ammo_box/magazine/m762_phaze/update_icon_state()
