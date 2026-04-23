@@ -111,8 +111,6 @@
     else if(rod_extended)
         . += span_info("The cooling rod is extended. The weapon is hot but still operational.")
 /obj/item/gun/ballistic/automatic/automatically_weapon/update_overlays()
-    .  ..()
-    cut_overlays()
     if(current_mag_overlay)
         cut_overlay(current_mag_overlay)
         current_mag_overlay = null
