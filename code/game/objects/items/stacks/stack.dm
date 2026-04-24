@@ -472,7 +472,7 @@
 		// CELADON ADDITION START
 		if (istype(created, /obj/item/stack/tile))
 			for (var/m in result_mats)
-				if (!result_mats[m])
+				if (!mats_per_unit[m] || !result_mats[m])
 					continue
 				result_mats[m] = mats_per_unit[m]
 		// CELADON ADDITION END
