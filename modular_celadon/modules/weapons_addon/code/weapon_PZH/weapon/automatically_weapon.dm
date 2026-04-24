@@ -110,32 +110,6 @@
         . += span_warning("The cooling rod is fully extended! The weapon is too hot to fire.")
     else if(rod_extended)
         . += span_info("The cooling rod is extended. The weapon is hot but still operational.")
-
-//obj/item/gun/ballistic/automatic/automatically_weapon/update_overlays() // Etot kysok nysjno bydat sdelat small
-//    if(current_mag_overlay)
-//        cut_overlay(current_mag_overlay)
-//        current_mag_overlay = null
-//    if(magazine)
-//        var/ammo = magazine.ammo_count(TRUE)
-//        var/mag_icon_state = "automatically_mag"
-//        if(ammo > 25)
-//            mag_icon_state = "automatically_mag-30"
-//        else if(ammo > 20)
-//            mag_icon_state = "automatically_mag-25"
-//        else if(ammo > 15)
-//            mag_icon_state = "automatically_mag-20"
-//        else if(ammo > 10)
-//            mag_icon_state = "automatically_mag-15"
-//        else if(ammo > 5)
-//           mag_icon_state = "automatically_mag-10"
-//       else if(ammo > 0)
-//            mag_icon_state = "automatically_mag-5"
-//        else
-//            mag_icon_state = "automatically_mag-0"
-//        current_mag_overlay = image(icon, mag_icon_state)
-//        current_mag_overlay.layer = FLOAT_LAYER
-//        add_overlay(current_mag_overlay)
-//Update magazine icons
 /obj/item/gun/ballistic/automatic/automatically_weapon/update_overlays()
     if(current_mag_overlay)
         cut_overlay(current_mag_overlay)
