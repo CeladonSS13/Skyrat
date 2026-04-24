@@ -471,10 +471,9 @@
 		var/list/result_mats = used_stack.mats_per_unit.Copy()
 		// CELADON ADDITION START
 		if (istype(created, /obj/item/stack/tile))
-			for (var/m in result_mats)
-				if (!(m in mats_per_unit))
-					continue
-				result_mats[m] = mats_per_unit[m]
+			var/list/baselist = src::mats_per_unit
+			if (baselist != null && islist(baselist))
+				result_mats = baselist.Copy()
 		// CELADON ADDITION END
 		for(var/mat in recipe.removed_mats)
 			var/to_remove = recipe.removed_mats[mat]
