@@ -378,9 +378,11 @@
 
 ///////////////////////// Weapons /////////////////////////
 
-// Modularly removes x-ray
-/datum/techweb_node/beam_weapons/New()
-	design_ids -= list(
-		"xray_laser",
-	)
-	return ..()
+// CELADON REMOVAL START
+// // Modularly removes x-ray
+// /datum/techweb_node/beam_weapons/New()
+// 	design_ids -= list(
+// 		"xray_laser",
+// 	)
+// 	return ..()
+// CELADON REMOVAL END

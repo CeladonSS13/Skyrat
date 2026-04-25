@@ -56,7 +56,9 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
-// Disables xray design
-/datum/design/xray/New()
-	id = DESIGN_ID_IGNORE // Original: id = "xray_laser"
-	return ..()
+// CELADON REMOVAL START
+// // Disables xray design
+// /datum/design/xray/New()
+// 	id = DESIGN_ID_IGNORE // Original: id = "xray_laser"
+// 	return ..()
+// CELADON REMOVAL END
