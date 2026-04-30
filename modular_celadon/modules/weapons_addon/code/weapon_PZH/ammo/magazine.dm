@@ -11,6 +11,7 @@
     max_ammo = 30
 //Update magazine icons
 /obj/item/ammo_box/magazine/m762_phaze/update_icon_state()
+    . = ..()
     if(stored_ammo.len <= 0)
         icon_state = "[base_icon_state]-0"
     else
