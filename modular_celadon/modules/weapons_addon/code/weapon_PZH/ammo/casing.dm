@@ -1,10 +1,10 @@
-#define PHAZE762 "762-caliber"
+#define CALIBER_762PHAZE ".762 Phaze"
 /obj/item/ammo_casing/a762_phaze
     name = "7.62x39mm phaze round"
     desc = "A powerful rifle cartridge. Designed specifically for phaze Shift T-9."
     icon = 'modular_celadon/modules/weapons_addon/icons/phz.dmi'
     icon_state = "762_casing_phaze"
-    caliber = PHAZE762
+    caliber = CALIBER_762PHAZE
     projectile_type = /obj/projectile/bullet/a762_phaze
     harmful = TRUE
 /obj/item/ammo_casing/a762_phaze/a762_phaze_plasma
