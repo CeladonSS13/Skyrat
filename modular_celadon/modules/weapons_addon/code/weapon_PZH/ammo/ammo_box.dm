@@ -7,5 +7,5 @@
     multiple_sprites = AMMO_BOX_FULL_EMPTY
     multiple_sprite_use_base = TRUE
     ammo_type = /obj/item/ammo_casing/a762_phaze
-    caliber = PHAZE762
+    caliber = CALIBER_762PHAZE
     max_ammo = 60
