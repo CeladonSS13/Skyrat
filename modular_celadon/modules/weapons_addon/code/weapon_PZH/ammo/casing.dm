@@ -1,4 +1,4 @@
-#define PHAZE762 "762-caliber"
+#define CALIBER_762PHAZE ".762 Phaze"
 /obj/item/ammo_casing/a762_phaze
     name = "7.62x39mm phaze round"
     desc = "A powerful rifle cartridge. Designed specifically for phaze Shift T-9."
