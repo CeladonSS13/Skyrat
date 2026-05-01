@@ -6,12 +6,10 @@
     base_icon_state = "magazine_phaze"
     ammo_type = /obj/item/ammo_casing/a762_phaze
     caliber = CALIBER_762PHAZE
-//    multiple_sprites = AMMO_BOX_PER_BULLET
-//    multiple_sprite_use_base = TRUE
+    multiple_sprite_use_base = TRUE
     max_ammo = 30
 //Update magazine icons
-/obj/item/ammo_box/magazine/m762_phaze/update_icon_state()
-    . = ..()
+obj/item/ammo_box/magazine/m762_phaze/update_icon_state()
     if(stored_ammo.len <= 0)
         icon_state = "[base_icon_state]-0"
     else
