@@ -1,18 +1,23 @@
 #define COMSIG_ROBOT_FOLD_UNFOLD_STARTED "mob_robot_fold_unfold_started"
 
-#define ROBOHARE_PHASE2 (health <= maxHealth * 0.5)
+#define ROBOTHARE_ENRAGED (health < maxHealth * 0.5)
 
 /*
  * ROBOT HARE
  *
+ * A secret development by Soviet scientists.
+ * Spawns on fallen soviet space ship "Soyuz"
+ *
  * The Robot Hare is a mechanical boss found in Lavaland. It's an aggressive robotic entity that:
- * - Hit with hand in melee attacks
+ * - Hit with welder-hand in melee attacks
  * - Shoots lightning bolts at range when the target is far away
  * - Enters Phase 2 at 50% health, becoming faster and more aggressive
  * - When defeated, becomes a broken robot that can be salvaged for useful loot
  *
  * TODO: make ability to unweld walls with inbuild welder (with fancy animated icon)
- *       make some minigames
+ *       make some boss-minigames
+ *		 can fullheal if folded back (only in 1st phase)
+ *       can expand his hand to hit player
  *
  * Difficulty: Medium-Hard
  */
@@ -24,7 +29,7 @@
 	maxHealth = 2000
 	attack_verb_continuous = "strikes"
 	attack_verb_simple = "strike"
-	attack_sound = 'sound/items/weapons/genhit.ogg'
+	attack_sound = 'sound/items/tools/welder.ogg'
 	icon_state = "robothare_folded"
 	icon_living = "robothare"
 	icon_dead = "robothare_broken"
@@ -41,17 +46,20 @@
 	speed = 6
 	move_to_delay = 6
 	ranged = TRUE
+	pixel_x = -32
+	base_pixel_x = -32
+	maptext_height = 64
+	maptext_width = 64
 	ranged_cooldown_time = 3 SECONDS
 	aggro_vision_range = 21
 	loot = list(/obj/structure/closet/crate/necropolis/robothare)
 	crusher_loot = /obj/structure/closet/crate/necropolis/robothare/crusher
 	replace_crusher_drop = TRUE
-	wander = FALSE
+	wander = TRUE
 	gps_name = "Metal-Carrot Signal"
 	achievement_type = /datum/award/achievement/boss/robothare_kill
 	crusher_achievement_type = /datum/award/achievement/boss/robothare_crusher
 	score_achievement_type = /datum/award/score/robothare_score
-	SET_BASE_PIXEL(-32, -16)
 	del_on_death = FALSE
 	death_sound = 'sound/effects/explosion/explosion1.ogg'
 	initial_language_holder = /datum/language_holder/machine
@@ -68,16 +76,18 @@
 	var/datum/action/cooldown/mob_cooldown/projectile_attack/lightning_bolt/lightning_attack
 	/// Fold and Unfold ability
 	var/datum/action/cooldown/fold_unfold/fold_and_unfold
-	/// Whether we've already shown phase 2 transition message
-	var/phase2_announced = FALSE
+	/// Attack by extendo-arm
+	var/datum/action/cooldown/mob_cooldown/projectile_attack/telescopic_arm/arm_attack
 
 /mob/living/simple_animal/hostile/megafauna/robothare/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NO_FLOATING_ANIM, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_NO_FLOATING_ANIM, INNATE_TRAIT) // onground mob
 	lightning_attack = new(src)
 	fold_and_unfold = new(src)
+	arm_attack = new(src)
 	lightning_attack.Grant(src)
 	fold_and_unfold.Grant(src)
+	arm_attack.Grant(src)
 	RegisterSignal(src, COMSIG_ROBOT_FOLD_UNFOLD_STARTED, PROC_REF(fold_and_unfold))
 	RegisterSignal(src, COMSIG_MOB_ABILITY_STARTED, PROC_REF(on_attack_start))
 	RegisterSignal(src, COMSIG_MOB_ABILITY_FINISHED, PROC_REF(on_attack_end))
@@ -93,6 +103,7 @@
 /mob/living/simple_animal/hostile/megafauna/robothare/Destroy()
 	lightning_attack = null
 	fold_and_unfold = null
+	arm_attack = null
 	return ..()
 
 /mob/living/simple_animal/hostile/megafauna/robothare/AttackingTarget(atom/attacked_target)
@@ -125,7 +136,9 @@
 /mob/living/simple_animal/hostile/megafauna/robothare/proc/fold_and_unfold(mob/living/owner, datum/action/cooldown/activated)
 	SIGNAL_HANDLER
 	//cant fold back in rage state
-	if(phase2_announced)
+	if(phase == 2)
+		if(client)
+			balloon_alert(src, "you can't fold back!")
 		return
 	if(folded)
 		icon_state = "robothare"
@@ -151,68 +164,65 @@
 	if(folded)
 		return
 
-	// Check for phase 2 transition
-	if(ROBOHARE_PHASE2 && phase == 1 && !phase2_announced)
-		phase = 2
-		phase2_announced = TRUE
-		phase2_transition()
-
-	// Phase 2: faster attacks and more aggressive behavior
-	if(phase == 2)
-		anger_modifier = clamp(((maxHealth - health)/40), 0, 30)
-	else
-		anger_modifier = clamp(((maxHealth - health)/60), 0, 20)
-
-	// Calculate distance to target
 	var/dist = get_dist(src, target)
 
 	// If target is far away, use lightning attack
 	if(dist >= 5 && prob(60 + anger_modifier))
-		lightning_attack.Trigger(target = target)
+		if(prob(50))
+			lightning_attack.Trigger(target = target)
+		else
+			arm_attack.Trigger(target = target)
 		return
 
 	// If target is at medium range, sometimes use lightning
 	if(dist >= 3 && prob(30 + anger_modifier))
-		lightning_attack.Trigger(target = target)
+		if(prob(50))
+			lightning_attack.Trigger(target = target)
+		else
+			arm_attack.Trigger(target = target)
 		return
 
-	// Otherwise, chase and melee
-	// Ranged cooldown is handled by parent
+/mob/living/simple_animal/hostile/megafauna/robothare/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
+	anger_modifier = clamp(((maxHealth - health)/60), 0, 20)
+
+	// if we lose more than a half of health - switch to second phase
+	if(ROBOTHARE_ENRAGED && phase == 1)
+		visible_message(span_danger("[src]'s eyes glow brighter! It enters an enraged state!"))
+		add_overlay("eyes_alert")
+		playsound(src, 'sound/effects/empulse.ogg', 150, TRUE)
+		phase = 2
+		// and also make robot more agressive
+		ranged_cooldown_time = 2 SECONDS
+		speed = 5
+		move_to_delay = 5
+
+	if(!forced)
+		return FALSE
+	return ..()
 
 /**
  * Handle attack start events for visual effects
  */
 /mob/living/simple_animal/hostile/megafauna/robothare/proc/on_attack_start(mob/living/owner, datum/action/cooldown/activated)
 	SIGNAL_HANDLER
+	if(folded)
+		return
+
 	if(activated == lightning_attack)
-		icon_state = "robothare_ranged"
+		icon_state = "robothare_ranged_lightning"
+	if(activated == arm_attack)
+		icon_state = "robothare_ranged_arm"
 
 /**
  * Handle attack end events to reset visuals
  */
 /mob/living/simple_animal/hostile/megafauna/robothare/proc/on_attack_end(mob/living/owner, datum/action/cooldown/finished)
 	SIGNAL_HANDLER
-	if(finished == lightning_attack)
+	if(folded)
+		return
+
+	if(finished == lightning_attack || finished == arm_attack)
 		icon_state = "robothare"
-
-/**
- * Phase 2 transition - increase speed and aggression
- */
-/mob/living/simple_animal/hostile/megafauna/robothare/proc/phase2_transition()
-	visible_message(span_danger("[src]'s eyes glow brighter! It enters an enraged state!"))
-	add_overlay("eyes_alert")
-	playsound(src, 'sound/effects/empulse.ogg', 150, TRUE)
-
-	// Increase speed
-	speed = 10
-	move_to_delay = 4
-
-
-	// Flash the screen of nearby players
-	for(var/mob/viewer in viewers(7, src))
-		if(viewer.client)
-			flash_color(viewer.client, "#00FFFF", 0.5)
-			shake_camera(viewer, 3, 2)
 
 /mob/living/simple_animal/hostile/megafauna/robothare/death(gibbed)
 	if(health > 0)
@@ -220,7 +230,7 @@
 
 	// Change to broken state
 	icon_state = "robothare_broken"
-	remove_overlay("eyes_alert")
+	cut_overlay("eyes_alert")
 	visible_message(span_danger("[src] collapses, sparking and broken!"))
 
 	neutralized = TRUE
@@ -269,7 +279,7 @@
 			/obj/item/stock_parts/power_store/cell/high,
 			/obj/item/food/grown/carrot,
 		)
-		new common_loot(loc)
+		new common_loot(loc, rand(1, 3))
 		to_chat(user, span_notice("You salvaged some useful components!"))
 
 	else if(loot_roll <= 70)
@@ -281,7 +291,7 @@
 			/obj/item/stock_parts/servo/femto,
 			/obj/item/stock_parts/matter_bin/bluespace,
 		)
-		new uncommon_loot(loc)
+		new uncommon_loot(loc, rand(1, 3))
 		to_chat(user, span_notice("You found some valuable machine parts!"))
 
 	else if(loot_roll <= 95)
@@ -306,12 +316,12 @@
 		new /obj/item/stack/sheet/iron (loc, 15)
 		new /obj/item/stack/sheet/plasteel (loc, 10)
 
-#undef ROBOHARE_PHASE2
+#undef ROBOTHARE_ENRAGED
 
 
 
 /**
- * Crusher Trophy: Robot Hare Ear
+ * Crusher Trophy: Robot Hare Hand
  * A trophy dropped when defeating the Robot Hare without taking significant damage
  */
 /obj/item/crusher_trophy/robot_hare_hand

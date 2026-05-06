@@ -33,25 +33,57 @@
 	if(owner)
 		playsound(owner, 'sound/machines/blastdoor.ogg', 100, TRUE)
 		SEND_SIGNAL(owner, COMSIG_ROBOT_FOLD_UNFOLD_STARTED)
+
+
 /**
- * Lightning Strike Visual Effect
+ * Telescopic arm Attack Action
  */
-/obj/effect/temp_visual/lightning_strike
-	name = "lightning strike"
-	desc = "A brilliant flash of electrical energy."
-	icon = 'modular_celadon/modules/robot_hare_boss/icons/96x96robot_hare.dmi'
-	icon_state = "lightning_effect"
-	layer = FLY_LAYER
-	plane = GAME_PLANE
-	duration = 5
-	light_system = OVERLAY_LIGHT
-	light_range = 3
-	light_color = "#88FFFF"
+/datum/action/cooldown/mob_cooldown/projectile_attack/telescopic_arm
+	name = "Telescopic Arm"
+	button_icon = 'modular_celadon/modules/robot_hare_boss/icons/actions_items.dmi'
+	button_icon_state = "telescopic_arm"
+	desc = "Fires a extendo-arm at the target."
+	cooldown_time = 10 SECONDS
+	projectile_type = /obj/projectile/telescopic_arm
+	projectile_sound = 'sound/items/weapons/slam.ogg'
 
-/obj/effect/temp_visual/lightning_strike/Initialize(mapload)
+
+/**
+ * Telescopic arm attack
+ */
+/obj/projectile/telescopic_arm
+	name = "hand"
+	icon_state = "hand"
+	icon = 'modular_celadon/modules/robot_hare_boss/icons/telescopic_arm.dmi'
+	pass_flags = PASSTABLE
+	damage = 20
+	stamina = 20
+	armour_penetration = 60
+	damage_type = BRUTE
+	hitsound = 'sound/items/weapons/genhit2.ogg'
+	/// You got hit by extendo arm, the bigger one!
+	var/datum/beam/initial_arm
+	var/chain_icon = 'modular_celadon/modules/robot_hare_boss/icons/telescopic_arm.dmi'
+
+/obj/projectile/telescopic_arm/fire(setAngle)
+	if(firer)
+		initial_arm = firer.Beam(src, icon_state = "chain", icon = chain_icon, emissive = FALSE)
+	return ..()
+
+/obj/projectile/telescopic_arm/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	animate(src, alpha = 0, time = duration)
+	if(!ismovable(target))
+		return
 
+	if(!isliving(target))
+		return
+	var/mob/living/designated_target = target
+	designated_target.visible_message(span_danger("[designated_target] is hit by [firer]'s arm!"))
+	designated_target.apply_damage(30, BRUTE)
+
+/obj/projectile/telescopic_arm/Destroy(force)
+	QDEL_NULL(initial_arm)
+	return ..()
 
 
 /**
@@ -68,6 +100,7 @@
 	damage_type = BRUTE
 	var/stun_chance = 30
 	var/burn_damage = 15
+	var/emp_radius = 1 // do not forget about rage state
 
 /obj/projectile/lightning_bolt/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
@@ -76,7 +109,7 @@
 		// Apply burn damage
 		living_target.adjust_fire_loss(burn_damage)
 		// Apply emp damage
-		target.emp_act(EMP_HEAVY)
+		empulse(target, emp_radius, emp_radius, emp_source = src)
 		// Chance to stun (electrocution)
 		if(prob(stun_chance))
 			living_target.Paralyze(20, FALSE)
