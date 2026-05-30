@@ -19,7 +19,7 @@
 	melee_damage_upper = 45
 	gender = MALE
 	wander = FALSE
-	attack_sound = 'modular_nova/master_files/sound/weapons/crowbar2.ogg'
+/*	attack_sound = 'modular_nova/master_files/sound/weapons/crowbar2.ogg'
 	loot = list(/obj/item/crowbar/freeman/ultimate, /obj/item/keycard/freeman_boss_exit)
 	gold_core_spawnable = NO_SPAWN
 
@@ -114,3 +114,4 @@
 /datum/id_trim/gordon_freeman/New()
 	. = ..()
 	access = SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION))
+*/
