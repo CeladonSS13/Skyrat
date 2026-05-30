@@ -10098,4 +10098,10 @@
 #include "modular_celadon\modules\april_fools_day\cook\code\wardrobes.dm"
 #include "modular_celadon\modules\april_fools_day\medibot\code\phrases.dm"
 #include "modular_celadon\modules\april_fools_day\hygienebot\code\phrases.dm"
+#include "modular_celadon\modules\weapons_addon\code\weapon_PZH\projctile\projectiles.dm"
+#include "modular_celadon\modules\weapons_addon\code\weapon_PZH\ammo\casing.dm"
+#include "modular_celadon\modules\weapons_addon\code\weapon_PZH\ammo\magazine.dm"
+#include "modular_celadon\modules\weapons_addon\code\weapon_PZH\ammo\ammo_box.dm"
+#include "modular_celadon\modules\weapons_addon\code\weapon_PZH\weapon\automatically_weapon.dm"
+#include "modular_celadon\modules\cargo\code\weapon_PZH.dm"
 // END_INCLUDE
