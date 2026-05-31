@@ -9809,6 +9809,8 @@
 #include "modular_celadon\modules\rolesedit\code\syndicate_roles\interdyne\jobs.dm"
 #include "modular_celadon\modules\rolesedit\code\syndicate_roles\interdyne\misc.dm"
 #include "modular_celadon\modules\rolesedit\code\syndicate_roles\interdyne\rnd.dm"
+#include "modular_celadon\modules\rolesedit\code\tarkon\_map_helpers.dm"
+#include "modular_celadon\modules\rolesedit\code\tarkon\machines.dm"
 #include "modular_celadon\modules\rolesedit\code\tarkon\tarkon.dm"
 #include "modular_celadon\modules\shutdown\shutdown_config.dm"
 #include "modular_celadon\modules\translations\code\customer_ru.dm"

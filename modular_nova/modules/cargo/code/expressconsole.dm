@@ -34,8 +34,26 @@
 /obj/machinery/computer/cargo/express/ghost/ui_act(action, params, datum/tgui/ui)
 	if(action == "add") // if we're generating a supply order
 		if (!beacon || !using_beacon ) // checks if using a beacon or not.
-			say("Error! Destination is not whitelisted, aborting.")
-			return
+//			say("Error! Destination is not whitelisted, aborting.")	//celadon removal start
+//			return	//celadon removal end
+			//celadon add start
+			if(landingzone == GLOB.areas_by_type[/area/station/cargo/storage])
+				say("Error! Destination is not whitelisted, aborting.")
+				return
+		/*var/id = params["id"]
+		id = text2path(id) || id
+		var/datum/supply_pack/is_supply_pack = SSshuttle.supply_packs[id]
+		if(!is_supply_pack || !istype(is_supply_pack))
+			var/datum/armament_entry/armament_order = locate(id)
+			params["id"] = length(SSshuttle.supply_packs) + 1
+			var/datum/supply_pack/armament/temp_pack = new
+			temp_pack.name = initial(armament_order.item_type.name)
+			temp_pack.cost = armament_order.cost
+			temp_pack.contains = list(armament_order.item_type)
+			SSshuttle.supply_packs += temp_pack
+			. = ..()
+			SSshuttle.supply_packs -= temp_pack
+			return*/	//celadon add end
 	return ..()
 
 //Interdyne Pharmaceuticals Console's console

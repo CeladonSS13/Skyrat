@@ -21,6 +21,7 @@
 
 /datum/id_trim/away/tarkon/sci
 	assignment = JOB_TARKON_RESEARCHER
+	access = list(ACCESS_TARKON, ACCESS_AWAY_GENERAL, ACCESS_AWAY_SCIENCE, ACCESS_WEAPONS)
 
 /datum/id_trim/away/tarkon/robo
 	assignment = JOB_TARKON_CYBORG_ACCESS
@@ -28,10 +29,12 @@
 
 /datum/id_trim/away/tarkon/ensign
 	assignment = JOB_TARKON_ENSIGN
+	access = list(ACCESS_TARKON, ACCESS_TARKON_COMMAND, ACCESS_AWAY_GENERAL, ACCESS_AWAY_SCIENCE, ACCESS_MEDICAL, ACCESS_ROBOTICS, ACCESS_WEAPONS)
 
 /datum/id_trim/away/tarkon/director
 	assignment = JOB_TARKON_DIRECTOR
 	sechud_icon_state = SECHUD_CAPTAIN
+	access = list(ACCESS_TARKON, ACCESS_TARKON_COMMAND, ACCESS_TARKON_DIRECTOR, ACCESS_AWAY_GENERAL, ACCESS_AWAY_SCIENCE, ACCESS_MEDICAL, ACCESS_ROBOTICS, ACCESS_WEAPONS)
 
 //id cards
 /obj/item/card/id/advanced/tarkon
@@ -76,6 +79,3 @@
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/director
 	spawner_job_path = /datum/job/tarkon/command
-
-/obj/machinery/computer/cargo/express/ghost/tarkon
-	landingzone = /area/ruin/space/has_grav/port_tarkon/cargo

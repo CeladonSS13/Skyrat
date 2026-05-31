@@ -32,35 +32,19 @@
 		VITEZSTVI_AMMO_NAME_CELADON,
 	)
 
-/obj/machinery/computer/cargo/express/ghost/ui_act(action, params, datum/tgui/ui)
-	if(action == "add") // if we're generating a supply order
-		if (!beacon || !using_beacon ) // checks if using a beacon or not.
-			say("Error! Destination is not whitelisted, aborting.")
-			return
-		var/id = params["id"]
-		id = text2path(id) || id
-		var/datum/supply_pack/is_supply_pack = SSshuttle.supply_packs[id]
-		if(!is_supply_pack || !istype(is_supply_pack)) //if we're ordering a company import pack, add a temp pack to the global supply packs list, and remove it
-			var/datum/armament_entry/armament_order = locate(id)
-			params["id"] = length(SSshuttle.supply_packs) + 1
-			var/datum/supply_pack/armament/temp_pack = new
-			temp_pack.name = initial(armament_order.item_type.name)
-			temp_pack.cost = armament_order.cost
-			temp_pack.contains = list(armament_order.item_type)
-			SSshuttle.supply_packs += temp_pack
-			. = ..()
-			SSshuttle.supply_packs -= temp_pack
-			return
-	return ..()
-
 /obj/item/circuitboard/computer/cargo/express/ghost/interdyne
 	contraband = TRUE
 
 /obj/machinery/computer/cargo/express/ghost/interdyne
+	landingzone = /area/ruin/interdyne_planetary_base/cargo/ware
 	contraband = TRUE
 
 /obj/item/circuitboard/computer/cargo/express/ghost/syndicate
 	contraband = TRUE
 
 /obj/machinery/computer/cargo/express/ghost/syndicate
+	landingzone = /area/ruin/space/has_grav/nova/des_two/cargo/hangar
 	contraband = TRUE
+
+/obj/machinery/computer/cargo/express/ghost/tarkon
+	landingzone = /area/ruin/space/has_grav/port_tarkon/cargo

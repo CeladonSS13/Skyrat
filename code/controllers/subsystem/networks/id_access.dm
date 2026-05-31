@@ -132,8 +132,11 @@ SUBSYSTEM_DEF(id_access)
 	accesses_by_region[REGION_CENTCOM_CAPTAIN] = REGION_ACCESS_CENTCOM_CAPTAIN
 	accesses_by_region[REGION_CENTCOM_SPECOPS] = REGION_ACCESS_CENTCOM_SPECOPS
 	accesses_by_region[REGION_ALL_CENTCOM] = REGION_ACCESS_ALL_CENTCOM
+	accesses_by_region[REGION_TARKON] = REGION_ACCESS_TARKON
+	accesses_by_region[REGION_TARKON_DIRECTOR] = REGION_ACCESS_TARKON_DIRECTOR
 
 	centcom_regions = REGION_AREA_CENTCOM
+	tarkon_regions = REGION_AREA_TARKON
 	//Celadon ADD END
 	station_regions = REGION_AREA_STATION
 
@@ -235,6 +238,18 @@ SUBSYSTEM_DEF(id_access)
 		"[ACCESS_CENT_OFFICIAL]" = list(
 			"regions" = list(REGION_CENTCOM_NTR),
 			"head" = JOB_NT_REP,
+			"templates" = list(),
+			"pdas" = list(),
+		),
+		"[ACCESS_TARKON]" = list(
+			"regions" = list(REGION_TARKON),
+			"head" = JOB_TARKON_ENSIGN,
+			"templates" = list(),
+			"pdas" = list(),
+		),
+		"[ACCESS_TARKON_DIRECTOR]" = list(
+			"regions" = list(REGION_TARKON_DIRECTOR),
+			"head" = JOB_TARKON_DIRECTOR,
 			"templates" = list(),
 			"pdas" = list(),
 		),
@@ -394,7 +409,22 @@ SUBSYSTEM_DEF(id_access)
 	desc_by_access[ACCESS_CENT_SPECOPS_LEADER] = "CentCom SpecOps Leader"
 	desc_by_access[ACCESS_CENT_SPECOPS_OFFICER] = "CentCom SpecOps Officer"
 	desc_by_access[ACCESS_CENT_ADMIRAL] = "CentCom Admiral"
-	desc_by_access[ACCESS_CENT_FLEET_ADMIRAL] = "CentCom Fleet Admiral" // Celadon ADD END
+	desc_by_access[ACCESS_CENT_FLEET_ADMIRAL] = "CentCom Fleet Admiral"
+	desc_by_access[ACCESS_AWAY_GENERAL] = "Old Standard General Access"
+	desc_by_access[ACCESS_AWAY_COMMAND] = "Old Standard Command Access"
+	desc_by_access[ACCESS_AWAY_SEC] = "Old Standard Security Access"
+	desc_by_access[ACCESS_AWAY_ENGINEERING] = "Old Standard Engineering Access"
+	desc_by_access[ACCESS_AWAY_MEDICAL] = "Old Standard Medical Access"
+	desc_by_access[ACCESS_AWAY_SUPPLY] = "Old Standard Supply Access"
+	desc_by_access[ACCESS_AWAY_SCIENCE] = "Old Standard Science Access"
+	desc_by_access[ACCESS_AWAY_MAINTENANCE] = "Old Standard Maintenance Access"
+	desc_by_access[ACCESS_AWAY_GENERIC1] = "Old Standard Misc Access One"
+	desc_by_access[ACCESS_AWAY_GENERIC2] = "Old Standard Misc Access Two"
+	desc_by_access[ACCESS_AWAY_GENERIC3] = "Old Standard Misc Access Three"
+	desc_by_access[ACCESS_AWAY_GENERIC4] = "Old Standard Misc Access Four"
+	desc_by_access[ACCESS_TARKON] = "Tarkon General Access"
+	desc_by_access[ACCESS_TARKON_COMMAND] = "Tarkon Command"
+	desc_by_access[ACCESS_TARKON_DIRECTOR] = "Tarkon Director" // Celadon ADD END
 
 /**
  * Returns the access bitflags associated with any given access level.
