@@ -106,20 +106,18 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	msg = replacetext(replacetext(msg, "%TARGET_PRONOUN_THEM%", target.p_them()), "%USER_PRONOUN_THEM%", user.p_them())
 	msg = replacetext(replacetext(msg, "%TARGET_PRONOUN_THEY%", target.p_they()), "%USER_PRONOUN_THEY%", user.p_they())
 
-	// Celadon REMOVAL START
-	// if(lewd)
-	//	if(use_subtler)
-	//		user.emote("subtler", type_override = /datum/emote/living/subtler::emote_type | EMOTE_LEWD, message = msg, intentional = TRUE)
-	//	else
-		// 	var/list/ignoring_mobs = list()
-		// 	for(var/mob/not_interested in get_hearers_in_view(DEFAULT_MESSAGE_RANGE, user))
-		// 		if(!not_interested.client?.prefs?.read_preference(/datum/preference/toggle/erp))
-		// 			ignoring_mobs += not_interested
-		// 	user.visible_message(span_purple("[user] [msg]"), ignored_mobs = ignoring_mobs)
-		// 	user.log_message(msg, LOG_EMOTE)
-	// else
-	// Celadon REMOVAL END
-	user.manual_emote(msg)
+	if(lewd)
+		if(use_subtler)
+			user.emote("subtler", type_override = /datum/emote/living/subtler::emote_type | EMOTE_LEWD, message = msg, intentional = TRUE)
+		else
+			var/list/ignoring_mobs = list()
+			for(var/mob/not_interested in get_hearers_in_view(DEFAULT_MESSAGE_RANGE, user))
+				if(!not_interested.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+					ignoring_mobs += not_interested
+			user.visible_message(span_purple("[user] [msg]"), ignored_mobs = ignoring_mobs)
+			user.log_message(msg, LOG_EMOTE)
+	else
+		user.manual_emote(msg)
 
 	if(user_messages.len)
 		var/user_msg = pick(user_messages)
@@ -147,19 +145,29 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 			message_admins("Deprecated sound handling for '[html_encode(name)]'. Correct format is a list with one entry. This message will only show once.")
 			sound_possible = list(sound_possible)
 		sound_cache = pick(sound_possible)
-		// Celadon REMOVAL START
-		// if (lewd)
-		// 	playsound_if_pref(target.loc, sound_cache, 50, sound_vary, max(0, -SOUND_RANGE + sound_range), pref_to_check = /datum/preference/toggle/erp/sounds)
-		// else
-		// Celadon REMOVAL END
-		playsound(target.loc, sound_cache, 50, sound_vary, max(0, -SOUND_RANGE + sound_range))
+		if (lewd)
+			playsound_if_pref(target.loc, sound_cache, 50, sound_vary, max(0, -SOUND_RANGE + sound_range), pref_to_check = /datum/preference/toggle/erp/sounds)
+		else
+			playsound(target.loc, sound_cache, 50, sound_vary, max(0, -SOUND_RANGE + sound_range))
 
 	INVOKE_ASYNC(src, PROC_REF(apply_effects), user, target)
 
 /// Applies side effects to the user and/or target of the interaction.
 /datum/interaction/proc/apply_effects(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	// Celadon REMOVAL OF ERP PAIN
-	return
+	if(user_pain)
+		user.adjust_pain(user_pain)
+	if(target_pain)
+		target.adjust_pain(target_pain)
+	if(!lewd)
+		return
+	if(user_pleasure)
+		user.adjust_pleasure(user_pleasure)
+	if(user_arousal)
+		user.adjust_arousal(user_arousal)
+	if(target_pleasure)
+		target.adjust_pleasure(target_pleasure)
+	if(target_arousal)
+		target.adjust_arousal(target_arousal)
 
 /datum/interaction/proc/load_from_json(path)
 	var/fpath = path

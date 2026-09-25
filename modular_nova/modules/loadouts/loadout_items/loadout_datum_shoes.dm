@@ -318,40 +318,38 @@
 	name = "Pink Clown Shoes"
 	item_path = /obj/item/clothing/shoes/clown_shoes/pink
 
-// Celadon REMOVAL START
-// /datum/loadout_item/shoes/clown_shoes/pink_heels
-// 	name = "Pink Clown Heels"
-// 	item_path = /obj/item/clothing/shoes/clown_shoes/pink/heels
+/datum/loadout_item/shoes/clown_shoes/pink_heels
+	name = "Pink Clown Heels"
+	item_path = /obj/item/clothing/shoes/clown_shoes/pink/heels
 
-// /datum/loadout_item/shoes/clown_shoes/pink_heels_mute
-// 	name = "Pink Clown Heels (No Clown Effects)"
-// 	item_path = /obj/item/clothing/shoes/pink_clown_heels
-// 	restricted_roles = null
-//	group = "Costumes"
+/datum/loadout_item/shoes/clown_shoes/pink_heels_mute
+	name = "Pink Clown Heels (No Clown Effects)"
+	item_path = /obj/item/clothing/shoes/pink_clown_heels
+	restricted_roles = null
+	group = "Costumes"
 
-// /datum/loadout_item/shoes/clown_shoes/pink_heels_mute/get_item_information()
-// 	. = ..()
-// 	.[FA_ICON_VOLUME_MUTE] = "No Clown Effects"
+/datum/loadout_item/shoes/clown_shoes/pink_heels_mute/get_item_information()
+	. = ..()
+	.[FA_ICON_VOLUME_MUTE] = "No Clown Effects"
 
 /*
 *	erp_item
 */
 
-// /datum/loadout_item/shoes/ballet_heels
-// 	name = "Ballet Heels"
-// 	item_path = /obj/item/clothing/shoes/ballet_heels
-// 	erp_item = TRUE
+/datum/loadout_item/shoes/ballet_heels
+	name = "Ballet Heels"
+	item_path = /obj/item/clothing/shoes/ballet_heels
+	erp_item = TRUE
 
-// /datum/loadout_item/shoes/dominaheels
-// 	name = "Dominant Heels"
-// 	item_path = /obj/item/clothing/shoes/ballet_heels/domina_heels
-// 	erp_item = TRUE
+/datum/loadout_item/shoes/dominaheels
+	name = "Dominant Heels"
+	item_path = /obj/item/clothing/shoes/ballet_heels/domina_heels
+	erp_item = TRUE
 
-// /datum/loadout_item/shoes/latex_socks
-// 	name = "Latex Socks"
-// 	item_path = /obj/item/clothing/shoes/latex_socks
-// 	erp_item = TRUE
-// Celadon REMOVAL ERP SHOES END
+/datum/loadout_item/shoes/latex_socks
+	name = "Latex Socks"
+	item_path = /obj/item/clothing/shoes/latex_socks
+	erp_item = TRUE
 
 /*
 *	DONATOR

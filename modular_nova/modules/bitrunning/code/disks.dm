@@ -110,7 +110,7 @@
 
 /obj/item/summon_beacon/relax/equipped(mob/user, slot, initial)
 	. = ..()
-	if (!CONFIG_GET(flag/disable_erp_preferences)) // Celadon REMOVAL OF ERP
+	if (!CONFIG_GET(flag/disable_erp_preferences) && user?.client?.prefs.read_preference(/datum/preference/toggle/master_erp_preferences))
 		selectable_atoms += /obj/machinery/vending/dorms/bitrunning
 	else
 		selectable_atoms -= /obj/machinery/vending/dorms/bitrunning

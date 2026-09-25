@@ -999,12 +999,10 @@
 *	erp_item
 */
 
-// Celadon REMOVAL START
-// /datum/loadout_item/head/domina_cap
-// 	name = "Dominant Cap"
-// 	item_path = /obj/item/clothing/head/domina_cap
-// 	erp_item = TRUE
-// Celadon REMOVAL END
+/datum/loadout_item/head/domina_cap
+	name = "Dominant Cap"
+	item_path = /obj/item/clothing/head/domina_cap
+	erp_item = TRUE
 
 /*
 *	DONATOR
@@ -1032,10 +1030,3 @@
 /datum/loadout_item/head/donator/rainbow_bunch/get_item_information()
 	. = ..()
 	.[FA_ICON_DICE] = TOOLTIP_RANDOM_COLOR
-
-// Celadon REMOVAL START
-// /datum/loadout_item/head/domina_cap
-// 	name = "Dominant Cap"
-// 	item_path = /obj/item/clothing/head/domina_cap
-// 	erp_item = TRUE
-// Celadon REMOVAL END

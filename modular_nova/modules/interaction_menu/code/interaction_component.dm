@@ -28,7 +28,10 @@
 	for(var/iterating_interaction_id in GLOB.interaction_instances)
 		var/datum/interaction/interaction = GLOB.interaction_instances[iterating_interaction_id]
 		if(interaction.lewd)
-			continue // Celadon REMOVAL OF ERP INTERACTIONS
+			if(!self.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+				continue
+			if(interaction.sexuality != "" && interaction.sexuality != self.client?.prefs?.read_preference(/datum/preference/choiced/erp_sexuality))
+				continue
 		interactions.Add(interaction)
 
 /datum/component/interactable/RegisterWithParent()
@@ -54,7 +57,7 @@
 /datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/carbon/human/target)
 	if(!interaction.allow_act(target, self))
 		return FALSE
-	if(interaction.lewd) // Celadon EDIT NO INTERACTIONS WITH ERP
+	if(interaction.lewd && !target.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		return FALSE
 	if(!interaction.distance_allowed && !target.Adjacent(self))
 		return FALSE
@@ -124,10 +127,10 @@
 	data["self"] = self.name
 	data["block_interact"] = interact_next >= world.time
 	data["use_subtler"] = use_subtler
-	data["erp_interaction"] = FALSE // Celadon EDIT, original: data["erp_interaction"] = self.client?.prefs?.read_preference(/datum/preference/toggle/erp)
+	data["erp_interaction"] = self.client?.prefs?.read_preference(/datum/preference/toggle/erp)
 	data["has_erp_interaction"] = has_erp_interaction
 
-	// Celadon REMOVAL var/mob/living/carbon/human/human_user = user
+	var/mob/living/carbon/human/human_user = user
 
 	data["isTargetSelf"] = (user == self)
 
@@ -137,11 +140,9 @@
 	var/user_pain = 0
 
 	if(user)
-		// Celadon REMOVAL START
-		// user_pleasure = human_user.pleasure
-		// user_arousal = human_user.arousal
-		// user_pain = human_user.pain
-		// Celadon REMOVAL END
+		user_pleasure = human_user.pleasure
+		user_arousal = human_user.arousal
+		user_pain = human_user.pain
 
 		data["pleasure"] = user_pleasure
 		data["arousal"] = user_arousal
@@ -150,29 +151,41 @@
 
 	// self - the one who the interaction component belongs to, aka who it's opened on (confusing var name yep)
 	if(user != self)
-		data["theirPleasure"] = 0 // Celadon EDIT, original: data["theirPleasure"] = self.pleasure
-		data["theirArousal"] = 0 // Celadon EDIT, original: data["theirArousal"] = self.arousal
-		data["theirPain"] = 0 // Celadon EDIT, original: data["theirPain"] = self.pain
+		data["theirPleasure"] = self.pleasure
+		data["theirArousal"] = self.arousal
+		data["theirPain"] = self.pain
 
-	// Celadon REMOVAL START
-	// var/list/parts = list()
+	var/list/parts = list()
 
-	// if(ishuman(user) && can_lewd_strip(user, self))
-	// 	if(self.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-	// 		if(self.has_vagina())
-	// 			parts += list(generate_strip_entry(ORGAN_SLOT_VAGINA, self, user, self.vagina))
-	// 		if(self.has_penis())
-	// 			parts += list(generate_strip_entry(ORGAN_SLOT_PENIS, self, user, self.penis))
-	// 		if(self.has_anus())
-	// 			parts += list(generate_strip_entry(ORGAN_SLOT_ANUS, self, user, self.anus))
-	// 		parts += list(generate_strip_entry(ORGAN_SLOT_NIPPLES, self, user, self.nipples))
+	if(ishuman(user) && can_lewd_strip(user, self))
+		if(self.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+			if(self.has_vagina())
+				parts += list(generate_strip_entry(ORGAN_SLOT_VAGINA, self, user, self.vagina))
+			if(self.has_penis())
+				parts += list(generate_strip_entry(ORGAN_SLOT_PENIS, self, user, self.penis))
+			if(self.has_anus())
+				parts += list(generate_strip_entry(ORGAN_SLOT_ANUS, self, user, self.anus))
+			parts += list(generate_strip_entry(ORGAN_SLOT_NIPPLES, self, user, self.nipples))
 
-	// data["lewd_slots"] = parts
-	// Celadon REMOVAL END
+	data["lewd_slots"] = parts
 
 	return data
 
-// Celadon REMOVAL OF ERP STRIP
+/**
+ *  Takes the organ slot name, along with a target and source, along with the item on the target that the source can potentially interact with.
+ *  If the source can't interact with said slot, or there is no item in the first place, it'll set the icon to null to indicate that TGUI should put a placeholder sprite.
+ *
+ * Arguments:
+ * * name - The name of slot to check and return inside the generated list.
+ * * target - The mob that's being interacted with.
+ * * source - The mob that's interacting.
+ * * item - The item that's currently inside said slot. Can be null.
+ */
+/datum/component/interactable/proc/generate_strip_entry(name, mob/living/carbon/human/target, mob/living/carbon/human/source, obj/item/clothing/sextoy/item)
+	return list(
+		"name" = name,
+		"img" = (item && can_lewd_strip(source, target, name)) ? icon2base64(icon(item.icon, item.icon_state, SOUTH, 1)) : null
+		)
 
 /datum/component/interactable/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -182,11 +195,9 @@
 	if(!ishuman(ui.user))
 		return
 
-	// Celadon REMOVAL START
-	// if(action == "toggle_subtler")
-	// 	use_subtler = !use_subtler
-	// 	return TRUE
-	// Celadon REMOVAL END
+	if(action == "toggle_subtler")
+		use_subtler = !use_subtler
+		return TRUE
 
 	if(params["interaction"])
 		var/interaction_id = params["interaction"]
@@ -202,57 +213,101 @@
 			return TRUE
 
 	if(params["item_slot"])
-		// Celadon REMOVAL START
-		// // This code should be easy enough to follow... I hope.
-		// var/item_index = params["item_slot"]
-		// var/mob/living/carbon/human/source = locate(params["userref"])
-		// var/mob/living/carbon/human/target = locate(params["selfref"])
-		// var/obj/item/clothing/sextoy/new_item = source.get_active_held_item()
-		// var/obj/item/clothing/sextoy/existing_item = target.vars[item_index]
+		// This code should be easy enough to follow... I hope.
+		var/item_index = params["item_slot"]
+		var/mob/living/carbon/human/source = locate(params["userref"])
+		var/mob/living/carbon/human/target = locate(params["selfref"])
+		var/obj/item/clothing/sextoy/new_item = source.get_active_held_item()
+		var/obj/item/clothing/sextoy/existing_item = target.vars[item_index]
 
-		// if(!existing_item && !new_item)
-		// 	source.show_message(span_warning("No item to insert or remove!"))
-		// 	return
+		if(!existing_item && !new_item)
+			source.show_message(span_warning("No item to insert or remove!"))
+			return
 
-		// if(!existing_item && !istype(new_item))
-		// 	source.show_message(span_warning("The item you're holding is not a toy!"))
-		// 	return
+		if(!existing_item && !istype(new_item))
+			source.show_message(span_warning("The item you're holding is not a toy!"))
+			return
 
-		// if(can_lewd_strip(source, target, item_index) && is_toy_compatible(new_item, item_index))
-		// 	var/internal = (item_index in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_ANUS))
-		// 	var/insert_or_attach = internal ? "insert" : "attach"
-		// 	var/into_or_onto = internal ? "into" : "onto"
+		if(can_lewd_strip(source, target, item_index) && is_toy_compatible(new_item, item_index))
+			var/internal = (item_index in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_ANUS))
+			var/insert_or_attach = internal ? "insert" : "attach"
+			var/into_or_onto = internal ? "into" : "onto"
 
-		// 	if(existing_item)
-		// 		source.visible_message(span_purple("[source.name] starts trying to remove something from [target.name]'s [item_index]."), span_purple("You start to remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone trying to remove something from someone nearby."), vision_distance = 1, ignored_mobs = list(target))
-		// 	else if (new_item)
-		// 		source.visible_message(span_purple("[source.name] starts trying to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You start to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone trying to [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1, ignored_mobs = list(target))
-		// 	if (source != target)
-		// 		target.show_message(span_warning("[source.name] is trying to [existing_item ? "remove the [existing_item.name] [internal ? "in" : "on"]" : new_item ? "is trying to [insert_or_attach] the [new_item.name] [into_or_onto]" : span_alert("What the fuck, impossible condition? interaction_component.dm!")] your [item_index]!"))
-		// 	if(do_after(
-		// 		source,
-		// 		5 SECONDS,
-		// 		target,
-		// 		interaction_key = "interaction_[item_index]"
-		// 		) && can_lewd_strip(source, target, item_index))
+			// Do not show visible_messages to people without erp prefs
+			var/list/ignoring_mobs = list()
+			for(var/mob/not_interested in get_hearers_in_view(SAMETILE_MESSAGE_RANGE, source))
+				if(!not_interested.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+					ignoring_mobs += not_interested
+			if(existing_item)
+				source.visible_message(span_purple("[source.name] starts trying to remove something from [target.name]'s [item_index]."), span_purple("You start to remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone trying to remove something from someone nearby."), vision_distance = SAMETILE_MESSAGE_RANGE, ignored_mobs = ignoring_mobs + list(target))
+			else if (new_item)
+				source.visible_message(span_purple("[source.name] starts trying to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You start to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone trying to [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = SAMETILE_MESSAGE_RANGE, ignored_mobs = ignoring_mobs + list(target))
+			if (source != target)
+				target.show_message(span_warning("[source.name] is trying to [existing_item ? "remove the [existing_item.name] [internal ? "in" : "on"]" : new_item ? "is trying to [insert_or_attach] the [new_item.name] [into_or_onto]" : span_alert("What the fuck, impossible condition? interaction_component.dm!")] your [item_index]!"))
+			if(do_after(
+				source,
+				5 SECONDS,
+				target,
+				interaction_key = "interaction_[item_index]"
+				) && can_lewd_strip(source, target, item_index))
 
-		// 		if(existing_item)
-		// 			source.visible_message(span_purple("[source.name] removes [existing_item.name] from [target.name]'s [item_index]."), span_purple("You remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone remove something from someone nearby."), vision_distance = 1)
-		// 			target.dropItemToGround(existing_item, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
-		// 			target.vars[item_index] = null
-		// 		else if (new_item)
-		// 			source.visible_message(span_purple("[source.name] [internal ? "inserts" : "attaches"] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1)
-		// 			target.vars[item_index] = new_item
-		// 			new_item.forceMove(target)
-		// 			new_item.lewd_equipped(target, item_index)
-		// 		target.update_inv_lewd()
+				if(existing_item)
+					source.visible_message(span_purple("[source.name] removes [existing_item.name] from [target.name]'s [item_index]."), span_purple("You remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone remove something from someone nearby."), vision_distance = SAMETILE_MESSAGE_RANGE, ignored_mobs = ignoring_mobs)
+					target.dropItemToGround(existing_item, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
+					target.vars[item_index] = null
+				else if (new_item)
+					source.visible_message(span_purple("[source.name] [internal ? "inserts" : "attaches"] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = SAMETILE_MESSAGE_RANGE, ignored_mobs = ignoring_mobs)
+					target.vars[item_index] = new_item
+					new_item.forceMove(target)
+					new_item.lewd_equipped(target, item_index)
+				target.update_inv_lewd()
 
-		// else
-		// 	source.show_message(span_warning("Failed to adjust [target.name]'s toys!"))
-		// Celadon REMOVAL END
+		else
+			source.show_message(span_warning("Failed to adjust [target.name]'s toys!"))
 
 		return TRUE
 
 	message_admins("Unhandled interaction '[params["interaction"]]'. Inform coders.")
 
-// Celadon REMOVAL OF ERP START, END
+/// Checks if the target has ERP toys enabled, and can be logially reached by the user.
+/datum/component/interactable/proc/can_lewd_strip(mob/living/carbon/human/source, mob/living/carbon/human/target, slot_index)
+	if(!target.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		return FALSE
+	if(!(source.loc == target.loc || source.Adjacent(target)))
+		return FALSE
+	if(!source.has_arms())
+		return FALSE
+	if(!slot_index) // This condition is for the UI to decide if the button is shown at all. Slot index should never be null otherwise.
+		return TRUE
+
+	switch(slot_index)
+		if(ORGAN_SLOT_NIPPLES)
+			var/chest_exposed = target.has_breasts(required_state = REQUIRE_GENITAL_EXPOSED)
+			if(!chest_exposed)
+				chest_exposed = target.is_topless() // for when we don't have breasts
+
+			return chest_exposed
+
+		if(ORGAN_SLOT_PENIS)
+			return target.has_penis(required_state = REQUIRE_GENITAL_EXPOSED)
+		if(ORGAN_SLOT_VAGINA)
+			return target.has_vagina(required_state = REQUIRE_GENITAL_EXPOSED)
+		if(ORGAN_SLOT_ANUS)
+			return target.has_anus(required_state = REQUIRE_GENITAL_EXPOSED)
+
+/// Decides if a player should be able to insert or remove an item from a provided lewd slot_index.
+/datum/component/interactable/proc/is_toy_compatible(obj/item/clothing/sextoy/item, slot_index)
+	if(!item) // Used for UI code, should never be actually null during actual logic code.
+		return TRUE
+
+	switch(slot_index)
+		if(ORGAN_SLOT_VAGINA)
+			return item.lewd_slot_flags & LEWD_SLOT_VAGINA
+		if(ORGAN_SLOT_PENIS)
+			return item.lewd_slot_flags & LEWD_SLOT_PENIS
+		if(ORGAN_SLOT_ANUS)
+			return item.lewd_slot_flags & LEWD_SLOT_ANUS
+		if(ORGAN_SLOT_NIPPLES)
+			return item.lewd_slot_flags & LEWD_SLOT_NIPPLES
+		else
+			return FALSE
