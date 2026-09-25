@@ -10122,4 +10122,10 @@
 #include "modular_celadon\modules\weapons_addon\code\solfed\projectile.dm"
 #include "modular_celadon\modules\weapons_addon\code\syndicate\gun.dm"
 #include "modular_celadon\modules\weapons_addon\code\tribal\arrow.dm"
-// END_INCLUDE
+#include "modular_celadon\modules\weapons_addon\code\weapon_PZH\projctile\projectiles.dm"
+#include "modular_celadon\modules\weapons_addon\code\weapon_PZH\ammo\casing.dm"
+#include "modular_celadon\modules\weapons_addon\code\weapon_PZH\ammo\magazine.dm"
+#include "modular_celadon\modules\weapons_addon\code\weapon_PZH\ammo\ammo_box.dm"
+#include "modular_celadon\modules\weapons_addon\code\weapon_PZH\weapon\automatically_weapon.dm"
+#include "modular_celadon\modules\cargo\code\weapon_PZH.dm"
+// END_INCLUDE 
