@@ -12,6 +12,7 @@
 	antagonist_restricted = TRUE
 	//job things
 	title = JOB_CENTCOM_INTERN
+	//tgui_icon = FA_ICON_PEN_ALT
 	config_tag = "CENTCOM_INTERN"
 	supervisors = JOB_CENTCOM
 	description = "Watch over the CentCom documents, write paper, and spend your days bringing coffee for higher-ups."
@@ -77,6 +78,7 @@
 	antagonist_restricted = TRUE
 	//job things
 	title = JOB_CENTCOM_HEAD_INTERN
+	//tgui_icon = FA_ICON_PEN_FANCY
 	config_tag = "CENTCOM_HEAD_INTERN"
 	supervisors = JOB_CENTCOM
 	description = "Watch over the CentCom Interns, read their paper, and give paper to officials."

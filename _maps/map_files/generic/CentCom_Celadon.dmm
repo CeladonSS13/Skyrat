@@ -7776,7 +7776,7 @@
 	},
 /obj/machinery/door/window/brigdoor/right/directional/west{
 	name = "Commander's Desk";
-	req_access = list("cent_captain")
+	req_access = list("cent_officer")
 	},
 /obj/structure/table/reinforced,
 /obj/item/detective_scanner,
@@ -8135,6 +8135,7 @@
 /obj/structure/chair/office{
 	dir = 4
 	},
+/obj/effect/landmark/start/centcom/centcom_official,
 /turf/open/floor/wood,
 /area/centcom/central_command_areas/control)
 "Bz" = (
@@ -11181,8 +11182,8 @@
 	},
 /obj/effect/turf_decal/stripes/red/full,
 /obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/admin/storage,
-/obj/effect/mapping_helpers/airlock/access/all/admin/official,
+/obj/effect/mapping_helpers/airlock/access/any/admin/storage,
+/obj/effect/mapping_helpers/airlock/access/any/admin/official,
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},

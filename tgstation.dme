@@ -9990,6 +9990,7 @@
 #include "modular_celadon\modules\rolesedit\code\centcom\crew\captain.dm"
 #include "modular_celadon\modules\rolesedit\code\centcom\crew\commander.dm"
 #include "modular_celadon\modules\rolesedit\code\centcom\crew\interns.dm"
+#include "modular_celadon\modules\rolesedit\code\centcom\crew\official.dm"
 #include "modular_celadon\modules\rolesedit\code\centcom\crew\specops_officer.dm"
 #include "modular_celadon\modules\rolesedit\code\centcom\ert\deathsquad.dm"
 #include "modular_celadon\modules\rolesedit\code\centcom\ert\nanotrasen_ert.dm"

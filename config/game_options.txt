@@ -427,7 +427,7 @@ ROUNDSTART_RACES abductorweak
 ROUNDSTART_RACES golemweak
 ROUNDSTART_RACES dullahan
 ROUNDSTART_RACES kobold
-ROUNDSTART_RACES protean
+## ROUNDSTART_RACES protean //disabled untill update
 ROUNDSTART_RACES shadekin
 ROUNDSTART_RACES holosynth
 
