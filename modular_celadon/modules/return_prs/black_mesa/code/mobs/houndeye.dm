@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/blackmesa/xen/houndeye
+/mob/living/basic/blackmesa/xen/houndeye
 	name = "houndeye"
 	desc = "Some highly aggressive alien creature. Thrives in toxic environments."
 	icon = 'modular_celadon/modules/return_prs/black_mesa/icons/mobs.dmi'
@@ -8,24 +8,15 @@
 	icon_gib = null
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
-	speak_chance = 1
-	speak_emote = list("growls")
+	speak_emote = list("growls", "snarls", "grumbles")
 	speed = 1
-	emote_taunt = list("growls", "snarls", "grumbles")
-	taunt_chance = 100
-	turns_per_move = 7
 	maxHealth = 100
 	health = 100
 	obj_damage = 50
-	harm_intent_damage = 10
 	melee_damage_lower = 20
 	melee_damage_upper = 20
 	attack_sound = 'sound/items/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
-	//Since those can survive on Xen, I'm pretty sure they can thrive on any atmosphere
-
-	minbodytemp = 0
-	maxbodytemp = 1500
 	loot = list(/obj/item/stack/sheet/bluespace_crystal)
 	alert_sounds = list(
 		'modular_celadon/modules/return_prs/black_mesa/sound/mobs/houndeye/he_alert1.ogg',
@@ -34,23 +25,31 @@
 		'modular_celadon/modules/return_prs/black_mesa/sound/mobs/houndeye/he_alert4.ogg',
 		'modular_celadon/modules/return_prs/black_mesa/sound/mobs/houndeye/he_alert5.ogg'
 	)
+	var/list/charge_sounds = list(
+		'modular_celadon/modules/return_prs/black_mesa/sound/mobs/houndeye/charge1.ogg',
+		'modular_celadon/modules/return_prs/black_mesa/sound/mobs/houndeye/charge2.ogg',
+		'modular_celadon/modules/return_prs/black_mesa/sound/mobs/houndeye/charge3.ogg'
+	)
 	/// Charging ability
 	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/charge
+	var/charge_cooldown = 6 SECONDS
+	var/charge_cooldown_time
 
-/mob/living/simple_animal/hostile/blackmesa/xen/houndeye/Initialize(mapload)
+/mob/living/basic/blackmesa/xen/houndeye/Initialize(mapload)
 	. = ..()
 	charge = new /datum/action/cooldown/mob_cooldown/charge/basic_charge()
 	charge.Grant(src)
 
-/mob/living/simple_animal/hostile/blackmesa/xen/houndeye/Destroy()
+/mob/living/basic/blackmesa/xen/houndeye/Destroy()
 	QDEL_NULL(charge)
 	return ..()
 
-/mob/living/simple_animal/hostile/blackmesa/xen/houndeye/bullet_act(obj/projectile/proj)
+/mob/living/basic/blackmesa/xen/houndeye/bullet_act(obj/projectile/proj)
 	. = ..()
-	if(client)
-		return .
-	if(QDELETED(proj))
-		return .
-	charge.Trigger(proj.firer)
-	charge.do_charge(charge.owner, proj.firer, charge.charge_delay, charge.charge_past)
+	if(!(client) && !(QDELETED(proj)))
+		if(!isdead(src) && !(world.time <= charge_cooldown_time))
+			if(charge_sounds)
+				playsound(src, pick(charge_sounds), 70)
+			charge_cooldown_time = world.time + charge_cooldown
+			charge.Trigger(proj.firer)
+			charge.do_charge(charge.owner, proj.firer, charge.charge_delay, charge.charge_past)

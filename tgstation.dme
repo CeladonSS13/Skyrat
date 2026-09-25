@@ -9930,6 +9930,7 @@
 #include "modular_celadon\modules\return_prs\black_mesa\code\mobs\mob_spawners.dm"
 #include "modular_celadon\modules\return_prs\black_mesa\code\mobs\nihilanth.dm"
 #include "modular_celadon\modules\return_prs\black_mesa\code\mobs\vortigaunt.dm"
+#include "modular_celadon\modules\return_prs\black_mesa\code\mobs\_basic.dm"
 #include "modular_celadon\modules\return_prs\black_mesa\hev_suit\code\hev_suit.dm"
 #include "modular_celadon\modules\return_prs\exp_corps\code\clothing.dm"
 #include "modular_celadon\modules\return_prs\exp_corps\code\melee.dm"
