@@ -34,44 +34,14 @@
 #EVERYTHING = Simply gives you everything without having to type every flag.
 #@ = special keyword for the current permission type that adds all the keywords that the preceding rank has of the same type.
 
-Name = Mentor
-Include = AUTOLOGIN
-Exclude =
-Edit =
-
-Name = Moderator
-Include = ADMIN AUTOLOGIN
-Exclude =
-Edit =
-
-Name = Trial Admin
-Include = ADMIN BAN VAREDIT SPAWN AUTOLOGIN
-Exclude =
-Edit =
-
-Name = Admin
-Include = BUILDMODE BUILD ADMIN BAN FUN SERVER DEBUG POSSESS STEALTH POLL VAREDIT SOUND SPAWN AUTOLOGIN
-Exclude =
-Edit =
-
-Name = Head Admin
-Include = BUILDMODE BUILD ADMIN BAN FUN SERVER DEBUG POSSESS PERMISSIONS STEALTH POLL VAREDIT SOUND SPAWN AUTOLOGIN DBRANKS
-Exclude =
-Edit = EVERYTHING
-
 Name = Developer
-Include = SERVER DEBUG POLL VAREDIT SPAWN AUTOLOGIN
-Exclude =
+Include = SERVER DEBUG POLL VAREDIT SPAWN ADMIN
+Exclude = AUTOLOGIN AUTOADMIN
 Edit =
-
-Name = Host
-Include = EVERYTHING
-Exclude =
-Edit = EVERYTHING
 
 Name = Eventologist
-Include = BUILDMODE BUILD ADMIN FUN SERVER POSSESS POLL VAREDIT SOUND SPAWN AUTOLOGIN
-Exclude =
+Include = BUILDMODE BUILD ADMIN FUN SERVER POSSESS POLL VAREDIT SOUND SPAWN
+Exclude = AUTOLOGIN AUTOADMIN
 Edit =
 
 Name = Discord Moderator
@@ -79,7 +49,37 @@ Include =
 Exclude =
 Edit =
 
+Name = Mentor
+Include = AUTOLOGIN AUTOADMIN
+Exclude =
+Edit =
+
+Name = Moderator
+Include = @ ADMIN
+Exclude =
+Edit =
+
+Name = Trial Admin
+Include = @ BAN VAREDIT SPAWN
+Exclude =
+Edit =
+
+Name = Admin
+Include = @ BUILDMODE BUILD FUN SERVER DEBUG POSSESS STEALTH POLL SOUND
+Exclude =
+Edit =
+
 Name = Senior Admin
-Include = BUILDMODE BUILD ADMIN BAN FUN SERVER DEBUG POSSESS PERMISSIONS STEALTH POLL VAREDIT SOUND SPAWN AUTOLOGIN DBRANKS
+Include = @ PERMISSIONS DBRANKS
+Exclude =
+Edit = EVERYTHING
+
+Name = Head Admin
+Include = @
+Exclude =
+Edit = EVERYTHING
+
+Name = Host
+Include = EVERYTHING
 Exclude =
 Edit = EVERYTHING
