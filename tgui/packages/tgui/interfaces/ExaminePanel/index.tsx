@@ -42,7 +42,9 @@ export function ExaminePanel(props) {
     character_name,
     assigned_map,
     flavor_text,
+    flavor_text_nsfw,
     ooc_notes,
+    ooc_notes_nsfw,
     custom_species,
     custom_species_lore,
     headshot,
@@ -104,18 +106,31 @@ export function ExaminePanel(props) {
                   preserveWhitespace
                   title="Flavor Text"
                   buttons={
-                    <Button
-                      selected={flavorTextIndex === 'SFW'}
-                      bold={flavorTextIndex === 'SFW'}
-                      onClick={() => setFlavorTextIndex('SFW')}
-                      textAlign="center"
-                      width="150px"
-                    >
-                      SFW
-                    </Button>
+                    <>
+                      <Button
+                        selected={flavorTextIndex === 'SFW'}
+                        bold={flavorTextIndex === 'SFW'}
+                        onClick={() => setFlavorTextIndex('SFW')}
+                        textAlign="center"
+                        width="150px"
+                      >
+                        SFW
+                      </Button>
+                      <Button
+                        selected={flavorTextIndex === 'NSFW'}
+                        disabled={!flavor_text_nsfw}
+                        bold={flavorTextIndex === 'NSFW'}
+                        onClick={() => setFlavorTextIndex('NSFW')}
+                        textAlign="center"
+                        width="150px"
+                      >
+                        NSFW
+                      </Button>
+                    </>
                   }
                 >
                   {flavorTextIndex === 'SFW' && formatURLs(flavor_text)}
+                  {flavorTextIndex === 'NSFW' && formatURLs(flavor_text_nsfw)}
                 </Section>
               </Stack.Item>
               <Stack.Item grow>
@@ -127,7 +142,7 @@ export function ExaminePanel(props) {
                       title="OOC Notes"
                       preserveWhitespace
                       buttons={
-                        // Celadon REMOVAL <>
+                        <>
                           <Button
                             selected={oocNotesIndex === 'SFW'}
                             bold={oocNotesIndex === 'SFW'}
@@ -137,19 +152,17 @@ export function ExaminePanel(props) {
                           >
                             SFW
                           </Button>
-                          // Celadon REMOVAL START
-                          // <Button
-                          //   selected={oocNotesIndex === 'NSFW'}
-                          //   disabled={!ooc_notes_nsfw}
-                          //   bold={oocNotesIndex === 'NSFW'}
-                          //   onClick={() => setOocNotesIndex('NSFW')}
-                          //   textAlign="center"
-                          //   minWidth="60px"
-                          // >
-                          //   NSFW
-                          // </Button>
-                          // </>
-                          // Celadon REMOVAL END
+                          <Button
+                            selected={oocNotesIndex === 'NSFW'}
+                            disabled={!ooc_notes_nsfw}
+                            bold={oocNotesIndex === 'NSFW'}
+                            onClick={() => setOocNotesIndex('NSFW')}
+                            textAlign="center"
+                            minWidth="60px"
+                          >
+                            NSFW
+                          </Button>
+                        </>
                       }
                     >
                       {!!nova_star_status && (
@@ -160,7 +173,7 @@ export function ExaminePanel(props) {
                               fontWeight: 'bold',
                             }}
                           >
-                            Player is a Veteran. { /* Celadon EDIT, original: Nova Star! ⭐ */ }
+                            Nova Star! ⭐
                           </span>
                         </Stack.Item>
                       )}
@@ -199,6 +212,7 @@ export function ExaminePanel(props) {
                           {formatURLs(ooc_notes)}
                         </Stack.Item>
                       )}
+                      {oocNotesIndex === 'NSFW' && formatURLs(ooc_notes_nsfw)}
                     </Section>
                   </Stack.Item>
                   <Stack.Item grow basis={0}>

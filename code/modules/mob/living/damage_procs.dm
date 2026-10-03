@@ -65,7 +65,7 @@
 				damage_dealt = actual_hit.get_damage() - delta // Unfortunately bodypart receive_damage doesn't return damage dealt so we do it manually
 			else
 				damage_dealt = -1 * adjust_brute_loss(damage_amount, forced = forced)
-			// Celadon REMOVAL INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // NOVA EDIT ADDITION - ERP Pain
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // NOVA EDIT ADDITION - ERP Pain
 		if(BURN)
 			if(isbodypart(def_zone))
 				var/obj/item/bodypart/actual_hit = def_zone
@@ -85,7 +85,7 @@
 				damage_dealt = actual_hit.get_damage() - delta // See above
 			else
 				damage_dealt = -1 * adjust_fire_loss(damage_amount, forced = forced)
-			// Celadon REMOVAL INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // NOVA EDIT ADDITION - ERP Pain
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // NOVA EDIT ADDITION - ERP Pain
 		if(TOX)
 			damage_dealt = -1 * adjust_tox_loss(damage_amount, forced = forced)
 		if(OXY)

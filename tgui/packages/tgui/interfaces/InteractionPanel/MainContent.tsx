@@ -15,12 +15,10 @@ type Interaction = {
   erp_interaction: BooleanLike;
 }
 
-// Celadon REMOVAL START
-// import {
-//   InteractionsTab,
-//   LewdItemsTab,
-// } from './tabs';
-// Celadon REMOVAL END
+import {
+  InteractionsTab,
+  LewdItemsTab,
+} from './tabs';
 
 export const MainContent = () => {
   const [searchText, setSearchText] = useState('');
@@ -85,7 +83,6 @@ export const MainContent = () => {
             )}
           </Stack>
         </Stack.Item>
-        { /* Celadon REMOVAL START
         <Stack.Item grow mb={-1.6}>
           <Section fill>
             {tabIndex === 1 ? (
@@ -98,7 +95,6 @@ export const MainContent = () => {
             )}
           </Section>
         </Stack.Item>
-        Celadon REMOVAL END*/ }
       </Stack>
     </Section>
   );

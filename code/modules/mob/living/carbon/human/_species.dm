@@ -949,6 +949,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(damage >= 9)
 			target.force_say()
 		log_combat(user, target, "punched")
+	// NOVA EDIT ADDITION START
+	if(target.try_nut_shot(user, limb_accuracy, staggered))
+		return
+	// NOVA EDIT ADDITION END
 
 	if(user != target && biting && (target.mob_biotypes & MOB_ORGANIC)) //Good for you. You probably just ate someone alive.
 		var/datum/reagents/tasty_meal = new()

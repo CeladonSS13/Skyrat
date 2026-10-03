@@ -2,10 +2,12 @@
 #define EXAMINE_DNA_HEADSHOT "headshot"
 /// Examine Panel flavor text
 #define EXAMINE_DNA_FLAVOR_TEXT "flavor_text"
-// Celadon REMOVAL OF ERP DNA EXAMINE START, END
+/// Examine Panel NSFW flavor text—requires you to click a tab to see
+#define EXAMINE_DNA_FLAVOR_TEXT_NSFW "flavor_text_nsfw"
 /// Examine Panel OOC notes
 #define EXAMINE_DNA_OOC_NOTES "ooc_notes"
-// Celadon REMOVAL OF ERP EXAMINE START, END
+/// Examine Panel NSFW ooc notes—requires you to click a tab to see
+#define EXAMINE_DNA_OOC_NOTES_NSFW "ooc_notes_nsfw"
 
 //We start from 30 to not interfere with TG species defines, should they add more
 /// We're using all three mutcolor features for our skin coloration

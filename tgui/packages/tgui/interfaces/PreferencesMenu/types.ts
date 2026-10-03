@@ -100,7 +100,7 @@ export type Quirk = {
   customizable: boolean;
   customization_options?: string[];
   nova_stars_only: boolean; // NOVA EDIT ADDITION - Nova star quirks
-  // Celadon REMOVAL erp_quirk: boolean; // NOVA EDIT ADDITION - Purple ERP quirks
+  erp_quirk: boolean; // NOVA EDIT ADDITION - Purple ERP quirks
 };
 
 // NOVA EDIT START
@@ -212,6 +212,7 @@ export type CharacterPreferencesData = {
     species: string;
     loadout_lists: LoadoutList; // NOVA EDIT CHANGE - Multiple loadout presets - ORIGINAL: loadout_list: LoadoutList;
     job_clothes: BooleanLike;
+    loadout_index: string; // NOVA EDIT ADDITION: Multiple loadout presets
     background_state: string; // NOVA EDIT ADDITION: Swappable character editor backgrounds
     tts_seed: string; // CELADON ADDITION
   };
@@ -242,7 +243,8 @@ export type PreferencesMenuData = {
   preview_options: string[];
   preview_selection: string;
 
-  // CELADON REMOVAL erp_pref: BooleanLike;
+  erp_pref: BooleanLike;
+  tts_seed: string; // CELADON ADDITION
 
   job_alt_titles: Record<string, string>;
 

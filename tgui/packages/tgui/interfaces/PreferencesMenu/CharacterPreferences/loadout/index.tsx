@@ -33,7 +33,7 @@ export function LoadoutPage(props) {
   const loadout_tabs = serverData?.loadout.loadout_tabs || [];
   /* NOVA EDIT CHANGE - Original: const { data } = useBackend<LoadoutManagerData>();
   const { erp_pref } = data; */
-  // Celadon REMOVAL OF ERP PREF
+  const erp_pref = useBackend<LoadoutManagerData>().data.erp_pref;
 
   const [searchLoadout, setSearchLoadout] = useState('');
   const [selectedTabName, setSelectedTab] = useState(
@@ -161,7 +161,7 @@ export function LoadoutPage(props) {
               // NOVA EDIT ADDITION START - Prefslocked tabs
               .filter(
                 (curTab) =>
-                  !curTab.erp_category || (curTab.erp_category), // Celadon REMOVAL OF ERP
+                  !curTab.erp_category || (curTab.erp_category && erp_pref),
               ) // NOVA EDIT ADDITION END
               .map((curTab) => (
                 <Tabs.Tab
