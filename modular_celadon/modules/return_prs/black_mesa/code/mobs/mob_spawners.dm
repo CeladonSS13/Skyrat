@@ -24,7 +24,7 @@
 	name = "mob placer"
 	icon = 'modular_celadon/modules/return_prs/black_mesa/icons/mapping_helpers.dmi'
 	icon_state = "mobspawner"
-	var/list/possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
+	var/list/possible_mobs = list(/mob/living/basic/blackmesa/xen/headcrab)
 
 /obj/effect/random_mob_placer/Initialize(mapload)
 	. = ..()
@@ -49,9 +49,9 @@
 /obj/effect/random_mob_placer/xen
 	icon_state = "spawn_xen"
 	possible_mobs = list(
-		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab,
-		/mob/living/simple_animal/hostile/blackmesa/xen/houndeye,
-		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid,
+		/mob/living/basic/blackmesa/xen/headcrab,
+		/mob/living/basic/blackmesa/xen/houndeye,
+		/mob/living/basic/blackmesa/xen/bullsquid,
 	)
 
 /obj/effect/random_mob_placer/xen/zombie
