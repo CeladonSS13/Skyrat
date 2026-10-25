@@ -74,6 +74,8 @@
 	planetary_atmos = TRUE
 
 /turf/open/water/xen_acid
+	name = "green acid"
+	desc = "Shallow acid."
 	baseturfs = /turf/open/water/xen_acid
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
@@ -85,7 +87,7 @@
 
 /turf/open/water/xen_acid/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
-	if(isliving(arrived) && !istype(arrived, /mob/living/simple_animal/hostile/blackmesa/xen/bullsquid)) // Bull squid territory!
+	if(isliving(arrived) && !istype(arrived, /mob/living/basic/blackmesa/xen/bullsquid)) // Bull squid territory!
 		var/mob/living/unlucky_mob = arrived
 		unlucky_mob.adjust_fire_loss(acid_damage)
 		playsound(unlucky_mob, 'sound/items/weapons/sear.ogg', 100, TRUE)
