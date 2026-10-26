@@ -65,7 +65,7 @@
 		for(var/pack in stray_spawnable_supply_packs)
 			var/datum/supply_pack/pack_type = pack
 			if((initial(pack_type.order_flags) & ORDER_SPECIAL) || (initial(pack_type.console_flag) & CARGO_CONSOLE_NT_CENTCOM))	//CELADON EDIT original: if(initial(pack_type.order_flags) & ORDER_SPECIAL)
-				stray_spawnable_supply_packs -= pack.
+				stray_spawnable_supply_packs -= pack
 
 ///Spawns a random supply pack, puts it in a pod, and spawns it on a random tile of the selected area
 /datum/round_event/stray_cargo/start()
