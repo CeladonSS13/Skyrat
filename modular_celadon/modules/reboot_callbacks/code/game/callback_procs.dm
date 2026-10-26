@@ -23,6 +23,8 @@ GLOBAL_PROTECT(IS_WORLD_AUTO_HARD_REBOOT_PENDING)
 /world/proc/TryAutoHardReboot()
 	if(GLOB.IS_WORLD_AUTO_HARD_REBOOT_PENDING || IsAdminAdvancedProcCall())
 		return
+	if(!CONFIG_GET(flag/shutdown_on_reboot))
+		return
 	if (world.system_type != UNIX)
 		return // not supported, write your own if needed
 	GLOB.IS_WORLD_AUTO_HARD_REBOOT_PENDING = TRUE
