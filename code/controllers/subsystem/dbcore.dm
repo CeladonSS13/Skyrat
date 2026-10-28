@@ -451,6 +451,9 @@ Ignore_errors instructes mysql to continue inserting rows if some of them have e
 	if (!table || !rows || !istype(rows))
 		return
 
+	if(table)
+		message_admins("send table to dbcore")
+
 	// Prepare column list
 	var/list/columns = list()
 	var/list/has_question_mark = list()
