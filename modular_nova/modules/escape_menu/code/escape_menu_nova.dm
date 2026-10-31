@@ -5,7 +5,7 @@
 			null,
 			/* hud_owner = */ null,
 			/* hud_owner = */ src,
-			/* button_text = */ "OPFOR",
+			/* button_text = */ " OPFOR", //CELADON-EDIT Пробел в начале нужен для того что бы текст не багался. Почему? А ъуй знает, оно просто работает
 			/* offset = */ list(-276, 30),
 			/* font_size = */ 24,
 			/* on_click_callback = */ CALLBACK(src, PROC_REF(home_opfor)),
