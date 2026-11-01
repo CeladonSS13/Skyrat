@@ -1,0 +1,4 @@
+author: "Arceniu"
+delete-after: True
+changes:
+  - bugfix: "centcom cargo items in pods no longer spawn randomly"
