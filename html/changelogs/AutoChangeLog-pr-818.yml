@@ -1,0 +1,4 @@
+author: "Arceniu"
+delete-after: True
+changes:
+  - map: "fixed automapper config names"
