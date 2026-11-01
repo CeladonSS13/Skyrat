@@ -26,7 +26,7 @@
 
 	if(closet.broken && broken_lvl > 0 && broken_lvl < 3 && closet.locked)
 		closet.balloon_alert(user, "Панель взломана!")
-	return COMPONENT_CANCEL_ATTACK_CHAIN
+		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/component/hackable_panel/proc/on_screwdriver_act(datum/source, mob/living/user, obj/item/tool)
 	SIGNAL_HANDLER
