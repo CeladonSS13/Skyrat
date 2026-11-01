@@ -1,9 +1,9 @@
 name: Celadon Compile
 on:
-  - pull_request_target
+  - pull_request
 
 permissions:
-  contents: write
+  contents: read
   actions: write
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 10
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with: # to make it work on pull requests
         ref: ${{github.event.pull_request.head.ref}}
         repository: ${{github.event.pull_request.head.repo.full_name}}
