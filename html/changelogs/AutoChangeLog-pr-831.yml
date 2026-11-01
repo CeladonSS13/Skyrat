@@ -1,4 +1,0 @@
-author: "Arceniu"
-delete-after: True
-changes:
-  - server: "server no longer kill process"
