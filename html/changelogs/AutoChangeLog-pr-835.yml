@@ -1,0 +1,4 @@
+author: "Arceniu"
+delete-after: True
+changes:
+  - refactor: "refactored closet hack module"
