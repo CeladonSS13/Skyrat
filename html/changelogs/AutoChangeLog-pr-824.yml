@@ -1,0 +1,4 @@
+author: "Arceniu"
+delete-after: True
+changes:
+  - config: "removed not correct permissions from admin ranks"
