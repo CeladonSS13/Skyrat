@@ -1,6 +1,6 @@
 name: Celadon DreamChecker
 on:
-  - pull_request
+  - pull_request_target
 jobs:
   dreamchecker:
     runs-on: ubuntu-24.04
