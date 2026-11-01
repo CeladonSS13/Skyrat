@@ -1,0 +1,5 @@
+author: "Arceniu"
+delete-after: True
+changes:
+  - code_imp: "reverted non modular edits"
+  - rscadd: "returned some loadout items"
