@@ -41,19 +41,27 @@
 		return
 
 	to_chat(user, span_notice("Вы начинаете откручивать панель замка [closet]..."))
-	if(tool.use_tool(closet, user, SECURE_STORAGE_HACKING_DELAY, volume = SECURE_STORAGE_HACKING_VOLUME))
-		if(prob(SECURE_STORAGE_HACKING_SUCCESS_CHANCE_SCREW))
-			to_chat(user, span_notice("Вы успешно открутили и сняли панель с замка [closet]!"))
-			broken_lvl = 1
-			closet.broken = TRUE
-			closet.update_overlays()
-			closet.update_appearance()
-		else
-			var/obj/item/bodypart/affecting = user.get_active_hand()
-			user.apply_damage(5, BRUTE, affecting)
-			user.emote("scream")
-			to_chat(user, span_warning("Проклятье! [tool] сорвалась и повредила [affecting.name]!"))
+	INVOKE_ASYNC(src, PROC_REF(do_screwdriver_act), user, tool)
 	return ITEM_INTERACT_BLOCKING
+
+/datum/component/hackable_panel/proc/do_screwdriver_act(mob/living/user, obj/item/tool)
+	if(QDELETED(user) || QDELETED(tool) || QDELETED(closet))
+		return
+
+	if(!tool.use_tool(closet, user, SECURE_STORAGE_HACKING_DELAY, volume = SECURE_STORAGE_HACKING_VOLUME))
+		return
+
+	if(prob(SECURE_STORAGE_HACKING_SUCCESS_CHANCE_SCREW))
+		to_chat(user, span_notice("Вы успешно открутили и сняли панель с замка [closet]!"))
+		broken_lvl = 1
+		closet.broken = TRUE
+		closet.update_overlays()
+		closet.update_appearance()
+	else
+		var/obj/item/bodypart/affecting = user.get_active_hand()
+		user.apply_damage(5, BRUTE, affecting)
+		user.emote("scream")
+		to_chat(user, span_warning("Проклятье! [tool] сорвалась и повредила [affecting.name]!"))
 
 /datum/component/hackable_panel/proc/on_wirecutter_act(datum/source, mob/living/user, obj/item/tool)
 	SIGNAL_HANDLER
@@ -61,15 +69,24 @@
 		return
 
 	to_chat(user, span_notice("Вы начинаете подготавливать провода панели [closet]..."))
-	if(tool.use_tool(closet, user, SECURE_STORAGE_HACKING_DELAY, volume = SECURE_STORAGE_HACKING_VOLUME))
-		if(prob(SECURE_STORAGE_HACKING_SUCCESS_CHANCE_WIRE))
-			to_chat(user, span_notice("Вы успешно подготовили провода панели замка [closet]!"))
-			broken_lvl = 2
-		else
-			to_chat(user, span_warning("Черт! Не тот провод!"))
-			do_sparks(5, 1, closet)
-			electrocute_mob(user, get_area(closet), closet, 0.5, TRUE)
+	INVOKE_ASYNC(src, PROC_REF(do_wirecutter_act), user, tool)
 	return ITEM_INTERACT_BLOCKING
+
+
+/datum/component/hackable_panel/proc/do_wirecutter_act(mob/living/user, obj/item/tool)
+	if(QDELETED(user) || QDELETED(tool) || QDELETED(closet))
+		return
+
+	if(!tool.use_tool(closet, user, SECURE_STORAGE_HACKING_DELAY, volume = SECURE_STORAGE_HACKING_VOLUME))
+		return
+
+	if(prob(SECURE_STORAGE_HACKING_SUCCESS_CHANCE_WIRE))
+		to_chat(user, span_notice("Вы успешно подготовили провода панели замка [closet]!"))
+		broken_lvl = 2
+	else
+		to_chat(user, span_warning("Черт! Не тот провод!"))
+		do_sparks(5, 1, closet)
+		electrocute_mob(user, get_area(closet), closet, 0.5, TRUE)
 
 /datum/component/hackable_panel/proc/on_multitool_act(datum/source, mob/living/user, obj/item/tool)
 	SIGNAL_HANDLER
@@ -77,16 +94,24 @@
 		return
 
 	to_chat(user, span_notice("Вы начинаете подключать провода панели замка [closet] к [tool]..."))
-	if(tool.use_tool(closet, user, SECURE_STORAGE_HACKING_DELAY, volume = SECURE_STORAGE_HACKING_VOLUME))
-		if(prob(SECURE_STORAGE_HACKING_SUCCESS_CHANCE_MULTITOOL))
-			closet.broken = FALSE
-			broken_lvl = 3
-			closet.emag_act(user)
-		else
-			to_chat(user, span_warning("Черт! Не тот провод!"))
-			do_sparks(5, 1, closet)
-			electrocute_mob(user, get_area(closet), closet, 0.5, TRUE)
+	INVOKE_ASYNC(src, PROC_REF(do_multitool_act), user, tool)
 	return ITEM_INTERACT_BLOCKING
+
+/datum/component/hackable_panel/proc/do_multitool_act(mob/living/user, obj/item/tool)
+	if(QDELETED(user) || QDELETED(tool) || QDELETED(closet))
+		return
+
+	if(!tool.use_tool(closet, user, SECURE_STORAGE_HACKING_DELAY, volume = SECURE_STORAGE_HACKING_VOLUME))
+		return
+
+	if(prob(SECURE_STORAGE_HACKING_SUCCESS_CHANCE_MULTITOOL))
+		closet.broken = FALSE
+		broken_lvl = 3
+		closet.emag_act(user)
+	else
+		to_chat(user, span_warning("Черт! Не тот провод!"))
+		do_sparks(5, 1, closet)
+		electrocute_mob(user, get_area(closet), closet, 0.5, TRUE)
 
 /datum/component/hackable_panel/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
