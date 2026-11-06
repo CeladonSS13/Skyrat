@@ -111,6 +111,9 @@
 	casing_w_spacing = 2
 	casing_z_padding = 8
 
+/obj/item/ammo_box/magazine/ammo_stack/n762/prefilled
+	start_empty = FALSE
+
 //	c10mm
 
 /obj/item/ammo_casing/c10mm
