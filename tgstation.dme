@@ -10219,6 +10219,7 @@
 #include "modular_celadon\modules\votes_stuff\restart_vote.dm"
 #include "modular_celadon\modules\votes_stuff\transfer_vote.dm"
 #include "modular_celadon\modules\votes_stuff\vote.dm"
+#include "modular_celadon\modules\weapons_addon\code\ammo_stack.dm"
 #include "modular_celadon\modules\weapons_addon\code\energy1911.dm"
 #include "modular_celadon\modules\weapons_addon\code\qmgun.dm"
 #include "modular_celadon\modules\weapons_addon\code\_global\12g.dm"
@@ -10237,6 +10238,4 @@
 #include "modular_celadon\modules\weapons_addon\code\solfed\projectile.dm"
 #include "modular_celadon\modules\weapons_addon\code\syndicate\gun.dm"
 #include "modular_celadon\modules\weapons_addon\code\tribal\arrow.dm"
-#include "modular_celadon\modules\weapons_addon\code\ammo_stack.dm"
-#include "modular_celadon\modules\sierrablocks\turfs.dm"
 // END_INCLUDE
