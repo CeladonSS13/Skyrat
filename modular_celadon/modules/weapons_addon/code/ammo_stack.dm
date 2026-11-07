@@ -7,7 +7,7 @@
 	desc = "A stack of .38 bullet cartridges."
 	caliber = CALIBER_38
 	ammo_type = /obj/item/ammo_casing/c38
-	max_ammo = 12
+	max_ammo = 6
 	casing_w_spacing = 2
 	casing_z_padding = 8
 
@@ -62,7 +62,7 @@
 	desc = "A stack of .357 bullet cartridges."
 	caliber = CALIBER_357
 	ammo_type = /obj/item/ammo_casing/c357
-	max_ammo = 14
+	max_ammo = 7
 	casing_w_spacing = 2
 	casing_z_padding = 8
 
@@ -102,7 +102,7 @@
 	desc = "A stack of 7.62x38mmR bullet cartridges."
 	caliber = CALIBER_N762
 	ammo_type = /obj/item/ammo_casing/n762
-	max_ammo = 14
+	max_ammo = 7
 	casing_w_spacing = 2
 	casing_z_padding = 8
 
@@ -118,7 +118,7 @@
 	desc = "A stack of 10mm bullet cartridges."
 	caliber = CALIBER_10MM
 	ammo_type = /obj/item/ammo_casing/c10mm
-	max_ammo = 20
+	max_ammo = 8
 	casing_w_spacing = 2
 	casing_z_padding = 8
 
