@@ -6,7 +6,7 @@ on:
 
 jobs:
   do-not-merge:
-    name: Do Not Merge
+    name: DONT MERGE
     runs-on: ubuntu-latest
     steps:
       - name: Fail if labeled 'DONT MERGE'
