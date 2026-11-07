@@ -1,7 +1,4 @@
-// Кастомные стаки патрон
-
-//	c38
-
+// c38
 /obj/item/ammo_casing/c38
 	ammo_stack_type = /obj/item/ammo_box/magazine/ammo_stack/c38
 
@@ -56,8 +53,7 @@
 	ammo_type = /obj/item/ammo_casing/c38/haywire
 	icon_state = "stack_spec"
 
-//	c357
-
+// c357
 /obj/item/ammo_casing/c357
 	ammo_stack_type = /obj/item/ammo_box/magazine/ammo_stack/c357
 
@@ -97,8 +93,7 @@
 	ammo_type = /obj/item/ammo_casing/c357/haywire
 	icon_state = "stack_spec"
 
-//	n762
-
+// n762
 /obj/item/ammo_casing/n762
 	ammo_stack_type = /obj/item/ammo_box/magazine/ammo_stack/n762
 
@@ -114,8 +109,7 @@
 /obj/item/ammo_box/magazine/ammo_stack/n762/prefilled
 	start_empty = FALSE
 
-//	c10mm
-
+// c10mm
 /obj/item/ammo_casing/c10mm
 	ammo_stack_type = /obj/item/ammo_box/magazine/ammo_stack/c10mm
 
