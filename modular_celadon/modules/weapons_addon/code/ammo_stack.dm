@@ -64,7 +64,7 @@
 /obj/item/ammo_box/magazine/ammo_stack/c357
 	name = ".357 bullet casings"
 	desc = "A stack of .357 bullet cartridges."
-	caliber = CALIBER_38
+	caliber = CALIBER_357
 	ammo_type = /obj/item/ammo_casing/c357
 	max_ammo = 14
 	casing_w_spacing = 2
@@ -105,7 +105,7 @@
 /obj/item/ammo_box/magazine/ammo_stack/n762
 	name = "7.62x38mmR bullet casings"
 	desc = "A stack of 7.62x38mmR bullet cartridges."
-	caliber = CALIBER_38
+	caliber = CALIBER_N762
 	ammo_type = /obj/item/ammo_casing/n762
 	max_ammo = 14
 	casing_w_spacing = 2
@@ -122,7 +122,7 @@
 /obj/item/ammo_box/magazine/ammo_stack/c10mm
 	name = "10mm bullet casings"
 	desc = "A stack of 10mm bullet cartridges."
-	caliber = CALIBER_38
+	caliber = CALIBER_10MM
 	ammo_type = /obj/item/ammo_casing/c10mm
 	max_ammo = 20
 	casing_w_spacing = 2
