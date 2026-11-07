@@ -9,7 +9,7 @@
 	ammo_type = /obj/item/ammo_casing/c38
 	max_ammo = 6
 	casing_w_spacing = 2
-	casing_z_padding = 8
+	casing_z_padding = 6
 
 /obj/item/ammo_box/magazine/ammo_stack/c38/prefilled
 	start_empty = FALSE
@@ -53,7 +53,7 @@
 	ammo_type = /obj/item/ammo_casing/c357
 	max_ammo = 7
 	casing_w_spacing = 2
-	casing_z_padding = 8
+	casing_z_padding = 6
 
 /obj/item/ammo_box/magazine/ammo_stack/c357/prefilled
 	start_empty = FALSE
@@ -89,7 +89,7 @@
 	ammo_type = /obj/item/ammo_casing/n762
 	max_ammo = 7
 	casing_w_spacing = 2
-	casing_z_padding = 8
+	casing_z_padding = 6
 
 /obj/item/ammo_box/magazine/ammo_stack/n762/prefilled
 	start_empty = FALSE
@@ -121,7 +121,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 	max_ammo = 8
 	casing_w_spacing = 2
-	casing_z_padding = 8
+	casing_z_padding = 6
 
 /obj/item/ammo_box/magazine/ammo_stack/c9mm/prefilled
 	start_empty = FALSE
@@ -157,7 +157,7 @@
 	ammo_type = /obj/item/ammo_casing/c10mm
 	max_ammo = 8
 	casing_w_spacing = 2
-	casing_z_padding = 8
+	casing_z_padding = 6
 
 /obj/item/ammo_box/magazine/ammo_stack/c10mm/prefilled
 	start_empty = FALSE
