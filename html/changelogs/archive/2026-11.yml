@@ -16,3 +16,7 @@
   - admin: sorted admin ranks
   - bugfix: Fixed secure closet hacking
   - bugfix: renamed our modular automapper map
+2026-11-07:
+  dexter050627:
+  - rscadd: Now you able to collect stacks of ammunition for .357, .38, 7.62x38, Peashooter,
+      9mm and 10mm.
