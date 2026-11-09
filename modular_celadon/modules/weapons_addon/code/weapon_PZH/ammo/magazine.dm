@@ -1,7 +1,7 @@
 /obj/item/ammo_box/magazine/m762_phaze
 	name = "phaze Shift magazine (7.62x39mm)"
 	desc = "Magazine for phaze Shift T-9 with 7.62x39mm rounds."
-	icon = 'modular_celadon/modules/weapons_addon/icons/phz.dmi'
+	icon = 'modular_celadon/modules/weapons_addon/icons/phase_shift.dmi'
 	icon_state = "magazine_phaze"
 	base_icon_state = "magazine_phaze"
 	ammo_type = /obj/item/ammo_casing/a762_phaze
