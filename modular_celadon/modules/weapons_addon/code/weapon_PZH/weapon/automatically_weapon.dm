@@ -4,7 +4,7 @@
 /obj/item/gun/ballistic/automatic/automatically_weapon
 	name = "Phaze Shift T-9"
 	desc = "A high-precision automatic rifle equipped with an active heat dissipation system. When a critical temperature is reached in the receiver, the internal mechanism pushes the rod into the groove outside the weapon."
-	icon = 'modular_celadon/modules/weapons_addon/icons/phz.dmi'
+	icon = 'modular_celadon/modules/weapons_addon/icons/phase_shift.dmi'
 	icon_state = "automatically"
 	base_icon_state = "automatically"
 	inhand_icon_state = "Femboy_porno"
@@ -21,8 +21,8 @@
 	empty_indicator = FALSE
 	fire_sound = 'modular_celadon/modules/weapons_addon/code/weapon_PZH/sound/bad-explosion.ogg'
 	fire_sound_volume = 100
-	righthand_file = 'modular_celadon/modules/weapons_addon/icons/pzh_righthand.dmi'
-	lefthand_file = 'modular_celadon/modules/weapons_addon/icons/pzh_lefthand.dmi'
+	righthand_file = 'modular_celadon/modules/weapons_addon/icons/phase_shift_righthand.dmi'
+	lefthand_file = 'modular_celadon/modules/weapons_addon/icons/phase_shift_lefthand.dmi'
 
 	// System heat
 	var/current_heat = 0
