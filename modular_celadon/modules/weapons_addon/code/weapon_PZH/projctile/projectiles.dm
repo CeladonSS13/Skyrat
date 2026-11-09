@@ -7,7 +7,7 @@
 
 //Energy bullets
 /obj/projectile/energy/a762_phaze
-    icon = 'modular_celadon/modules/weapons_addon/icons/phz.dmi'
+    icon = 'modular_celadon/modules/weapons_addon/icons/phase_shift.dmi'
 
 /obj/projectile/energy/a762_phaze/plasma
     name = "7.62x39mm plasma"
