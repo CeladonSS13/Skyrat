@@ -82,15 +82,15 @@
 // ============================================================
 // Phase SHIFT T-9
 // ============================================================
-/obj/item/gun/ballistic/automatic/automatically_weapon
-	name = "Phaze Shift T-9"
+/obj/item/gun/ballistic/automatic/phase_shift
+	name = "Phase Shift T-9"
 	desc = "A high-precision automatic rifle equipped with an active heat dissipation system. When a critical temperature is reached in the receiver, the internal mechanism pushes the rod into the groove outside the weapon."
 	icon = 'modular_celadon/modules/weapons_addon/icons/phase_shift.dmi'
 	icon_state = "automatically"
 	base_icon_state = "automatically"
 	inhand_icon_state = "Femboy_porno"
 	w_class = WEIGHT_CLASS_BULKY
-	accepted_magazine_type = /obj/item/ammo_box/magazine/m762_phaze
+	accepted_magazine_type = /obj/item/ammo_box/magazine/m762_phase
 	can_suppress = TRUE
 	burst_size = 1
 	fire_delay = 0
@@ -117,23 +117,23 @@
 	// Magazine overlay reference
 	var/image/mag_overlay_ref = null
 
-/obj/item/gun/ballistic/automatic/automatically_weapon/Initialize(mapload)
+/obj/item/gun/ballistic/automatic/phase_shift/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/automatic_fire, 0.3 SECONDS)
 	start_cooling_loop()
 	update_overlays()
 
-/obj/item/gun/ballistic/automatic/automatically_weapon/Destroy()
+/obj/item/gun/ballistic/automatic/phase_shift/Destroy()
 	if(cooling_timer)
 		deltimer(cooling_timer)
 	return ..()
 
-/obj/item/gun/ballistic/automatic/automatically_weapon/proc/start_cooling_loop()
+/obj/item/gun/ballistic/automatic/phase_shift/proc/start_cooling_loop()
 	if(cooling_timer)
 		deltimer(cooling_timer)
 	cooling_timer = addtimer(CALLBACK(src, PROC_REF(cooling_loop)), 1 SECONDS, TIMER_LOOP|TIMER_STOPPABLE)
 
-/obj/item/gun/ballistic/automatic/automatically_weapon/proc/cooling_loop()
+/obj/item/gun/ballistic/automatic/phase_shift/proc/cooling_loop()
 	if(overheated)
 		return
 	if(current_heat <= 0)
@@ -142,12 +142,12 @@
 	current_heat = max(0, current_heat - cool_down_per_second)
 	update_heat_state()
 
-/obj/item/gun/ballistic/automatic/automatically_weapon/proc/stop_cooling_loop()
+/obj/item/gun/ballistic/automatic/phase_shift/proc/stop_cooling_loop()
 	if(cooling_timer)
 		deltimer(cooling_timer)
 		cooling_timer = null
 
-/obj/item/gun/ballistic/automatic/automatically_weapon/proc/update_heat_state()
+/obj/item/gun/ballistic/automatic/phase_shift/proc/update_heat_state()
 	if(overheated)
 		return
 	if(current_heat >= max_heat)
@@ -159,7 +159,7 @@
 		rod_extended = new_rod_extended
 		update_overlays()
 
-/obj/item/gun/ballistic/automatic/automatically_weapon/update_overlays()
+/obj/item/gun/ballistic/automatic/phase_shift/update_overlays()
 	. = ..()
 
 	// ===== ROD (static) =====
@@ -207,13 +207,13 @@
 		return "automatically_mag-10"
 	return "automatically_mag-5"
 
-/obj/item/gun/ballistic/automatic/automatically_weapon/can_shoot()
+/obj/item/gun/ballistic/automatic/phase_shift/can_shoot()
 	. = ..()
 	if(overheated)
 		return FALSE
 	return .
 
-/obj/item/gun/ballistic/automatic/automatically_weapon/shoot_live_shot(mob/living/user, pointblank, atom/target, params, distro, pointblank_zone)
+/obj/item/gun/ballistic/automatic/phase_shift/shoot_live_shot(mob/living/user, pointblank, atom/target, params, distro, pointblank_zone)
 	if(overheated)
 		to_chat(user, span_warning("[src] is overheated! Wait for it to cool down."))
 		return FALSE
@@ -230,12 +230,12 @@
 
 		update_overlays()
 
-/obj/item/gun/ballistic/automatic/automatically_weapon/proc/overheat()
+/obj/item/gun/ballistic/automatic/phase_shift/proc/overheat()
 	overheated = TRUE
 	rod_extended = FALSE
 	update_overlays()
 
-/obj/item/gun/ballistic/automatic/automatically_weapon/proc/reset_overheat()
+/obj/item/gun/ballistic/automatic/phase_shift/proc/reset_overheat()
 	overheated = FALSE
 	current_heat = 0
 	rod_extended = FALSE
@@ -244,7 +244,7 @@
 	if(ismob(loc))
 		to_chat(loc, span_notice("[src] has cooled down and is ready to fire again."))
 
-/obj/item/gun/ballistic/automatic/automatically_weapon/examine(mob/user)
+/obj/item/gun/ballistic/automatic/phase_shift/examine(mob/user)
 	. = ..()
 	var/heat_percent = (current_heat / max_heat) * 100
 	if(heat_percent > 0)
@@ -253,3 +253,16 @@
 		. += span_warning("The cooling rod is fully extended! The weapon is too hot to fire.")
 	else if(rod_extended)
 		. += span_info("The cooling rod is extended. The weapon is hot but still operational.")
+
+///supply pack
+/datum/supply_pack/security/armory/phase_shift
+	name = "Phase Shift T-9 Rifle Crate"
+	desc = "A high-precision automatic rifle equipped with an active heat dissipation system. When a critical temperature is reached in the receiver, the internal mechanism pushes the rod into the groove outside the weapon. Uses 7.62x39mm ammunition. Comes with three 30-round magazines."
+	cost = 120000
+	contains = list(
+		/obj/item/gun/ballistic/automatic/phase_shift,
+		/obj/item/ammo_box/magazine/m762_phase = 3,
+	)
+	crate_name = "phase shift t-9 rifle crate"
+	crate_type = /obj/structure/closet/crate/secure/weapon
+
