@@ -1,29 +1,29 @@
 #define CALIBER_762PHASE "7.62x39 Phase"
 
 ///casings
-/obj/item/ammo_casing/a762_phaze
+/obj/item/ammo_casing/a762_phase
     name = "7.62x39mm phase round"
     desc = "A powerful rifle cartridge. Designed specifically for phase Shift T-9."
     icon = 'modular_celadon/modules/weapons_addon/icons/phase_shift.dmi'
     icon_state = "762_casing_phaze"
     caliber = CALIBER_762PHASE
-    projectile_type = /obj/projectile/bullet/a762_phaze
+    projectile_type = /obj/projectile/bullet/a762_phase
     harmful = TRUE
 
-/obj/item/ammo_casing/a762_phaze/a762_phaze_plasma
+/obj/item/ammo_casing/a762_phaze/a762_phase_plasma
     name = "7.62x39mm plasma phase round"
     desc = "A powerful rifle cartridge containing plasma instead of a bullet. Designed specifically for Phase Shift T-9."
     icon_state = "762_casing_phaze_plasma"
-    projectile_type = /obj/projectile/energy/a762_phaze/plasma
+    projectile_type = /obj/projectile/energy/a762_phase/plasma
 
-/obj/item/ammo_casing/a762_phaze/a762_phaze_energy
+/obj/item/ammo_casing/a762_phase/a762_phase_energy
     name = "7.62x39mm energy phase round"
     desc = "A powerful rifle cartridge containing energy instead of a bullet. Designed specifically for Phase Shift T-9."
     icon_state = "762_casing_phaze_energy"
-    projectile_type = /obj/projectile/energy/a762_phaze/energy
+    projectile_type = /obj/projectile/energy/a762_phase/energy
 
 ///projectiles
-/obj/projectile/bullet/a762_phaze
+/obj/projectile/bullet/a762_phase
     name = "7.62x39mm bullet"
     damage = 25
     armour_penetration = 15
@@ -31,17 +31,17 @@
     wound_bonus = 30
 
 //Energy bullets
-/obj/projectile/energy/a762_phaze
+/obj/projectile/energy/a762_phase
     icon = 'modular_celadon/modules/weapons_addon/icons/phase_shift.dmi'
 
-/obj/projectile/energy/a762_phaze/plasma
+/obj/projectile/energy/a762_phase/plasma
     name = "7.62x39mm plasma"
     damage = 20
     armour_penetration = 70
     icon_state = "plasma_jet"
     wound_bonus = 40
 
-/obj/projectile/energy/a762_phaze/energy
+/obj/projectile/energy/a762_phase/energy
     name = "7.62x39mm energy"
     damage = 15
     armour_penetration = 10
@@ -49,23 +49,35 @@
     icon_state = "energy"
 
 ///magazine
-/obj/item/ammo_box/magazine/m762_phaze
+/obj/item/ammo_box/magazine/m762_phase
 	name = "phase Shift magazine (7.62x39mm)"
 	desc = "Magazine for phase Shift T-9 with 7.62x39mm rounds."
 	icon = 'modular_celadon/modules/weapons_addon/icons/phase_shift.dmi'
 	icon_state = "magazine_phaze"
 	base_icon_state = "magazine_phaze"
-	ammo_type = /obj/item/ammo_casing/a762_phaze
+	ammo_type = /obj/item/ammo_casing/a762_phase
 	caliber = CALIBER_762PHASE
 	multiple_sprite_use_base = TRUE
 	max_ammo = 30
 //Update magazine icons
-/obj/item/ammo_box/magazine/m762_phaze/update_icon_state()
+/obj/item/ammo_box/magazine/m762_phase/update_icon_state()
 	. = ..()
 	var/ammo_count = stored_ammo ? stored_ammo.len : 0
 	var/rounded_ammo = round(ammo_count, 5)
 	var/display_ammo = (rounded_ammo == 0 && ammo_count > 0) ? 5 : rounded_ammo
 	icon_state = "[base_icon_state]-[display_ammo]"
+
+/obj/item/ammo_box/b762_phase
+    name = "ammo box (7.62x39mm phase)"
+    desc = "A box with 7.62x39mm cartridges for phase Shift T-9."
+    icon = 'modular_celadon/modules/weapons_addon/icons/phase_shift.dmi'
+    icon_state = "box_phaze"
+    base_icon_state = "box_phaze"
+    multiple_sprites = AMMO_BOX_FULL_EMPTY
+    multiple_sprite_use_base = TRUE
+    ammo_type = /obj/item/ammo_casing/a762_phase
+    caliber = CALIBER_762PHASE
+    max_ammo = 60
 
 // ============================================================
 // Phase SHIFT T-9
