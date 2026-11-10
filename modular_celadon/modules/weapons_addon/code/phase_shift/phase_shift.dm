@@ -100,7 +100,7 @@
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 	empty_indicator = FALSE
-	fire_sound = 'modular_celadon/modules/weapons_addon/code/weapon_PZH/sound/bad-explosion.ogg'
+	fire_sound = 'modular_celadon/modules/weapons_addon/sound/phase_shift/bad-explosion.ogg'
 	fire_sound_volume = 100
 	righthand_file = 'modular_celadon/modules/weapons_addon/icons/phase_shift_righthand.dmi'
 	lefthand_file = 'modular_celadon/modules/weapons_addon/icons/phase_shift_lefthand.dmi'
