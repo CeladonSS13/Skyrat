@@ -10093,6 +10093,7 @@
 #include "modular_celadon\modules\weapons_addon\code\nanotrasen\gun.dm"
 #include "modular_celadon\modules\weapons_addon\code\nri\gun.dm"
 #include "modular_celadon\modules\weapons_addon\code\nri\projectile.dm"
+#include "modular_celadon\modules\weapons_addon\code\phase_shift\phase_shift.dm"
 #include "modular_celadon\modules\weapons_addon\code\sakhno\gun.dm"
 #include "modular_celadon\modules\weapons_addon\code\sakhno\projectile.dm"
 #include "modular_celadon\modules\weapons_addon\code\solfed\gun.dm"
@@ -10100,6 +10101,4 @@
 #include "modular_celadon\modules\weapons_addon\code\solfed\projectile.dm"
 #include "modular_celadon\modules\weapons_addon\code\syndicate\gun.dm"
 #include "modular_celadon\modules\weapons_addon\code\tribal\arrow.dm"
-#include "modular_celadon\modules\weapons_addon\code\phase_shift\phase_shift.dm"
-#include "modular_celadon\modules\cargo\code\weapon_PZH.dm"
 // END_INCLUDE 
