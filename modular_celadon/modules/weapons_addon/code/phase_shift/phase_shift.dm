@@ -190,7 +190,7 @@
 		mag_overlay_ref.layer = FLOAT_LAYER
 		add_overlay(mag_overlay_ref)
 
-/proc/get_magazine_icon_state(ammo, has_magazine)
+/obj/item/gun/ballistic/automatic/phase_shift/proc/get_magazine_icon_state(ammo, has_magazine)
 	if(!has_magazine)
 		return null
 	if(ammo <= 0)
