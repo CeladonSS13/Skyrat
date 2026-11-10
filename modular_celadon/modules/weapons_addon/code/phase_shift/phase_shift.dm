@@ -10,7 +10,7 @@
     projectile_type = /obj/projectile/bullet/a762_phase
     harmful = TRUE
 
-/obj/item/ammo_casing/a762_phaze/a762_phase_plasma
+/obj/item/ammo_casing/a762_phase/a762_phase_plasma
     name = "7.62x39mm plasma phase round"
     desc = "A powerful rifle cartridge containing plasma instead of a bullet. Designed specifically for Phase Shift T-9."
     icon_state = "762_casing_phaze_plasma"
