@@ -9,7 +9,6 @@
 	merge_type = /obj/item/stack/sheet/spaceship
 	walltype = /turf/closed/wall/mineral/titanium/spaceship
 	mats_per_unit = /obj/item/stack/sheet/mineral/titanium::mats_per_unit
-	material_type = /datum/material/titanium // Celadon ADDITION, tbh should be modular, in case someone will move it later
 
 /obj/item/stack/sheet/spaceshipglass
 	name = "spaceship window plates"

@@ -1,3 +1,7 @@
+
+/datum/job/chief_engineer
+	antagonist_restricted = FALSE
+
 /datum/outfit/job/ce/pre_equip(mob/living/carbon/human/human, visualsOnly)
 	. = ..()
 	backpack_contents -= list(

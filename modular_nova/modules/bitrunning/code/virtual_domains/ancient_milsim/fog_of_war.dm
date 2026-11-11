@@ -7,7 +7,8 @@
 /obj/machinery/button/door/indestructible/ancient_milsim/Initialize(mapload, ndir, built)
 	. = ..()
 	radio = new(src)
-	radio.keyslot = new /obj/item/encryptionkey/headset_syndicate/cybersun()
+	radio.keyslot = new /obj/item/encryptionkey/headset_bitdefend()	//CELADON ADD
+//	radio.keyslot = new /obj/item/encryptionkey/headset_syndicate/cybersun()	//CELADON REMOVE
 	radio.set_listening(FALSE)
 	radio.recalculateChannels()
 
@@ -24,7 +25,8 @@
 	. = ..()
 	if(.)
 		return
-	radio.talk_into(src, "Fog is down, prepare for contact.", RADIO_CHANNEL_CYBERSUN)
+//	radio.talk_into(src, "Fog is down, prepare for contact.", RADIO_CHANNEL_CYBERSUN)	//CELADON REMOVE
+	radio.talk_into(src, "Fog is down, prepare for contact.", RADIO_CHANNEL_BITDEFEND)	//CELADON ADD
 	qdel(src)
 
 /obj/machinery/door/poddoor/ancient_milsim

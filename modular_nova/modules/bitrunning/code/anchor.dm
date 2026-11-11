@@ -20,7 +20,8 @@
 		server.current_anchors += 1
 		var/obj/machinery/announcement_system/aas = get_announcement_system(source = server)
 		if(aas)
-			aas.broadcast("Potential secure datastream detected. Locking on the new spawn point.", list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_FACTION))
+//			aas.broadcast("Potential secure datastream detected. Locking on the new spawn point.", list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_FACTION))	//CELADON REMOVE
+			aas.broadcast("Potential secure datastream detected. Locking on the new spawn point.", list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_BITRUN))	//CELADON ADD
 	new /obj/effect/landmark/bitrunning/domain_anchor(drop_location())
 	user.balloon_alert(user, "connection stabilized!")
 	qdel(src)

@@ -22,6 +22,20 @@
 /obj/machinery/computer/shuttle/centcom
 	shuttleId = "centcom"
 	req_access = list(ACCESS_CENT_GENERAL)
+	var/allow_silicons = FALSE
+	var/allow_emag = FALSE
+
+/obj/machinery/computer/shuttle/centcom/emag_act(mob/user, obj/item/card/emag/emag_card)
+	if(!allow_emag)
+		balloon_alert(user, "firewall too powerful!")
+		return FALSE
+	return ..()
+
+/obj/machinery/computer/shuttle/centcom/attack_ai()
+	return allow_silicons ? ..() : FALSE
+
+/obj/machinery/computer/shuttle/centcom/attack_robot()
+	return allow_silicons ? ..() : FALSE
 
 /obj/machinery/computer/shuttle/centcom/interlink
 	name = "CentCom-Interlink shuttle console"
@@ -29,6 +43,7 @@
 	icon_keyboard = "tech_key"
 	light_color = LIGHT_COLOR_CYAN
 	shuttleId = "centcom_interlink"
+	req_access = list(ACCESS_CENT_OFFICER)
 	possible_destinations = "centcom_interlink_home;centcom_interlink_away"
 
 /obj/machinery/computer/shuttle/centcom/podbay_elevator

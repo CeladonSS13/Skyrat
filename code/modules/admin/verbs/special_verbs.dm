@@ -25,6 +25,13 @@
 			log_admin_private("[key_name(src)][msg]")
 			return
 
+	//CELADON ADD START
+	for(var/datum/admin_rank/rank in A.ranks)
+		if((rank.name == "Eventologist") && (SSplayer_ranks.is_no_readmin(src, admin_bypass = TRUE)))	// && (length(GLOB.admins)>0)
+			to_chat(src, span_interface("Sorry, readmin denied."), confidential = TRUE)
+			log_admin("[src] tried re-admin, but was denied.")
+			return
+	//CELADON ADD END
 	A.associate(src)
 
 	if (!holder)

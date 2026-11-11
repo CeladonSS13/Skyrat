@@ -38,7 +38,7 @@
 		/obj/item/clothing/head/collectable/captain = 4,
 	)
 
-	nova_stars_only = FALSE // Celadon EDIT
+	nova_stars_only = TRUE
 	job_flags = STATION_JOB_FLAGS | JOB_CANNOT_OPEN_SLOTS | JOB_ANTAG_PROTECTED
 
 /datum/outfit/job/blueshield
@@ -46,23 +46,24 @@
 	jobtype = /datum/job/blueshield
 	uniform = /obj/item/clothing/under/rank/blueshield
 	suit = /obj/item/clothing/suit/armor/vest/blueshield/jacket
-	gloves = /obj/item/clothing/gloves/tackler/combat/insulated/blueshield
-	id = /obj/item/card/id/advanced/centcom
+	gloves = /obj/item/clothing/gloves/tackler/security
+	id = /obj/item/card/id/advanced/centcom/station
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/headset_bs/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/blue
 	implants = list(/obj/item/implant/mindshield)
+	backpack_contents = list(
+		/obj/item/choice_beacon/blueshield = 1,
+	)
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
 	duffelbag = /obj/item/storage/backpack/duffelbag/blueshield
 	messenger = /obj/item/storage/backpack/messenger/blueshield
+
 	head = /obj/item/clothing/head/beret/blueshield
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/modular_computer/pda/blueshield
 	l_pocket = /obj/item/sensor_device/blueshield
-	backpack_contents = list(
-							/obj/item/choice_beacon/blueshield = 1,
-	)
 
 	id_trim = /datum/id_trim/job/blueshield
 
@@ -112,7 +113,7 @@
 		"Blueshield Energy Shield" = /obj/item/shield/energy/returning/blueshield,
 		"Fendér Revolver Set" = /obj/item/storage/toolbox/guncase/nova/pistol/trappiste_small_case/bluvolva,
 		"Custom Hellfire Laser Carbine" = /obj/item/gun/energy/laser/hellgun/blueshield,
-		"Sindano Submachine Gun" = /obj/item/gun/ballistic/automatic/sol_smg,
+		"NT20 Submachinegun Gunset" = /obj/item/storage/toolbox/guncase/nova/ntspecial/nt20,
 		"Katyusha Shotgun Gunset" = /obj/item/storage/toolbox/guncase/nova/katyusha,
 	)
 

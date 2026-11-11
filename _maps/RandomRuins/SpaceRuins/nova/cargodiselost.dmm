@@ -403,12 +403,12 @@
 /obj/structure/closet/crate/secure/weapon{
 	name = "Surplus Firearms"
 	},
-/obj/item/gun/ballistic/automatic/sol_smg,
-/obj/item/gun/ballistic/automatic/sol_smg,
-/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
-/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
-/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
-/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/gun/ballistic/automatic/lanca,
+/obj/item/gun/ballistic/automatic/lanca,
+/obj/item/ammo_box/magazine/lanca,
+/obj/item/ammo_box/magazine/lanca,
+/obj/item/ammo_box/magazine/lanca,
+/obj/item/ammo_box/magazine/lanca,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "fl" = (
@@ -1997,7 +1997,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/bridge)
 "ES" = (
 /obj/structure/rack/gunrack,
-/obj/item/gun/ballistic/automatic/sol_smg,
+/obj/item/gun/ballistic/automatic/lanca,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/cargodise_freighter/vault)
 "Fm" = (

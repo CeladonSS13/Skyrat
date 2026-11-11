@@ -166,12 +166,22 @@ export const RADIO_CHANNELS = [
     freq: 1459,
     color: '#1ecc43',
   },
-  /* //Celadon ADDITION START - PRISONERS HEADSETS */
+  /* //Celadon ADDITION START */
   {
     name: 'Prison',
     freq: 1473,
     color: '#975032',
-  } /* //Celadon ADDITION END - PRISONERS HEADSETS */,
+  },
+  {
+    name: 'Bitrun',
+    freq: 1545,
+    color: '#fdfd34',
+  },
+  {
+    name: 'Bitdefend',
+    freq: 1547,
+    color: '#ff4444',
+  } /* //Celadon ADDITION END */,
 ] as const;
 
 const GASES = [

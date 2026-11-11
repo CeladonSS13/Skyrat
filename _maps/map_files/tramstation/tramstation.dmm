@@ -5918,14 +5918,16 @@
 /turf/open/space/openspace,
 /area/station/solars/starboard/fore)
 "aUa" = (
-/obj/structure/safe{
-	known_by = list("hos")
+/obj/structure/table/wood,
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_x = -5
 	},
-/obj/item/gun/ballistic/revolver/mateba,
-/obj/item/ammo_box/speedloader/c357,
-/obj/item/ammo_box/speedloader/c357,
-/obj/item/ammo_box/speedloader/c357,
-/obj/item/clothing/accessory/holster,
+/obj/item/taperecorder{
+	pixel_x = -5
+	},
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hos)
 "aUb" = (
@@ -8405,7 +8407,7 @@
 /area/station/hallway/secondary/command)
 "bSU" = (
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/secure_closet/brig/permanent,
+/obj/structure/closet/secure_closet/brig,
 /turf/open/floor/iron/dark,
 /area/station/security/execution/transfer)
 "bTm" = (
@@ -9328,7 +9330,6 @@
 	},
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
-/obj/structure/closet/secure_closet/security_medic,
 /turf/open/floor/iron/white,
 /area/station/security/medical)
 "ceQ" = (
@@ -9464,7 +9465,6 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
 	},
-/obj/machinery/autolathe,
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
 "cgX" = (
@@ -13761,18 +13761,17 @@
 /area/station/hallway/secondary/entry)
 "dFI" = (
 /obj/structure/table/wood,
+/obj/item/storage/box/seccarts{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/item/storage/box/deputy,
 /obj/item/radio/intercom/directional/west,
 /obj/machinery/button/door/directional/west{
 	name = "Emergency Blast Doors";
 	pixel_y = -8;
 	id = "HOSOffice";
 	req_access = list("hos")
-	},
-/obj/machinery/recharger{
-	pixel_y = 4
-	},
-/obj/item/paper/paperslip/corporate/fluff/safe_code{
-	owner = "hos"
 	},
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hos)
@@ -14855,7 +14854,6 @@
 /area/station/service/library)
 "dYe" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/autolathe/hacked,
 /turf/open/floor/iron/showroomfloor,
 /area/station/security/lockers)
 "dYm" = (
@@ -19425,8 +19423,8 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 5
 	},
+/obj/machinery/space_heater,
 /obj/machinery/light/directional/north,
-/obj/machinery/suit_storage_unit/atmos,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "fKn" = (
@@ -20537,19 +20535,6 @@
 /obj/structure/ladder,
 /turf/open/openspace/airless,
 /area/station/asteroid)
-"gfE" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	name = "Research and Development Shutter";
-	id = "rndlab1"
-	},
-/obj/machinery/autolathe,
-/obj/machinery/door/window/right/directional/north{
-	name = "Research Autolathe";
-	req_access = list("science")
-	},
-/obj/structure/window/reinforced/spawner/directional/west,
-/turf/open/floor/plating,
-/area/station/science/lab)
 "gfK" = (
 /turf/closed/wall/r_wall,
 /area/station/security/execution/education)
@@ -21376,7 +21361,7 @@
 /obj/machinery/stasis{
 	dir = 4
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/north,
+/obj/machinery/defibrillator_mount/directional/north,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
 	},
@@ -22346,7 +22331,7 @@
 /obj/structure/bed/medical{
 	dir = 4
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/east,
+/obj/machinery/defibrillator_mount/directional/east,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
 	},
@@ -22877,7 +22862,7 @@
 /turf/open/floor/plating,
 /area/station/medical/virology)
 "gXb" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/cargo,
 /obj/item/clothing/mask/whistle,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
@@ -26452,7 +26437,6 @@
 	pixel_x = 23;
 	pixel_y = -8
 	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/iron/dark,
 /area/station/security/armory)
 "irv" = (
@@ -29508,7 +29492,7 @@
 /obj/structure/bed/medical{
 	dir = 8
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/west,
+/obj/machinery/defibrillator_mount/directional/west,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
@@ -31551,19 +31535,6 @@
 	},
 /turf/open/floor/carpet,
 /area/station/service/chapel/monastery)
-"kcd" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/autolathe,
-/obj/machinery/door/window/left/directional/south{
-	req_access = list("cargo");
-	name = "Cargo Autolathe"
-	},
-/turf/open/floor/iron,
-/area/station/cargo/office)
-"kce" = (
-/obj/machinery/space_heater,
-/turf/open/floor/iron,
-/area/station/engineering/atmos)
 "kcm" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
 	dir = 4
@@ -32190,6 +32161,7 @@
 /turf/open/floor/carpet,
 /area/station/commons/dorms)
 "kkq" = (
+/obj/machinery/autolathe,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 1
 	},
@@ -32783,10 +32755,6 @@
 	pixel_x = -6;
 	pixel_y = 10
 	},
-/obj/item/stack/sheet/iron/ten,
-/obj/item/stack/sheet/glass{
-	amount = 10
-	},
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
 "ktb" = (
@@ -33075,10 +33043,6 @@
 /obj/machinery/recharger,
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
-/obj/item/stack/sheet/iron/ten,
-/obj/item/stack/sheet/glass{
-	amount = 10
-	},
 /turf/open/floor/iron/showroomfloor,
 /area/station/security/lockers)
 "kzq" = (
@@ -39209,7 +39173,7 @@
 /obj/machinery/stasis{
 	dir = 8
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/north,
+/obj/machinery/defibrillator_mount/directional/north,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 5
 	},
@@ -44703,10 +44667,6 @@
 /obj/machinery/light_switch/directional/west{
 	pixel_y = -4
 	},
-/obj/item/stack/sheet/iron/ten,
-/obj/item/stack/sheet/glass{
-	amount = 10
-	},
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "oDH" = (
@@ -44998,7 +44958,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 4
 	},
-/obj/machinery/suit_storage_unit/atmos,
+/obj/machinery/space_heater,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "oMc" = (
@@ -46771,9 +46731,6 @@
 /obj/structure/table/wood,
 /obj/item/folder/red,
 /obj/item/stamp/head/hos,
-/obj/item/taperecorder{
-	pixel_x = -5
-	},
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hos)
 "ptD" = (
@@ -52376,12 +52333,6 @@
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
 /obj/machinery/light/directional/north,
-/obj/item/stack/sheet/iron/fifty{
-	pixel_x = -8
-	},
-/obj/item/stack/sheet/glass/fifty{
-	pixel_x = 8
-	},
 /turf/open/floor/iron,
 /area/station/cargo/office)
 "rom" = (
@@ -53148,7 +53099,6 @@
 /obj/machinery/camera/emp_proof/directional/north{
 	c_tag = "Engineering - Atmospherics North"
 	},
-/obj/machinery/space_heater,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "rDt" = (
@@ -58782,7 +58732,7 @@
 /obj/structure/rack,
 /obj/item/clothing/suit/hooded/ablative,
 /obj/item/gun/energy/ionrifle,
-/obj/item/gun/ballistic/automatic/sol_smg{
+/obj/item/gun/ballistic/automatic/battle_rifle{
 	pixel_y = 3
 	},
 /obj/item/gun/energy/temperature/security,
@@ -61054,7 +61004,7 @@
 /turf/open/floor/iron/dark,
 /area/station/maintenance/tram/mid)
 "uoJ" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/science,
 /obj/item/clothing/mask/whistle,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
@@ -63039,7 +62989,7 @@
 	dir = 5
 	},
 /obj/structure/sign/clock/directional/north,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/engine,
 /obj/item/clothing/mask/whistle,
 /turf/open/floor/iron,
 /area/station/security/checkpoint/engineering)
@@ -67406,14 +67356,6 @@
 	pixel_y = 8;
 	start_on = 0
 	},
-/obj/item/book/manual/wiki/security_space_law{
-	pixel_x = -5
-	},
-/obj/item/storage/box/deputy,
-/obj/item/storage/box/seccarts{
-	pixel_x = 3;
-	pixel_y = 2
-	},
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hos)
 "wwe" = (
@@ -70946,7 +70888,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/disposal/incinerator)
 "xOM" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/med,
 /obj/item/clothing/mask/whistle,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
@@ -106125,7 +106067,7 @@ kpq
 rDj
 tTW
 vUk
-kce
+wQm
 skM
 bZW
 qkN
@@ -183188,7 +183130,7 @@ cwG
 sFc
 cwG
 ccj
-kcd
+vRG
 tRT
 cbH
 kMc
@@ -183725,7 +183667,7 @@ aHQ
 aIv
 aHQ
 nUy
-gfE
+rHj
 aJG
 uOx
 aKA

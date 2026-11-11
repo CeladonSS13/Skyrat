@@ -84,7 +84,7 @@
 	icon_state = "glock_spec"
 	w_class = WEIGHT_CLASS_NORMAL
 	accepted_magazine_type = /obj/item/ammo_box/magazine/g20
-	fire_sound = 'modular_nova/master_files/sound/weapons/glock17_fire.ogg'
+	fire_sound = 'modular_celadon/master_files/sound/weapons/glock17_fire.ogg'
 	rack_sound = 'sound/items/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/items/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/items/weapons/gun/pistol/slide_drop.ogg'

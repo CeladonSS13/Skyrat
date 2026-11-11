@@ -23,5 +23,9 @@ ALLOW_GALACTIC_MARKET_SELL
 # Uncomment to allow all cards regardless of their type (platinum, gold, silver...) to have infinity wildcard slots
 INFINITE_ACCESS_SLOTS
 
-# Uncomment to enable plasma inflation system in cargo
-PLASMA_INFLATION
+## Comment these out if you want to use the SQL-based player rank system, the
+## legacy system uses the .txt files in the data folder instead.
+## You need to set up your database to use the SQL-based system.
+## These flags are automatically enabled if SQL_ENABLED isn't.
+#CENTCOM_LEGACY_SYSTEM
+#NO_READMIN_LEGACY_SYSTEM

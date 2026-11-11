@@ -181,6 +181,8 @@
 	if(job.has_banned_species(client.prefs))
 		return JOB_UNAVAILABLE_SPECIES
 	//NOVA EDIT END
+	if((job.centcom_job && !SSplayer_ranks.is_centcom(client)))	//CELADON ADD START
+		return JOB_UNAVAILABLE_GENERIC	//CELADON ADD END
 	return JOB_AVAILABLE
 
 

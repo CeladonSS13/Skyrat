@@ -11,10 +11,20 @@
 #define BOLT_NANOTRASEN_DEFENSE_NAME_CELADON "Nanotrasen-Bolt Personal Defense Coalition"
 #define VITEZSTVI_AMMO_NAME_CELADON "Vitezstvi Ammo & Weapon Accessories"
 
-//export
-#define EXPORT_MARKET_DS_INTERDYNE "ds_interdyne"
-#define EXPORT_MARKET_TARKON "tarkon"
-#define EXPORT_MARKET_BLACKMARKET "blackmarket" // some "fallback" market for very weird cases
-
 //keep updated with code\__DEFINES\~nova_defines\cargo.dm
 #define CARGO_CONSOLE_NT_CENTCOM		(1<<6)
+
+//bitrunners
+#define RADIO_CHANNEL_BITRUN "Bitrun"
+#define RADIO_KEY_BITRUN "r"
+#define RADIO_TOKEN_BITRUN ":r"
+#define FREQ_BITRUN 1545
+
+//bitrun defenders
+#define RADIO_CHANNEL_BITDEFEND "Bitdefend"
+#define RADIO_KEY_BITDEFEND "z"
+#define RADIO_TOKEN_BITDEFEND ":z"
+#define FREQ_BITDEFEND 1547
+
+// Sends a supply pod to the buyer's location, showy, nanotrasen.
+#define SHIPPING_METHOD_SUPPLYPOD_NT "Bluespace Supply Pod"

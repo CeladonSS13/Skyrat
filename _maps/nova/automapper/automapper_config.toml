@@ -99,6 +99,14 @@ required_map = "MetaStation.dmm"
 coordinates = [157, 156, 1]
 trait_name = "Station"
 
+# METASTATION CELADON brigmed
+[templates.metastation_celadon_brigmed]
+map_files = ["metastation_celadon_brigmed.dmm"]
+directory = "_maps/nova/automapper/templates/metastation/"
+required_map = "MetaStation.dmm"
+coordinates = [94, 170, 1]
+trait_name = "Station"
+
 # DELTASTATION MAP EDITS
 # Deltastation Arrivals
 [templates.deltastation_arrivals]
@@ -164,12 +172,36 @@ required_map = "DeltaStation2.dmm"
 coordinates = [148, 161, 1]
 trait_name = "Station"
 
-# DELTA CELADON engineering storage
+# Deltastation CELADON engineering storage
 [templates.deltastation_celadon_engineering_storage]
 map_files = ["deltastation_celadon_engineering_storage.dmm"]
 directory = "_maps/nova/automapper/templates/deltastation/"
 required_map = "DeltaStation2.dmm"
 coordinates = [102, 119, 1]
+trait_name = "Station"
+
+# Deltastation CELADON science auto
+[templates.deltastation_celadon_sci_auto]
+map_files = ["deltastation_celadon_sci_auto.dmm"]
+directory = "_maps/nova/automapper/templates/deltastation/"
+required_map = "DeltaStation2.dmm"
+coordinates = [136, 98, 1]
+trait_name = "Station"
+
+# Deltastation CELADON brigmed
+[templates.deltastation_celadon_brigmed]
+map_files = ["deltastation_celadon_brigmed.dmm"]
+directory = "_maps/nova/automapper/templates/deltastation/"
+required_map = "DeltaStation2.dmm"
+coordinates = [195, 162, 1]
+trait_name = "Station"
+
+# Deltastation Celadon Prison lockers
+[templates.deltastation_celadon_prison_lockers]
+map_files = ["deltastation_celadon_prison_lockers.dmm"]
+directory = "_maps/nova/automapper/templates/deltastation/"
+required_map = "DeltaStation2.dmm"
+coordinates = [210, 157, 1]
 trait_name = "Station"
 
 # ICEBOX MAP EDITS
@@ -269,6 +301,14 @@ required_map = "IceBoxStation.dmm"
 coordinates = [134, 145, 3]
 trait_name = "Station"
 
+# ICEBOX CELADON brigmed
+[templates.icebox_celadon_brigmed]
+map_files = ["icebox_celadon_brigmed.dmm"]
+directory = "_maps/nova/automapper/templates/icebox/"
+required_map = "IceBoxStation.dmm"
+coordinates = [119, 175, 3]
+trait_name = "Station"
+
 # ICEBOX CELADON engineering storage
 [templates.icebox_celadon_engineering_storage]
 map_files = ["icebox_celadon_engineering_storage.dmm"]
@@ -340,6 +380,14 @@ map_files = ["tramstation_celadon_engineering_storage.dmm"]
 directory = "_maps/nova/automapper/templates/tramstation/"
 required_map = "tramstation.dmm"
 coordinates = [115, 99, 1]
+trait_name = "Station"
+
+# Tramstation CELADON brigmed
+[templates.tramstation_celadon_brigmed]
+map_files = ["tramstation_celadon_brigmed.dmm"]
+directory = "_maps/nova/automapper/templates/tramstation/"
+required_map = "tramstation.dmm"
+coordinates = [60, 151, 2]
 trait_name = "Station"
 
 # Lavaland NE Ashwalker Fortress
@@ -429,6 +477,14 @@ map_files = ["wawastation_bar_backroom.dmm"]
 directory = "_maps/nova/automapper/templates/wawastation/"
 required_map = "wawastation.dmm"
 coordinates = [93, 83, 1]
+trait_name = "Station"
+
+# Wawastation Celadon Brigmed
+[templates.wawastation_celadon_brigmed]
+map_files = ["wawastation_celadon_brigmed.dmm"]
+directory = "_maps/nova/automapper/templates/wawastation/"
+required_map = "wawastation.dmm"
+coordinates = [55, 129, 1]
 trait_name = "Station"
 
 # SNOWGLOBE STATION MAP EDITS
@@ -575,3 +631,20 @@ directory = "_maps/nova/automapper/templates/catwalkstation/"
 required_map = "CatwalkStation_2023.dmm"
 coordinates = [92, 145, 1]
 trait_name = "Station"
+
+#VoidRaptor Celadon Brigmed
+[templates.voidraptor_celadon_brigmed]
+map_files = ["voidraptor_celadon_brigmed.dmm"]
+directory = "_maps/nova/automapper/templates/voidraptor/"
+required_map = "VoidRaptor.dmm"
+coordinates = [140, 169, 1]
+trait_name = "Station"
+
+#VoidRaptor Celadon Prison lockers
+[templates.voidraptor_celadon_prison_lockers]
+map_files = ["voidraptor_celadon_prison_lockers.dmm"]
+directory = "_maps/nova/automapper/templates/voidraptor/"
+required_map = "VoidRaptor.dmm"
+coordinates = [180, 165, 1]
+trait_name = "Station"
+

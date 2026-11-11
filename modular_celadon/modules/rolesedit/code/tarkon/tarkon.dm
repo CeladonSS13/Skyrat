@@ -21,7 +21,7 @@
 /datum/id_trim/away/tarkon/med
 	assignment = JOB_TARKON_MEDIC
 	access = list()
-	wildcard_access = list(ACCESS_AWAY_GENERAL, ACCESS_MEDICAL, ACCESS_WEAPONS)
+	wildcard_access = list(ACCESS_TARKON, ACCESS_AWAY_GENERAL, ACCESS_MEDICAL, ACCESS_WEAPONS)
 
 /datum/id_trim/away/tarkon/eng
 	assignment = JOB_TARKON_ENGINEER
@@ -30,7 +30,7 @@
 /datum/id_trim/away/tarkon/sci
 	assignment = JOB_TARKON_RESEARCHER
 	access = list()
-	wildcard_access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_SCIENCE, ACCESS_WEAPONS)
+	wildcard_access = list(ACCESS_TARKON, ACCESS_AWAY_GENERAL, ACCESS_AWAY_SCIENCE, ACCESS_WEAPONS)
 
 /datum/id_trim/away/tarkon/robo
 	assignment = JOB_TARKON_CYBORG_ACCESS

@@ -26,7 +26,7 @@
 /obj/item/choice_beacon/blueshield/generate_display_names()
 	var/static/list/selectable_gun_types = list(
 		"Custom Hellfire Laser Rifle" = /obj/item/gun/energy/laser/hellgun/blueshield,
-		"Blueshield's CMG-2 Gunset" = /obj/item/storage/toolbox/guncase/nova/blueshield_cmg,
+		"Blueshield's CMG-2 Gunset" = /obj/item/storage/toolbox/guncase/nova/ntspecial/blueshield_cmg,
 		"Blueshield's Thermal Holster" = /obj/item/storage/belt/holster/energy/thermal/blueshield,
 	)
 
@@ -125,6 +125,7 @@
 	wound = 15
 
 /obj/item/clothing/head/beret/blueshield
+	icon_state = "beret_badge_police"
 	armor_type = /datum/armor/helmet_blueshield
 
 /datum/armor/cosmetic_blueshield
@@ -199,10 +200,11 @@
 	shoes = /obj/item/clothing/shoes/jackboots
 	implants = list(/obj/item/implant/mindshield)
 	box = /obj/item/storage/box/survival/security
-	r_pocket = /obj/item/choice_beacon/blueshield
+	r_pocket = /obj/item/market_uplink/blueshield
 	l_pocket = /obj/item/sensor_device/blueshield
 	backpack_contents = list(
-							/obj/item/storage/medkit/tactical/blueshield = 1,
+		/obj/item/storage/medkit/tactical/blueshield = 1,
+		/obj/item/choice_beacon/blueshield = 1,
 	)
 
 /datum/job/blueshield

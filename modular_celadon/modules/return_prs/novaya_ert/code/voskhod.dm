@@ -120,6 +120,7 @@
 	flash_protect = FLASH_PROTECTION_WELDER
 	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR
 	visor_flags = STOPSPRESSUREDAMAGE
+	has_visor = FALSE
 	slowdown = 0
 	has_flashlight = FALSE
 

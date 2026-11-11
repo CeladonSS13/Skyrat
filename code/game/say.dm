@@ -24,6 +24,8 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	"[FREQ_TARKON]" = "engradio", //NOVA EDIT ADDITION - MAPPING
 	"[FREQ_SOLFED]" = "medradio", //NOVA EDIT ADDITION - SOLFED
 	"[FREQ_PRISON]" = "monkey", //Celadon ADDITION - PRISONERS HEADSETS
+	"[FREQ_BITRUN]" = "yellowteamradio", //Celadon ADDITION - BITRUN
+	"[FREQ_BITDEFEND]" = "redteamradio", //Celadon ADDITION - BITRUN
 	"[FREQ_CTF_RED]" = "redteamradio",
 	"[FREQ_CTF_BLUE]" = "blueteamradio",
 	"[FREQ_CTF_GREEN]" = "greenteamradio",

@@ -7,6 +7,7 @@
 /area/shuttle/centcom/interlink)
 "b" = (
 /obj/structure/chair/comfy/shuttle,
+/obj/machinery/light/directional/west,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/centcom/interlink)
 "c" = (
@@ -23,6 +24,11 @@
 /obj/machinery/power/shuttle_engine/propulsion,
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/centcom/interlink)
+"j" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/machinery/light/directional/east,
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/centcom/interlink)
 "l" = (
 /obj/machinery/door/airlock/titanium,
 /obj/docking_port/mobile{
@@ -32,7 +38,7 @@
 	dwidth = 1;
 	height = 6;
 	width = 12;
-	preferred_direction = 8
+	port_direction = 4
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/centcom/interlink)
@@ -46,6 +52,11 @@
 "w" = (
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/centcom/interlink)
+"A" = (
+/obj/structure/closet/crate/centcom,
+/obj/machinery/light/directional/south,
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/centcom/interlink)
 "B" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/fans/tiny,
@@ -53,6 +64,10 @@
 /area/shuttle/centcom/interlink)
 "D" = (
 /obj/machinery/computer/shuttle/centcom/interlink,
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/centcom/interlink)
+"R" = (
+/obj/machinery/light/directional/south,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/centcom/interlink)
 "U" = (
@@ -88,7 +103,7 @@ c
 c
 c
 c
-c
+A
 s
 f
 U
@@ -124,13 +139,13 @@ U
 (5,1,1) = {"
 s
 s
-b
+j
 w
 a
 a
 a
 a
-w
+R
 s
 f
 U

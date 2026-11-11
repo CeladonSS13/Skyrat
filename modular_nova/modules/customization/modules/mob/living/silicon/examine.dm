@@ -13,9 +13,14 @@
 	if (flavor_text_link)
 		. += flavor_text_link
 
-	// Celadon REMOVAL OF DIRECTORY
-
-	// Celadon REMOVAL OF ERP STATUS
+	// Celadon REMOVAL START
+	//if (client?.prefs.read_preference(/datum/preference/text/character_ad))
+	//	. += span_notice("They have an ad in the character directory... <a href='byond://?src=[REF(src)];lookup_info=open_character_ad'>\[Open directory?\]</a>")
+	// Celadon REMOVAL END
+	if(client)
+		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
+		if(erp_status_pref && !CONFIG_GET(flag/disable_erp_preferences) && user.client.prefs.read_preference(/datum/preference/toggle/master_erp_preferences))
+			. += span_notice("ERP STATUS: [span_revenboldnotice(erp_status_pref)]")
 	// Celadon REMOVAL START
 	// if (!CONFIG_GET(flag/disable_antag_opt_in_preferences))
 	// 	var/opt_in_status = mind?.get_effective_opt_in_level()

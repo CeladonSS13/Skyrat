@@ -183,8 +183,10 @@
  *
  * Default behaviour is to send [COMSIG_ATOM_ACID_ACT] and return
  */
-/atom/proc/acid_act(acidpwr, acid_volume)
-	SEND_SIGNAL(src, COMSIG_ATOM_ACID_ACT, acidpwr, acid_volume)
+///atom/proc/acid_act(acidpwr, acid_volume)	//CELADON REMOVE START
+//	SEND_SIGNAL(src, COMSIG_ATOM_ACID_ACT, acidpwr, acid_volume)	//CELADON REMOVE END
+/atom/proc/acid_act(acidpwr, acid_volume, use_sound)	//CELADON ADD START
+	SEND_SIGNAL(src, COMSIG_ATOM_ACID_ACT, acidpwr, acid_volume, use_sound)	//CELADON ADD END
 	return FALSE
 
 /**

@@ -174,20 +174,25 @@ type TabProps = {
 // NOVA EDIT ADDITION START - Expanded loadout framework
 const FilterItemList = (items: LoadoutItem[]) => {
   const { data } = useBackend<LoadoutManagerData>();
-  const { is_donator, is_nova_star, nova_star_restrictions } = data; // Celadon EDIT, original: const { is_donator, is_nova_star, erp_pref, nova_star_restrictions } = data;
+  const { is_donator, is_nova_star, erp_pref, nova_star_restrictions, is_disabled } = data; // CELADON EDIT, original: const { is_donator, is_nova_star, erp_pref, nova_star_restrictions } = data;
   const ckey = data.ckey;
 
   return items.filter((item: LoadoutItem) => {
-    if (item.ckey_whitelist && item.ckey_whitelist.indexOf(ckey) === -1) {
+    // CELADON ADD START
+    if (item.is_disabled) {
       return false;
     }
+    // CELADON ADD END
+    if (item.ckey_whitelist && item.ckey_whitelist.indexOf(ckey) === -1) {
+      return true;// CELADON EDIT : original return false;
+    }
     if (item.donator_only && !is_donator) {
-      return false;
+      return true;// CELADON EDIT : original return false;
     }
     if (nova_star_restrictions && item.nova_stars_only && !is_nova_star) {
       return false;
     }
-    if (item.erp_item) { // Celadon EDIT REMOVE ERP CHECK
+    if (item.erp_item && !erp_pref) {
       return false;
     }
 
@@ -217,7 +222,7 @@ type SearchProps = {
 export function SearchDisplay(props: SearchProps) {
   const { loadout_tabs, currentSearch } = props;
   const { data } = useBackend<LoadoutManagerData>(); // NOVA EDIT ADDITION
-  // Celadon REMOVE ERP
+  const { erp_pref } = data; // NOVA EDIT ADDITION
 
   const search = createSearch(
     currentSearch,
@@ -227,7 +232,7 @@ export function SearchDisplay(props: SearchProps) {
   const validLoadoutItems = loadout_tabs
     // NOVA EDIT ADDITION START - Prefslocked tabs
     .filter(
-      (curTab) => !curTab.erp_category || (curTab.erp_category), // Celadon REMOVE ERP
+      (curTab) => !curTab.erp_category || (curTab.erp_category && erp_pref),
     ) // NOVA EDIT ADDITION END
     .flatMap((tab) => tab.contents)
     .filter(search)

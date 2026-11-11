@@ -21,6 +21,14 @@
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
 
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/item_ctrl_click(mob/user)
+	if(!underbarrel)
+		return CLICK_ACTION_BLOCKING
+	if((!user.is_holding(src)) || (item_flags & IN_STORAGE))
+		return CLICK_ACTION_BLOCKING
+	underbarrel.attack_self(user)
+
+
 //list of rifles
 /*
 /obj/item/gun/ballistic/automatic/wt550
@@ -31,6 +39,11 @@ all of(/obj/item/gun/ballistic/automatic/ar)
 //shotguns
 /obj/item/gun/ballistic/shotgun/katyusha
 	fire_delay = 0.55 SECONDS
+
+/obj/item/storage/toolbox/guncase/nova/katyusha
+	icon_state = "cc_case"
+	worn_icon_state = "cc_case"
+	inhand_icon_state = "cc_case"
 
 //list of shotguns
 /*

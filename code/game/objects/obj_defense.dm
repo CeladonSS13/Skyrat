@@ -107,13 +107,15 @@
 ///// ACID
 
 ///the obj's reaction when touched by acid
-/obj/acid_act(acidpwr, acid_volume)
+///obj/acid_act(acidpwr, acid_volume)	//CELADON REMOVE
+/obj/acid_act(acidpwr, acid_volume, use_sound)	//CELADON ADD
 	. = ..()
 	if((resistance_flags & UNACIDABLE) || (acid_volume <= 0) || (acidpwr <= 0))
 		return FALSE
 	if(QDELETED(src)) //NOVA EDIT: fix createanddestroy
 		return FALSE
-	AddComponent(/datum/component/acid, acidpwr, acid_volume, custom_acid_overlay || GLOB.acid_overlay)
+//	AddComponent(/datum/component/acid, acidpwr, acid_volume, custom_acid_overlay || GLOB.acid_overlay)	//CELADON REMOVE
+	AddComponent(/datum/component/acid, acidpwr, acid_volume, custom_acid_overlay || GLOB.acid_overlay, use_sound=use_sound)	//CELADON ADD
 	return TRUE
 
 ///called when the obj is destroyed by acid.

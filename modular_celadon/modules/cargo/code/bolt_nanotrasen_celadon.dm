@@ -82,7 +82,7 @@
 	item_type = /obj/item/gun/ballistic/revolver/c38/detective
 	cost = PAYCHECK_COMMAND * 10
 
-/datum/armament_entry/company_import/nanotrasen_and_bolt/lethal_sidearm/detective_revolver
+/datum/armament_entry/company_import/nanotrasen_and_bolt/lethal_sidearm/firefly_pistol
 	item_type = /obj/item/gun/ballistic/automatic/pistol/firefly
 	cost = PAYCHECK_COMMAND * 8
 
@@ -175,7 +175,7 @@
 /datum/armament_entry/company_import/nanotrasen_and_bolt/magazines/cmg_ihdf
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/cmg/ihdf
 
-/datum/armament_entry/company_import/nanotrasen_and_bolt/magazines/cmg_ihdf
+/datum/armament_entry/company_import/nanotrasen_and_bolt/magazines/cmg_rubber
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/cmg/rubber
 
 /datum/armament_entry/company_import/nanotrasen_and_bolt/magazines/cmg_cb

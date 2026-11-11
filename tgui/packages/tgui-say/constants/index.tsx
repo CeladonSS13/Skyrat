@@ -84,5 +84,13 @@ export const RADIO_PREFIXES = {
     id: 'prison',
     label: 'Prison',
   },
+  ':x ': {
+    id: 'bitrun',
+    label: 'Bitrun',
+  },
+  ':z ': {
+    id: 'bitdefend',
+    label: 'Bitdefend',
+  },
   /* //Celadon ADDITION END */
 } as const;

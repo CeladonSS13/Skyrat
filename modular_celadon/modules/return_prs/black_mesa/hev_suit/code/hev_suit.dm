@@ -36,7 +36,7 @@
 	worn_icon = 'modular_celadon/modules/return_prs/black_mesa/hev_suit/icons/helmet.dmi'
 	worn_icon_muzzled = 'modular_celadon/modules/return_prs/black_mesa/hev_suit/icons/helmet_m.dmi'
 	icon_state = "hev-IV"
-	base_icon_state = "hev"
+	base_icon_state = "hev-IV"
 	inhand_icon_state = "syndicate-helm-orange"
 	armor_type = /datum/armor/space_hev_suit
 	obj_flags = NO_MAT_REDEMPTION
@@ -50,11 +50,30 @@
 	max_heat_protection_temperature = 25000
 	min_cold_protection_temperature = 2
 	var/has_flashlight = TRUE
+	has_visor = TRUE
 
 /obj/item/clothing/head/helmet/space/hev_suit/Initialize(mapload)
 	. = ..()
 	if(has_flashlight)
-		AddComponent(/datum/component/seclite_attachable, starting_light = new /obj/item/flashlight/seclite(src), light_icon_state = "IV", is_light_removable = FALSE)
+		AddComponent(/datum/component/seclite_attachable, \
+			starting_light = new /obj/item/flashlight/seclite(src), \
+			is_light_removable = FALSE, \
+			light_icon_state = "light", \
+			)
+
+/obj/item/clothing/head/helmet/space/hev_suit/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)]"
+	base_icon_state = "[initial(base_icon_state)]"
+	if(up)
+		icon_state += "-novisor"
+		base_icon_state += "-novisor"
+	var/datum/component/seclite_attachable/flight = GetComponent(/datum/component/seclite_attachable)
+	if(flight)
+		var/obj/item/flashlight/flashlight = flight.light
+		if(flashlight.light_on == TRUE)
+			icon_state += "-light"
+			base_icon_state += "-light"
 
 /datum/armor/space_hev_suit
 	melee = 20
@@ -754,6 +773,7 @@
 	worn_icon_digi = 'modular_celadon/modules/return_prs/black_mesa/icons/misc/hecumob_muzzled.dmi'
 	inhand_icon_state = "blueshift_helmet"
 	icon_state = "hecu_helm"
+	base_icon_state = "hecu_helm"
 	armor_type = /datum/armor/hev_suit_pcv
 	flags_inv = HIDEHAIR
 	obj_flags = NO_MAT_REDEMPTION
@@ -763,6 +783,7 @@
 	clothing_traits = null
 	flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	flash_protect = null
+	has_visor = FALSE
 	visor_flags_inv = null
 	visor_flags = null
 	slowdown = 0

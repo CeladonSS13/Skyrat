@@ -1018,8 +1018,26 @@
 
 /obj/item/acid_melt()
 	if(!QDELETED(src))
-		var/turf/T = get_turf(src)
-		var/obj/effect/decal/cleanable/molten_object/MO = new(T)
+//		var/turf/T = get_turf(src)	//CELADON REMOVE START
+//		var/obj/effect/decal/cleanable/molten_object/MO = new(T)	//CELADON REMOVE END
+		var/obj/effect/decal/cleanable/molten_object/MO	//CELADON ADD START
+		var/mob/living/carbon/C = src.loc
+		if(HAS_TRAIT(src, TRAIT_IN_STOMACH))
+			var/obj/item/organ/stomach/stomach
+			if(iscarbon(C))
+				stomach = C.get_organ_by_type(/obj/item/organ/stomach)
+			MO = new(C)
+			stomach?.consume_thing(MO)
+		else if(HAS_TRAIT(C, TRAIT_IN_STOMACH))
+			var/obj/item/organ/stomach/stomach
+			var/mob/living/carbon/C2 = C.loc
+			if(iscarbon(C2))
+				stomach = C2.get_organ_by_type(/obj/item/organ/stomach)
+			MO = new(C2)
+			stomach?.consume_thing(MO)
+		else
+			var/turf/TURF = get_turf(src)
+			MO = new(TURF)	//CELADON ADD END
 		MO.pixel_x = rand(-16,16)
 		MO.pixel_y = rand(-16,16)
 		MO.desc = "Looks like this was \an [src] some time ago."
@@ -1407,6 +1425,7 @@
  * * discover_after - if the item will be discovered after being chomped (FALSE will usually mean it was swallowed, TRUE will usually mean it was bitten into and discovered)
  */
 /obj/item/proc/on_accidental_consumption(mob/living/carbon/victim, mob/living/carbon/user, obj/item/source_item, discover_after = TRUE)
+	var/obj/item/organ/stomach/stomach = victim.get_organ_by_type(/obj/item/organ/stomach)	//CELADON ADD
 	if(get_sharpness() && force >= 5) //if we've got something sharp with a decent force (ie, not plastic)
 		INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream")
 		victim.visible_message(span_warning("[victim] looks like [victim.p_theyve()] just bit something they shouldn't have!"), \
@@ -1421,6 +1440,10 @@
 		if(QDELETED(src)) // in case trying to embed it caused its deletion (say, if it's DROPDEL)
 			return
 		source_item?.reagents?.add_reagent(/datum/reagent/blood, 2)
+		if(HAS_TRAIT(victim, TRAIT_VORACIOUS) && discover_after)
+			if(stomach?.consume_thing(src))
+				to_chat(victim, span_warning("You swallow painfully. [source_item? "Something was in \the [source_item]..." : ""]"))
+				return FALSE
 		return discover_after
 
 	if(custom_materials?.len) //if we've got materials, let's see what's in it
@@ -1456,13 +1479,23 @@
 		victim.adjust_disgust(33)
 		victim.visible_message(span_warning("[victim] looks like [victim.p_theyve()] just bitten into something hard."), \
 						span_warning("Eugh! Did I just bite into something?"))
+		if(HAS_TRAIT(victim, TRAIT_VORACIOUS) && discover_after)
+			stomach?.consume_thing(src)
+			return FALSE
 		return discover_after
+
+	if(HAS_TRAIT(victim, TRAIT_VORACIOUS) && w_class <= WEIGHT_CLASS_SMALL)
+		if(stomach?.consume_thing(src))
+			if(w_class == WEIGHT_CLASS_SMALL)
+				victim.losebreath += 2
+				to_chat(victim, span_warning("You swallow hard. [source_item? "Something small was in \the [source_item]..." : ""]"))
+			return FALSE
 
 	if(w_class > WEIGHT_CLASS_TINY) //small items like soap or toys that don't have mat datums
 		to_chat(victim, span_warning("[source_item? "Something strange was in \the [source_item]..." : "I just bit something strange..."] "))
 		return discover_after
 
-	var/obj/item/organ/stomach/stomach = victim.get_organ_by_type(/obj/item/organ/stomach)
+	//var/obj/item/organ/stomach/stomach = victim.get_organ_by_type(/obj/item/organ/stomach)	//CELADON DISABLE
 	if (stomach?.consume_thing(src))
 		victim.losebreath += 2
 		to_chat(victim, span_warning("You swallow hard. [source_item? "Something small was in \the [source_item]..." : ""]"))

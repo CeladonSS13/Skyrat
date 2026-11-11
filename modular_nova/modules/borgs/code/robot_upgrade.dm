@@ -483,57 +483,56 @@
 
 /obj/item/borg/upgrade/transform/syndicatejack/marauder
 	new_model = /obj/item/robot_model/syndicatejack/marauder
-// Celadon REMOVAL START
-// /// Dominatrix time
-// /obj/item/borg/upgrade/dominatrixmodule
-// 	name = "borg dominatrix module"
-// 	desc = "A module that greatly upgrades the ability of borgs to display affection."
-// 	icon = 'modular_nova/modules/borgs/icons/robot_items.dmi'
-// 	icon_state = "module_lust"
-// 	custom_price = 0
-// obj_flags_nova = ERP_ITEM
 
-// /obj/item/borg/upgrade/dominatrixmodule/action(mob/living/silicon/robot/borg)
-// 	. = ..()
-// 	if(!.)
-// 		return
-// 	var/obj/item/kinky_shocker/cur_shocker = locate() in borg.model.modules
-// 	if(cur_shocker)
-// 		to_chat(usr, span_warning("This unit already has a dominatrix module installed!"))
-// 		return FALSE
+/// Dominatrix time
+/obj/item/borg/upgrade/dominatrixmodule
+	name = "borg dominatrix module"
+	desc = "A module that greatly upgrades the ability of borgs to display affection."
+	icon = 'modular_nova/modules/borgs/icons/robot_items.dmi'
+	icon_state = "module_lust"
+	custom_price = 0
+	obj_flags_nova = ERP_ITEM
 
-// 	var/obj/item/kinky_shocker/shocker = new /obj/item/kinky_shocker()
-// 	borg.model.basic_modules += shocker
-// 	borg.model.add_module(shocker, FALSE, TRUE)
-// 	var/obj/item/clothing/mask/leatherwhip/whipper = new /obj/item/clothing/mask/leatherwhip()
-// 	borg.model.basic_modules += whipper
-// 	borg.model.add_module(whipper, FALSE, TRUE)
-// 	var/obj/item/spanking_pad/spanker = new /obj/item/spanking_pad()
-// 	borg.model.basic_modules += spanker
-// 	borg.model.add_module(spanker, FALSE, TRUE)
-// 	var/obj/item/tickle_feather/tickler = new /obj/item/tickle_feather()
-// 	borg.model.basic_modules += tickler
-// 	borg.model.add_module(tickler, FALSE, TRUE)
-// 	var/obj/item/clothing/sextoy/fleshlight/fleshlight = new /obj/item/clothing/sextoy/fleshlight()
-// 	borg.model.basic_modules += fleshlight
-// 	borg.model.add_module(fleshlight, FALSE, TRUE)
+/obj/item/borg/upgrade/dominatrixmodule/action(mob/living/silicon/robot/borg)
+	. = ..()
+	if(!.)
+		return
+	var/obj/item/kinky_shocker/cur_shocker = locate() in borg.model.modules
+	if(cur_shocker)
+		to_chat(usr, span_warning("This unit already has a dominatrix module installed!"))
+		return FALSE
 
-// /obj/item/borg/upgrade/dominatrixmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
-// 	. = ..()
-// 	if(!.)
-// 		return
+	var/obj/item/kinky_shocker/shocker = new /obj/item/kinky_shocker()
+	borg.model.basic_modules += shocker
+	borg.model.add_module(shocker, FALSE, TRUE)
+	var/obj/item/clothing/mask/leatherwhip/whipper = new /obj/item/clothing/mask/leatherwhip()
+	borg.model.basic_modules += whipper
+	borg.model.add_module(whipper, FALSE, TRUE)
+	var/obj/item/spanking_pad/spanker = new /obj/item/spanking_pad()
+	borg.model.basic_modules += spanker
+	borg.model.add_module(spanker, FALSE, TRUE)
+	var/obj/item/tickle_feather/tickler = new /obj/item/tickle_feather()
+	borg.model.basic_modules += tickler
+	borg.model.add_module(tickler, FALSE, TRUE)
+	var/obj/item/clothing/sextoy/fleshlight/fleshlight = new /obj/item/clothing/sextoy/fleshlight()
+	borg.model.basic_modules += fleshlight
+	borg.model.add_module(fleshlight, FALSE, TRUE)
 
-// 	for(var/obj/item/kinky_shocker/shocker in borg.model.modules)
-// 		borg.model.remove_module(shocker)
-// 	for(var/obj/item/clothing/mask/leatherwhip/whipper in borg.model.modules)
-// 		borg.model.remove_module(whipper)
-// 	for(var/obj/item/spanking_pad/spanker in borg.model.modules)
-// 		borg.model.remove_module(spanker)
-// 	for(var/obj/item/tickle_feather/tickler in borg.model.modules)
-// 		borg.model.remove_module(tickler)
-// 	for(var/obj/item/clothing/sextoy/fleshlight/fleshlight in borg.model.modules)
-// 		borg.model.remove_module(fleshlight)
-// Celadon REMOVAL END
+/obj/item/borg/upgrade/dominatrixmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
+	. = ..()
+	if(!.)
+		return
+
+	for(var/obj/item/kinky_shocker/shocker in borg.model.modules)
+		borg.model.remove_module(shocker)
+	for(var/obj/item/clothing/mask/leatherwhip/whipper in borg.model.modules)
+		borg.model.remove_module(whipper)
+	for(var/obj/item/spanking_pad/spanker in borg.model.modules)
+		borg.model.remove_module(spanker)
+	for(var/obj/item/tickle_feather/tickler in borg.model.modules)
+		borg.model.remove_module(tickler)
+	for(var/obj/item/clothing/sextoy/fleshlight/fleshlight in borg.model.modules)
+		borg.model.remove_module(fleshlight)
 
 /obj/item/borg/upgrade/cargo_papermanipulator
 	name = "Cargo Cyborg Manipulator"

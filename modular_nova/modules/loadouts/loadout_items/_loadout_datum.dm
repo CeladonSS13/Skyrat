@@ -135,22 +135,32 @@
 				message_client(client, target, "species restrictions")
 			return FALSE
 
+	/* //CELADON REMOVE START
 	// donor/star
 	if(donator_only && !SSplayer_ranks.is_donator(client))
 		if(!visuals_only)
 			message_client(client, target, "donator")
 		return FALSE
+	*/ //CELADON REMOVE END
 
 	if(GLOB.nova_star_restrictions && nova_stars_only && !SSplayer_ranks.is_nova_star(client))
 		if(!visuals_only)
 			message_client(client, target, "Veteran") // Celadon EDIT, original: message_client(client, target, "Nova star")
 		return FALSE
 
+	/* //CELADON REMOVE START
 	// ckey restrictions
 	if(LAZYLEN(ckeywhitelist) && !(client?.ckey in ckeywhitelist))
 		if(!visuals_only)
 			message_client(client, target, "CKEY whitelist")
 		return FALSE
+	*/ //CELADON REMOVE END
+	//CELADON ADD START
+	if(is_disabled)
+		if(!visuals_only)
+			message_client(client, target, "this item is disabled globally")
+		return FALSE
+	//CELADON ADD END
 
 	return TRUE
 
@@ -181,6 +191,7 @@
 	formatted_item["species_whitelist"] = species_whitelist
 	formatted_item["donator_only"] = donator_only
 	formatted_item["nova_stars_only"] = nova_stars_only
+	formatted_item["is_disabled"] = is_disabled	//CELADON ADD
 
 	return formatted_item
 

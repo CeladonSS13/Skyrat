@@ -140,10 +140,10 @@
 	name = "NT-S suppressor"
 	desc = "A Nanotrasen brand small-arms suppressor, including a large NT logo stamped on the side."
 
-/obj/item/storage/toolbox/guncase/nova/blueshield_cmg
+/obj/item/storage/toolbox/guncase/nova/ntspecial/blueshield_cmg
 	name = "Blueshield's CMG-2 guncase"
 
-/obj/item/storage/toolbox/guncase/nova/blueshield_cmg/PopulateContents()
+/obj/item/storage/toolbox/guncase/nova/ntspecial/blueshield_cmg/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/cmg/nomag(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cmg/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cmg/rubber(src)

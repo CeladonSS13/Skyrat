@@ -81,7 +81,8 @@
 		// Announce the successful query
 		var/obj/machinery/announcement_system/aas = get_announcement_system(source = server)
 		if(aas)
-			aas.broadcast("Subcontractor query successful, bitrunner connecting.", list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_FACTION))
+//			aas.broadcast("Subcontractor query successful, bitrunner connecting.", list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_FACTION))	//CELADON REMOVE
+			aas.broadcast("Subcontractor query successful, bitrunner connecting.", list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_BITRUN, RADIO_CHANNEL_BITDEFEND))	//CELADON ADD
 
 		// Spawn the antag and clean up
 		spawn_antag(chosen_one.client, get_turf(src), "subrunner", user.mind, server)

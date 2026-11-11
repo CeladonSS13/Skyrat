@@ -24,38 +24,20 @@ export function CargoStatus(props) {
     points,
     requestonly,
     can_send,
-    current_plasma_cost, // Celadon ADDITION
   } = data;
 
   return (
     <Section
       title={department}
       buttons={
-      // Celadon REMOVAL START
-      //     // <Box inline bold verticalAlign="middle">
-      //     //   <AnimatedNumber
-      //     //     value={points}
-      //     //     format={(value) => formatMoney(value)}
-      //     //   />
-      //     //   {' credits'}
-      //     // </Box>
-      //   }
-      // Celadon REMOVAL END
-      // Celadon ADDITION START
-        <>
-          <Box inline bold verticalAlign="middle" style={{ marginRight: '1em' }}>
-            <span style={{ color: '#BA3692' }}>Plasma</span> cost: {current_plasma_cost}
-          </Box>
-          <Box inline bold verticalAlign="middle">
-            <AnimatedNumber
-              value={points}
-              format={(value) => formatMoney(value)}
-            />
-            {data.displayed_currency_full_name}
-          </Box>
-        </>
+        <Box inline bold verticalAlign="middle">
+          <AnimatedNumber
+            value={points}
+            format={(value) => formatMoney(value)}
+          />
+          {data.displayed_currency_full_name}
+        </Box>
       }
-      // Celadon ADDITION END
     >
       <LabeledList>
         <LabeledList.Item label="Shuttle">

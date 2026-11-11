@@ -7441,7 +7441,7 @@
 /turf/open/floor/iron/white/smooth_half,
 /area/station/medical/virology)
 "bXb" = (
-/obj/machinery/defibrillator_mount/loaded/directional/south,
+/obj/machinery/defibrillator_mount/directional/south,
 /obj/effect/spawner/surgery_tray/full,
 /obj/effect/turf_decal/tile/blue/half,
 /obj/structure/table/reinforced,
@@ -10624,7 +10624,7 @@
 /turf/open/floor/iron/edge,
 /area/station/hallway/primary/forestarboardhall)
 "cOD" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/engine,
 /obj/machinery/airalarm/directional/west,
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/turf_decal/bot_red,
@@ -17444,6 +17444,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/station/maintenance/bloodcasino)
+"eIu" = (
+/obj/item/condom_pack,
+/turf/open/floor/iron,
+/area/station/maintenance/dorm_room)
 "eIz" = (
 /turf/open/floor/iron/dark/side{
 	dir = 1
@@ -19292,7 +19296,7 @@
 	},
 /area/station/hallway/primary/port)
 "fik" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/med,
 /obj/effect/turf_decal/tile/blue/full,
 /obj/effect/turf_decal/bot_red,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -21242,6 +21246,9 @@
 "fIf" = (
 /turf/open/floor/carpet,
 /area/station/service/cafeteria)
+"fIm" = (
+/turf/open/floor/plating,
+/area/station/maintenance/aft)
 "fIt" = (
 /obj/machinery/oven/range,
 /turf/open/floor/iron/kitchen,
@@ -23402,6 +23409,7 @@
 /turf/open/floor/iron/freezer,
 /area/station/command/heads_quarters/nt_rep)
 "gon" = (
+/obj/item/storage/box/lewd_toys,
 /turf/open/floor/plating,
 /area/station/maintenance/aft)
 "goy" = (
@@ -39368,7 +39376,7 @@
 /turf/open/floor/plating,
 /area/station/cargo/storage)
 "kvj" = (
-/obj/machinery/defibrillator_mount/loaded/directional/south,
+/obj/machinery/defibrillator_mount/directional/south,
 /obj/effect/spawner/surgery_tray/full,
 /obj/effect/turf_decal/tile/blue/half,
 /obj/structure/table/reinforced,
@@ -39457,7 +39465,7 @@
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
 "kwr" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/med,
 /obj/effect/turf_decal/tile/blue/full,
 /obj/machinery/newscaster/directional/south,
 /obj/effect/turf_decal/bot_red,
@@ -51313,13 +51321,6 @@
 	dir = 4
 	},
 /area/station/service/bar)
-"nJm" = (
-/obj/machinery/light/directional/west,
-/obj/machinery/mineral/ore_redemption/gulag_autolink,
-/turf/open/floor/iron/smooth_edge{
-	dir = 8
-	},
-/area/mine/laborcamp)
 "nJr" = (
 /obj/structure/curtain/cloth/fancy/mechanical{
 	icon_state = "bounty-open";
@@ -61244,7 +61245,7 @@
 /turf/open/floor/wood/tile,
 /area/station/medical/psychology)
 "quL" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/cargo,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/effect/turf_decal/box/red,
@@ -62439,7 +62440,7 @@
 "qLC" = (
 /obj/structure/window/reinforced/tinted/spawner/directional/east,
 /obj/structure/window/reinforced/tinted/spawner/directional/south,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/service,
 /turf/open/floor/iron/dark/side{
 	dir = 6
 	},
@@ -67288,7 +67289,7 @@
 	pixel_x = -7;
 	pixel_y = 3
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/east,
+/obj/machinery/defibrillator_mount/directional/east,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/treatment_center)
 "scS" = (
@@ -80318,7 +80319,7 @@
 	pixel_x = -4;
 	pixel_y = 8
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/north,
+/obj/machinery/defibrillator_mount/directional/north,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/treatment_center)
 "vyv" = (
@@ -87992,7 +87993,7 @@
 /area/station/hallway/secondary/recreation)
 "xub" = (
 /obj/structure/window/reinforced/spawner/directional/east,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/science,
 /turf/open/floor/iron/dark/side{
 	dir = 5
 	},
@@ -183928,7 +183929,7 @@ xSb
 fxD
 ojl
 qgV
-ifp
+eIu
 pRT
 krS
 sWm
@@ -187524,7 +187525,7 @@ jSB
 wYN
 eoB
 sbt
-gon
+fIm
 mrs
 emF
 dWi
@@ -187782,7 +187783,7 @@ kCo
 kCo
 kCo
 fDD
-gon
+fIm
 emF
 voR
 uac
@@ -188039,7 +188040,7 @@ qLr
 erk
 kCo
 gtk
-gon
+fIm
 emF
 voL
 gBt
@@ -188553,7 +188554,7 @@ nYL
 hqf
 kCo
 mrs
-gon
+fIm
 emF
 vsX
 gBt
@@ -188809,7 +188810,7 @@ vuF
 lAq
 vBC
 kCo
-gon
+fIm
 osC
 emF
 wNW
@@ -189574,13 +189575,13 @@ pef
 sbt
 sbt
 sbt
-gon
+fIm
 qJJ
-gon
+fIm
 jbX
 vYt
-gon
-gon
+fIm
+fIm
 dBa
 dCO
 lqM
@@ -189825,10 +189826,10 @@ iws
 jlw
 biU
 aCi
-gon
+fIm
 cLX
 pef
-gon
+fIm
 vYt
 gws
 gws
@@ -190083,7 +190084,7 @@ cwP
 biU
 lcZ
 nPv
-gon
+fIm
 bqp
 vFP
 hka

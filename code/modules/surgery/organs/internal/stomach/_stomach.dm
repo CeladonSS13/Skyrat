@@ -221,6 +221,7 @@
 	RegisterSignal(thing, COMSIG_MOVABLE_MOVED, PROC_REF(content_moved))
 	RegisterSignal(thing, COMSIG_QDELETING, PROC_REF(content_deleted))
 	LAZYADD(stomach_contents, thing)
+	ADD_TRAIT(thing, TRAIT_IN_STOMACH, src)	//CELADON ADD
 	thing.forceMove(owner || src) // We assert that if we have no owner, we will not be nullspaced
 	return TRUE
 
@@ -233,6 +234,8 @@
 	if(source.loc == src || source.loc == owner) // not in us? out da list then
 		return
 	LAZYREMOVE(stomach_contents, source)
+	if(HAS_TRAIT(source, TRAIT_IN_STOMACH))	//CELADON ADD START
+		REMOVE_TRAIT(source, TRAIT_IN_STOMACH, src)	//CELADON ADD END
 	UnregisterSignal(source, list(COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
 
 /obj/item/organ/stomach/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
@@ -297,8 +300,10 @@
 		if (SEND_SIGNAL(thing, COMSIG_ATOM_STOMACH_DIGESTED, src, owner, seconds_per_tick) & COMPONENT_CANCEL_DIGESTION)
 			continue
 		var/acid_pwr = stomach_acid_power(thing, seconds_per_tick)
-		if (acid_pwr)
-			thing.acid_act(acid_pwr, 10)
+//		if (acid_pwr)	//CELADON REMOVE START
+//			thing.acid_act(acid_pwr, 10)	//CELADON REMOVE END
+		if (acid_pwr && !(thing.resistance_flags & (ACID_PROOF | INDESTRUCTIBLE)))	//CELADON ADD START
+			thing.acid_act(acid_pwr, 10, FALSE)	//CELADON ADD END
 
 		// If you have strong stomach you can eat glass, literally
 		if (!isitem(thing) || HAS_TRAIT(owner, TRAIT_STRONG_STOMACH))

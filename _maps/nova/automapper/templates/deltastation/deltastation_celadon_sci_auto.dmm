@@ -1,0 +1,18 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 1;
+	id = "rndlab1";
+	name = "Research and Development Shutter"
+	},
+/obj/machinery/autolathe,
+/obj/machinery/door/window/left/directional/north{
+	req_access = list("science");
+	name = "Research Autolathe"
+	},
+/turf/open/floor/plating,
+/area/station/science/lab)
+
+(1,1,1) = {"
+a
+"}

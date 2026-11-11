@@ -1,9 +1,14 @@
 /obj/machinery/vending/dorms
 	name = "CozyMate"
 	desc = "A vending machine for sleep clothing."
+	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "clothes"
+	base_icon_state = "clothes"
 	icon_deny = "clothes-deny"
+	age_restrictions = FALSE
+	light_mask = "wardrobe-light-mask"
 	panel_type = "panel15"
+	product_ads = "Success in sleep!;Prepare to sleep comfortable!;Look at all this cozy!;Why leave bed up to fate? Use the CozyMate!"
 	product_slogans = "Success in sleep!;Prepare to sleep comfortable!;Look at all this cozy!;Why leave bed up to fate? Use the CozyMate!"
 	vend_reply = "Thank you for using the CozyMate!"
 	product_categories = list(

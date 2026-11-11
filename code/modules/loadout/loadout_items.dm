@@ -359,8 +359,8 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	if(required_holiday)
 		displayed_text[FA_ICON_CALENDAR_CHECK] = "Only available: [required_holiday]"
 	// NOVA EDIT ADDITION START
-	if(ckeywhitelist)
-		displayed_text[FA_ICON_HEART] = "CKEY Whitelist: [jointext(ckeywhitelist, ", ")]"
+//	if(ckeywhitelist)	//CELADON REMOVE START
+//		displayed_text[FA_ICON_HEART] = "CKEY Whitelist: [jointext(ckeywhitelist, ", ")]"	//CELADON REMOVE END
 	if(restricted_roles)
 		displayed_text[FA_ICON_BRIEFCASE] = "Job Whitelist: [jointext(restricted_roles, ", ")]"
 	if(blacklisted_roles)
@@ -371,8 +371,8 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		displayed_text[FA_ICON_SHRIMP] = "Species Blacklist: [capitalize(jointext(species_blacklist, ", "))]"
 	if(GLOB.nova_star_restrictions && nova_stars_only)
 		displayed_text[FA_ICON_HOURGLASS_HALF] = "Veteran-Only" // Celadon EDIT, original: displayed_text[FA_ICON_HOURGLASS_HALF] = "Nova Star-Only"
-	if(donator_only || ckeywhitelist)
-		displayed_text[FA_ICON_COINS] = "Donator-Only"
+//	if(donator_only || ckeywhitelist)	//CELADON REMOVE START
+//		displayed_text[FA_ICON_COINS] = "Donator-Only"	//CELADON REMOVE END
 	// NOVA EDIT ADDITION END
 
 	return displayed_text

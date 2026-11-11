@@ -1,0 +1,22 @@
+2026-11-01:
+  Arceniu:
+  - code_imp: updated worflows
+  - config: removed not correct permissions from admin ranks
+  - code_imp: updated changelog
+  - map: fixed automapper config names
+  - admin: addedd eventologist no readmin rank
+  - refactor: refactored closet hack module
+  - server: server no longer kill process
+  - code_imp: reverted non modular edits
+  - rscadd: returned some loadout items
+  - map: fixed centcom ferry hangar button
+  - bugfix: centcom cargo items in pods no longer spawn randomly
+  - code_imp: reset of maps
+  - code_imp: removes some mergeconflict code
+  - admin: sorted admin ranks
+  - bugfix: Fixed secure closet hacking
+  - bugfix: renamed our modular automapper map
+2026-11-07:
+  dexter050627:
+  - rscadd: Now you able to collect stacks of ammunition for .357, .38, 7.62x38, Peashooter,
+      9mm and 10mm.

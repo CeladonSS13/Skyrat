@@ -12,3 +12,6 @@
 	. = ..()
 	if (isnull(worn_icon_state))
 		worn_icon_state = "nothing"
+
+/obj/item/storage/toolbox/emergency/turret/mag_fed/toy
+	icon = 'icons/map_icons/items/_item.dmi'

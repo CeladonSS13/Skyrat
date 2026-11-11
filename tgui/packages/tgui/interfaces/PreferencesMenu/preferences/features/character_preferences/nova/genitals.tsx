@@ -1,16 +1,18 @@
 // THIS IS A NOVA SECTOR UI FILE
-// Celadon ADDITION START
 import {
+  CheckboxInput,
+  type Feature,
+  type FeatureChoiced,
+  type FeatureChoicedServerData,
   FeatureNumberInput,
   type FeatureNumeric,
+  type FeatureToggle,
+  FeatureTriBoolInput,
+  FeatureTriColorInput,
+  type FeatureValueProps,
 } from '../../base';
+import { FeatureDropdownInput } from '../../dropdowns';
 
-export const body_size: FeatureNumeric = {
-  name: 'Body Size',
-  component: FeatureNumberInput,
-};
-// Celadon ADDITION END
-/* Celadon REMOVAL START
 export const feature_penis: Feature<string> = {
   name: 'Penis Choice',
   component: (
@@ -234,4 +236,3 @@ export const erp_status_pref_mechanics: FeatureChoiced = {
   name: 'ERP Mechanical Status',
   component: FeatureDropdownInput,
 };
-Celadon REMOVAL END */

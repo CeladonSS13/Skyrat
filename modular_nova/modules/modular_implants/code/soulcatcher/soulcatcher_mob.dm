@@ -155,15 +155,13 @@
 	room.send_message(message, src, TRUE)
 	return TRUE
 
-//celadon remove start
-///mob/living/soulcatcher_soul/subtle()
-//	set hidden = TRUE
-//	return FALSE
+/mob/living/soulcatcher_soul/subtle()
+	set hidden = TRUE
+	return FALSE
 
-///mob/living/soulcatcher_soul/subtler()
-//	set hidden = TRUE
-//	return FALSE
-//celadon remove end
+/mob/living/soulcatcher_soul/subtler()
+	set hidden = TRUE
+	return FALSE
 
 /mob/living/soulcatcher_soul/whisper_verb()
 	set hidden = TRUE

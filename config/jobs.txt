@@ -19,6 +19,12 @@ Quartermaster=1,1
 
 Nanotrasen Consultant=1,1
 Blueshield=1,1
+CentCom Captain=1,1
+Special Ops Officer=1,1
+CentCom Commander=4,4
+CentCom Official=3,3
+CentCom Head Intern=2,2
+CentCom Intern=5,5
 
 
 # Cargo

@@ -21,7 +21,6 @@
 		if(!apply_prefs)
 			var/datum/language_holder/holder = spawned_human.get_language_holder()
 			holder.get_selected_language() //we need this here so a language starts off selected
-			equip(spawned_mob) // Celadon ADDITION
 			after_create_nova(spawned_human) // Celadon ADDITION
 			post_transfer_prefs(spawned_human)
 			SEND_SIGNAL(spawned_mob, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED)

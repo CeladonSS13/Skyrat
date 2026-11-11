@@ -42,7 +42,11 @@ export const flavor_text: Feature<string> = {
   component: FeatureTextInput,
 };
 
-// Celadon REMOVAL OF ERP FLAVOR START, END
+export const flavor_text_nsfw: Feature<string> = {
+  name: 'Flavor Text (NSFW)',
+  description: 'Same as Flavor Text but requires you to click a tab to view.',
+  component: FeatureTextInput,
+};
 
 export const silicon_flavor_text: Feature<string> = {
   name: 'Flavor Text (Silicon)',
@@ -51,7 +55,12 @@ export const silicon_flavor_text: Feature<string> = {
   component: FeatureTextInput,
 };
 
-// Celadon REMOVAL OF ERP FLAVOR START, END
+export const silicon_flavor_text_nsfw: Feature<string> = {
+  name: 'Flavor Text (Silicon, NSFW)',
+  description:
+    'Same as Silicon Flavor Text but requires you to click a tab to view.',
+  component: FeatureTextInput,
+};
 
 export const ooc_notes: Feature<string> = {
   name: 'OOC Notes',
@@ -60,7 +69,11 @@ export const ooc_notes: Feature<string> = {
   component: FeatureTextInput,
 };
 
-// Celadon REMOVAL OF ERP NOTES START, END
+export const ooc_notes_nsfw: Feature<string> = {
+  name: 'OOC Notes (NSFW)',
+  description: 'Same as OOC Notes but requires you to click a tab to view.',
+  component: FeatureTextInput,
+};
 
 export const character_ad: Feature<string> = {
   name: 'Character Advert',

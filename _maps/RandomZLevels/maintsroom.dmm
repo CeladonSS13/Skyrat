@@ -5082,7 +5082,7 @@
 /area/awaymission/caves/maintsroom)
 "qR" = (
 /obj/structure/rack,
-/obj/item/gun/ballistic/automatic/sol_smg{
+/obj/item/gun/ballistic/automatic/sol_rifle{
 	anchored = 1
 	},
 /turf/open/floor/iron/smooth,
@@ -5388,6 +5388,7 @@
 	dir = 8
 	},
 /obj/structure/safe/floor,
+/obj/item/clothing/sextoy/dildo,
 /turf/open/floor/engine{
 	slowdown = 2
 	},
@@ -5443,7 +5444,7 @@
 /area/awaymission/caves/maintsroom)
 "sf" = (
 /obj/structure/rack,
-/obj/item/gun/ballistic/automatic/sol_smg{
+/obj/item/gun/ballistic/automatic/nt20{
 	anchored = 1
 	},
 /turf/open/floor/iron/smooth,
@@ -10308,7 +10309,7 @@
 /area/awaymission/caves/maintsroom)
 "IW" = (
 /obj/structure/rack,
-/obj/item/gun/ballistic/automatic/sol_smg{
+/obj/item/gun/ballistic/automatic/napad{
 	anchored = 1
 	},
 /turf/open/floor/iron/smooth,

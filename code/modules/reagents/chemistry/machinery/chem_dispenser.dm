@@ -355,7 +355,8 @@
 					if(!to_dispense)
 						say("The container is full!")
 						return
-					if(!cell.use(to_dispense * power_cost))
+//					if(!cell.use(to_dispense * power_cost))	//CELADON DISABLE
+					if(!cell.use(get_final_power_cost(reagent, to_dispense, power_cost)))	//CELADON ADD
 						say("Not enough energy to complete operation!")
 						return
 					beaker.add_hiddenprint(ui.user)
@@ -405,7 +406,8 @@
 					var/to_dispense = max(0, min(dispense_amount, holder.maximum_volume - holder.total_volume))
 					if(!to_dispense)
 						continue
-					if(!cell.use(to_dispense * power_cost))
+//					if(!cell.use(to_dispense * power_cost))	//CELADON DISABLE
+					if(!cell.use(get_final_power_cost(reagent, to_dispense, power_cost)))	//CELADON ADD
 						say("Not enough energy to complete operation!")
 						return
 					beaker.add_hiddenprint(ui.user)

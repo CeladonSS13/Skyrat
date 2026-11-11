@@ -1227,13 +1227,6 @@
 /obj/effect/spawner/random/bioluminescent_plant,
 /turf/open/misc/xen,
 /area/awaymission/black_mesa/xen/freeman_arena)
-"apQ" = (
-/obj/effect/turf_decal/trimline/brown/filled/line,
-/obj/machinery/door/poddoor{
-	id = "teleporter"
-	},
-/turf/open/floor/iron/textured_large,
-/area/awaymission/black_mesa/to_cryo_room)
 "apT" = (
 /obj/item/ammo_casing/spent,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -3457,7 +3450,7 @@
 "aSL" = (
 /obj/structure/rack/shelf,
 /obj/item/melee/baton/security,
-/obj/item/gun/ballistic/shotgun/automatic/as2,
+/obj/item/gun/ballistic/shotgun/automatic,
 /obj/item/storage/box/ammo_box/shotgun_12g,
 /obj/item/storage/box/ammo_box/shotgun_12g,
 /turf/open/floor/iron/smooth_large,
@@ -65885,7 +65878,7 @@ aNo
 aey
 aBD
 aCA
-apQ
+aBK
 aey
 aNo
 arz

@@ -7,8 +7,8 @@
 	throwforce = 45
 	toolspeed = 0.1
 	wound_bonus = 10
-	hitsound = 'modular_nova/master_files/sound/weapons/crowbar2.ogg'
-	mob_throw_hit_sound = 'modular_nova/master_files/sound/weapons/crowbar2.ogg'
+	hitsound = 'modular_celadon/master_files/sound/weapons/crowbar2.ogg'
+	mob_throw_hit_sound = 'modular_celadon/master_files/sound/weapons/crowbar2.ogg'
 	force_opens = TRUE
 
 /obj/item/crowbar/freeman/ultimate

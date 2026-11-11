@@ -10,19 +10,19 @@
 	antagonist_restricted = TRUE
 
 /datum/job/head_of_personnel
-	antagonist_restricted = FALSE // Celadon EDIT, original(for nova): TRUE
+	antagonist_restricted = TRUE
 
 /datum/job/chief_engineer
-	antagonist_restricted = FALSE // Celadon EDIT, original(for nova): TRUE
+	antagonist_restricted = TRUE
 
 /datum/job/chief_medical_officer
-	antagonist_restricted = FALSE // Celadon EDIT, original(for nova): TRUE
+	antagonist_restricted = TRUE
 
 /datum/job/research_director
-	antagonist_restricted = FALSE // Celadon EDIT, original(for nova): TRUE
+	antagonist_restricted = TRUE
 
 /datum/job/quartermaster
-	antagonist_restricted = FALSE // Celadon EDIT, original(for nova): TRUE
+	antagonist_restricted = TRUE
 
 /datum/job/blueshield
 	antagonist_restricted = TRUE

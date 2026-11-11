@@ -1,4 +1,3 @@
-/* Celadon REMOVAL START
 //Rather than assigning a security officer to each department, Nova departments get their own allied Guards!
 //Most related code is in this file; uniform icons are in the relevant department's .dmi
 
@@ -98,7 +97,6 @@
 	worn_icon = 'modular_nova/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "mallcop_helm"
 	worn_icon_state = "mallcop_helm"
- Celadon REMOVAL END */
 
 /obj/item/clothing/head/beret/sec/science
 	name = "science guard beret"
@@ -130,7 +128,6 @@
 	desc = "A robust beret with a simple badge emblazoned on it. Uses reinforced fabric to offer sufficient protection."
 	icon_state = "/obj/item/clothing/head/beret/sec/service"
 	greyscale_colors = "#5E8F2D#F2F2F2"
-/* Celadon REMOVAL START
 
 /*
 	BELT
@@ -203,7 +200,7 @@
 	new /obj/item/ammo_box/magazine/pepperball(src)
 	new /obj/item/gun/ballistic/automatic/pistol/pepperball(src)
 	new /obj/item/melee/baton/security/loaded/departmental/service(src)
-Celadon REMOVAL END */
+
 /*
 	LANDMARKS
 */
@@ -772,7 +769,6 @@ Celadon REMOVAL END */
 		emagged = TRUE
 		return TRUE
 	return FALSE
-/* Celadon REMOVAL START
 
 /obj/item/melee/baton/security/loaded/departmental/medical
 	name = "medical stun baton"
@@ -803,7 +799,7 @@ Celadon REMOVAL END */
 	desc = "A stun baton that doesn't operate outside of the Service department, based off the station's blueprint layout. Can be used outside of Service up to three times before needing to return!"
 	department_icon_state = "service"
 	valid_areas = list(/area/station/service, /area/station/hallway/primary/fore, /area/station/commons/lounge, /area/station/maintenance/department/chapel, /area/station/maintenance/department/crew_quarters, /area/shuttle/escape)
-Celadon REMOVAL END */
+
 /obj/item/melee/baton/security/loaded/departmental/prison
 	name = "prison stun baton"
 	desc = "A stun baton that doesn't operate outside of the Prison, based off the station's blueprint layout. Can be used outside of the Prison up to three times before needing to return!"
@@ -818,7 +814,6 @@ Celadon REMOVAL END */
 	access_view = ACCESS_SECURITY
 	access = ACCESS_SECURITY
 	contains = list(/obj/item/melee/baton/security/loaded/departmental/prison)
-/* Celadon REMOVAL START
 
 /datum/supply_pack/service/baton_service
 	name = "Service Baton Crate"
@@ -938,4 +933,3 @@ Celadon REMOVAL END */
 		/obj/item/clothing/suit/armor/vest/blueshirt/nova/guard = 2,
 		/obj/item/clothing/glasses/hud/security = 2,
 	), src)
-Celadon REMOVAL END */

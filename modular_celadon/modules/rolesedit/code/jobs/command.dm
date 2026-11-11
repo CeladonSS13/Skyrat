@@ -39,6 +39,7 @@
 	liver_traits = list(TRAIT_PRETENDER_ROYAL_METABOLISM)
 	mind_traits = TRAIT_FAST_TYING
 	voice_of_god_power = 1.2 //Almost Command Member
+	//tgui_icon = FA_ICON_BUILDING_SHIELD
 	config_tag = "BRIDGE_OFFICER"
 	allow_bureaucratic_error = FALSE
 	departments_list = list(
@@ -276,3 +277,10 @@
 	backpack_contents = list(
 		/obj/item/modular_computer/pda/bridge_assistant_celadon = 1,
 	)
+
+//untill folder
+/datum/job/research_director
+	antagonist_restricted = FALSE
+
+/datum/job/quartermaster
+	antagonist_restricted = FALSE

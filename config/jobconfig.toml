@@ -364,6 +364,48 @@
 "Spawn Positions" = 1
 "Total Positions" = 1
 
+[CENTCOM_CAPTAIN]
+"Playtime Requirements" = 600
+"Required Account Age" = 0
+"Required Character Age" = 0
+"Spawn Positions" = 1
+"Total Positions" = 1
+
+[CENTCOM_SPECOPS_OFFICER]
+"Playtime Requirements" = 600
+"Required Account Age" = 0
+"Required Character Age" = 0
+"Spawn Positions" = 1
+"Total Positions" = 1
+
+[CENTCOM_COMMANDER]
+"Playtime Requirements" = 600
+"Required Account Age" = 0
+"Required Character Age" = 0
+"Spawn Positions" = 4
+"Total Positions" = 4
+
+[CENTCOM_OFFICIAL]
+"Playtime Requirements" = 250
+"Required Account Age" = 0
+"Required Character Age" = 0
+"Spawn Positions" = 3
+"Total Positions" = 3
+
+[CENTCOM_HEAD_INTERN]
+"Playtime Requirements" = 200
+"Required Account Age" = 0
+"Required Character Age" = 0
+"Spawn Positions" = 2
+"Total Positions" = 2
+
+[CENTCOM_INTERN]
+"Playtime Requirements" = 100
+"Required Account Age" = 0
+"Required Character Age" = 0
+"Spawn Positions" = 5
+"Total Positions" = 5
+
 [WARDEN]
 "Playtime Requirements" = 0
 "Required Account Age" = 0

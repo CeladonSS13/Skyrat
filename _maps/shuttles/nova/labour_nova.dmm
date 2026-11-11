@@ -15,6 +15,7 @@
 	port_direction = 4
 	},
 /obj/machinery/door/airlock/grunge{
+	id_tag = "prisonshuttle";
 	name = "Labour Shuttle Airlock"
 	},
 /obj/effect/turf_decal/delivery/white,

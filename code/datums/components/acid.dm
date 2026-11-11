@@ -32,7 +32,8 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 	/// The proc used to handle the parent [/atom] when processing. TODO: Unify damage and resistance flags so that this doesn't need to exist!
 	var/datum/callback/process_effect
 
-/datum/component/acid/Initialize(acid_power = ACID_POWER_MELT_TURF, acid_volume = 50, acid_overlay = GLOB.acid_overlay, acid_particles = /particles/acid, turf_acid_ignores_mobs = FALSE)
+///datum/component/acid/Initialize(acid_power = ACID_POWER_MELT_TURF, acid_volume = 50, acid_overlay = GLOB.acid_overlay, acid_particles = /particles/acid, turf_acid_ignores_mobs = FALSE)	//CELADON REMOVE
+/datum/component/acid/Initialize(acid_power = ACID_POWER_MELT_TURF, acid_volume = 50, acid_overlay = GLOB.acid_overlay, acid_particles = /particles/acid, turf_acid_ignores_mobs = FALSE, use_sound = TRUE)	//CELADON ADD
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -68,7 +69,9 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 	set_volume(acid_volume)
 	src.acid_overlay = acid_overlay
 
-	sizzle = new(atom_parent, TRUE)
+//	sizzle = new(atom_parent, TRUE)	//CELADON REMOVE
+	if(use_sound)	//CELADON ADD START
+		sizzle = new(atom_parent, TRUE)	//CELADON ADD END
 	if(acid_particles)
 		if (ismovable(parent))
 			var/atom/movable/movable_parent = parent
@@ -117,7 +120,8 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 		atom_parent.update_appearance()
 
 /// Averages corrosive power and sums volume.
-/datum/component/acid/InheritComponent(datum/component/new_comp, i_am_original, acid_power, acid_volume)
+//datum/component/acid/InheritComponent(datum/component/new_comp, i_am_original, acid_power, acid_volume)	//CELADON REMOVE
+/datum/component/acid/InheritComponent(datum/component/new_comp, i_am_original, acid_power, acid_volume, use_sound)	//CELADON ADD
 	if(!i_am_original)
 		return
 	acid_power = ((src.acid_power * src.acid_volume) + (acid_power * acid_volume)) / (src.acid_volume + acid_volume)

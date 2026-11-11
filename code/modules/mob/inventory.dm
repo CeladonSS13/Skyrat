@@ -354,6 +354,12 @@
 	if(!(to_drop.item_flags & NO_PIXEL_RANDOM_DROP))
 		x_offset += rand(-6, 6)
 		y_offset += rand(-6, 6)
+	if(HAS_TRAIT(src, TRAIT_IN_STOMACH))	//CELADON ADD START
+		var/mob/living/carbon/C = src.loc
+		if(iscarbon(C))
+			var/obj/item/organ/stomach/stomach = C.get_organ_by_type(/obj/item/organ/stomach)
+			stomach?.consume_thing(to_drop)
+			return to_drop	//CELADON ADD END
 	if(!transfer_item_to_turf(to_drop, drop_location(), x_offset, y_offset, force, silent, invdrop))
 		return
 
