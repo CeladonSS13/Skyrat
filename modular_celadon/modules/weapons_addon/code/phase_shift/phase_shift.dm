@@ -86,9 +86,9 @@
 	name = "Phase Shift T-9"
 	desc = "A high-precision automatic rifle equipped with an active heat dissipation system. When a critical temperature is reached in the receiver, the internal mechanism pushes the rod into the groove outside the weapon."
 	icon = 'modular_celadon/modules/weapons_addon/icons/phase_shift.dmi'
-	icon_state = "automatically"
-	base_icon_state = "automatically"
-	inhand_icon_state = "Femboy_porno"
+	icon_state = "phase_shift"
+	base_icon_state = "phase_shift"
+	inhand_icon_state = "phase_shift"
 	w_class = WEIGHT_CLASS_BULKY
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m762_phase
 	can_suppress = TRUE
