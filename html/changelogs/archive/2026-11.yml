@@ -20,3 +20,7 @@
   dexter050627:
   - rscadd: Now you able to collect stacks of ammunition for .357, .38, 7.62x38, Peashooter,
       9mm and 10mm.
+2026-11-12:
+  Arceniu:
+  - code_imp: returned emote panel
+  - code_imp: reverted nif examine text

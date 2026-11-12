@@ -1,5 +1,0 @@
-author: "Arceniu"
-delete-after: True
-changes:
-  - code_imp: "returned emote panel"
-  - code_imp: "reverted nif examine text"
