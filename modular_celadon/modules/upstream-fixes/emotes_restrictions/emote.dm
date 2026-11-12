@@ -10,11 +10,6 @@
 		return FALSE
 	return ..()
 
-/datum/emote/living/carbon/wink/can_run_emote(mob/user, status_check = TRUE, intentional, params)
-	if (!hastail(user))
-		return FALSE
-	return ..()
-
 /datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check = TRUE, intentional, params)
 	if (!hastail(user))
 		return FALSE
