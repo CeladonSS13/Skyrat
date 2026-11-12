@@ -626,11 +626,9 @@
 /datum/sprite_accessory/tails/fish/chonky
 	name = "Chonky (Fish Infusion)"
 
-// Celadon REMOVAL START
-// /datum/sprite_accessory/tails/xeno
-// 	feature_key_override = FEATURE_TAIL_XENO
-//	recommended_species = list(SPECIES_XENO = 1)
-// Celadon REMOVAL END
+/datum/sprite_accessory/tails/xeno
+	feature_key_override = FEATURE_TAIL_XENO
+	recommended_species = list(SPECIES_XENO = 1)
 
 /datum/sprite_accessory/tails/xeno/queen
 	locked = TRUE

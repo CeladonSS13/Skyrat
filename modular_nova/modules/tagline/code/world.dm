@@ -3,12 +3,12 @@
 	var/list/features = list()
 
 	var/new_status = ""
-	// Celadon REMOVAL var/hostedby
+	var/hostedby
 	if(config)
 		var/server_name = CONFIG_GET(string/servername)
 		if (server_name)
 			new_status += "<b>[server_name]</b> &#8212; "
-		// Celadon REMOVAL hostedby = CONFIG_GET(string/hostedby)
+		hostedby = CONFIG_GET(string/hostedby)
 
 	new_status += " ("
 	new_status += "<a href=\"[CONFIG_GET(string/discord_link)]\">"
@@ -24,10 +24,8 @@
 
 	features += "~[players] player[players == 1 ? "": "s"]"
 
-	// Celadon REMOVAL START
-	// if (!host && hostedby)
-	// 	features += "hosted by <b>[hostedby]</b>"
-	// Celadon REMOVAL END
+	if (!host && hostedby)
+		features += "hosted by <b>[hostedby]</b>"
 
 	if(length(features))
 		new_status += "\[[jointext(features, ", ")]"
