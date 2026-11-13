@@ -10225,6 +10225,7 @@
 #include "modular_celadon\modules\weapons_addon\code\nanotrasen\melee.dm"
 #include "modular_celadon\modules\weapons_addon\code\nri\gun.dm"
 #include "modular_celadon\modules\weapons_addon\code\nri\projectile.dm"
+#include "modular_celadon\modules\weapons_addon\code\phase_shift\phase_shift.dm"
 #include "modular_celadon\modules\weapons_addon\code\sakhno\gun.dm"
 #include "modular_celadon\modules\weapons_addon\code\sakhno\projectile.dm"
 #include "modular_celadon\modules\weapons_addon\code\solfed\gun.dm"
