@@ -9734,6 +9734,7 @@
 #include "modular_nova\modules\xenoarchartifacts\obj\wave_scanner.dm"
 #include "modular_nova\modules\xenomorph\alien.dm"
 #include "modular_nova\modules\xenomorph\queen.dm"
+#include "modular_celadon\master_files\code\modules\admin\holder2.dm"
 #include "modular_celadon\master_files\code\modules\client\preferences\emote_panel.dm"
 #include "modular_celadon\master_files\code\modules\implants\code\medical\medical_designs.dm"
 #include "modular_celadon\master_files\code\modules\implants\code\medical\medical_nodes.dm"
