@@ -160,8 +160,7 @@ GENERAL_PROTECT_DATUM(/datum/admins) // Celadon ADDITION
 	remove_verb(owner, /client/proc/readmin)
 	owner.init_verbs() //re-initialize the verb list
 	owner.update_special_keybinds()
-	if(check_for_rights(R_ADMIN))
-		GLOB.admins |= client
+	GLOB.admins |= client
 
 	try_give_profiling()
 
