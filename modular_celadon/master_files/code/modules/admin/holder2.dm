@@ -1,0 +1,1 @@
+GENERAL_PROTECT_DATUM(/datum/admins)
