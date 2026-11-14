@@ -1,4 +1,4 @@
-/datum/outfit/bitrunning/
+/datum/outfit/bitrunning
 	name = "bitrunning monitor"
 	uniform = /obj/item/clothing/under/rank/cargo/bitrunner
 	shoes = /obj/item/clothing/shoes/sneakers/black
