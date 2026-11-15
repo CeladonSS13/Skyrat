@@ -9915,6 +9915,7 @@
 #include "modular_celadon\modules\loadout_addiction\code\quirks\unholy.dm"
 #include "modular_celadon\modules\localization_modular\ert.dm"
 #include "modular_celadon\modules\localization_modular\aas_config\cargo.dm"
+#include "modular_celadon\modules\localization_modular\aas_config\general.dm"
 #include "modular_celadon\modules\localization_modular\aas_config\medical.dm"
 #include "modular_celadon\modules\localization_modular\emotes_localization\emotes.dm"
 #include "modular_celadon\modules\localization_modular\machinery\cargo.dm"
