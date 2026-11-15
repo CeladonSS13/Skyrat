@@ -9796,7 +9796,6 @@
 #include "modular_celadon\modules\balance_celadon\simplemobs_slowdown\flesh_spider.dm"
 #include "modular_celadon\modules\balance_celadon\simplemobs_slowdown\space_dragon.dm"
 #include "modular_celadon\modules\balance_celadon\simplemobs_slowdown\spider.dm"
-#include "modular_celadon\modules\balance_celadon\vehicle_speed\_vehicle.dm"
 #include "modular_celadon\modules\cargo\code\_changes.dm"
 #include "modular_celadon\modules\cargo\code\_import_code.dm"
 #include "modular_celadon\modules\cargo\code\akh_frontier_celadon.dm"
