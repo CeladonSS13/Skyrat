@@ -143,7 +143,7 @@
 	if (istype(hunger_bar))
 		hunger_bar.update_hunger_bar()
 	checkLiked(fraction, target_mob)
-	playsound(target_mob.loc, consumption_sound, rand(10,50), TRUE) // CELADON EDIT, original: playsound_if_pref(target_mob, consumption_sound, rand(10,50), TRUE, pref_to_check = /datum/preference/toggle/sound_eating) // NOVA EDIT CHANGE - Original: playsound(target_mob, consumption_sound, rand(10,50), TRUE)
+	playsound_if_pref(target_mob, consumption_sound, rand(10,50), TRUE, pref_to_check = /datum/preference/toggle/sound_eating) // NOVA EDIT CHANGE - Original: playsound(target_mob, consumption_sound, rand(10,50), TRUE)
 	var/list/datum/disease/diseases_to_add
 	for(var/datum/disease/malady as anything in target_mob.get_static_viruses())
 		if(malady.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS)
