@@ -9917,6 +9917,7 @@
 #include "modular_celadon\modules\localization_modular\aas_config\cargo.dm"
 #include "modular_celadon\modules\localization_modular\aas_config\medical.dm"
 #include "modular_celadon\modules\localization_modular\emotes_localization\emotes.dm"
+#include "modular_celadon\modules\localization_modular\machinery\cargo.dm"
 #include "modular_celadon\modules\localization_modular\ru_ai_laws\code\ai_laws.dm"
 #include "modular_celadon\modules\localization_modular\ru_ai_laws\code\laws_antagonistic.dm"
 #include "modular_celadon\modules\localization_modular\ru_ai_laws\code\laws_ghost_role.dm"
