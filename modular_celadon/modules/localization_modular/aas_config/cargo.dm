@@ -13,3 +13,14 @@
 		"Single Order" = "Был запрошен новый заказ.",
 		"Multiple Orders" = "%AMOUNT новых заказов было запрошено.",
 	)
+
+/datum/aas_config_entry/department_orders
+	announcement_lines_map = list(
+		"Order Placed" = "Заказ отдела был размещен %PERSON для %ORDER.",
+		"Cooldown Reset" = "Срок действия заказа отдела истек! Теперь можно разместить новый заказ!",
+	)
+
+/datum/aas_config_entry/department_orders_cargo
+	announcement_lines_map = list(
+		"Message" = "Размещен новый заказ отдела %DEPARTMENT"
+	)
