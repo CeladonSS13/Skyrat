@@ -7,3 +7,9 @@
 	announcement_lines_map = list(
 		"Message" = "Отчет квантового сервера: тепловые системы в пределах рабочих параметров. Переходим к настройке домена."
 	)
+
+/datum/aas_config_entry/cargo_orders_announcement
+	announcement_lines_map = list(
+		"Single Order" = "Был запрошен новый заказ.",
+		"Multiple Orders" = "%AMOUNT новых заказов было запрошено.",
+	)
