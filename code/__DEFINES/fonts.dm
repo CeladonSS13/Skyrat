@@ -13,9 +13,8 @@
 #define SIGNATURE_FONT "Segoe Script"
 
 /// Emoji icon set
-// повтороное изменение файла хранения иконок на наши
-#define EMOJI_SET 'modular_ss220/modules/emoji_add/icons/emoji.dmi' // SS1984 CHANGE
-// ex666 edit - skyrat: modular_skyrat/master_files/icons/emoji.dmi  // SKYRAT EDIT - ORIGINAL: 'icons/ui_icons/emoji/emoji.dmi'
+#define EMOJI_SET 'modular_ss220/master_files_skyrat/icons/emoji.dmi' // SKYRAT EDIT - ORIGINAL: 'icons/ui_icons/emoji/emoji.dmi'
+// ex666 edit - skyrat: modular_skyrat/master_files/icons/emoji.dmi
 
 // Font metrics bitfield
 /// Include leading A width and trailing C width in GetWidth() or in DrawText()
