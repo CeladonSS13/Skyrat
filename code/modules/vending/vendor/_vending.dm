@@ -468,7 +468,7 @@
 /datum/aas_config_entry/vendomat_age_control
 	name = "Security Alert: Underaged Substance Abuse"
 	announcement_lines_map = list(
-		"Message" = "ПРЕДУПРЕЖДЕНИЕ БЕЗОПАСНОСТИ: %PERSON зафиксирован при попытке купить %PRODUCT в %LOCATION. Пожалуйста, следите за злоупотреблением психоактивными веществами." // NOVA EDIT CHANGE - Original: "Message" = "SECURITY ALERT: Underaged crewmember %PERSON recorded attempting to purchase %PRODUCT in %LOCATION by %VENDOR. Please watch for substance abuse."
+		"Message" = "SECURITY ALERT: Underaged crewmember %PERSON recorded attempting to purchase %PRODUCT in %LOCATION by %VENDOR. Please watch for substance abuse."
 	)
 	vars_and_tooltips_map = list(
 		"PERSON" = "will be replaced with the name of the crewmember",

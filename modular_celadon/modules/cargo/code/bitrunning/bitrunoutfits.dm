@@ -1,9 +1,10 @@
-/datum/outfit/bitrunning/
+/datum/outfit/bitrunning
 	name = "bitrunning monitor"
 	uniform = /obj/item/clothing/under/rank/cargo/bitrunner
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	belt = /obj/item/bitrunning_host_monitor
 	id = /obj/item/card/id/advanced
+	back = /obj/item/storage/backpack
 
 /datum/outfit/bitrunning/cop
 	name = "alcoholic cop"
@@ -12,6 +13,7 @@
 	shoes = /obj/item/clothing/shoes/discoshoes
 	suit = /obj/item/clothing/suit/jacket/discoblazer
 	id = /obj/item/card/id/advanced
+	back = /obj/item/storage/backpack
 
 /datum/outfit/bitrunning/kim
 	name = "Kimball"
@@ -20,6 +22,7 @@
 	shoes = /obj/item/clothing/shoes/jackboots/kim
 	suit = /obj/item/clothing/suit/kimjacket
 	id = /obj/item/card/id/advanced
+	back = /obj/item/storage/backpack
 
 /datum/outfit/bitrunning/mail
 	name = "Mailman"
@@ -27,3 +30,4 @@
 	uniform = /obj/item/clothing/under/misc/mailman
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	id = /obj/item/card/id/advanced
+	back = /obj/item/storage/backpack

@@ -197,5 +197,5 @@
 	name = "Cargo Alert: Bitrunning QS Ready"
 	general_tooltip = "Announces when the quantum server is ready to be used. No variables provided"
 	announcement_lines_map = list(
-		"Message" = "Отчет квантового сервера: тепловые системы в пределах рабочих параметров. Переходим к настройке домена."
+		"Message" = "Quantum Server report: Thermal systems within operational parameters. Proceeding to domain configuration."
 	)

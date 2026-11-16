@@ -1,6 +1,6 @@
 /datum/sprite_accessory/hair/nucleation
 	icon = 'modular_celadon/modules/nucleations/icons/nucleation_face.dmi'
-	recommended_species = list(SPECIES_NUCLEATION)
+	recommended_species = list(SPECIES_HUMAN)
 
 /datum/sprite_accessory/hair/nucleation/nuc_crystals
 	name = "Nucleation Crystals"

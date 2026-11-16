@@ -160,9 +160,6 @@
 		if("toggleSensors")
 			cyborg.toggle_sensors()
 
-		// if("changeVoice") // Celadon ADDITION (removed cuz of no tts)
-		// 	cyborg.change_voice() // Celadon ADDITION (removed cuz of no tts)
-
 		if("viewImage")
 			if(cyborg.connected_ai)
 				cyborg.connected_ai.aicamera?.viewpictures(usr)

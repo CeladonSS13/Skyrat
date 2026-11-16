@@ -398,6 +398,14 @@ required_map = "Lavaland.dmm"
 coordinates = [203, 223, 1]
 trait_name = "Mining"
 
+# Lavaland Celadon Gulag
+[templates.lavaland_celadon_gulag]
+map_files = ["lavaland_celadon_gulag.dmm"]
+directory = "_maps/nova/automapper/templates/mining/"
+required_map = "Lavaland.dmm"
+coordinates = [68, 29, 1]
+trait_name = "Mining"
+
 # Tramstation Bar Backroom
 [templates.tramstation_bar_backroom]
 map_files = ["tramstation_bar_backroom.dmm"]

@@ -3870,7 +3870,6 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/mineral/ore_redemption/gulag_autolink,
 /turf/open/floor/iron/checker,
 /area/mine/laborcamp)
 "uD" = (
