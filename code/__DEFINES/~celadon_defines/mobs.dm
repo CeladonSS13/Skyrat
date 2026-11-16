@@ -1,1 +1,1 @@
-#define SPECIES_NUCLEATION "nucleation"
+//insert mob related info here like race defines and etc

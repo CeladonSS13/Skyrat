@@ -13,7 +13,7 @@
 	// Empty line will be dropped, so by default we will not report properly destroyed goody cases.
 	announcement_lines_map = list(
 		"Delivered" = "",
-		"Locked" = "Ящик с вещами %OWNER уничтожен в %LOCATION.")
+		"Locked" = "%OWNER's locked goody case has been destroyed in %LOCATION.")
 	vars_and_tooltips_map = list(
 		"LOCATION" = "will be replaced with the location of the goody case.",
 		"OWNER" = "with case owner name."

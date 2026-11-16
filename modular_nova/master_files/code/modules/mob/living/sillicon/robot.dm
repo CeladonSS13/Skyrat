@@ -112,3 +112,8 @@
 // Update the borg's model appearance when they change models
 /obj/item/robot_model/do_transform_animation()
 	. = ..()
+	//CELADON REMOVE START
+	//var/mob/living/silicon/robot/cyborg = loc
+	//var/mutable_appearance/character_appearance = new(cyborg.appearance)
+	//GLOB.name_to_appearance[cyborg.real_name] = character_appearance // Cache this for Character Directory
+	//CELADON REMOVE END

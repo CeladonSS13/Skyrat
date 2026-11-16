@@ -60,19 +60,33 @@
 	var/datum/preferences/preferences = holder.client?.prefs
 
 	var/flavor_text
+	var/flavor_text_nsfw
 	var/custom_species
 	var/custom_species_lore
 	var/obscured
 	var/ooc_notes = ""
-	// Celadon REMOVAL START
-	// var/ideal_antag_optin_status
-	// var/current_antag_optin_status
-	// Celadon REMOVAL END
+	var/ooc_notes_nsfw = ""
+// Celadon REMOVAL START
+//	var/ideal_antag_optin_status
+// 	var/current_antag_optin_status
+// Celadon REMOVAL END
 	var/headshot = ""
 
 	// OOC notes go first
-	// Celadon REMOVAL if(preferences)
-		// Celadon REMOVAL OF ERP EXAMINE START, END
+	if(preferences)
+		if(user.client?.prefs?.read_preference(/datum/preference/toggle/master_erp_preferences))
+			var/e_prefs = preferences.read_preference(/datum/preference/choiced/erp_status)
+			var/e_prefs_hypno = preferences.read_preference(/datum/preference/choiced/erp_status_hypno)
+			var/e_prefs_v = preferences.read_preference(/datum/preference/choiced/erp_status_v)
+			var/e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
+			var/e_prefs_mechanical = preferences.read_preference(/datum/preference/choiced/erp_status_mechanics)
+			ooc_notes_nsfw += "ERP: [e_prefs]\n"
+			ooc_notes_nsfw += "Hypnosis: [e_prefs_hypno]\n"
+			ooc_notes_nsfw += "Vore: [e_prefs_v]\n"
+			ooc_notes_nsfw += "Non-Con: [e_prefs_nc]\n"
+			ooc_notes_nsfw += "ERP Mechanics: [e_prefs_mechanical]\n"
+			ooc_notes_nsfw += "\n"
+
 		// Celadon REMOVAL START
 		// if(!CONFIG_GET(flag/disable_antag_opt_in_preferences))
 		// 	var/antag_prefs = holder.mind?.ideal_opt_in_level
@@ -90,9 +104,9 @@
 		custom_species_lore = "A silicon unit, like a cyborg or pAI."
 		if(preferences)
 			flavor_text = preferences.read_preference(/datum/preference/text/silicon_flavor_text)
-			// Celadon REMOVAL flavor_text_nsfw = preferences.read_preference(/datum/preference/text/silicon_flavor_text_nsfw)
+			flavor_text_nsfw = preferences.read_preference(/datum/preference/text/silicon_flavor_text_nsfw)
 			ooc_notes += preferences.read_preference(/datum/preference/text/ooc_notes)
-			// Celadon REMOVAL  ooc_notes_nsfw += preferences.read_preference(/datum/preference/text/ooc_notes_nsfw)
+			ooc_notes_nsfw += preferences.read_preference(/datum/preference/text/ooc_notes_nsfw)
 			headshot += preferences.read_preference(/datum/preference/text/headshot/silicon)
 
 	if(ishuman(holder))
@@ -101,10 +115,10 @@
 		obscured = !can_bypass_obscure && ((holder_human.wear_mask && (holder_human.wear_mask.flags_inv & HIDEFACE)) || (holder_human.head && (holder_human.head.flags_inv & HIDEFACE)))
 		custom_species = obscured ? "Obscured" : holder_human.dna.species.lore_protected ? holder_human.dna.species.name : holder_human.dna.features["custom_species"]
 		flavor_text = obscured ? "Obscured" : holder_human.dna.features[EXAMINE_DNA_FLAVOR_TEXT]
-		// Celadon REMOVAL OF ERP EXAMINE START, END
+		flavor_text_nsfw = obscured ? "Obscured" : holder_human.dna.features[EXAMINE_DNA_FLAVOR_TEXT_NSFW]
 		custom_species_lore = obscured ? "Obscured" : holder_human.dna.species.lore_protected ? holder_human.dna.species.get_species_lore().Join("\n") : holder_human.dna.features["custom_species_lore"]
 		ooc_notes += holder_human.dna.features[EXAMINE_DNA_OOC_NOTES]
-		// Celadon REMOVAL OF ERP EXAMINE START, END
+		ooc_notes_nsfw += holder_human.dna.features[EXAMINE_DNA_OOC_NOTES_NSFW]
 		if(!obscured)
 			headshot += holder_human.dna.features[EXAMINE_DNA_HEADSHOT]
 
@@ -120,7 +134,9 @@
 		"ooc_notes" = ooc_notes,
 		"custom_species" = custom_species,
 		"custom_species_lore" = custom_species_lore,
-		// Celadon REMOVAL OF ERP EXAMINE START, END
+		// Descriptions, but requiring manual input to see
+		"flavor_text_nsfw" = flavor_text_nsfw,
+		"ooc_notes_nsfw" = ooc_notes_nsfw,
 		// Antaggery
 		// Celadon REMOVAL START
 		// "ideal_antag_optin_status" = ideal_antag_optin_status, // Our opt-in status from prefs when we joined the game

@@ -40,6 +40,11 @@ all of(/obj/item/gun/ballistic/automatic/ar)
 /obj/item/gun/ballistic/shotgun/katyusha
 	fire_delay = 0.55 SECONDS
 
+/obj/item/storage/toolbox/guncase/nova/katyusha
+	icon_state = "cc_case"
+	worn_icon_state = "cc_case"
+	inhand_icon_state = "cc_case"
+
 //list of shotguns
 /*
 /obj/item/gun/ballistic/shotgun/riot

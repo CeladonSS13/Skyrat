@@ -25,3 +25,6 @@
 #define RADIO_KEY_BITDEFEND "z"
 #define RADIO_TOKEN_BITDEFEND ":z"
 #define FREQ_BITDEFEND 1547
+
+// Sends a supply pod to the buyer's location, showy, nanotrasen.
+#define SHIPPING_METHOD_SUPPLYPOD_NT "Bluespace Supply Pod"

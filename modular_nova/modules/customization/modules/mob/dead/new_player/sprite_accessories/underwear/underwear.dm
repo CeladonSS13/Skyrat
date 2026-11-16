@@ -202,7 +202,6 @@
 	has_custom_digi_sprite = TRUE
 
 //ERP Accessories
-/* CELADON REMOVAL START
 /datum/sprite_accessory/clothing/underwear/latex
 	name = "Panties - Latex"
 	icon_state = "panties_latex"
@@ -218,4 +217,3 @@
 	name = "Chastity Cage"
 	icon_state = "chastcage"
 	erp_accessory = TRUE
-CELADON REMOVAL END */

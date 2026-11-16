@@ -145,21 +145,17 @@
 	name = "Colonial Medipen Pouch (Empty)"
 	item_path = /obj/item/storage/pouch/cin_medipens
 
-// Celadon REMOVAL START
-// /datum/loadout_item/pocket_items/deforest_cheesekit
-// 	name = "Medical Kit - Civil Defense"
-// 	item_path = /obj/item/storage/medkit/civil_defense/stocked
-// Celadon REMOVAL END
+/datum/loadout_item/pocket_items/deforest_cheesekit
+	name = "Medical Kit - Civil Defense"
+	item_path = /obj/item/storage/medkit/civil_defense/stocked
 
 /datum/loadout_item/pocket_items/medkit
 	name = "Medical Kit - First-Aid"
 	item_path = /obj/item/storage/medkit/regular
 
-// Celadon REMOVAL START
-// /datum/loadout_item/pocket_items/deforest_frontiermedkit
-// 	name = "Medical Kit - Frontier"
-// 	item_path = /obj/item/storage/medkit/frontier/stocked
-// Celadon REMOVAL END
+/datum/loadout_item/pocket_items/deforest_frontiermedkit
+	name = "Medical Kit - Frontier"
+	item_path = /obj/item/storage/medkit/frontier/stocked
 
 /datum/loadout_item/pocket_items/synthetic_medkit
 	name = "Medical Kit - Robotics"
@@ -181,21 +177,17 @@
 	name = "Neuroware Chips Box (PosiBlaster64)"
 	item_path = /obj/item/storage/box/flat/neuroware/mindbreaker
 
-// Celadon REMOVAL START
-//
-// /datum/loadout_item/pocket_items/binoculars
-// 	name = "Pair of Binoculars"
-// 	item_path = /obj/item/binoculars
-//
-// /datum/loadout_item/pocket_items/drugs_happy
-// 	name = "Pillbottle - Happy Pills"
-// 	item_path = /obj/item/storage/pill_bottle/happy
-//
-// /datum/loadout_item/pocket_items/drugs_lsd
-// 	name = "Pillbottle - Mindbreaker"
-// 	item_path = /obj/item/storage/pill_bottle/lsd
-//
-// Celadon REMOVAL END
+/datum/loadout_item/pocket_items/binoculars
+	name = "Pair of Binoculars"
+	item_path = /obj/item/binoculars
+
+/datum/loadout_item/pocket_items/drugs_happy
+	name = "Pillbottle - Happy Pills"
+	item_path = /obj/item/storage/pill_bottle/happy
+
+/datum/loadout_item/pocket_items/drugs_lsd
+	name = "Pillbottle - Mindbreaker"
+	item_path = /obj/item/storage/pill_bottle/lsd
 
 /datum/loadout_item/pocket_items/random_pizza
 	name = "Random Pizza Box"
@@ -209,19 +201,17 @@
 	name = "Rations - Colonial"
 	item_path = /obj/item/storage/box/colonial_rations
 
-// Celadon REMOVAL START
-// /datum/loadout_item/pocket_items/drugs_weed
-// 	name = "Seeds - Cannabis"
-// 	item_path = /obj/item/seeds/cannabis
-//
-// /datum/loadout_item/pocket_items/drugs_liberty
-// 	name = "Seeds - Liberty Cap"
-// 	item_path = /obj/item/seeds/liberty
-//
-// /datum/loadout_item/pocket_items/drugs_reishi
-// 	name = "Seeds - Reishi"
-// 	item_path = /obj/item/seeds/reishi
-// Celadon REMOVAL END
+/datum/loadout_item/pocket_items/drugs_weed
+	name = "Seeds - Cannabis"
+	item_path = /obj/item/seeds/cannabis
+
+/datum/loadout_item/pocket_items/drugs_liberty
+	name = "Seeds - Liberty Cap"
+	item_path = /obj/item/seeds/liberty
+
+/datum/loadout_item/pocket_items/drugs_reishi
+	name = "Seeds - Reishi"
+	item_path = /obj/item/seeds/reishi
 
 /datum/loadout_item/pocket_items/six_beer
 	name = "Six-Pack - Beer"

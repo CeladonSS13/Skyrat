@@ -368,8 +368,6 @@
 *	erp_item
 */
 
-/* CELADON REMOVAL START
-
 /datum/loadout_item/under/bunny
 	abstract_type = /datum/loadout_item/under/bunny
 	group = "Bunny Suits"
@@ -538,4 +536,3 @@
 	item_path = /obj/item/clothing/under/tearaway_garments
 	erp_item = TRUE
 	group = "Costumes"
-Celadon REMOVAL END */

@@ -83,7 +83,7 @@
 	item_type = /obj/item/stack/medical/mesh/advanced
 	cost = PAYCHECK_LOWER * 15
 
-/datum/armament_entry/company_import/deforest/first_aid/sterile_gauze
+/datum/armament_entry/company_import/deforest/first_aid/basic_gauze
 	item_type = /obj/item/stack/medical/wrap/gauze
 	cost = PAYCHECK_LOWER * 4
 
@@ -143,7 +143,7 @@
 /datum/armament_entry/company_import/deforest/neuroware/lidocaine
 	item_type = /obj/item/disk/neuroware/lidocaine
 
-/datum/armament_entry/company_import/deforest/neuroware/neuroware/happiness
+/datum/armament_entry/company_import/deforest/neuroware/happiness
 	item_type = /obj/item/disk/neuroware/happiness
 
 /datum/armament_entry/company_import/deforest/neuroware/synaptizine

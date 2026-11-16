@@ -331,7 +331,10 @@
 	name = "крутиться"
 
 /datum/emote/flip
-	name = "кувырок"
+	name = "Сальто"
+
+/datum/emote/flip/backflip
+	name = "Сальто назад"
 
 // code\modules\mob\living\carbon\emote.dm
 /datum/emote/living/carbon/airguitar
@@ -418,9 +421,9 @@
 	message_mime = "бесшумно маш%(ет,ут)% хвостом."
 
 /datum/emote/living/carbon/wink
-	name = "трясти хвостом"
-	message = "тряс%(ет,ут)% хвостом."
-	message_mime = "бесшумно тряс%(ет,ут)% хвостом."
+	name = "Подмигнуть"
+	message = "подмигива%(ет,ют)%."
+	message_mime = "подмигива%(ет,ют)%."
 
 /datum/emote/living/carbon/hiss
 	name = "шипеть"

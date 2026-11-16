@@ -2448,7 +2448,7 @@
 /obj/effect/turf_decal/tile/dark_red/anticorner/contrasted{
 	dir = 8
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/west,
+/obj/machinery/defibrillator_mount/directional/west,
 /turf/open/floor/iron/white,
 /area/shuttle/hc_cops/infirmary)
 "wA" = (
@@ -4299,7 +4299,7 @@
 "Ng" = (
 /obj/structure/table/optable,
 /obj/effect/turf_decal/tile/dark_red/half/contrasted,
-/obj/machinery/defibrillator_mount/loaded/directional/south,
+/obj/machinery/defibrillator_mount/directional/south,
 /obj/item/clothing/mask/breath/muzzle,
 /obj/item/tank/internals/anesthetic,
 /turf/open/floor/iron/white,

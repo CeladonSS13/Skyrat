@@ -1,5 +1,5 @@
 /client/proc/mark_datum(datum/D)
-	if(!check_rights(R_ADMIN))
+	if(!holder)
 		return
 	if(!D.allow_mark_datum())
 		return

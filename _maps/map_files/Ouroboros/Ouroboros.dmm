@@ -5868,6 +5868,7 @@
 /area/station/security/brig/entrance)
 "bJn" = (
 /mob/living/basic/pet/cat/fennec,
+/obj/item/fancy_pillow,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/greater)
 "bJq" = (
@@ -15836,7 +15837,7 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/service,
 /turf/open/floor/wood/large,
 /area/station/security/checkpoint/service)
 "eDD" = (
@@ -21554,6 +21555,7 @@
 /area/station/security/corrections_officer)
 "gnC" = (
 /mob/living/basic/pet/cat/fennec,
+/obj/item/fancy_pillow,
 /turf/open/floor/plating,
 /area/station/service/salon)
 "gnX" = (
@@ -27621,7 +27623,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/cargo,
 /obj/item/wrench,
 /obj/item/crowbar,
 /obj/item/radio,
@@ -47312,7 +47314,7 @@
 	dir = 8
 	},
 /obj/structure/table/optable,
-/obj/machinery/defibrillator_mount/loaded/directional/east,
+/obj/machinery/defibrillator_mount/directional/east,
 /obj/item/restraints/handcuffs,
 /obj/item/clothing/mask/muzzle,
 /turf/open/floor/iron/dark/smooth_half{
@@ -51548,7 +51550,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "oOH" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/science,
 /obj/machinery/requests_console/auto_name/directional/north,
 /obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/mapping_helpers/requests_console/information,
@@ -55867,7 +55869,7 @@
 /turf/open/openspace,
 /area/station/maintenance/starboard/greater)
 "qcM" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/med,
 /obj/item/crowbar,
 /obj/item/wrench,
 /obj/item/radio,
@@ -58034,7 +58036,7 @@
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 1
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/south,
+/obj/machinery/defibrillator_mount/directional/south,
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark/smooth_half,
 /area/station/medical/surgery/theatre)
@@ -60370,7 +60372,7 @@
 	c_tag = "Medbay - Primary Treatment Centre Starboard";
 	network = list("ss13","medbay")
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/south,
+/obj/machinery/defibrillator_mount/directional/south,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "rwZ" = (
@@ -61624,7 +61626,7 @@
 /turf/open/misc/asteroid/moon/airless,
 /area/station/asteroid)
 "rRh" = (
-/obj/machinery/defibrillator_mount/loaded/directional/west,
+/obj/machinery/defibrillator_mount/directional/west,
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 4
 	},
@@ -66221,7 +66223,7 @@
 /turf/open/floor/iron/small,
 /area/station/hallway/secondary/exit/departure_lounge)
 "tfk" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/engine,
 /obj/item/storage/toolbox/drone{
 	pixel_y = -6
 	},
@@ -68754,6 +68756,7 @@
 /obj/structure/closet,
 /obj/item/storage/box/strippole_kit,
 /obj/item/storage/backpack/satchel,
+/obj/item/clothing/glasses/nice_goggles,
 /turf/open/floor/iron/dark,
 /area/station/commons/dorms/room4)
 "tUl" = (
@@ -78333,7 +78336,7 @@
 "wAH" = (
 /obj/structure/table/optable,
 /obj/effect/turf_decal/bot_white,
-/obj/machinery/defibrillator_mount/loaded/directional/south,
+/obj/machinery/defibrillator_mount/directional/south,
 /obj/effect/turf_decal/tile/blue/full,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1

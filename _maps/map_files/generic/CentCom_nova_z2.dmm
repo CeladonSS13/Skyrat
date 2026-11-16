@@ -4670,6 +4670,13 @@
 	pixel_x = -12;
 	pixel_y = -42
 	},
+/obj/item/fancy_pillow{
+	pixel_x = -22;
+	pixel_y = -7
+	},
+/obj/item/fancy_pillow{
+	pixel_y = -1
+	},
 /turf/open/floor/bamboo/tatami/black{
 	dir = 4
 	},
@@ -7947,7 +7954,7 @@
 "gki" = (
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/machinery/stasis,
-/obj/machinery/defibrillator_mount/loaded/directional/east,
+/obj/machinery/defibrillator_mount/directional/east,
 /turf/open/floor/iron/freezer,
 /area/centcom/interlink)
 "gko" = (
@@ -8766,7 +8773,7 @@
 /obj/effect/turf_decal/siding/white{
 	dir = 8
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/west,
+/obj/machinery/defibrillator_mount/directional/west,
 /obj/machinery/computer/operating{
 	dir = 4
 	},
@@ -13775,6 +13782,10 @@
 	pixel_x = -19;
 	pixel_y = -23
 	},
+/obj/item/fancy_pillow{
+	pixel_x = -10;
+	pixel_y = -7
+	},
 /turf/open/floor/bamboo/tatami/black,
 /area/centcom/holding/cafe)
 "osl" = (
@@ -14976,21 +14987,6 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/tram/plate,
 /area/centcom/interlink)
-"pHQ" = (
-/obj/structure/chair/sofa/bench/right{
-	dir = 8
-	},
-/obj/effect/landmark/latejoin,
-/turf/open/floor/iron/dark,
-/area/centcom/interlink)
-"pHX" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
-/obj/structure/window/spawner/directional/west,
-/obj/structure/closet/secure_closet/personal/cabinet,
-/turf/open/floor/carpet/green,
-/area/centcom/interlink/dorm_rooms)
 "pKF" = (
 /obj/machinery/processor,
 /turf/open/floor/stone,

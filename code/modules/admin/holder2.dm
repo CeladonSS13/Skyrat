@@ -9,8 +9,6 @@ GLOBAL_PROTECT(href_token)
 #define RESULT_2FA_VALID 1
 #define RESULT_2FA_ID 2
 
-GENERAL_PROTECT_DATUM(/datum/admins) // Celadon ADDITION
-
 /datum/admins
 	var/list/datum/admin_rank/ranks
 
@@ -160,8 +158,7 @@ GENERAL_PROTECT_DATUM(/datum/admins) // Celadon ADDITION
 	remove_verb(owner, /client/proc/readmin)
 	owner.init_verbs() //re-initialize the verb list
 	owner.update_special_keybinds()
-	if(check_for_rights(R_ADMIN))
-		GLOB.admins |= client
+	GLOB.admins |= client
 
 	try_give_profiling()
 

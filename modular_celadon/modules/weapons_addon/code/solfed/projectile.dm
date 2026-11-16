@@ -1,37 +1,37 @@
 //585
 /obj/projectile/bullet/c585trappiste
-	damage = 45
+	damage = 30
 
 /obj/projectile/bullet/c585trappiste/incapacitator
-	damage = 20
-	stamina = 40
+	damage = 15
+	stamina = 30
 
 /obj/projectile/bullet/c585trappiste/incendiary
-	damage = 35
+	damage = 25
 
 //c35
 /obj/projectile/bullet/c35sol
-	damage = 20
+	damage = 16
 
 /obj/projectile/bullet/c35sol/incapacitator
-	damage = 5
-	stamina = 30
+	damage = 3
+	stamina = 20
 
 /obj/projectile/bullet/c35sol/ripper
-	damage = 15
+	damage = 10
 
 //c40
 /obj/projectile/bullet/c40sol
-	damage = 35
-	wound_bonus = 0
-	exposed_wound_bonus = 0
+	damage = 27
+	wound_bonus = 5
+	exposed_wound_bonus = 10
 
 /obj/projectile/bullet/c40sol/fragmentation
-	damage = 15
+	damage = 10
 	stamina = 30
 
 /obj/projectile/bullet/c40sol/pierce
-	damage = 25
+	damage = 20
 
 /obj/projectile/bullet/c40sol/incendiary
-	damage = 25
+	damage = 18

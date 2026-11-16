@@ -12,6 +12,7 @@
 	antagonist_restricted = TRUE
 	//job things
 	title = JOB_CENTCOM_SPECIAL_OFFICER
+	//tgui_icon = FA_ICON_PERSON_RIFLE
 	config_tag = "CENTCOM_SPECOPS_OFFICER"
 	supervisors = JOB_CENTCOM
 	description = "Watch over the CentCom ERT's, control asset protection teams."

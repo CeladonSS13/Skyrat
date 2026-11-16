@@ -12,6 +12,10 @@
 /obj/item/clothing/mask/gas/atmos/frontier_colonist
 	armor_type = /datum/armor/colonist_mask
 
+/datum/supply_pack/vending/dorms
+	name = "CozyMate Supply Crate"
+	desc = "This crate contains a single refill for the CozyMate vendor."
+
 /datum/supply_pack/imports/wt550
 	name = "WT-550 Autorifle Crate"
 	desc = ""

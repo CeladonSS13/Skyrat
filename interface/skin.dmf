@@ -178,45 +178,55 @@ window "infobuttons"
 		is-pane = true
 	elem "changelog"
 		type = BUTTON
-		pos = 0,5
-		size = 164x25
-		anchor1 = 0,0
-		anchor2 = 25,100
+		pos = 10,5
+		size = 105x25
+		anchor1 = 2,0
+		anchor2 = 18,100
 		saved-params = "is-checked"
-		text = "Changelog"
+		text = "Changes"
 		command = "changelog"
 	elem "rules"
 		type = BUTTON
-		pos = 169,5
-		size = 98x25
-		anchor1 = 26,0
-		anchor2 = 40,100
+		pos = 120,5
+		size = 85x25
+		anchor1 = 19,0
+		anchor2 = 32,100
 		saved-params = "is-checked"
 		text = "Rules"
 		command = "rules"
+	elem "emotes"
+		type = BUTTON
+		pos = 210,5
+		size = 115x25
+		anchor1 = 33,0
+		anchor2 = 51,100
+		background-color = none
+		saved-params = "is-checked"
+		text = "Emotes"
+		command = "Emote-Panel"
 	elem "wiki"
 		type = BUTTON
-		pos = 271,5
-		size = 97x25
-		anchor1 = 41,0
-		anchor2 = 55,100
+		pos = 330,5
+		size = 85x25
+		anchor1 = 52,0
+		anchor2 = 65,100
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = "wiki"
 	elem "github"
 		type = BUTTON
-		pos = 373,5
-		size = 97x25
-		anchor1 = 56,0
-		anchor2 = 70,100
+		pos = 420,5
+		size = 80x25
+		anchor1 = 66,0
+		anchor2 = 78,100
 		saved-params = "is-checked"
-		text = "GitHub"
+		text = "Git"
 		command = "github"
 	elem "fullscreen-toggle"
 		type = BUTTON
-		pos = 475,5
-		size = 164x25
-		anchor1 = 71,0
+		pos = 505,5
+		size = 125x25
+		anchor1 = 79,0
 		anchor2 = 99,100
 		saved-params = "is-checked"
 		text = "Fullscreen"

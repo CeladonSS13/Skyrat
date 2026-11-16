@@ -1,12 +1,12 @@
 GLOBAL_LIST_EMPTY(centcom_list)
 GLOBAL_PROTECT(centcom_list)
 
-#define CELADON_PLAYER_RANKS list("Centcom") // Celadon EDIT, #define NOVA_PLAYER_RANKS list("Donator", "Mentor", "Nova Star")
+#define CELADON_PLAYER_RANKS list("Centcom", "No Readmin")
 
-ADMIN_VERB(manage_centcom_jobs, R_PERMISSIONS, "Manage CentCom Ranks", "Manage who has the special player ranks while the server is running.", ADMIN_CATEGORY_MAIN)
+ADMIN_VERB(manage_centcom_jobs, R_PERMISSIONS, "Manage Celadon Ranks", "Manage who has the special player ranks while the server is running.", ADMIN_CATEGORY_MAIN)
 	usr.client?.holder.manage_centcom_jobs()
 
-/// Proc for admins to change people's "player" ranks (donator, mentor, nova star, etc.)
+/// Proc for admins to change people's "player" ranks (centcom, Evenetologist no readmin, etc.)
 /datum/admins/proc/manage_centcom_jobs()
 	if(IsAdminAdvancedProcCall())
 		return

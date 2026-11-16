@@ -64,7 +64,7 @@
 
 /obj/structure/closet/secure_closet/security/black_mesa
 	req_access = list(ACCESS_AWAY_SEC)
-
+/*
 /obj/item/serviette
 	name = "serviette"
 	desc = "To clean."
@@ -162,3 +162,4 @@
 		update_icon_state()
 	else
 		to_chat(user, span_notice("There are no serviettes left!"))
+*/

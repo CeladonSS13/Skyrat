@@ -12,7 +12,9 @@ export type ExaminePanelData = {
   ooc_notes: string;
   custom_species: string;
   custom_species_lore: string;
-  // Celadon REMOVAL OF ERP FLAVOR AND NOTES, START, END
+  // Descriptions, but requiring manual input to see
+  flavor_text_nsfw: string;
+  ooc_notes_nsfw: string;
   // Antaggery
   // Celadon REMOVAL START
   // ideal_antag_optin_status: string;

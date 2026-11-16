@@ -1738,7 +1738,6 @@
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/starboard/fore)
 "ayV" = (
-/obj/machinery/defibrillator_mount/loaded/directional/west,
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/machinery/stasis{
 	dir = 4
@@ -5740,7 +5739,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/atmos)
 "bJt" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/science,
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 10
 	},
@@ -13239,7 +13238,7 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/engineering/supermatter/room)
 "dRS" = (
-/obj/structure/closet/secure_closet/brig/permanent,
+/obj/structure/closet/secure_closet/brig,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/dark_red/diagonal_centre,
 /obj/effect/turf_decal/tile/neutral/diagonal_centre,
@@ -14886,7 +14885,7 @@
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/structure/curtain,
 /obj/machinery/light/cold/directional/west,
-/obj/machinery/defibrillator_mount/loaded/directional/west{
+/obj/machinery/defibrillator_mount/directional/west{
 	pixel_y = -6
 	},
 /turf/open/floor/iron/freezer,
@@ -15222,7 +15221,7 @@
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/structure/cable,
 /obj/machinery/airalarm/directional/south,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/service,
 /turf/open/floor/wood/tile,
 /area/station/service/bar)
 "esu" = (
@@ -25167,7 +25166,7 @@
 /area/station/service/janitor)
 "hlF" = (
 /obj/structure/cable,
-/obj/structure/closet/secure_closet/brig/permanent,
+/obj/structure/closet/secure_closet/brig,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/dark_red/diagonal_centre,
 /obj/effect/turf_decal/tile/neutral/diagonal_centre,
@@ -32468,7 +32467,6 @@
 	dir = 10
 	},
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/secure_closet/security_medic,
 /turf/open/floor/iron/white,
 /area/station/security/medical)
 "jnP" = (
@@ -38094,7 +38092,6 @@
 /area/station/medical/medbay/lobby)
 "kMs" = (
 /obj/machinery/stasis,
-/obj/machinery/defibrillator_mount/loaded/directional/east,
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/effect/turf_decal/box/blue,
 /obj/machinery/vitals_reader/directional/east,
@@ -44094,7 +44091,7 @@
 	pixel_y = -7
 	},
 /obj/effect/turf_decal/tile/blue/full,
-/obj/machinery/defibrillator_mount/loaded/directional/east{
+/obj/machinery/defibrillator_mount/directional/east{
 	pixel_y = 4
 	},
 /obj/effect/turf_decal/box/red,
@@ -51473,7 +51470,7 @@
 	},
 /area/station/medical/treatment_center)
 "ovi" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/cargo,
 /obj/machinery/airalarm/directional/east,
 /obj/machinery/firealarm/directional/south,
 /obj/effect/turf_decal/trimline/brown/filled/line{
@@ -58128,7 +58125,7 @@
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/effect/turf_decal/bot,
 /obj/machinery/iv_drip,
-/obj/machinery/defibrillator_mount/loaded/directional/east,
+/obj/machinery/defibrillator_mount/directional/east,
 /turf/open/floor/iron/freezer,
 /area/station/medical/treatment_center)
 "qgS" = (
@@ -65797,7 +65794,7 @@
 	name = "Privacy Shutters Control";
 	pixel_y = -7
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/east{
+/obj/machinery/defibrillator_mount/directional/east{
 	pixel_y = 4
 	},
 /obj/effect/turf_decal/box/red,
@@ -72910,7 +72907,7 @@
 /turf/open/floor/iron/small,
 /area/station/hallway/primary/central)
 "ukR" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/engine,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/trimline/yellow/filled/line,
 /obj/machinery/power/apc/auto_name/directional/south,
@@ -76903,7 +76900,7 @@
 /area/station/engineering/atmos)
 "voi" = (
 /obj/effect/turf_decal/tile/blue/fourcorners,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/med,
 /obj/machinery/firealarm/directional/north,
 /obj/machinery/light_switch/directional/north{
 	pixel_x = 10

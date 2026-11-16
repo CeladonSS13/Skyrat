@@ -1,5 +1,4 @@
 /obj/machinery/vending/access/centcom
-	//icon = 'modular_nova/modules/command_vendor/icons/vending.dmi'
 	name = "\improper CentDrobe"
 	desc = "A one-of-a-kind vending machine for all your centcom aesthetic needs! Now with extended access checking protocol!"
 	icon_state = "centdrobe"

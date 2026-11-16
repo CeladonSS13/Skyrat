@@ -12,6 +12,7 @@
 	antagonist_restricted = TRUE
 	//job things
 	title = JOB_CENTCOM_COMMANDER
+	//tgui_icon = FA_ICON_STAR
 	config_tag = "CENTCOM_COMMANDER"
 	supervisors = JOB_CENTCOM
 	description = "Watch over the CentCom."

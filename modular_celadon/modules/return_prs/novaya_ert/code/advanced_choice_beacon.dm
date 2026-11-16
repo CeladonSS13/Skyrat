@@ -1,7 +1,7 @@
 /obj/item/advanced_choice_beacon
 	name = "advanced choice beacon"
 	desc = "A beacon that will send whatever your heart desires, providing Nanotrasen approves it."
-	icon = 'modular_nova/modules/modular_items/icons/remote.dmi'
+	icon = 'modular_celadon/master_files/icons/remote.dmi'
 	icon_state = "self_delivery"
 	inhand_icon_state = null
 
