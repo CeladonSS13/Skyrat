@@ -138,9 +138,7 @@ export const MemoryPanel = (props) => {
   return (
     <Window title="Memory Panel" width={400} height={500}>
       <Window.Content>
-        <Stack fill vertical>
-          {' '}
-          {/* SS1984 ADDITION */}
+        <Stack fill vertical> {/* SS1984 ADDITION */}
           <Section
             maxHeight="32px"
             title="Memories"
@@ -193,23 +191,19 @@ export const MemoryPanel = (props) => {
           )) || (
             <Section fill scrollable>
               {custom_notes.map((custom_note) => (
-                <Section
-                  key={custom_note.name}
-                  grow
+                <Section key={custom_note.name} grow
                   style={{
                     wordBreak: 'break-all',
                     wordWrap: 'break-word',
                     whiteSpace: 'pre-wrap',
-                  }}
-                >
-                  {custom_note.name}
+                  }}>
+                    {custom_note.name}
                 </Section>
               ))}
             </Section>
           )}
           {/* SS1984 ADDITION END */}
-        </Stack>{' '}
-        {/* SS1984 ADDITION */}
+        </Stack> {/* SS1984 ADDITION */}
       </Window.Content>
     </Window>
   );
