@@ -9,7 +9,7 @@
 
 SUBSYSTEM_DEF(player_ranks)
 	name = "Player Ranks"
-	flags = SS_NO_FIRE
+	ss_flags = SS_NO_FIRE
 	init_stage = INITSTAGE_EARLY
 	dependencies = list(
 		/datum/controller/subsystem/server_maint,
@@ -32,6 +32,8 @@ SUBSYSTEM_DEF(player_ranks)
 	load_donators()
 	load_mentors()
 	load_nova_stars()
+	load_centcom()	//CELADON ADD START
+	load_no_readmin()	//CELADON ADD END
 
 	return SS_INIT_SUCCESS
 
@@ -40,6 +42,8 @@ SUBSYSTEM_DEF(player_ranks)
 	QDEL_NULL(donator_controller)
 	QDEL_NULL(mentor_controller)
 	QDEL_NULL(nova_star_controller)
+	QDEL_NULL(centcom_controller)	//CELADON ADD START
+	QDEL_NULL(no_readmin_controller)	//CELADON ADD END
 	return ..()
 
 
@@ -134,7 +138,7 @@ SUBSYSTEM_DEF(player_ranks)
  * `donator_status` and `max_save_slots` once donators are loaded.
  */
 /datum/controller/subsystem/player_ranks/proc/update_all_prefs_donator_status()
-	for(var/ckey as anything in GLOB.preferences_datums)
+	for(var/ckey in GLOB.preferences_datums)
 		update_prefs_donator_status(GLOB.preferences_datums[ckey])
 
 
@@ -251,10 +255,14 @@ SUBSYSTEM_DEF(player_ranks)
 	if(rank_title == nova_star_controller.rank_title)
 		return nova_star_controller
 
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	if(rank_title == "veteran")
 		return nova_star_controller
-	// SS1984 ADDITION END
+	if(rank_title == centcom_controller.rank_title)
+		return centcom_controller
+	if(rank_title == no_readmin_controller.rank_title)
+		return no_readmin_controller
+	// Celadon ADDITION END
 	CRASH("Invalid player_rank_controller \"[rank_title || "*null*"]\" used in get_controller_for_group()!")
 
 

@@ -18,13 +18,14 @@
 	new /obj/item/clothing/under/rank/blueshield/consult/skirt(src)
 	new /obj/item/clothing/under/rank/blueshield/formal(src)
 	new /obj/item/clothing/under/rank/blueshield/russian(src)
-	new /obj/item/clothing/under/rank/blueshield/naval(src)
+	new /obj/item/clothing/under/imperialvest/blueshield(src)
+	new /obj/item/clothing/under/imperialvest/blueshield(src)
 
 /obj/structure/closet/secure_closet/blueshield
 	name = "blueshield's locker"
 	icon_state = "bs"
 	icon = 'modular_nova/master_files/icons/obj/closet.dmi'
-	req_access = list(ACCESS_CENT_GENERAL)
+	req_access = list(ACCESS_CAPTAIN)
 
 /obj/structure/closet/secure_closet/blueshield/New()
 	..()

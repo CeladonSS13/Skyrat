@@ -20,6 +20,7 @@ $_channel_map: (
   'Med': hsl(202, 83.6%, 64.1%),
   'OOC': hsl(47.9, 100%, 40%),
   'Ent': hsl(176.1, 20%, 45.1%),
+  'Pray': hsl(214, 86%, 30%),
   'Radio': hsl(132.8, 74.4%, 45.9%),
   'Say': hsl(213.6, 37.9%, 74.1%),
   'Sci': hsl(271.6, 91.7%, 76.5%),
@@ -35,9 +36,12 @@ $_channel_map: (
   'Guild': hsl(0, 0%, 70%),
   'SolFed': hsl(68, 70%, 60%),
   'Whis': hsl(238, 55%, 67%),
-  'Do': hsl(137, 64%, 60%), // NOVA EDIT ADDITION END
-  //SS1984 ADDITION START
-  'Prison': hsl(18, 50%, 39%), //SS1984 ADDITION END
+  'Do': hsl(137, 64%, 60%),
+  // NOVA EDIT ADDITION END
+  //Celadon ADDITION START
+  'Prison': hsl(18, 50%, 39%),
+  'Bitrun': hsl(53, 97.6%, 50%),
+  'Bitdefend': hsl(0, 71.2%, 53.7%), //Celadon ADDITION END
 );
 
 $channel_keys: map.keys($_channel_map) !default;

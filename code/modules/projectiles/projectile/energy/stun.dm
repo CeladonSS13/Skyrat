@@ -14,8 +14,8 @@
 	VAR_PRIVATE/datum/weakref/beam_weakref
 	/// We need to track who was the ORIGINAL firer of the projectile specifically to ensure deflects work correctly
 	VAR_PRIVATE/datum/weakref/initial_firer_weakref
-	VAR_PROTECTED/apply_tase_effect = TRUE // SS1984 ADDITION, should tase status effect even be applied?
-	VAR_PROTECTED/show_beam_effect = TRUE // SS1984 ADDITION, should beam be shown once fired?
+	VAR_PROTECTED/apply_tase_effect = TRUE // Celadon ADDITION, should tase status effect even be applied?
+	VAR_PROTECTED/show_beam_effect = TRUE // Celadon ADDITION, should beam be shown once fired?
 
 /obj/projectile/energy/electrode/is_hostile_projectile()
 	return TRUE
@@ -236,7 +236,7 @@
 
 	owner.adjust_stutter_up_to(10 SECONDS, 20 SECONDS)
 	owner.adjust_jitter_up_to(20 SECONDS, 30 SECONDS)
-	if(owner.stat <= UNCONSCIOUS)
+	if(owner.stat <= SOFT_CRIT)
 		owner.do_jitter_animation(INFINITY) // maximum POWER
 
 	// You are damp, that's bad when you're being tased
@@ -385,7 +385,8 @@
 /atom/movable/screen/alert/tazed
 	name = "Tased!"
 	desc = "You're being tased! You can click this or resist to attempt to stop it, assuming you've not already collapsed."
-	icon_state = "stun"
+	use_user_hud_icon = USER_HUD_STYLE_INHERIT
+	overlay_state = "stun"
 	clickable_glow = TRUE
 
 /atom/movable/screen/alert/tazed/Click(location, control, params)

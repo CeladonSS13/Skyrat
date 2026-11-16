@@ -1,0 +1,1 @@
+#define RND_CATEGORY_MECHFAB_JUSTICE "/Justice"

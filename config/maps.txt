@@ -18,23 +18,23 @@ endmap
 # Production-level maps.
 
 map deltastation
-	minplayers 50
+# Celadon REMOVAL	minplayers 50
 	votable
     default
 endmap
 
 map icebox
-	minplayers 25
+# Celadon REMOVAL	minplayers 25
 	votable
 endmap
 
 map catwalkstation
-	minplayers 25
+# Celadon REMOVAL	minplayers 25
 	votable
 endmap
 
 map metastation
-	minplayers 25
+# Celadon REMOVAL	minplayers 25
 	#voteweight 0.5
 	votable
 	#feedbacklink https://www.youtube.com/watch?v=XG8b7WhANNA
@@ -42,18 +42,18 @@ map metastation
 endmap
 
 map tramstation
-	minplayers 35
+# Celadon REMOVAL	minplayers 35
 	votable
 endmap
 
 map nebulastation
-	minplayers 35
+# Celadon REMOVAL	minplayers 35
 	votable
 endmap
 
 map wawastation
 	votable
-	minplayers 40
+# Celadon REMOVAL	minplayers 40
 endmap
 
 # Debug-only maps.
@@ -67,21 +67,25 @@ endmap
 map runtimestation
 endmap
 
+#Metastation, but with a json set to no space ruins.
+map meta_event
+endmap
+
 ##NOVA SECTOR MAPS##
 
 map voidraptor
-	maxplayers 100
+# Celadon REMOVAL	maxplayers 100
 	votable
 endmap
 
 map blueshift
-	minplayers 70
+# Celadon REMOVAL	minplayers 70
 	votable
 endmap
 
 map ouroboros
-	maxplayers 80
-# SS1984 EDIT - suspected for not fixed lagging at FastProcessing - temporaly nonvotable	votable
+# Celadon REMOVAL	maxplayers 80
+# Celadon EDIT - suspected for not fixed lagging at FastProcessing - temporaly nonvotable	votable
 endmap
 
 map serenitystation
@@ -90,4 +94,8 @@ endmap
 
 map snowglobe
 	votable
+endmap
+
+map oceanpubby
+    votable
 endmap

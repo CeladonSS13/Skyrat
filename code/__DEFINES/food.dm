@@ -19,7 +19,8 @@
 #define BUGS (1<<18)
 #define GORE (1<<19)
 #define STONE (1<<20)
-#define BLOODY (1<<21) // NOVA EDIT - Hemophage Food
+#define EGG (1<<21)
+#define BLOODY (1<<22) // NOVA EDIT ADDITION - Hemophage Food
 
 DEFINE_BITFIELD(foodtypes, list(
 	"MEAT" = MEAT,
@@ -43,7 +44,8 @@ DEFINE_BITFIELD(foodtypes, list(
 	"BUGS" = BUGS,
 	"GORE" = GORE,
 	"STONE" = STONE,
-	"BLOODY" = BLOODY, // NOVA EDIT - Hemophage Food
+	"EGG" = EGG,
+	"BLOODY" = BLOODY, // NOVA EDIT ADDITION - Hemophage Food
 ))
 
 /// A list of food type names, in order of their flags
@@ -69,7 +71,8 @@ DEFINE_BITFIELD(foodtypes, list(
 	"BUGS", \
 	"GORE", \
 	"STONE", \
-	"BLOODY", /* NOVA EDIT - Hemophage Food */ \
+	"EGG", \
+	"BLOODY", /* NOVA EDIT ADDITION - Hemophage Food */ \
 )
 
 /// IC meaning (more or less) for food flags
@@ -95,7 +98,8 @@ DEFINE_BITFIELD(foodtypes, list(
 	"Bugs", \
 	"Gore", \
 	"Rocks", \
-	"Bloody", /* NOVA EDIT - Hemophage Food */ \
+	"Eggs", \
+	"Bloody", /* NOVA EDIT ADDITION - Hemophage Food */ \
 )
 
 /// Food types assigned to all podperson organs
@@ -126,7 +130,7 @@ DEFINE_BITFIELD(foodtypes, list(
 #define FOOD_COMPLEXITY_5 5
 
 /// Labels for food quality
-GLOBAL_LIST_INIT(food_quality_description, list(
+GLOBAL_ALIST_INIT(food_quality_description, alist(
 	FOOD_QUALITY_NORMAL = "okay",
 	FOOD_QUALITY_NICE = "nice",
 	FOOD_QUALITY_GOOD = "good",
@@ -136,19 +140,8 @@ GLOBAL_LIST_INIT(food_quality_description, list(
 	FOOD_QUALITY_TOP = "godlike",
 ))
 
-/// Mood events for food quality
-GLOBAL_LIST_INIT(food_quality_events, list(
-	FOOD_QUALITY_NORMAL = /datum/mood_event/food,
-	FOOD_QUALITY_NICE = /datum/mood_event/food/nice,
-	FOOD_QUALITY_GOOD = /datum/mood_event/food/good,
-	FOOD_QUALITY_VERYGOOD = /datum/mood_event/food/verygood,
-	FOOD_QUALITY_FANTASTIC = /datum/mood_event/food/fantastic,
-	FOOD_QUALITY_AMAZING = /datum/mood_event/food/amazing,
-	FOOD_QUALITY_TOP = /datum/mood_event/food/top,
-))
-
 /// Weighted lists of crafted food buffs randomly given according to crafting_complexity unless the food has a specific buff
-GLOBAL_LIST_INIT(food_buffs, list(
+GLOBAL_ALIST_INIT(food_buffs, alist(
 	FOOD_COMPLEXITY_1 = list(
 		/datum/status_effect/food/haste = 1,
 	),

@@ -5,8 +5,13 @@
 
 GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1622" = "Bug breaking rendering can lead to wallhacks.",
-	))
-
+))
+GLOBAL_LIST_INIT(unrecommended_builds, list(
+	"1670" = "Bug breaking in-world text rendering.",
+	"1671" = "Bug breaking in-world text rendering.",
+	"1675" = "Frequent crashing.",
+	"1676" = "Frequent crashing.",
+))
 #define LIMITER_SIZE 5
 #define CURRENT_SECOND 1
 #define SECOND_COUNT 2
@@ -33,10 +38,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /client/Topic(href, href_list, hsrc, hsrc_command)
 	if(!usr || usr != mob) //stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
-	//NOVA EDIT ADDITION BEGIN - MENTOR
-	if(mentor_client_procs(href_list))
+	// NOVA EDIT ADDITION BEGIN - MENTOR / other client procs
+	if(client_procs(href_list))
 		return
-	//NOVA EDIT ADDITION END
+	// NOVA EDIT ADDITION END
 
 #ifndef TESTING
 	if (LOWER_TEXT(hsrc_command) == "_debug") //disable the integrated byond vv in the client side debugging tools since it doesn't respect vv read protections
@@ -270,8 +275,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		persistent_client = new(ckey)
 	persistent_client.set_client(src)
 
-	if(byond_version >= 516)
-		winset(src, null, list("browser-options" = "find,refresh,byondstorage"))
+	winset(src, null, list("browser-options" = "find,refresh"))
 
 	// Instantiate stat panel
 	stat_panel = new(src, "statbrowser")
@@ -325,30 +329,47 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			if(!joined_player_preferences)
 				continue //this shouldn't happen.
 
-			var/client/C = GLOB.directory[joined_player_ckey]
-			var/in_round = ""
-			if (joined_players[joined_player_ckey])
-				in_round = " who has played in the current round"
-			var/message_type = "Notice"
+			var/client/potential_match = GLOB.directory[joined_player_ckey]
 
-			var/matches
+			var/matched_ip = null
+			var/matched_cid = null
+			var/same_round = FALSE
+
 			if(joined_player_preferences.last_ip == address)
-				matches += "IP ([address])"
+				matched_ip = "IP [address]"
+
 			if(joined_player_preferences.last_id == computer_id)
-				if(matches)
-					matches = "BOTH [matches] and "
-					alert_admin_multikey = TRUE
-					message_type = "MULTIKEY"
-				matches += "Computer ID ([computer_id])"
+				matched_cid = "Computer ID [computer_id]"
 				alert_mob_dupe_login = TRUE
 
-			if(matches)
-				if(C)
-					message_admins(span_danger("<B>[message_type]: </B></span><span class='notice'>Connecting player [key_name_admin(src)] has the same [matches] as [key_name_admin(C)]<b>[in_round]</b>."))
-					log_admin_private("[message_type]: Connecting player [key_name(src)] has the same [matches] as [key_name(C)][in_round].")
-				else
-					message_admins(span_danger("<B>[message_type]: </B></span><span class='notice'>Connecting player [key_name_admin(src)] has the same [matches] as [joined_player_ckey](no longer logged in)<b>[in_round]</b>. "))
-					log_admin_private("[message_type]: Connecting player [key_name(src)] has the same [matches] as [joined_player_ckey](no longer logged in)[in_round].")
+			if(isnull(matched_ip) && isnull(matched_cid))
+				continue
+
+			if (joined_players[joined_player_ckey])
+				same_round = TRUE
+
+			var/double_match = !isnull(matched_ip) && !isnull(matched_cid)
+
+			if(double_match && same_round)
+				alert_admin_multikey = TRUE
+
+			var/list/concatables = list()
+			concatables += span_danger(span_bold("[double_match ? "MULTIKEY" : "Notice"]:"))
+			concatables += "<span class='notice'>Connecting player [key_name_admin(src)] has the same"
+			if(double_match)
+				concatables += "!BOTH! [matched_ip] and [matched_cid]"
+			else
+				concatables += (!isnull(matched_ip) ? matched_ip : matched_cid)
+			concatables += "as [isnull(potential_match) ? "[joined_player_ckey] (no longer logged in)" : "[key_name_admin(potential_match)]"]"
+			if(same_round)
+				concatables += span_bold("in the current round")
+
+			concatables += "</span>"
+
+			var/sendable_string = jointext(concatables, " ")
+
+			message_admins(sendable_string)
+			log_admin_private(strip_html_full(sendable_string, MAX_MESSAGE_LEN))
 
 	. = ..() //calls mob.Login()
 
@@ -362,11 +383,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	else if(GLOB.deadmins[ckey])
 		add_verb(src, /client/proc/readmin)
 		connecting_admin = TRUE
-	//NOVA EDIT ADDITION START - We will check the population here, because we need to know if the client is an admin or not.
-	if(!check_population(connecting_admin))
-		qdel(src)
-		return
-	// NOVA EDIT ADDITION END
 	if(CONFIG_GET(flag/autoadmin))
 		if(!GLOB.admin_datums[ckey])
 			var/list/autoadmin_ranks = ranks_from_rank_name(CONFIG_GET(string/autoadmin_rank))
@@ -576,6 +592,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	set_fullscreen(logging_in = TRUE)
 	view_size.resetFormat()
 	view_size.setZoomMode()
+	view_size.apply()
 	Master.UpdateTickRate()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_CONNECT, src)
 	fully_created = TRUE
@@ -606,7 +623,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	GLOB.clients -= src
 	GLOB.directory -= ckey
-	persistent_client?.set_client(null) // SS1984 EDIT, original: persistent_client.set_client(null)
+	if(persistent_client)
+		persistent_client.set_client(null)
+	else
+		stack_trace("A client was Del()'d without a persistent_client! This should not be happening.")
 
 	log_access("Logout: [key_name(src)]")
 	GLOB.ahelp_tickets.ClientLogout(src)
@@ -630,8 +650,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	QDEL_NULL(tooltips)
 	QDEL_NULL(loot_panel)
 	QDEL_NULL(parallax_rock)
-	QDEL_LIST(parallax_layers_cached)
-	parallax_layers = null
 	seen_messages = null
 	Master.UpdateTickRate()
 	..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
@@ -675,7 +693,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		return
 
 	var/client_is_in_db = query_client_in_db.NextRow()
-/* NOVA EDIT REMOVAL - Original
+	/* //NOVA EDIT REMOVAL - Original
 	// If we aren't an admin, and the flag is set (the panic bunker is enabled).
 	if(CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey])
 		// The amount of hours needed to bypass the panic bunker.
@@ -706,7 +724,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				qdel(query_client_in_db)
 				qdel(src)
 				return
-*/
+	*/ // NOVA EDIT REMOVAL END
 
 	if(!client_is_in_db)
 		//NOVA EDIT ADDITION BEGIN - PANICBUNKER
@@ -781,16 +799,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		)
 	if(!account_join_date)
 		account_join_date = "Error"
-	/* NOVA EDIT CHANGE - ORIGINAL:
 	SSdbcore.FireAndForget({"
 		INSERT INTO `[format_table_name("connection_log")]` (`id`,`datetime`,`server_ip`,`server_port`,`round_id`,`ckey`,`ip`,`computerid`)
 		VALUES(null,Now(),INET_ATON(:internet_address),:port,:round_id,:ckey,INET_ATON(:ip),:computerid)
 	"}, list("internet_address" = world.internet_address || "0", "port" = world.port, "round_id" = GLOB.round_id, "ckey" = ckey, "ip" = address, "computerid" = computer_id))
-	*/
-	SSdbcore.FireAndForget({"
-		INSERT INTO `[format_table_name("connection_log")]` (`id`,`datetime`,`server_name`,`server_ip`,`server_port`,`round_id`,`ckey`,`ip`,`computerid`)
-		VALUES(null,Now(),:server_name,INET_ATON(:internet_address),:port,:round_id,:ckey,INET_ATON(:ip),:computerid)
-	"}, list("server_name" = CONFIG_GET(string/serversqlname), "internet_address" = world.internet_address || "0", "port" = world.port, "round_id" = GLOB.round_id, "ckey" = ckey, "ip" = address, "computerid" = computer_id)) //NOVA EDIT CHANGE - MULTISERVER
 
 	SSserver_maint.UpdateHubStatus()
 
@@ -958,6 +970,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		add_verb(src, /client/proc/self_playtime)
 	if(!CONFIG_GET(flag/forbid_preferences_export))
 		add_verb(src, /client/proc/export_preferences)
+	// NOVA EDIT ADDITION START
+	if(CONFIG_GET(flag/enable_relays))
+		add_verb(src, /client/proc/connect_to_relay)
+	// NOVA EDIT ADDITION END
 
 
 //checks if a client is afk
@@ -1052,7 +1068,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				if("South")
 					movement_keys[key] = SOUTH
 				if(ADMIN_CHANNEL)
-					if(holder && check_rights(R_ADMIN,show_msg=0)) // SS1984 EDIT
+					if(holder && check_rights(R_ADMIN,show_msg=0)) // Celadon EDIT
 						var/asay = tgui_say_create_open_command(ADMIN_CHANNEL)
 						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[asay]")
 					else
@@ -1089,11 +1105,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		to_chat(src, announcement)
 
 ///Redirect proc that makes it easier to call the unlock achievement proc. Achievement type is the typepath to the award, user is the mob getting the award, and value is an optional variable used for leaderboard value increments
-/client/proc/give_award(achievement_type, mob/user, value = 1)
-	return persistent_client.achievements.unlock(achievement_type, user, value)
+/client/proc/give_award(achievement_type, mob/user, value = 1, ...)
+	return persistent_client.achievements.unlock(arglist(args))
 
 ///Redirect proc that makes it easier to get the status of an achievement. Achievement type is the typepath to the award.
-/client/proc/get_award_status(achievement_type, mob/user, value = 1)
+/client/proc/get_award_status(achievement_type)
 	return persistent_client.achievements.get_achievement_status(achievement_type)
 
 ///Gives someone hearted status for OOC, from behavior commendations
@@ -1158,8 +1174,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 /client/proc/open_filter_editor(atom/in_atom)
 	if(holder)
-		holder.filteriffic = new /datum/filter_editor(in_atom)
-		holder.filteriffic.ui_interact(mob)
+		holder.filterrific = new /datum/filter_editor(in_atom)
+		holder.filterrific.ui_interact(mob)
 
 ///opens the particle editor UI for the in_atom object for this client
 /client/proc/open_particle_editor(atom/movable/in_atom)
@@ -1254,17 +1270,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		return
 	winset(src, "mainwindow", "menu=;is-fullscreen=[fullscreen ? "true" : "false"]")
 	attempt_auto_fit_viewport()
-
-/client/verb/toggle_status_bar()
-	set name = "Toggle Status Bar"
-	set category = "OOC"
-
-	show_status_bar = !show_status_bar
-
-	if (show_status_bar)
-		winset(src, "mapwindow.status_bar", "is-visible=true")
-	else
-		winset(src, "mapwindow.status_bar", "is-visible=false")
 
 /// Clears the client's screen, aside from ones that opt out
 /client/proc/clear_screen()

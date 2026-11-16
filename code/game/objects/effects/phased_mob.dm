@@ -82,8 +82,7 @@
 /obj/effect/dummy/phased_mob/ex_act()
 	return FALSE
 
-/obj/effect/dummy/phased_mob/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
-	SHOULD_CALL_PARENT(FALSE)
+/obj/effect/dummy/phased_mob/projectile_hit(obj/projectile/hitting_projectile, def_zone, piercing_hit, blocked)
 	return BULLET_ACT_FORCE_PIERCE
 
 /obj/effect/dummy/phased_mob/relaymove(mob/living/user, direction)
@@ -123,5 +122,5 @@
 /// Signal proc for [COMSIG_MOB_STATCHANGE], to throw us out of the jaunt if we lose consciousness.
 /obj/effect/dummy/phased_mob/proc/on_stat_change(mob/living/source, new_stat, old_stat)
 	SIGNAL_HANDLER
-	if(source == jaunter && source.stat > SOFT_CRIT)
+	if(source == jaunter && source.stat != CONSCIOUS)
 		eject_jaunter()

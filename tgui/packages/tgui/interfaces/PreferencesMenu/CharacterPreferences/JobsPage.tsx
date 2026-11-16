@@ -232,12 +232,12 @@ function JobRow(props: JobRowProps) {
       </Stack>
     );
     // NOVA EDIT START
-  } else if (job.nova_star && !data.is_nova_star) {
+  } else if (data.nova_star_restrictions && job.nova_star && !data.is_nova_star) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
-          {/* SS1984 REMOVAL <b>Nova Stars Only</b> */ }
-          <b>Veteran Only</b> {/* SS1984 ADDITION */}
+          {/* Celadon REMOVAL <b>Nova Stars Only</b> */ }
+          <b>Veteran Only</b> {/* Celadon ADDITION */}
         </Stack.Item>
       </Stack>
     );
@@ -372,7 +372,7 @@ function JoblessRoleDropdown(props) {
 
   const selection = options?.find(
     (option) => option.value === selected,
-  )!.displayText;
+  )?.displayText;
 
   return (
     <Box position="absolute" right={0} width="30%">

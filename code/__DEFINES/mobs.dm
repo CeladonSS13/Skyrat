@@ -3,8 +3,8 @@
 //Misc mob defines
 
 //Ready states at roundstart for mob/dead/new_player
-#define PLAYER_NOT_READY 0
-#define PLAYER_READY_TO_PLAY 1
+#define PLAYER_NOT_READY "Not Ready"
+#define PLAYER_READY_TO_PLAY "Ready"
 
 //movement intent defines for the move_intent var
 #define MOVE_INTENT_WALK "walk"
@@ -13,10 +13,10 @@
 /// Amount of oxyloss that KOs a human
 #define OXYLOSS_PASSOUT_THRESHOLD 50
 //Blood levels
-#define BLOOD_VOLUME_MAX_LETHAL 2150
-#define BLOOD_VOLUME_EXCESS 2100
-#define BLOOD_VOLUME_MAXIMUM 1000 // NOVA EDIT - Blood volume balancing (mainly for Hemophages as nobody else really goes much above regular blood volume) - ORIGINAL VALUE: 2000
-#define BLOOD_VOLUME_SLIME_SPLIT 1120
+#define BLOOD_VOLUME_MAXIMUM 1000 // NOVA EDIT CHANGE - Blood volume balancing (mainly for Hemophages as nobody else really goes much above regular blood volume) - ORIGINAL: #define BLOOD_VOLUME_MAXIMUM 1000
+#define BLOOD_VOLUME_MAX_LETHAL (BLOOD_VOLUME_MAXIMUM * 1.075) // 2150 units if BLOOD_VOLUME_MAXIMUM is 2000
+#define BLOOD_VOLUME_EXCESS (BLOOD_VOLUME_MAXIMUM * 1.05) // 2100 units if BLOOD_VOLUME_MAXIMUM is 2000
+#define BLOOD_VOLUME_SLIME_SPLIT BLOOD_VOLUME_MAXIMUM * 0.95 // Celadon EDIT, original: #define BLOOD_VOLUME_SLIME_SPLIT (BLOOD_VOLUME_MAXIMUM * 0.56) // 1120 units if BLOOD_VOLUME_MAXIMUM is 2000
 #define BLOOD_VOLUME_NORMAL 560
 #define BLOOD_VOLUME_SAFE (BLOOD_VOLUME_NORMAL * (1 - 0.15)) // Latter number is percentage of blood lost, for readability!
 #define BLOOD_VOLUME_OKAY (BLOOD_VOLUME_NORMAL * (1 - 0.30))
@@ -124,6 +124,8 @@
 #define MOB_MINING (1 << 13)
 ///The mob is a crustacean. Like crabs. Or lobsters.
 #define MOB_CRUSTACEAN (1 << 14)
+///The mob is all boney
+#define MOB_SKELETAL (1 << 15)
 
 //Lung respiration type flags
 #define RESPIRATION_OXYGEN (1 << 0)
@@ -151,14 +153,10 @@
 //This limb is a ghost limb and can phase through walls.
 #define BODYTYPE_GHOST (1<<8)
 // NOVA EDIT ADDITION START
-///The limb fits a modular custom shape
-#define BODYSHAPE_CUSTOM (1<<9)
-///The limb fits a taur body
-#define BODYSHAPE_TAUR (1<<10)
-///The limb causes shoes to no longer be displayed, useful for taurs.
-#define BODYSHAPE_HIDE_SHOES (1<<11)
-///The limb causes glasses and hats to be drawn on layers 5 and 4 respectively. Currently used for snouts with the (Top) suffix, which are drawn on layer 6 and would normally cover facewear
-#define BODYSHAPE_ALT_FACEWEAR_LAYER (1<<12)
+///The limb is synthetic, this is for an additional surgery check.
+#define BODYTYPE_SYNTHETIC (1<<9)
+/// It's a ghoul limb, which is detachable
+#define BODYTYPE_GHOUL (1<<10)
 // NOVA EDIT ADDITION END
 
 // Bodyshape defines for how things can be worn, i.e., what "shape" the mob sprite is
@@ -170,8 +168,20 @@
 #define BODYSHAPE_DIGITIGRADE (1<<2)
 ///The limb is snouted.
 #define BODYSHAPE_SNOUTED (1<<3)
+/// Golem's wacky rocky limbs
+#define BODYSHAPE_GOLEM (1<<4)
+// NOVA EDIT ADDITION START
+///The limb fits a modular custom shape
+#define BODYSHAPE_CUSTOM (1<<5)
+///The limb fits a taur body
+#define BODYSHAPE_TAUR (1<<6)
+///The limb causes shoes to no longer be displayed, useful for taurs.
+#define BODYSHAPE_HIDE_SHOES (1<<7)
+///The limb causes glasses and hats to be drawn on layers 5 and 4 respectively. Currently used for snouts with the (Top) suffix, which are drawn on layer 6 and would normally cover facewear
+#define BODYSHAPE_ALT_FACEWEAR_LAYER (1<<8)
+// NOVA EDIT ADDITION END
 
-#define BODYTYPE_BIOSCRAMBLE_INCOMPATIBLE (BODYTYPE_ROBOTIC | BODYTYPE_LARVA_PLACEHOLDER | BODYTYPE_GOLEM | BODYTYPE_PEG)
+#define BODYTYPE_BIOSCRAMBLE_INCOMPATIBLE (BODYTYPE_ROBOTIC | BODYTYPE_LARVA_PLACEHOLDER | BODYTYPE_GOLEM | BODYTYPE_PEG | BODYTYPE_GHOUL) // NOVA EDIT CHANGE - ORIGINAL: #define BODYTYPE_BIOSCRAMBLE_INCOMPATIBLE (BODYTYPE_ROBOTIC | BODYTYPE_LARVA_PLACEHOLDER | BODYTYPE_GOLEM | BODYTYPE_PEG)
 #define BODYTYPE_CAN_BE_BIOSCRAMBLED(bodytype) (!(bodytype & BODYTYPE_BIOSCRAMBLE_INCOMPATIBLE))
 
 // Defines for Species IDs. Used to refer to the name of a species, for things like bodypart names or species preferences.
@@ -187,7 +197,6 @@
 #define SPECIES_HUMAN "human"
 #define SPECIES_JELLYPERSON "jelly"
 #define SPECIES_SLIMEPERSON "slime"
-#define SPECIES_SPIRIT "spirit"
 #define SPECIES_LUMINESCENT "luminescent"
 #define SPECIES_STARGAZER "stargazer"
 #define SPECIES_LIZARD "lizard"
@@ -205,6 +214,7 @@
 #define SPECIES_VAMPIRE "vampire"
 #define SPECIES_ZOMBIE "zombie"
 #define SPECIES_ZOMBIE_INFECTIOUS "memezombie"
+#define SPECIES_ZOMBIE_INFECTIOUS_MINDLESS "mindless_memezombie"
 #define SPECIES_ZOMBIE_KROKODIL "krokodil_zombie"
 #define SPECIES_VOIDWALKER "voidwalker"
 
@@ -216,6 +226,7 @@
 #define BODYPART_ID_PSYKER "psyker"
 #define BODYPART_ID_MEAT "meat"
 #define BODYPART_ID_PEG "peg"
+#define BODYPART_ID_BONE "bone"
 
 
 //See: datum/species/var/digitigrade_customization
@@ -490,11 +501,11 @@
 /// How much nutrition eating clothes as moth gives and drains
 #define CLOTHING_NUTRITION_GAIN 15
 #define REAGENTS_METABOLISM 0.2 //How many units of reagent are consumed per second, by default.
-#define REAGENTS_EFFECT_MULTIPLIER (REAGENTS_METABOLISM / 0.4) // By defining the effect multiplier this way, it'll exactly adjust all effects according to how they originally were with the 0.4 metabolism
+#define REAGENTS_EFFECT_MULTIPLIER (1 / (REAGENTS_METABOLISM * SSMOBS_DT)) // When multiplied with the volume of reagent metabolized you get an value from 0->1 to scale all reagent affects
 #define REM REAGENTS_EFFECT_MULTIPLIER //! Shorthand for the above define for ease of use in equations and the like
 
 // Eye protection
-// THese values are additive to determine your overall flash protection.
+// These values are additive to determine your overall flash protection.
 #define FLASH_PROTECTION_HYPER_SENSITIVE -2
 #define FLASH_PROTECTION_SENSITIVE -1
 #define FLASH_PROTECTION_NONE 0
@@ -502,6 +513,29 @@
 #define FLASH_PROTECTION_WELDER 2
 #define FLASH_PROTECTION_WELDER_SENSITIVE 3
 #define FLASH_PROTECTION_WELDER_HYPER_SENSITIVE 4
+
+/**
+ * Ear protection
+ * These values are additive to determine your overall ear/soundbang protection
+ */
+#define EAR_PROTECTION_NONE 0
+#define EAR_PROTECTION_NORMAL 1
+#define EAR_PROTECTION_HEAVY 2
+#define EAR_PROTECTION_VACUUM 3
+#define EAR_PROTECTION_FULL INFINITY
+
+/**
+ * Soundbang defines
+ * These values are used as argument to determine the strength of the soundbang_act call
+ */
+///Soundbang strength for most things like flashbangs, honkblasts and harm control modules
+#define SOUNDBANG_NORMAL 1
+///Soundbang strength for things like flashbangs in proximity and emagged harm alarm megaphones, cannot be countered by standard ear protection equipment
+#define SOUNDBANG_STRONG 2
+///Soundbang strength for things like changeling shrieks, which can affect robots and aliens as well.
+#define SOUNDBANG_MASSIVE 3
+///Soundbang strength for anything that cannot be stopped unless you're stacked on multiple effects and equipment to counter it (or are simply deaf)
+#define SOUNDBANG_OVERWHELMING 4
 
 // AI Toggles
 #define AI_CAMERA_LUMINOSITY 5
@@ -568,9 +602,13 @@
 #define DEFIB_FAIL_NO_INTELLIGENCE (1<<8)
 #define DEFIB_FAIL_BLACKLISTED (1<<9)
 #define DEFIB_NOGRAB_AGHOST (1<<10)
+#define DEFIB_FAIL_GOLEM (1<<11)
+//NOVA EDIT ADDITION START
+#define DEFIB_FAIL_DNR (1<<12)
+//NOVA EDIT ADDITION END
 
 // Bit mask of possible return values by can_defib that would result in a revivable patient
-#define DEFIB_REVIVABLE_STATES (DEFIB_FAIL_NO_HEART | DEFIB_FAIL_FAILING_HEART | DEFIB_FAIL_HUSK | DEFIB_FAIL_TISSUE_DAMAGE | DEFIB_FAIL_FAILING_BRAIN | DEFIB_POSSIBLE)
+#define DEFIB_REVIVABLE_STATES (DEFIB_FAIL_NO_HEART | DEFIB_FAIL_FAILING_HEART | DEFIB_FAIL_HUSK | DEFIB_FAIL_TISSUE_DAMAGE | DEFIB_FAIL_FAILING_BRAIN | DEFIB_FAIL_GOLEM | DEFIB_POSSIBLE)
 
 #define SLEEP_CHECK_DEATH(X, A) \
 	sleep(X); \
@@ -593,6 +631,9 @@
 #define EXAMINE_MORE_WINDOW (1 SECONDS)
 /// If you yawn while someone nearby has examined you within this time frame, it will force them to yawn as well. Tradecraft!
 #define YAWN_PROPAGATION_EXAMINE_WINDOW (2 SECONDS)
+
+// Priorities for examine overrides
+#define EXAMINE_OVERRIDE_PRIORITY_IFF 1
 
 /// How far away you can be to make eye contact with someone while examining
 #define EYE_CONTACT_RANGE 5
@@ -637,7 +678,7 @@
 #define AI_EMOTION_UNSURE "Unsure"
 #define AI_EMOTION_CONFUSED "Confused"
 #define AI_EMOTION_SAD "Sad"
-#define AI_EMOTION_BSOD "BSOD"
+#define AI_EMOTION_BSOD "BSOD" //It is used only on EMP pulse displays.
 #define AI_EMOTION_BLANK "Blank"
 #define AI_EMOTION_PROBLEMS "Problems?"
 #define AI_EMOTION_AWESOME "Awesome"
@@ -647,6 +688,8 @@
 #define AI_EMOTION_DORFY "Dorfy"
 #define AI_EMOTION_BLUE_GLOW "Blue Glow"
 #define AI_EMOTION_RED_GLOW "Red Glow"
+#define AI_EMOTION_DEAD "Dead" //This one is used when deactivating the AI
+#define AI_EMOTION_DOWNLOAD "Download"
 
 // Defines for AI holograms
 #define AI_HOLOGRAM_CATEGORY_ANIMAL "Animal"
@@ -682,8 +725,8 @@
 #define GET_TARGETS_FROM(who) (who.targets_from ? who.get_targets_from() : who)
 
 //defines for grad_color and grad_styles list access keys
-#define GRADIENT_HAIR_KEY 1
-#define GRADIENT_FACIAL_HAIR_KEY 2
+#define GRADIENT_HAIR_KEY "1"
+#define GRADIENT_FACIAL_HAIR_KEY "2"
 
 // /datum/sprite_accessory/gradient defines
 #define GRADIENT_APPLIES_TO_HAIR (1<<0)
@@ -724,66 +767,68 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 /// Total number of layers for mob overlays
 /// KEEP THIS UP-TO-DATE OR SHIT WILL BREAK
 /// Also consider updating layers_to_offset
-#define TOTAL_LAYERS 44 // NOVA EDIT CHANGE - ORIGINAL: #define TOTAL_LAYERS 38
+#define TOTAL_LAYERS 45 // NOVA EDIT CHANGE - ORIGINAL: #define TOTAL_LAYERS 39
 /// Mutations layer - Tk headglows, cold resistance glow, etc
-#define MUTATIONS_LAYER 43 // NOVA EDIT CHANGE - ORIGINAL: #define MUTATIONS_LAYER 37
+#define MUTATIONS_LAYER 44 // NOVA EDIT CHANGE - ORIGINAL: #define MUTATIONS_LAYER 38
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_BEHIND_LAYER 42 // NOVA EDIT CHANGE - ORIGINAL: #define BODY_BEHIND_LAYER 36
+#define BODY_BEHIND_LAYER 43 // NOVA EDIT CHANGE - ORIGINAL: #define BODY_BEHIND_LAYER 37
 /// Layer for bodyparts that should appear behind every other bodypart - Mostly, legs when facing WEST or EAST
-#define BODYPARTS_LOW_LAYER 41 // NOVA EDIT CHANGE - ORIGINAL: #define BODYPARTS_LOW_LAYER 35
+#define BODYPARTS_LOW_LAYER 42 // NOVA EDIT CHANGE - ORIGINAL: #define BODYPARTS_LOW_LAYER 36
 /// Layer for most bodyparts, appears above BODYPARTS_LOW_LAYER and below BODYPARTS_HIGH_LAYER
-#define BODYPARTS_LAYER 40 // NOVA EDIT CHANGE - ORIGINAL: #define BODYPARTS_LAYER 34
+#define BODYPARTS_LAYER 41 // NOVA EDIT CHANGE - ORIGINAL: #define BODYPARTS_LAYER 35
 /// Mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_ADJ_LAYER 39 // NOVA EDIT CHANGE - ORIGINAL: #define BODY_ADJ_LAYER 33
+#define BODY_ADJ_LAYER 40 // NOVA EDIT CHANGE - ORIGINAL: #define BODY_ADJ_LAYER 34
 /// Underwear, undershirts, socks
-#define BODY_LAYER 38 // NOVA EDIT CHANGE - ORIGINAL: #define BODY_LAYER 32
+#define BODY_LAYER 39 // NOVA EDIT CHANGE - ORIGINAL: #define BODY_LAYER 33
 /// Eyes and eyelids
-#define EYES_LAYER 37 // NOVA EDIT CHANGE - ORIGINAL: #define EYES_LAYER 31
+#define EYES_LAYER 38 // NOVA EDIT CHANGE - ORIGINAL: #define EYES_LAYER 32
 /// Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define FRONT_MUTATIONS_LAYER 36 // NOVA EDIT CHANGE - ORIGINAL: #define FRONT_MUTATIONS_LAYER 30
+#define FRONT_MUTATIONS_LAYER 37 // NOVA EDIT CHANGE - ORIGINAL: #define FRONT_MUTATIONS_LAYER 31
 /// Damage indicators (cuts and burns)
-#define DAMAGE_LAYER 35 // NOVA EDIT CHANGE - ORIGINAL: #define DAMAGE_LAYER 29
+#define DAMAGE_LAYER 36 // NOVA EDIT CHANGE - ORIGINAL: #define DAMAGE_LAYER 30
 // NOVA EDIT ADDITION START
 /// This layer is used for things that shouldn't be over clothes, but should be over mutations
-#define BODY_FRONT_UNDER_CLOTHES 34
+#define BODY_FRONT_UNDER_CLOTHES 35
 // NOVA EDIT ADDITION END
 /// Jumpsuit clothing layer
-#define UNIFORM_LAYER 33 // NOVA EDIT CHANGE - ORIGINAL: 27
+#define UNIFORM_LAYER 34 // NOVA EDIT CHANGE - ORIGINAL: #define UNIFORM_LAYER 29
 // NOVA EDIT ADDITION BEGIN - cursed layers under clothing
-#define ANUS_LAYER 32
-#define VAGINA_LAYER 31
-#define PENIS_LAYER 30
-#define NIPPLES_LAYER 29
-#define BANDAGE_LAYER 28
+#define ANUS_LAYER 33
+#define VAGINA_LAYER 32
+#define PENIS_LAYER 31
+#define NIPPLES_LAYER 30
+#define BANDAGE_LAYER 29
 //NOVA EDIT ADDITION END
 /// ID card layer
-#define ID_LAYER 27
+#define ID_LAYER 28
 /// ID card layer (might be deprecated)
-#define ID_CARD_LAYER 26
+#define ID_CARD_LAYER 27
 /// Layer for bodyparts that should appear above every other bodypart - Currently only used for hands
-#define BODYPARTS_HIGH_LAYER 25
+#define BODYPARTS_HIGH_LAYER 26
 /// Gloves layer
-#define GLOVES_LAYER 24
+#define GLOVES_LAYER 25
 /// Shoes layer
-#define SHOES_LAYER 23
+#define SHOES_LAYER 24
 /// Layer for masks that are worn below ears and eyes (like Balaclavas) (layers below hair, use flagsinv=HIDEHAIR as needed)
-#define LOW_FACEMASK_LAYER 22
+#define LOW_FACEMASK_LAYER 23
 /// Ears layer (Spessmen have ears? Wow)
-#define EARS_LAYER 21
+#define EARS_LAYER 22
 /// Layer for neck apperal that should appear below the suit slot (like neckties)
-#define LOW_NECK_LAYER 20
+#define LOW_NECK_LAYER 21
 /// Suit layer (armor, coats, etc.)
-#define SUIT_LAYER 19
+#define SUIT_LAYER 20
 /// Glasses layer
-#define GLASSES_LAYER 18
+#define GLASSES_LAYER 19
 /// Belt layer
-#define BELT_LAYER 17 //Possible make this an overlay of something required to wear a belt?
+#define BELT_LAYER 18 //Possible make this an overlay of something required to wear a belt?
 /// Suit storage layer (tucking a gun or baton underneath your armor)
-#define SUIT_STORE_LAYER 16
+#define SUIT_STORE_LAYER 17
 /// Neck layer (for wearing capes and bedsheets)
-#define NECK_LAYER 15
+#define NECK_LAYER 16
 /// Back layer (for backpacks and equipment on your back)
-#define BACK_LAYER 14
+#define BACK_LAYER 15
+/// Special layer for rendering beneath hair, for special facemasks
+#define BENEATH_HAIR_LAYER 14
 /// Hair layer (mess with the fro and you got to go!)
 #define HAIR_LAYER 13 //TODO: make part of head layer?
 /// Facemask layer (gas masks, breath masks, etc.)
@@ -825,6 +870,7 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 	"[HEAD_LAYER]" = UPPER_BODY,
 	// Hair will get cut off by filter
 	"[HAIR_LAYER]" = UPPER_BODY,
+	"[BENEATH_HAIR_LAYER]" = UPPER_BODY,
 	// Long belts (sabre sheathe) will get cut off by filter
 	"[BELT_LAYER]" = LOWER_BODY,
 	// Everything below looks fine with or without a filter, so we can skip it and just offset
@@ -965,6 +1011,14 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 /// Possible value of [/atom/movable/buckle_dir]. If set to a different (positive-or-zero) value than this, the buckling thing will force a dir on the buckled.
 #define BUCKLE_MATCH_DIR -1
 
+// Defines for [/datum/component/riding/var/other_unbuckle]
+/// Other mobs cannot force riders to unbuckle in any means
+#define CANNOT_FORCE_UNBUCKLE 0
+/// Other mobs can force riders to unbuckle by simply clicking on the parent
+#define CAN_FORCE_UNBUCKLE 1
+/// Other mobs can force riders to unbuckle by disarming the parent or the rider minimum twice
+#define CAN_DISARM_UNBUCKLE 2
+
 // Flags for fully_heal().
 
 /// Special flag that means this heal is an admin heal and goes above and beyond
@@ -1056,7 +1110,7 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define MINING_MOB_PROJECTILE_VULNERABILITY list(BRUTE)
 
 /// Helper macro that determines if the mob is at the threshold to start vomitting due to high toxin levels
-#define AT_TOXIN_VOMIT_THRESHOLD(mob) (mob.getToxLoss() > 45 && mob.nutrition > 20)
+#define AT_TOXIN_VOMIT_THRESHOLD(mob) (mob.get_tox_loss() > 45 && mob.nutrition > 20)
 
 /// The duration of the flip emote animation
 #define FLIP_EMOTE_DURATION 0.7 SECONDS

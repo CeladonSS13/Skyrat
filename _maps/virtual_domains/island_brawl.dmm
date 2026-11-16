@@ -105,7 +105,7 @@
 /turf/open/water/beach,
 /area/virtual_domain/fullbright)
 "bx" = (
-/obj/machinery/defibrillator_mount/loaded/directional/west,
+/obj/machinery/defibrillator_mount/directional/west,
 /obj/structure/bed/pod{
 	desc = "An old medical bed, just waiting for replacement with something up to date.";
 	dir = 4;
@@ -2228,7 +2228,7 @@
 /obj/structure/sign/directions/medical/directional/north{
 	pixel_y = 29
 	},
-/obj/machinery/computer/slot_machine,
+/obj/effect/spawner/random/entertainment/slot_machine,
 /turf/open/floor/wood/large,
 /area/virtual_domain)
 "BW" = (
@@ -2551,7 +2551,7 @@
 /turf/open/floor/wood,
 /area/virtual_domain)
 "Gp" = (
-/obj/structure/no_effect_signpost{
+/obj/structure/signpost{
 	pixel_y = 6;
 	desc = "Northwest: Hotel. South: Seaside Bar. East: Dressing Rooms."
 	},
@@ -2692,7 +2692,7 @@
 	dir = 4;
 	name = "medical bed"
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/east,
+/obj/machinery/defibrillator_mount/directional/east,
 /obj/machinery/iv_drip{
 	pixel_y = 21;
 	pixel_x = -4
@@ -3088,7 +3088,7 @@
 	pixel_y = 1;
 	pixel_x = 18
 	},
-/obj/item/stack/medical/gauze{
+/obj/item/stack/medical/wrap/gauze{
 	pixel_x = -15;
 	pixel_y = 10
 	},

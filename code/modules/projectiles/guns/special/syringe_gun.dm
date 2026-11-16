@@ -19,6 +19,7 @@
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
 	clumsy_check = FALSE
 	fire_sound = 'sound/items/syringeproj.ogg'
+	can_muzzle_flash = FALSE
 	gun_flags = NOT_A_REAL_GUN
 	var/load_sound = 'sound/items/weapons/gun/shotgun/insert_shell.ogg'
 	var/list/syringes = list()
@@ -31,7 +32,7 @@
 
 /obj/item/gun/syringe/Initialize(mapload)
 	. = ..()
-	set_chambered(new /obj/item/ammo_casing/syringegun(src)) // SS1984 EDIT, original: chambered = new /obj/item/ammo_casing/syringegun(src)
+	set_chambered(new /obj/item/ammo_casing/syringegun(src)) // Celadon EDIT, original: chambered = new /obj/item/ammo_casing/syringegun(src)
 	recharge_newshot()
 
 /obj/item/gun/syringe/apply_fantasy_bonuses(bonus)
@@ -52,11 +53,12 @@
 		return
 	//NOVA EDIT SMARTDARTS
 	if(istype(syringes[length(syringes)], /obj/item/reagent_containers/syringe/smartdart))
-		set_chambered(new /obj/item/ammo_casing/syringegun/dart(src)) // SS1984 EDIT, original: chambered = new /obj/item/ammo_casing/syringegun/dart(src)
+		set_chambered(new /obj/item/ammo_casing/syringegun/dart(src)) // Celadon EDIT, original: chambered = new /obj/item/ammo_casing/syringegun/dart(src)
 	else
-		set_chambered(new /obj/item/ammo_casing/syringegun(src)) // SS1984 EDIT, original: chambered = new /obj/item/ammo_casing/syringegun(src)
+		set_chambered(new /obj/item/ammo_casing/syringegun(src)) // Celadon EDIT, original: chambered = new /obj/item/ammo_casing/syringegun(src)
 	//NOVA EDIT SMARTDARTS END
 	chambered.newshot()
+	return ..()
 
 /obj/item/gun/syringe/can_shoot()
 	return syringes.len
@@ -167,7 +169,7 @@
 	base_pixel_x = 0
 	pixel_x = 0
 	force = 2 //Also very weak because it's smaller
-	suppressed = TRUE //Softer fire sound
+	suppressed = SUPPRESSED_QUIET //Softer fire sound
 	can_unsuppress = FALSE //Permanently silenced
 	syringes = list(new /obj/item/reagent_containers/syringe())
 
@@ -189,7 +191,7 @@
 
 /obj/item/gun/syringe/dna/Initialize(mapload)
 	. = ..()
-	set_chambered(new /obj/item/ammo_casing/dnainjector(src)) // SS1984 EDIT, original: chambered = new /obj/item/ammo_casing/dnainjector(src)
+	set_chambered(new /obj/item/ammo_casing/dnainjector(src)) // Celadon EDIT, original: chambered = new /obj/item/ammo_casing/dnainjector(src)
 
 /obj/item/gun/syringe/dna/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/dnainjector))
@@ -229,11 +231,13 @@
 	pixel_x = 0
 	force = 4
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
+	custom_materials = list(/datum/material/bamboo = SHEET_MATERIAL_AMOUNT * 10)
+	about_to_shoot_inside_mail_text = "The air in the envelope is rushing out!"
 
 /obj/item/gun/syringe/blowgun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	. = ..()
 	if(!.)
 		return
 	visible_message(span_danger("[user] shoots the blowgun!"))
-	user.adjustStaminaLoss(20, updating_stamina = FALSE)
-	user.adjustOxyLoss(20)
+	user.adjust_stamina_loss(20, updating_stamina = FALSE)
+	user.adjust_oxy_loss(20)

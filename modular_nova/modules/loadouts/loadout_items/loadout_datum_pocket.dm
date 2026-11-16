@@ -113,6 +113,22 @@
 	name = "Ring Box - Silver"
 	item_path = /obj/item/storage/fancy/ringbox/silver
 
+/datum/loadout_item/pocket_items/paperbin
+	name = "Paperbin - Paper"
+	item_path = /obj/item/paper_bin
+
+/datum/loadout_item/pocket_items/paperbin_carbon
+	name = "Paperbin - Carbon"
+	item_path = /obj/item/paper_bin/carbon
+
+/datum/loadout_item/pocket_items/paperbin_construction
+	name = "Paperbin - Construction"
+	item_path = /obj/item/paper_bin/construction
+
+/datum/loadout_item/pocket_items/paperbin_natural
+	name = "Paperbin - Natural"
+	item_path = /obj/item/paper_bin/bundlenatural
+
 /*
 *	UTILITY
 */
@@ -343,7 +359,33 @@
 	name = "Perfume - Cologne"
 	item_path = /obj/item/perfume/cologne
 	group = "Cosmetics"
+/*
+*	FLAGS
+*/
 
+/datum/loadout_item/pocket_items/gay_pride_flag
+	name = "Pride Flag - Rainbow"
+	item_path = /obj/item/sign/flag/pride/gay
+
+/datum/loadout_item/pocket_items/ace_pride_flag
+	name = "Pride Flag - Asexual"
+	item_path = /obj/item/sign/flag/pride/ace
+
+/datum/loadout_item/pocket_items/bi_pride_flag
+	name = "Pride Flag - Bisexual"
+	item_path = /obj/item/sign/flag/pride/bi
+
+/datum/loadout_item/pocket_items/lesbian_pride_flag
+	name = "Pride Flag - Lesbian"
+	item_path = /obj/item/sign/flag/pride/lesbian
+
+/datum/loadout_item/pocket_items/pan_pride_flag
+	name = "Pride Flag - Pansexual"
+	item_path = /obj/item/sign/flag/pride/pan
+
+/datum/loadout_item/pocket_items/trans_pride_flag
+	name = "Pride Flag - Transgender"
+	item_path = /obj/item/sign/flag/pride/trans
 /*
 *	JOB-LOCKED
 */

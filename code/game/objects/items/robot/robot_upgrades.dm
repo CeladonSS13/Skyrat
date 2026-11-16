@@ -359,8 +359,8 @@
 			else
 				repair_amount = -1
 				energy_cost = 0.01 * STANDARD_CELL_CHARGE
-			cyborg.adjustBruteLoss(repair_amount)
-			cyborg.adjustFireLoss(repair_amount)
+			cyborg.adjust_brute_loss(repair_amount)
+			cyborg.adjust_fire_loss(repair_amount)
 			cyborg.updatehealth()
 			cyborg.cell.use(energy_cost)
 		else
@@ -419,15 +419,18 @@
 		return .
 	var/found_hypo = FALSE
 	for(var/obj/item/reagent_containers/borghypo/hypo in borg.model.modules)
-		hypo.bypass_protection = TRUE
-		found_hypo = TRUE
-	for(var/obj/item/reagent_containers/borghypo/hypo in borg.model.emag_modules)
+		if(!hypo.allow_piercing)
+			continue
 		hypo.bypass_protection = TRUE
 		found_hypo = TRUE
 
 	if(!found_hypo)
 		to_chat(user, span_warning("There are no installed hypospray modules to upgrade with piercing!")) //check to see if any hyposprays were upgraded
 		return FALSE
+
+	// If we are actually going to install the upgrade due to the presence of compatible modules, make sure their emagged counterparts get upgraded too.
+	for(var/obj/item/reagent_containers/borghypo/hypo in borg.model.emag_modules)
+		hypo.bypass_protection = TRUE
 
 /obj/item/borg/upgrade/piercing_hypospray/deactivate(mob/living/silicon/robot/borg, mob/living/user = usr)
 	. = ..()
@@ -490,6 +493,8 @@
 			return FALSE
 	for(var/obj/item/borg/cyborg_omnitool/engineering/omnitool in cyborg.model.modules)
 		omnitool.set_upgraded(TRUE)
+	for(var/obj/item/weldingtool/largetank/cyborg/welder in cyborg.model.modules)
+		welder.toolspeed = initial(welder.toolspeed) - 0.3
 
 /obj/item/borg/upgrade/engineering_omnitool/deactivate(mob/living/silicon/robot/cyborg, mob/living/user = usr)
 	. = ..()
@@ -497,6 +502,8 @@
 		return .
 	for(var/obj/item/borg/cyborg_omnitool/omnitool in cyborg.model.modules)
 		omnitool.set_upgraded(FALSE)
+	for(var/obj/item/weldingtool/largetank/cyborg/welder in cyborg.model.modules)
+		welder.toolspeed = initial(welder.toolspeed)
 
 /obj/item/borg/upgrade/defib
 	name = "medical cyborg defibrillator"
@@ -510,13 +517,11 @@
 	items_to_add = list(/obj/item/shockpaddles/cyborg)
 
 /obj/item/borg/upgrade/defib/action(mob/living/silicon/robot/borg, mob/living/user = usr)
-	. = ..()
-	if(!.)
-		return .
 	var/obj/item/borg/upgrade/defib/backpack/defib_pack = locate() in borg //If a full defib unit was used to upgrade prior, we can just pop it out now and replace
 	if(defib_pack)
 		defib_pack.deactivate(borg, user)
 		to_chat(user, span_notice("The defibrillator pops out of the chassis as the compact upgrade installs."))
+	. = ..()
 
 ///A version of the above that also acts as a holder of an actual defibrillator item used in place of the upgrade chip.
 /obj/item/borg/upgrade/defib/backpack
@@ -609,9 +614,7 @@
 	var/prev_lockcharge = borg.lockcharge
 	borg.SetLockdown(TRUE)
 	borg.set_anchored(TRUE)
-	var/datum/effect_system/fluid_spread/smoke/smoke = new
-	smoke.set_up(1, holder = borg, location = borg.loc)
-	smoke.start()
+	do_smoke(1, borg, borg.loc)
 	sleep(0.2 SECONDS)
 	for(var/i in 1 to 4)
 		playsound(borg, pick(
@@ -638,14 +641,35 @@
 		borg.update_transform(0.8) // NOVA EDIT CHANGE - ORIGINAL: borg.update_transform(0.5)
 
 /obj/item/borg/upgrade/rped
-	name = "engineering cyborg RPED"
-	desc = "A rapid part exchange device for the engineering cyborg."
+	name = "engineering cyborg RPED (expanded)"
+	desc = "An expanded rapid part exchange device for the engineering cyborg."
 	icon_state = "module_engineer"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
 	model_flags = BORG_MODEL_ENGINEERING
 
 	items_to_add = list(/obj/item/storage/part_replacer/cyborg)
+
+/obj/item/borg/upgrade/smallrped
+	name = "engineering cyborg RPED"
+	desc = "A regular version of rapid part exchange device for the engineering cyborg."
+	icon_state = "module_engineer"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
+	model_flags = BORG_MODEL_ENGINEERING
+	items_to_add = list(/obj/item/storage/part_replacer/cyborg/small)
+
+/obj/item/borg/upgrade/rped/action(mob/living/silicon/robot/borg, mob/living/user = usr)
+	. = ..()
+	if(!.)
+		return .
+	var/obj/item/borg/upgrade/smallrped/upgrade = locate() in borg
+	var/obj/item/storage/part_replacer/cyborg/small/replacer = locate() in borg.model.modules
+	if(upgrade)
+		to_chat(user, span_notice("The old RPED module is now expanded and gets more space"))
+		replacer.emptyStorage()
+		replacer.forceMove(get_turf(borg))
+		qdel(upgrade)
 
 /obj/item/borg/upgrade/inducer
 	name = "engineering integrated power inducer"
@@ -710,15 +734,15 @@
 	icon_state = "module_honk"
 	new_model = /obj/item/robot_model/clown
 
-/obj/item/borg/upgrade/circuit_app
-	name = "circuit manipulation apparatus"
-	desc = "An engineering cyborg upgrade allowing for manipulation of circuit boards."
+/obj/item/borg/upgrade/engineering_app
+	name = "engineering manipulation apparatus"
+	desc = "An engineering cyborg upgrade allowing for manipulation of circuit boards and other engineering matter."
 	icon_state = "module_engineer"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
 	model_flags = BORG_MODEL_ENGINEERING
 
-	items_to_add = list(/obj/item/borg/apparatus/circuit)
+	items_to_add = list(/obj/item/borg/apparatus/engineering)
 
 /obj/item/borg/upgrade/beaker_app
 	name = "beaker storage apparatus"
@@ -729,6 +753,17 @@
 	model_flags = BORG_MODEL_MEDICAL
 
 	items_to_add = list(/obj/item/borg/apparatus/beaker/extra)
+
+/obj/item/borg/upgrade/bs_syringe
+	name = "advanced syringe"
+	desc = "Bluespace technology that expands capacity of your standard cyborg syringe."
+	icon_state = "module_medical"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/medical)
+	model_flags = BORG_MODEL_MEDICAL
+
+	items_to_add = list(/obj/item/reagent_containers/syringe/bluespace)
+	items_to_remove = list(/obj/item/reagent_containers/syringe)
 
 /obj/item/borg/upgrade/drink_app
 	name = "glass storage apparatus"
@@ -845,9 +880,10 @@
 
 	if(borgo.mind)
 		borgo.mind.grab_ghost()
-		playsound(loc, 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE)
+		playsound(loc, check_holidays(APRIL_FOOLS) ? 'modular_celadon/modules/april_fools_day/borgs/sound/windows-xp-logon-moddif.ogg' : 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE) // Celadon EDIT - april_fools_day, original: playsound(loc, 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE)
 	else
-		playsound(loc, 'sound/machines/ping.ogg', 75, TRUE)
+
+		playsound(loc, check_holidays(APRIL_FOOLS) ? 'modular_celadon/modules/april_fools_day/borgs/sound/windows-xp-hardware-insert.ogg' : 'sound/machines/ping.ogg', 75, TRUE) // Celadon EDIT - april_fools_day, original: playsound(loc, 'sound/machines/ping.ogg', 75, TRUE)
 
 	borgo.revive()
 	borgo.logevent("WARN -- System recovered from unexpected shutdown.")

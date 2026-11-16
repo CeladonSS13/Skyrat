@@ -23,7 +23,7 @@ The console is located at computer/gulag_teleporter.dm
 	var/jumpsuit_type = /obj/item/clothing/under/rank/prisoner
 	var/jumpskirt_type = /obj/item/clothing/under/rank/prisoner/skirt
 	var/shoes_type = /obj/item/clothing/shoes/sneakers/orange
-	var/headset_type = /obj/item/radio/headset // SS1984 ADDITION
+	var/headset_type = /obj/item/radio/headset // Celadon ADDITION
 	var/emergency_plasglove_type = /obj/item/clothing/gloves/color/plasmaman
 	var/obj/machinery/gulag_item_reclaimer/linked_reclaimer
 	var/static/list/telegulag_required_items = typecacheof(list(
@@ -54,18 +54,11 @@ The console is located at computer/gulag_teleporter.dm
 		return
 	toggle_open()
 
-/obj/machinery/gulag_teleporter/attackby(obj/item/I, mob/user)
-	if(!occupant && default_deconstruction_screwdriver(user, "[icon_state]", "[icon_state]",I))
-		update_appearance()
-		return
+/obj/machinery/gulag_teleporter/screwdriver_act(mob/living/user, obj/item/tool)
+	return isnull(occupant) ? default_deconstruction_screwdriver(user, tool) : NONE
 
-	if(default_deconstruction_crowbar(I))
-		return
-
-	if(default_pry_open(I))
-		return
-
-	return ..()
+/obj/machinery/gulag_teleporter/crowbar_act(mob/living/user, obj/item/tool)
+	return default_pry_open(user, tool, deconstruct_on_fail = TRUE)
 
 /obj/machinery/gulag_teleporter/update_icon_state()
 	icon_state = "[base_icon_state][state_open ? "_open" : null]"
@@ -168,8 +161,8 @@ The console is located at computer/gulag_teleporter.dm
 		prisoner.equip_to_appropriate_slot(new emergency_plasglove_type, qdel_on_fail = TRUE)
 	if(shoes_type)
 		prisoner.equip_to_appropriate_slot(new shoes_type, qdel_on_fail = TRUE)
-	if (headset_type) // SS1984 ADDITION
-		prisoner.equip_to_appropriate_slot(new headset_type, qdel_on_fail = TRUE) // SS1984 ADDITION
+	if (headset_type) // Celadon ADDITION
+		prisoner.equip_to_appropriate_slot(new headset_type, qdel_on_fail = TRUE) // Celadon ADDITION
 	if(id)
 		prisoner.equip_to_appropriate_slot(id, qdel_on_fail = TRUE)
 	if(target)

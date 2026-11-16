@@ -116,7 +116,7 @@ ADMIN_VERB(dynamic_panel, R_ADMIN, "Dynamic Panel", "Mess with dynamic.", ADMIN_
 			var/datum/dynamic_ruleset/ruleset = SSdynamic.queued_rulesets[index]
 			if(!ruleset)
 				return
-			SSdynamic.queued_rulesets -= ruleset
+			SSdynamic.unqueue_ruleset(ruleset)
 			message_admins("[key_name_admin(ui.user)] removed [ruleset.config_tag] from the dynamic ruleset queue.")
 			log_admin("[key_name_admin(ui.user)] removed [ruleset.config_tag] from the dynamic ruleset queue.")
 			qdel(ruleset)
@@ -126,6 +126,12 @@ ADMIN_VERB(dynamic_panel, R_ADMIN, "Dynamic Panel", "Mess with dynamic.", ADMIN_
 			if(!ruleset_path)
 				return
 			SSdynamic.queue_ruleset(ruleset_path)
+			// Celadon ADDITION START
+			if (islist(SSdynamic.queued_rulesets) && SSdynamic.queued_rulesets.len > 0)
+				var/datum/dynamic_ruleset/ruleset_instance = SSdynamic.queued_rulesets[SSdynamic.queued_rulesets.len]
+				if (ruleset_instance)
+					ruleset_instance.can_always_be_selected = TRUE
+			// Celadon ADDITION END
 			message_admins("[key_name_admin(ui.user)] added [initial(ruleset_path.config_tag)] to the dynamic ruleset queue.")
 			log_admin("[key_name_admin(ui.user)] added [initial(ruleset_path.config_tag)] to the dynamic ruleset queue.")
 			return TRUE

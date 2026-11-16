@@ -36,10 +36,12 @@ export const RADIO_PREFIXES = {
   ':w ': 'Dyne',
   ':k ': 'Tark',
   ':q ': 'Csun',
-  ':i ': 'Guild',
-  ':l ': 'SolFed',
+  ':1 ': 'Guild',
+  ':2 ': 'SolFed',
   // NOVA EDIT ADDITION END
-  // //SS1984 ADDITION START
+  // //Celadon ADDITION START
   ':j ': 'Prison',
-  // //SS1984 ADDITION END
+  ':r ': 'Bitrun',
+  ':z ': 'Bitdefend',
+  // //Celadon ADDITION END
 } as const;

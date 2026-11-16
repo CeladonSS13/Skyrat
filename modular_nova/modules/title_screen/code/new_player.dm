@@ -11,30 +11,30 @@
 
 	if(client.interviewee)
 		return FALSE
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	var/routed_key = href_list["route_key"]
 	if (routed_key)
 		var/converted_key = convert_ru_key_to_en_key(routed_key); // modular fix doesnt work without explicit calling here
 		client.keyDown(converted_key)
 		return
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 	if(href_list["observe"])
 		play_lobby_button_sound()
 		make_me_an_observer()
 		return
-	// SS1984 REMOVAL START
+	// Celadon REMOVAL START
 	// if(href_list["server_swap"])
 	// 	play_lobby_button_sound()
 	// 	server_swap()
 	// 	return
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 	if(href_list["view_manifest"])
 		play_lobby_button_sound()
 		ViewManifest()
 		return
 
-	// SS1984 REMOVE OF DIRECTORY
+	// Celadon REMOVE OF DIRECTORY
 
 	if(href_list["toggle_antag"])
 		play_lobby_button_sound()
@@ -68,12 +68,16 @@
 			if(!is_admin(client) && length_char(client?.prefs?.read_preference(/datum/preference/text/flavor_text)) < CONFIG_GET(number/flavor_text_character_requirement))
 				to_chat(src, span_notice("You need at least [CONFIG_GET(number/flavor_text_character_requirement)] characters of flavor text to ready up for the round. You have [length_char(client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
 				return
-		ready = !ready
-		if(ready)
+
+		if(ready == PLAYER_NOT_READY)
+			auto_deadmin_on_ready_or_latejoin()
+			ready = PLAYER_READY_TO_PLAY
 			SSstatpanels.add_job_estimation(src)
 		else
+			ready = PLAYER_NOT_READY
 			SSstatpanels.remove_job_estimation(src)
-		client << output(ready, "nova_title_browser:toggle_ready")
+
+		client << output((ready == PLAYER_READY_TO_PLAY) ? 1 : 0, "nova_title_browser:toggle_ready")
 		return
 
 	if(href_list["late_join"])
@@ -99,13 +103,12 @@
 		title_screen_is_ready = TRUE
 		return
 
-
 /mob/dead/new_player/Login()
 	. = ..()
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	if (SSticker?.current_state != GAME_STATE_STARTUP) // so we joined when title is already should be ready for everyone
 		src.title_screen_is_ready = TRUE
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 	show_title_screen()
 
 /**
@@ -133,7 +136,7 @@
 
 	src << browse(SStitle.current_title_screen, "file=loading_screen.gif;display=0")
 	src << browse(dat, "window=nova_title_browser")
-	set_focus(src) // SS1984 ADDITION need to focus mob instead of browser
+	set_focus(src) // Celadon ADDITION need to focus mob instead of browser
 
 /datum/asset/simple/lobby
 	assets = list(
@@ -151,7 +154,7 @@
 /mob/dead/new_player/proc/play_lobby_button_sound()
 	SEND_SOUND(src, sound('modular_nova/master_files/sound/effects/save.ogg'))
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /**
 //  * Allows the player to select a server to join from any loaded servers.
 //  */
@@ -173,7 +176,7 @@
 // 	if(confirm == "Connect me!")
 // 		to_chat_immediate(src, "So long, spaceman.")
 // 		src.client << link(server_ip)
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
 /**
  * Shows the player a list of current polls, if any.

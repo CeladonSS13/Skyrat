@@ -102,13 +102,13 @@
 	name = "Officer jacket"
 	item_path = /obj/item/clothing/suit/armor/vest/warden/rax
 	ckeywhitelist = list("raxraus")
-	restricted_roles = list(JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(ALL_JOBS_SEC)
 
 /datum/loadout_item/under/jumpsuit/rax_banded_uniform
 	name = "Banded Uniform"
 	item_path = /obj/item/clothing/under/rank/security/rax
 	ckeywhitelist = list("raxraus")
-	restricted_roles = list(JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(ALL_JOBS_SEC)
 
 /datum/loadout_item/head/goldengoggles
 	name = "Steampunk Goggles"
@@ -119,7 +119,7 @@
 	name = "XuraCorp Biohazard Underfitting"
 	item_path = /obj/item/clothing/under/plasmaman/jax2
 	ckeywhitelist = list("candlejax")
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_VIROLOGIST, JOB_GENETICIST) // SS1984 REMOVAL JOB_SCIENCE_GUARD
+	restricted_roles = list(ALL_JOBS_SCI, JOB_VIROLOGIST)
 
 /datum/loadout_item/mask/cmcp_mask
 	name = "CMCP Mask"
@@ -217,23 +217,7 @@
 /datum/loadout_item/suit/caligram_parka_vest_tan
 	name = "Caligram Armored Tan Parka"
 	item_path = /obj/item/clothing/suit/armor/vest/caligram_parka_vest
-	restricted_roles = list(
-		JOB_BLUESHIELD,
-		JOB_HEAD_OF_SECURITY,
-		JOB_SECURITY_OFFICER,
-		JOB_WARDEN,
-		JOB_DETECTIVE,
-		JOB_CORRECTIONS_OFFICER,
-		JOB_VETERAN_ADVISOR,
-		JOB_QUARTERMASTER,
-		JOB_CAPTAIN,
-		JOB_BRIDGE_ASSISTANT,
-		JOB_SECURITY_OFFICER_MEDICAL, // SS1984 EDIT, original: JOB_ORDERLY
-		JOB_SECURITY_OFFICER_ENGINEERING, // SS1984 EDIT, original: JOB_ENGINEERING_GUARD
-		JOB_SECURITY_OFFICER_SUPPLY, // SS1984 EDIT, original: JOB_CUSTOMS_AGENT
-		JOB_SECURITY_OFFICER_SCIENCE, // SS1984 EDIT, original: JOB_SCIENCE_GUARD
-		JOB_SECURITY_OFFICER_SERVICE, // SS1984 EDIT, original: JOB_BOUNCER
-	)
+	restricted_roles = list(JOB_CAPTAIN,JOB_BRIDGE_ASSISTANT, ALL_JOBS_DEPTGUARD, ALL_JOBS_SEC)
 
 /datum/loadout_item/suit/brasspriest
 	name = "Brasspriest Coat"
@@ -241,7 +225,7 @@
 	ckeywhitelist = list("ChillyLobster")
 
 /datum/loadout_item/suit/hydrogenrobes
-	name = "Metallic-Hydrogen robes"
+	name = "Metallic-Hydrogen Robes"
 	item_path = /obj/item/clothing/suit/jacket/hydrogenrobes
 	ckeywhitelist = list("ChillyLobster")
 
@@ -251,9 +235,9 @@
 	ckeywhitelist = list("ChillyLobster")
 
 /datum/loadout_item/mask/wolf_mask
-	name = "Wolf mask"
+	name = "Wolf Mask"
 	item_path = /obj/item/clothing/mask/animal/wolf
-	ckeywhitelist = list("theooz")
+	ckeywhitelist = list("hauntme")
 
 /datum/loadout_item/head/drake_skull
 	name = "Skull of an ashdrake"
@@ -300,6 +284,11 @@
 /datum/loadout_item/neck/kiaracloak
 	name = "Kiara's cloak"
 	item_path = /obj/item/clothing/neck/cloak/inferno
+	ckeywhitelist = list("inferno707")
+
+/datum/loadout_item/neck/kiaracollar
+	name = "Kiara's collar"
+	item_path = /obj/item/clothing/neck/inferno_collar
 	ckeywhitelist = list("inferno707")
 
 /datum/loadout_item/pocket_items/kiaramedal
@@ -515,7 +504,7 @@
 	name = "Red-tinted Giga HUD Gar Glasses"
 	item_path = /obj/item/clothing/glasses/hud/security/sunglasses/gars/giga/roselia
 	ckeywhitelist = list("ultimarifox")
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER)
+	restricted_roles = list(ALL_JOBS_DEPTGUARD, ALL_JOBS_SEC,)
 
 /datum/loadout_item/toys/plush/roselia_plush
 	name = "Obscene Sergal Plushie"
@@ -571,17 +560,14 @@
 /datum/loadout_item/toys/plush/CFBonnie
 	name = "Chunko Fop: Blue Bunny Plushie"
 	item_path = /obj/item/toy/plush/nova/donator/chunko/bonnie
-	donator_only = TRUE
 
 /datum/loadout_item/toys/plush/CFAndrew
 	name = "Chunko Fop: Green Bunny Plushie"
 	item_path = /obj/item/toy/plush/nova/donator/chunko/andrew
-	donator_only = TRUE
 
 /datum/loadout_item/toys/plush/CFInessa
 	name = "Chunko Fop: Medical Bear Plushie"
 	item_path = /obj/item/toy/plush/nova/donator/chunko/inessa
-	donator_only = TRUE
 
 /datum/loadout_item/toys/plush/plushie_chiara
 	name = "Commanding Fox Plushie"
@@ -628,6 +614,11 @@
 	name = "Kitsuhana Singularity Cigarettes"
 	item_path = /obj/item/storage/fancy/cigarettes/khi
 	ckeywhitelist = list("ultimarifox")
+
+/datum/loadout_item/shoes/dragheels
+	name = "Fancy Heels (dragmeme)"
+	item_path = /obj/item/clothing/shoes/fancy_heels/drag
+	ckeywhitelist = list("thedragmeme", "snailomi")
 
 /datum/loadout_item/under/jumpsuit/bimpcap
 	name = "Formal Matte Black Captain Uniform"
@@ -823,6 +814,11 @@
 	item_path = /obj/item/clothing/under/rem
 	ckeywhitelist = list("ignari")
 
+/datum/loadout_item/shoes/rem
+	name = "M.I.A. Heels"
+	item_path = /obj/item/clothing/shoes/rem_shoes
+	ckeywhitelist = list("ignari")
+
 /datum/loadout_item/under/miscellaneous/bwake
 	name = "Compression Bodysuit"
 	item_path = /obj/item/clothing/under/bwake
@@ -882,7 +878,7 @@
 
 /datum/loadout_item/pocket_items/jumperbox
 	name = "Jumper Conversation Kit Box"
-	item_path = /obj/item/mod/skin_applier/jumper
+	item_path = /obj/item/mod/construction/plating/jumper
 	ckeywhitelist = list("bonkaitheroris")
 
 /datum/loadout_item/pocket_items/starfruit_seed
@@ -963,6 +959,31 @@
 	item_path = /obj/item/clothing/gloves/ecologist
 	ckeywhitelist = list("deadmonwonderland", "pyritechimera", "darkinite", "wivernshy")
 
+/datum/loadout_item/suit/admiral_coat
+	name = "Admiral's Coat"
+	item_path = /obj/item/clothing/suit/admiral_coat
+	ckeywhitelist = list("pyritechimera", "sirbillyblacksmith", "darkinite")
+
+/datum/loadout_item/head/gabney
+	name = "Triumvirate Officer's Cap"
+	item_path = /obj/item/clothing/head/gabeny
+	ckeywhitelist = list("pyritechimera", "gabenyfox", "draegonlore")
+
+/datum/loadout_item/under/gabney
+	name = "Triumvirate Officer's Formal Uniform"
+	item_path = /obj/item/clothing/under/gabeny
+	ckeywhitelist = list("pyritechimera", "gabenyfox", "draegonlore")
+
+/datum/loadout_item/suit/labcoat_gabney
+	name = "Triumvirate MedSci Officer's Labcoat"
+	item_path = /obj/item/clothing/suit/toggle/labcoat/gabeny
+	ckeywhitelist = list("pyritechimera", "gabenyfox", "draegonlore")
+
+/datum/loadout_item/suit/gabney
+	name = "Triumvirate Officer's Great Coat"
+	item_path = /obj/item/clothing/suit/jacket/gabeny
+	ckeywhitelist = list("pyritechimera", "gabenyfox", "draegonlore")
+
 /datum/loadout_item/suit/merctac
 	name = "MercTac Hoodie"
 	item_path = /obj/item/clothing/suit/hooded/merctac_hoodie
@@ -1002,3 +1023,43 @@
 	name = "AK-105 SBR Conversion Kit"
 	item_path = /obj/item/device/custom_kit/ak105
 	ckeywhitelist = list("latinfishy", "hollandaisesauce", "orbisa")
+
+/datum/loadout_item/pocket_items/paragon_box
+	name = "The Homo Ludens Flag suit, nicknamed 'Paragon'"
+	item_path = /obj/item/mod/construction/plating/paragon
+	ckeywhitelist = list("kaynite")
+
+/datum/loadout_item/pocket_items/paragon_box_skinapplier
+	name = "The Homo Ludens Flag suit, nicknamed 'Paragon' (Skinapplier)"
+	item_path = /obj/item/mod/skin_applier/paragon
+	ckeywhitelist = list("kaynite")
+
+/datum/loadout_item/pocket_items/jumperbox_skinapplier
+	name = "Jumper Conversation Kit Box"
+	item_path = /obj/item/mod/skin_applier/jumper
+	ckeywhitelist = list("bonkaitheroris")
+
+/datum/loadout_item/toys/plush/plushe_vethonk
+	name = "Veteran Clown Plushie"
+	item_path = /obj/item/toy/plush/nova/donator/vethonk
+
+/datum/loadout_item/toys/plush/plushe_percy
+	name = "Dr. Percival Plushie"
+	item_path = /obj/item/toy/plush/nova/donator/percy
+
+/datum/loadout_item/pocket_items/espatier
+	name = "dated Espatier holster"
+	item_path = /obj/item/storage/belt/espatier
+	ckeywhitelist = list("pyriteChimera", "darkinite", "deadmon_wonderland", "nonplayer775", "rilomatic")
+
+/datum/loadout_item/head/stachelm
+	name = "Stachelm"
+	item_path = /obj/item/clothing/head/helmet/donator/stachelm
+	ckeywhitelist = list("ghostof93")
+	restricted_roles = list(JOB_CAPTAIN, JOB_BLUESHIELD)
+
+/datum/loadout_item/suit/duke_armored_coat
+	name = "Duke's Armored Coat"
+	item_path = /obj/item/clothing/suit/armor/donator/duke_armored_coat
+	ckeywhitelist = list("ambermane")
+	restricted_roles = list(JOB_CAPTAIN)

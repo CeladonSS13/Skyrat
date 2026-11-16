@@ -12,7 +12,8 @@
 	if(!.)
 		return .
 
-	if(!SSeconomy.get_dep_account(ACCOUNT_CAR))
+//	if(!SSeconomy.get_dep_account(ACCOUNT_CAR))	//CELADON REMOVE
+	if(!SSeconomy.get_dep_account(ACCOUNT_NTS))	//CELADON ADD
 		return FALSE //They can't pay?
 	if(SSshuttle.shuttle_purchased == SHUTTLEPURCHASE_FORCED)
 		return FALSE //don't do it if there's nothing to insure
@@ -50,7 +51,8 @@
 		priority_announce("You are definitely too late to purchase insurance, my friends. Our agents don't work on site.",sender_override = ship_name, color_override = "red")
 		return
 	if(insurance_message && insurance_message.answered == 1)
-		var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
+//		var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)	//CELADON REMOVE
+		var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_NTS)	//CELADON ADD
 		if(!station_balance?.adjust_money(-insurance_evaluation))
 			priority_announce("You didn't send us enough money for shuttle insurance. This, in the space layman's terms, is considered scamming. We're keeping your money, scammers!", sender_override = ship_name, color_override = "red")
 			return

@@ -18,6 +18,7 @@ ADMIN_VERB(toggle_hub, R_SERVER, "Toggle Hub", "Toggles the server's visilibilit
 
 #define REGULAR_RESTART "Regular Restart"
 #define REGULAR_RESTART_DELAYED "Regular Restart (with delay)"
+#define NO_EVENT_RESTART "Restart, Skip TGS Event"
 #define HARD_RESTART "Hard Restart (No Delay/Feedback Reason)"
 #define HARDEST_RESTART "Hardest Restart (No actions, just reboot)"
 #define TGS_RESTART "Server Restart (Kill and restart DD)"
@@ -29,6 +30,7 @@ ADMIN_VERB(restart, R_SERVER, "Reboot World", "Restarts the world immediately.",
 		options += HARDEST_RESTART
 
 	if(world.TgsAvailable())
+		options.Insert(3, NO_EVENT_RESTART)
 		options += TGS_RESTART;
 
 	if(SSticker.admin_delay_notice)
@@ -42,18 +44,19 @@ ADMIN_VERB(restart, R_SERVER, "Reboot World", "Restarts the world immediately.",
 	BLACKBOX_LOG_ADMIN_VERB("Reboot World")
 	var/init_by = "Initiated by [user.holder.fakekey ? "Admin" : user.key]."
 	switch(result)
-		if(REGULAR_RESTART)
-			if(!user.is_localhost())
-				if(alert(user, "Are you sure you want to restart the server?","This server is live", "Restart", "Cancel") != "Restart")
-					return FALSE
-			SSticker.Reboot(init_by, "admin reboot - by [user.key] [user.holder.fakekey ? "(stealth)" : ""]", 10)
-		if(REGULAR_RESTART_DELAYED)
-			var/delay = input("What delay should the restart have (in seconds)?", "Restart Delay", 5) as num|null
+		if(REGULAR_RESTART, REGULAR_RESTART_DELAYED, NO_EVENT_RESTART)
+			var/delay = 1
+			if(result == REGULAR_RESTART_DELAYED)
+				delay = input("What delay should the restart have (in seconds)?", "Restart Delay", 5) as num|null
 			if(!delay)
 				return FALSE
 			if(!user.is_localhost())
 				if(alert(user,"Are you sure you want to restart the server?","This server is live", "Restart", "Cancel") != "Restart")
 					return FALSE
+
+			if (result != NO_EVENT_RESTART)
+				SSticker.TriggerRoundEndTgsEvent()
+
 			SSticker.Reboot(init_by, "admin reboot - by [user.key] [user.holder.fakekey ? "(stealth)" : ""]", delay * 10)
 		if(HARD_RESTART)
 			to_chat(world, "World reboot - [init_by]")
@@ -67,6 +70,7 @@ ADMIN_VERB(restart, R_SERVER, "Reboot World", "Restarts the world immediately.",
 
 #undef REGULAR_RESTART
 #undef REGULAR_RESTART_DELAYED
+#undef NO_EVENT_RESTART
 #undef HARD_RESTART
 #undef HARDEST_RESTART
 #undef TGS_RESTART
@@ -126,7 +130,7 @@ ADMIN_VERB(start_now, R_SERVER, "Start Now", "Start the round RIGHT NOW.", ADMIN
 		message_admins("The server is still setting up, but the round will be started as soon as possible.")
 	BLACKBOX_LOG_ADMIN_VERB("Start Now")
 
-ADMIN_VERB(delay_round_end, R_ADMIN, "Delay Round End", "Prevent the server from restarting.", ADMIN_CATEGORY_SERVER) // NOVA EDIT CHANGE - Admins can delay the round end - ORIGINAL: ADMIN_VERB(delay_round_end, R_SERVER, "Delay Round End", "Prevent the server from restarting.", ADMIN_CATEGORY_SERVER)
+ADMIN_VERB(delay_round_end, R_SERVER, "Delay Round End", "Prevent the server from restarting.", ADMIN_CATEGORY_SERVER) // Celadon REVERT OF NOVA'S CHARGE OF R_SERVER
 	if(SSticker.delay_end)
 		tgui_alert(user, "The round end is already delayed. The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Alert", list("Ok"))
 		return

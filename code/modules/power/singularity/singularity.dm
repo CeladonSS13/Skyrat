@@ -168,6 +168,7 @@
 		if(prob(event_chance))
 			event()
 	dissipate(seconds_per_tick)
+	hawking_pulse(seconds_per_tick)	//CELADON ADD
 	check_energy()
 
 /obj/singularity/proc/dissipate(seconds_per_tick)
@@ -467,7 +468,7 @@
 	)
 
 /obj/singularity/proc/emp_area()
-	empulse(src, 5, 8)
+	empulse(src, 5, 8)	//CELADON EDIT original: empulse(src, 8, 10)
 
 /obj/singularity/singularity_act()
 	var/gain = (energy/2)

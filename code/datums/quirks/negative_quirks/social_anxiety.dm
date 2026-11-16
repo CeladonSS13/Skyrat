@@ -6,9 +6,12 @@
 	gain_text = span_danger("You start worrying about what you're saying.")
 	lose_text = span_notice("You feel easier about talking again.") //if only it were that easy!
 	medical_record_text = "Patient is usually anxious in social encounters and prefers to avoid them."
+	medical_symptom_text = "Experiences intense anxiety and discomfort in social situations, \
+		leading to avoidance of social interactions and difficulty in communication."
 	hardcore_value = 4
 	mob_trait = TRAIT_ANXIOUS
 	mail_goodies = list(/obj/item/storage/pill_bottle/psicodine)
+	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_TRAUMALIKE
 	var/dumb_thing = TRUE
 
 /datum/quirk/social_anxiety/add(client/client_source)
@@ -51,7 +54,7 @@
 		var/list/new_message = list()
 		for(var/word in message_split)
 			if(prob(max(5, moodmod)) && word != message_split[1]) //Minimum 1/20 chance of filler
-				new_message += pick("uh,","erm,","um,")
+				new_message += pick("эээ,","эм,","ммм,") // Celadon EDIT, original: new_message += pick("uh,","erm,","um,")
 				if(prob(min(5, moodmod))) //Max 1 in 20 chance of cutoff after a successful filler roll, for 50% odds in a 15 word sentence
 					quirk_holder.set_silence_if_lower(6 SECONDS)
 					to_chat(quirk_holder, span_danger("You feel self-conscious and stop talking. You need a moment to recover!"))
@@ -71,7 +74,7 @@
 				to_chat(quirk_holder, span_danger("You retreat into yourself. You <i>really</i> don't feel up to talking."))
 				quirk_holder.set_silence_if_lower(10 SECONDS)
 
-		speech_args[SPEECH_MESSAGE] = pick("Uh.","Erm.","Um.")
+		speech_args[SPEECH_MESSAGE] = pick("Эээ.","Эм.","Ммм.") // Celadon EDIT, original: speech_args[SPEECH_MESSAGE] = pick("Uh.","Erm.","Um.")
 	else
 		speech_args[SPEECH_MESSAGE] = message
 

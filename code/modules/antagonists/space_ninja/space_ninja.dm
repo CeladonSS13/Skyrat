@@ -12,6 +12,7 @@
 	can_assign_self_objectives = TRUE
 	ui_name = "AntagInfoNinja"
 	default_custom_objective = "Destroy vital station infrastructure, without being seen."
+	desensitized_modifier = DESENSITIZED_THRESHOLD
 	///Whether or not this ninja will obtain objectives
 	var/give_objectives = TRUE
 
@@ -24,7 +25,7 @@
  * * Returns a proc call on the given human which will equip them with all the gear.
  */
 /datum/antagonist/ninja/proc/equip_space_ninja(mob/living/carbon/human/ninja = owner.current)
-	return ninja.equipOutfit(/datum/outfit/ninja)
+	return ninja.equip_species_outfit(/datum/outfit/ninja)
 
 /**
  * Proc that adds the proper memories to the antag datum
@@ -73,29 +74,27 @@
 	doorobjective.doors_required = rand(15,40)
 	doorobjective.explanation_text = "Use your gloves to doorjack [doorobjective.doors_required] airlocks on the station."
 	objectives += doorobjective
-	//NOVA EDIT START
-	if(length(get_crewmember_minds()) >= BOMB_POP_REQUIREMENT)
-		//Explosive plant, the bomb will register its completion on priming
-		var/datum/objective/plant_explosive/bombobjective = new /datum/objective/plant_explosive()
-		for(var/sanity in 1 to 100) // 100 checks at most.
-			var/area/selected_area = pick(GLOB.areas)
-			if(!is_station_level(selected_area.z) || !(selected_area.area_flags & VALID_TERRITORY))
-				continue
-			bombobjective.detonation_location = selected_area
-			break
-		if(bombobjective.detonation_location)
-			bombobjective.explanation_text = "Detonate your starter bomb in [bombobjective.detonation_location].  Note that the bomb will not work anywhere else!"
-			objectives += bombobjective
-	//NOVA EDIT END
+
+	//Explosive plant, the bomb will register its completion on priming
+	var/datum/objective/plant_explosive/bombobjective = new /datum/objective/plant_explosive()
+	for(var/sanity in 1 to 100) // 100 checks at most.
+		var/area/selected_area = pick(GLOB.areas)
+		if(!is_station_level(selected_area.z) || !(selected_area.area_flags & VALID_TERRITORY))
+			continue
+		bombobjective.detonation_location = selected_area
+		break
+	if(bombobjective.detonation_location)
+		bombobjective.explanation_text = "Detonate your starter bomb in [bombobjective.detonation_location].  Note that the bomb will not work anywhere else!"
+		objectives += bombobjective
 
 	//Security Scramble, set to complete upon using your gloves on a security console
 	var/datum/objective/securityobjective = new /datum/objective/security_scramble()
 	objectives += securityobjective
-	/* NOVA EDIT REMOVAL
+
 	//Message of Terror, set to complete upon using your gloves a communication console
 	var/datum/objective/communicationobjective = new /datum/objective/terror_message()
 	objectives += communicationobjective
-	*/
+
 	//Survival until end
 	var/datum/objective/survival = new /datum/objective/survive()
 	survival.owner = owner

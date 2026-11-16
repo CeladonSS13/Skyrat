@@ -30,7 +30,6 @@
 	w_class = WEIGHT_CLASS_TINY
 	attack_verb_continuous = list("attacks", "colours")
 	attack_verb_simple = list("attack", "colour")
-	grind_results = list()
 	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_IGNORE_MOBILITY
 
 	/// Icon state to use when capped
@@ -44,6 +43,8 @@
 	var/crayon_color = "red"
 	/// Current paint colour
 	var/paint_color = COLOR_RED
+	///How strong the outline should be when drawing around something.
+	var/outline_strength = 0.5
 
 	/// Contains chosen symbol to draw
 	var/drawtype
@@ -189,7 +190,7 @@
 	)
 	/// List of selectable large options
 	var/static/list/graffiti_large_h = list(
-		"furrypride" = CRAYON_COST_LARGE,
+		//"furrypride" = CRAYON_COST_LARGE, // Celadon REMOVAL
 		"paint" = CRAYON_COST_LARGE,
 		"secborg" = CRAYON_COST_LARGE,
 		"yiffhell" = CRAYON_COST_LARGE,
@@ -213,7 +214,10 @@
 	drawtype = pick(all_drawables)
 
 	AddElement(/datum/element/venue_price, FOOD_PRICE_EXOTIC)
-	if(can_change_colour)
+	//This makes sure that spraycans do not rename stuff instead of painting
+	if(!can_change_colour)
+		AddElement(/datum/element/tool_renaming)
+	else
 		AddComponent(/datum/component/palette, AVAILABLE_SPRAYCAN_SPACE, paint_color)
 
 	refill()
@@ -234,6 +238,8 @@
 /// Sets painting color and updates appearance.
 /obj/item/toy/crayon/set_painting_tool_color(chosen_color)
 	. = ..()
+	if(!can_change_colour)
+		return
 	paint_color = chosen_color
 	update_appearance()
 
@@ -425,7 +431,7 @@
 
 /obj/item/toy/crayon/proc/crayon_text_strip(text)
 	text = copytext(text, 1, MAX_MESSAGE_LEN)
-	var/static/regex/crayon_regex = new /regex(@"[^\w!?,.=&%#+/\-]", "ig")
+	var/static/regex/crayon_regex = new /regex(@"[^\wА-Яа-яЁё!?,.=&%#+/\-]", "ig") // Celadon EDIT, original: var/static/regex/crayon_regex = new /regex(@"[^\w!?,.=&%#+/\-]", "ig")
 	return LOWER_TEXT(crayon_regex.Replace(text, ""))
 
 /// Is this a valid object for use_on to run on?
@@ -448,7 +454,10 @@
 	var/drawing = drawtype
 	switch(drawtype)
 		if(RANDOM_LETTER)
-			drawing = ascii2text(rand(97, 122)) // a-z
+			if(rand(0,1)) // Celadon ADDITION
+				drawing = ascii2text(rand(97, 122)) // a-z
+			else // Celadon ADDITION
+				drawing = ascii2text(rand(1072, 1103)) // а-я // Celadon ADDITION
 		if(RANDOM_PUNCTUATION)
 			drawing = pick(punctuation)
 		if(RANDOM_SYMBOL)
@@ -485,6 +494,10 @@
 	var/ascii = (length(drawing) == 1)
 	if(ascii && is_lowercase_character(drawing))
 		temp = "letter"
+	// Celadon ADDITION START
+	else if(((text2ascii(drawing) >= 1072) && (text2ascii(drawing) <= 1103)) || text2ascii(drawing) == 1105)
+		temp = "сyrillic letter"
+	// Celadon ADDITION END
 	else if(ascii && is_digit(drawing))
 		temp = "number"
 	else if(drawing in punctuation)
@@ -528,7 +541,7 @@
 	if(istagger)
 		wait_time *= 0.5
 
-	if(!instant && !do_after(user, wait_time, target = target, max_interact_count = 4))
+	if(!instant && !do_after(user, wait_time, target = target, max_interact_count = 4, extra_checks = CALLBACK(src, PROC_REF(adjacency_check), user, target)))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!use_charges(user, cost))
@@ -536,7 +549,16 @@
 
 	if(length(text_buffer))
 		drawing = text_buffer[1]
+		// Celadon ADDITION START
+		// DM также поддерживает кириллицу в .dmi изображениях, но тогда у ТГ надо модифицировать специальный тест в CI-пайплайне
 
+		// Мы же будем обрабатывать символы по их коду
+		// также весь текст на данном этапе уже в нижнем регистре -> [а-я + ё]
+		if(length(drawing) != length_char(drawing))
+			var/char_code = text2ascii(drawing)
+			if((char_code >= 1072 && char_code <= 1103) || char_code == 1105)
+				drawing = "u[char_code]"
+		// Celadon ADDITION END
 
 	var/list/turf/affected_turfs = list(target)
 
@@ -585,13 +607,39 @@
 	check_empty(user)
 	return ITEM_INTERACT_SUCCESS
 
+///Checks if the user is still adjacent to the target (used for do_after extra_checks)
+/obj/item/toy/crayon/proc/adjacency_check(mob/user, atom/target)
+	if(!user.Adjacent(target))
+		user.balloon_alert(user, "moved too far away!")
+		return FALSE
+	return TRUE
+
 /obj/item/toy/crayon/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if (!check_allowed_items(interacting_with))
 		return NONE
 
 	if(can_use_on(interacting_with, user, modifiers))
 		return use_on(interacting_with, user, modifiers)
-	return NONE
+
+	if(!ishuman(interacting_with) || user.combat_mode)
+		return NONE
+
+	var/mob/living/carbon/human/pwned_human = interacting_with
+	if(!(pwned_human.stat == DEAD || HAS_TRAIT(pwned_human, TRAIT_FAKEDEATH)))
+		return NONE
+
+	interacting_with.balloon_alert(user, "drawing outline...")
+	if(!do_after(user, DRAW_TIME, target = pwned_human))
+		return ITEM_INTERACT_FAILURE
+	if(!use_charges(user, 1))
+		return ITEM_INTERACT_FAILURE
+
+	to_chat(user, span_notice("You draw a chalk outline around [pwned_human]."))
+	var/obj/effect/decal/cleanable/crayon/chalk_line = new(get_turf(pwned_human), paint_color, "body", "chalk outline", null, null, "A vaguely [pwned_human] shaped body outline.", outline_strength)
+	chalk_line.pixel_y = (pwned_human.pixel_y + pwned_human.pixel_z)
+	chalk_line.pixel_x = (pwned_human.pixel_x + pwned_human.pixel_w)
+	chalk_line.create_outline(pwned_human, add_mouse_opacity = TRUE)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/toy/crayon/get_writing_implement_details()
 	return list(
@@ -665,30 +713,7 @@
 	crayon_color = "white"
 	reagent_contents = list(/datum/reagent/consumable/nutriment = 0.5,  /datum/reagent/colorful_reagent/powder/white/crayon = 1.5)
 	dye_color = DYE_WHITE
-
-/obj/item/toy/crayon/white/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
-	/// Wherein, we draw a chalk body outline vaguely around the dead or "dead" mob
-	if(!ishuman(interacting_with) || user.combat_mode)
-		return ..()
-
-	var/mob/living/carbon/human/pwned_human = interacting_with
-
-	if(!(pwned_human.stat == DEAD || HAS_TRAIT(pwned_human, TRAIT_FAKEDEATH)))
-		balloon_alert_to_viewers("FEEDING TIME")
-		return ..()
-
-	balloon_alert_to_viewers("drawing outline...")
-	if(!do_after(user, DRAW_TIME, target = pwned_human, max_interact_count = 4))
-		return NONE
-	if(!use_charges(user, 1))
-		return NONE
-
-	var/decal_rotation = GET_LYING_ANGLE(pwned_human) - 90
-	var/obj/effect/decal/cleanable/crayon/chalk_line = new(get_turf(pwned_human), paint_color, "body", "chalk outline", decal_rotation, null, "A vaguely [pwned_human] shaped outline of a body.")
-	to_chat(user, span_notice("You draw a chalk outline around [pwned_human]."))
-	chalk_line.pixel_y = (pwned_human.pixel_y + pwned_human.pixel_z) + rand(-2, 2)
-	chalk_line.pixel_x = (pwned_human.pixel_x + pwned_human.pixel_w) + rand(-1, 1)
-	return ITEM_INTERACT_SUCCESS
+	outline_strength = 1
 
 /obj/item/toy/crayon/mime
 	name = "mime crayon"
@@ -804,6 +829,10 @@
 	)
 	register_context()
 	register_item_context()
+	// If default crayon red colour, pick a more fun spraycan colour
+	if(!paint_color)
+		set_painting_tool_color(pick(COLOR_CRAYON_RED, COLOR_CRAYON_ORANGE, COLOR_CRAYON_YELLOW, COLOR_CRAYON_GREEN, COLOR_CRAYON_BLUE, COLOR_CRAYON_PURPLE))
+	refill()
 
 /obj/item/toy/crayon/spraycan/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
@@ -839,11 +868,11 @@
 	var/used = min(charges_left, 10)
 	if(is_capped || !actually_paints || !use_charges(user, 10, FALSE))
 		user.visible_message(span_suicide("[user] shakes up [src] with a rattle and lifts it to [user.p_their()] mouth, but nothing happens!"))
-		user.say("MEDIOCRE!!", forced = "spraycan suicide")
+		user.say("БЕЗДАРНОСТЬ!!", forced = "spraycan suicide") // Celadon EDIT, original: user.say("MEDIOCRE!!", forced = "spraycan suicide")
 		return SHAME
 
 	user.visible_message(span_suicide("[user] shakes up [src] with a rattle and lifts it to [user.p_their()] mouth, spraying paint across [user.p_their()] teeth!"))
-	user.say("WITNESS ME!!", forced = "spraycan suicide")
+	user.say("ЗАПОМНИТЕ МЕНЯ!!", forced = "spraycan suicide") // Celadon EDIT, original: user.say("WITNESS ME!!", forced = "spraycan suicide")
 	if(pre_noise || post_noise)
 		playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 5)
 	if(can_change_colour)
@@ -853,13 +882,6 @@
 		user.AddComponent(/datum/component/face_decal, "spray", EXTERNAL_ADJACENT, paint_color)
 	reagents.trans_to(user, used, volume_multiplier, transferred_by = user, methods = VAPOR)
 	return OXYLOSS
-
-/obj/item/toy/crayon/spraycan/Initialize(mapload)
-	. = ..()
-	// If default crayon red colour, pick a more fun spraycan colour
-	if(!paint_color)
-		set_painting_tool_color(pick(COLOR_CRAYON_RED, COLOR_CRAYON_ORANGE, COLOR_CRAYON_YELLOW, COLOR_CRAYON_GREEN, COLOR_CRAYON_BLUE, COLOR_CRAYON_PURPLE))
-	refill()
 
 /obj/item/toy/crayon/spraycan/examine(mob/user)
 	. = ..()
@@ -972,7 +994,7 @@
 			return ITEM_INTERACT_BLOCKING
 		var/obj/machinery/atmospherics/target_pipe = target
 		target_pipe.paint(paint_color)
-		balloon_alert(user, "painted in  [GLOB.pipe_color_name[paint_color]] color")
+		balloon_alert(user, "painted in [GLOB.pipe_color_name[paint_color]] color")
 	else if (is_type_in_typecache(target, direct_color_types))
 		target.add_atom_colour(paint_color, WASHABLE_COLOUR_PRIORITY)
 	else

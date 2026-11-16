@@ -31,14 +31,14 @@
 	name = /obj/item/disk/neuroware/sleepy::name
 	description = /obj/item/disk/neuroware/sleepy::desc
 	icon = /obj/item/disk/neuroware/sleepy::icon
-	icon_state = /obj/item/disk/neuroware/sleepy::icon_state
+	icon_state = /obj/item/disk/neuroware/sleepy::post_init_icon_state
 	set_items = list(
 		/obj/item/disk/neuroware/sleepy,
 	)
 
 /datum/voucher_set/traitor/supplies/stealth/announcer
-	name = /obj/item/device/traitor_announcer::name
-	description = /obj/item/device/traitor_announcer::desc
+	name = "Fake announcement broadcaster"
+	description = "A device which allows you to create and broadcast your own announcement to the sector."
 	icon = /obj/item/device/traitor_announcer::icon
 	icon_state = /obj/item/device/traitor_announcer::icon_state
 	set_items = list(
@@ -73,25 +73,25 @@
 	)
 
 /datum/voucher_set/traitor/supplies/stealth/camera_app
-	name = /obj/item/computer_disk/syndicate/camera_app::name
-	description = /obj/item/computer_disk/syndicate/camera_app::desc
-	icon = /obj/item/computer_disk/syndicate/camera_app::icon
-	icon_state = /obj/item/computer_disk/syndicate/camera_app::icon_state
+	name = /obj/item/disk/computer/syndicate/camera_app::name
+	description = /obj/item/disk/computer/syndicate/camera_app::desc
+	icon = /obj/item/disk/computer/syndicate/camera_app::icon
+	icon_state = /obj/item/disk/computer/syndicate/camera_app::icon_state
 	set_items = list(
-		/obj/item/computer_disk/syndicate/camera_app,
+		/obj/item/disk/computer/syndicate/camera_app,
 	)
 
 /datum/voucher_set/traitor/supplies/stealth/frame
-	name = /obj/item/computer_disk/virus/frame::name
-	description = /obj/item/computer_disk/virus/frame::desc
-	icon = /obj/item/computer_disk/virus/frame::icon
-	icon_state = /obj/item/computer_disk/virus/frame::icon_state
+	name = /obj/item/disk/computer/virus/frame::name
+	description = /obj/item/disk/computer/virus/frame::desc
+	icon = /obj/item/disk/computer/virus/frame::icon
+	icon_state = /obj/item/disk/computer/virus/frame::icon_state
 	set_items = list(
-		/obj/item/computer_disk/virus/frame,
+		/obj/item/disk/computer/virus/frame,
 	)
 
 /datum/voucher_set/traitor/supplies/stealth/edagger
-	name = /obj/item/pen/edagger::name
+	name = "Energy dagger"
 	description = /obj/item/pen/edagger::desc
 	icon = /obj/item/pen/edagger::icon
 	icon_state = /obj/item/pen/edagger::icon_state

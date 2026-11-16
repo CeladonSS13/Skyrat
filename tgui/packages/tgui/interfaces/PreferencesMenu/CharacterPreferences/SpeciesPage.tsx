@@ -295,7 +295,7 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
                   <Button
                     key={speciesKey}
                     onClick={() => {
-                      if (species.nova_stars_only && !data.is_nova_star) {
+                      if (data.nova_star_restrictions && species.nova_stars_only && !data.is_nova_star) {
                         return;
                       }
                       setSpecies(speciesKey);
@@ -316,11 +316,11 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
                     />
                   </Button>
                 );
-                if (species.nova_stars_only && !data.is_nova_star) {
-                  let tooltipContent =
+                if (data.nova_star_restrictions && species.nova_stars_only && !data.is_nova_star) {
+                  const tooltipContent =
                     species.name +
-                    { /* SS1984 REMOVAL ' - You need to be a Nova star to select this race, apply today!'; */ };
-                    ' - You need to be a Veteran to select this race, apply today!'; { /* SS1984 ADDITION */ }
+                    { /* Celadon REMOVAL ' - You need to be a Nova star to select this race, apply today!'; */ };
+                    ' - You need to be a Veteran to select this race, apply today!'; { /* Celadon ADDITION */ }
                   speciesPage = (
                     <Tooltip content={tooltipContent}>{speciesPage}</Tooltip>
                   );

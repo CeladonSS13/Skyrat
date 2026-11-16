@@ -31,24 +31,16 @@ GLOBAL_LIST_INIT(exp_specialmap, list(
 		ROLE_BLACK_MARKET_DEALER,
 		ROLE_DS2,
 		ROLE_FREIGHTER_CREW,
-		ROLE_FREIGHTER_COMMAND, // ss1984 edit- freighter command job
 		ROLE_GHOST_CAFE,
 		ROLE_PORT_TARKON,
 		//NOVA EDIT Start - End Custom Ghost roles
+		// CELADON ADD START
+		ROLE_FREIGHTER_COMMAND,
+		// CELADON ADD END
 		), // Ghost roles
 	EXP_TYPE_GHOST = list() // dead people, observers
 ))
 GLOBAL_PROTECT(exp_specialmap)
-
-//this is necessary because antags happen before job datums are handed out, but NOT before they come into existence
-//so I can't simply use job datum.department_head straight from the mind datum, laaaaame.
-/proc/get_department_heads(job_title)
-	if(!job_title)
-		return list()
-
-	for(var/datum/job/job as anything in SSjob.joinable_occupations)
-		if(job.title == job_title)
-			return job.department_head //this is a list
 
 /proc/get_full_job_name(job)
 	var/static/regex/cap_expand = new("cap(?!tain)")

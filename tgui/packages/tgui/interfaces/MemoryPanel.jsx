@@ -138,7 +138,7 @@ export const MemoryPanel = (props) => {
   return (
     <Window title="Memory Panel" width={400} height={500}>
       <Window.Content>
-        <Stack fill vertical> {/* SS1984 ADDITION */}
+        <Stack fill vertical> {/* Celadon ADDITION */}
           <Section
             maxHeight="32px"
             title="Memories"
@@ -169,7 +169,7 @@ export const MemoryPanel = (props) => {
               ))}
             </Stack>
           )}
-          {/* SS1984 ADDITION START */}
+          {/* Celadon ADDITION START */}
           <Section
             maxHeight="32px"
             title="Notes"
@@ -202,8 +202,8 @@ export const MemoryPanel = (props) => {
               ))}
             </Section>
           )}
-          {/* SS1984 ADDITION END */}
-        </Stack> {/* SS1984 ADDITION */}
+          {/* Celadon ADDITION END */}
+        </Stack> {/* Celadon ADDITION */}
       </Window.Content>
     </Window>
   );

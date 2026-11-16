@@ -103,7 +103,7 @@ const CrimeDisplay = ({ item }: { item: Crime }) => {
   const { current_user, higher_access } = data;
   const { author, crime_ref, details, fine, name, paid, time, valid, voider } =
     item;
-  const showFine = fine === -1 ? '' : (!!fine && fine > 0 ? `: ${fine} cr` : ': PAID OFF'); // SS1984 EDIT, original: const showFine = !!fine && fine > 0 ? `: ${fine} cr` : ': PAID OFF';
+  const showFine = fine === -1 ? '' : (!!fine && fine > 0 ? `: ${fine} cr` : ': PAID OFF'); // Celadon EDIT, original: const showFine = !!fine && fine > 0 ? `: ${fine} cr` : ': PAID OFF';
 
   let collapsibleColor = '';
   if (!valid) {

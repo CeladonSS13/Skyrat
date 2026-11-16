@@ -3,6 +3,7 @@
 # Local overrides--you can use this to change the config for your dev environment (like setting up SQL) without worrying about committing it
 /config/dev_overrides.txt
 /config/dev_preferences.json
+/config/dev_preferences.json.updatebac
 
 #Ignore everything in datafolder and subdirectories
 /data/**/*
@@ -279,5 +280,12 @@ rust_g.dll
 rust_g64.dll
 librust_g.so
 librust_g64.so
-rust_1984.dll
-librust_1984.so
+rust_celadon.dll
+librust_celadon.so
+
+# Ignore rust build config
+tools/build_rust_config.txt
+
+# Cached rust un-ignore
+!rust_cached/rust_celadon.dll
+!rust_cached/rust_g.dll

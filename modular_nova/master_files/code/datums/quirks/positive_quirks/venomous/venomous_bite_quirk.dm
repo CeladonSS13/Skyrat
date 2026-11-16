@@ -38,7 +38,12 @@
 		// drugs
 		/datum/reagent/drug/space_drugs = list(5, 60 SECONDS, TRUE),
 		/datum/reagent/toxin/mindbreaker = list(5, 60 SECONDS, FALSE),
-		// SS1984 REMOVAL OF ERP STUFF
+		// erp stuff
+		/datum/reagent/drug/aphrodisiac/crocin = list(5, 2 SECONDS, TRUE),
+		/datum/reagent/drug/aphrodisiac/crocin/hexacrocin = list(5, 5 SECONDS, TRUE),
+		/datum/reagent/drug/aphrodisiac/succubus_milk = list(5, 2 SECONDS, TRUE),
+		/datum/reagent/drug/aphrodisiac/incubus_draft = list(5, 2 SECONDS, TRUE),
+		/datum/reagent/drug/aphrodisiac/camphor = list(5, 2 SECONDS, TRUE),
 )
 	var/static/list/milkable_venoms = generate_milkable_venom_list()
 	var/static/filter_immune_string = generate_filter_immune_string()
@@ -108,7 +113,7 @@
 	if (!.)
 		return FALSE
 
-	return "Venomous Bite" in preferences.all_quirks
+	return /datum/quirk/venomous_bite::name in preferences.all_quirks
 
 /datum/preference/choiced/venomous_bite_venom/apply_to_human(mob/living/carbon/human/target, value)
 	return

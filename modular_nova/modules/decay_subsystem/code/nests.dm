@@ -88,7 +88,7 @@
 
 	var/mob/living/entered_mob = AM
 
-	if((NEST_FACTION in entered_mob.faction))
+	if((entered_mob.has_faction(NEST_FACTION)))
 		return
 
 	spawn_mob()
@@ -104,12 +104,13 @@
 	var/mob/living/spawned_mob = new chosen_mob_type(loc)
 
 	spawned_mob.flags_1 |= (flags_1 & ADMIN_SPAWNED_1)
-	spawned_mob.faction = faction
+	spawned_mob.set_faction(faction)
 	spawned_mob.ghost_controllable = ghost_controllable
 
 	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, PROC_REF(mob_death))
 
 	visible_message(span_danger("[spawned_mob] emerges from [src]."))
+	return spawned_mob // Celadon ADDITION
 
 /obj/structure/mob_spawner/proc/mob_death(mob/living/dead_guy, gibbed)
 	SIGNAL_HANDLER

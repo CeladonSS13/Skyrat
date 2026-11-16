@@ -5,8 +5,8 @@
 
 ##RESPAWN
 #_maps/RandomRuins/AnywhereRuins/golem_ship.dmm
-#_maps/RandomRuins/IceRuins/icemoon_duo_hermit.dmm
-_maps/RandomRuins/IceRuins/icemoon_underground_comms_agent.dmm
+#_maps/RandomRuins/AnywhereRuins/shoe_factory.dmm
+#_maps/RandomRuins/IceRuins/icemoon_underground_comms_agent.dmm
 #_maps/RandomRuins/IceRuins/icemoon_underground_hermit.dmm
 
 ##MEGAFAUNA
@@ -41,7 +41,7 @@ _maps/RandomRuins/IceRuins/icemoon_underground_mining_site.dmm
 
 ##RESPAWN
 _maps/RandomRuins/IceRuins/nova/icemoon_underground_interdyne_base1.dmm
-#_maps/RandomRuins/IceRuins/nova/icemoon_underground_interdyne_base1984.dmm
+#_maps/RandomRuins/IceRuins/nova/icemoon_underground_interdyne_base_celadon.dmm
 #_maps/RandomRuins/IceRuins/nova/icemoon_underground_icewalker_upper.dmm
 #_maps/RandomRuins/IceRuins/nova/icemoon_underground_icewalker_lower.dmm
 

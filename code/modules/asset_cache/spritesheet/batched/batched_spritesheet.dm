@@ -7,7 +7,7 @@
 #define SPRITESHEET_SYSTEM_VERSION 1
 
 /datum/asset/spritesheet_batched
-	_abstract = /datum/asset/spritesheet_batched
+	abstract_type = /datum/asset/spritesheet_batched
 	var/name
 	/// list("32x32")
 	var/list/sizes = list()
@@ -165,10 +165,10 @@
 /datum/asset/spritesheet_batched/proc/realize_spritesheets(yield)
 	if(fully_generated)
 		return
-	// SS1984 ADDITION START, tbh could be made modular, but doing it for such thing if can place here without merge issues?
+	// Celadon ADDITION START, tbh could be made modular, but doing it for such thing if can place here without merge issues?
 	if (!name || name == "N/A") // some deleted erp stuff?
 		return
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 	if(!length(entries))
 		CRASH("Spritesheet [name] ([type]) is empty! What are you doing?")
 

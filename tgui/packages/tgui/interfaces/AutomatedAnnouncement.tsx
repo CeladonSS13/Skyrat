@@ -30,16 +30,18 @@ type nttc_configuration = {
   toggle_job_color: BooleanLike;
   toggle_name_color: BooleanLike;
   toggle_command_bold: BooleanLike;
+  setting_language: String; // here it's a string, but in DM we search a datum lang with that "name" as this string
 }
 
 type Data = {
   config_entries: AASConfigEntry[];
+  max_announcement_len: number;
   nttc: nttc_configuration;
 };
 
 export const AutomatedAnnouncement = (props) => {
   const { act, data } = useBackend<Data>();
-  const { config_entries = [], nttc } = data;
+  const { config_entries = [], max_announcement_len, nttc } = data;
   const [search, setSearch] = useState('');
 
   const isEntryMatch = (entry: AASConfigEntry, search: string) => {
@@ -74,7 +76,7 @@ export const AutomatedAnnouncement = (props) => {
     <Window title="Automated Announcement System" width={500} height={400}>
       <Window.Content>
         <Stack fill vertical>
-          {/* SS1984 EDIT ADDITION START */}
+          {/* Celadon EDIT ADDITION START */}
           <Section title="Radio Configuration">
             <LabeledList>
               <LabeledList.Item label="Job Announcements">
@@ -113,9 +115,18 @@ export const AutomatedAnnouncement = (props) => {
                   {nttc.toggle_command_bold ? 'On' : 'Off'}
                 </Button>
               </LabeledList.Item>
+              <LabeledList.Item label="Language Conversion">
+                <Button
+                  selected={nttc.setting_language ? true : false}
+                  icon="globe"
+                  onClick={() => act('nttc_setting_language')}
+                >
+                  {nttc.setting_language ? nttc.setting_language : 'Unset'}
+                </Button>
+              </LabeledList.Item>
             </LabeledList>
           </Section>
-          {/* SS1984 EDIT ADDITION END */}
+          {/* Celadon EDIT ADDITION END */}
           <Stack.Item>
             <LabeledList>
               <LabeledList.Item label="Search">
@@ -179,6 +190,7 @@ export const AutomatedAnnouncement = (props) => {
                                 fluid
                                 value={announcementLine}
                                 disabled={!entry.modifiable}
+                                maxLength={max_announcement_len}
                                 onBlur={(value) =>
                                   act('Text', {
                                     entryRef: entry.entryRef,

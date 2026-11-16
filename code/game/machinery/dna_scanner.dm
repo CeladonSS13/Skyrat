@@ -79,7 +79,7 @@
 		span_notice("You lean on the back of [src] and start pushing the door open... (this will take about [DisplayTimeText(breakout_time)].)"), \
 		span_hear("You hear a metallic creaking from [src]."))
 	if(do_after(user,(breakout_time), target = src))
-		if(!user || user.stat > SOFT_CRIT || user.loc != src || state_open || !locked)
+		if(!user || user.stat != CONSCIOUS || user.loc != src || state_open || !locked)
 			return
 		locked = FALSE
 		user.visible_message(span_warning("[user] successfully broke out of [src]!"), \
@@ -126,19 +126,11 @@
 		return
 	open_machine()
 
-/obj/machinery/dna_scannernew/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
+/obj/machinery/dna_scannernew/screwdriver_act(mob/living/user, obj/item/tool)
+	return occupant ? NONE : default_deconstruction_screwdriver(user, tool)
 
-	if(!occupant && default_deconstruction_screwdriver(user, icon_state, icon_state, item))//sent icon_state is irrelevant...
-		update_appearance()//..since we're updating the icon here, since the scanner can be unpowered when opened/closed
-		return
-
-	if(default_pry_open(item, close_after_pry = FALSE, open_density = FALSE, closed_density = TRUE))
-		return
-
-	if(default_deconstruction_crowbar(item))
-		return
-
-	return ..()
+/obj/machinery/dna_scannernew/crowbar_act(mob/living/user, obj/item/tool)
+	return default_pry_open(user, tool, close_after_pry = FALSE, open_density = FALSE, closed_density = TRUE, deconstruct_on_fail = TRUE)
 
 /obj/machinery/dna_scannernew/interact(mob/user)
 	toggle_open(user)
@@ -160,31 +152,19 @@
 	SIGNAL_HANDLER
 	set_linked_console(null)
 
-
 //Just for transferring between genetics machines.
 /obj/item/disk/data
-	name = "DNA data disk"
+	name = "\improper DNA data disk"
 	icon_state = "datadisk0" //Gosh I hope syndies don't mistake them for the nuke disk.
 	var/list/genetic_makeup_buffer = list()
 	var/list/mutations = list()
-	var/max_mutations = 6
-	var/read_only = FALSE //Well,it's still a floppy disk
-	obj_flags = parent_type::obj_flags | INFINITE_RESKIN
-	unique_reskin = list(
-			"Red" = "datadisk0",
-			"Dark Blue" = "datadisk1",
-			"Yellow" = "datadisk2",
-			"Black" = "datadisk3",
-			"Green" = "datadisk4",
-			"Purple" = "datadisk5",
-			"Grey" = "datadisk6",
-			"Light Blue" = "datadisk7",
-	)
+	var/max_mutations = 10
+	read_only = FALSE //Well,it's still a floppy disk
 
 /obj/item/disk/data/Initialize(mapload)
 	. = ..()
 	icon_state = "datadisk[rand(0,7)]"
-	add_overlay("datadisk_gene")
+	set_sticker_icon_state(pick("o_dna1", "o_dna2"))
 	if(length(genetic_makeup_buffer))
 		var/datum/blood_type = genetic_makeup_buffer["blood_type"]
 		if(blood_type)
@@ -201,11 +181,3 @@
 	for(var/datum/mutation/mut as anything in subtypesof(/datum/mutation))
 		var/datum/mutation/ref = GET_INITIALIZED_MUTATION(mut)
 		mutations += ref
-
-/obj/item/disk/data/attack_self(mob/user)
-	read_only = !read_only
-	to_chat(user, span_notice("You flip the write-protect tab to [read_only ? "protected" : "unprotected"]."))
-
-/obj/item/disk/data/examine(mob/user)
-	. = ..()
-	. += "The write-protect tab is set to [read_only ? "protected" : "unprotected"]."

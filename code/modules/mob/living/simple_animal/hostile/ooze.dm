@@ -54,7 +54,7 @@
 	return ..()
 
 ///Handles nutrition gain/loss of mob and also makes it take damage if it's too low on nutrition, only happens for sentient mobs.
-/mob/living/simple_animal/hostile/ooze/Life(seconds_per_tick = SSMOBS_DT, times_fired)
+/mob/living/simple_animal/hostile/ooze/Life(seconds_per_tick = SSMOBS_DT)
 	. = ..()
 
 	if(!.) //dead or deleted
@@ -76,7 +76,7 @@
 	adjust_ooze_nutrition(nutrition_change)
 
 	if(ooze_nutrition <= 0)
-		adjustBruteLoss(0.25 * seconds_per_tick)
+		adjust_brute_loss(0.25 * seconds_per_tick)
 
 /// Returns an applicable list of actions to grant to the mob. Will return a list or null.
 /mob/living/simple_animal/hostile/ooze/proc/get_innate_actions()
@@ -85,7 +85,9 @@
 ///Does ooze_nutrition + supplied amount and clamps it within 0 and 500
 /mob/living/simple_animal/hostile/ooze/proc/adjust_ooze_nutrition(amount)
 	ooze_nutrition = clamp(ooze_nutrition + amount, 0, 500)
-	updateNutritionDisplay()
+	hud_used?.screen_objects[HUD_OOZE_NUTRITION_DISPLAY]?.maptext = MAPTEXT( \
+		"<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font color='green'>[round(ooze_nutrition)]</font></div>" \
+	)
 
 ///Tries to transfer the atoms reagents then delete it
 /mob/living/simple_animal/hostile/ooze/proc/eat_atom(atom/eat_target, silent)
@@ -97,12 +99,6 @@
 		return FALSE
 	to_chat(src, span_warning("[eat_target] cannot be eaten!"))
 	return FALSE
-
-///Updates the display that shows the mobs nutrition
-/mob/living/simple_animal/hostile/ooze/proc/updateNutritionDisplay()
-	if(hud_used) //clientless oozes
-		hud_used.alien_plasma_display.maptext = MAPTEXT("<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font color='green'>[round(ooze_nutrition)]</font></div>")
-
 
 ///* Gelatinious Ooze code below *\\\\
 
@@ -268,7 +264,7 @@
 ///Gain health for the consumption and dump some brute loss on the target.
 /datum/action/consume/process()
 	var/mob/living/simple_animal/hostile/ooze/gelatinous/ooze = owner
-	vored_mob.adjustBruteLoss(5)
+	vored_mob.adjust_brute_loss(5)
 	ooze.heal_ordered_damage((ooze.maxHealth * 0.03), list(BRUTE, BURN, OXY)) ///Heal 6% of these specific damage types each process
 	if(istype(ooze))
 		ooze.adjust_ooze_nutrition(3)
@@ -419,6 +415,29 @@
 	jostle_pain_mult = 0
 	fall_chance = 0.5
 
+//NOVA EDIT ADDITION START - Ensures that you can't use this on dead/synth people or stack multiple globules on the same limb.
+/obj/projectile/globule/on_hit(mob/living/target, blocked = 0, pierce_hit)
+	. = ..()
+	if(!istype(target, /mob/living/carbon/human))
+		return FALSE
+	if(issynthetic(target))
+		return FALSE
+	if(target.stat == DEAD)
+		return FALSE
+	else
+		return TRUE
+
+/datum/embedding/mending_globule/on_successful_embed(mob/living/carbon/target, obj/item/bodypart/target_limb)
+	. = ..()
+	for(var/obj/item/mending_globule/existing in target_limb.embedded_objects)
+		if ((existing != parent))
+			target.visible_message(span_warning("[parent] slides right off of [target]'s [target_limb.plaintext_zone], already having a globule attached there!"))
+			qdel(parent)
+			return FALSE
+		else
+			continue
+
+//NOVA EDIT ADDITION END
 // This already processes, zero logic to add additional tracking to the item
 /datum/embedding/mending_globule/process(seconds_per_tick)
 	. = ..()

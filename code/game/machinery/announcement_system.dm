@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 	///All possible announcements and their local configurations
 	var/list/datum/aas_config_entry/config_entries = list()
-	var/datum/nttc_configuration/nttc = new() //SS1984 ADDITION
+	var/datum/nttc_configuration/nttc = new() //Celadon ADDITION
 	///The headset that we use for broadcasting
 	var/obj/item/radio/headset/radio
 	///AIs headset support all stations channels, but it may require an override for away site or syndie AASs.
@@ -29,10 +29,10 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	var/errorlight = "Error_Red"
 
 /obj/machinery/announcement_system/Initialize(mapload)
-	. = ..()
-	GLOB.announcement_systems += src
-	radio = new radio_type(src)
 	config_entries = init_subtypes(/datum/aas_config_entry, list())
+	. = ..()
+	radio = new radio_type(src)
+	GLOB.announcement_systems += src
 	update_appearance()
 
 /obj/machinery/announcement_system/randomize_language_if_on_station()
@@ -62,15 +62,10 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	return ..()
 
 /obj/machinery/announcement_system/screwdriver_act(mob/living/user, obj/item/tool)
-	var/icon_state_assemble = "[base_icon_state]_[is_operational && !(machine_stat & EMPED) ? "On" : "Off"]"
-	if(default_deconstruction_screwdriver(user, "[icon_state_assemble]_Open", icon_state_assemble, tool))
-		return ITEM_INTERACT_SUCCESS
-	return ITEM_INTERACT_BLOCKING
+	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/announcement_system/crowbar_act(mob/living/user, obj/item/tool)
-	. = ..()
-	if(default_deconstruction_crowbar(tool))
-		return ITEM_INTERACT_SUCCESS
+	return default_deconstruction_crowbar(user, tool)
 
 /obj/machinery/announcement_system/multitool_act(mob/living/user, obj/item/tool)
 	if(!panel_open || !(machine_stat & EMPED))
@@ -110,13 +105,14 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 /obj/machinery/announcement_system/ui_data()
 	var/list/configs = list()
-	// SS1984 EDIT START
+	// Celadon EDIT START
 	var/list/data = list()
 	var/list/nttc_data = list(
 		"toggle_jobs" = nttc.toggle_jobs,
 		"toggle_job_color" = nttc.toggle_job_color,
 		"toggle_name_color" = nttc.toggle_name_color,
 		"toggle_command_bold" = nttc.toggle_command_bold,
+		"setting_language" = nttc.setting_language ? nttc.setting_language.name : null, // passing NAME, that important
 	)
 	for(var/datum/aas_config_entry/config in config_entries)
 		configs += list(list(
@@ -131,7 +127,14 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	data["config_entries"] = configs
 	data["nttc"] = nttc_data
 	return data
-	// SS1984 EDIT END
+	// Celadon EDIT END
+
+/obj/machinery/announcement_system/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["max_announcement_len"] = MAX_AAS_LENGTH
+
+	return data
 
 /obj/machinery/announcement_system/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -146,7 +149,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 	add_fingerprint(usr)
 	var/datum/aas_config_entry/config = locate(params["entryRef"]) in config_entries
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	switch(action) // another switch before config check
 		// NTTC Toggles
 		if("nttc_toggle_jobs")
@@ -169,21 +172,44 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 			usr.log_message("toggled command bold (Now [nttc.toggle_command_bold])", LOG_GAME)
 			update_appearance()
 			return
-	// SS1984 ADDITION END
+		if("nttc_setting_language")
+			var/new_language = tgui_input_list(usr, "Pick a language to convert messages to", "Language Conversion", nttc.valid_languages)
+			if(!new_language || !(new_language in nttc.valid_languages))
+				return
+			if(new_language == "--DISABLE--")
+				nttc.setting_language = null
+				to_chat(usr, span_notice("Language conversion disabled."))
+			else
+				var/datum/language/language_found_lang
+				for(var/language_name in GLOB.all_languages) // can't directly access by [], because it's typepath key in both all_languages and language_datum_instances
+					var/datum/language/L = GLOB.language_datum_instances[language_name]
+					if (L.name == new_language)
+						language_found_lang = L
+						break
+				if (language_found_lang)
+					nttc.setting_language = language_found_lang // datum
+					to_chat(usr, span_notice("Messages will now be converted to [new_language]."))
+				else
+					return
+
+			usr.log_message(new_language == "--DISABLE--" ? "disabled NTTC language conversion" : "set NTTC language conversion to [new_language]", LOG_GAME)
+			update_appearance()
+			return
+	// Celadon ADDITION END
 	if(!config || !config.modifiable)
 		return
 
 	switch(action)
 		if("Toggle")
 			config.enabled = !config.enabled
-			if (config.type in list(/datum/aas_config_entry/arrival, /datum/aas_config_entry/newhead, /datum/aas_config_entry/newcentcom)) //SS1984 EDIT ADD original: 			if (config.type in list(/datum/aas_config_entry/arrival, /datum/aas_config_entry/newhead))
+			if (config.type in list(/datum/aas_config_entry/arrival, /datum/aas_config_entry/newhead, /datum/aas_config_entry/newcentcom)) //Celadon EDIT ADD original: 			if (config.type in list(/datum/aas_config_entry/arrival, /datum/aas_config_entry/newhead))
 				update_appearance()
 		if("Text")
 			if(!(params["lineKey"] in config.announcement_lines_map))
 				message_admins("[ADMIN_LOOKUPFLW(usr)] tried to set announcement line for nonexisting line in the [config.name] for AAS. Probably href injection. Received line: [html_encode(params["lineKey"])]")
 				log_game("[key_name(usr)] tried to mess with AAS. For [config.name] he tried to edit nonexistend [params["lineKey"]]")
 				return
-			var/new_message = trim(html_encode(params["newText"]), MAX_MESSAGE_LEN)
+			var/new_message = trim(html_encode(params["newText"]), MAX_AAS_LENGTH)
 			if(new_message)
 				config.announcement_lines_map[params["lineKey"]] = new_message
 				usr.log_message("updated [params["lineKey"]] line in the [config.name] to: [new_message]", LOG_GAME)
@@ -203,13 +229,14 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /obj/machinery/announcement_system/proc/has_supported_channels(list/channels)
 	if (!LAZYLEN(channels) || (RADIO_CHANNEL_COMMON in channels))
 		// Okay, I am not proud of this, but I don't want CentCom or Syndie AASs to broadcast on Common.
-		return src.type == /obj/machinery/announcement_system
+		// Because our overrides can just change radio withour creating new subtype we prefer to check both.
+		return src.type == /obj/machinery/announcement_system && src.radio_type == /obj/machinery/announcement_system::radio_type
 	for(var/channel in channels)
 		if(radio.channels[channel])
 			return TRUE
 	return FALSE
 
-/// Can AAS receive request for broadcast from you?
+/// Can AAS receive request for broadcast from you? Null source means yes.
 /obj/machinery/announcement_system/proc/can_be_reached_from(atom/source)
 	if(!source || !istype(source))
 		return TRUE
@@ -217,6 +244,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if (!source_turf)
 		return TRUE
 	// Keep updated with broadcasting.dm (/datum/signal/subspace/vocal/New)
+	// FFF (For Future Feature): think about adding radio relay support. Maybe implementing /datum/signal/subspace/aas_event or something similar.
 	return z in SSmapping.get_connected_levels(source_turf)
 
 /// Compiles the announcement message with the provided variables. Announcement line is optional.
@@ -240,13 +268,13 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	for(var/channel in channels)
 		radio.talk_into(src, message, channel, command_span ? list(speech_span, SPAN_COMMAND) : null)
 
-/// Announces configs entry message with the provided variables. Channels and announcement_line are optional.
+/// Announces configs entry message with the provided variables. Channels, announcement_line and command_span are optional.
 /obj/machinery/announcement_system/proc/announce(aas_config_entry_type, list/variables_map, list/channels, announcement_line, command_span)
 	var/msg = compile_config_message(aas_config_entry_type, variables_map, announcement_line, TRUE)
 	if (msg)
 		broadcast(msg, channels, command_span)
 
-/// Returns a random announcement system that is operational, has the specified config entry, signal can reach source and radio supports any channel in list. Config entry, source and channels are optional.
+/// Returns a random announcement system that is operational, has the specified config entry, signal can reach source and radio supports any channel in list. All args are optional.
 /proc/get_announcement_system(aas_config_entry_type, source, list/channels)
 	if (!GLOB.announcement_systems.len)
 		return null
@@ -260,7 +288,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 			intact_aass += announce
 	return intact_aass.len ? pick(intact_aass) : null
 
-/// Announces the provided message with the provided variables and config entry type. Channels, announcement_line, command_span and source are optional.
+/// Announces the provided message with the provided variables and config entry type. Only aas_config_entry_type and variables_map are mandatory. Other args are optional.
 /proc/aas_config_announce(aas_config_entry_type, list/variables_map, source, list/channels, announcement_line, command_span)
 	var/obj/machinery/announcement_system/announcer = get_announcement_system(aas_config_entry_type, source, channels)
 	if (!announcer)
@@ -280,7 +308,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	// Can be changed or disabled by players
 	var/modifiable = TRUE
 
-/// Compiles the announcement message with the provided variables. Announcement line is optional.
+/// Compiles the announcement message with the provided variables. Announcement line is optional, may be both index or line key.
 /datum/aas_config_entry/proc/compile_announce(list/variables_map, announcement_line)
 	var/announcement_message = LAZYACCESS(announcement_lines_map, announcement_line)
 	// If index was provided LAZYACCESS will return us a key, not value
@@ -308,7 +336,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 */
 
 /datum/aas_config_entry/arrival
-	name = "Arrival Announcement"
+	name = "Global: Arrival Announcement"
 	announcement_lines_map = list(
 		"Message" = "Сотрудник %PERSON в должности %RANK прибыл")
 	vars_and_tooltips_map = list(
@@ -326,7 +354,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		"ERR)#: DA#AB@#E NOT F(*ND!")
 
 /datum/aas_config_entry/newhead
-	name = "Departmental Head Announcement"
+	name = "Departmental: Head Announcement"
 	announcement_lines_map = list(
 		"Message" = "Прибыл глава отдела - %PERSON, %RANK.")
 	vars_and_tooltips_map = list(
@@ -343,7 +371,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		"ER)#R - B*@ TEXT F*O(ND!",
 		"AAS.exe is not responding. NanoOS is searching for a solution to the problem.")
 
-// SS1984 ADD START
+// Celadon ADD START
 /datum/aas_config_entry/newcentcom
 	name = "Departmental CentCom Announcement"
 	announcement_lines_map = list(
@@ -361,10 +389,10 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	announcement_lines_map["Message"] = pick("OV#RL()D: \[UNKNOWN??\] DET*#CT)D!",
 		"ER)#R - B*@ TEXT F*O(ND!",
 		"AAS.exe is not responding. NanoOS is searching for a solution to the problem.")
-// SS1984 ADD END
+// Celadon ADD END
 
 /datum/aas_config_entry/researched_node
-	name = "Research Node Announcement"
+	name = "Science Alert: Research Node Announcement"
 	announcement_lines_map = list(
 		"Message" = "Узел %NODE был исследован")
 	vars_and_tooltips_map = list(
@@ -383,7 +411,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		"ERR)#R - B*@ TEXT F*O(ND!")
 
 /datum/aas_config_entry/arrivals_broken
-	name = "Arrivals Shuttle Malfunction Announcement"
+	name = "Engineering Alert: Arrivals Shuttle Malfunction Announcement"
 	announcement_lines_map = list(
 		"Message" = "Шаттл прибытия был поврежден. Происходит стыковка для ремонта...")
 	general_tooltip = "Broadcasted, when arrivals shuttle docks for repairs. No replacable variables provided."

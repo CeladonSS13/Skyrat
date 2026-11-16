@@ -9,6 +9,7 @@
 	resistance_flags = FIRE_PROOF
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	processing_flags = START_PROCESSING_MANUALLY
+	abstract_type = /obj/machinery/power/turbine
 
 	///The cached efficiency of this turbines installed part
 	var/efficiency = 0
@@ -95,7 +96,7 @@
 		. += span_notice("\The [installed_part] can be [EXAMINE_HINT("pried")] out.")
 	else
 		. += span_warning("Is missing a [initial(part_path.name)].")
-	. += span_notice("Its maintainence panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
+	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
 	if(panel_open)
 		. += span_notice("It can rotated with a [EXAMINE_HINT("wrench")]")
 		. += span_notice("The full machine can be [EXAMINE_HINT("pried")] apart")
@@ -188,9 +189,7 @@
 		return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/power/turbine/crowbar_act(mob/living/user, obj/item/tool)
-	. = ITEM_INTERACT_BLOCKING
-	if(default_deconstruction_crowbar(tool))
-		return ITEM_INTERACT_SUCCESS
+	return default_deconstruction_crowbar(user, tool)
 
 /obj/machinery/power/turbine/crowbar_act_secondary(mob/living/user, obj/item/tool)
 	. = ITEM_INTERACT_BLOCKING
@@ -699,7 +698,7 @@
 /datum/aas_config_entry/engineering_turbine_failure
 	name = "Engineering Alert: Turbine Failure"
 	announcement_lines_map = list(
-		"Message" = "Внимание, турбина в %LOCATION повреждена, текущая целостность %INTEGRITY%!",
+		"Message" = "Warning, turbine at %LOCATION taking damage, current integrity at %INTEGRITY%!",
 	)
 	vars_and_tooltips_map = list(
 		"LOCATION" = "will be replaced with location of the turbine.",

@@ -46,11 +46,11 @@
 
 /datum/antagonist/nukeop/leader/proc/ask_name()
 	var/randomname = pick(GLOB.last_names)
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	var/mob/living/carbon/carbon_mob = owner?.current
-	if (carbon_mob && carbon_mob.gender == "female") // SS1984 ADDITION
-		randomname = pick(GLOB.last_names_female) // SS1984 ADDITION
-	// SS1984 ADDITION END
+	if (carbon_mob && carbon_mob.gender == "female") // Celadon ADDITION
+		randomname = pick(GLOB.last_names_female) // Celadon ADDITION
+	// Celadon ADDITION END
 	var/newname = tgui_input_text(
 		owner.current,
 		"You are the nuclear operative [title]. Please choose a last name for your family.",
@@ -68,6 +68,7 @@
 	return capitalize(newname)
 
 /datum/antagonist/nukeop/leader/create_team(datum/team/nuclear/new_team)
+	spawn_infiltrator()
 	if(new_team)
 		return ..()
 	// Leaders always make new teams

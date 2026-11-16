@@ -27,6 +27,7 @@
 	datum/preferences/preference_source = GLOB.preference_entries_by_key[ckey],
 	visuals_only = FALSE,
 	datum/job/equipping_job,
+	allow_mechanical_loadout_items = TRUE,
 )
 	if (!preference_source)
 		equipOutfit(outfit, visuals_only) // no prefs for loadout items, but we should still equip the outfit.
@@ -40,64 +41,75 @@
 		equipped_outfit = outfit
 	else
 		CRASH("Outfit passed to equip_outfit_and_loadout was neither a path nor an instantiated type!")
-	// SS1984 ADDITION START
+	// Celadon ADDITION START
 	if (equipping_job && equipping_job.disable_all_loadout)
 		equipOutfit(equipped_outfit, visuals_only) // equip only outfit
 		regenerate_icons()
 		return TRUE
-	// SS1984 ADDITION END
+	// Celadon ADDITION END
 	var/override_preference = preference_source.read_preference(/datum/preference/choiced/loadout_override_preference)
 
-	var/list/loadout_entries = preference_source.read_preference(/datum/preference/loadout)
-	var/list/loadout_list = loadout_entries[preference_source.read_preference(/datum/preference/loadout_index)]
+	var/list/item_details = preference_source.read_preference(/datum/preference/loadout)
+	var/list/loadout_list = item_details[preference_source.read_preference(/datum/preference/loadout_index)]
 	var/list/loadout_datums = loadout_list_to_datums(loadout_list)
 	var/obj/item/storage/briefcase/empty/briefcase
-	// SS1984 REMOVAL OF ERP BOX START, END
+	var/obj/item/storage/box/erp/erpbox
+	var/erp_enabled = !CONFIG_GET(flag/disable_erp_preferences)
 	if(override_preference == LOADOUT_OVERRIDE_CASE && !visuals_only)
 		briefcase = new(loc)
 		for(var/datum/loadout_item/item as anything in loadout_datums)
-			// SS1984 REMOVAL OF ERP EDIT START
-			if (!item.can_be_applied_to(src, preference_source, equipping_job))
-				continue
-			new item.item_path(briefcase)
-			// SS1984 REMOVAL OF ERP EDIT END
+			if (erp_enabled && item.erp_box)
+				if (isnull(erpbox))
+					erpbox = new(loc)
+				new item.item_path(erpbox)
+			else
+				if (!item.can_be_applied_to(src, preference_source, equipping_job, allow_mechanical_loadout_items, visuals_only))
+					continue
+				new item.item_path(briefcase)
 
 		briefcase.name = "[preference_source.read_preference(/datum/preference/name/real_name)]'s travel suitcase"
 		equipOutfit(equipped_outfit, visuals_only)
-		put_in_hands(briefcase)
+		INVOKE_ASYNC(src, PROC_REF(put_in_hands), briefcase)
 	else
 		for(var/datum/loadout_item/item as anything in loadout_datums)
-			// SS1984 REMOVAL OF ERP EDIT START
-			if (!item.can_be_applied_to(src, preference_source, equipping_job))
-				continue
-			// Make sure the item is not overriding an important for life outfit item
-			var/datum/outfit/outfit_important_for_life = dna.species.outfit_important_for_life
-			if(!outfit_important_for_life || !item.pre_equip_item(equipped_outfit, outfit_important_for_life, src, visuals_only))
-				item.insert_path_into_outfit(equipped_outfit, src, visuals_only, override_preference)
-			// SS1984 REMOVAL OF ERP EDIT END
+			if (erp_enabled && item.erp_box)
+				if (isnull(erpbox))
+					erpbox = new(loc)
+				new item.item_path(erpbox)
+			else
+				if (!item.can_be_applied_to(src, preference_source, equipping_job, allow_mechanical_loadout_items, visuals_only))
+					continue
+
+				// Make sure the item is not overriding an important for life outfit item
+				var/datum/outfit/outfit_important_for_life = dna.species.outfit_important_for_life
+				if(!outfit_important_for_life || !item.pre_equip_item(equipped_outfit, outfit_important_for_life, src, visuals_only))
+					item.insert_path_into_outfit(equipped_outfit, src, visuals_only, override_preference)
 		equipOutfit(equipped_outfit, visuals_only)
 
 	var/list/new_contents = isnull(briefcase) ? get_all_gear() : briefcase.get_all_contents()
 
+	var/update = NONE
 	for(var/datum/loadout_item/item as anything in loadout_datums)
+		if(!item.is_equippable(src, item_details?[item.item_path] || list()))
+			loadout_datums -= item
+			continue
 		if(item.restricted_roles && equipping_job && !(equipping_job.title in item.restricted_roles))
 			continue
 
-		var/obj/item/equipped = locate(item.item_path) in new_contents
-		// SS1984 REMOVAL OF ERP START, END
-		for(var/atom/equipped_item in new_contents)
-			if(equipped_item.type == item.item_path)
-				equipped = equipped_item
-				break
+		var/obj/item/equipped
+		if(erpbox && item.erp_box)
+			equipped = locate(item.item_path) in erpbox
+		else
+			equipped = locate(item.item_path) in new_contents
 
 		if(isnull(equipped))
 			continue
 
-		item.on_equip_item(
+		update |= item.on_equip_item(
 			equipped_item = equipped,
-			preference_source = preference_source,
-			preference_list = loadout_list,
+			item_details = loadout_list?[item.item_path] || list(),
 			equipper = src,
+			outfit = equipped_outfit,
 			visuals_only = visuals_only,
 		)
 
@@ -105,9 +117,15 @@
 		var/obj/item/clothing/under/uniform = w_uniform
 		uniform?.attach_accessory(new /obj/item/clothing/accessory/green_pin(), src, FALSE)
 
-	// SS1984 REMOVAL OF ERP EDIT START
+	if (!isnull(erpbox))
+		if (!isnull(briefcase))
+			briefcase.contents += erpbox
+		else
+			erpbox.equip_to_best_slot(src)
 
-	regenerate_icons()
+	if(update)
+		update_clothing(update)
+
 	return TRUE
 
 // cyborgs can wear hats from loadout
@@ -126,10 +144,10 @@
  * equipping_job - The job that's being applied.
  */
 /mob/living/silicon/robot/proc/equip_outfit_and_loadout(datum/outfit/outfit, datum/preferences/preference_source = GLOB.preference_entries_by_key[ckey], visuals_only = FALSE, datum/job/equipping_job)
-	var/list/loadout_entries = preference_source.read_preference(/datum/preference/loadout)
-	var/list/loadout_datums = loadout_list_to_datums(loadout_entries[preference_source.read_preference(/datum/preference/loadout_index)])
+	var/list/item_details = preference_source.read_preference(/datum/preference/loadout)
+	var/list/loadout_datums = loadout_list_to_datums(item_details[preference_source.read_preference(/datum/preference/loadout_index)])
 	for (var/datum/loadout_item/head/item in loadout_datums)
-		if (!item.can_be_applied_to(src, preference_source, equipping_job))
+		if (!item.can_be_applied_to(src, preference_source, equipping_job, visuals_only))
 			continue
 		place_on_head(new item.item_path)
 		break

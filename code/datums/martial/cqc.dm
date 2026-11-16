@@ -50,20 +50,30 @@
 		return NONE
 	if(attack_type == PROJECTILE_ATTACK)
 		return NONE
-	if(!prob(block_chance))
+
+	var/blocking_text = "block"
+	var/blocking_text_s = "blocks"
+	var/potential_block_chance = block_chance
+
+	if(attack_type == OVERWHELMING_ATTACK)
+		blocking_text = "dodge"
+		blocking_text_s = "dodges"
+		potential_block_chance = clamp(round(potential_block_chance / (attack_type == OVERWHELMING_ATTACK ? 2 : 1), 1), 0, 100)
+
+	if(!prob(potential_block_chance))
 		return NONE
 
 	var/mob/living/attacker = GET_ASSAILANT(hitby)
 	if(istype(attacker) && cqc_user.Adjacent(attacker))
 		cqc_user.visible_message(
-			span_danger("[cqc_user] blocks [attack_text] and twists [attacker]'s arm behind [attacker.p_their()] back!"),
-			span_userdanger("You block [attack_text]!"),
+			span_danger("[cqc_user] [blocking_text_s] [attack_text] and twists [attacker]'s arm behind [attacker.p_their()] back!"),
+			span_userdanger("You [blocking_text] [attack_text]!"),
 		)
 		attacker.Stun(4 SECONDS)
 	else
 		cqc_user.visible_message(
-			span_danger("[cqc_user] blocks [attack_text]!"),
-			span_userdanger("You block [attack_text]!"),
+			span_danger("[cqc_user] [blocking_text_s] [attack_text]!"),
+			span_userdanger("You [blocking_text] [attack_text]!"),
 		)
 	return SUCCESSFUL_BLOCK
 
@@ -111,11 +121,11 @@
 	return TRUE
 
 /datum/martial_art/cqc/proc/Kick(mob/living/attacker, mob/living/defender)
-	if(defender.stat > SOFT_CRIT)
+	if(defender.stat != CONSCIOUS)
 		return FALSE
 
 	attacker.do_attack_animation(defender)
-	if(defender.body_position == LYING_DOWN && !defender.IsUnconscious() && defender.getStaminaLoss() >= 100)
+	if(defender.body_position == LYING_DOWN && !defender.IsUnconscious() && defender.get_stamina_loss() >= 100)
 		log_combat(attacker, defender, "knocked out (Head kick)(CQC)")
 		defender.visible_message(
 			span_danger("[attacker] kicks [defender]'s head, knocking [defender.p_them()] out!"),
@@ -130,7 +140,7 @@
 		var/helmet_protection = defender.run_armor_check(BODY_ZONE_HEAD, MELEE)
 		defender.apply_effect(20 SECONDS, EFFECT_KNOCKDOWN, helmet_protection)
 		defender.apply_effect(10 SECONDS, EFFECT_UNCONSCIOUS, helmet_protection)
-		defender.adjustOrganLoss(ORGAN_SLOT_BRAIN, 15, 150)
+		defender.adjust_organ_loss(ORGAN_SLOT_BRAIN, 15, 150)
 
 	else
 		defender.visible_message(
@@ -146,7 +156,7 @@
 		defender.throw_at(throw_target, 1, 14, attacker)
 		defender.apply_damage(10, attacker.get_attack_type())
 		if(defender.body_position == LYING_DOWN && !defender.IsUnconscious())
-			defender.adjustStaminaLoss(45)
+			defender.adjust_stamina_loss(45)
 		log_combat(attacker, defender, "kicked (CQC)")
 
 	return TRUE
@@ -162,14 +172,14 @@
 		attacker,
 	)
 	to_chat(attacker, span_danger("You punch [defender]'s neck!"))
-	defender.adjustStaminaLoss(60)
+	defender.adjust_stamina_loss(60)
 	playsound(attacker, 'sound/items/weapons/cqchit1.ogg', 50, TRUE, -1)
 	return TRUE
 
 /datum/martial_art/cqc/proc/Restrain(mob/living/attacker, mob/living/defender)
 	if(restraining_mob?.resolve())
 		return FALSE
-	if(defender.stat > SOFT_CRIT)
+	if(defender.stat != CONSCIOUS)
 		return FALSE
 
 	log_combat(attacker, defender, "restrained (CQC)")
@@ -181,14 +191,14 @@
 		attacker,
 	)
 	to_chat(attacker, span_danger("You lock [defender] into a restraining position!"))
-	defender.adjustStaminaLoss(20)
+	defender.adjust_stamina_loss(20)
 	defender.Stun(10 SECONDS)
 	restraining_mob = WEAKREF(defender)
 	addtimer(VARSET_CALLBACK(src, restraining_mob, null), 5 SECONDS, TIMER_UNIQUE)
 	return TRUE
 
 /datum/martial_art/cqc/proc/Consecutive(mob/living/attacker, mob/living/defender)
-	if(defender.stat > SOFT_CRIT)
+	if(defender.stat != CONSCIOUS)
 		return FALSE
 
 	attacker.do_attack_animation(defender)
@@ -205,7 +215,7 @@
 	var/obj/item/held_item = defender.get_active_held_item()
 	if(held_item && defender.temporarilyRemoveItemFromInventory(held_item))
 		attacker.put_in_hands(held_item)
-	defender.adjustStaminaLoss(50)
+	defender.adjust_stamina_loss(50)
 	defender.apply_damage(25, attacker.get_attack_type())
 	return TRUE
 
@@ -329,7 +339,7 @@
 		return MARTIAL_ATTACK_SUCCESS
 
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_DISARM)
-	if(prob(65) && (defender.stat <= SOFT_CRIT || !defender.IsParalyzed() || !restraining_mob?.resolve()))
+	if(prob(65) && (defender.stat == CONSCIOUS || !defender.IsParalyzed() || !restraining_mob?.resolve()))
 		var/obj/item/disarmed_item = defender.get_active_held_item()
 		if(disarmed_item && defender.temporarilyRemoveItemFromInventory(disarmed_item))
 			attacker.put_in_hands(disarmed_item)

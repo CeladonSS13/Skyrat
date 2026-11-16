@@ -77,6 +77,8 @@
 #define MODE_CUSTOM_SAY_ERASE_INPUT "erase_input"
 /// Message is being relayed through another object
 #define MODE_RELAY "relayed"
+/// Override the mob's name
+#define MODE_SPEAKER_NAME_OVERRIDE "speaker_name_override"
 
 //Spans. Robot speech, italics, etc. Applied in compose_message().
 #define SPAN_ROBOT "robot"
@@ -115,13 +117,14 @@
 #define FOLLOW_OR_TURF_LINK(alice, bob, turfy) "<a href=byond://?src=[REF(alice)];follow=[REF(bob)];x=[turfy.x];y=[turfy.y];z=[turfy.z]>(F)</a>"
 
 //Don't set this very much higher then 1024 unless you like inviting people in to dos your server with message spam
-#define MAX_MESSAGE_LEN 1024 // SS1984 REVERT BACK TO TG 1024 instead of 2048 nova's
+#define MAX_MESSAGE_LEN 1024 // Celadon REVERT BACK TO TG 1024 instead of 2048 nova's
 #define MAX_NAME_LEN 42
 #define MAX_BROADCAST_LEN 512
 #define MAX_CHARTER_LEN 80
 #define MAX_PLAQUE_LEN 144
 #define MAX_LABEL_LEN 64
 #define MAX_DESC_LEN 280
+#define MAX_AAS_LENGTH 168
 
 // Audio/Visual Flags. Used to determine what sense are required to notice a message.
 #define MSG_VISUAL (1<<0)
@@ -148,5 +151,10 @@
 #define BUBBLE_ICON_PRIORITY_ACCESSORY 2
 #define BUBBLE_ICON_PRIORITY_ORGAN 1
 
-/// Sent from /atom/movable/proc/compose_message() to find an honorific. Compatible with NAME_PART_INDEX: (list/stored_name, mob/living/carbon/carbon_human)
-#define COMSIG_ID_GET_HONORIFIC "id_get_honorific"
+//These are the names of the commands, what you'd need to type to do the command (also used in winset)
+#define VERB_SAY "Say"
+#define VERB_WHISPER "Whisper"
+#define VERB_ME "Me"
+//Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
+#define VERB_OOC "OOC"
+#define VERB_PRAY "Pray"

@@ -6,6 +6,7 @@
 	icon_state = "chemgun"
 	inhand_icon_state = "chemgun"
 	w_class = WEIGHT_CLASS_NORMAL
+	can_muzzle_flash = FALSE
 	throw_speed = 3
 	throw_range = 7
 	force = 4
@@ -30,7 +31,7 @@
 
 /obj/item/gun/chem/Initialize(mapload)
 	. = ..()
-	set_chambered(new /obj/item/ammo_casing/chemgun(src)) // SS1984 EDIT, original: chambered = new /obj/item/ammo_casing/chemgun(src)
+	set_chambered(new /obj/item/ammo_casing/chemgun(src)) // Celadon EDIT, original: chambered = new /obj/item/ammo_casing/chemgun(src)
 	START_PROCESSING(SSobj, src)
 	create_reagents(90, OPENCONTAINER)
 

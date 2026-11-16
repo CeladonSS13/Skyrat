@@ -1,5 +1,6 @@
 //Robots
 #define issynthetic(A) (is_species(A,/datum/species/synthetic))
+#define isholosynth(A) (is_species(A,/datum/species/synthetic/holosynth))
 //Actual Species
 #define isvox(A) (is_species(A,/datum/species/vox))
 #define isvoxprimalis(A) (is_species(A,/datum/species/vox_primalis))
@@ -32,4 +33,3 @@
 #define isfeline(A) (isfelinid(A) || istajaran(A) || HAS_TRAIT(A, TRAIT_FELINE))
 #define iscanine(A) (isvulpkanin(A) || HAS_TRAIT(A, TRAIT_CANINE))
 #define isavian(A) (isteshari(A) || isvox(A) || isvoxprimalis(A) || HAS_TRAIT(A, TRAIT_AVIAN))
-#define isxenmob(A) (istype(A, /mob/living/simple_animal/hostile/blackmesa/xen))

@@ -18,19 +18,18 @@ SUBSYSTEM_DEF(economy)
 										ACCOUNT_INT = ACCOUNT_INT_NAME,
 										ACCOUNT_TI = ACCOUNT_TI_NAME,
 										// NOVA EDIT ADDITION END
+										//CELADON ADD START
+										ACCOUNT_CCD = ACCOUNT_CCD_NAME,
+										ACCOUNT_NTS = ACCOUNT_NTS_NAME,
+										//CELADON ADD END
 										ACCOUNT_SEC = ACCOUNT_SEC_NAME)
 	var/list/departmental_accounts = list()
-	/**
-	 * Enables extra money charges for things that normally would be free, such as sleepers/cryo/beepsky.
-	 * Take care when enabling, as players will NOT respond well if the economy is set up for low cash flows.
-	 */
-	var/full_ancap = FALSE
 
 	/// Departmental cash provided to science when a node is researched in specific configs.
 	var/techweb_bounty = 250
 	/**
 	  * List of normal (no department ones) accounts' identifiers with associated datum accounts, for big O performance.
-	  * A list of sole account datums can be obtained with flatten_list(), another variable would be redundant rn.
+	  * A list of sole account datums can be obtained with assoc_to_values(), another variable would be redundant rn.
 	  */
 	var/list/bank_accounts_by_id = list()
 	/// A list of bank accounts indexed by their assigned job typepath.
@@ -80,8 +79,10 @@ SUBSYSTEM_DEF(economy)
 	if(time2text(world.timeofday, "DDD") == SUNDAY)
 		mail_blocked = TRUE
 	for(var/dep_id in department_accounts)
-		if(dep_id == ACCOUNT_CAR) //cargo starts with NOTHING
-			new /datum/bank_account/department(dep_id, 0, player_account = FALSE)
+//		if(dep_id == ACCOUNT_CAR) //cargo starts with NOTHING	//CELADON REMOVE START
+//			new /datum/bank_account/department(dep_id, 0, player_account = FALSE)	//CELADON REMOVE END
+		if(dep_id == ACCOUNT_NTS) //station budget starts with 5000 cr, CELADON ADD START
+			new /datum/bank_account/department(dep_id, 5000, player_account = FALSE)	//CELADON ADD END
 			continue
 		new /datum/bank_account/department(dep_id, budget_to_hand_out, player_account = FALSE)
 	return SS_INIT_SUCCESS
@@ -132,7 +133,7 @@ SUBSYSTEM_DEF(economy)
 /**
  * Handy proc for obtaining a department's bank account, given the department ID, AKA the define assigned for what department they're under.
  */
-/datum/controller/subsystem/economy/proc/get_dep_account(dep_id)
+/datum/controller/subsystem/economy/proc/get_dep_account(dep_id) as /datum/bank_account/department
 	for(var/datum/bank_account/department/D in departmental_accounts)
 		if(D.department_id == dep_id)
 			return D
@@ -148,6 +149,8 @@ SUBSYSTEM_DEF(economy)
 		var/datum/bank_account/dept_account = get_dep_account(cached_processing[i])
 		if(!dept_account)
 			continue
+		if(dept_account.account_holder == ACCOUNT_NTS_NAME)	//CELADON ADD START - station account wont get moneys
+			continue	//CELADON ADD END
 		dept_account.adjust_money(MAX_GRANT_DPT)
 		if(MC_TICK_CHECK)
 			cached_processing.Cut(1, i + 1)
@@ -163,7 +166,7 @@ SUBSYSTEM_DEF(economy)
 		var/datum/bank_account/bank_account = cached_processing[cached_processing[i]]
 		if(bank_account?.account_job && !ispath(bank_account.account_job))
 			temporary_total += (bank_account.account_job.paycheck * STARTING_PAYCHECKS)
-		bank_account.payday(1)
+		bank_account.payday(1, skippable = TRUE)
 		station_total += bank_account.account_balance
 		if(MC_TICK_CHECK)
 			cached_processing.Cut(1, i + 1)
@@ -179,9 +182,9 @@ SUBSYSTEM_DEF(economy)
 		fluff_string = ", but company countermeasures protect <b>YOU</b> from being affected!"
 	else
 		fluff_string = ", and company countermeasures are failing to protect <b>YOU</b> from being affected. We're all doomed!"
-	earning_report = "<b>Sector Economic Report</b><br><br> Sector vendor prices is currently at <b>[SSeconomy.inflation_value()*100]%</b>[fluff_string]<br><br> The station spending power is currently <b>[station_total] Credits</b>, and the crew's targeted allowance is at <b>[station_target] Credits</b>.<br><br>[SSstock_market.news_string]"
+	earning_report = "<b>Sector Economic Report</b><br><br> Sector vendor prices is currently at <b>[SSeconomy.inflation_value()*100]%</b>[fluff_string]<br><br> The station spending power is currently <b>[station_total] [MONEY_NAME_CAPITALIZED]</b>, and the crew's targeted allowance is at <b>[station_target] [MONEY_NAME_CAPITALIZED]</b>.<br><br>[SSstock_market.news_string]"
 	var/update_alerts = FALSE
-	if(HAS_TRAIT(SSstation, STATION_TRAIT_ECONOMY_ALERTS))
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_ECONOMY_ALERTS) && (living_player_count() > 1))
 		var/datum/bank_account/moneybags
 		var/static/list/typecache_bank = typecacheof(list(/datum/bank_account/department, /datum/bank_account/remote))
 		for(var/i in bank_accounts_by_id)
@@ -191,7 +194,7 @@ SUBSYSTEM_DEF(economy)
 			if(!moneybags || moneybags.account_balance < current_acc.account_balance)
 				moneybags = current_acc
 		if (moneybags)
-			earning_report += "Our GMM Spotlight would like to alert you that <b>[moneybags.account_holder]</b> is your station's most affulent crewmate! They've hit it big with [moneybags.account_balance] credits saved. "
+			earning_report += "Our GMM Spotlight would like to alert you that <b>[moneybags.account_holder]</b> is your station's most affulent crewmate! They've hit it big with [moneybags.account_balance] [MONEY_NAME] saved. "
 			update_alerts = TRUE
 			inflict_moneybags(moneybags)
 	earning_report += "That's all from the <i>Nanotrasen Economist Division</i>."
@@ -220,14 +223,15 @@ SUBSYSTEM_DEF(economy)
  * * price_to_use: The cost of the purchase made for this transaction.
  * * vendor: The object or structure medium that is charging the user. For Vending machines that's the machine, for payment component that's the parent, cargo that's the crate, etc.
  */
-/datum/controller/subsystem/economy/proc/track_purchase(datum/bank_account/account, price_to_use, vendor)
-	if(!account || isnull(price_to_use) || !vendor)
+/datum/controller/subsystem/economy/proc/add_audit_entry(datum/bank_account/account, price_to_use, vendor)
+	if(isnull(account) || isnull(price_to_use) || !vendor)
 		CRASH("Track purchases was missing an argument! (Account, Price, or Vendor.)")
 
 	audit_log += list(list(
 		"account" = "[account.account_holder]",
 		"cost" = price_to_use,
-		"vendor" = "[vendor]",
+		"vendor" = "[astype(vendor, /atom)?.name || vendor]",
+		"stationtime" = round_timestamp("hh:mm"),
 	))
 
 /**
@@ -280,8 +284,8 @@ SUBSYSTEM_DEF(economy)
 			premium_record.price = premium_custom_price || extra_price
 
 /datum/controller/subsystem/economy/proc/inflict_moneybags(datum/bank_account/moneybags)
-	return FALSE // SS1984 ADDITION
-	// SS1984 REMOVAL START
+	return FALSE // Celadon ADDITION
+	// Celadon REMOVAL START
 	// if(!moneybags)
 	// 	return FALSE
 	// var/mob/living/card_holder
@@ -292,7 +296,7 @@ SUBSYSTEM_DEF(economy)
 	// 	return FALSE
 	// card_holder.adjust_timed_status_effect(wait, /datum/status_effect/spotlight_light)
 	// return TRUE
-	// SS1984 REMOVAL END
+	// Celadon REMOVAL END
 
 #undef ECON_DEPARTMENT_STEP
 #undef ECON_ACCOUNT_STEP

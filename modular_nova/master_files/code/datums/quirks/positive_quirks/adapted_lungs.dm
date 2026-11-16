@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(possible_adapted_lungs, list(
 	desc = "Your lungs have adapted to be resistant to certain atmospheric conditions, at the cost of being more vulnerable to others."
 	medical_record_text = "Patient has abnormal lungs." // this gets overwritten
 	icon = FA_ICON_WIND
-	value = 2
+	value = 0
 	/// the choice of lungs the player has selected
 	var/desired_lungs
 
@@ -191,7 +191,7 @@ GLOBAL_LIST_INIT(possible_adapted_lungs, list(
 	if (!..())
 		return FALSE
 
-	return "Adapted Lungs" in preferences.all_quirks
+	return /datum/quirk/adapted_lungs::name in preferences.all_quirks
 
 /datum/preference/choiced/adapted_lungs/apply_to_human(mob/living/carbon/human/target, value)
 	return

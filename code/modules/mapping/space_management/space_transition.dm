@@ -108,7 +108,7 @@
 	var/list/y_pos_transition = list(TRANSITIONEDGE + 2, inner_max_y - 1, 1, 1) //values of y for the transition from respective blocks on the side of zlevel, 1 is being translated into turfs respective y value later in the code
 
 	// Cache the range passed to the mirage border element, to reduce world var access in the thousands
-	var/range_cached = world.view
+	var/range_cached = (maxviewdist() - 1) / 2
 
 	for(var/datum/space_level/level as anything in cached_z_list)
 		if(!level.neigbours.len)
@@ -161,7 +161,8 @@
 		point.set_neigbours(grid, grid_diameter)
 
 	var/center = round(grid_diameter / 2)
-	point = grid[CHORDS_TO_1D(grid_diameter, center, center)]
+	if(transition_levels.len)
+		point = grid[CHORDS_TO_1D(center, center, grid_diameter)]
 	grid.Cut()
 
 	var/list/transition_pick = transition_levels.Copy()

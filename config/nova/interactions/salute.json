@@ -1,10 +1,10 @@
 {
-	"name": "Salute",
-	"description": "Snap to a salute, perhaps to show respect for the Captain.",
+	"name": "Салют",
+	"description": "Отдать честь.",
 	"usage": "self",
 	"category": "Miscellaneous",
 	"distance_allowed": 1,
-	"message": ["%USER% snaps to a salute!"],
+	"message": ["%USER% салютует!"],
 	"sound_use": 0,
 	"sound_possible": [],
 	"sound_range": 7,

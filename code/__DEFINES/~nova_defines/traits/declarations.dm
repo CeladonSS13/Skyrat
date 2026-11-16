@@ -33,6 +33,10 @@
 #define TRAIT_HYDRA_HEADS "hydrahead"
 /// Trait to spawn with a pet in a pet carrier (veteran only)
 #define TRAIT_PET_OWNER "pet_owner"
+/// Trait to spawn with a lunch box!
+#define TRAIT_LUNCHBOX_OWNER "lunchbox_owner"
+/// Trait used to block telepathy types (Genetics, Xenomorph, Revenant, Slime. Ideally should be all.)
+#define TRAIT_PSIONIC_DAMPENER "psionic_dampener"
 
 //AdditionalEmotes *turf traits
 #define TRAIT_WATER_ASPECT "water_aspect"
@@ -103,9 +107,6 @@
 
 /// trait that lets you do flips with a style meter
 #define TRAIT_STYLISH "stylish"
-
-/// trait that lets you do xenoarch magnification
-#define TRAIT_XENOARCH_QUALIFIED "trait_xenoarch_qualified"
 
 /// Traits granted by glassblowing
 #define TRAIT_GLASSBLOWING "glassblowing"
@@ -179,5 +180,14 @@
 
 ///Insanity trait for Reality Dissociation Syndrome (to make it easier to work with)
 #define TRAIT_INSANITY "insanity"
+
+/// Skillchip trait that lets the player expertly brush or cut hair faster
+#define TRAIT_HAIR_EXPERT "hair_expert"
+
+/// Trait for quirk: Illuminated
+#define TRAIT_COSGLOW "cosmetic_glow"
+
+/// The trait for Holosynths
+#define TRAIT_HOLOSYNTH "holosynthetic"
 
 // END TRAIT DEFINES

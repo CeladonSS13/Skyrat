@@ -9,8 +9,6 @@ GLOBAL_PROTECT(href_token)
 #define RESULT_2FA_VALID 1
 #define RESULT_2FA_ID 2
 
-GENERAL_PROTECT_DATUM(/datum/admins) // SS1984 ADDITION
-
 /datum/admins
 	var/list/datum/admin_rank/ranks
 
@@ -34,12 +32,14 @@ GENERAL_PROTECT_DATUM(/datum/admins) // SS1984 ADDITION
 
 	var/deadmined
 
-	var/datum/filter_editor/filteriffic
+	var/datum/filter_editor/filterrific
 	var/datum/particle_editor/particle_test
 	var/datum/colorblind_tester/color_test
 	var/datum/plane_master_debug/plane_debug
 	var/obj/machinery/computer/libraryconsole/admin_only_do_not_map_in_you_fucker/library_manager
 	var/datum/pathfind_debug/path_debug
+	var/datum/spawn_menu/spawn_menu
+	var/datum/spawnpanel/spawn_panel
 
 	/// Whether or not the user tried to connect, but was blocked by 2FA
 	var/blocked_by_2fa = FALSE
@@ -158,8 +158,7 @@ GENERAL_PROTECT_DATUM(/datum/admins) // SS1984 ADDITION
 	remove_verb(owner, /client/proc/readmin)
 	owner.init_verbs() //re-initialize the verb list
 	owner.update_special_keybinds()
-	if(check_for_rights(R_ADMIN))
-		GLOB.admins |= client
+	GLOB.admins |= client
 
 	try_give_profiling()
 

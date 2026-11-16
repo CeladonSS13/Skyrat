@@ -35,10 +35,12 @@
 
 /obj/machinery/computer/records/security/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
-	AddComponent(/datum/component/usb_port, list(
-		/obj/item/circuit_component/arrest_console_data,
-		/obj/item/circuit_component/arrest_console_arrest,
-	))
+	AddComponent(/datum/component/usb_port, \
+		typecacheof(list(
+			/obj/item/circuit_component/arrest_console_data,
+			/obj/item/circuit_component/arrest_console_arrest,
+		), only_root_path = TRUE) \
+	)
 
 /obj/machinery/computer/records/security/emp_act(severity)
 	. = ..()
@@ -193,10 +195,41 @@
 			var/wanted_status = params["status"]
 			if(!wanted_status || !(wanted_status in WANTED_STATUSES()))
 				return FALSE
-			if(wanted_status == WANTED_ARREST && !length(target.crimes))
+
+			// Celadon ADDITION START
+			var/reason_text = tgui_input_text(user, "Comment:", "Add comment", "", MAX_DESC_LEN, encode = FALSE)
+			if(isnull(reason_text))
 				return FALSE
 
-			investigate_log("[target.name] has been set from [target.wanted_status] to [wanted_status] by [key_name(usr)].", INVESTIGATE_RECORDS)
+			var/found_rank
+			var/found_name
+			var/mob/living/carbon/human/human_user = user
+			if (human_user)
+				var/obj/item/id_slot = human_user.get_item_by_slot(ITEM_SLOT_ID)
+				if(id_slot)
+					var/id_card = id_slot?.GetID()
+					if(id_card)
+						var/retrieved_job = retrieve_relevant_job(human_user, id_card, TRUE)
+						if (!retrieved_job)
+							retrieved_job = retrieve_relevant_job(human_user, id_card, FALSE)
+						if (retrieved_job)
+							found_rank = retrieved_job
+						var/obj/item/card/id/id_card_casted = id_card
+						if (id_card_casted)
+							found_name = id_card_casted.registered_name
+			if (!found_name)
+				found_name = "Unknown"
+
+			var/datum/crime/new_crime = new(author = "SecHUD", details = "Set status from [target.wanted_status] to [wanted_status] by [found_name][found_rank ? " ([found_rank])" : ""]. Comment: [reason_text]")
+			target.crimes += new_crime
+			investigate_log("SecHUD status change for [target.name] from [target.wanted_status] to [wanted_status] by [key_name(human_user)]. Comment: [reason_text]", INVESTIGATE_RECORDS)
+			// Celadon ADDITION END
+			// Celadon REMOVAL START
+			// if(wanted_status == WANTED_ARREST && !length(target.crimes))
+			// 	return FALSE
+
+			// investigate_log("[target.name] has been set from [target.wanted_status] to [wanted_status] by [key_name(usr)].", INVESTIGATE_RECORDS)
+			// Celadon REMOVAL END
 			target.wanted_status = wanted_status
 
 			update_matching_security_huds(target.name)
@@ -215,7 +248,7 @@
 
 	var/max = CONFIG_GET(number/maxfine)
 	if(params["fine"] > max)
-		to_chat(usr, span_warning("The maximum fine is [max] credits."))
+		to_chat(usr, span_warning("The maximum fine is [max] [MONEY_NAME]."))
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 75, TRUE)
 		return FALSE
 
@@ -237,7 +270,7 @@
 	var/datum/crime/citation/new_citation = new(name = input_name, details = input_details, author = usr, fine = params["fine"])
 
 	target.citations += new_citation
-	new_citation.alert_owner(user, src, target.name, "You have been issued a [params["fine"]]cr citation for [input_name]. Fines are payable at Security.")
+	new_citation.alert_owner(user, src, target.name, "You have been issued a [params["fine"]][MONEY_SYMBOL] citation for [input_name]. Fines are payable at Security.")
 	investigate_log("New Citation: <strong>[input_name]</strong> Fine: [params["fine"]] | Added to [target.name] by [key_name(user)]", INVESTIGATE_RECORDS)
 	SSblackbox.ReportCitation(REF(new_citation), user.ckey, user.real_name, target.name, input_name, input_details, params["fine"])
 
@@ -391,7 +424,6 @@
 	addtimer(CALLBACK(src, PROC_REF(print_finish), printable), 2 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 	return TRUE
-
 
 /**
  * Security circuit component

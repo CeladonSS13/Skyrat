@@ -1,17 +1,19 @@
 // THIS IS A NOVA SECTOR UI FILE
 import {
   CheckboxInput,
-  Feature,
-  FeatureChoiced,
-  FeatureChoicedServerData,
+  type Feature,
+  type FeatureChoiced,
+  type FeatureChoicedServerData,
   FeatureColorInput,
+  type FeatureNumeric,
   FeatureNumberInput,
   FeatureShortTextInput,
+  FeatureSliderInput,
   FeatureTextInput,
-  FeatureToggle,
+  type FeatureToggle,
   FeatureTriBoolInput,
   FeatureTriColorInput,
-  FeatureValueProps,
+  type FeatureValueProps,
 } from '../../base';
 import { FeatureDropdownInput } from '../../dropdowns';
 
@@ -40,7 +42,11 @@ export const flavor_text: Feature<string> = {
   component: FeatureTextInput,
 };
 
-// SS1984 REMOVAL OF ERP FLAVOR START, END
+export const flavor_text_nsfw: Feature<string> = {
+  name: 'Flavor Text (NSFW)',
+  description: 'Same as Flavor Text but requires you to click a tab to view.',
+  component: FeatureTextInput,
+};
 
 export const silicon_flavor_text: Feature<string> = {
   name: 'Flavor Text (Silicon)',
@@ -49,7 +55,12 @@ export const silicon_flavor_text: Feature<string> = {
   component: FeatureTextInput,
 };
 
-// SS1984 REMOVAL OF ERP FLAVOR START, END
+export const silicon_flavor_text_nsfw: Feature<string> = {
+  name: 'Flavor Text (Silicon, NSFW)',
+  description:
+    'Same as Silicon Flavor Text but requires you to click a tab to view.',
+  component: FeatureTextInput,
+};
 
 export const ooc_notes: Feature<string> = {
   name: 'OOC Notes',
@@ -58,7 +69,11 @@ export const ooc_notes: Feature<string> = {
   component: FeatureTextInput,
 };
 
-// SS1984 REMOVAL OF ERP NOTES START, END
+export const ooc_notes_nsfw: Feature<string> = {
+  name: 'OOC Notes (NSFW)',
+  description: 'Same as OOC Notes but requires you to click a tab to view.',
+  component: FeatureTextInput,
+};
 
 export const character_ad: Feature<string> = {
   name: 'Character Advert',
@@ -168,6 +183,15 @@ export const allow_emissives_toggle: FeatureToggle = {
 export const eye_emissives: FeatureToggle = {
   name: 'Eye Emissives',
   description: 'Emissive parts glow in the dark.',
+  component: CheckboxInput,
+};
+
+export const skin_tone_toggle: FeatureToggle = {
+  name: 'Skin Tone',
+  description:
+    'If we should use skin tones (an array of options \
+    close to human natural skin colors) or mutant \
+    colors (free color selection).',
   component: CheckboxInput,
 };
 
@@ -485,12 +509,12 @@ export const fluff_emissive: Feature<boolean[]> = {
 };
 
 export const head_acc_toggle: FeatureToggle = {
-  name: 'Head Accessories',
+  name: 'Head Accessory',
   component: CheckboxInput,
 };
 
 export const feature_head_acc: Feature<string> = {
-  name: 'Head Accessories Selection',
+  name: 'Head Accessory Selection',
   component: (
     props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
@@ -499,12 +523,12 @@ export const feature_head_acc: Feature<string> = {
 };
 
 export const head_acc_color: Feature<string[]> = {
-  name: 'Head Accessories Colors',
+  name: 'Head Accessory Colors',
   component: FeatureTriColorInput,
 };
 
 export const head_acc_emissive: Feature<boolean[]> = {
-  name: 'Head Accessories Emissives',
+  name: 'Head Accessory Emissives',
   description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
@@ -597,13 +621,19 @@ export const feature_hair_opacity: Feature<number> = {
   component: FeatureNumberInput,
 };
 
+export const hair_emissive: Feature<boolean> = {
+  name: 'Hair Emissive',
+  description: 'Emissive parts glow in the dark.',
+  component: CheckboxInput,
+};
+
 export const neck_acc_toggle: FeatureToggle = {
-  name: 'Neck Accessories',
+  name: 'Neck Accessory',
   component: CheckboxInput,
 };
 
 export const feature_neck_acc: Feature<string> = {
-  name: 'Neck Accessories Selection',
+  name: 'Neck Accessory Selection',
   component: (
     props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
@@ -612,12 +642,12 @@ export const feature_neck_acc: Feature<string> = {
 };
 
 export const neck_acc_color: Feature<string[]> = {
-  name: 'Neck Accessories Colors',
+  name: 'Neck Accessory Colors',
   component: FeatureTriColorInput,
 };
 
 export const neck_acc_emissive: Feature<boolean[]> = {
-  name: 'Neck Accessories Emissives',
+  name: 'Neck Accessory Emissives',
   component: FeatureTriBoolInput,
 };
 
@@ -674,7 +704,7 @@ export const taur_emissive: Feature<boolean[]> = {
 export const naga_sole: FeatureToggle = {
   name: 'Taur (Naga) disable hardened soles',
   description:
-    'If using a serpentine taur body, determines if you are immune to caltrops and a few other effects of being barefoot.',
+    'If using a serpentine or fishlike taur body, determines if you are immune to caltrops and a few other effects of being barefoot.',
   component: CheckboxInput,
 };
 
@@ -780,5 +810,23 @@ export const pod_hair_color: Feature<string[]> = {
 export const pod_hair_emissive: Feature<boolean> = {
   name: 'Floral Hair Emissive',
   description: 'Emissive parts glow in the dark.',
+  component: CheckboxInput,
+};
+
+export const holo_color: Feature<string> = {
+  name: 'Holosynth Color',
+  component: FeatureColorInput,
+};
+
+export const holo_transparency: FeatureNumeric = {
+  name: 'Holosynth Transparency',
+  description:
+    'How solid your hologram appears. 60 = most see-through, 100 = fully solid.',
+  component: FeatureSliderInput,
+};
+
+export const holo_scanline: Feature<boolean> = {
+  name: 'Holosynth Scanline Flicker',
+  description: 'Renders a faint scanline flicker across your body (not visible until you spawn).',
   component: CheckboxInput,
 };

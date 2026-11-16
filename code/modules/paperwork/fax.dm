@@ -160,10 +160,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
  * Open and close the wire panel.
  */
 /obj/machinery/fax/screwdriver_act(mob/living/user, obj/item/screwdriver)
-	. = ..()
-	default_deconstruction_screwdriver(user, icon_state, icon_state, screwdriver)
-	update_appearance()
-	return TRUE
+	return default_deconstruction_screwdriver(user, screwdriver)
 
 /**
  * Using the multi-tool with the panel closed causes the fax network name to be renamed.
@@ -328,7 +325,16 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 
 			GLOB.requests.fax_request(usr.client, "sent a fax message from [fax_name]/[fax_id] to [params["name"]]", list("paper" = fax_paper, "destination_id" = params["id"], "sender_name" = fax_name))
 			to_chat(GLOB.admins,
-				span_adminnotice("[icon2html(src.icon, GLOB.admins)]<b><font color=green>FAX REQUEST: </font>[ADMIN_FULLMONTY(usr)]:</b> [span_linkify("sent a fax message from [fax_name]/[fax_id][ADMIN_FLW(src)] to [html_encode(params["name"])]")] [ADMIN_SHOW_PAPER(fax_paper)] [ADMIN_PRINT_FAX(fax_paper, fax_name, params["id"])]"),
+				// Celadon REMOVAL span_adminnotice("[icon2html(src.icon, GLOB.admins)]<b><font color=green>FAX REQUEST: </font>[ADMIN_FULLMONTY(usr)]:</b> [span_linkify("sent a fax message from [fax_name]/[fax_id][ADMIN_FLW(src)] to [html_encode(params["name"])]")] [ADMIN_SHOW_PAPER(fax_paper)] [ADMIN_PRINT_FAX(fax_paper, fax_name, params["id"])]"),
+				// Celadon ADDITION START
+				span_adminnotice("[icon2html(src.icon, GLOB.admins)] \
+					<b><font color=green>FAX REQUEST: </font>[ADMIN_FULLMONTY(usr)]:</b> \
+					[span_linkify("sent a fax message from [fax_name]/[fax_id][ADMIN_FLW(src)] \
+					to [html_encode(params["name"])]")] \
+					[ADMIN_SHOW_PAPER(fax_paper)] \
+					[ADMIN_PRINT_FAX(fax_paper, fax_name, params["id"])] \
+					[ADMIN_REPLY_FAX(src)]"),
+				// Celadon ADDITION END
 				type = MESSAGE_TYPE_PRAYER,
 				confidential = TRUE)
 			for(var/client/staff as anything in GLOB.admins)
@@ -480,7 +486,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 	var/list/history_data = list()
 	history_data["history_type"] = history_type
 	history_data["history_fax_name"] = history_fax_name
-	history_data["history_time"] = station_time_timestamp()
+	history_data["history_time"] = round_timestamp()
 	fax_history += list(history_data)
 
 /// Clears the history of fax operations.
@@ -500,21 +506,12 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 			return TRUE
 	return FALSE
 
-/**
- * Attempts to shock the passed user, returns true if they are shocked.
- *
- * Arguments:
- * * user - the user to shock
- * * chance - probability the shock happens
- */
-/obj/machinery/fax/proc/shock(mob/living/user, chance)
-	if(!istype(user) || machine_stat & (BROKEN|NOPOWER))
+/obj/machinery/fax/shock(mob/living/shocking, chance = 100, shock_source, siemens_coeff = 1)
+	if( machine_stat & (BROKEN|NOPOWER))
 		return FALSE
-	if(!prob(chance))
-		return FALSE
-	do_sparks(5, TRUE, src)
-	var/check_range = TRUE
-	return electrocute_mob(user, get_area(src), src, 0.7, check_range)
+	if(isnull(siemens_coeff))
+		siemens_coeff = 0.7
+	return ..()
 
 
 /obj/machinery/fax/add_context(atom/source, list/context, obj/item/held_item, mob/user)

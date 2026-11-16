@@ -1,0 +1,22 @@
+name: Celadon PR label blocker
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - labeled
+      - unlabeled
+
+
+jobs:
+  do-not-merge:
+    name: do-not-merge
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Fail if labeled 'do-not-merge'
+        if: contains(github.event.pull_request.labels.*.name, 'do-not-merge')
+        run: |
+          echo "::error::PR is labeled 'do-not-merge' — merging is blocked."
+          exit 1

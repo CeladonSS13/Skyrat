@@ -1,13 +1,14 @@
 import type { BooleanLike } from 'tgui-core/react';
 
 export type CargoData = {
-  amount_by_name: Record<string, number> | undefined;
   app_cost?: number;
   away: BooleanLike;
   can_approve_requests: BooleanLike;
   can_send: BooleanLike;
   cart: CartEntry[];
   department: string;
+  displayed_currency_full_name: string;
+  displayed_currency_name: string;
   docked: BooleanLike;
   grocery: number;
   loan_dispatched: BooleanLike;
@@ -20,7 +21,6 @@ export type CargoData = {
   requestonly: BooleanLike;
   self_paid: BooleanLike;
   supplies: Record<string, SupplyCategory>;
-  current_plasma_cost: number; // SS1984 ADDITION
 };
 
 export type SupplyCategory = {
@@ -66,5 +66,6 @@ type Request = {
   id: string;
   object: string;
   orderer: string;
+  account: string;
   reason: string;
 };

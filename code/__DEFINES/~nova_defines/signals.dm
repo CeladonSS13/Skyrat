@@ -74,9 +74,6 @@
 /// when someone attempts to evolve through the rune
 #define COMSIG_RUNE_EVOLUTION "rune_evolution"
 
-/// To chambered round on gun's `process_fire()`: (list/iff_factions)
-#define COMSIG_CHAMBERED_BULLET_FIRE "chambered_bullet_fire"
-
 /// /datum/component/clockwork_trap signals: ()
 #define COMSIG_CLOCKWORK_SIGNAL_RECEIVED "clock_received"
 
@@ -112,3 +109,6 @@
 
 /// When a gun's safety is toggled.
 #define COMSIG_GUN_SAFETY_TOGGLED "gun_safety_toggled"
+
+/// Signal sent whenever a gun with a barrel booster toggles its barrel booster.
+#define COMSIG_GUN_BOOSTER_TOGGLED "gun_booster_toggled"

@@ -2,8 +2,7 @@ name: 'Merge Conflict Detection'
 on:
   push:
     branches:
-      - master220
-      - 'project/**'
+      - master
   pull_request_target:
     types: [ready_for_review, opened, synchronize, reopened]
 jobs:
@@ -12,7 +11,7 @@ jobs:
       contents: read
       pull-requests: write
       issues: write
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: eps1lon/actions-label-merge-conflict@v2.1.0
         with:

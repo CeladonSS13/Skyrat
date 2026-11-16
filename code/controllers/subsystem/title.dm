@@ -1,7 +1,7 @@
-/* NOVA EDIT REMOVAL
+/* // NOVA EDIT REMOVAL START - SEE: modular_nova\modules\title_screen\code\title_screen_subsystem.dm
 SUBSYSTEM_DEF(title)
 	name = "Title Screen"
-	flags = SS_NO_FIRE
+	ss_flags = SS_NO_FIRE
 	init_stage = INITSTAGE_EARLY
 	var/file_path
 	var/icon/icon
@@ -67,4 +67,4 @@ SUBSYSTEM_DEF(title)
 	splash_turf = SStitle.splash_turf
 	file_path = SStitle.file_path
 	previous_icon = SStitle.previous_icon
-*/
+*/ // NOVA EDIT REMOVAL END

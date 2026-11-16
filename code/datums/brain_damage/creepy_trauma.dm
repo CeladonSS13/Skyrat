@@ -2,6 +2,9 @@
 	name = "Psychotic Schizophrenia"
 	desc = "Patient has a subtype of delusional disorder, becoming irrationally attached to someone."
 	scan_desc = "psychotic schizophrenic delusions"
+	symptoms = "Exhibits obsessive behaviors towards a specific individual, \
+		including frequent staring, intrusive thoughts, and an overwhelming desire to be near them. \
+		This obsession can lead to social withdrawal, anxiety, and impaired daily functioning."
 	gain_text = "If you see this message, make a github issue report. The trauma initialized wrong."
 	lose_text = span_warning("The voices in your head fall silent.")
 	can_gain = TRUE
@@ -34,8 +37,9 @@
 	antagonist.greet()
 	log_game("[key_name(antagonist)] has developed an obsession with [key_name(obsession)].")
 	RegisterSignal(owner, COMSIG_CARBON_HELPED, PROC_REF(on_hug))
+	owner.apply_status_effect(/datum/status_effect/desensitized, REF(src), DESENSITIZED_THRESHOLD)
 
-/datum/brain_trauma/special/obsessed/on_life(seconds_per_tick, times_fired)
+/datum/brain_trauma/special/obsessed/on_life(seconds_per_tick)
 	if(!obsession || obsession.stat == DEAD)
 		viewing = FALSE//important, makes sure you no longer stutter when happy if you murdered them while viewing
 		return
@@ -71,6 +75,7 @@
 	if(obsession)
 		log_game("[key_name(owner)] is no longer obsessed with [key_name(obsession)].")
 		UnregisterSignal(obsession, COMSIG_MOB_EYECONTACT)
+	owner.remove_status_effect(/datum/status_effect/desensitized, REF(src))
 
 /datum/brain_trauma/special/obsessed/handle_speech(datum/source, list/speech_args)
 	if(!viewing)
@@ -102,7 +107,7 @@
 		if(41 to 80)
 			INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), "pale")
 			shake_camera(owner, 15, 1)
-			owner.adjustStaminaLoss(70)
+			owner.adjust_stamina_loss(70)
 			to_chat(owner, span_userdanger("You feel your heart lurching in your chest..."))
 		if(81 to 100)
 			INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), "cough")
@@ -131,7 +136,7 @@
 	var/list/special_pool = list() //The special list, for quirk-based
 	var/chosen_victim  //The obsession target
 
-	// SS1984 REMOVAL var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // NOVA EDIT ADDITION - ANTAG OPT-IN
+	// Celadon REMOVAL var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // NOVA EDIT ADDITION - ANTAG OPT-IN
 	for(var/mob/player as anything in GLOB.player_list)//prevents crew members falling in love with nuke ops they never met, and other annoying hijinks
 		if(!player.client || !player.mind || isnewplayer(player) || player.stat == DEAD || isbrain(player) || player == owner)
 			continue
@@ -141,10 +146,10 @@
 		// NOVA EDIT ADDITION START - Players in the interlink can't be obsession targets + Antag Optin
 		if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
 			continue
-		// SS1984 REMOVAL START
+		// Celadon REMOVAL START
 		// if (!opt_in_disabled && player.mind?.get_effective_opt_in_level() < OPT_IN_YES_KILL)
 		// 	continue
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 		// NOVA EDIT ADDITION END
 		viable_minds += player.mind
 	for(var/datum/mind/possible_target as anything in viable_minds)

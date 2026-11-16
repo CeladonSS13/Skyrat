@@ -15,7 +15,7 @@ export const AccessList = (props) => {
     wildcardFlags = {},
     extraButtons,
     showBasic,
-    extraActions, // SS1984 ADDITION
+    extraActions, // Celadon ADDITION
   } = props;
 
   const [wildcardTab, setWildcardTab] = useSharedState(
@@ -109,10 +109,10 @@ export const AccessList = (props) => {
             showBasic={showBasic}
             basicUsed={selectedTrimAccess.length}
             basicMax={trimAccess.length}
-            // SS1984 ADDITION START
+            // Celadon ADDITION START
             extraActions={extraActions}
             accesses={parsedRegions}
-            // SS1984 ADDITION END
+            // Celadon ADDITION END
           />
         </Stack.Item>
         <Stack.Item>
@@ -140,7 +140,7 @@ export const AccessList = (props) => {
 };
 
 export const FormatWildcards = (props) => {
-  const { wildcardSlots = {}, showBasic, basicUsed = 0, basicMax = 0, extraActions, accesses } = props; // SS1984 ADDITION, added: extraActions, accesses
+  const { wildcardSlots = {}, showBasic, basicUsed = 0, basicMax = 0, extraActions, accesses } = props; // Celadon ADDITION, added: extraActions, accesses
 
   const [wildcardTab, setWildcardTab] = useSharedState(
     'wildcardSelected',
@@ -157,7 +157,7 @@ export const FormatWildcards = (props) => {
   }
 
   return (
-    <Stack fill horizontal> {/* SS1984 ADDITION*/}
+    <Stack fill horizontal> {/* Celadon ADDITION*/}
       <Tabs>
         {showBasic && (
           <Tabs.Tab
@@ -192,7 +192,7 @@ export const FormatWildcards = (props) => {
           );
         })}
       </Tabs>
-      {/* SS1984 ADDITION START */}
+      {/* Celadon ADDITION START */}
       <Button
         onClick={() =>
           extraActions("select_all", accesses, selectedWildcard)
@@ -210,8 +210,8 @@ export const FormatWildcards = (props) => {
         icon="close">
           Deselect All
       </Button.Confirm>
-      {/* SS1984 ADDITION END */ }
-    </Stack> // SS1984 ADDITION
+      {/* Celadon ADDITION END */ }
+    </Stack> // Celadon ADDITION
   );
 };
 

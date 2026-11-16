@@ -30,7 +30,7 @@
 	/// The owner of the dampener
 	var/mob/living/silicon/robot/host = null
 	/// The field
-	var/datum/proximity_monitor/advanced/projectile_dampener/peaceborg/dampening_field
+	var/datum/proximity_monitor/advanced/bubble/projectile_dampener/peaceborg/dampening_field
 	/// Energy cost per tracked projectile damage amount per second
 	var/projectile_damage_tick_ecost_coefficient = 10
 	/// Energy cost per tracked projectile per second
@@ -128,7 +128,7 @@
 
 /obj/item/borg/projectile_dampen/proc/process_usage(seconds_per_tick)
 	var/usage = 0
-	for(var/projectile as anything in tracked_bullet_cost)
+	for(var/projectile in tracked_bullet_cost)
 		usage += projectile_tick_speed_ecost * seconds_per_tick
 		usage += tracked_bullet_cost[projectile] * projectile_damage_tick_ecost_coefficient * seconds_per_tick
 	energy = clamp(energy - usage, 0, maxenergy)
@@ -241,6 +241,7 @@
 	tool.item_flags |= ABSTRACT
 	ADD_TRAIT(tool, TRAIT_NODROP, INNATE_TRAIT)
 	atoms[reference] = tool
+	tool.toolspeed = initial(tool.toolspeed) - upgraded * 0.3 //and finally assign the upgraded toolspeed, if any.
 	return tool
 
 /obj/item/borg/cyborg_omnitool/attack_self(mob/user)
@@ -283,8 +284,10 @@
  * * upgrade - TRUE/FALSE for upgraded
  */
 /obj/item/borg/cyborg_omnitool/proc/set_upgraded(upgrade)
-	upgraded = upgraded
-
+	upgraded = upgrade
+	for(var/obj/item/tool_path as anything in atoms)
+		var/obj/item/tool = atoms[tool_path]
+		tool.toolspeed = initial(tool.toolspeed) - upgraded * 0.3
 	playsound(src, 'sound/items/tools/change_jaws.ogg', 50, TRUE)
 
 /obj/item/borg/cyborg_omnitool/medical

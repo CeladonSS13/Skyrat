@@ -28,6 +28,8 @@
 #define ACCESS_ALL_PERSONAL_LOCKERS "all_personal_lockers"
 /// Access used for Access-Changing Programs, this one will unlock all options that can be ever given via that program.
 #define ACCESS_CHANGE_IDS "change_ids"
+/// Access the PDA shopping app checks for to see if you can only request or place orders immediately
+#define ACCESS_BUDGET "department_budget"
 /// Access used for the Captain's personal quarters in mapping, as well as what allows one to order emergency shuttles.
 #define ACCESS_CAPTAIN "captain"
 /// Access used for the Head of Personnel's personal quarters in mapping, as well as the security console and other HoP-related things.
@@ -89,6 +91,8 @@
 #define ACCESS_PSYCHOLOGY "psychology"
 /// Access for the Chief Medical Officer's personal quarters in mapping, as well as some other CMO-related things.
 #define ACCESS_CMO "cmo"
+/// Access to the Paramedic dispatch.
+#define ACCESS_PARAMEDIC "paramedic"
 
 /// General access for Cargo, allows for entry to Cargo Bay and Cargo's Office.
 #define ACCESS_CARGO "cargo"
@@ -182,6 +186,7 @@
 #define ACCESS_CENT_TELEPORTER "cent_teleporter"
 #define ACCESS_CENT_CAPTAIN "cent_captain"
 #define ACCESS_CENT_BAR "cent_bar"
+#define ACCESS_CENT_OFFICER "cent_officer"
 /// Special Ops. Captain's display case, Marauder and Seraph mechs.
 #define ACCESS_CENT_SPECOPS "cent_specops"
 
@@ -194,6 +199,8 @@
 #define ACCESS_BLOODCULT "bloodcult"
 /// HUNTERS
 #define ACCESS_HUNTER "hunter"
+/// HERETIC
+#define ACCESS_HERETIC "heretic"
 
 /// - - - MISC - - -
 	// These don't really fit anywhere else
@@ -293,6 +300,7 @@
 	ACCESS_BIT_DEN, \
 	ACCESS_BRIG, \
 	ACCESS_BRIG_ENTRANCE, \
+	ACCESS_BUDGET, \
 	ACCESS_CARGO, \
 	ACCESS_CHAPEL_OFFICE, \
 	ACCESS_CONSTRUCTION, \
@@ -325,6 +333,7 @@
 	ACCESS_NETWORK, \
 	ACCESS_ORDNANCE, \
 	ACCESS_ORDNANCE_STORAGE, \
+	ACCESS_PARAMEDIC, \
 	ACCESS_PHARMACY, \
 	ACCESS_PLUMBING, \
 	ACCESS_PSYCHOLOGY, \
@@ -335,6 +344,7 @@
 	ACCESS_SERVICE, \
 	ACCESS_SHIPPING, \
 	ACCESS_SURGERY, \
+	ACCESS_TECH_STORAGE, \
 	ACCESS_THEATRE, \
 	ACCESS_VIROLOGY, \
 	ACCESS_WEAPONS, \
@@ -347,6 +357,7 @@
 	ACCESS_AI_UPLOAD, \
 	ACCESS_ALL_PERSONAL_LOCKERS, \
 	ACCESS_ARMORY, \
+	ACCESS_BUDGET, \
 	ACCESS_CHANGE_IDS, \
 	ACCESS_COMMAND, \
 	ACCESS_EVA, \
@@ -354,7 +365,6 @@
 	ACCESS_MINISAT, \
 	ACCESS_RC_ANNOUNCE, \
 	ACCESS_TCOMMS, \
-	ACCESS_TECH_STORAGE, \
 	ACCESS_TELEPORTER, \
 	ACCESS_VAULT, \
 )
@@ -374,13 +384,15 @@
 	ACCESS_CAPTAIN, \
 )
 /// Centcom area stuff. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_CENTCOM)
+//Celadon EDIT - Added ACCESS_CENT_SUPPLY, ACCESS_CENT_SECURITY, ACCESS_CENT_OFFICIAL, Removed - ACCESS_CENT_CAPTAIN, ACCESS_CENT_OFFICER, ACCESS_CENT_SPECOPS
 #define CENTCOM_ACCESS list( \
 	ACCESS_CENT_BAR, \
-	ACCESS_CENT_CAPTAIN, \
 	ACCESS_CENT_GENERAL, \
 	ACCESS_CENT_LIVING, \
 	ACCESS_CENT_MEDICAL, \
-	ACCESS_CENT_SPECOPS, \
+	ACCESS_CENT_OFFICIAL, \
+	ACCESS_CENT_SECURITY, \
+	ACCESS_CENT_SUPPLY, \
 	ACCESS_CENT_STORAGE, \
 	ACCESS_CENT_TELEPORTER, \
 	ACCESS_CENT_THUNDER, \
@@ -406,7 +418,10 @@
 	ACCESS_AWAY_SCIENCE, \
 	ACCESS_AWAY_SEC, \
 	ACCESS_AWAY_SUPPLY, \
-)
+	ACCESS_TARKON, \
+	ACCESS_TARKON_COMMAND, \
+	ACCESS_TARKON_DIRECTOR, \
+)	//Celadon Edit - added Access tarkon,t commmand, t director
 
 /// Weird internal Cult access that prevents non-cult from using their doors.  Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_SPECIAL)
 #define CULT_ACCESS list( \
@@ -416,7 +431,8 @@
 /// Name for the Global region.
 #define REGION_ALL_GLOBAL "All"
 /// Used to seed the accesses_by_region list in SSid_access. A list of every single access in the game.
-#define REGION_ACCESS_ALL_GLOBAL REGION_ACCESS_ALL_STATION + CENTCOM_ACCESS + SYNDICATE_ACCESS + AWAY_ACCESS + CULT_ACCESS
+#define REGION_ACCESS_ALL_GLOBAL REGION_ACCESS_ALL_STATION + REGION_ACCESS_ALL_CENTCOM + SYNDICATE_ACCESS + AWAY_ACCESS + CULT_ACCESS
+//Celadon EDIT original #define REGION_ACCESS_ALL_GLOBAL REGION_ACCESS_ALL_STATION + CENTCOM_ACCESS + SYNDICATE_ACCESS + AWAY_ACCESS + CULT_ACCESS
 /// Name for the Station All Access region.
 #define REGION_ALL_STATION "Station"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all station accesses.
@@ -426,6 +442,7 @@
 /// Used to seed the accesses_by_region list in SSid_access. A list of general service accesses that are overseen by the HoP.
 #define REGION_ACCESS_GENERAL list( \
 	ACCESS_BAR, \
+	ACCESS_BUDGET, \
 	ACCESS_CHAPEL_OFFICE, \
 	ACCESS_CREMATORIUM, \
 	ACCESS_HYDROPONICS, \
@@ -435,6 +452,7 @@
 	ACCESS_LIBRARY, \
 	ACCESS_SERVICE, \
 	ACCESS_THEATRE, \
+	ACCESS_BARBER,  /* NOVA EDIT ADDITION - Barber */ \
 )
 /// Name for the Security region.
 #define REGION_SECURITY "Security"
@@ -443,6 +461,7 @@
 	ACCESS_ARMORY, \
 	ACCESS_BRIG, \
 	ACCESS_BRIG_ENTRANCE, \
+	ACCESS_BUDGET, \
 	ACCESS_COURT, \
 	ACCESS_DETECTIVE, \
 	ACCESS_HOS, \
@@ -454,11 +473,13 @@
 #define REGION_MEDBAY "Medbay"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all medbay regional accesses that are overseen by the CMO.
 #define REGION_ACCESS_MEDBAY list( \
+	ACCESS_BUDGET, \
 	ACCESS_CMO, \
 	ACCESS_MECH_MEDICAL, \
 	ACCESS_MEDICAL, \
 	ACCESS_MORGUE, \
 	ACCESS_MORGUE_SECURE, \
+	ACCESS_PARAMEDIC, \
 	ACCESS_PHARMACY, \
 	ACCESS_PLUMBING, \
 	ACCESS_PSYCHOLOGY, \
@@ -470,6 +491,7 @@
 /// Used to seed the accesses_by_region list in SSid_access. A list of all research regional accesses that are overseen by the RD.
 #define REGION_ACCESS_RESEARCH list( \
 	ACCESS_AI_UPLOAD, \
+	ACCESS_BUDGET, \
 	ACCESS_GENETICS, \
 	ACCESS_MECH_SCIENCE, \
 	ACCESS_MINISAT, \
@@ -488,6 +510,7 @@
 #define REGION_ACCESS_ENGINEERING list( \
 	ACCESS_ATMOSPHERICS, \
 	ACCESS_AUX_BASE, \
+	ACCESS_BUDGET, \
 	ACCESS_CE, \
 	ACCESS_CONSTRUCTION, \
 	ACCESS_ENGINEERING, \
@@ -504,6 +527,7 @@
 /// Used to seed the accesses_by_region list in SSid_access. A list of all cargo regional accesses that are overseen by the HoP.
 #define REGION_ACCESS_SUPPLY list( \
 	ACCESS_BIT_DEN, \
+	ACCESS_BUDGET, \
 	ACCESS_CARGO, \
 	ACCESS_MECH_MINING, \
 	ACCESS_MINERAL_STOREROOM, \
@@ -519,6 +543,7 @@
 #define REGION_ACCESS_COMMAND list( \
 	ACCESS_AI_UPLOAD, \
 	ACCESS_ALL_PERSONAL_LOCKERS, \
+	ACCESS_BUDGET, \
 	ACCESS_CAPTAIN, \
 	ACCESS_CHANGE_IDS, \
 	ACCESS_COMMAND, \
@@ -534,17 +559,6 @@
 #define REGION_CENTCOM "Central Command"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all CENTCOM_ACCESS regional accesses.
 #define REGION_ACCESS_CENTCOM CENTCOM_ACCESS
-
-//ss1984 edit add
-///name for nanotrasen consultant "region".
-#define REGION_NTR "Nanotrasen Official"
-/// Used to seed the accesses_by_region list in SSid_access.
-#define REGION_ACCESS_NTR list( \
-	ACCESS_CENT_GENERAL, \
-	ACCESS_COMMAND, \
-	ACCESS_VAULT, \
-)
-//ss1984 edit end
 
 /**
  * A list of PDA paths that can be painted as well as the regional heads which should be able to paint them.

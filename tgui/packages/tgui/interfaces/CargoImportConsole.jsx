@@ -108,7 +108,7 @@ export const CargoImportConsole = (props) => {
             </Stack.Item>
             <Divider vertical />
             <Stack.Item width="20%">
-              <Section title="Selected Item">
+              <Section title="Selected Item" scrollable fill height="480px"> { /* Celadon EDIT, original: <Section title="Selected Item"> */}
                 {armaments_list.map((armament_category) =>
                   armament_category.subcategories.map((subcat) =>
                     subcat.items.map(

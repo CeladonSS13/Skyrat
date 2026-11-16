@@ -3,14 +3,12 @@
 	description = "Coordinate cargo technicians and shaft miners, assist with \
 		economical purchasing."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
-	department_head = list(JOB_CAPTAIN)
-	head_announce = list(RADIO_CHANNEL_SUPPLY)
+	head_announce = RADIO_CHANNEL_SUPPLY
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	minimal_player_age = 7
 	supervisors = SUPERVISOR_CAPTAIN
-	exp_requirements = 180
 	exp_required_type_department = EXP_TYPE_SUPPLY
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "QUARTERMASTER"
@@ -30,7 +28,7 @@
 		/datum/job_department/cargo,
 		/datum/job_department/command,
 		)
-	family_heirlooms = list(/obj/item/stamp, /obj/item/stamp/denied)
+	family_heirlooms = list(/obj/item/stamp/granted, /obj/item/stamp/denied)
 	mail_goodies = list(
 		/obj/item/circuitboard/machine/emitter = 3
 	)

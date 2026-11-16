@@ -176,7 +176,9 @@
 		target.orbiting_balls += src
 	. = ..()
 
-/obj/energy_ball/stop_orbit()
+/obj/energy_ball/stop_orbit(datum/component/orbiter/orbiters, refreshing = FALSE)
+	if(refreshing)
+		return ..()
 	if (orbiting && istype(orbiting.parent, /obj/energy_ball))
 		var/obj/energy_ball/orbitingball = orbiting.parent
 		orbitingball.orbiting_balls -= src
@@ -236,6 +238,13 @@
 		/obj/structure/lattice = FALSE,
 		/obj/structure/grille = FALSE,
 		/obj/structure/frame/machine = FALSE,
+		/obj/machinery/particle_accelerator/control_box = FALSE,	//CELADON ADD START
+		/obj/structure/particle_accelerator/fuel_chamber = FALSE,
+		/obj/structure/particle_accelerator/particle_emitter/center = FALSE,
+		/obj/structure/particle_accelerator/particle_emitter/left = FALSE,
+		/obj/structure/particle_accelerator/particle_emitter/right = FALSE,
+		/obj/structure/particle_accelerator/power_box = FALSE,
+		/obj/structure/particle_accelerator/end_cap = FALSE,	//CELADON ADD END
 	))
 
 	//Ok so we are making an assumption here. We assume that view() still calculates from the center out.

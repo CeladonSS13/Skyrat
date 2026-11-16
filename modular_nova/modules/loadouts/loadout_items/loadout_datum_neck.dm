@@ -35,94 +35,91 @@
 /datum/loadout_item/neck/tarkon_gauntlet
 	name = "Tarkon Confidante Gauntlet"
 	item_path = /obj/item/clothing/neck/security_cape/tarkon
-	blacklisted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN, JOB_BLUESHIELD, JOB_CORRECTIONS_OFFICER)
+	blacklisted_roles = list(ALL_JOBS_SEC, ALL_JOBS_COM, JOB_PRISONER)
 
 /*
 *	COLLARS
 */
 
-// SS1984 REMOVAL OF ERP COLLARS START
-// /// THIN
-// /datum/loadout_item/neck/thinchoker
-// 	name = "Choker"
-// 	item_path = /obj/item/clothing/neck/collar
+/// THIN
+/datum/loadout_item/neck/thinchoker
+	name = "Choker"
+	item_path = /obj/item/clothing/neck/collar
 
-// /datum/loadout_item/neck/collar
-// 	name = "Collar (Tagged)"
-// 	item_path = /obj/item/clothing/neck/collar/tagged
+/datum/loadout_item/neck/collar
+	name = "Collar (Tagged)"
+	item_path = /obj/item/clothing/neck/collar/tagged
 
-// /datum/loadout_item/neck/cbellcollar
-// 	name = "Collar (Cowbell)"
-// 	item_path = /obj/item/clothing/neck/collar/cowbell
+/datum/loadout_item/neck/cbellcollar
+	name = "Collar (Cowbell)"
+	item_path = /obj/item/clothing/neck/collar/cowbell
 
-// /datum/loadout_item/neck/bellcollar
-// 	name = "Collar (Bell)"
-// 	item_path = /obj/item/clothing/neck/collar/bell
+/datum/loadout_item/neck/bellcollar
+	name = "Collar (Bell)"
+	item_path = /obj/item/clothing/neck/collar/bell
 
-// /datum/loadout_item/neck/hcollar
-// 	name = "Collar (Holo)"
-// 	item_path = /obj/item/clothing/neck/collar/holocollar
+/datum/loadout_item/neck/hcollar
+	name = "Collar (Holo)"
+	item_path = /obj/item/clothing/neck/collar/holocollar
 
-// /datum/loadout_item/neck/crosscollar
-// 	name = "Collar (Cross)"
-// 	item_path = /obj/item/clothing/neck/collar/cross
+/datum/loadout_item/neck/crosscollar
+	name = "Collar (Cross)"
+	item_path = /obj/item/clothing/neck/collar/cross
 
-// /// THICK
-// /datum/loadout_item/neck/choker
-// 	name = "Choker (Thick)"
-// 	item_path = /obj/item/clothing/neck/collar/thick
+/// THICK
+/datum/loadout_item/neck/choker
+	name = "Choker (Thick)"
+	item_path = /obj/item/clothing/neck/collar/thick
 
-// /datum/loadout_item/neck/thick_bellcollar
-// 	name = "Collar (Bell, Thick)"
-// 	item_path = /obj/item/clothing/neck/collar/thick/bell
+/datum/loadout_item/neck/thick_bellcollar
+	name = "Collar (Bell, Thick)"
+	item_path = /obj/item/clothing/neck/collar/thick/bell
 
-// /datum/loadout_item/neck/thick_cowbellcollar
-// 	name = "Collar (Cowbell, Thick)"
-// 	item_path = /obj/item/clothing/neck/collar/thick/cowbell
+/datum/loadout_item/neck/thick_cowbellcollar
+	name = "Collar (Cowbell, Thick)"
+	item_path = /obj/item/clothing/neck/collar/thick/cowbell
 
-// /datum/loadout_item/neck/thick_crosscollar
-// 	name = "Collar (Cross, Thick)"
-// 	item_path = /obj/item/clothing/neck/collar/thick/cross
+/datum/loadout_item/neck/thick_crosscollar
+	name = "Collar (Cross, Thick)"
+	item_path = /obj/item/clothing/neck/collar/thick/cross
 
-// /datum/loadout_item/neck/thick_holocollar
-// 	name = "Collar (Holocollar, Thick)"
-// 	item_path = /obj/item/clothing/neck/collar/thick/holocollar
+/datum/loadout_item/neck/thick_holocollar
+	name = "Collar (Holocollar, Thick)"
+	item_path = /obj/item/clothing/neck/collar/thick/holocollar
 
-// /datum/loadout_item/neck/thick_collar
-// 	name = "Collar (Thick)"
-// 	item_path = /obj/item/clothing/neck/collar/thick/tagged
+/datum/loadout_item/neck/thick_collar
+	name = "Collar (Thick)"
+	item_path = /obj/item/clothing/neck/collar/thick/tagged
 
-// /// LEATHER
-// /datum/loadout_item/neck/leater_collar
-// 	name = "Collar (Leather)"
-// 	item_path = /obj/item/clothing/neck/collar/leather
+/// LEATHER
+/datum/loadout_item/neck/leater_collar
+	name = "Collar (Leather)"
+	item_path = /obj/item/clothing/neck/collar/leather
 
-// /datum/loadout_item/neck/leather_bellcollar
-// 	name = "Collar (Bell, Leather)"
-// 	item_path = /obj/item/clothing/neck/collar/leather/bell
+/datum/loadout_item/neck/leather_bellcollar
+	name = "Collar (Bell, Leather)"
+	item_path = /obj/item/clothing/neck/collar/leather/bell
 
-// /datum/loadout_item/neck/leather_cowbellcollar
-// 	name = "Collar (Cowbell, Leather)"
-// 	item_path = /obj/item/clothing/neck/collar/leather/cowbell
+/datum/loadout_item/neck/leather_cowbellcollar
+	name = "Collar (Cowbell, Leather)"
+	item_path = /obj/item/clothing/neck/collar/leather/cowbell
 
-// /datum/loadout_item/neck/leather_crosscollar
-// 	name = "Collar (Cross, Leather)"
-// 	item_path = /obj/item/clothing/neck/collar/leather/cross
+/datum/loadout_item/neck/leather_crosscollar
+	name = "Collar (Cross, Leather)"
+	item_path = /obj/item/clothing/neck/collar/leather/cross
 
-// /datum/loadout_item/neck/leather_holocollar
-// 	name = "Collar (Holocollar, Leather)"
-// 	item_path = /obj/item/clothing/neck/collar/leather/holocollar
+/datum/loadout_item/neck/leather_holocollar
+	name = "Collar (Holocollar, Leather)"
+	item_path = /obj/item/clothing/neck/collar/leather/holocollar
 
-// /datum/loadout_item/neck/leather_collar
-// 	name = "Collar (Tagged, Leather)"
-// 	item_path = /obj/item/clothing/neck/collar/leather/tagged
+/datum/loadout_item/neck/leather_collar
+	name = "Collar (Tagged, Leather)"
+	item_path = /obj/item/clothing/neck/collar/leather/tagged
 
-// /// SPIKE
-// /datum/loadout_item/neck/spikecollar
-// 	name = "Collar (Spiked)"
-// 	item_path = /obj/item/clothing/neck/collar/spike
-// 	erp_item = TRUE
-// SS1984 REMOVAL OF ERP COLLARS END
+/// SPIKE
+/datum/loadout_item/neck/spikecollar
+	name = "Collar (Spiked)"
+	item_path = /obj/item/clothing/neck/collar/spike
 
 /*
 *	SCARVES
@@ -134,57 +131,57 @@
 /datum/loadout_item/neck/scarf_black
 	name = "Scarf (Black)"
 	item_path = /obj/item/clothing/neck/scarf/black
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/scarf_cyan
 	name = "Scarf (Cyan)"
 	item_path = /obj/item/clothing/neck/scarf/cyan
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/scarf_dark_blue
 	name = "Scarf (Dark Blue)"
 	item_path = /obj/item/clothing/neck/scarf/darkblue
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/scarf_green
 	name = "Scarf (Green)"
 	item_path = /obj/item/clothing/neck/scarf/green
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/scarf_pink
 	name = "Scarf (Pink)"
 	item_path = /obj/item/clothing/neck/scarf/pink
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/scarf_purple
 	name = "Scarf (Purple)"
 	item_path = /obj/item/clothing/neck/scarf/purple
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/scarf_red
 	name = "Scarf (Red)"
 	item_path = /obj/item/clothing/neck/scarf/red
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/scarf_orange
 	name = "Scarf (Orange)"
 	item_path = /obj/item/clothing/neck/scarf/orange
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/scarf_yellow
 	name = "Scarf (Yellow)"
 	item_path = /obj/item/clothing/neck/scarf/yellow
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/scarf_zebra
 	name = "Scarf (Zebra)"
 	item_path = /obj/item/clothing/neck/scarf/zebra
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/scarf_christmas
 	name = "Scarf - Christmas"
 	item_path = /obj/item/clothing/neck/scarf/christmas
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/greyscale_large
 	name = "Scarf - Large  (Colorable)"
@@ -192,17 +189,17 @@
 /datum/loadout_item/neck/scarf_red_striped
 	name = "Scarf - Large (Red)"
 	item_path = /obj/item/clothing/neck/large_scarf/red
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/scarf_blue_striped
 	name = "Scarf - Large (Blue)"
 	item_path = /obj/item/clothing/neck/large_scarf/blue
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/scarf_green_striped
 	name = "Scarf - Large (Green)"
 	item_path = /obj/item/clothing/neck/large_scarf/green
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/neck/scarf_infinity
 	name = "Scarf - Infinity"
@@ -240,6 +237,159 @@
 
 /datum/loadout_item/neck/necktie_disco
 	name = "Tie - Ugly"
+
+/datum/loadout_item/neck/bowtie
+	name = "Tie - Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie
+
+/datum/loadout_item/neck/bowtiewizard
+	name = "Tie - Magical Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/magician
+
+/datum/loadout_item/neck/bowtiecc
+	name = "Tie - Centcom Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/centcom
+
+/datum/loadout_item/neck/bowtiesoviet
+	name = "Tie - Soviet Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/communist
+
+/datum/loadout_item/neck/bowtieblue
+	name = "Tie - Blue Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/blue
+
+/datum/loadout_item/neck/bowtienocap
+	name = "Tie - Captain Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/captain
+
+/datum/loadout_item/neck/bowtiecargo
+	name = "Tie - Cargo Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/cargo
+
+/datum/loadout_item/neck/bowtiemail
+	name = "Tie - Courier Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/mailman
+
+/datum/loadout_item/neck/bowtiebitrunner
+	name = "Tie - Gamer Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/bitrunner
+
+/datum/loadout_item/neck/bowtieengi
+	name = "Tie - Engineer Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/engineer
+
+/datum/loadout_item/neck/bowtieengiatmos
+	name = "Tie - Atmos Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/atmos_tech
+
+/datum/loadout_item/neck/bowtieengice
+	name = "Tie - Chief Engineer Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/ce
+
+/datum/loadout_item/neck/bowtiemed
+	name = "Tie - Medical Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/doctor
+
+/datum/loadout_item/neck/bowtiemedpara
+	name = "Tie - Paramedical Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/paramedic
+
+/datum/loadout_item/neck/bowtiemedchem
+	name = "Tie - Chemical Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/chemist
+
+/datum/loadout_item/neck/bowtiemedviro
+	name = "Tie - Pathological Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/pathologist
+
+/datum/loadout_item/neck/bowtiemedcoroner
+	name = "Tie - Coroner's Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/coroner
+
+/datum/loadout_item/neck/bowtiemedcmo
+	name = "Tie - Chief Medical Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/cmo
+
+/datum/loadout_item/neck/bowtiernd
+	name = "Tie - Scientific Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/scientist
+
+/datum/loadout_item/neck/bowtierndrobo
+	name = "Tie - Robotical Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/roboticist
+
+/datum/loadout_item/neck/bowtierndgene
+	name = "Tie - Genetical Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/geneticist
+
+/datum/loadout_item/neck/bowtierndrd
+	name = "Tie - Director Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/rd
+
+/datum/loadout_item/neck/bowtiesec
+	name = "Tie - Secure Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/security
+
+/datum/loadout_item/neck/bowtiesecdept
+	name = "Tie - Less Secure Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/security_assistant
+
+/datum/loadout_item/neck/bowtiesecdept
+	name = "Tie - Secure Medical Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/brig_phys
+
+/datum/loadout_item/neck/bowtiesecdet
+	name = "Tie - Curious Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/detective
+
+/datum/loadout_item/neck/bowtiesecprison
+	name = "Tie - Criminal Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/prisoner
+
+/datum/loadout_item/neck/bowtiehop
+	name = "Tie - Paper Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/hop
+
+/datum/loadout_item/neck/bowtiejanitor
+	name = "Tie - Clean Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/janitor
+
+/datum/loadout_item/neck/bowtiebar
+	name = "Tie - Drunk Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/bartender
+
+/datum/loadout_item/neck/bowtiecook
+	name = "Tie - Hungry Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/cook
+
+/datum/loadout_item/neck/bowtiehydro
+	name = "Tie - Botanical Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/botanist
+
+/datum/loadout_item/neck/bowtieclown
+	name = "Tie - Large Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/clown
+
+/datum/loadout_item/neck/rabbit
+	name = "Rabbit Necklace"
+	item_path = /obj/item/clothing/neck/bunny_pendant
+
+/datum/loadout_item/neck/bowtielawyerblack
+	name = "Tie - Black Lawful Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/lawyer_black
+
+/datum/loadout_item/neck/bowtielawyerblue
+	name = "Tie - Blue Lawful Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/lawyer_blue
+
+/datum/loadout_item/neck/bowtielawyerred
+	name = "Tie - Red Lawful Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/lawyer_red
+
+/datum/loadout_item/neck/bowtielawyergood
+	name = "Tie - Lawful Good Bow Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/lawyer_good
+
 /*
 *	CAPES, CLOAKS, MANTLES, PONCHOS, SHROUDS, AND VEILS
 */
@@ -268,10 +418,11 @@
 	name = "Colonial Cloak"
 	item_path = /obj/item/clothing/neck/cloak/colonial
 	group = "Cloaks and Shrouds"
+	species_blacklist = list(SPECIES_TESHARI)
 
-/datum/loadout_item/neck/imperial_police_cloak
-	name = "Colonial Cloak - Imperial Police"
-	item_path = /obj/item/clothing/neck/cloak/colonial/nri_police
+/datum/loadout_item/neck/coalition_police_cloak
+	name = "Colonial Cloak - Coalition Police"
+	item_path = /obj/item/clothing/neck/cloak/colonial/hc_police
 	group = "Cloaks and Shrouds"
 
 /datum/loadout_item/neck/mantle
@@ -317,6 +468,27 @@
 /datum/loadout_item/neck/gags_veil
 	name = "Veil (Colorable)"
 	item_path = /obj/item/clothing/neck/cloak/colourable/veil
+	group = "Cloaks and Shrouds"
+
+/datum/loadout_item/neck/shortcloak
+	name = "Short Cloak (Colorable)"
+	item_path = /obj/item/clothing/neck/greyscaled
+	group = "Cloaks and Shrouds"
+
+/datum/loadout_item/neck/seecloak
+	name = "Seer Cloak (Colorable)"
+	item_path = /obj/item/clothing/neck/greyscaled/seecloak
+	group = "Cloaks and Shrouds"
+	reskin_datum = /datum/atom_skin/seecloak
+
+/datum/loadout_item/neck/matroncloak
+	name = "Matron Cloak (Colorable)"
+	item_path = /obj/item/clothing/neck/greyscaled/matroncloak
+	group = "Cloaks and Shrouds"
+
+/datum/loadout_item/neck/xylixcloak
+	name = "Xylix Cloak (Colorable)"
+	item_path = /obj/item/clothing/neck/greyscaled/xylixcloak
 	group = "Cloaks and Shrouds"
 
 /*
@@ -395,7 +567,7 @@
 /datum/loadout_item/neck/security_gauntlet
 	name = "Security Gauntlet"
 	item_path = /obj/item/clothing/neck/security_cape/armplate
-	restricted_roles = list(JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(ALL_JOBS_SEC)
 	group = "Job-Locked"
 
 /*

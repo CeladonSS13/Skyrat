@@ -70,15 +70,10 @@ There are several things that need to be remembered:
 		//damage overlays
 		update_damage_overlays()
 
-/mob/living/carbon/human/update_obscured_slots(obscured_flags)
-	..()
-	sec_hud_set_security_status()
-	// SS1984 REMOVAL OF ERP OVERLAYS
-
 /* --------------------------------------- */
 //vvvvvv UPDATE_INV PROCS vvvvvv
 
-/mob/living/carbon/human/update_worn_undersuit(update_obscured = TRUE)
+/mob/living/carbon/human/update_worn_undersuit()
 	remove_overlay(UNIFORM_LAYER)
 
 	if(client && hud_used)
@@ -89,10 +84,7 @@ There are several things that need to be remembered:
 		var/obj/item/clothing/under/uniform = w_uniform
 		update_hud_uniform(uniform)
 
-		if(update_obscured)
-			update_obscured_slots(uniform.flags_inv)
-
-		if(HAS_TRAIT(uniform, TRAIT_NO_WORN_ICON) || (check_obscured_slots() & ITEM_SLOT_ICLOTHING))
+		if(HAS_TRAIT(uniform, TRAIT_NO_WORN_ICON) || (obscured_slots & HIDEJUMPSUIT))
 			return
 
 		var/target_overlay = uniform.icon_state
@@ -137,10 +129,21 @@ There are several things that need to be remembered:
 
 		// NOVA EDIT ADDITION START - Taur-friendly suits!
 		if(bodyshape & BODYSHAPE_TAUR)
-			if(istype(uniform) && uniform.gets_cropped_on_taurs)
+			if(istype(uniform) && (uniform.gets_cropped_on_taurs || (uniform.supports_variations_flags & CLOTHING_BIG_LEGS_MASK)))
 				mutant_styles |= get_taur_mode()
 			female_sprite_flags &= ~FEMALE_UNIFORM_FULL // clear the FEMALE_UNIFORM_DIGI_FULL bit if it was set, we don't want that.
 			female_sprite_flags |= FEMALE_UNIFORM_TOP_ONLY // And set the FEMALE_UNIFORM_TOP_ONLY bit if it is unset.
+			if((mutant_styles & STYLE_TAUR_SNAKE) && uniform.worn_icon_taur_snake)
+				uniform.worn_x_offset = -16
+			else if ((mutant_styles & STYLE_TAUR_PAW) && uniform.worn_icon_taur_paw)
+				uniform.worn_x_offset = -16
+			else if ((mutant_styles & STYLE_TAUR_HOOF) && uniform.worn_icon_taur_hoof)
+				uniform.worn_x_offset = -16
+			//big legs
+			if((mutant_styles & STYLE_TAUR_BIG_LEGS_ALL) && (uniform.supports_variations_flags & CLOTHING_BIG_LEGS_VARIATION))
+				icon_file = mutant_styles & STYLE_TAUR_BIG_LEGS ? BIG_LEGS_UNIFORM_FILE : BIG_LEGS_STANCED_UNIFORM_FILE
+		else
+			uniform.worn_x_offset = 0
 		// NOVA EDIT ADDITION END
 
 		//END SPECIES HANDLING
@@ -161,7 +164,7 @@ There are several things that need to be remembered:
 	update_body_parts()
 	apply_overlay(UNIFORM_LAYER)
 
-/mob/living/carbon/human/update_worn_id(update_obscured = TRUE)
+/mob/living/carbon/human/update_worn_id()
 	remove_overlay(ID_LAYER)
 
 	if(client && hud_used)
@@ -173,9 +176,6 @@ There are several things that need to be remembered:
 	if(wear_id)
 		var/obj/item/worn_item = wear_id
 		update_hud_id(worn_item)
-
-		if(update_obscured)
-			update_obscured_slots(worn_item.flags_inv)
 
 		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON))
 			return
@@ -194,7 +194,7 @@ There are several things that need to be remembered:
 	apply_overlay(ID_LAYER)
 
 
-/mob/living/carbon/human/update_worn_gloves(update_obscured = TRUE)
+/mob/living/carbon/human/update_worn_gloves()
 	remove_overlay(GLOVES_LAYER)
 
 	if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_GLOVES) + 1])
@@ -223,10 +223,7 @@ There are several things that need to be remembered:
 	var/obj/item/worn_item = gloves
 	update_hud_gloves(worn_item)
 
-	if(update_obscured)
-		update_obscured_slots(worn_item.flags_inv)
-
-	if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (check_obscured_slots() & ITEM_SLOT_GLOVES))
+	if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (obscured_slots & HIDEGLOVES))
 		return
 
 	var/icon_file = 'icons/mob/clothing/hands.dmi'
@@ -266,7 +263,7 @@ There are several things that need to be remembered:
 	overlays_standing[GLOVES_LAYER] = gloves_overlay
 	apply_overlay(GLOVES_LAYER)
 
-/mob/living/carbon/human/update_worn_glasses(update_obscured = TRUE)
+/mob/living/carbon/human/update_worn_glasses()
 	remove_overlay(GLASSES_LAYER)
 
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
@@ -281,10 +278,7 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = glasses
 		update_hud_glasses(worn_item)
 
-		if(update_obscured)
-			update_obscured_slots(worn_item.flags_inv)
-
-		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (check_obscured_slots() & ITEM_SLOT_EYES))
+		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (obscured_slots & HIDEEYES))
 			return
 
 		var/icon_file = 'icons/mob/clothing/eyes.dmi'
@@ -307,7 +301,8 @@ There are several things that need to be remembered:
 		overlays_standing[GLASSES_LAYER] = glasses_overlay
 	apply_overlay(GLASSES_LAYER)
 
-/mob/living/carbon/human/update_worn_ears(update_obscured = TRUE)
+
+/mob/living/carbon/human/update_worn_ears()
 	remove_overlay(EARS_LAYER)
 
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
@@ -322,10 +317,7 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = ears
 		update_hud_ears(worn_item)
 
-		if(update_obscured)
-			update_obscured_slots(worn_item.flags_inv)
-
-		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (check_obscured_slots() & ITEM_SLOT_EARS))
+		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (obscured_slots & HIDEEARS))
 			return
 
 		var/icon_file = 'icons/mob/clothing/ears.dmi'
@@ -348,7 +340,7 @@ There are several things that need to be remembered:
 		overlays_standing[EARS_LAYER] = ears_overlay
 	apply_overlay(EARS_LAYER)
 
-/mob/living/carbon/human/update_worn_neck(update_obscured = TRUE)
+/mob/living/carbon/human/update_worn_neck()
 	remove_overlay(NECK_LAYER)
 
 	if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NECK) + 1])
@@ -359,10 +351,7 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = wear_neck
 		update_hud_neck(wear_neck)
 
-		if(update_obscured)
-			update_obscured_slots(worn_item.flags_inv)
-
-		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (check_obscured_slots() & ITEM_SLOT_NECK))
+		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (obscured_slots & HIDENECK))
 			return
 
 		var/icon_file = 'icons/mob/clothing/neck.dmi'
@@ -385,15 +374,16 @@ There are several things that need to be remembered:
 		var/mutable_appearance/neck_overlay = worn_item.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // NOVA EDIT CHANGE
 
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
-		// NOVA EDIT ADDITION
+		my_chest?.worn_neck_offset?.apply_offset(neck_overlay)
+		// NOVA EDIT ADDITION START
 		if(!mutant_override)
 			my_chest?.worn_belt_offset?.apply_offset(neck_overlay)
-		// NOVA EDIT END
+		// NOVA EDIT ADDITION END
 		overlays_standing[NECK_LAYER] = neck_overlay
 
 	apply_overlay(NECK_LAYER)
 
-/mob/living/carbon/human/update_worn_shoes(update_obscured = TRUE)
+/mob/living/carbon/human/update_worn_shoes()
 	remove_overlay(SHOES_LAYER)
 
 	if(num_legs < 2)
@@ -407,10 +397,7 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = shoes
 		update_hud_shoes(worn_item)
 
-		if(update_obscured)
-			update_obscured_slots(worn_item.flags_inv)
-
-		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (check_obscured_slots() & ITEM_SLOT_FEET))
+		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (obscured_slots & HIDESHOES))
 			return
 
 		var/icon_file = DEFAULT_SHOES_FILE
@@ -420,7 +407,7 @@ There are several things that need to be remembered:
 
 		if((bodyshape & BODYSHAPE_DIGITIGRADE) && (worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			var/obj/item/bodypart/leg = src.get_bodypart(BODY_ZONE_L_LEG)
-			if(leg.limb_id == "digitigrade" || leg.bodyshape & BODYSHAPE_DIGITIGRADE)//Snowflakey and bad. But it makes it look consistent.
+			if(leg.limb_id == BODYPART_ID_DIGITIGRADE || leg.bodyshape & BODYSHAPE_DIGITIGRADE)//Snowflakey and bad. But it makes it look consistent.
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // NOVA EDIT CHANGE
 				mutant_override = TRUE // NOVA EDIT ADDITION
 		if(!mutant_override && bodyshape & BODYSHAPE_CUSTOM)
@@ -452,7 +439,7 @@ There are several things that need to be remembered:
 	apply_overlay(SHOES_LAYER)
 	check_body_shape(BODYSHAPE_DIGITIGRADE, ITEM_SLOT_FEET)
 
-/mob/living/carbon/human/update_suit_storage(update_obscured = TRUE)
+/mob/living/carbon/human/update_suit_storage()
 	remove_overlay(SUIT_STORE_LAYER)
 
 	if(client && hud_used)
@@ -463,10 +450,7 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = s_store
 		update_hud_s_store(worn_item)
 
-		if(update_obscured)
-			update_obscured_slots(worn_item.flags_inv)
-
-		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (check_obscured_slots() & ITEM_SLOT_SUITSTORE))
+		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (obscured_slots & HIDESUITSTORAGE))
 			return
 
 		var/mutable_appearance/s_store_overlay = worn_item.build_worn_icon(default_layer = SUIT_STORE_LAYER, default_icon_file = 'icons/mob/clothing/belt_mirror.dmi')
@@ -475,7 +459,7 @@ There are several things that need to be remembered:
 		overlays_standing[SUIT_STORE_LAYER] = s_store_overlay
 	apply_overlay(SUIT_STORE_LAYER)
 
-/mob/living/carbon/human/update_worn_head(update_obscured = TRUE)
+/mob/living/carbon/human/update_worn_head()
 	remove_overlay(HEAD_LAYER)
 	if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_HEAD) + 1])
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_HEAD) + 1]
@@ -485,10 +469,7 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = head
 		update_hud_head(worn_item)
 
-		if(update_obscured)
-			update_obscured_slots(worn_item.flags_inv)
-
-		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (check_obscured_slots() & ITEM_SLOT_HEAD))
+		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (obscured_slots & HIDEHEADGEAR))
 			return
 
 		var/icon_file = 'icons/mob/clothing/head/default.dmi'
@@ -519,7 +500,7 @@ There are several things that need to be remembered:
 	apply_overlay(HEAD_LAYER)
 	check_body_shape(BODYSHAPE_SNOUTED, ITEM_SLOT_HEAD)
 
-/mob/living/carbon/human/update_worn_belt(update_obscured = TRUE)
+/mob/living/carbon/human/update_worn_belt()
 	remove_overlay(BELT_LAYER)
 
 	if(client && hud_used)
@@ -530,10 +511,7 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = belt
 		update_hud_belt(worn_item)
 
-		if(update_obscured)
-			update_obscured_slots(worn_item.flags_inv)
-
-		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (check_obscured_slots() & ITEM_SLOT_BELT))
+		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (obscured_slots & HIDEBELT))
 			return
 
 		var/icon_file = 'icons/mob/clothing/belt.dmi'
@@ -558,7 +536,7 @@ There are several things that need to be remembered:
 
 	apply_overlay(BELT_LAYER)
 
-/mob/living/carbon/human/update_worn_oversuit(update_obscured = TRUE)
+/mob/living/carbon/human/update_worn_oversuit()
 	remove_overlay(SUIT_LAYER)
 
 	if(client && hud_used)
@@ -568,9 +546,6 @@ There are several things that need to be remembered:
 	if(wear_suit)
 		var/obj/item/worn_item = wear_suit
 		update_hud_wear_suit(worn_item)
-
-		if(update_obscured)
-			update_obscured_slots(worn_item.flags_inv)
 
 		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON))
 			return
@@ -595,6 +570,14 @@ There are several things that need to be remembered:
 			var/obj/item/clothing/suit/worn_suit = wear_suit
 			if(istype(worn_suit) && worn_suit.gets_cropped_on_taurs)
 				mutant_styles |= get_taur_mode()
+			if((mutant_styles & STYLE_TAUR_SNAKE) && worn_suit.worn_icon_taur_snake)
+				worn_suit.worn_x_offset = -16
+			else if ((mutant_styles & STYLE_TAUR_PAW) && worn_suit.worn_icon_taur_paw)
+				worn_suit.worn_x_offset = -16
+			else if ((mutant_styles & STYLE_TAUR_HOOF) && worn_suit.worn_icon_taur_hoof)
+				worn_suit.worn_x_offset = -16
+		else
+			wear_suit.worn_x_offset = 0
 		// NOVA EDIT ADDITION END
 
 		var/mutable_appearance/suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null, mutant_styles = mutant_styles) // NOVA EDIT CHANGE - Mutant bodytypes and Taur-friendly suits! - ORIGINAL: var/mutable_appearance/suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file)
@@ -627,7 +610,7 @@ There are several things that need to be remembered:
 				client.screen += r_store
 			update_observer_view(r_store)
 
-/mob/living/carbon/human/update_worn_mask(update_obscured = TRUE)
+/mob/living/carbon/human/update_worn_mask()
 	remove_overlay(FACEMASK_LAYER)
 
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
@@ -642,10 +625,7 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = wear_mask
 		update_hud_wear_mask(worn_item)
 
-		if(update_obscured)
-			update_obscured_slots(worn_item.flags_inv)
-
-		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (check_obscured_slots() & ITEM_SLOT_MASK))
+		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON) || (obscured_slots & HIDEMASK))
 			return
 
 		var/icon_file = 'icons/mob/clothing/mask.dmi'
@@ -669,13 +649,13 @@ There are several things that need to be remembered:
 		// NOVA EDIT ADDITION
 		if(!mutant_override)
 			my_head.worn_mask_offset?.apply_offset(mask_overlay)
-		// NOVA EDIT END
+		// NOVA EDIT ADDITION END
 		overlays_standing[FACEMASK_LAYER] = mask_overlay
 
 	apply_overlay(FACEMASK_LAYER)
 	update_body_parts() //e.g. upgate needed because mask now hides lizard snout
 
-/mob/living/carbon/human/update_worn_back(update_obscured = TRUE)
+/mob/living/carbon/human/update_worn_back()
 	remove_overlay(BACK_LAYER)
 
 	if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1])
@@ -686,9 +666,6 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = back
 		var/mutable_appearance/back_overlay
 		update_hud_back(worn_item)
-
-		if(update_obscured)
-			update_obscured_slots(worn_item.flags_inv)
 
 		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON))
 			return
@@ -1055,17 +1032,17 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // NOVA EDI
 
 	// NOVA EDIT ADDITION START - Taur-friendly uniforms and suits
 	var/using_taur_variant = FALSE
-	if (isnull(override_file))
-		if (mutant_styles & STYLE_TAUR_ALL)
-			if ((mutant_styles & STYLE_TAUR_SNAKE) && worn_icon_taur_snake)
-				override_file = worn_icon_taur_snake
-				using_taur_variant = TRUE
-			else if ((mutant_styles & STYLE_TAUR_PAW) && worn_icon_taur_paw)
-				override_file = worn_icon_taur_paw
-				using_taur_variant = TRUE
-			else if ((mutant_styles & STYLE_TAUR_HOOF) && worn_icon_taur_hoof)
-				override_file = worn_icon_taur_hoof
-				using_taur_variant = TRUE
+	var/is_for_taur = mutant_styles & STYLE_TAUR_ALL
+	if (isnull(override_file) && is_for_taur)
+		if ((mutant_styles & STYLE_TAUR_SNAKE) && worn_icon_taur_snake)
+			override_file = worn_icon_taur_snake
+			using_taur_variant = TRUE
+		else if ((mutant_styles & STYLE_TAUR_PAW) && worn_icon_taur_paw)
+			override_file = worn_icon_taur_paw
+			using_taur_variant = TRUE
+		else if ((mutant_styles & STYLE_TAUR_HOOF) && worn_icon_taur_hoof)
+			override_file = worn_icon_taur_hoof
+			using_taur_variant = TRUE
 	// NOVA EDIT ADDITION END
 	//Find a valid icon_state from variables+arguments
 	var/t_state = override_state || (isinhands ? inhand_icon_state : worn_icon_state) || icon_state
@@ -1095,18 +1072,15 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // NOVA EDI
 			greyscale_colors = greyscale_colors,
 		)
 	// NOVA EDIT ADDITION START - Taur-friendly uniforms and suits
-	var/shift_pixel_x = 0
-	if (mutant_styles & STYLE_TAUR_ALL)
-		if (!using_taur_variant)
-			building_icon = wear_taur_version(t_state, building_icon || icon(file2use, t_state), female_uniform, greyscale_colors)
-		else
-			shift_pixel_x = -16 // it doesnt look right otherwise
+	if (is_for_taur && !using_taur_variant)
+		building_icon = wear_taur_version(t_state, building_icon || icon(file2use, t_state), female_uniform, greyscale_colors)
+	else if ((mutant_styles & STYLE_TAUR_BIG_LEGS_ALL) && (supports_variations_flags & CLOTHING_BIG_LEGS_MASK) && !(supports_variations_flags & CLOTHING_BIG_LEGS_VARIATION))
+		building_icon = wear_big_legs_version(building_icon || icon(file2use, t_state), src, "[t_state]-[building_icon]-[female_uniform]", greyscale_colors, mutant_styles)
 	// NOVA EDIT ADDITION END
 	if(building_icon)
 		draw_target = mutable_appearance(building_icon, layer = -layer2use)
 	else
 		draw_target = mutable_appearance(file2use, t_state, layer = -layer2use)
-	draw_target.pixel_x += shift_pixel_x // NOVA EDIT ADDITION - Taur-friendly uniforms and suits
 
 	//Get the overlays for this item when it's being worn
 	//eg: ammo counters, primed grenade flashes, etc.
@@ -1177,6 +1151,97 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // NOVA EDI
 					observers = null
 					break
 
+/mob/living/carbon/human/update_body(is_creating = FALSE)
+	update_eyes()
+	update_underwear()
+	return ..()
+
+/mob/living/carbon/human/proc/update_underwear()
+	remove_overlay(BODY_LAYER)
+	if(HAS_TRAIT(src, TRAIT_HUSK) || HAS_TRAIT(src, TRAIT_INVISIBLE_MAN) || HAS_TRAIT(src, TRAIT_NO_UNDERWEAR))
+		return
+	// Underwear, Undershirts & Socks
+	var/list/standing = list()
+	var/active_bodyshapes = get_active_bodyshapes()
+	if(underwear && !(underwear_visibility & UNDERWEAR_HIDE_UNDIES)) // NOVA EDIT CHANGE - ORIGINAL: if(underwear)
+		var/datum/sprite_accessory/clothing/underwear/undie_accessory = SSaccessories.underwear_list[underwear]
+		var/mutable_appearance/underwear_overlay = undie_accessory?.make_appearance(underwear_color, physique, active_bodyshapes)
+		if(underwear_overlay)
+			standing += underwear_overlay
+
+	// NOVA EDIT ADDITION START - Bras
+	if(bra && !(underwear_visibility & UNDERWEAR_HIDE_BRA))
+		var/datum/sprite_accessory/clothing/bra/bra_accessory = SSaccessories.bra_list[bra]
+		var/mutable_appearance/bra_overlay = bra_accessory?.make_appearance(bra_color, physique, active_bodyshapes)
+		if(bra_accessory)
+			standing += bra_overlay
+
+	// NOVA EDIT ADDITION END - Bras
+	if(undershirt && !(underwear_visibility & UNDERWEAR_HIDE_SHIRT)) // NOVA EDIT CHANGE - ORIGINAL: if(undershirt))
+		var/datum/sprite_accessory/clothing/undershirt/shirt_accessory = SSaccessories.undershirt_list[undershirt]
+		var/mutable_appearance/shirt_overlay = shirt_accessory?.make_appearance(undershirt_color, physique, active_bodyshapes) // NOVA EDIT CHANGE - ORIGINAL: var/mutable_appearance/shirt_overlay = shirt_accessory?.make_appearance(null, physique, active_bodyshapes)
+		if(shirt_overlay)
+			standing += shirt_overlay
+
+	/* // NOVA EDIT REMOVAL START - Original TG sock handling
+	if(socks && num_legs >= 2 && !(bodyshape & BODYSHAPE_DIGITIGRADE))
+		var/datum/sprite_accessory/clothing/socks/sock_accessory = SSaccessories.socks_list[socks]
+		var/mutable_appearance/socks_overlay = sock_accessory?.make_appearance(null, physique, active_bodyshapes)
+		if(socks_overlay)
+			standing += socks_overlay
+	*/ // NOVA EDIT REMOVAL END
+	// NOVA EDIT ADDITION START - Nova socks - digi supported
+	if(socks && num_legs >= 2 && !(underwear_visibility & UNDERWEAR_HIDE_SOCKS))
+		var/datum/mutant_bodypart/taur_body = dna.mutant_bodyparts[FEATURE_TAUR]
+		if(isnull(taur_body))
+			var/datum/sprite_accessory/clothing/socks/sock_accessory = SSaccessories.socks_list[socks]
+			var/mutable_appearance/socks_overlay = sock_accessory?.make_appearance(socks_color, physique, active_bodyshapes)
+			if(socks_overlay)
+				standing += socks_overlay
+	// NOVA EDIT ADDITION END
+
+	if(standing.len)
+		overlays_standing[BODY_LAYER] = standing
+
+	apply_overlay(BODY_LAYER)
+
+/mob/living/carbon/human/proc/update_eyes()
+	remove_overlay(EYES_LAYER)
+	if(HAS_TRAIT(src, TRAIT_HUSK) || HAS_TRAIT(src, TRAIT_INVISIBLE_MAN))
+		return
+
+	// eyes (missing eye sprites get handled by the head itself, but sadly we have to do this stupid shit here, for now)
+	var/obj/item/organ/eyes/eye_organ = get_organ_slot(ORGAN_SLOT_EYES)
+	if (!eye_organ)
+		return
+
+	var/obj/item/bodypart/head/noggin = get_bodypart(deprecise_zone(eye_organ.zone)) // Futureproofing for HARS/weird species
+	if(istype(noggin) && !(noggin?.head_flags & HEAD_EYESPRITES))
+		return
+
+	eye_organ.refresh(call_update = FALSE)
+	overlays_standing[EYES_LAYER] = eye_organ.generate_body_overlay(src, noggin)
+	apply_overlay(EYES_LAYER)
+
+/// Updates face (as of now, only eye) offsets
+/mob/living/carbon/human/update_face_offset()
+	var/list/eye_overlays = overlays_standing[EYES_LAYER]
+
+	if(HAS_TRAIT(src, TRAIT_INVISIBLE_MAN) || HAS_TRAIT(src, TRAIT_HUSK) || !length(eye_overlays))
+		return
+
+	remove_overlay(EYES_LAYER)
+
+	var/obj/item/bodypart/head/noggin = get_bodypart(BODY_ZONE_HEAD)
+	for (var/mutable_appearance/overlay as anything in eye_overlays)
+		overlay.pixel_w = 0
+		overlay.pixel_z = 0
+		noggin.worn_face_offset.apply_offset(overlay)
+
+	overlays_standing[EYES_LAYER] = eye_overlays
+	apply_overlay(EYES_LAYER)
+
+
 // Only renders the head of the human
 /mob/living/carbon/human/proc/update_body_parts_head_only(update_limb_data)
 	if(!dna?.species)
@@ -1209,7 +1274,7 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // NOVA EDI
 		// optimization - none of our limbs or organs have the desired shape
 		return .
 
-	for(var/obj/item/bodypart/limb as anything in bodyparts)
+	for(var/obj/item/bodypart/limb as anything in get_bodyparts())
 		var/checked_bodyshape = limb.bodyshape
 		// accounts for stuff like snouts
 		for(var/obj/item/organ/organ in limb)
@@ -1225,7 +1290,7 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // NOVA EDI
 	// hardcoding this here until bodypart updating is more sane
 	// we need to update clothing items that may have been affected by bodyshape updates
 	if(check_shapes & BODYSHAPE_DIGITIGRADE)
-		for(var/obj/item/thing as anything in get_equipped_items())
+		for(var/obj/item/thing as anything in get_equipped_items(INCLUDE_PROSTHETICS|INCLUDE_ABSTRACT))
 			if(thing.slot_flags & ignore_slots)
 				continue
 			if(thing.supports_variations_flags & DIGITIGRADE_VARIATIONS)

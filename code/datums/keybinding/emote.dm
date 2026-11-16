@@ -5,13 +5,15 @@
 	var/emote_key
 
 /datum/keybinding/emote/proc/link_to_emote(datum/emote/faketype)
-	hotkey_keys = list("Unbound")
-	classic_keys = list("Unbound")
+	hotkey_keys = list(UNBOUND_KEY)
+	classic_keys = list(UNBOUND_KEY)
 	emote_key = initial(faketype.key)
-	name = initial(faketype.key)
-	full_name = capitalize(initial(faketype.key))
+	name = faketype.name // Celadon EDIT, original: name = initial(faketype.key)
+	if (!name) // Celadon ADDITION
+		name = emote_key // Celadon ADDITION
+	full_name = capitalize(name) // Celadon EDIT, original: full_name = capitalize(initial(faketype.key))
 
-/datum/keybinding/emote/down(client/user, turf/target)
+/datum/keybinding/emote/down(client/user, turf/target, mousepos_x, mousepos_y)
 	. = ..()
 	if(.)
 		return

@@ -1,10 +1,10 @@
 {
-	"name": "Pat",
-	"description": "Pat their shoulder; perhaps if to comfort them.",
+	"name": "Похлопать",
+	"description": "Похлопайте по плечам.",
 	"usage": "other",
 	"category": "Miscellaneous",
 	"distance_allowed": 0,
-	"message": ["%USER% pats %TARGET% on their shoulder."],
+	"message": ["%USER% хлопает по плечу %TARGET%."],
 	"sound_use": 0,
 	"sound_possible": [],
 	"sound_range": 7,

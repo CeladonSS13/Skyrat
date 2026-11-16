@@ -27,7 +27,7 @@
 
 	return TRUE
 
-/obj/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
+/obj/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE, blocked = null)
 	. = ..()
 	if(. != BULLET_ACT_HIT)
 		return .
@@ -107,13 +107,15 @@
 ///// ACID
 
 ///the obj's reaction when touched by acid
-/obj/acid_act(acidpwr, acid_volume)
+///obj/acid_act(acidpwr, acid_volume)	//CELADON REMOVE
+/obj/acid_act(acidpwr, acid_volume, use_sound)	//CELADON ADD
 	. = ..()
 	if((resistance_flags & UNACIDABLE) || (acid_volume <= 0) || (acidpwr <= 0))
 		return FALSE
 	if(QDELETED(src)) //NOVA EDIT: fix createanddestroy
 		return FALSE
-	AddComponent(/datum/component/acid, acidpwr, acid_volume, custom_acid_overlay || GLOB.acid_overlay)
+//	AddComponent(/datum/component/acid, acidpwr, acid_volume, custom_acid_overlay || GLOB.acid_overlay)	//CELADON REMOVE
+	AddComponent(/datum/component/acid, acidpwr, acid_volume, custom_acid_overlay || GLOB.acid_overlay, use_sound=use_sound)	//CELADON ADD
 	return TRUE
 
 ///called when the obj is destroyed by acid.
@@ -127,8 +129,9 @@
 	if(HAS_TRAIT(src, TRAIT_UNDERFLOOR))
 		return
 	SEND_SIGNAL(src, COMSIG_ATOM_PRE_FIRE_ACT, exposed_temperature, exposed_volume) // NOVA EDIT ADDITION
-	if(exposed_temperature && !(resistance_flags & FIRE_PROOF))
-		take_damage(clamp(0.02 * exposed_temperature, 0, 20), BURN, FIRE, 0)
+	var/potential_damage = 0.02 * exposed_temperature
+	if(exposed_temperature && !(resistance_flags & FIRE_PROOF) && (potential_damage > damage_deflection))
+		take_damage(clamp(potential_damage, 0, 20), BURN, FIRE, 0)
 	if(QDELETED(src)) // take_damage() can send our obj to an early grave, let's stop here if that happens
 		return
 	if(!(resistance_flags & ON_FIRE) && (resistance_flags & FLAMMABLE) && !(resistance_flags & FIRE_PROOF))

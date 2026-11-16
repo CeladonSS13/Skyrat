@@ -61,7 +61,7 @@ RUN apt-get install -y --no-install-recommends \
         gcc-multilib \
         git \
     && git init \
-    && git remote add origin https://github.com/ss220-space/rust-g-tg
+    && git remote add origin https://github.com/skyrat1984test/rust-skyrat-1984
 
 COPY dependencies.sh .
 

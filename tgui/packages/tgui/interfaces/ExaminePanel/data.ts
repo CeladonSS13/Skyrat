@@ -12,16 +12,18 @@ export type ExaminePanelData = {
   ooc_notes: string;
   custom_species: string;
   custom_species_lore: string;
-  // SS1984 REMOVAL OF ERP FLAVOR AND NOTES, START, END
+  // Descriptions, but requiring manual input to see
+  flavor_text_nsfw: string;
+  ooc_notes_nsfw: string;
   // Antaggery
-  // SS1984 REMOVAL START
+  // Celadon REMOVAL START
   // ideal_antag_optin_status: string;
   // current_antag_optin_status: string;
   // opt_in_colors: {
   //   optin: string;
   //   color: string;
   // };
-  // SS1984 REMOVAL END
+  // Celadon REMOVAL END
   // Misc
   nova_star_status: boolean;
 };

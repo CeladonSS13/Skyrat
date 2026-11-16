@@ -26,7 +26,7 @@
 	midround_type = HEAVY_MIDROUND
 	false_alarm_able = TRUE
 	ruleset_flags = RULESET_INVADER
-	weight = list(
+	weight = alist(
 		DYNAMIC_TIER_LOW = 0,
 		DYNAMIC_TIER_LOWMEDIUM = 0,
 		DYNAMIC_TIER_MEDIUMHIGH = 1,
@@ -41,7 +41,7 @@
 	return ..() && (GLOB.ghost_role_flags & GHOSTROLE_MIDROUND_EVENT) && !isnull(find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = TRUE))
 
 /datum/dynamic_ruleset/midround/spiders/execute()
-	var/num_egg = get_antag_cap(SSdynamic ? SSdynamic.get_population_for_dynamic_rolling(GLOB.alive_player_list) : length(GLOB.alive_player_list), egg_count) // SS1984 EDIT, original: var/num_egg = get_antag_cap(length(GLOB.alive_player_list), egg_count)
+	var/num_egg = get_antag_cap(SSdynamic ? SSdynamic.get_population_for_dynamic_rolling(GLOB.alive_player_list) : length(GLOB.alive_player_list), egg_count) // Celadon EDIT, original: var/num_egg = get_antag_cap(length(GLOB.alive_player_list), egg_count)
 	while(num_egg > 0)
 		var/turf/spawn_loc = find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = TRUE)
 		if(isnull(spawn_loc))
@@ -129,7 +129,8 @@
 		return
 	//set payoff
 	var/payoff = 0
-	var/datum/bank_account/account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+//	var/datum/bank_account/account = SSeconomy.get_dep_account(ACCOUNT_CAR)	//CELADON REMOVE
+	var/datum/bank_account/account = SSeconomy.get_dep_account(ACCOUNT_NTS)	//CELADON ADD
 	if(account)
 		payoff = max(PAYOFF_MIN, FLOOR(account.account_balance * 0.80, 1000))
 	var/datum/comm_message/threat = chosen_gang.generate_message(payoff)
@@ -149,7 +150,8 @@
 		priority_announce(chosen_gang.response_rejected, sender_override = chosen_gang.ship_name, color_override = chosen_gang.announcement_color)
 		return
 
-	var/datum/bank_account/plundered_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+//	var/datum/bank_account/plundered_account = SSeconomy.get_dep_account(ACCOUNT_CAR)	//CELADON REMOVE
+	var/datum/bank_account/plundered_account = SSeconomy.get_dep_account(ACCOUNT_NTS)	//CELADON ADD
 	if(plundered_account)
 		if(plundered_account.adjust_money(-payoff))
 			chosen_gang.paid_off = TRUE
@@ -257,7 +259,7 @@
 		question = "Looking for volunteers to become [span_notice(readable_poll_role)] for [span_danger(name)]",
 		// check_jobban = list(ROLE_SYNDICATE, jobban_flag || pref_flag), // Not necessary, handled in trim_candidates()
 		// role = pref_flag, // Not necessary, handled in trim_candidates()
-		poll_time = 30 SECONDS,
+		poll_time = 1 MINUTES, // NOVA EDIT CHANGE - ORIGINAL: poll_time = 30 SECONDS,
 		alert_pic = signup_atom_appearance,
 		role_name_text = readable_poll_role,
 	)
@@ -271,7 +273,7 @@
 	pref_flag = ROLE_WIZARD_MIDROUND
 	jobban_flag = ROLE_WIZARD
 	ruleset_flags = RULESET_INVADER|RULESET_HIGH_IMPACT
-	weight = list(
+	weight = alist(
 		DYNAMIC_TIER_LOW = 0,
 		DYNAMIC_TIER_LOWMEDIUM = 0,
 		DYNAMIC_TIER_MEDIUMHIGH = 1,
@@ -294,7 +296,7 @@
 	pref_flag = ROLE_OPERATIVE_MIDROUND
 	jobban_flag = ROLE_OPERATIVE
 	ruleset_flags = RULESET_INVADER|RULESET_HIGH_IMPACT
-	weight = list(
+	weight = alist(
 		DYNAMIC_TIER_LOW = 0,
 		DYNAMIC_TIER_LOWMEDIUM = 1,
 		DYNAMIC_TIER_MEDIUMHIGH = 3,
@@ -378,7 +380,7 @@
 	false_alarm_able = TRUE
 	pref_flag = ROLE_BLOB
 	ruleset_flags = RULESET_INVADER
-	weight = list(
+	weight = alist(
 		DYNAMIC_TIER_LOW = 0,
 		DYNAMIC_TIER_LOWMEDIUM = 1,
 		DYNAMIC_TIER_MEDIUMHIGH = 3,
@@ -407,6 +409,9 @@
 /datum/dynamic_ruleset/midround/from_ghosts/blob/false_alarm()
 	priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK5)
 
+	// Set status displays to biohazard alert even for false alarm
+	send_status_display_biohazard_alert()
+
 /datum/dynamic_ruleset/midround/from_ghosts/xenomorph
 	name = "Alien Infestation"
 	config_tag = "Xenomorph"
@@ -415,7 +420,7 @@
 	false_alarm_able = TRUE
 	pref_flag = ROLE_ALIEN
 	ruleset_flags = RULESET_INVADER
-	weight = list(
+	weight = alist(
 		DYNAMIC_TIER_LOW = 0,
 		DYNAMIC_TIER_LOWMEDIUM = 1,
 		DYNAMIC_TIER_MEDIUMHIGH = 5,
@@ -432,7 +437,7 @@
 	max_antag_cap += prob(50) // 50% chance to get a second xeno, free!
 
 /datum/dynamic_ruleset/midround/from_ghosts/xenomorph/can_be_selected()
-	return ..() && length(find_vents()) > 0
+	return ..() && length(find_vent_spawns()) > 0
 
 /datum/dynamic_ruleset/midround/from_ghosts/xenomorph/execute()
 	. = ..()
@@ -448,30 +453,54 @@
 	return new /mob/living/carbon/alien/larva
 
 /datum/dynamic_ruleset/midround/from_ghosts/xenomorph/create_execute_args()
-	return list(find_vents())
+	return list(find_vent_spawns())
 
 /datum/dynamic_ruleset/midround/from_ghosts/xenomorph/assign_role(datum/mind/candidate, list/vent_list)
 	// xeno login gives antag datums
 	var/obj/vent = length(vent_list) >= 2 ? pick_n_take(vent_list) : vent_list[1]
 	candidate.current.move_into_vent(vent)
 
-/datum/dynamic_ruleset/midround/from_ghosts/xenomorph/proc/find_vents()
-	var/list/vents = list()
-	var/list/vent_pumps = SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/atmospherics/components/unary/vent_pump)
-	for(var/obj/machinery/atmospherics/components/unary/vent_pump/temp_vent as anything in vent_pumps)
-		if(QDELETED(temp_vent))
-			continue
-		if(!is_station_level(temp_vent.loc.z) || temp_vent.welded)
-			continue
-		var/datum/pipeline/temp_vent_parent = temp_vent.parents[1]
-		if(!temp_vent_parent)
-			continue
-		// Stops Aliens getting stuck in small networks.
-		// See: Security, Virology
-		if(length(temp_vent_parent.other_atmos_machines) <= 20)
-			continue
-		vents += temp_vent
-	return vents
+/datum/dynamic_ruleset/midround/from_ghosts/blood_worms
+	name = "Blood Worm Infestation"
+	config_tag = "Midround Blood Worm"
+	preview_antag_datum = /datum/antagonist/blood_worm/infestation
+	// Please set this to HEAVY_MIDROUND once dynamic has fine-grained handling for spawn times and doesn't restrict all heavy midrounds to spawning after 40 minutes.
+	// Blood worms are intended to spawn 10-30 minutes into a round. This is a band-aid fix, and the better of two evils. (wrong threat tier vs wrong round timing)
+	midround_type = LIGHT_MIDROUND
+	false_alarm_able = TRUE
+	pref_flag = ROLE_BLOOD_WORM_INFESTATION
+	jobban_flag = ROLE_BLOOD_WORM
+	candidate_role = "Blood Worm"
+	ruleset_flags = RULESET_INVADER
+	weight = 2 // For reference, Nightmare has a weight of 5.
+	min_pop = 20 // Blood worms are limited by resources, so low pop means they have a harder time getting their tail in the door.
+	min_antag_cap = 1
+	max_antag_cap = 2
+	signup_atom_appearance = /mob/living/basic/blood_worm/juvenile
+
+/datum/dynamic_ruleset/midround/from_ghosts/blood_worms/can_be_selected()
+	return ..() && length(find_vent_spawns()) > 0
+
+/datum/dynamic_ruleset/midround/from_ghosts/blood_worms/execute()
+	. = ..()
+	addtimer(CALLBACK(src, PROC_REF(announce_worms)), rand(450, 750) SECONDS)
+
+/datum/dynamic_ruleset/midround/from_ghosts/blood_worms/create_ruleset_body()
+	return new /mob/living/basic/blood_worm/hatchling
+
+/datum/dynamic_ruleset/midround/from_ghosts/blood_worms/create_execute_args()
+	return list(find_vent_spawns())
+
+/datum/dynamic_ruleset/midround/from_ghosts/blood_worms/assign_role(datum/mind/candidate, list/vent_list)
+	candidate.add_antag_datum(/datum/antagonist/blood_worm)
+	var/obj/vent = length(vent_list) >= 2 ? pick_n_take(vent_list) : vent_list[1]
+	candidate.current.move_into_vent(vent)
+
+/datum/dynamic_ruleset/midround/from_ghosts/blood_worms/proc/announce_worms()
+	priority_announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", ANNOUNCER_ALIENS)
+
+/datum/dynamic_ruleset/midround/from_ghosts/blood_worms/false_alarm()
+	announce_worms()
 
 /datum/dynamic_ruleset/midround/from_ghosts/nightmare
 	name = "Nightmare"
@@ -502,7 +531,7 @@
 	false_alarm_able = TRUE
 	pref_flag = ROLE_SPACE_DRAGON
 	ruleset_flags = RULESET_INVADER
-	weight = list(
+	weight = alist(
 		DYNAMIC_TIER_LOW = 0,
 		DYNAMIC_TIER_LOWMEDIUM = 3,
 		DYNAMIC_TIER_MEDIUMHIGH = 5,
@@ -572,7 +601,7 @@
 	midround_type = HEAVY_MIDROUND
 	pref_flag = ROLE_NINJA
 	ruleset_flags = RULESET_INVADER
-	weight = list(
+	weight = alist(
 		DYNAMIC_TIER_LOW = 0,
 		DYNAMIC_TIER_LOWMEDIUM = 0,
 		DYNAMIC_TIER_MEDIUMHIGH = 1,
@@ -590,24 +619,15 @@
 /datum/dynamic_ruleset/midround/from_ghosts/space_ninja/assign_role(datum/mind/candidate)
 	var/mob/living/carbon/human/new_ninja = candidate.current
 	new_ninja.forceMove(find_space_spawn()) // ninja antag datum needs the mob to be in place first
+	/* // NOVA EDIT REMOVAL START
 	randomize_human_normie(new_ninja)
 	var/new_name = "[pick(GLOB.ninja_titles)] [pick(GLOB.ninja_names)]"
 	new_ninja.name = new_name
 	new_ninja.real_name = new_name
+	*/ // NOVA EDIT REMOVAL END
 	new_ninja.dna.update_dna_identity() // ninja antag datum needs dna to be set first
 	candidate.add_antag_datum(/datum/antagonist/ninja)
-	// NOVA EDIT ADDITION BEGIN: Preference Ninjas
-	var/loadme = tgui_input_list(new_ninja, "Do you wish to load your character slot?", "Load Character?", list("Yes!", "No, I want to be random!"), default = "No, I want to be random!", timeout = 60 SECONDS)
-	var/codename
-	if(loadme != "Yes!")
-		return
-	new_ninja.client?.prefs?.safe_transfer_prefs_to(new_ninja)
-	codename = tgui_input_text(new_ninja.client, "What should your codename be?", "Agent Name", "[pick("Master", "Legendary", "Agent", "Shinobi", "Ninja")] [new_ninja.dna.species.name]", 42, FALSE, TRUE, 300 SECONDS)
-	codename ? codename : (codename = "[pick("Master", "Legendary", "Agent", "Shinobi", "Ninja")] [new_ninja.dna.species.name]")
-	new_ninja.name = codename
-	new_ninja.real_name = codename
-	new_ninja.dna.update_dna_identity()
-	// NOVA EDIT ADDITION END: Preference Ninjas
+	prompt_namechange(new_ninja, new_ninja.client) // NOVA EDIT ADDITION
 
 /datum/dynamic_ruleset/midround/from_ghosts/revenant
 	name = "Revenant"
@@ -667,7 +687,7 @@
 	candidate_role = "Changeling"
 	pref_flag = ROLE_CHANGELING_MIDROUND
 	jobban_flag = ROLE_CHANGELING
-	ruleset_flags = RULESET_INVADER
+	ruleset_flags = RULESET_INVADER|RULESET_VARIATION
 	weight = 5
 	min_pop = 15
 	max_antag_cap = 1
@@ -678,6 +698,21 @@
 
 /datum/dynamic_ruleset/midround/from_ghosts/space_changeling/assign_role(datum/mind/candidate)
 	generate_changeling_meteor(candidate)
+
+/datum/dynamic_ruleset/midround/from_ghosts/space_changeling/mass
+	name = "Mass Space Changelings"
+	config_tag = "Mass Changelings"
+	midround_type = HEAVY_MIDROUND
+	min_pop = 25
+	min_antag_cap = 2
+	max_antag_cap = 3
+	repeatable_weight_decrease = 4
+	weight = alist(
+		DYNAMIC_TIER_LOW = 0,
+		DYNAMIC_TIER_LOWMEDIUM = 3,
+		DYNAMIC_TIER_MEDIUMHIGH = 4,
+		DYNAMIC_TIER_HIGH = 5,
+	)
 
 /datum/dynamic_ruleset/midround/from_ghosts/paradox_clone
 	name = "Paradox Clone"
@@ -690,21 +725,28 @@
 	min_pop = 10
 	max_antag_cap = 1
 	signup_atom_appearance = /obj/effect/bluespace_stream
+	/// Chance of getting another clone for the price of free
+	var/bonus_clone_chance = 20
+
+/datum/dynamic_ruleset/midround/from_ghosts/paradox_clone/New(list/dynamic_config)
+	. = ..()
+	max_antag_cap += prob(bonus_clone_chance)
 
 /datum/dynamic_ruleset/midround/from_ghosts/paradox_clone/can_be_selected()
 	return ..() && !isnull(find_clone()) && !isnull(find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = FALSE))
 
+/datum/dynamic_ruleset/midround/from_ghosts/paradox_clone/create_execute_args()
+	return list(find_clone())
+
 /datum/dynamic_ruleset/midround/from_ghosts/paradox_clone/create_ruleset_body()
 	return // handled by assign_role() entirely
 
-/datum/dynamic_ruleset/midround/from_ghosts/paradox_clone/assign_role(datum/mind/candidate)
-	var/mob/living/carbon/human/good_version = find_clone()
+/datum/dynamic_ruleset/midround/from_ghosts/paradox_clone/assign_role(datum/mind/candidate, mob/living/carbon/human/good_version)
 	var/mob/living/carbon/human/bad_version = good_version.make_full_human_copy(find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = FALSE))
 	candidate.transfer_to(bad_version, force_key_move = TRUE)
 
 	var/datum/antagonist/paradox_clone/antag = candidate.add_antag_datum(/datum/antagonist/paradox_clone)
-	antag.original_ref = WEAKREF(good_version.mind)
-	antag.setup_clone()
+	antag.setup_clone(good_version.mind)
 
 	playsound(bad_version, 'sound/items/weapons/zapbang.ogg', 30, TRUE)
 	bad_version.put_in_hands(new /obj/item/storage/toolbox/mechanical()) //so they dont get stuck in maints
@@ -1042,8 +1084,8 @@
 	// checks for stuff like bitrunner avatars and ghost mafia
 	if(HAS_TRAIT(candidate, TRAIT_MIND_TEMPORARILY_GONE) || HAS_TRAIT(candidate, TRAIT_TEMPORARY_BODY))
 		return FALSE
-	if(!SSdynamic?.is_mob_considered_as_valid(candidate, candidate_client, allow_ghost = FALSE)) // SS1984 ADDTIION, no modular because it's before SEND_SIGNAL
-		return FALSE // SS1984 ADDITION
+	if(!SSdynamic?.is_mob_considered_as_valid(candidate, candidate_client, allow_ghost = FALSE)) // Celadon ADDTIION, no modular because it's before SEND_SIGNAL
+		return FALSE // Celadon ADDITION
 	if(SEND_SIGNAL(candidate, COMSIG_MOB_MIND_BEFORE_MIDROUND_ROLL, src, pref_flag) & CANCEL_ROLL)
 		return FALSE
 	return ..()
@@ -1068,6 +1110,7 @@
 	false_alarm_able = TRUE
 	pref_flag = ROLE_SLEEPER_AGENT
 	jobban_flag = ROLE_TRAITOR
+	ruleset_flags = RULESET_VARIATION
 	weight = 10
 	min_pop = 3
 	blacklisted_roles = list(
@@ -1083,6 +1126,22 @@
 		"[command_name()] High-Priority Update",
 	)
 
+/datum/dynamic_ruleset/midround/from_living/traitor/mass
+	name = "Mass Traitors"
+	config_tag = "Mass Traitors"
+	midround_type = HEAVY_MIDROUND
+	min_pop = 15
+	min_antag_cap = 2
+	max_antag_cap = 4
+	repeatable_weight_decrease = 8
+	blacklisted_roles = list()
+	weight = alist(
+		DYNAMIC_TIER_LOW = 0,
+		DYNAMIC_TIER_LOWMEDIUM = 3,
+		DYNAMIC_TIER_MEDIUMHIGH = 8,
+		DYNAMIC_TIER_HIGH = 10,
+	)
+
 /datum/dynamic_ruleset/midround/from_living/malf_ai
 	name = "Malfunctioning AI"
 	config_tag = "Midround Malfunctioning AI"
@@ -1091,7 +1150,7 @@
 	pref_flag = ROLE_MALF_MIDROUND
 	jobban_flag = ROLE_MALF
 	ruleset_flags = RULESET_HIGH_IMPACT
-	weight = list(
+	weight = alist(
 		DYNAMIC_TIER_LOW = 0,
 		DYNAMIC_TIER_LOWMEDIUM = 1,
 		DYNAMIC_TIER_MEDIUMHIGH = 3,
@@ -1119,7 +1178,7 @@
 	midround_type = HEAVY_MIDROUND
 	pref_flag = ROLE_BLOB_INFECTION
 	jobban_flag = ROLE_BLOB
-	weight = list(
+	weight = alist(
 		DYNAMIC_TIER_LOW = 0,
 		DYNAMIC_TIER_LOWMEDIUM = 1,
 		DYNAMIC_TIER_MEDIUMHIGH = 3,
@@ -1143,7 +1202,7 @@
 	midround_type = LIGHT_MIDROUND
 	pref_flag = ROLE_OBSESSED
 	blacklisted_roles = list()
-	weight = list(
+	weight = alist(
 		DYNAMIC_TIER_LOW = 5,
 		DYNAMIC_TIER_LOWMEDIUM = 5,
 		DYNAMIC_TIER_MEDIUMHIGH = 3,

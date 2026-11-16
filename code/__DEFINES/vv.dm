@@ -53,7 +53,7 @@
 #define VV_TOPIC_LINK(datum, href_key, text) "<a href='byond://?_src_=vars;[HrefToken()];[href_key]=TRUE;target=[REF(datum)]'>text</a>"
 
 //Helpers for vv_get_dropdown()
-#define VV_DROPDOWN_OPTION(href_key, name) . += "<option value='?_src_=vars;[HrefToken()];[href_key]=TRUE;target=[REF(src)]'>[name]</option>"
+#define VV_DROPDOWN_OPTION(href_key, name) . += "<a href='byond://?_src_=vars;[HrefToken()];[href_key]=TRUE;target=[REF(src)]' style='display:none;'>[name]</a>"
 
 // VV HREF KEYS
 #define VV_HK_TARGET "target"
@@ -106,7 +106,9 @@
 #define VV_HK_OBSERVE_FOLLOW "observe_follow"
 #define VV_HK_GET_MOVABLE "get_movable"
 #define VV_HK_DEADCHAT_PLAYS "deadchat_plays"
-#define VV_HK_SELECT_TTS_VOICE "select_tts_voice"
+#define VV_HK_ADD_REMOVE_FACTION "add_remove_faction"
+#define VV_HK_GET_FACTIONS "add_remove_factions"
+#define VV_HK_SELECT_TTS_VOICE "select_tts_voice" // Celadon ADDITION
 
 // /obj
 #define VV_HK_OSAY "osay"
@@ -137,6 +139,7 @@
 #define VV_HK_VIEW_PLANES "view_planes"
 #define VV_HK_GIVE_AI "give_ai"
 #define VV_HK_GIVE_AI_SPEECH "give_ai_speech"
+#define VV_HK_GIVE_ACCESS "give_access"
 
 // /mob/living
 #define VV_HK_GIVE_SPEECH_IMPEDIMENT "impede_speech"

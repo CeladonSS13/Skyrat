@@ -1,4 +1,5 @@
 /datum/emote/living/carbon
+	abstract_type = /datum/emote/living/carbon
 	mob_type_allowed_typecache = list(/mob/living/carbon)
 
 /datum/emote/living/carbon/airguitar
@@ -6,8 +7,7 @@
 	message = "is strumming the air and headbanging like a safari chimp."
 	hands_use_check = TRUE
 
-//NOVA EDIT REMOVAL BEGIN - EMOTES - (Moved to modular_nova/modules/emotes/code/emotes.dm as /datum/emote/living/clap)
-/*
+// Celadon REVERT OF NOVA REMOVAL START
 /datum/emote/living/carbon/clap
 	key = "clap"
 	key_third_person = "claps"
@@ -26,8 +26,7 @@
 		'sound/mobs/humanoids/human/clap/clap3.ogg',
 		'sound/mobs/humanoids/human/clap/clap4.ogg',
 	)
-*/
-//NOVA EDIT REMOVAL END
+// Celadon REVERT OF NOVA REMOVAL END
 
 /datum/emote/living/carbon/crack
 	key = "crack"
@@ -104,12 +103,42 @@
 		return FALSE
 	return ..()
 
+/datum/emote/living/carbon/mchitter
+	key = "chitter"
+	key_third_person = "chitters"
+	message = "chitters!"
+	message_mime = "chitters silently?"
+	sound = 'sound/mobs/humanoids/moth/moth_chitter.ogg'
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+
+/* NOVA EDIT: anyone can chitter. theoretically. further edits in modular_nova\modules\emotes\code\emotes.dm
+/datum/emote/living/carbon/mchitter/can_run_emote(mob/living/carbon/user, status_check, intentional, params)
+	if(!ismoth(user))
+		return FALSE
+	return ..()
+*/
+
 /datum/emote/living/carbon/moan
 	key = "moan"
 	key_third_person = "moans"
 	message = "moans!"
 	message_mime = "appears to moan!"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+
+/datum/emote/living/carbon/msqueak
+	key = "squeak"
+	key_third_person = "squeaks"
+	message = "squeaks!"
+	message_mime = "squeaks silently?"
+	sound = 'sound/mobs/humanoids/moth/moth_squeak.ogg'
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+
+/* NOVA EDIT: anyone can squeak. theoretically. further edits in modular_nova\modules\emotes\code\emotes.dm
+/datum/emote/living/carbon/msqueak/can_run_emote(mob/living/carbon/user, status_check, intentional, params)
+	if(!ismoth(user))
+		return FALSE
+	return ..()
+*/
 
 /datum/emote/living/carbon/noogie
 	key = "noogie"
@@ -238,11 +267,3 @@
 	message = "hisses!"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	vary = TRUE
-
-/datum/emote/living/carbon/hiss/get_sound(mob/living/carbon/user)
-	. = ..()
-	if(!istype(user))
-		return
-	if(isalien(user))
-		return SFX_HISS
-	return user.dna.species.get_hiss_sound()

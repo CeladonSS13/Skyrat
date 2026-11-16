@@ -164,9 +164,7 @@
 	// they ALSO collapse into a singulo.
 	if(istype(clong, /obj/effect/immovablerod))
 		visible_message(span_danger("[src] collides with [clong]! This cannot end well."))
-		var/datum/effect_system/fluid_spread/smoke/smoke = new
-		smoke.set_up(2, holder = src, location = get_turf(src))
-		smoke.start()
+		do_smoke(2, src, get_turf(src))
 		var/obj/singularity/bad_luck = new(get_turf(src))
 		bad_luck.energy = 800
 		qdel(clong)
@@ -229,7 +227,7 @@
 
 	playsound(src, 'sound/effects/meteorimpact.ogg', 100, TRUE)
 	for(var/mob/living/nearby_mob in urange(8, src))
-		if(nearby_mob.stat > SOFT_CRIT)
+		if(nearby_mob.stat != CONSCIOUS)
 			continue
 		shake_camera(nearby_mob, 2, 3)
 

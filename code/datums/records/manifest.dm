@@ -28,10 +28,10 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	// First we build up the order in which we want the departments to appear in.
 	var/list/manifest_out = list()
 	for(var/datum/job_department/department as anything in SSjob.joinable_departments)
-		// SS1984 ADDITION START
+		// Celadon ADDITION START
 		if(department.department_name == DEPARTMENT_SILICON || department.department_name == DEPARTMENT_CENTRAL_COMMAND)
 			continue
-		// SS1984 ADDITION END
+		// Celadon ADDITION END
 		manifest_out[department.department_name] = list()
 	manifest_out[DEPARTMENT_UNASSIGNED] = list()
 
@@ -40,7 +40,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		var/name = target.name
 		var/rank = target.rank // user-visible job
 		var/trim = target.trim // internal jobs by trim type
-		var/active_status = target.physical_status // SS1984 ADDITION
+		var/active_status = target.physical_status // Celadon ADDITION
 		// NOVA EDIT ADDITION START - bare minimum data the station records need to possess to show up on the crew manifest
 		if((name == "Unknown") || (rank == "Unassigned" || rank == "Unknown")) // records are unassigned by default, but if edited without input becomes unknown
 			continue
@@ -52,10 +52,10 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 				"name" = name,
 				"rank" = rank,
 				"trim" = trim,
-				"active" = active_status, // SS1984 ADDITION
+				"active" = active_status, // Celadon ADDITION
 				)
 			continue
-		for(var/department_type as anything in job.departments_list)
+		for(var/department_type in job.departments_list)
 			//Jobs under multiple departments should only be displayed if this is their first department or the command department
 			if(job.departments_list[1] != department_type && !(job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
 				continue
@@ -67,16 +67,16 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 				"name" = name,
 				"rank" = rank,
 				"trim" = trim,
-				"active" = active_status,  // SS1984 ADDITION
+				"active" = active_status,  // Celadon ADDITION
 				)
-			// SS1984 ADDITION START
+			// Celadon ADDITION START
 			var/department_key = department.department_name
 			if(trim == DEPARTMENT_SILICON || department_key == DEPARTMENT_SILICON)
 				continue // no silicons in CREW manifest
 			if(trim == DEPARTMENT_CENTRAL_COMMAND || department_key == DEPARTMENT_CENTRAL_COMMAND)
 				continue // don't show them as "central command", only to other departments (command)
-			// SS1984 ADDITION END
-			var/list/department_list = manifest_out[department_key] // SS1984 EDIT, original: var/list/department_list = manifest_out[department.department_name]
+			// Celadon ADDITION END
+			var/list/department_list = manifest_out[department_key] // Celadon EDIT, original: var/list/department_list = manifest_out[department.department_name]
 			if(istype(job, department.department_head))
 				department_list.Insert(1, null)
 				department_list[1] = entry
@@ -125,6 +125,10 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	set waitfor = FALSE
 	if(!(person.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
 		return
+	// NOVA EDIT ADDITION START - Visitor ID -> no manifest
+	if((person.has_quirk(/datum/quirk/visitor) || ("Visitor ID" in person_client?.prefs.all_quirks)) && is_assistant_job(person.mind?.assigned_role))
+		return inject_guest(person, person_client)
+	// NOVA EDIT ADDITION END
 
 	// Attempt to get assignment from ID, otherwise default to mind.
 	var/obj/item/card/id/id_card = person.get_idcard(hand_first = FALSE)
@@ -151,7 +155,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		character_appearance = character_appearance,
 		dna_string = record_dna.unique_enzymes,
 		fingerprint = md5(record_dna.unique_identity),
-		gender = person_gender,
+		gender = person.gender,
 		initial_rank = assignment,
 		name = person.real_name,
 		rank = chosen_assignment, // NOVA EDIT - Alt job titles - ORIGINAL: rank = assignment,
@@ -255,4 +259,3 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		"manifest" = get_manifest(),
 		"positions" = positions
 	)
-

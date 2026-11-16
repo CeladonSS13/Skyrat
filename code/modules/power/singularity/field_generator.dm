@@ -54,7 +54,6 @@ no power level overlay is currently in the overlays list.
 	/// we warm up and cool down instantly
 	var/instantenous = FALSE
 
-	var/shield_floor = TRUE
 /datum/armor/field_generator
 	melee = 25
 	bullet = 10
@@ -350,8 +349,7 @@ no power level overlay is currently in the overlays list.
 
 	connected_gens |= found_generator
 	found_generator.connected_gens |= src
-	if(shield_floor)
-		shield_floor(TRUE)
+	shield_floor(TRUE)
 	update_appearance()
 
 
@@ -419,7 +417,7 @@ no power level overlay is currently in the overlays list.
 	if (active)
 		return SINGULARITY_TRY_MOVE_BLOCK
 
-/obj/machinery/field/generator/shock(mob/living/user)
+/obj/machinery/field/generator/yeet_shock(mob/living/user)
 	if(fields.len)
 		..()
 

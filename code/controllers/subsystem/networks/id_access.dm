@@ -3,7 +3,7 @@
  */
 SUBSYSTEM_DEF(id_access)
 	name = "IDs and Access"
-	flags = SS_NO_FIRE
+	ss_flags = SS_NO_FIRE
 
 	/// Dictionary of access flags. Keys are accesses. Values are their associated bitflags.
 	var/list/flags_by_access = list()
@@ -99,6 +99,12 @@ SUBSYSTEM_DEF(id_access)
 	for(var/access in accesses_by_flag["[ACCESS_FLAG_SPECIAL]"])
 		flags_by_access |= list("[access]" = ACCESS_FLAG_SPECIAL)
 
+	//Celadon ADD START
+	accesses_by_flag["[ACCESS_FLAG_CENTCOM]"] = REGION_ACCESS_ALL_CENTCOM
+	for(var/access in accesses_by_flag["[ACCESS_FLAG_CENTCOM]"])
+		flags_by_access |= list("[access]" = ACCESS_FLAG_CENTCOM)
+	//Celadon ADD END
+
 	access_flag_string_by_flag["[ACCESS_FLAG_COMMON]"] = ACCESS_FLAG_COMMON_NAME
 	access_flag_string_by_flag["[ACCESS_FLAG_COMMAND]"] = ACCESS_FLAG_COMMAND_NAME
 	access_flag_string_by_flag["[ACCESS_FLAG_PRV_COMMAND]"] = ACCESS_FLAG_PRV_COMMAND_NAME
@@ -120,8 +126,18 @@ SUBSYSTEM_DEF(id_access)
 	accesses_by_region[REGION_SUPPLY] = REGION_ACCESS_SUPPLY
 	accesses_by_region[REGION_COMMAND] = REGION_ACCESS_COMMAND
 	accesses_by_region[REGION_CENTCOM] = REGION_ACCESS_CENTCOM
-	accesses_by_region[REGION_NTR] = REGION_ACCESS_NTR
+	//Celadon ADD START
+	accesses_by_region[REGION_CENTCOM_NTR] = REGION_ACCESS_CENTCOM_NTR
+	accesses_by_region[REGION_CENTCOM_NAVAL] = REGION_ACCESS_CENTCOM_NAVAL
+	accesses_by_region[REGION_CENTCOM_CAPTAIN] = REGION_ACCESS_CENTCOM_CAPTAIN
+	accesses_by_region[REGION_CENTCOM_SPECOPS] = REGION_ACCESS_CENTCOM_SPECOPS
+	accesses_by_region[REGION_ALL_CENTCOM] = REGION_ACCESS_ALL_CENTCOM
+	accesses_by_region[REGION_TARKON] = REGION_ACCESS_TARKON
+	accesses_by_region[REGION_TARKON_DIRECTOR] = REGION_ACCESS_TARKON_DIRECTOR
 
+	centcom_regions = REGION_AREA_CENTCOM
+	tarkon_regions = REGION_AREA_TARKON
+	//Celadon ADD END
 	station_regions = REGION_AREA_STATION
 
 /// Instantiate trim singletons and add them to a list.
@@ -194,20 +210,50 @@ SUBSYSTEM_DEF(id_access)
 			"templates" = list(),
 			"pdas" = list(),
 		),
-						// SS1984 ADDITION
-		"[ACCESS_CENT_LIVING]" = list(
-			"regions" = list(REGION_NTR),
-			"head" = JOB_NT_REP,
-			"templates" = list(),
-			"pdas" = list(),
-		),
-		"[ACCESS_CENT_CAPTAIN]" = list(
-			"regions" = list(REGION_CENTCOM),
+						// Celadon ADD START
+		"[ACCESS_CENT_ADMIRAL]" = list(
+			"regions" = list(REGION_CENTCOM_NAVAL),
 			"head" = JOB_NAVAL_FLEET_ADMIRAL,
 			"templates" = list(),
 			"pdas" = list(),
 		),
-						// SS1984 ADDITION
+		"[ACCESS_CENT_CAPTAIN]" = list(
+			"regions" = list(REGION_CENTCOM_CAPTAIN),
+			"head" = JOB_NAVAL_CAPTAIN,
+			"templates" = list(),
+			"pdas" = list(),
+		),
+		"[ACCESS_CENT_OFFICER]" = list(
+			"regions" = list(REGION_CENTCOM),
+			"head" = JOB_CENTCOM_COMMANDER,
+			"templates" = list(),
+			"pdas" = list(),
+		),
+		"[ACCESS_CENT_SPECOPS_OFFICER]" = list(
+			"regions" = list(REGION_CENTCOM_SPECOPS),
+			"head" = JOB_CENTCOM_SPECIAL_OFFICER,
+			"templates" = list(),
+			"pdas" = list(),
+		),
+		"[ACCESS_CENT_OFFICIAL]" = list(
+			"regions" = list(REGION_CENTCOM_NTR),
+			"head" = JOB_NT_REP,
+			"templates" = list(),
+			"pdas" = list(),
+		),
+		"[ACCESS_TARKON]" = list(
+			"regions" = list(REGION_TARKON),
+			"head" = JOB_TARKON_ENSIGN,
+			"templates" = list(),
+			"pdas" = list(),
+		),
+		"[ACCESS_TARKON_DIRECTOR]" = list(
+			"regions" = list(REGION_TARKON_DIRECTOR),
+			"head" = JOB_TARKON_DIRECTOR,
+			"templates" = list(),
+			"pdas" = list(),
+		),
+						// Celadon ADD END
 	)
 
 	var/list/station_job_trims = subtypesof(/datum/id_trim/job)
@@ -215,8 +261,8 @@ SUBSYSTEM_DEF(id_access)
 		var/datum/id_trim/job/trim = trim_singletons_by_path[trim_path]
 		if(!length(trim.template_access))
 			continue
-		if (trim.hide_in_templates > TRIM_HIDE_NONE) // SS1984 ADDITION
-			continue // SS1984 ADDITION
+		if (trim.hide_in_templates > TRIM_HIDE_NONE) // Celadon ADDITION
+			continue // Celadon ADDITION
 
 		station_job_templates[trim_path] = trim.assignment
 		for(var/access in trim.template_access)
@@ -228,16 +274,23 @@ SUBSYSTEM_DEF(id_access)
 			var/list/templates = manager["templates"]
 			templates[trim_path] = trim.assignment
 
-	var/list/centcom_job_trims = typesof(/datum/id_trim/centcom) - typesof(/datum/id_trim/centcom/corpse) + (/datum/id_trim/job/nanotrasen_consultant)	// SS1984 EDIT ORIGINAL var/list/centcom_job_trims = typesof(/datum/id_trim/centcom) - typesof(/datum/id_trim/centcom/corpse)
+	var/list/centcom_job_trims = typesof(/datum/id_trim/centcom) - typesof(/datum/id_trim/centcom/corpse) + (/datum/id_trim/job/nanotrasen_consultant)	// Celadon EDIT ORIGINAL var/list/centcom_job_trims = typesof(/datum/id_trim/centcom) - typesof(/datum/id_trim/centcom/corpse)
 	for(var/trim_path in centcom_job_trims)
 		var/datum/id_trim/trim = trim_singletons_by_path[trim_path]
-		// SS1984 ADDITION START
+		// Celadon ADDITION START
 		if (istype(trim, /datum/id_trim/job))
 			var/datum/id_trim/job/trim_job = trim
 			if (trim_job.hide_in_templates > TRIM_HIDE_STATION)
 				continue
-		// SS1984 ADDITION END
+		// Celadon ADDITION END
 		centcom_job_templates[trim_path] = trim.assignment
+
+//Celadon Add Start
+	var/list/tarkon_job_trims = typesof(/datum/id_trim/away/tarkon)
+	for(var/trim_path in tarkon_job_trims)
+		var/datum/id_trim/trim = trim_singletons_by_path[trim_path]
+		tarkon_job_templates[trim_path] = trim.assignment
+//Celadon Add End
 
 	var/list/all_pda_paths = typesof(/obj/item/modular_computer/pda)
 	var/list/pda_regions = PDA_PAINTING_REGIONS
@@ -272,87 +325,113 @@ SUBSYSTEM_DEF(id_access)
 
 /// Setup dictionary that converts access levels to text descriptions.
 /datum/controller/subsystem/id_access/proc/setup_access_descriptions()
-	desc_by_access["[ACCESS_CARGO]"] = "Cargo Bay"
-	desc_by_access["[ACCESS_SECURITY]"] = "Security"
-	desc_by_access["[ACCESS_BRIG]"] = "Holding Cells"
-	desc_by_access["[ACCESS_COURT]"] = "Courtroom"
-	desc_by_access["[ACCESS_DETECTIVE]"] = "Detective Office"
-	desc_by_access["[ACCESS_MEDICAL]"] = "Medical"
-	desc_by_access["[ACCESS_GENETICS]"] = "Genetics Lab"
-	desc_by_access["[ACCESS_MORGUE]"] = "Morgue"
-	desc_by_access["[ACCESS_MORGUE_SECURE]"] = "Coroner"
-	desc_by_access["[ACCESS_SCIENCE]"] = "R&D Lab"
-	desc_by_access["[ACCESS_ORDNANCE]"] = "Ordnance Lab"
-	desc_by_access["[ACCESS_ORDNANCE_STORAGE]"] = "Ordnance Storage"
-	desc_by_access["[ACCESS_PLUMBING]"] = "Chemistry Lab"
-	desc_by_access["[ACCESS_RD]"] = "RD Office"
-	desc_by_access["[ACCESS_BAR]"] = "Bar"
-	desc_by_access["[ACCESS_JANITOR]"] = "Custodial Closet"
-	desc_by_access["[ACCESS_ENGINEERING]"] = "Engineering"
-	desc_by_access["[ACCESS_ENGINE_EQUIP]"] = "Power and Engineering Equipment"
-	desc_by_access["[ACCESS_MAINT_TUNNELS]"] = "Maintenance"
-	desc_by_access["[ACCESS_EXTERNAL_AIRLOCKS]"] = "External Airlocks"
-	desc_by_access["[ACCESS_CHANGE_IDS]"] = "ID Console"
-	desc_by_access["[ACCESS_AI_UPLOAD]"] = "AI Chambers"
-	desc_by_access["[ACCESS_TELEPORTER]"] = "Teleporter"
-	desc_by_access["[ACCESS_EVA]"] = "EVA"
-	desc_by_access["[ACCESS_COMMAND]"] = "Command"
-	desc_by_access["[ACCESS_CAPTAIN]"] = "Captain"
-	desc_by_access["[ACCESS_ALL_PERSONAL_LOCKERS]"] = "Personal Lockers"
-	desc_by_access["[ACCESS_CHAPEL_OFFICE]"] = "Chapel Office"
-	desc_by_access["[ACCESS_TECH_STORAGE]"] = "Technical Storage"
-	desc_by_access["[ACCESS_ATMOSPHERICS]"] = "Atmospherics"
-	desc_by_access["[ACCESS_CREMATORIUM]"] = "Crematorium"
-	desc_by_access["[ACCESS_ARMORY]"] = "Armory"
-	desc_by_access["[ACCESS_CONSTRUCTION]"] = "Construction"
-	desc_by_access["[ACCESS_KITCHEN]"] = "Kitchen"
-	desc_by_access["[ACCESS_HYDROPONICS]"] = "Hydroponics"
-	desc_by_access["[ACCESS_LIBRARY]"] = "Library"
-	desc_by_access["[ACCESS_LAWYER]"] = "Law Office"
-	desc_by_access["[ACCESS_ROBOTICS]"] = "Robotics"
-	desc_by_access["[ACCESS_VIROLOGY]"] = "Virology"
-	desc_by_access["[ACCESS_PSYCHOLOGY]"] = "Psychology"
-	desc_by_access["[ACCESS_CMO]"] = "CMO Office"
-	desc_by_access["[ACCESS_QM]"] = "QM Office"
-	desc_by_access["[ACCESS_SURGERY]"] = "Surgery"
-	desc_by_access["[ACCESS_THEATRE]"] = "Theatre"
-	desc_by_access["[ACCESS_RESEARCH]"] = "Science"
-	desc_by_access["[ACCESS_MINING]"] = "Mining Dock"
-	desc_by_access["[ACCESS_SHIPPING]"] = "Cargo Shipping"
-	desc_by_access["[ACCESS_VAULT]"] = "Main Vault"
-	desc_by_access["[ACCESS_MINING_STATION]"] = "Mining Outpost"
-	desc_by_access["[ACCESS_XENOBIOLOGY]"] = "Xenobiology Lab"
-	desc_by_access["[ACCESS_HOP]"] = "HoP Office"
-	desc_by_access["[ACCESS_HOS]"] = "HoS Office"
-	desc_by_access["[ACCESS_CE]"] = "CE Office"
-	desc_by_access["[ACCESS_PHARMACY]"] = "Pharmacy"
-	desc_by_access["[ACCESS_RC_ANNOUNCE]"] = "RC Announcements"
-	desc_by_access["[ACCESS_KEYCARD_AUTH]"] = "Keycode Auth."
-	desc_by_access["[ACCESS_TCOMMS]"] = "Telecommunications"
-	desc_by_access["[ACCESS_GATEWAY]"] = "Gateway"
-	desc_by_access["[ACCESS_BRIG_ENTRANCE]"] = "Brig"
-	desc_by_access["[ACCESS_MINERAL_STOREROOM]"] = "Mineral Storage"
-	desc_by_access["[ACCESS_MINISAT]"] = "AI Satellite"
-	desc_by_access["[ACCESS_WEAPONS]"] = "Weapon Permit"
-	desc_by_access["[ACCESS_NETWORK]"] = "Network Access"
-	desc_by_access["[ACCESS_MECH_MINING]"] = "Mining Mech Access"
-	desc_by_access["[ACCESS_MECH_MEDICAL]"] = "Medical Mech Access"
-	desc_by_access["[ACCESS_MECH_SECURITY]"] = "Security Mech Access"
-	desc_by_access["[ACCESS_MECH_SCIENCE]"] = "Science Mech Access"
-	desc_by_access["[ACCESS_MECH_ENGINE]"] = "Engineering Mech Access"
-	desc_by_access["[ACCESS_AUX_BASE]"] = "Auxiliary Base"
-	desc_by_access["[ACCESS_SERVICE]"] = "Service Hallway"
-	desc_by_access["[ACCESS_CENT_GENERAL]"] = "Code Grey"
-	desc_by_access["[ACCESS_CENT_THUNDER]"] = "Code Yellow"
-	desc_by_access["[ACCESS_CENT_STORAGE]"] = "Code Orange"
-	desc_by_access["[ACCESS_CENT_LIVING]"] = "Code Green"
-	desc_by_access["[ACCESS_CENT_MEDICAL]"] = "Code White"
-	desc_by_access["[ACCESS_CENT_TELEPORTER]"] = "Code Blue"
-	desc_by_access["[ACCESS_CENT_SPECOPS]"] = "Code Black"
-	desc_by_access["[ACCESS_CENT_CAPTAIN]"] = "Code Gold"
-	desc_by_access["[ACCESS_CENT_BAR]"] = "Code Scotch"
-	desc_by_access["[ACCESS_BIT_DEN]"] = "Bitrunner Den"
-	desc_by_access["[ACCESS_BARBER]"] = "Barber" // NOVA EDIT ADD - BARBER UPDATE
+	desc_by_access[ACCESS_CARGO] = "Cargo Bay"
+	desc_by_access[ACCESS_SECURITY] = "Security"
+	desc_by_access[ACCESS_BRIG] = "Holding Cells"
+	desc_by_access[ACCESS_COURT] = "Courtroom"
+	desc_by_access[ACCESS_DETECTIVE] = "Detective Office"
+	desc_by_access[ACCESS_MEDICAL] = "Medical"
+	desc_by_access[ACCESS_GENETICS] = "Genetics Lab"
+	desc_by_access[ACCESS_MORGUE] = "Morgue"
+	desc_by_access[ACCESS_MORGUE_SECURE] = "Coroner"
+	desc_by_access[ACCESS_SCIENCE] = "R&D Lab"
+	desc_by_access[ACCESS_ORDNANCE] = "Ordnance Lab"
+	desc_by_access[ACCESS_ORDNANCE_STORAGE] = "Ordnance Storage"
+	desc_by_access[ACCESS_PLUMBING] = "Chemistry Lab"
+	desc_by_access[ACCESS_RD] = "RD Office"
+	desc_by_access[ACCESS_BAR] = "Bar"
+	desc_by_access[ACCESS_JANITOR] = "Custodial Closet"
+	desc_by_access[ACCESS_ENGINEERING] = "Engineering"
+	desc_by_access[ACCESS_ENGINE_EQUIP] = "Power and Engineering Equipment"
+	desc_by_access[ACCESS_MAINT_TUNNELS] = "Maintenance"
+	desc_by_access[ACCESS_EXTERNAL_AIRLOCKS] = "External Airlocks"
+	desc_by_access[ACCESS_CHANGE_IDS] = "ID Console"
+	desc_by_access[ACCESS_AI_UPLOAD] = "AI Chambers"
+	desc_by_access[ACCESS_TELEPORTER] = "Teleporter"
+	desc_by_access[ACCESS_EVA] = "EVA"
+	desc_by_access[ACCESS_BUDGET] = "Department Budget"
+	desc_by_access[ACCESS_COMMAND] = "Command"
+	desc_by_access[ACCESS_CAPTAIN] = "Captain"
+	desc_by_access[ACCESS_ALL_PERSONAL_LOCKERS] = "Personal Lockers"
+	desc_by_access[ACCESS_CHAPEL_OFFICE] = "Chapel Office"
+	desc_by_access[ACCESS_TECH_STORAGE] = "Technical Storage"
+	desc_by_access[ACCESS_ATMOSPHERICS] = "Atmospherics"
+	desc_by_access[ACCESS_CREMATORIUM] = "Crematorium"
+	desc_by_access[ACCESS_ARMORY] = "Armory"
+	desc_by_access[ACCESS_CONSTRUCTION] = "Construction"
+	desc_by_access[ACCESS_KITCHEN] = "Kitchen"
+	desc_by_access[ACCESS_HYDROPONICS] = "Hydroponics"
+	desc_by_access[ACCESS_LIBRARY] = "Library"
+	desc_by_access[ACCESS_LAWYER] = "Law Office"
+	desc_by_access[ACCESS_ROBOTICS] = "Robotics"
+	desc_by_access[ACCESS_VIROLOGY] = "Virology"
+	desc_by_access[ACCESS_PSYCHOLOGY] = "Psychology"
+	desc_by_access[ACCESS_CMO] = "CMO Office"
+	desc_by_access[ACCESS_PARAMEDIC] = "Paramedic Office"
+	desc_by_access[ACCESS_QM] = "QM Office"
+	desc_by_access[ACCESS_SURGERY] = "Surgery"
+	desc_by_access[ACCESS_THEATRE] = "Theatre"
+	desc_by_access[ACCESS_RESEARCH] = "Science"
+	desc_by_access[ACCESS_MINING] = "Mining Dock"
+	desc_by_access[ACCESS_SHIPPING] = "Cargo Shipping"
+	desc_by_access[ACCESS_VAULT] = "Main Vault"
+	desc_by_access[ACCESS_MINING_STATION] = "Mining Outpost"
+	desc_by_access[ACCESS_XENOBIOLOGY] = "Xenobiology Lab"
+	desc_by_access[ACCESS_HOP] = "HoP Office"
+	desc_by_access[ACCESS_HOS] = "HoS Office"
+	desc_by_access[ACCESS_CE] = "CE Office"
+	desc_by_access[ACCESS_PHARMACY] = "Pharmacy"
+	desc_by_access[ACCESS_RC_ANNOUNCE] = "RC Announcements"
+	desc_by_access[ACCESS_KEYCARD_AUTH] = "Keycode Auth."
+	desc_by_access[ACCESS_TCOMMS] = "Telecommunications"
+	desc_by_access[ACCESS_GATEWAY] = "Gateway"
+	desc_by_access[ACCESS_BRIG_ENTRANCE] = "Brig"
+	desc_by_access[ACCESS_MINERAL_STOREROOM] = "Mineral Storage"
+	desc_by_access[ACCESS_MINISAT] = "AI Satellite"
+	desc_by_access[ACCESS_WEAPONS] = "Weapon Permit"
+	desc_by_access[ACCESS_NETWORK] = "Network Access"
+	desc_by_access[ACCESS_MECH_MINING] = "Mining Mech Access"
+	desc_by_access[ACCESS_MECH_MEDICAL] = "Medical Mech Access"
+	desc_by_access[ACCESS_MECH_SECURITY] = "Security Mech Access"
+	desc_by_access[ACCESS_MECH_SCIENCE] = "Science Mech Access"
+	desc_by_access[ACCESS_MECH_ENGINE] = "Engineering Mech Access"
+	desc_by_access[ACCESS_AUX_BASE] = "Auxiliary Base"
+	desc_by_access[ACCESS_SERVICE] = "Service Hallway"
+	desc_by_access[ACCESS_CENT_GENERAL] = "CentCom General Access"
+	desc_by_access[ACCESS_CENT_THUNDER] = "CentCom Thunderdome"
+	desc_by_access[ACCESS_CENT_STORAGE] = "CentCom Storage"
+	desc_by_access[ACCESS_CENT_LIVING] = "CentCom Living Quarters"
+	desc_by_access[ACCESS_CENT_MEDICAL] = "CentCom Medical"
+	desc_by_access[ACCESS_CENT_TELEPORTER] = "CentCom Teleporter"
+	desc_by_access[ACCESS_CENT_SPECOPS] = "CentCom SpecOps"
+	desc_by_access[ACCESS_CENT_CAPTAIN] = "CentCom Captain"
+	desc_by_access[ACCESS_CENT_BAR] = "CentCom Bar"
+	desc_by_access[ACCESS_CENT_OFFICER] = "CentCom Officer"
+	desc_by_access[ACCESS_BIT_DEN] = "Bitrunner Den"
+	desc_by_access[ACCESS_BARBER] = "Barber" // NOVA EDIT ADDITION - BARBER UPDATE
+	desc_by_access[ACCESS_CENT_SECURITY] = "CentCom Security" // Celadon ADD START
+	desc_by_access[ACCESS_CENT_OFFICIAL] = "CentCom Official"
+	desc_by_access[ACCESS_CENT_SUPPLY] = "CentCom Supply"
+	desc_by_access[ACCESS_CENT_BLACKOPS] = "CentCom Asset Protection"
+	desc_by_access[ACCESS_CENT_SPECOPS_LEADER] = "CentCom SpecOps Leader"
+	desc_by_access[ACCESS_CENT_SPECOPS_OFFICER] = "CentCom SpecOps Officer"
+	desc_by_access[ACCESS_CENT_ADMIRAL] = "CentCom Admiral"
+	desc_by_access[ACCESS_CENT_FLEET_ADMIRAL] = "CentCom Fleet Admiral"
+	desc_by_access[ACCESS_AWAY_GENERAL] = "Old Standard General Access"
+	desc_by_access[ACCESS_AWAY_COMMAND] = "Old Standard Command Access"
+	desc_by_access[ACCESS_AWAY_SEC] = "Old Standard Security Access"
+	desc_by_access[ACCESS_AWAY_ENGINEERING] = "Old Standard Engineering Access"
+	desc_by_access[ACCESS_AWAY_MEDICAL] = "Old Standard Medical Access"
+	desc_by_access[ACCESS_AWAY_SUPPLY] = "Old Standard Supply Access"
+	desc_by_access[ACCESS_AWAY_SCIENCE] = "Old Standard Science Access"
+	desc_by_access[ACCESS_AWAY_MAINTENANCE] = "Old Standard Maintenance Access"
+	desc_by_access[ACCESS_AWAY_GENERIC1] = "Old Standard Misc Access One"
+	desc_by_access[ACCESS_AWAY_GENERIC2] = "Old Standard Misc Access Two"
+	desc_by_access[ACCESS_AWAY_GENERIC3] = "Old Standard Misc Access Three"
+	desc_by_access[ACCESS_AWAY_GENERIC4] = "Old Standard Misc Access Four"
+	desc_by_access[ACCESS_TARKON] = "Tarkon General Access"
+	desc_by_access[ACCESS_TARKON_COMMAND] = "Tarkon Command"
+	desc_by_access[ACCESS_TARKON_DIRECTOR] = "Tarkon Director" // Celadon ADD END
 
 /**
  * Returns the access bitflags associated with any given access level.
@@ -441,6 +520,9 @@ SUBSYSTEM_DEF(id_access)
 	id_card.update_label()
 	id_card.update_icon()
 
+	// Apply any currently active RETA grants to this newly trimmed card
+	apply_active_reta_grants_to_card(id_card)
+
 	return TRUE
 
 /**
@@ -483,6 +565,9 @@ SUBSYSTEM_DEF(id_access)
 		var/mob/living/carbon/human/owner = id_card.loc
 		owner.update_ID_card()
 
+	// Apply any currently active RETA grants to this card with updated trim override
+	apply_active_reta_grants_to_card(id_card)
+
 /**
  * Removes a trim from a ID card.
  *
@@ -523,7 +608,10 @@ SUBSYSTEM_DEF(id_access)
 	id_card.add_wildcards(trim.wildcard_access, mode = TRY_ADD_ALL)
 	if(istype(trim, /datum/id_trim/job))
 		var/datum/id_trim/job/job_trim = trim // Here is where we update a player's paycheck department for the purposes of discounts/paychecks.
-		id_card.registered_account.account_job.paycheck_department = job_trim.job.paycheck_department
+		id_card.registered_account.account_job = job_trim.job
+
+	// Apply any currently active RETA grants to this card with updated trim access
+	apply_active_reta_grants_to_card(id_card)
 
 /**
  * Tallies up all accesses the card has that have flags greater than or equal to the access_flag supplied.

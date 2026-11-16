@@ -1,10 +1,10 @@
 {
-	"name": "Headpat",
-	"description": "degenerate",
+	"name": "Погладить",
+	"description": "Погладить по голове",
 	"usage": "other",
 	"category": "Miscellaneous",
 	"distance_allowed": 0,
-	"message": ["%USER% pats %TARGET%'s head!"],
+	"message": ["%USER% гладит по голове %TARGET%!"],
 	"sound_use": 0,
 	"sound_possible": [],
 	"sound_range": 7,

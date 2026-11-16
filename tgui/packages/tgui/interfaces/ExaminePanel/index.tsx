@@ -1,16 +1,16 @@
 // THIS IS A NOVA SECTOR UI FILE
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 import { Button, ByondUi, Section, Stack } from 'tgui-core/components';
 
 import { resolveAsset } from '../../assets';
 import { useBackend } from '../../backend';
 import { Window } from '../../layouts';
-import { ExaminePanelData } from './data';
+import type { ExaminePanelData } from './data';
 
 function formatURLs(text: string) {
   if (!text) return;
   const parts: ReactNode[] = [];
-  let regex = /https?:\/\/[^\s/$.?#].[^\s]*/gi;
+  const regex = /https?:\/\/[^\s/$.?#].[^\s]*/gi;
   let lastIndex = 0;
 
   text.replace(regex, (url, index) => {
@@ -42,16 +42,18 @@ export function ExaminePanel(props) {
     character_name,
     assigned_map,
     flavor_text,
+    flavor_text_nsfw,
     ooc_notes,
+    ooc_notes_nsfw,
     custom_species,
     custom_species_lore,
     headshot,
     nova_star_status,
-    // SS1984 REMOVAL START
+    // Celadon REMOVAL START
     // ideal_antag_optin_status,
     // current_antag_optin_status,
     // opt_in_colors,
-    // SS1984 REMOVAL END
+    // Celadon REMOVAL END
   } = data;
   const [oocNotesIndex, setOocNotesIndex] = useState('SFW');
   const [flavorTextIndex, setFlavorTextIndex] = useState('SFW');
@@ -104,18 +106,31 @@ export function ExaminePanel(props) {
                   preserveWhitespace
                   title="Flavor Text"
                   buttons={
-                    <Button
-                      selected={flavorTextIndex === 'SFW'}
-                      bold={flavorTextIndex === 'SFW'}
-                      onClick={() => setFlavorTextIndex('SFW')}
-                      textAlign="center"
-                      width="150px"
-                    >
-                      SFW
-                    </Button>
+                    <>
+                      <Button
+                        selected={flavorTextIndex === 'SFW'}
+                        bold={flavorTextIndex === 'SFW'}
+                        onClick={() => setFlavorTextIndex('SFW')}
+                        textAlign="center"
+                        width="150px"
+                      >
+                        SFW
+                      </Button>
+                      <Button
+                        selected={flavorTextIndex === 'NSFW'}
+                        disabled={!flavor_text_nsfw}
+                        bold={flavorTextIndex === 'NSFW'}
+                        onClick={() => setFlavorTextIndex('NSFW')}
+                        textAlign="center"
+                        width="150px"
+                      >
+                        NSFW
+                      </Button>
+                    </>
                   }
                 >
                   {flavorTextIndex === 'SFW' && formatURLs(flavor_text)}
+                  {flavorTextIndex === 'NSFW' && formatURLs(flavor_text_nsfw)}
                 </Section>
               </Stack.Item>
               <Stack.Item grow>
@@ -127,7 +142,7 @@ export function ExaminePanel(props) {
                       title="OOC Notes"
                       preserveWhitespace
                       buttons={
-                        // SS1984 REMOVAL <>
+                        <>
                           <Button
                             selected={oocNotesIndex === 'SFW'}
                             bold={oocNotesIndex === 'SFW'}
@@ -137,19 +152,17 @@ export function ExaminePanel(props) {
                           >
                             SFW
                           </Button>
-                          // SS1984 REMOVAL START
-                          // <Button
-                          //   selected={oocNotesIndex === 'NSFW'}
-                          //   disabled={!ooc_notes_nsfw}
-                          //   bold={oocNotesIndex === 'NSFW'}
-                          //   onClick={() => setOocNotesIndex('NSFW')}
-                          //   textAlign="center"
-                          //   minWidth="60px"
-                          // >
-                          //   NSFW
-                          // </Button>
-                          // </>
-                          // SS1984 REMOVAL END
+                          <Button
+                            selected={oocNotesIndex === 'NSFW'}
+                            disabled={!ooc_notes_nsfw}
+                            bold={oocNotesIndex === 'NSFW'}
+                            onClick={() => setOocNotesIndex('NSFW')}
+                            textAlign="center"
+                            minWidth="60px"
+                          >
+                            NSFW
+                          </Button>
+                        </>
                       }
                     >
                       {!!nova_star_status && (
@@ -160,11 +173,11 @@ export function ExaminePanel(props) {
                               fontWeight: 'bold',
                             }}
                           >
-                            Player is a Veteran. { /* SS1984 EDIT, original: Nova Star! ⭐ */ }
+                            Nova Star! ⭐
                           </span>
                         </Stack.Item>
                       )}
-                      {/* SS1984 EDIT START */}
+                      {/* Celadon EDIT START */}
                       {(<Stack.Item>
                       {/*
                       {oocNotesIndex === 'SFW' && (
@@ -195,10 +208,11 @@ export function ExaminePanel(props) {
                             </Stack.Item>
                           )}
                         */}
-                        {/* SS1984 EDIT END */}
+                        {/* Celadon EDIT END */}
                           {formatURLs(ooc_notes)}
                         </Stack.Item>
                       )}
+                      {oocNotesIndex === 'NSFW' && formatURLs(ooc_notes_nsfw)}
                     </Section>
                   </Stack.Item>
                   <Stack.Item grow basis={0}>

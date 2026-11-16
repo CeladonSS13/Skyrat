@@ -160,9 +160,6 @@
 		if("toggleSensors")
 			cyborg.toggle_sensors()
 
-		if("changeVoice")
-			cyborg.change_voice()
-
 		if("viewImage")
 			if(cyborg.connected_ai)
 				cyborg.connected_ai.aicamera?.viewpictures(usr)

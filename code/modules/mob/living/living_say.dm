@@ -35,7 +35,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	// Misc
 	RADIO_KEY_AI_PRIVATE = RADIO_CHANNEL_AI_PRIVATE, // AI Upload channel
 	RADIO_KEY_ENTERTAINMENT = RADIO_CHANNEL_ENTERTAINMENT, // Entertainment monitors
-	RADIO_KEY_PRISON = RADIO_CHANNEL_PRISON, //SS1984 ADDITION - PRISONERS HEADSETS
+	RADIO_KEY_PRISON = RADIO_CHANNEL_PRISON, //Celadon ADDITION - PRISONERS HEADSETS
+	RADIO_KEY_BITRUN = RADIO_CHANNEL_BITRUN, //Celadon ADDITION - BITRUN
+	RADIO_KEY_BITDEFEND = RADIO_CHANNEL_BITDEFEND, //Celadon ADDITION - BITRUN
 
 
 	//kinda localization -- rastaf0
@@ -66,6 +68,10 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	// Misc
 	"щ" = RADIO_CHANNEL_AI_PRIVATE,
 	"з" = RADIO_CHANNEL_ENTERTAINMENT,
+
+	// Celadon
+	"ч" = RADIO_CHANNEL_BITRUN,
+	"я" = RADIO_CHANNEL_BITDEFEND,
 ))
 
 /**
@@ -146,13 +152,13 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	var/say_radio_or_mode = saymode || message_mods[RADIO_EXTENSION]
 	if(say_radio_or_mode)
 		var/mob_stat_limit = GLOB.message_modes_stat_limits[say_radio_or_mode]
-		if(stat > (isnull(mob_stat_limit) ? SOFT_CRIT : mob_stat_limit)) // SS1984 EDIT, original: if(stat > (isnull(mob_stat_limit) ? CONSCIOUS : mob_stat_limit))
+		if(stat > (isnull(mob_stat_limit) ? CONSCIOUS : mob_stat_limit))
 			saymode = null
 			message_mods -= RADIO_EXTENSION
 
 	switch(stat)
-		//if(SOFT_CRIT) SS1984 EDIT
-		//	message_mods[WHISPER_MODE] = MODE_WHISPER
+		if(SOFT_CRIT)
+			message_mods[WHISPER_MODE] = MODE_WHISPER
 		if(UNCONSCIOUS)
 			return
 		if(HARD_CRIT)
@@ -239,8 +245,14 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	//This is before anything that sends say a radio message, and after all important message type modifications, so you can scumb in alien chat or something
 	if(saymode && (saymode.handle_message(src, message, spans, language, message_mods) & SAYMODE_MESSAGE_HANDLED))
 		return
-
-	var/radio_return = radio(message, message_mods, spans, language)//roughly 27% of living/say()'s total cost
+	// Celadon ADDITION START, doesn't work well modular, cuz of tons of overrides for subtypes
+	var/obj/machinery/announcement_system/announcer = get_announcement_system(source = src)
+	var/datum/nttc_configuration/nttc = announcer ? announcer.nttc : null
+	var/lang_for_radio = language // should be type!
+	if(nttc && nttc.setting_language && istype(nttc.setting_language, /datum/language))
+		lang_for_radio = nttc.setting_language.type
+	// Celadon ADDITION END
+	var/radio_return = radio(message, message_mods, spans, lang_for_radio) // Celadon EDIT, original: var/radio_return = radio(message, message_mods, spans, language) //roughly 27% of living/say()'s total cost
 	if(radio_return & NOPASS)
 		return TRUE
 
@@ -270,7 +282,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	return TRUE
 
 
-/mob/living/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range=0)
+/mob/living/Hear(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range=0)
 	if((SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_HEAR, args) & COMSIG_MOVABLE_CANCEL_HEARING) || !GET_CLIENT(src))
 		return FALSE
 
@@ -300,13 +312,15 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	else if (!ismob(speaker) && !client?.prefs.read_preference(/datum/preference/toggle/enable_runechat_non_mobs))
 		use_runechat = FALSE
 
+	var/message = ""
 	// if someone is whispering we make an extra type of message that is obfuscated for people out of range
 	// Less than or equal to 0 means normal hearing. More than 0 and less than or equal to EAVESDROP_EXTRA_RANGE means
 	// partial hearing. More than EAVESDROP_EXTRA_RANGE means no hearing. Exception for GOOD_HEARING trait
 	var/dist = get_dist(speaker, src) - message_range
-	if(dist > 0 && dist <= EAVESDROP_EXTRA_RANGE && !HAS_TRAIT(src, TRAIT_GOOD_HEARING) && !isobserver(src)) // ghosts can hear all messages clearly
+	if(dist > 0 && dist <= EAVESDROP_EXTRA_RANGE && !HAS_TRAIT(src, TRAIT_GOOD_HEARING))
 		raw_message = stars(raw_message)
-	if(message_range != INFINITY && dist > EAVESDROP_EXTRA_RANGE && !HAS_TRAIT(src, TRAIT_GOOD_HEARING) && !isobserver(src))
+	var/speaker_name = span_name("[message_mods[MODE_SPEAKER_NAME_OVERRIDE] || speaker]")
+	if(message_range != INFINITY && dist > EAVESDROP_EXTRA_RANGE && !HAS_TRAIT(src, TRAIT_GOOD_HEARING))
 		// Too far away and don't have good hearing, you can't hear anything
 		if(is_blind() || HAS_TRAIT(speaker, TRAIT_INVISIBLE_MAN)) // Can't see them speak either
 			return FALSE
@@ -315,15 +329,15 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 		// But we can still see them speak
 		if(speaker_is_signing)
-			deaf_message = "[span_name("[speaker]")] [speaker.get_default_say_verb()] something, but the motions are too subtle to make out from afar."
-		else if(can_hear()) // If we can't hear we want to continue to the default deaf message
+			deaf_message = "[speaker_name] [speaker.get_default_say_verb()] something, but the motions are too subtle to make out from afar."
+		else if(!HAS_TRAIT(src, TRAIT_DEAF)) // If we can't hear we want to continue to the default deaf message
 			if(isliving(speaker))
 				var/mob/living/living_speaker = speaker
 				var/mouth_hidden = living_speaker.is_mouth_covered() || HAS_TRAIT(living_speaker, TRAIT_FACE_COVERED)
-				if(!HAS_TRAIT(src, TRAIT_EMPATH) && mouth_hidden) // Can't see them speak if their mouth is covered or hidden, unless we're an empath
+				if(mouth_hidden && !HAS_TRAIT(src, TRAIT_SEE_MASK_WHISPER)) // Can't see them speak if their mouth is covered or hidden, unless we're an empath
 					return FALSE
 
-			deaf_message = "[span_name("[speaker]")] [speaker.verb_whisper] something, but you are too far away to hear [speaker.p_them()]."
+			deaf_message = "[speaker_name] [speaker.verb_whisper] something, but you are too far away to hear [speaker.p_them()]."
 
 		if(deaf_message)
 			deaf_type = MSG_VISUAL
@@ -348,7 +362,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 		// Create map text prior to modifying message for goonchat, sign lang edition
 		if (use_runechat && !is_blind())
-			if (message_mods[MODE_CUSTOM_SAY_ERASE_INPUT])
+			if (is_custom_emote)
 				create_chat_message(speaker, null, message_mods[MODE_CUSTOM_SAY_EMOTE], spans, EMOTE_MESSAGE)
 			else
 				create_chat_message(speaker, message_language, raw_message, spans)
@@ -363,15 +377,15 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 	if(speaker != src)
 		if(!radio_freq) //These checks have to be separate, else people talking on the radio will make "You can't hear yourself!" appear when hearing people over the radio while deaf.
-			deaf_message = "[span_name("[speaker]")] [speaker.get_default_say_verb()] something but you cannot hear [speaker.p_them()]."
+			deaf_message = "[speaker_name] [speaker.get_default_say_verb()] something but you cannot hear [speaker.p_them()]."
 			deaf_type = MSG_VISUAL
 	else
 		deaf_message = span_notice("You can't hear yourself!")
 		deaf_type = MSG_AUDIBLE // Since you should be able to hear yourself without looking
 
 	// Create map text prior to modifying message for goonchat
-	if (use_runechat && can_hear())
-		if (message_mods[MODE_CUSTOM_SAY_ERASE_INPUT])
+	if (use_runechat && !HAS_TRAIT(src, TRAIT_DEAF))
+		if (is_custom_emote)
 			create_chat_message(speaker, null, message_mods[MODE_CUSTOM_SAY_EMOTE], spans, EMOTE_MESSAGE)
 		else
 			create_chat_message(speaker, message_language, raw_message, spans)
@@ -396,6 +410,8 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	for(var/atom/movable/listening_movable as anything in listening)
 		if(!(listening_movable in in_view) && !HAS_TRAIT(listening_movable, TRAIT_XRAY_HEARING))
 			listening.Remove(listening_movable)
+
+	SEND_SIGNAL(src, COMSIG_LIVING_SEND_SPEECH, listening)
 
 	if(imaginary_group)
 		listening |= imaginary_group
@@ -423,7 +439,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			stack_trace("somehow theres a null returned from get_hearers_in_view() in send_speech!")
 			continue
 
-		if(listening_movable.Hear(null, src, message_language, message_raw, null, null, null, spans, message_mods, message_range))
+		if(listening_movable.Hear(src, message_language, message_raw, null, null, null, spans, message_mods, message_range))
 			listened += listening_movable
 
 	//speech bubble
@@ -435,7 +451,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			if(!M.client.prefs.read_preference(/datum/preference/toggle/enable_runechat) || (SSlag_switch.measures[DISABLE_RUNECHAT] && !HAS_TRAIT(src, TRAIT_BYPASS_MEASURES)))
 				speech_bubble_recipients.Add(M.client)
 			found_client = TRUE
-	if(SStts.tts_enabled && voice && found_client && !message_mods[MODE_CUSTOM_SAY_ERASE_INPUT] && !HAS_TRAIT(src, TRAIT_SIGN_LANG) && !HAS_TRAIT(src, TRAIT_UNKNOWN))
+	if(SStts.tts_enabled && voice && found_client && !message_mods[MODE_CUSTOM_SAY_ERASE_INPUT] && !HAS_TRAIT(src, TRAIT_SIGN_LANG) && !HAS_TRAIT(src, TRAIT_UNKNOWN_VOICE))
 		var/tts_message_to_use = tts_message
 		if(!tts_message_to_use)
 			tts_message_to_use = message_raw
@@ -527,11 +543,13 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	return list("message" = message, "tts_message" = tts_message, "tts_filter" = tts_filter)
 
 /mob/living/proc/radio(message, list/message_mods = list(), list/spans, language)
-	//NOVA EDIT ADDITION BEGIN
-	if((message_mods[MODE_HEADSET] || message_mods[RADIO_EXTENSION]) && !(mobility_flags & MOBILITY_USE) && !isAI(src) && !ispAI(src) && !ismecha(loc)) // If can't use items, you can't press the button
-		to_chat(src, span_warning("You can't use the radio right now as you can't reach the button!"))
-		return ITALICS | REDUCE_RANGE
-	//NOVA EDIT END
+	// Celadon REMOVAL START
+	// //NOVA EDIT ADDITION BEGIN
+	// if((message_mods[MODE_HEADSET] || message_mods[RADIO_EXTENSION]) && !(mobility_flags & MOBILITY_USE) && !isAI(src) && !ispAI(src) && !ismecha(loc)) // If can't use items, you can't press the button
+	// 	to_chat(src, span_warning("You can't use the radio right now as you can't reach the button!"))
+	// 	return ITALICS | REDUCE_RANGE
+	// //NOVA EDIT END
+	// Celadon REMOVAL END
 	var/obj/item/implant/radio/imp = locate() in src
 	if(imp?.radio.is_on())
 		if(message_mods[MODE_HEADSET])

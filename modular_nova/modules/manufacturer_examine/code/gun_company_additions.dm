@@ -133,6 +133,3 @@
 
 /obj/item/gun/syringe/blowgun/give_manufacturer_examine()
 	return
-
-/obj/item/gun/syringe/syndicate/prototype/give_manufacturer_examine()
-	return

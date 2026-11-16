@@ -107,6 +107,7 @@
 	inhand_icon_state = null
 	body_parts_covered = GROIN|LEGS
 	flags_inv = HIDEJUMPSUIT|HIDEBELT
+	clothing_flags = parent_type::clothing_flags | CARP_STYLE_FACTOR
 
 /obj/item/clothing/suit/chaplainsuit/whiterobe
 	name = "white robe"
@@ -246,6 +247,21 @@
 /obj/item/clothing/suit/chaplainsuit/armor/crusader/blue
 	icon_state = "crusader-blue"
 
+/obj/item/clothing/head/helmet/chaplain/heretic
+	name = "occultist's hood"
+	desc = "Conceals your features from the things that look back at you."
+	icon_state = "heretichood"
+	inhand_icon_state = null
+	flags_cover = HEADCOVERSEYES
+	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
+
+/obj/item/clothing/suit/chaplainsuit/armor/heretic
+	name = "occultist's robes"
+	desc = "Shields your body from the things others fail to notice."
+	icon_state = "hereticrobe"
+	inhand_icon_state = null
+	body_parts_covered = CHEST|GROIN|LEGS
+
 /obj/item/clothing/suit/hooded/chaplain_hoodie
 	name = "follower hoodie"
 	desc = "Hoodie made for acolytes of the chaplain."
@@ -289,33 +305,3 @@
 	inhand_icon_state = "shrinehand"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	flags_inv = HIDEJUMPSUIT|HIDEBELT
-
-/obj/item/clothing/suit/hooded/chaplainsuit/techchapel
-	name = "techpriest suit"
-	desc = "A techpriest suit"
-	icon = 'icons/obj/clothing/suits/chaplain.dmi'
-	worn_icon = 'icons/mob/clothing/suits/chaplain.dmi'
-	icon_state = "techpriest"
-	inhand_icon_state = null
-	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	armor_type = /datum/armor/techpriest
-	hoodtype = /obj/item/clothing/head/hooded/techchapel
-
-/datum/armor/techpriest
-	melee = 25
-	bullet = 10
-	laser = 10
-	energy = 10
-	fire = 40
-	acid = 40
-	wound = 20
-
-/obj/item/clothing/head/hooded/techchapel
-	name = "techpriest hood"
-	desc = "A techpriest hood. Seems, someone just tore it from suit"
-	icon = 'icons/obj/clothing/head/chaplain.dmi'
-	worn_icon = 'icons/mob/clothing/head/chaplain.dmi'
-	icon_state = "techpriesthood"
-	body_parts_covered = HEAD
-	inhand_icon_state = null
-	flags_inv = HIDEHAIR|HIDEEARS|HIDEFACE

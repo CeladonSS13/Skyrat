@@ -10,6 +10,7 @@
  *
  */
 /datum/emote
+	abstract_type = /datum/emote
 	/// What calls the emote.
 	var/key = ""
 	/// This will also call the emote.
@@ -47,7 +48,7 @@
 	/// Trait that is required to use this emote.
 	var/trait_required
 	/// In which state can you use this emote? (Check stat.dm for a full list of them)
-	var/stat_allowed = SOFT_CRIT
+	var/stat_allowed = CONSCIOUS
 	/// Sound to play when emote is called.
 	var/sound
 	/// Does this emote vary in pitch?
@@ -94,14 +95,22 @@
  */
 /datum/emote/proc/run_emote(mob/user, params, type_override, intentional = FALSE)
 	var/msg = select_message_type(user, message, intentional)
-	if(params && message_param)
-		msg = select_param(user, params)
+	if(params)
+		if(message_param)
+			msg = select_param(user, params)
+		else
+			msg = params
 
+	msg = genderize_decode(user, msg) // Celadon ADDITION
 	msg = replace_pronoun(user, msg)
 	if(!msg)
 		return
 
-	user.log_message(msg, LOG_EMOTE)
+	/// Use the type override if it exists
+	var/running_emote_type = type_override || emote_type
+
+	if(user.client)
+		user.log_message(msg, LOG_EMOTE)
 
 	var/tmp_sound = get_sound(user)
 	if(tmp_sound && should_play_sound(user, intentional) && TIMER_COOLDOWN_FINISHED(user, "general_emote_audio_cooldown") && TIMER_COOLDOWN_FINISHED(user, type))
@@ -109,31 +118,37 @@
 		TIMER_COOLDOWN_START(user, "general_emote_audio_cooldown", general_emote_audio_cooldown)
 		var/frequency = null
 		if (affected_by_pitch && SStts.tts_enabled && SStts.pitch_enabled)
-			frequency = rand(MIN_EMOTE_PITCH, MAX_EMOTE_PITCH) * (1 + sqrt(abs(user.pitch)) * SIGN(user.pitch) * EMOTE_TTS_PITCH_MULTIPLIER)
+			frequency = rand(MIN_EMOTE_PITCH, MAX_EMOTE_PITCH) * (1 + sqrt(abs(user.pitch)) * sign(user.pitch) * EMOTE_TTS_PITCH_MULTIPLIER)
 		else if(vary)
 			frequency = rand(MIN_EMOTE_PITCH, MAX_EMOTE_PITCH)
 		//playsound(source = user,soundin = tmp_sound,vol = 50, vary = FALSE, ignore_walls = sound_wall_ignore, frequency = frequency) // NOVA EDIT REMOVAL
 		// NOVA EDIT ADDITION START - Lewd emote prefs
-		// SS1984 REMOVAL OF LEWS ITEMS START, END
-		playsound(source = user, soundin = tmp_sound, vol = sound_volume, vary = FALSE, ignore_walls = sound_wall_ignore, frequency = frequency)
+		if(running_emote_type & EMOTE_LEWD)
+			playsound_if_pref(source = user, soundin = tmp_sound, vol = sound_volume, vary = FALSE, frequency = frequency, pref_to_check = /datum/preference/toggle/erp/sounds)
+		else
+			playsound(source = user, soundin = tmp_sound, vol = sound_volume, vary = FALSE, ignore_walls = sound_wall_ignore, frequency = frequency)
 		// NOVA EDIT ADDITION END
 
-	var/is_important = emote_type & EMOTE_IMPORTANT
-	var/is_visual = emote_type & EMOTE_VISIBLE
-	var/is_audible = emote_type & EMOTE_AUDIBLE
+	var/is_important = running_emote_type & EMOTE_IMPORTANT
+	var/is_visual = running_emote_type & EMOTE_VISIBLE
+	var/is_audible = running_emote_type & EMOTE_AUDIBLE
 	var/space = should_have_space_before_emote(html_decode(msg)[1]) ? " " : "" // NOVA EDIT ADDITION
 	var/additional_message_flags = get_message_flags(intentional)
 
 	// Emote doesn't get printed to chat, runechat only
-	if(emote_type & EMOTE_RUNECHAT)
+	if(running_emote_type & EMOTE_RUNECHAT)
 		for(var/mob/viewer as anything in viewers(user))
 			if(isnull(viewer.client))
 				continue
 			if(!is_important && viewer != user && (!is_visual || !is_audible))
-				if(is_audible && !viewer.can_hear())
+				if(is_audible && HAS_TRAIT(viewer, TRAIT_DEAF))
 					continue
 				if(is_visual && viewer.is_blind())
 					continue
+				// NOVA EDIT ADDITION START - Pref checked emotes
+				if((running_emote_type & EMOTE_LEWD) && !pref_check_emote(viewer))
+					continue
+				// NOVA EDIT ADDITION END
 			if(user.runechat_prefs_check(viewer, EMOTE_MESSAGE))
 				viewer.create_chat_message(
 					speaker = user,
@@ -172,6 +187,7 @@
 			self_message = msg,
 			audible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE|additional_message_flags,
 			separation = space, // NOVA EDIT ADDITION
+			pref_to_check = pref_to_check, // NOVA EDIT ADDITION
 		)
 	// Emote is entirely audible, no visible component
 	else if(is_audible)
@@ -180,6 +196,7 @@
 			self_message = msg,
 			audible_message_flags = EMOTE_MESSAGE|additional_message_flags,
 			separation = space, // NOVA EDIT ADDITION
+			pref_to_check = pref_to_check, // NOVA EDIT ADDITION
 		)
 	// Emote is entirely visible, no audible component
 	else if(is_visual)
@@ -188,6 +205,7 @@
 			self_message = msg,
 			visible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE|additional_message_flags,
 			separation = space, // NOVA EDIT ADDITION
+			pref_to_check = pref_to_check, // NOVA EDIT ADDITION
 		)
 	else
 		CRASH("Emote [type] has no valid emote type set!")
@@ -197,6 +215,8 @@
 	if(hologram)
 		if(is_important)
 			for(var/mob/living/viewer in viewers(world.view, hologram))
+				if((emote_type & EMOTE_LEWD) && !pref_check_emote(viewer))
+					continue
 				to_chat(viewer, msg)
 		else if(is_visual && is_audible)
 			hologram.audible_message(
@@ -205,6 +225,7 @@
 				self_message = msg,
 				audible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE,
 				separation = space,
+				pref_to_check = pref_to_check,
 			)
 		else if(is_audible)
 			hologram.audible_message(
@@ -212,6 +233,7 @@
 				self_message = msg,
 				audible_message_flags = EMOTE_MESSAGE,
 				separation = space,
+				pref_to_check = pref_to_check,
 			)
 		else if(is_visual)
 			hologram.visible_message(
@@ -219,6 +241,7 @@
 				self_message = msg,
 				visible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE,
 				separation = space,
+				pref_to_check = pref_to_check,
 			)
 	// NOVA EDIT ADDITION END
 	if(!isnull(user.client))
@@ -228,6 +251,10 @@
 				continue
 			if(!(get_chat_toggles(ghost.client) & CHAT_GHOSTSIGHT))
 				continue
+			// NOVA EDIT ADDITION START - Pref checked emotes
+			if((emote_type & EMOTE_LEWD) && !pref_check_emote(ghost))
+				continue
+			// NOVA EDIT ADDITION END
 			to_chat(ghost, span_emote("[FOLLOW_LINK(ghost, user)] [dchatmsg]"))
 
 	return
@@ -435,18 +462,21 @@
 *
 * Returns TRUE if it was able to run the emote, FALSE otherwise.
 */
-/atom/proc/manual_emote(text)
-	if(!text)
+/atom/proc/manual_emote(text, log_emote = TRUE)
+	if (!text)
 		CRASH("Someone passed nothing to manual_emote(), fix it")
 
-	log_message(text, LOG_EMOTE)
+	if (log_emote)
+		log_message(text, LOG_EMOTE)
 	visible_message(text, visible_message_flags = EMOTE_MESSAGE)
 	return TRUE
 
-/mob/manual_emote(text)
-	if (stat > SOFT_CRIT)
+/mob/manual_emote(text, log_emote = null)
+	if (stat != CONSCIOUS)
 		return FALSE
-	. = ..()
+	if (isnull(log_emote))
+		log_emote = !isnull(client)
+	. = ..(text, log_emote)
 	if (!.)
 		return FALSE
 	if (!client)

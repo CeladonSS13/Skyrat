@@ -129,8 +129,8 @@
 	if(armed)
 		return
 	if(!anchored)
-		addtimer(CALLBACK(src, PROC_REF(deploy_anchor)), 1 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(bang)), detonate_time)
+		addtimer(CALLBACK(src, PROC_REF(deploy_anchor)), 1 SECONDS, TIMER_STOPPABLE | TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(bang)), detonate_time, TIMER_STOPPABLE | TIMER_DELETE_ME)
 	armed = TRUE
 	playsound(src, armed_sound, 50)
 	update_appearance()
@@ -143,6 +143,8 @@
 
 /// Detonates the airbag, dropping the item, and harming humans who weren't cautious
 /obj/item/airbag/proc/bang()
+	if(QDELETED(src))
+		return
 	if(ishuman(loc))
 		blow_up_arm(loc)
 	else if(isturf(loc))
@@ -155,7 +157,7 @@
 		amount = 1,
 		holder = created_object,
 		location = get_turf(created_object),
-		smoke_type = /obj/effect/particle_effect/fluid/smoke/quick,
+		smoke_type = /datum/effect_system/fluid_spread/smoke/quick,
 		log = FALSE
 	)
 	qdel(src)

@@ -1,4 +1,4 @@
-/* SS1984 REMOVAL START
+/* Celadon REMOVAL START
 // THIS IS A NOVA SECTOR UI FILE
 import { Stack } from 'tgui-core/components';
 
@@ -265,4 +265,10 @@ export const Rules = (props) => {
       );
   }
 };
-SS1984 REMOVAL END */
+Celadon REMOVAL END */
+
+// Celadon ADDITION START
+export const Rules = (props) => {
+  return null;
+}
+// Celadon ADDITION END

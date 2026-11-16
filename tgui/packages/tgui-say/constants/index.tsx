@@ -79,10 +79,18 @@ export const RADIO_PREFIXES = {
     id: 'centcom',
     label: 'CCom',
   },
-  /* //SS1984 ADDITION START */
+  /* //Celadon ADDITION START */
   ':j ': {
     id: 'prison',
     label: 'Prison',
   },
-  /* //SS1984 ADDITION END */
+  ':x ': {
+    id: 'bitrun',
+    label: 'Bitrun',
+  },
+  ':z ': {
+    id: 'bitdefend',
+    label: 'Bitdefend',
+  },
+  /* //Celadon ADDITION END */
 } as const;

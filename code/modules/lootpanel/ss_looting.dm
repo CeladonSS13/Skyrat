@@ -2,7 +2,7 @@
 /// Queues image generation for search objects without icons
 SUBSYSTEM_DEF(looting)
 	name = "Loot Icon Generation"
-	flags = SS_NO_INIT
+	ss_flags = SS_NO_INIT
 	priority = FIRE_PRIORITY_PROCESS
 	runlevels = RUNLEVEL_LOBBY|RUNLEVELS_DEFAULT
 	wait = 0.5 SECONDS
@@ -26,13 +26,24 @@ SUBSYSTEM_DEF(looting)
 		backlog = list()
 
 	while(length(processing))
-		var/datum/lootpanel/panel = processing[length(processing)]
+		// Celadon ADDITION START
+		var/datum/weakref/panel_ref = processing[length(processing)]
+		var/datum/lootpanel/panel
+		if (isnull(panel_ref) || !isweakref(panel_ref))
+			panel = processing[length(processing)] // perhaps it placed not weakref somehow by upstreams
+		else
+			panel = panel_ref.resolve()
+		if (isnull(panel_ref))
+			processing.len--
+			continue
+		// Celadon ADDITION END
+		// Celadon REMOVAL var/datum/lootpanel/panel = processing[length(processing)]
 		if(QDELETED(panel) || !length(panel.to_image))
 			processing.len--
 			continue
 
 		if(!panel.process_images())
-			backlog += panel
+			backlog += panel_ref // Celadon EDIT, original: backlog += panel
 
 		if(MC_TICK_CHECK)
 			return

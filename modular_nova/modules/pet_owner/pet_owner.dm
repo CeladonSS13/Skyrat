@@ -24,7 +24,7 @@
 		pet_type = GLOB.possible_player_pet[desired_pet]
 
 	if(pet_type == NONE) // Pet not set, we're picking one for them.
-		pet_type = pick(flatten_list(GLOB.possible_player_pet))
+		pet_type = pick(assoc_to_values(GLOB.possible_player_pet))
 
 	var/obj/item/pet_carrier/carrier = new /obj/item/pet_carrier(get_turf(quirk_holder))
 	var/mob/living/basic/pet/pet = new pet_type(carrier)
@@ -118,7 +118,7 @@ GLOBAL_LIST_INIT(possible_player_pet, list(
 	if (!..())
 		return FALSE
 
-	return "Pet Owner" in preferences.all_quirks
+	return /datum/quirk/item_quirk/pet_owner::name in preferences.all_quirks
 
 /datum/preference/choiced/pet_owner/apply_to_human(mob/living/carbon/human/target, value)
 	return
@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(possible_player_pet, list(
 	if (!..())
 		return FALSE
 
-	return "Pet Owner" in preferences.all_quirks
+	return /datum/quirk/item_quirk/pet_owner::name in preferences.all_quirks
 
 /datum/preference/text/pet_name/serialize(input)
 	return htmlrendertext(input)
@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(possible_player_pet, list(
 	if (!..())
 		return FALSE
 
-	return "Pet Owner" in preferences.all_quirks
+	return /datum/quirk/item_quirk/pet_owner::name in preferences.all_quirks
 
 /datum/preference/text/pet_desc/serialize(input)
 	return htmlrendertext(input)
@@ -176,7 +176,7 @@ GLOBAL_LIST_INIT(possible_player_pet, list(
 	if (!..())
 		return FALSE
 
-	return "Pet Owner" in preferences.all_quirks
+	return /datum/quirk/item_quirk/pet_owner::name in preferences.all_quirks
 
 /datum/preference/choiced/pet_gender/apply_to_human(mob/living/carbon/human/target, value)
 	return

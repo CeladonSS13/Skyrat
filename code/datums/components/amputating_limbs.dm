@@ -16,7 +16,7 @@
 /datum/component/amputating_limbs/Initialize(
 	surgery_time = 5 SECONDS,
 	surgery_verb = "prying",
-	minimum_stat = UNCONSCIOUS, //S1984 EDIT
+	minimum_stat = SOFT_CRIT,
 	snip_chance = 100,
 	list/target_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_ARM, BODY_ZONE_R_LEG),
 	datum/callback/pre_hit_callback,
@@ -58,7 +58,7 @@
 		return
 
 	var/list/valid_targets = list()
-	for (var/obj/item/bodypart/possible_target as anything in limbed_victim.bodyparts)
+	for (var/obj/item/bodypart/possible_target as anything in limbed_victim.get_bodyparts())
 		if (possible_target.bodypart_flags & BODYPART_UNREMOVABLE)
 			continue
 		if (!(possible_target.body_zone in target_zones))

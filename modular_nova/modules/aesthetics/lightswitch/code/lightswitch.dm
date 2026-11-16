@@ -12,7 +12,10 @@
 #ifndef UNIT_TESTS
 /obj/machinery/light_switch/post_machine_initialize()
 	. = ..()
-	// SS1984 REMOVAL START, END)
+	// CELADON REMOVAL START
+	// if(prob(50) && area.lightswitch && !is_reserved_level(loc.z)) //50% chance for area to start with lights off, does not apply if in reserved level.
+	// 	turn_off()
+	// CELADON REMOVAL END
 #endif
 
 /obj/machinery/light_switch/proc/turn_off()

@@ -4,7 +4,7 @@
 	category_name = "Toys"
 	category_ui_icon = FA_ICON_TROPHY
 	type_to_generate = /datum/loadout_item/toys
-	tab_order = /datum/loadout_category/inhands::tab_order + 1
+	tab_order = /datum/loadout_category/inhands::tab_order + 1 // Celadon EDIT (non modular bcs of runtime), original: tab_order = /datum/loadout_category/weapons::tab_order + 1
 	/// How many toys are allowed at maximum.
 	VAR_PRIVATE/max_allowed = 3
 
@@ -78,6 +78,10 @@
 /datum/loadout_item/toys/toykatana
 	name = "Toy Katana"
 	item_path = /obj/item/toy/katana
+
+/datum/loadout_item/toys/toykatanasheath
+	name = "Toy Katana (Sheathed)"
+	item_path = /obj/item/storage/belt/sheath/katana/toy
 
 /*
 *	TENNIS BALLS

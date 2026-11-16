@@ -48,7 +48,7 @@
 /turf/open/misc/asteroid/forest/mushroom
 	name = "mushroom floor"
 	desc = "A patch of mushrooms."
-	icon = 'modular_nova/modules/aesthetics/floors/icons/floors.dmi'
+	icon = 'modular_nova/master_files/icons/turf/floors/floor.dmi'
 	icon_state = "mushroom"
 	base_icon_state = "mushroom"
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_MUSHROOM
@@ -98,9 +98,9 @@
 	initial_gas_mix = FOREST_DEFAULT_ATMOS
 	weak_turf = TRUE
 
-/turf/closed/mineral/random/forest/Change_Ore(ore_type, random = 0)
+/turf/closed/mineral/random/forest/change_ore(ore_type, random = 0)
 	. = ..()
-	if(mineralType)
+	if(mineral_type)
 		icon = 'icons/turf/walls/icerock_wall.dmi'
 		icon_state = "icerock_wall-0"
 		base_icon_state = "icerock_wall"

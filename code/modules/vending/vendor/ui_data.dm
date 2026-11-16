@@ -7,6 +7,11 @@
 	)
 
 /obj/machinery/vending/ui_interact(mob/user, datum/tgui/ui)
+	if(SEND_SIGNAL(src, COMSIG_VENDING_UI_INTERACT, user, ui) & VENDING_DENIED)
+		if(icon_deny)
+			flick(icon_deny, src)
+		return
+
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Vending", name)
@@ -63,7 +68,6 @@
 
 /obj/machinery/vending/ui_static_data(mob/user)
 	var/list/data = list()
-	data["onstation"] = onstation
 	if(ad_list.len)
 		data["ad"] = ad_list[rand(1, ad_list.len)]
 	data["all_products_free"] = all_products_free
@@ -71,7 +75,7 @@
 	data["jobDiscount"] = DEPARTMENT_DISCOUNT
 	data["product_records"] = list()
 	data["displayed_currency_icon"] = displayed_currency_icon
-	data["displayed_currency_name"] = displayed_currency_name
+	data["displayed_currency_name"] = " [displayed_currency_name]"
 
 	var/list/categories = list()
 

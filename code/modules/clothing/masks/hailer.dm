@@ -39,7 +39,8 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	/datum/hailer_phrase/stfu,
 	/datum/hailer_phrase/shutup,
 	/datum/hailer_phrase/super,
-	/datum/hailer_phrase/dredd
+	/datum/hailer_phrase/dredd,
+	/datum/hailer_phrase/ubludok // Celadon ADDITION - april_fools_day
 ))
 
 /obj/item/clothing/mask/gas/sechailer
@@ -52,9 +53,10 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
 	visor_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
+	visor_vars_to_toggle = VISOR_TINT
 	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-	flags_cover = MASKCOVERSMOUTH
-	visor_flags_cover = MASKCOVERSMOUTH
+	flags_cover = MASKCOVERSMOUTH | PEPPERPROOF
+	visor_flags_cover = MASKCOVERSMOUTH | PEPPERPROOF
 	tint = 0
 	fishing_modifier = 0
 	unique_death = 'sound/items/sec_hailer/sec_death.ogg'
@@ -134,7 +136,6 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	return FALSE
 
 /obj/item/clothing/mask/gas/sechailer/verb/halt()
-	set category = "Object"
 	set name = "HALT"
 	set src in usr
 	if(!isliving(usr) || !can_use(usr) || !COOLDOWN_FINISHED(src, hailer_cooldown))
@@ -165,7 +166,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 
 /obj/item/clothing/mask/gas/sechailer/proc/select_phrase()
 	if(!safety)
-		return EMAG_PHRASE
+		return check_holidays(APRIL_FOOLS) ? pick(EMAG_PHRASE, 20) : EMAG_PHRASE // CELADON EDIT, original: return EMAG_PHRASE
 	else
 		var/upper_limit
 		switch (aggressiveness)
@@ -182,6 +183,11 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 		return
 	COOLDOWN_START(src, hailer_cooldown, PHRASE_COOLDOWN)
 	user.audible_message("[user]'s Compli-o-Nator: <font color='red' size='4'><b>[initial(phrase.phrase_text)]</b></font>")
+	// Celadon ADDITION START - april_fools_day
+	if (phrase.phrase_sound == /datum/hailer_phrase/ubludok::phrase_sound && check_holidays(APRIL_FOOLS))
+		playsound(src, "modular_celadon/modules/april_fools_day/beepsky/sounds/ubludok_short.ogg", 100, FALSE, 4)
+		return TRUE
+	// Celadon ADDITION END
 	playsound(src, "sound/runtime/complionator/[initial(phrase.phrase_sound)].ogg", 100, FALSE, 4)
 	return TRUE
 

@@ -3,8 +3,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 ///talking in OOC uses this
 /client/verb/ooc(msg as text)
-	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
-	set category = "OOC"
+	set name = VERB_OOC
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
@@ -50,7 +49,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if (soft_filter_result)
 		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			return
-		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
+		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[html_encode(msg)]\"")
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
 
 	if(!msg)
@@ -79,16 +78,13 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 	var/keyname = key
 
-	if(CONFIG_GET(flag/enable_cross_server_ooc)) //NOVA EDIT ADDITION
-		send_ooc_to_other_server(ckey, msg) //NOVA EDIT ADDITION
-
 	if(prefs.unlock_content)
 		if(prefs.toggles & MEMBER_PUBLIC)
 			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[icon2html('icons/ui/chat/member_content.dmi', world, "blag")][keyname]</font>"
 	// NOVA EDIT ADDITION START - Donator icons in OOC
 	if(SSplayer_ranks.is_donator(src))
 		if(prefs.read_preference(/datum/preference/toggle/display_donator_status))
-			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[icon2html('modular_nova/master_files/icons/donator/donator_chat_icon.dmi', world, "ratge")][keyname]</font>" // SS1984 EDIT
+			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[icon2html('modular_celadon/master_files/icons/chat/donator_chat_icon.dmi', world, "ratge")][keyname]</font>" // Celadon EDIT
 	// NOVA EDIT ADDITION END
 	if(prefs.hearted)
 		var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)
@@ -106,7 +102,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(holder)
 			if(!holder.fakekey || receiver.holder)
 				if(check_rights_for(src, R_ADMIN))
-					var/ooc_color = prefs.read_preference(/datum/preference/color/ooc_color)
+					var/ooc_color = ooc_colour ? ooc_colour : prefs.read_preference(/datum/preference/color/ooc_color)
 					to_chat(receiver, span_adminooc("[CONFIG_GET(flag/allow_admin_ooccolor) && ooc_color ? "<font color=[ooc_color]>" :"" ][span_prefix("OOC:")] <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message linkify'>[msg]</span>"), avoid_highlighting = avoid_highlight)
 				else
 					to_chat(receiver, span_adminobserverooc(span_prefix("OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message linkify'>[msg]")), avoid_highlighting = avoid_highlight)
@@ -117,7 +113,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 					to_chat(receiver, span_ooc(span_prefix("OOC:</span> <EM>[holder.fakekey ? holder.fakekey : key]:</EM> <span class='message linkify'>[msg]")), avoid_highlighting = avoid_highlight)
 
 		else if(!(key in receiver.prefs.ignoring))
-			if(GLOB.OOC_COLOR)
+			if(ooc_colour)
+				to_chat(receiver, "<span class='oocplain'><font color='[ooc_colour]'><b>[span_prefix("OOC:")] <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></b></font></span>", avoid_highlighting = avoid_highlight)
+			else if(GLOB.OOC_COLOR)
 				to_chat(receiver, "<span class='oocplain'><font color='[GLOB.OOC_COLOR]'><b>[span_prefix("OOC:")] <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></b></font></span>", avoid_highlighting = avoid_highlight)
 			else
 				to_chat(receiver, span_ooc(span_prefix("OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]")), avoid_highlighting = avoid_highlight)
@@ -151,7 +149,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		return
 
 ADMIN_VERB(set_ooc_color, R_FUN, "Set Player OOC Color", "Modifies the global OOC color.", ADMIN_CATEGORY_SERVER)
-	var/newColor = input(user, "Please select the new player OOC color.", "OOC color") as color|null
+	var/newColor = tgui_color_picker(user, "Please select the new player OOC color.", "OOC color")
 	if(isnull(newColor))
 		return
 	var/new_color = sanitize_color(newColor)
@@ -430,10 +428,9 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 /client/proc/attempt_auto_fit_viewport()
 	if (!prefs?.read_preference(/datum/preference/toggle/auto_fit_viewport))
 		return
+	// No need to attempt to fit the viewport on non-initialized clients as they'll auto-fit viewport right before finishing init
 	if(fully_created)
 		INVOKE_ASYNC(src, VERB_REF(fit_viewport))
-	else //Delayed to avoid wingets from Login calls.
-		addtimer(CALLBACK(src, VERB_REF(fit_viewport), 1 SECONDS))
 
 /client/verb/policy()
 	set name = "Show Policy"
@@ -473,15 +470,15 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 
 	prefs.savefile.export_json_to_client(usr, ckey)
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /client/verb/map_vote_tally_count()
 // 	set name = "Show Map Vote Tallies"
 // 	set desc = "View the current map vote tally counts."
-// 	set category = "Server"
+// 	set category = "OOC"
 // 	to_chat(mob, SSmap_vote.tally_printout)
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /client/verb/linkforumaccount()
 // 	set category = "OOC"
 // 	set name = "Link Forum Account"
@@ -512,9 +509,9 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 
 // 	to_chat(src, "Now opening a window to login to your forum account, your account will automatically be linked the moment you log in. If this window doesn't load, Please go to <a href=\"[uri]?token=[token]\">[uri]?token=[token]</a> - This link will expire in 30 minutes.")
 // 	src << link("[uri]?token=[token]")
-// SS1984 REMOVAL END
+// Celadon REMOVAL END
 
-// SS1984 REMOVAL START
+// Celadon REMOVAL START
 // /client/proc/generate_account_link_token()
 // 	var/static/entropychain
 // 	if (!entropychain)
@@ -546,4 +543,4 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 
 // /client/proc/random_string_args(entropychain)
 // 	return "[entropychain][GUID()][rand()*rand(999999)][world.time][GUID()][rand()*rand(999999)][world.timeofday][GUID()][rand()*rand(999999)][world.realtime][GUID()][rand()*rand(999999)][time2text(world.timeofday)][GUID()][rand()*rand(999999)][world.tick_usage][computer_id][address][ckey][key][GUID()][rand()*rand(999999)]"
-// SS1984 REMOVAL END
+// Celadon REMOVAL END

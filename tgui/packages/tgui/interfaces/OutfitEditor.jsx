@@ -39,6 +39,14 @@ export const OutfitEditor = (props) => {
                 {outfit.name}
               </Stack.Item>
               <Stack.Item align="end" shrink={0}>
+                {/* Celadon ADDITION START */}
+                <Button
+                  tooltipPosition="bottom-start"
+                  onClick={() => act('open_trait_window')}
+                >
+                  Traits
+                </Button>
+                {/* Celadon ADDITION END */}
                 <Button
                   color="transparent"
                   icon="info"
@@ -131,7 +139,7 @@ const OutfitSlot = (props) => {
         // todo: intuitive way to clear items
         onClick={(e) => act(e.ctrlKey ? 'ctrlClick' : 'click', { slot })}
       >
-        <Icon name={icon} rotation={iconRot} />
+        <Icon name={icon} rotation={iconRot} mr={0.5} />
         {name}
       </Button>
       <Box height="32px">

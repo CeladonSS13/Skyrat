@@ -1,32 +1,5 @@
-## Comment this out if you'd like a server that cares only about local bans in the database.
-#RESPECT_GLOBAL_BANS
-
-## Automatic population control population limit, will send players(not admins) to the overflow server.
-## Set to 0 to disable
-## MAKE SURE YOU SET AN OVERFLOW IP!
-PLAYER_HARD_CAP 0
-
-## Player prompt to change servers after this cap.
-## Set to 0 to disable
-## MAKE SURE YOU SET AN OVERFLOW IP!
-PLAYER_SOFT_CAP 0
-
-## The IP of the overflow server. See above.
-#OVERFLOW_SERVER_IP byond://example:1337
-
-## Cross server OOC
-## Sends this servers OOC to all other cross servers. Uses cross server name as an identity.
-#ENABLE_CROSS_SERVER_OOC
-
-## Cross server ASAY
-## Sends this servers ASAY to all other cross servers. Uses cross server name as an identity.
-#ENABLE_CROSS_SERVER_ASAY
-
-## The non-IC name we send to OOC and adminsay.
-#CROSS_SERVER_NAME
-
-
-ALERT_AMBER_UPTO A major security emergency has developed. Security staff may have weapons unholstered at all times. Random searches are allowed and advised.
+## Extra Alerts
+ALERT_AMBER_UPTO A major security emergency has developed. Random searches are allowed and advised. Non-security personnel are required to obey all relevant instructions from security staff.
 ALERT_AMBER_DOWNTO A major security emergency is still underway. Non-security personnel are required to obey all relevant instructions from security staff.
 ALERT_ORANGE_UPTO A major engineering emergency has developed. Non-engineering personnel are required to evacuate any affected areas and obey relevant instructions from engineering staff. Engineering staff will have expanded access to areas of the station during the emergency.
 ALERT_ORANGE_DOWNTO A major engineering emergency has developed. Non-engineering personnel are required to evacuate any affected areas and obey relevant instructions from engineering staff. Engineering staff will have expanded access to areas of the station during the emergency.
@@ -43,11 +16,14 @@ ALERT_FEDERAL The Sol Federation has placed this galactic sector under its full 
 ## How long until someone can be put in cryo if they are SSD
 CRYO_MIN_SSD_TIME 25
 
+## The policy string that shows up when entering cryo, uncomment to enable.
+#CRYO_POLICY You may rejoin as the same role, or as an assistant, with the cryo'd character.
+
 ## log subtler emotes in game.txt
 #LOG_SUBTLER
 
 ## Enables autotransfer system
-AUTOTRANSFER
+# AUTOTRANSFER
 
 ## Enables starting transfer votes by the crew at large.
 ALLOW_VOTE_TRANSFER
@@ -134,7 +110,7 @@ STATIONARY_BOH_SINGULARITY_GRAV_PULL 4
 DISABLE_ROAMING_BOH_SINGULARITY
 
 ## The link to the policy wiki page for primitive catgirls
-ICECATS_POLICY_LINK "https://skyrat.ss220.space/index.php/Политика_гост-ролей#Ледоходцы_(Icewalkers)"
+ICECATS_POLICY_LINK "https://skyrat.celadon.pro/index.php/Политика_гост-ролей#Ледоходцы_(Icewalkers)"
 
 ## What is the maximum size (in percents) we want people to be able to use with the size collar?
 SIZE_COLLAR_MAXIMUM 400
@@ -194,4 +170,27 @@ JUNGLE_CAVE_BUDGET 2
 MISSING_WHITELIST_MESSAGE "\nThis server requires you to be whitelisted in order to be allowed to play. Apply on our Discord by simply filling the Access Request form from the #application-instructions channel under the 'Landing Zone' category. Here's the invite link: https://discord.gg/novasector"
 
 #If enabled, /human mobs will no longer occasionally blink
-DISABLE_BLINKING
+#DISABLE_BLINKING
+
+## Maximum number of allowed savefile backups per player
+SAVEFILE_BACKUP_LIMIT 16
+
+## Maximum file size allowed by savefile uploading, in kilobytes
+## Default limit is 2000
+SAVEFILE_UPLOAD_LIMIT 2000
+
+## Uncomment to override gas prices with their modified values, leave commented to use the TG defaults
+#OVERRIDE_GAS_PRICES
+
+## Uncomment to allow players to connect to relays
+#ENABLE_RELAYS
+
+## If using relays, you will also need to specify at least one relay address here. The first entry is what shows in the relay selection ui, and the second is the actual url.
+#RELAY_OPTION Connect to US-West (Los Angeles),byond://us-west.placeholder.com:1337
+#RELAY_OPTION Connect to EU-Central (Germany),byond://eu.placeholder.com:1337
+#RELAY_OPTION Connect to Asia (Singapore),byond://asia.placeholder.com:1337
+#RELAY_OPTION Connect to South America (Brazil),byond://south-america.placeholder.com:1337
+#RELAY_OPTION Connect Directly (No Relay),byond://placeholder.com:1337
+
+## Uncomment to disable the Star rank restrictions
+#ENABLE_NOVA_STAR_RESTRICTIONS 0

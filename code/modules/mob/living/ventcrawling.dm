@@ -25,7 +25,7 @@
 		return
 	if(!HAS_TRAIT(src, TRAIT_VENTCRAWLER_NUDE) && !HAS_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS))
 		return
-	if(stat > SOFT_CRIT) // SS1984 EDIT
+	if(stat)
 		if(provide_feedback)
 			to_chat(src, span_warning("You must be conscious to do this!"))
 		return
@@ -46,7 +46,7 @@
 			to_chat(src, span_warning("You can't vent crawl while buckled!"))
 		return
 	if(iscarbon(src) && required_nudity)
-		if(length(get_equipped_items(INCLUDE_POCKETS)) || get_num_held_items())
+		if(length(get_equipped_items(INCLUDE_POCKETS|INCLUDE_HELD)))
 			if(provide_feedback)
 				to_chat(src, span_warning("You can't crawl around in the ventilation ducts with items!"))
 			return

@@ -15,7 +15,7 @@ import {
 
 import { JOB2ICON } from '../common/JobToIcon';
 import { isRecordMatch } from '../SecurityRecords/helpers';
-import type { MedicalRecord, MedicalRecordData } from './types';
+import { MedicalRecord, MedicalRecordData } from './types';
 
 /** Displays all found records. */
 export const MedicalRecordTabs = (props) => {

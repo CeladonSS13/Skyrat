@@ -278,8 +278,8 @@
 			stack_trace("closed turf inside of adjacent turfs")
 			continue
 		#endif
-		if (!isopenturf(enemy_tile)) // SS1984 ADDITION
-			continue // SS1984 ADDITION
+		if (!isopenturf(enemy_tile)) // Celadon ADDITION
+			continue // Celadon ADDITION
 
 		// This var is only rarely set, exists so turfs can request to share at the end of our sharing
 		// We need this so we can assume share is communative, which we need to do to avoid a hellish amount of garbage_collect()s
@@ -387,8 +387,11 @@
 	var/atom/movable/moving_atom
 	for(var/thing in src)
 		moving_atom = thing
-		if (!moving_atom.anchored && !moving_atom.pulledby && moving_atom.last_high_pressure_movement_air_cycle < SSair.times_fired)
-			moving_atom.experience_pressure_difference(pressure_difference, pressure_direction)
+		if (moving_atom.last_high_pressure_movement_air_cycle < SSair.times_fired)
+			if (!moving_atom.anchored && !moving_atom.pulledby)
+				moving_atom.experience_pressure_difference(pressure_difference, pressure_direction)
+			else
+				SEND_SIGNAL(moving_atom, COMSIG_MOVABLE_RESISTED_SPACEWIND, pressure_difference, pressure_direction)
 
 /atom/movable
 	///How much delta pressure is needed for us to move

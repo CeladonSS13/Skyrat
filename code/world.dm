@@ -15,10 +15,10 @@
 	view = "15x15"
 	hub = "Exadv1.spacestation13"
 	hub_password = "kMZy3U5jJHSiBQjr"
-	//name = "/tg/ Station 13" // SS1984 EDIT
+	name = "/tg/ Station 13"
 	fps = 20
 	cache_lifespan = 0
-	//map_format = SIDE_MAP // NOVA EDIT - TODO: WALLENING - REMOVE THIS (hopefully the visual z-fighting issues will have been ironed out by then)
+	map_format = SIDE_MAP
 #ifdef FIND_REF_NO_CHECK_TICK
 	loop_checks = FALSE
 #endif

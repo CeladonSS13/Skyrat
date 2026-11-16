@@ -150,6 +150,7 @@
 /obj/item/summon_beacon/gas_miner
 	name = "gas miner beacon"
 	desc = "Once a gas miner type is selected, delivers a gas miner to the target location."
+	icon = 'modular_nova/modules/modular_items/icons/remote.dmi'
 
 	allowed_areas = list(
 		/area/station/engineering/atmos,
@@ -209,7 +210,7 @@
 
 /obj/item/summon_beacon/vendors/equipped(mob/user, slot, initial)
 	. = ..()
-	if (!CONFIG_GET(flag/disable_erp_preferences)) // SS1984 EDIT REMOVE ERP
+	if (!CONFIG_GET(flag/disable_erp_preferences) && user?.client?.prefs.read_preference(/datum/preference/toggle/master_erp_preferences))
 		selectable_atoms += /obj/machinery/vending/dorms
 	else
 		selectable_atoms -= /obj/machinery/vending/dorms

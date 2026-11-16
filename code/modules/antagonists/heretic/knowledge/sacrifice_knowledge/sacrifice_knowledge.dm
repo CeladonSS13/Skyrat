@@ -26,7 +26,7 @@
 	/// A weakref to the mind of our heretic.
 	var/datum/mind/heretic_mind
 	/// Lazylist of minds that we won't pick as targets.
-	var/list/datum/mind/target_blacklist
+	var/static/list/datum/mind/target_blacklist
 	/// An assoc list of [ref] to [timers] - a list of all the timers of people in the shadow realm currently
 	var/list/return_timers
 	/// Evil organs we can put in people
@@ -42,7 +42,6 @@
 
 /datum/heretic_knowledge/hunt_and_sacrifice/Destroy(force)
 	heretic_mind = null
-	LAZYCLEARLIST(target_blacklist)
 	return ..()
 
 /datum/heretic_knowledge/hunt_and_sacrifice/on_research(mob/user, datum/antagonist/heretic/our_heretic)
@@ -84,7 +83,7 @@
 	// Let's remove any humans in our atoms list that aren't a sac target
 	for(var/mob/living/carbon/human/sacrifice in atoms)
 		// If the mob's not in soft crit or worse, remove from list
-		if(sacrifice.stat < UNCONSCIOUS)
+		if(sacrifice.stat < SOFT_CRIT)
 			atoms -= sacrifice
 		// Otherwise if it's neither a target nor a cultist, remove it
 		else if(!(sacrifice in heretic_datum.sac_targets) && !IS_CULTIST(sacrifice))
@@ -131,12 +130,12 @@
 			continue
 		if(possible_target.current.stat == DEAD)
 			continue
-		// SS1984 REMOVAL START
+		// Celadon REMOVAL START
 		// // NOVA EDIT ADDITION BEGIN - Antag opt-in (Only security and command can be targetted)
 		// if (!CONFIG_GET(flag/disable_antag_opt_in_preferences) && !possible_target.assigned_role?.heretic_sac_target)
 		// 	continue
 		// // NOVA EDIT ADDITION END
-		// SS1984 REMOVAL END
+		// Celadon REMOVAL END
 
 		valid_targets += possible_target
 
@@ -211,8 +210,8 @@
 
 	if(sacrifice.mind)
 		LAZYADD(target_blacklist, sacrifice.mind)
-	heretic_datum.remove_sacrifice_target(sacrifice)
-
+	for(var/datum/antagonist/heretic/all_heretic in GLOB.antagonists)
+		all_heretic.remove_sacrifice_target(sacrifice)
 
 	var/feedback = "Your patrons accept your offer"
 	var/sac_job_flag = sacrifice.mind?.assigned_role?.job_flags | sacrifice.last_mind?.assigned_role?.job_flags
@@ -220,11 +219,11 @@
 	// Heads give 3 points, cultists give 1 point (and a special reward), normal sacrifices give 2 points.
 	heretic_datum.total_sacrifices++
 	if((sac_job_flag & JOB_HEAD_OF_STAFF))
-		heretic_datum.knowledge_points += 3
+		heretic_datum.adjust_knowledge_points(3)
 		heretic_datum.high_value_sacrifices++
 		feedback += " <i>graciously</i>"
 	if(cultist_datum)
-		heretic_datum.knowledge_points += 1
+		heretic_datum.adjust_knowledge_points(1)
 		grant_reward(user, sacrifice, loc)
 		// easier to read
 		var/rewards_given = heretic_datum.rewards_given
@@ -243,7 +242,7 @@
 			to_chat(user, non_flavor_warning)
 		return
 	else
-		heretic_datum.knowledge_points += 2
+		heretic_datum.adjust_knowledge_points(2)
 
 	to_chat(user, span_hypnophrase("[feedback]."))
 	if(!begin_sacrifice(sacrifice))
@@ -266,7 +265,7 @@
 		loot.throw_at(get_step_rand(sacrifice), 2, 4, user, TRUE)
 
 	// The loser is DUSTED.
-	sacrifice.dust(TRUE, TRUE)
+	sacrifice.dust(just_ash = TRUE, drop_items = TRUE)
 
 	// Increase reward counter
 	var/datum/antagonist/heretic/antag = GET_HERETIC(user)
@@ -342,16 +341,10 @@
 	var/turf/destination = get_turf(destination_landmark)
 
 	sac_target.visible_message(span_danger("[sac_target] begins to shudder violenty as dark tendrils begin to drag them into thin air!"))
-	sac_target.set_handcuffed(new /obj/item/restraints/handcuffs/energy/cult(sac_target))
-	sac_target.update_handcuffed()
+	sac_target.equip_to_slot_or_del(new /obj/item/restraints/handcuffs/cult, ITEM_SLOT_HANDCUFFED, indirect_action = TRUE)
+	sac_target.dropItemToGround(sac_target.legcuffed, TRUE)
 
-	if(sac_target.legcuffed)
-		sac_target.legcuffed.forceMove(sac_target.drop_location())
-		sac_target.legcuffed.dropped(sac_target)
-		sac_target.legcuffed = null
-		sac_target.update_worn_legcuffs()
-
-	sac_target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 85, 150)
+	sac_target.adjust_organ_loss(ORGAN_SLOT_BRAIN, 85, 150)
 	sac_target.do_jitter_animation()
 	log_combat(heretic_mind.current, sac_target, "sacrificed")
 
@@ -360,7 +353,7 @@
 
 	// If our target is dead, try to revive them
 	// and if we fail to revive them, don't proceede the chain
-	sac_target.adjustOxyLoss(-100, FALSE)
+	sac_target.adjust_oxy_loss(-100, FALSE)
 	if(!sac_target.heal_and_revive(50, span_danger("[sac_target]'s heart begins to beat with an unholy force as they return from death!")))
 		return
 
@@ -405,7 +398,7 @@
 	// If our target died during the (short) wait timer,
 	// and we fail to revive them (using a lower number than before),
 	// just disembowel them and stop the chain
-	sac_target.adjustOxyLoss(-100, FALSE)
+	sac_target.adjust_oxy_loss(-100, FALSE)
 	if(!sac_target.heal_and_revive(60, span_danger("[sac_target]'s heart begins to beat with an unholy force as they return from death!")))
 		disembowel_target(sac_target)
 		return
@@ -514,7 +507,7 @@
 	sac_target.clear_mood_event("shadow_realm")
 	if(IS_HERETIC(sac_target))
 		var/datum/antagonist/heretic/victim_heretic = sac_target.mind?.has_antag_datum(/datum/antagonist/heretic)
-		victim_heretic.knowledge_points -= 3
+		victim_heretic.adjust_knowledge_points(-3)
 
 	// Wherever we end up, we sure as hell won't be able to explain
 	sac_target.adjust_timed_status_effect(40 SECONDS, /datum/status_effect/speech/slurring/heretic)
@@ -596,7 +589,7 @@
 	sac_target.set_eye_blur_if_lower(100 SECONDS)
 	sac_target.set_dizzy_if_lower(1 MINUTES)
 	sac_target.AdjustKnockdown(80)
-	sac_target.adjustStaminaLoss(120)
+	sac_target.adjust_stamina_loss(120)
 
 	// Glad i'm outta there, though!
 	sac_target.add_mood_event("shadow_realm_survived", /datum/mood_event/shadow_realm_live)

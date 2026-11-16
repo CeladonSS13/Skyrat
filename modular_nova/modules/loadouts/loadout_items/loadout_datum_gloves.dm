@@ -98,17 +98,6 @@
 	name = "Gloves - Rainbow"
 	item_path = /obj/item/clothing/gloves/color/rainbow
 
-// SS1984 REMOVAL START
-// /datum/loadout_item/gloves/latex
-// 	name = "Latex Gloves"
-// 	item_path = /obj/item/clothing/gloves/long_gloves
-// 	erp_item = TRUE
-//
-// /datum/loadout_item/gloves/maid
-// 	name = "Maid Arm Covers"
-// 	item_path = /obj/item/clothing/gloves/maid
-// SS1984 REMOVAL END
-
 /datum/loadout_item/gloves/maid_arm_covers
 	name = "Maid Arm Covers (Colorable)"
 	item_path = /obj/item/clothing/gloves/maid_arm_covers
@@ -116,6 +105,27 @@
 /datum/loadout_item/gloves/tactical_maid_sleeves
 	name = "Maid Arm Covers - Tactical"
 	item_path = /obj/item/clothing/gloves/tactical_maid
+
+/datum/loadout_item/gloves/pink_clown_gloves
+	name = "Pink Clown Gloves"
+	item_path = /obj/item/clothing/gloves/pink_clown
+	
+/datum/loadout_item/gloves/recolorable
+	name = "Gloves (Colorable)"
+	item_path = /obj/item/clothing/gloves/recolorable
+
+/datum/loadout_item/gloves/recolorable_fingerless
+	name = "Fingerless Gloves (Colorable)"
+	item_path = /obj/item/clothing/gloves/recolorable/fingerless
+	
+/datum/loadout_item/gloves/recolorable_long
+	name = "Long Gloves (Colorable)"
+	item_path = /obj/item/clothing/gloves/recolorable/long
+	
+/datum/loadout_item/gloves/recolorable_fingerless_long
+	name = "Long Fingerless Gloves (Colorable)"
+	item_path = /obj/item/clothing/gloves/recolorable/fingerless/long
+
 /*
 *	RINGS
 */
@@ -136,12 +146,10 @@
 *	erp_item
 */
 
-// SS1984 REMOVAL START
-// /datum/loadout_item/gloves/latex
-// 	name = "Latex Gloves"
-// 	item_path = /obj/item/clothing/gloves/long_gloves
-// 	erp_item = TRUE
-// SS1984 REMOVAL END
+/datum/loadout_item/gloves/latex
+	name = "Latex Gloves"
+	item_path = /obj/item/clothing/gloves/long_gloves
+	erp_item = TRUE
 
 /*
 *	DONATOR

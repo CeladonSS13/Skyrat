@@ -25,7 +25,7 @@
 	if(forced)
 		return VOTE_AVAILABLE
 
-	if(!CONFIG_GET(flag/autotransfer) || !CONFIG_GET(flag/allow_vote_transfer))
+	if(!CONFIG_GET(flag/allow_vote_transfer)) //Celadon Edit, original: if(!CONFIG_GET(flag/autotransfer) || !CONFIG_GET(flag/allow_vote_transfer))
 		return "Transfer voting is disabled."
 
 	return VOTE_AVAILABLE

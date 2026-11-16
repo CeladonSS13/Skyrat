@@ -1,6 +1,3 @@
-/// The caliber used by the Oldarms 'Mk.11.4 rifle', designed to be worse .223.
-#define CALIBER_223S ".223 Stinger"
-
 /// Caliber used by the giant anti materiel rifle in guncargo
 #define CALIBER_60STRELA ".60 Strela"
 
@@ -24,3 +21,5 @@
 /// Caliber used by the kinetic gun
 #define CALIBER_KINETICBALL "Kinetic Ball"
 
+/// Define used for shaded-charge weapons that have firemode-based labels on their icons
+#define SHADED_CHARGE_MODE_LABELED 2

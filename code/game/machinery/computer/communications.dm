@@ -33,12 +33,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	/// Whether syndicate mode is enabled or not.
 	var/syndicate = FALSE
 
-	/// Whether away mode is enabled or not. ss1984 add
-	var/away = FALSE
-
-	/// Whether console can see  call 911 button or not. ss1984 add
-	var/can_call_911 = TRUE
-
 	/// The current state of the UI
 	var/state = STATE_MAIN
 
@@ -190,7 +184,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			message.answered = answer_index
 			message.answer_callback.InvokeAsync()
 		if ("callShuttle")
-			if (!authenticated(user) || syndicate || away) // ss1984 edit original 'if (!authenticated(user) || syndicate)'
+			if (!authenticated(user) || syndicate || away) // celadon edit original 'if (!authenticated(user) || syndicate)'
 				return
 			var/reason = trim(params["reason"], MAX_MESSAGE_LEN)
 			if (length(reason) < CALL_SHUTTLE_REASON_LENGTH)
@@ -242,11 +236,11 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				return
 			LAZYREMOVE(messages, LAZYACCESS(messages, message_index))
 		if ("makePriorityAnnouncement")
-			if (!authenticated_as_silicon_or_captain(user) && !syndicate && !away) //ss1984 edit original 'if (!authenticated_as_silicon_or_captain(user) && !syndicate)'
+			if (!authenticated_as_silicon_or_captain(user) && !syndicate && !away) //celadon edit original 'if (!authenticated_as_silicon_or_captain(user) && !syndicate)'
 				return
 			make_announcement(user)
 		if ("messageAssociates")
-			if (!authenticated_as_ai_or_captain(user)) // NOVA EDIT CHANGE - Allows AI and Captain to send messages - ORIGINAL: if (!authenticated_as_non_silicon_captain(user))
+			if (!authenticated_as_ai_or_captain(user) && !away)	// Celadon EDIT, original: if (!authenticated_as_ai_or_captain(user)) // NOVA EDIT CHANGE - Allows AI and Captain to send messages - ORIGINAL: if (!authenticated_as_non_silicon_captain(user))
 				return
 			if (!COOLDOWN_FINISHED(src, important_action_cooldown))
 				return
@@ -261,9 +255,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			else if(syndicate)
 				message_syndicate(message, user)
 				to_chat(user, span_danger("Message transmitted to Syndicate Command."))
-			else if(away) // ss1984 add start
+			else if(away) // celadon add start
 				message_centcom(message, user)
-				to_chat(user, span_danger("Message transmitted to Nanotrasen Navy.")) // ss1984 add end
+				to_chat(user, span_danger("Message transmitted to Nanotrasen Navy.")) // celadon add end
 			else
 				message_centcom(message, user)
 				to_chat(user, span_notice("Message transmitted to Central Command."))
@@ -278,7 +272,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				if (can_buy_shuttles_or_fail_reason != FALSE)
 					to_chat(user, span_alert("[can_buy_shuttles_or_fail_reason]"))
 				return
-			var/list/shuttles = flatten_list(SSmapping.shuttle_templates)
+			var/list/shuttles = assoc_to_values(SSmapping.shuttle_templates)
 			var/datum/map_template/shuttle/shuttle = locate(params["shuttle"]) in shuttles
 			if (!istype(shuttle))
 				return
@@ -287,7 +281,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if (!shuttle.prerequisites_met())
 				to_chat(user, span_alert("You have not met the requirements for purchasing this shuttle."))
 				return
-			var/datum/bank_account/bank_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+//			var/datum/bank_account/bank_account = SSeconomy.get_dep_account(ACCOUNT_CAR)	//CELADON REMOVE
+			var/datum/bank_account/bank_account = SSeconomy.get_dep_account(ACCOUNT_NTS)	//CELADON ADD
 			if (bank_account.account_balance < shuttle.credit_cost)
 				return
 			SSshuttle.shuttle_purchased = SHUTTLEPURCHASE_PURCHASED
@@ -299,7 +294,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			bank_account.adjust_money(-shuttle.credit_cost)
 
 			var/purchaser_name = (obj_flags & EMAGGED) ? scramble_message_replace_chars("AUTHENTICATION FAILURE: CVE-2018-17107", 60) : user.real_name
-			minor_announce("[purchaser_name] has purchased [shuttle.name] for [shuttle.credit_cost] credits.[shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Shuttle Purchase")
+			minor_announce("[purchaser_name] has purchased [shuttle.name] for [shuttle.credit_cost] [MONEY_NAME].[shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Shuttle Purchase")
 
 			message_admins("[ADMIN_LOOKUPFLW(user)] purchased [shuttle.name].")
 			log_shuttle("[key_name(user)] has purchased [shuttle.name].")
@@ -307,11 +302,11 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			state = STATE_MAIN
 		if ("recallShuttle")
 			// AIs cannot recall the shuttle
-			if (!authenticated(user) || HAS_SILICON_ACCESS(user) || syndicate || away) //ss1984 edit original 'if (!authenticated(user) || HAS_SILICON_ACCESS(user) || syndicate)'
+			if (!authenticated(user) || HAS_SILICON_ACCESS(user) || syndicate || away) //celadon edit original 'if (!authenticated(user) || HAS_SILICON_ACCESS(user) || syndicate)'
 				return
-			SSshuttle.cancelEvac(user)
+			SSshuttle.cancel_evac(user)
 		if ("requestNukeCodes")
-			if (away) //ss1984 add
+			if (away) //celadon add
 				return
 			if (!authenticated_as_non_silicon_captain(user))
 				return
@@ -354,7 +349,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if(soft_filter_result)
 				if(tgui_alert(user,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to use it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 					return
-				message_admins("[ADMIN_LOOKUPFLW(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". They may be using a disallowed term for a cross-station message. Increasing delay time to reject.\n\n Message: \"[message]\"")
+				message_admins("[ADMIN_LOOKUPFLW(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". They may be using a disallowed term for a cross-station message. Increasing delay time to reject.\n\n Message: \"[html_encode(message)]\"")
 				log_admin_private("[key_name(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". They may be using a disallowed term for a cross-station message. Increasing delay time to reject.\n\n Message: \"[message]\"")
 				GLOB.communications_controller.soft_filtering = TRUE
 
@@ -362,7 +357,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 			var/destination = params["destination"]
 			if (!(destination in CONFIG_GET(keyed_list/cross_server)) && destination != "all")
-				message_admins("[ADMIN_LOOKUPFLW(user)] has passed an invalid destination into comms console cross-sector message. Message: \"[message]\"")
+				message_admins("[ADMIN_LOOKUPFLW(user)] has passed an invalid destination into comms console cross-sector message. Message: \"[html_encode(message)]\"")
 				return
 
 			user.log_message("is about to send the following message to [destination]: [message]", LOG_GAME)
@@ -460,7 +455,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				to_chat(user, span_warning("The safe code has already been requested and is being delivered to your station!"))
 				return
 
-			if(SSjob.safe_code_requested || away) //ss1984 edit original 'if(SSjob.safe_code_requested)'
+			if(SSjob.safe_code_requested || away) //celadon edit original 'if(SSjob.safe_code_requested)'
 				to_chat(user, span_warning("The safe code has already been requested and delivered to your station!"))
 				return
 
@@ -579,7 +574,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		"syndicate" = syndicate,
 		"away" = away,
 	)
-// ss1984 add "away" = away,
+// celadon add "away" = away,
 	var/ui_state = HAS_SILICON_ACCESS(user) ? cyborg_state : state
 
 	var/has_connection = has_communication()
@@ -624,9 +619,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["authorizeName"] = authorize_name
 				data["canLogOut"] = !HAS_SILICON_ACCESS(user)
 				data["shuttleCanEvacOrFailReason"] = SSshuttle.canEvac()
-
-				if(syndicate || away) //ss1984 edit original 'if(syndicate)'
+				if(syndicate || away) //celadon edit original 'if(syndicate)'
 					data["shuttleCanEvacOrFailReason"] = "You cannot summon the shuttle from this console!"
+
 				if (authenticated_as_non_silicon_captain(user))
 					data["canMessageAssociates"] = TRUE
 					data["canRequestNuke"] = TRUE
@@ -655,18 +650,18 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				else if(syndicate)
 					data["canMakeAnnouncement"] = TRUE
 
-				data["away"] = away //ss1984 add start
+				data["away"] = away //celadon add start
 				if(away)
 					data["canMessageAssociates"] = TRUE
 					data["canMakeAnnouncement"] = FALSE
-					data["canRequestNuke"] = FALSE //ss1984 add end
+					data["canRequestNuke"] = FALSE //celadon add end
 
 				if (authenticated_as_ai_or_captain(user)) // NOVA EDIT CHANGE - Allows AI to report to CC in the event of there being no command alive/to begin with - ORIGINAL: if (authenticated_as_non_silicon_captain(user))
 					data["canMessageAssociates"] = TRUE
 
 				if (SSshuttle.emergency.mode != SHUTTLE_IDLE && SSshuttle.emergency.mode != SHUTTLE_RECALL)
 					data["shuttleCalled"] = TRUE
-					data["shuttleRecallable"] = SSshuttle.canRecall() || syndicate
+					data["shuttleRecallable"] = SSshuttle.can_recall(user) || syndicate
 
 				if (SSshuttle.emergencyCallAmount)
 					data["shuttleCalledPreviously"] = TRUE
@@ -685,7 +680,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 							"possibleAnswers" = message.possible_answers,
 						))
 			if (STATE_BUYING_SHUTTLE)
-				var/datum/bank_account/bank_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+//				var/datum/bank_account/bank_account = SSeconomy.get_dep_account(ACCOUNT_CAR)	//CELADON REMOVE
+				var/datum/bank_account/bank_account = SSeconomy.get_dep_account(ACCOUNT_NTS)	//CELADON ADD
 				var/list/shuttles = list()
 
 				for (var/shuttle_id in SSmapping.shuttle_templates)
@@ -728,6 +724,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		"callShuttleReasonMinLength" = CALL_SHUTTLE_REASON_LENGTH,
 		"maxStatusLineLength" = MAX_STATUS_LINE_LENGTH,
 		"maxMessageLength" = MAX_MESSAGE_LEN,
+		"displayed_currency_full_name" = " [MONEY_NAME]",
+		"displayed_currency_name" = " [MONEY_SYMBOL]",
 	)
 
 /obj/machinery/computer/communications/Topic(href, href_list)
@@ -756,7 +754,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 /obj/machinery/computer/communications/proc/has_communication()
 	var/turf/current_turf = get_turf(src)
 	var/z_level = current_turf.z
-	if(syndicate || away) //ss1984 edit original 'if(syndicate)'
+	if(syndicate || away) //celadon edit original 'if(syndicate)'
 		return TRUE
 	return is_station_level(z_level) || is_centcom_level(z_level)
 
@@ -961,7 +959,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				"Attention crew, it appears that someone on your station has hijacked your telecommunications and broadcasted an unknown signal.",
 				"[command_name()] High-Priority Update",
 			)
-			var/max_number_of_sleepers = clamp(round(SSdynamic ? SSdynamic.get_population_for_dynamic_rolling(GLOB.alive_player_list) : length(GLOB.alive_player_list) / 40), 1, 3) // SS1984 EDIT, original: var/max_number_of_sleepers = clamp(round(length(GLOB.alive_player_list) / 40), 1, 3)
+			var/max_number_of_sleepers = clamp(round(SSdynamic ? SSdynamic.get_population_for_dynamic_rolling(GLOB.alive_player_list) : length(GLOB.alive_player_list) / 40), 1, 3) // Celadon EDIT, original: var/max_number_of_sleepers = clamp(round(length(GLOB.alive_player_list) / 40), 1, 3)
 			if(!SSdynamic.force_run_midround(/datum/dynamic_ruleset/midround/from_living/traitor, forced_max_cap = max_number_of_sleepers))
 				SSdynamic.queue_ruleset(/datum/dynamic_ruleset/latejoin/traitor)
 

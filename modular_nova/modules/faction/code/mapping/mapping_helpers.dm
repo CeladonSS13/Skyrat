@@ -164,7 +164,7 @@
 		if(1) //Random traitor items
 			new /obj/item/storage/box/syndie_kit/chameleon(src)
 			new /obj/item/storage/backpack/duffelbag/syndie/c4(src)
-			new /obj/item/computer_disk/syndicate/camera_app(src)
+			new /obj/item/disk/computer/syndicate/camera_app(src)
 			new /obj/item/gun/chem(src)
 			new /obj/item/card/emag(src)
 			new /obj/item/card/emag/doorjack(src)
@@ -187,6 +187,12 @@
 			for(var/i in 1 to 2)
 				new /obj/item/ammo_box/magazine/c35sol_pistol/stendo(src)
 				new /obj/item/ammo_box/magazine/c35sol_pistol/stendo(src)
+			new /obj/item/gun/ballistic/automatic/lanca(src)
+			for(var/i in 1 to 2)
+				new /obj/item/ammo_box/magazine/lanca(src)
+			new /obj/item/gun/ballistic/automatic/miecz(src)
+			for(var/i in 1 to 2)
+				new /obj/item/ammo_box/magazine/miecz(src)
 
 		if(4) //MODsuits
 			new /obj/item/mod/control/pre_equipped/mining(src)

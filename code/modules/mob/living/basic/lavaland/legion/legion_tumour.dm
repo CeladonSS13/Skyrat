@@ -31,14 +31,10 @@
 	. = ..()
 	animate_pulse()
 
-/obj/item/organ/legion_tumour/apply_organ_damage(damage_amount, maximum, required_organ_flag)
-	var/was_failing = organ_flags & ORGAN_FAILING
-	. = ..()
-	if (was_failing != (organ_flags & ORGAN_FAILING))
-		animate_pulse()
+/obj/item/organ/legion_tumour/on_begin_failure()
+	animate_pulse()
 
-/obj/item/organ/legion_tumour/set_organ_damage(damage_amount, required_organ_flag)
-	. = ..()
+/obj/item/organ/legion_tumour/on_failure_recovery()
 	animate_pulse()
 
 /// Do a heartbeat animation depending on if we're failing or not
@@ -71,7 +67,7 @@
 	if(!user.Adjacent(target) || !isliving(target))
 		return FALSE
 
-	if (target.stat <= UNCONSCIOUS && !(organ_flags & ORGAN_FAILING)) //SS1984 EDIT
+	if (target.stat <= SOFT_CRIT && !(organ_flags & ORGAN_FAILING))
 		target.add_mood_event("legion_core", /datum/mood_event/healsbadman)
 		target.apply_status_effect(applied_status)
 
@@ -90,7 +86,7 @@
 	skull.melee_attack(target)
 	return TRUE
 
-/obj/item/organ/legion_tumour/on_life(seconds_per_tick, times_fired)
+/obj/item/organ/legion_tumour/on_life(seconds_per_tick)
 	. = ..()
 	if (QDELETED(src) || QDELETED(owner))
 		return

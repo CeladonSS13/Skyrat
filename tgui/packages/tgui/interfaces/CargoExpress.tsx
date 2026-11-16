@@ -26,7 +26,6 @@ type Data = {
   canBeacon: BooleanLike;
   printMsg: string;
   message: string;
-  current_plasma_cost: number | string; // SS1984 ADDITION
 };
 
 export function CargoExpress(props) {
@@ -71,7 +70,6 @@ function CargoExpressContent(props) {
     beaconName,
     canBuyBeacon,
     printMsg,
-    current_plasma_cost, // SS1984 ADDITION
   } = data;
 
   return (
@@ -81,21 +79,8 @@ function CargoExpressContent(props) {
           title="Cargo Express"
           buttons={
             <Box inline bold verticalAlign={'middle'}>
-              {/* SS1984 REMOVAL START
               <AnimatedNumber value={Math.round(points)} />
               {' credits'}
-              SS1984 REMOVAL END */}
-              {/* SS1984 ADDITION START */}
-                <>
-                  <Box inline bold verticalAlign="middle" style={{ marginRight: '1em' }}>
-                    <span style={{ color: '#BA3692' }}>Plasma</span> cost: {current_plasma_cost}
-                  </Box>
-                  <Box inline bold verticalAlign="middle">
-                    <AnimatedNumber value={Math.round(points)} />
-                    {' credits'}
-                  </Box>
-                </>
-              {/* SS1984 ADDITION END */}
             </Box>
           }
         >

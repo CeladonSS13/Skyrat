@@ -18,12 +18,8 @@
 */
 
 /datum/loadout_item/head/wrussian
-	name = "Papakha (Black)"
+	name = "Papakha (Recolorable)"
 	item_path = /obj/item/clothing/head/costume/nova/papakha
-
-/datum/loadout_item/head/wrussianw
-	name = "Papakha (White)"
-	item_path = /obj/item/clothing/head/costume/nova/papakha/white
 
 /datum/loadout_item/head/standalone_hood
 	name = "Standalone Hood"
@@ -40,32 +36,32 @@
 /datum/loadout_item/head/black_beanie
 	name = "Beanie (Black)"
 	item_path = /obj/item/clothing/head/beanie/black
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/head/dark_blue_beanie
 	name = "Beanie (Dark Blue)"
 	item_path = /obj/item/clothing/head/beanie/darkblue
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/head/orange_beanie
 	name = "Beanie (Orange)"
 	item_path = /obj/item/clothing/head/beanie/orange
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/head/red_beanie
 	name = "Beanie (Red)"
 	item_path = /obj/item/clothing/head/beanie/red
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/head/yellow_beanie
 	name = "Beanie (Yellow)"
 	item_path = /obj/item/clothing/head/beanie/yellow
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /datum/loadout_item/head/christmas_beanie
 	name = "Beanie - Christmas"
 	item_path = /obj/item/clothing/head/beanie/christmas
-	can_be_greyscale = DONT_GREYSCALE
+	loadout_flags = parent_type::loadout_flags | LOADOUT_FLAG_BLOCK_GREYSCALING
 
 /*
 *	BERETS
@@ -115,6 +111,10 @@
 	name = "Beret - Virologist"
 	item_path = /obj/item/clothing/head/beret/medical/virologist
 
+/datum/loadout_item/head/beret_clown
+	name = "Beret - Clown"
+	item_path = /obj/item/clothing/head/beret/clown
+
 /*
 *	CAPS
 */
@@ -132,6 +132,11 @@
 	name = "Cap - Flat (Colorable)"
 	item_path = /obj/item/clothing/head/colourable_flatcap
 
+/datum/loadout_item/head/hflatcap
+	name = "Cap - Mobster Flat"
+	item_path = /obj/item/clothing/head/henchmen_hat
+
+
 /datum/loadout_item/head/fashionable_cap
 	name = "Cap - Baseball"
 	item_path = /obj/item/clothing/head/soft/yankee
@@ -139,6 +144,7 @@
 /datum/loadout_item/head/colonialcap
 	name = "Cap - Colonial"
 	item_path = /obj/item/clothing/head/hats/colonial
+	species_blacklist = list(SPECIES_TESHARI)
 
 /datum/loadout_item/head/frontiercap
 	name = "Cap - Frontier"
@@ -149,9 +155,15 @@
 	item_path = /obj/item/clothing/head/soft/frontier_colonist/medic
 
 /datum/loadout_item/head/tarkon
-	name = "Cap - Tarkon Welder"
+	name = "Tarkon Welder"
 	item_path = /obj/item/clothing/head/utility/welding/hat
-	blacklisted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN, JOB_BLUESHIELD, JOB_CORRECTIONS_OFFICER)
+	blacklisted_roles = list(ALL_JOBS_SEC, ALL_JOBS_COM, JOB_PRISONER)
+	group = "Job-Locked"
+
+/datum/loadout_item/head/welder
+	name = "Regular Welder"
+	item_path = /obj/item/clothing/head/utility/welding
+	blacklisted_roles = list(JOB_PRISONER)
 
 /*
 *	FEDORAS
@@ -217,6 +229,11 @@
 /datum/loadout_item/head/cone_of_shame
 	name = "Cone of Shame"
 	item_path = /obj/item/clothing/head/cone_of_shame
+	group = "Miscellaneous"
+
+/datum/loadout_item/head/warning_cone
+	name = "Warning Cone"
+	item_path = /obj/item/clothing/head/cone
 	group = "Miscellaneous"
 
 /datum/loadout_item/head/wig //TG overwrite so that we can have both fake/natural wigs
@@ -290,7 +307,7 @@
 	group = "Costumes"
 
 /datum/loadout_item/head/rabbit_ears
-	group = "Costumes"
+	group = "Playbunny Ears"
 
 /datum/loadout_item/head/synde
 	name = "Black Space-Helmet Replica"
@@ -470,7 +487,7 @@
 
 /datum/loadout_item/head/tactical_headband
 	name = "Maid Headband - Tactical"
-	item_path = /obj/item/clothing/head/costume/maidheadband/syndicate/loadout_headband
+	item_path = /obj/item/clothing/head/costume/maid_headband/syndicate/loadout_headband
 	group = "Costumes"
 
 /datum/loadout_item/head/maidhead/get_item_information()
@@ -479,23 +496,12 @@
 
 /datum/loadout_item/head/maidhead2
 	name = "Maid Headband - Frilly"
-	item_path = /obj/item/clothing/head/costume/maidheadband
+	item_path = /obj/item/clothing/head/costume/maid_headband
 	group = "Costumes"
 
 /datum/loadout_item/head/maidhead2/get_item_information()
 	. = ..()
 	.[FA_ICON_EAR_DEAF] = "Behind Ears"
-
-//Christmas
-/datum/loadout_item/head/christmas
-	name = "Christmas Hat - Red"
-	item_path = /obj/item/clothing/head/costume/nova/christmas
-	group = "Costumes"
-
-/datum/loadout_item/head/christmas/green
-	name = "Christmas Hat - Green"
-	item_path = /obj/item/clothing/head/costume/nova/christmas/green
-	group = "Costumes"
 
 //Chaplain
 /datum/loadout_item/head/chap_nunh
@@ -596,10 +602,6 @@
 *	TREK/STAR WARS
 */
 
-/datum/loadout_item/head/blasthelmet
-	name = "Officer's Blast Helmet"
-	item_path = /obj/item/clothing/head/hats/imperial/helmet
-
 /datum/loadout_item/head/trekcap
 	name = "Officer's Cap (White)"
 	item_path = /obj/item/clothing/head/hats/caphat/parade/fedcap
@@ -637,21 +639,8 @@
 	item_path = /obj/item/clothing/head/hats/caphat/naval/custom/gold
 
 /datum/loadout_item/head/imperial_generic
-	name = "Naval Officer Cap (Grey)"
+	name = "Naval Officer Cap"
 	item_path = /obj/item/clothing/head/hats/imperial
-
-/datum/loadout_item/head/imperial_grey
-	name = "Naval Officer Cap (Dark Grey)"
-	item_path = /obj/item/clothing/head/hats/imperial/grey
-
-/datum/loadout_item/head/imperial_red
-	name = "Naval Officer Cap (Red)"
-	item_path = /obj/item/clothing/head/hats/imperial/red
-
-/datum/loadout_item/head/imperial_white
-	name = "Naval Officer Cap (White)"
-	item_path = /obj/item/clothing/head/hats/imperial/white
-
 /*
 *	JOB-LOCKED
 */
@@ -700,55 +689,55 @@
 /datum/loadout_item/head/officerberet
 	name = "Security Beret"
 	item_path = /obj/item/clothing/head/beret/sec/nova
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
+	restricted_roles = list(ALL_JOBS_SEC)
 	group = "Job-Locked"
 
 /datum/loadout_item/head/navyblueofficerberet
 	name = "Security Beret (Navy Blue)"
 	item_path = /obj/item/clothing/head/beret/sec/navyofficer
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
+	restricted_roles = list(ALL_JOBS_SEC)
 	group = "Job-Locked"
 
 /datum/loadout_item/head/officercap
 	name = "Security Cap"
 	item_path = /obj/item/clothing/head/security_cap
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
+	restricted_roles = list(ALL_JOBS_SEC)
 	group = "Job-Locked"
 
 /datum/loadout_item/head/officergarrisoncap
 	name = "Security Cap - Garrison"
 	item_path = /obj/item/clothing/head/security_garrison
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
+	restricted_roles = list(ALL_JOBS_SEC)
 	group = "Job-Locked"
 
 /datum/loadout_item/head/officerpatrolcap
 	name = "Security Cap - Patrol"
 	item_path = /obj/item/clothing/head/hats/warden/police/patrol
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
+	restricted_roles = list(ALL_JOBS_SEC)
 	group = "Job-Locked"
 
 /datum/loadout_item/head/cowboyhat_sec
 	name = "Security Cattleman Hat"
 	item_path = /obj/item/clothing/head/cowboy/nova/cattleman/sec
-	restricted_roles = list(JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(ALL_JOBS_SEC)
 	group = "Job-Locked"
 
 /datum/loadout_item/head/cowboyhat_secwide
 	name = "Security Cattleman Hat - Wide-Brimmed"
 	item_path = /obj/item/clothing/head/cowboy/nova/cattleman/wide/sec
-	restricted_roles = list(JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(ALL_JOBS_SEC)
 	group = "Job-Locked"
 
 /datum/loadout_item/head/ushanka/sec
 	name = "Security Ushanka"
 	item_path = /obj/item/clothing/head/costume/ushanka/sec
-	restricted_roles = list(JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(ALL_JOBS_SEC)
 	group = "Job-Locked"
 
-/datum/loadout_item/head/cybergoggles	//Cyberpunk-P.I. Outfit
+/datum/loadout_item/head/cybergoggles //Cyberpunk-P.I. Outfit
 	name = "Detective's Type-34P Forensics Headwear"
 	item_path = /obj/item/clothing/head/fedora/det_hat/cybergoggles
-	restricted_roles = list(JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(ALL_JOBS_SEC)
 	group = "Job-Locked"
 
 /datum/loadout_item/head/detfedora
@@ -757,16 +746,263 @@
 	restricted_roles = list(JOB_DETECTIVE)
 	group = "Job-Locked"
 
+/datum/loadout_item/head/rabbit
+	name = "Playbunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunny
+	name = "CentCom Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/centcom
+	restricted_roles = list(ALL_JOBS_CC)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyusa
+	name = "American Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/usa
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyussr
+	name = "Soviet Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/communist
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnybrit
+	name = "British Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/british
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnycap
+	name = "Captain Bunny Ears"
+	item_path = /obj/item/clothing/head/hats/caphat/bunnyears_captain
+	restricted_roles = list(JOB_CAPTAIN)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyqm
+	name = "Quartermaster Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/quartermaster
+	restricted_roles = list(JOB_QUARTERMASTER)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnycargo
+	name = "Cargo Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/cargo
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnymail
+	name = "Courier Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/mailman
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnybitrun
+	name = "Gamer's Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/bitrunner
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyengi
+	name = "Engineer's Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/engineer
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyengiatmos
+	name = "Atmos Tech's Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/atmos_tech
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyengice
+	name = "Chief Engineer's Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/ce
+	restricted_roles = list(JOB_CHIEF_ENGINEER)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnymed
+	name = "Medical Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/doctor
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnymedpara
+	name = "Paramedical Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/paramedic
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnymedchem
+	name = "Chemical Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/chemist
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbit/playbunnymedviro
+	name = "Pathological Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/pathologist
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbit/playbunnymedcoroner
+	name = "Coroner Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/coroner
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbit/playbunnymedcmo
+	name = "Chief Medical Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/cmo
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyrnd
+	name = "Research Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/scientist
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyrndrobo
+	name = "Robotic Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/roboticist
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyrndgene
+	name = "Genetic Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/geneticist
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyrndrd
+	name = "Director Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/rd
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnysecdept
+	name = "Less Secure Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/security/assistant
+	restricted_roles = list(ALL_JOBS_SEC)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnysec
+	name = "Secure Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/security
+	restricted_roles = list(ALL_JOBS_SEC)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnysecwarden
+	name = "Secure Silver Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/warden
+	restricted_roles = list(JOB_WARDEN)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnysechos
+	name = "Secure Gold Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/hos
+	restricted_roles = list(JOB_HEAD_OF_SECURITY)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnysecmed
+	name = "Secure Medical Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/brig_phys
+	restricted_roles = list(ALL_JOBS_SEC)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnysecdet
+	name = "Curious Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/detective
+	restricted_roles = list(JOB_DETECTIVE)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnysecdetnoir
+	name = "Curious Noir Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/detective/noir
+	restricted_roles = list(JOB_DETECTIVE)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyprisoner
+	name = "Locked Up Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/prisoner
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyhop
+	name = "Hopping Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/hop
+	restricted_roles = list(JOB_HEAD_OF_PERSONNEL)
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnybar
+	name = "Drunk Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/bartender
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyjani
+	name = "Clean Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/janitor
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnychef
+	name = "Hungry Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/cook
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyhydro
+	name = "Botanical Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/botanist
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnyclown
+	name = "Funny Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/clown
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnymime
+	name = "Quiet Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/mime
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnychaplain
+	name = "Holy Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/chaplain
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnycuratorred
+	name = "Nerdy Red Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/curator_red
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnycuratorgreen
+	name = "Nerdy Green Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/curator_green
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnycuratorteal
+	name = "Nerdy Green Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/curator_teal
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnylawyerblack
+	name = "Lawful Black Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/lawyer_black
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnylawyerblue
+	name = "Lawful Blue Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/lawyer_blue
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnylawyerred
+	name = "Lawful Red Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/lawyer_red
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnylawyergood
+	name = "Lawful Good Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/lawyer_good
+	group = "Playbunny Ears"
+
+/datum/loadout_item/head/rabbitplaybunnypsych
+	name = "Shrink's Bunny Ears"
+	item_path = /obj/item/clothing/head/playbunnyears/psychologist
+	group = "Playbunny Ears"
+
 /*
 *	erp_item
 */
 
-// SS1984 REMOVAL START
-// /datum/loadout_item/head/domina_cap
-// 	name = "Dominant Cap"
-// 	item_path = /obj/item/clothing/head/domina_cap
-// 	erp_item = TRUE
-// SS1984 REMOVAL END
+/datum/loadout_item/head/domina_cap
+	name = "Dominant Cap"
+	item_path = /obj/item/clothing/head/domina_cap
+	erp_item = TRUE
 
 /*
 *	DONATOR
@@ -794,10 +1030,3 @@
 /datum/loadout_item/head/donator/rainbow_bunch/get_item_information()
 	. = ..()
 	.[FA_ICON_DICE] = TOOLTIP_RANDOM_COLOR
-
-// SS1984 REMOVAL START
-// /datum/loadout_item/head/domina_cap
-// 	name = "Dominant Cap"
-// 	item_path = /obj/item/clothing/head/domina_cap
-// 	erp_item = TRUE
-// SS1984 REMOVAL END
