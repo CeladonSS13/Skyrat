@@ -114,4 +114,3 @@
 /datum/id_trim/gordon_freeman/New()
 	. = ..()
 	access = SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION))
-*/
