@@ -1,5 +1,4 @@
 /proc/try_show_cryomessage_for_spawn(mob/living/carbon/human/character, rank)
-	message_admins("I FORGOT TO DELET iT")
 	if (!character)
 		return FALSE
 	var/turf/tile = get_turf(character)
