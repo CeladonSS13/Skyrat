@@ -5,7 +5,15 @@
 	var/shielded = FALSE
 	/// How many shields we have protecting us
 	var/shield_count = 0
-
+//remove later
+/mob/living/simple_animal/hostile/blackmesa/xen
+	/// Can we be shielded by pylons?
+	var/can_be_shielded = TRUE
+	/// If we have support pylons, this is true.
+	var/shielded = FALSE
+	/// How many shields we have protecting us
+	var/shield_count = 0
+//
 /mob/living/basic/blackmesa/xen/update_overlays()
 	. = ..()
 	if(shielded)
