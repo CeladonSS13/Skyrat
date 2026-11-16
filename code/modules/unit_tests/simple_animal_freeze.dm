@@ -58,8 +58,7 @@
 		/mob/living/simple_animal/hostile/ooze,
 		/mob/living/simple_animal/hostile/ooze/gelatinous,
 		/mob/living/simple_animal/hostile/ooze/grapes,
-
-		//SS1984 blackmesa dudes (return_prs)
+		/mob/living/simple_animal/soulscythe,
 		/mob/living/simple_animal/hostile/blackmesa,
 		/mob/living/simple_animal/hostile/blackmesa/xen,
 		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie,
