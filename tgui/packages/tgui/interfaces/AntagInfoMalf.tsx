@@ -4,6 +4,7 @@ import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+import { Rules } from './AntagInfoRules'; // NOVA EDIT ADDITION
 import { MalfAiModules } from './common/MalfAiModules';
 import {
   type Objective,
@@ -67,6 +68,7 @@ function IntroductionSection(props) {
               />
             }
           />
+          <Rules /* NOVA EDIT ADDITION */ />
         </Stack.Item>
       </Stack>
     </Section>
@@ -156,8 +158,8 @@ function CodewordsSection(props) {
                 as if you&apos;re one of their own. Proceed with caution,
                 however, as everyone is a potential foe.
                 <span style={badstyle}>
-                  {'\u2002'}The speech recognition subsystem has been configured
-                  to flag these codewords.
+                  {'\u2002'}The speech recognition subsystem has been configured to
+                  flag these codewords.
                 </span>
               </BlockQuote>
             </Stack.Item>

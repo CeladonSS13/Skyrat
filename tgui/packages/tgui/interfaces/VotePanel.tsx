@@ -272,15 +272,7 @@ const ChoicesPanel = (props) => {
                   // Celadon REMOVAL label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
                   // Celadon ADDITION START
                   label={
-                    <span
-                      style={{
-                        fontWeight: currentVote.choicesHighlight?.includes(
-                          choice.name,
-                        )
-                          ? 'bold'
-                          : 'normal',
-                      }}
-                    >
+                    <span style={{ fontWeight: currentVote.choicesHighlight?.includes(choice.name) ? 'bold' : 'normal' }}>
                       {choice.name.replace(/^\w/, (c) => c.toUpperCase())}
                     </span>
                   }
@@ -334,15 +326,7 @@ const ChoicesPanel = (props) => {
                   // Celadon REMOVAL label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
                   // Celadon ADDITION START
                   label={
-                    <span
-                      style={{
-                        fontWeight: currentVote.choicesHighlight?.includes(
-                          choice.name,
-                        )
-                          ? 'bold'
-                          : 'normal',
-                      }}
-                    >
+                    <span style={{ fontWeight: currentVote.choicesHighlight?.includes(choice.name) ? 'bold' : 'normal' }}>
                       {choice.name.replace(/^\w/, (c) => c.toUpperCase())}
                     </span>
                   }

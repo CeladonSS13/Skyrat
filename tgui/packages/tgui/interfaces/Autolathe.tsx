@@ -171,8 +171,7 @@ const PrintButton = (props: PrintButtonProps) => {
           canPrint && act('make', { id: design.id, multiplier: quantity })
         }
       >
-        {'×'}
-        {quantity}
+        {'×'}{quantity}
       </div>
     </Tooltip>
   );

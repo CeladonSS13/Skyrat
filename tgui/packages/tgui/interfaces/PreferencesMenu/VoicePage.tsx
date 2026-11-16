@@ -11,7 +11,7 @@ import {
 } from 'tgui-core/components';
 
 import { useBackend, useLocalState } from '../../backend';
-import { PreferencesMenuData } from './types';
+import { PreferencesMenuData } from './data';
 
 const donatorTiers = {
   0: 'Бесплатные',
@@ -144,7 +144,11 @@ export const VoicePage = (props) => {
   );
 
   let searchBar = (
-    <Input placeholder="Название..." width="100%" onChange={setSearchtext} />
+    <Input
+      placeholder="Название..."
+      fluid
+      onInput={(e, value) => setSearchtext(value)}
+    />
   );
 
   const availableSeeds = seeds

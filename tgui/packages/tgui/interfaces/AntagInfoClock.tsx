@@ -3,6 +3,7 @@ import { Icon, Section, Stack } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+import { Rules } from './AntagInfoRules';
 
 type Info = {
   antag_name: string;
@@ -20,6 +21,9 @@ export const AntagInfoClock = (props) => {
               <Icon name={'cog'} rotation={0} spin />
               {` You are the ${antag_name}! `}
               <Icon name={'cog'} rotation={35} spin />
+            </Stack.Item>
+            <Stack.Item>
+              <Rules />
             </Stack.Item>
             <Stack.Item>
               <ObjectivePrintout />

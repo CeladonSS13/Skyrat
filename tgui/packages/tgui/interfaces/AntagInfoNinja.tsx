@@ -3,6 +3,7 @@ import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+import { Rules } from './AntagInfoRules'; // NOVA EDIT ADDITION
 import {
   type Objective,
   ObjectivePrintout,
@@ -62,6 +63,11 @@ export const AntagInfoNinja = (props) => {
                 what you can do!
               </Section>
             </Stack.Item>
+            {/* NOVA EDIT ADDITION START */}
+            <Stack.Item>
+              <Rules />
+            </Stack.Item>
+            {/* NOVA EDIT ADDITION END */}
             <Stack.Item>
               <ObjectivePrintout
                 objectives={objectives}
