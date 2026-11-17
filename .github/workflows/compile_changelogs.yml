@@ -86,6 +86,7 @@ jobs:
       # Celadon ADDITION END
 
       - name: Generate App Token
+        environment: pull_request
         id: app-token-generation
         uses: actions/create-github-app-token@v3.2.0
         if: env.APP_PRIVATE_KEY != '' && env.APP_ID != ''

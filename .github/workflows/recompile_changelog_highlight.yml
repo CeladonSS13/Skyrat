@@ -82,6 +82,7 @@ jobs:
           git commit -m "Automatic Changelog Highlight [ci skip]" -a || true
 
       - name: Generate App Token
+        environment: pull_request
         id: app-token-generation
         uses: actions/create-github-app-token@v2
         if: env.APP_PRIVATE_KEY != '' && env.APP_ID != ''
