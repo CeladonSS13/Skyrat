@@ -8,8 +8,8 @@ jobs:
   generate_maps:
     permissions: write-all
     name: "Generate NanoMaps"
-    environment: pull_request
     runs-on: ubuntu-latest
+    environment: pull_request
     steps:
       - id: create_token
         uses: actions/create-github-app-token@v1
