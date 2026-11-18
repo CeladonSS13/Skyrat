@@ -61,7 +61,14 @@ with open(file_reference, 'r') as file:
         elif line == "// NOVA EDIT END":
             continue
         # NOVA EDIT END
-
+        # CELADON EDIT START
+        elif line == "// CELADON EDIT START":
+            continue
+        elif line == "// CELADON EDIT END":
+            continue
+        elif line.startswith("//"):
+            continue
+        # CELADON EDIT END
         lines.append(line)
 
 offset = total - len(lines)

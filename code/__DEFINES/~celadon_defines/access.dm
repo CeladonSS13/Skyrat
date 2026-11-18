@@ -23,7 +23,7 @@
 	ACCESS_CENT_ADMIRAL, \
 	ACCESS_CENT_FLEET_ADMIRAL, \
 )
-/// Name for the NanoTrasen Naval region.
+/// Name for the Nanotrasen Naval region.
 #define REGION_CENTCOM_NAVAL "Nanotrasen Naval"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all CENTCOM_NAVAL_ACCESS regional accesses.
 #define REGION_ACCESS_CENTCOM_NAVAL CENTCOM_NAVAL_ACCESS
