@@ -50,7 +50,7 @@ window "mainwindow"
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
-		icon = 'modular_nova\\master_files\\icons\\ui_icons\\common\\celadon_logo.png'
+		icon = 'modular_z_celadon\\master_files\\icons\\ui_icons\\common\\celadon_logo.png'
 		macro = "default"
 		menu = "menu"
 	elem "split"

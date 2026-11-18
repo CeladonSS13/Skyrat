@@ -621,7 +621,7 @@
 	handlebank(crewman)
 	return ..()
 
-///datum/outfit/proc/handlebank(mob/living/carbon/human/owner) //celadon edit- moved to modular_celadon/modules/rolesedit/code/_defines.dm
+///datum/outfit/proc/handlebank(mob/living/carbon/human/owner) //celadon edit- moved to modular_z_celadon/modules/rolesedit/code/_defines.dm
 	// if(!owner.mind)
 	// 	return
 	// var/datum/bank_account/offstation_bank_account = new(owner.real_name, owner.mind.assigned_role)

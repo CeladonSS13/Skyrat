@@ -7,7 +7,7 @@
 # MAINTAINERS
 
 # Arceniu
-/modular_celadon/modules/central_command @arceniu
+/modular_z_celadon/modules/central_command @arceniu
 /.github/workflows @arceniu
 
 # CONTRIBUTORS
@@ -16,7 +16,7 @@
 
 # Maptainers
 
-# modular_celadon/modules_/ @ none
+# modular_z_celadon/modules_/ @ none
 
 # Expensive files that touching basically always cause performance problems
 ## Init times
