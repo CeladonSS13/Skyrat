@@ -57,7 +57,7 @@
 	ACCESS_CENT_SPECOPS_LEADER, \
 	ACCESS_CENT_SPECOPS, \
 )
-/// Name for the NanoTrasen SPEC ops region.
+/// Name for the Nanotrasen SPEC ops region.
 #define REGION_CENTCOM_SPECOPS "Nanotrasen Specialops"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all CENTCOM_SPECOPS_ACCESS regional accesses.
 #define REGION_ACCESS_CENTCOM_SPECOPS CENTCOM_SPECOPS_ACCESS

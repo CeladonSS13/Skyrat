@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(market)
 		SHIPPING_METHOD_LTSRBT = "Long-To-Short-Range-Bluespace-Transceiver, a machine that receives items outside the station and then teleports them to the location of the uplink.",
 		SHIPPING_METHOD_TELEPORT = "Teleports the item in a random area in the station, you get 60 seconds to get there first though.",
 		SHIPPING_METHOD_SUPPLYPOD = "Ships the item inside a supply pod at your exact location. Showy, speedy and expensive.",
-		SHIPPING_METHOD_SUPPLYPOD_NT = "Ships the item inside a advanced NanoTrasen pod at your exact location. Showy, speedy and expensive.",
+		SHIPPING_METHOD_SUPPLYPOD_NT = "Ships the item inside a advanced Nanotrasen pod at your exact location. Showy, speedy and expensive.",
 	)
 	//CELADON EDIT - ADDED SHIPPING_METHOD_SUPPLYPOD_NT
 

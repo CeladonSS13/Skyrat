@@ -5,6 +5,6 @@
 #define ACCOUNT_CCD "CCD"
 #define ACCOUNT_CCD_NAME "Nanotrasen Central Command Budget"
 
-//NanoTrasen Station
+//Nanotrasen Station
 #define ACCOUNT_NTS "NTS"
-#define ACCOUNT_NTS_NAME "NanoTrasen Station Budget"
+#define ACCOUNT_NTS_NAME "Nanotrasen Station Budget"
