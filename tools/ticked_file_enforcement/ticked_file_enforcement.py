@@ -66,6 +66,8 @@ with open(file_reference, 'r') as file:
             continue
         elif line == "// CELADON EDIT END":
             continue
+        elif line.startswith("//"):
+            continue
         # CELADON EDIT END
         lines.append(line)
 
