@@ -62,9 +62,9 @@ with open(file_reference, 'r') as file:
             continue
         # NOVA EDIT END
         # CELADON EDIT START
-        elif line == "// CELADON EDIT START"):
+        elif line == "// CELADON EDIT START":
             continue
-        elif line == "// CELADON EDIT END"):
+        elif line == "// CELADON EDIT END":
             continue
         # CELADON EDIT END
         lines.append(line)
