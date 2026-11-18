@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	user.audible_message("[user]'s Compli-o-Nator: <font color='red' size='4'><b>[initial(phrase.phrase_text)]</b></font>")
 	// Celadon ADDITION START - april_fools_day
 	if (phrase.phrase_sound == /datum/hailer_phrase/ubludok::phrase_sound && check_holidays(APRIL_FOOLS))
-		playsound(src, "modular_celadon/modules/april_fools_day/beepsky/sounds/ubludok_short.ogg", 100, FALSE, 4)
+		playsound(src, "modular_z_celadon/modules/april_fools_day/beepsky/sounds/ubludok_short.ogg", 100, FALSE, 4)
 		return TRUE
 	// Celadon ADDITION END
 	playsound(src, "sound/runtime/complionator/[initial(phrase.phrase_sound)].ogg", 100, FALSE, 4)
