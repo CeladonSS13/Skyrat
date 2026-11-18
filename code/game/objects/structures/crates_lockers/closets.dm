@@ -797,6 +797,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		inherit_airlock_electronics_access(weapon)
 		qdel(weapon)
 		secure = TRUE
+		refresh_hackable_panel()	//CELADON ADD
 		balloon_alert(user, "electronics installed")
 
 		update_appearance()
@@ -819,6 +820,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		req_one_access = null
 		id_card = null
 		secure = FALSE
+		refresh_hackable_panel()	//CELADON ADD
 		balloon_alert(user, "electronics removed")
 
 		update_appearance()

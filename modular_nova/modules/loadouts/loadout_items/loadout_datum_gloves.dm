@@ -98,17 +98,6 @@
 	name = "Gloves - Rainbow"
 	item_path = /obj/item/clothing/gloves/color/rainbow
 
-// Celadon REMOVAL START
-// /datum/loadout_item/gloves/latex
-// 	name = "Latex Gloves"
-// 	item_path = /obj/item/clothing/gloves/long_gloves
-// 	erp_item = TRUE
-//
-// /datum/loadout_item/gloves/maid
-// 	name = "Maid Arm Covers"
-// 	item_path = /obj/item/clothing/gloves/maid
-// Celadon REMOVAL END
-
 /datum/loadout_item/gloves/maid_arm_covers
 	name = "Maid Arm Covers (Colorable)"
 	item_path = /obj/item/clothing/gloves/maid_arm_covers
@@ -157,12 +146,10 @@
 *	erp_item
 */
 
-// Celadon REMOVAL START
-// /datum/loadout_item/gloves/latex
-// 	name = "Latex Gloves"
-// 	item_path = /obj/item/clothing/gloves/long_gloves
-// 	erp_item = TRUE
-// Celadon REMOVAL END
+/datum/loadout_item/gloves/latex
+	name = "Latex Gloves"
+	item_path = /obj/item/clothing/gloves/long_gloves
+	erp_item = TRUE
 
 /*
 *	DONATOR

@@ -28,3 +28,4 @@ INFINITE_ACCESS_SLOTS
 ## You need to set up your database to use the SQL-based system.
 ## These flags are automatically enabled if SQL_ENABLED isn't.
 #CENTCOM_LEGACY_SYSTEM
+#NO_READMIN_LEGACY_SYSTEM

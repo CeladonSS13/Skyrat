@@ -189,6 +189,13 @@
 * ARMORY
 */
 
+/datum/supply_pack/security/armory/battle_rifle
+	cost = CARGO_CRATE_VALUE * 15
+	contains = list(
+		/obj/item/gun/ballistic/automatic/battle_rifle = 3,
+		/obj/item/ammo_box/magazine/m38 = 6,
+	)
+
 /datum/supply_pack/security/armory/br_mag
 	desc = "Fourteen .38 magazines, able to fit into the NT BR-38. Contains \
 		nine standard magazines, three Hot Shot magazines and three Iceblox magazines."
@@ -753,6 +760,12 @@
 /*
 * VENDING RESTOCKS
 */
+
+/datum/supply_pack/vending/dorms
+	name = "LustWish Supply Crate"
+	desc = "This crate contains a single refill for the LustWish vendor."
+	cost = CARGO_CRATE_VALUE * 2
+	contains = list(/obj/item/vending_refill/lustwish)
 
 /datum/supply_pack/vending/barber
 	name = "Fab-O-Vend Supply Crate"

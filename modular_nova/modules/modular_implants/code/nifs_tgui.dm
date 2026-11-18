@@ -110,7 +110,7 @@
 				return FALSE
 
 			if(!text_to_use || length(text_to_use) <= 6)
-				examine_datum.nif_examine_text = "" // Celadon EDIT, original: examine_datum.nif_examine_text = initial(examine_datum.nif_examine_text)
+				examine_datum.nif_examine_text = initial(examine_datum.nif_examine_text)
 				return TRUE
 
 			examine_datum.nif_examine_text = text_to_use

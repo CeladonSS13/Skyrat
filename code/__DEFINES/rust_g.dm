@@ -274,9 +274,6 @@
 /// This will either return "ok" or an error, as this does not create a job.
 #define rustg_http_request_fire_and_forget(method, url, body, headers, options) RUSTG_CALL(RUST_G, "http_request_fire_and_forget")(method, url, body, headers, options)
 
-/proc/rustg_create_async_http_client() return RUSTG_CALL(RUST_G, "start_http_client")() // Celadon ADDITION
-/proc/rustg_close_async_http_client() return RUSTG_CALL(RUST_G, "shutdown_http_client")() // Celadon ADDITION
-
 /// Generates a spritesheet at: [file_path][spritesheet_name]_[size_id].[png or dmi]
 /// The resulting spritesheet arranges icons in a random order, with the position being denoted in the "sprites" return value.
 /// All icons have the same y coordinate, and their x coordinate is equal to `icon_width * position`.

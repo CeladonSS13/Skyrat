@@ -103,7 +103,9 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 		if(SSplayer_ranks.is_nova_star(targetClient, admin_bypass = FALSE))
 			player_ranks += "Nova Star"
 		if(SSplayer_ranks.is_centcom(targetClient, admin_bypass = FALSE))	//CELADON ADD START
-			player_ranks += "Centcom"	//CELADON ADD END
+			player_ranks += "Centcom"
+		if(SSplayer_ranks.is_no_readmin(targetClient, admin_bypass = FALSE))
+			player_ranks += "No Readmin"	//CELADON ADD END
 		.["ranks"] = length(player_ranks) ? player_ranks.Join(", ") : null
 
 		if(CONFIG_GET(flag/use_exp_tracking))

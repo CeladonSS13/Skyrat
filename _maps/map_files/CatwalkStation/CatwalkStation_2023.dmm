@@ -7264,17 +7264,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
-"bSE" = (
-/obj/machinery/power/apc/auto_name/directional/west,
-/obj/structure/cable,
-/obj/machinery/firealarm/directional/south,
-/obj/effect/turf_decal/tile/red/opposingcorners{
-	dir = 1
-	},
-/obj/structure/closet/secure_closet/security/sec,
-/obj/item/book/manual/wiki/security_space_law,
-/turf/open/floor/iron/dark,
-/area/station/security/checkpoint/medical)
 "bSQ" = (
 /obj/structure/stairs/east,
 /obj/structure/railing,
@@ -19306,7 +19295,7 @@
 /turf/open/floor/iron,
 /area/station/science/zoo)
 "fgs" = (
-/obj/structure/closet/secure_closet/brig/permanent,
+/obj/structure/closet/secure_closet/brig,
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/execution/transfer)
@@ -20448,7 +20437,7 @@
 /area/station/engineering/supermatter/room)
 "fsS" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/science,
 /turf/open/openspace,
 /area/station/security/checkpoint/science)
 "fsW" = (
@@ -21180,7 +21169,7 @@
 	},
 /obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/mapping_helpers/requests_console/supplies,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/cargo,
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/supply)
 "fEQ" = (
@@ -24477,7 +24466,7 @@
 /obj/effect/turf_decal/tile/red/opposingcorners{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/med,
 /obj/item/book/manual/wiki/security_space_law,
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/medical)
@@ -28247,7 +28236,7 @@
 /turf/open/floor/iron/dark/textured,
 /area/station/cargo/warehouse)
 "hzC" = (
-/obj/structure/closet/secure_closet/brig/permanent,
+/obj/structure/closet/secure_closet/brig,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/execution/transfer)
@@ -29058,7 +29047,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/west,
+/obj/machinery/defibrillator_mount/directional/west,
 /obj/effect/turf_decal/trimline/blue/filled/mid_joiner{
 	dir = 8
 	},
@@ -34575,7 +34564,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
 	},
-/obj/machinery/defibrillator_mount/mobile/immobile/loaded,
+/obj/machinery/defibrillator_mount/mobile/immobile,
 /obj/effect/turf_decal/trimline/blue/filled/mid_joiner{
 	dir = 4
 	},
@@ -47443,8 +47432,9 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/west,
-/obj/effect/turf_decal/trimline/blue/filled/mid_joiner{
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
@@ -60086,7 +60076,7 @@
 /area/station/engineering/lobby)
 "pVO" = (
 /obj/effect/turf_decal/tile/red/fourcorners,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/engine,
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/engineering)
 "pWi" = (
@@ -63581,21 +63571,6 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/science/lobby)
-"qTm" = (
-/obj/machinery/door/airlock/maintenance,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
-/obj/effect/mapping_helpers/airlock/unres,
-/turf/open/floor/plating/airless,
-/area/station/maintenance/starboard/lesser)
-"qTt" = (
-/obj/machinery/firealarm/directional/east,
-/obj/machinery/camera/autoname/directional/south,
-/obj/structure/closet/secure_closet/security/sec,
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 6
-	},
-/turf/open/floor/iron/dark,
-/area/station/security/checkpoint/engineering)
 "qTy" = (
 /obj/effect/spawner/random/structure/crate,
 /turf/open/floor/plating,
@@ -69727,7 +69702,7 @@
 /obj/machinery/stasis{
 	dir = 4
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/west,
+/obj/machinery/defibrillator_mount/directional/west,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},

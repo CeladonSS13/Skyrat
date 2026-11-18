@@ -6284,7 +6284,7 @@
 /obj/structure/bed/medical/anchored{
 	dir = 1
 	},
-/obj/machinery/defibrillator_mount/loaded/directional/south,
+/obj/machinery/defibrillator_mount/directional/south,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "bpn" = (
@@ -15274,7 +15274,7 @@
 /turf/open/floor/iron,
 /area/station/maintenance/department/medical/central)
 "dcr" = (
-/obj/machinery/defibrillator_mount/loaded/directional/east,
+/obj/machinery/defibrillator_mount/directional/east,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/theatre)
 "dcJ" = (
@@ -17507,8 +17507,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
 "dAK" = (
-/obj/machinery/iv_drip,
-/obj/machinery/defibrillator_mount/loaded/directional/north,
+/obj/machinery/defibrillator_mount/directional/north,
 /obj/machinery/stasis{
 	dir = 4
 	},
@@ -18235,7 +18234,7 @@
 /area/station/security/checkpoint/science/research)
 "dIk" = (
 /obj/effect/turf_decal/siding/wood,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/service,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/service)
 "dIn" = (
@@ -27114,7 +27113,7 @@
 /turf/open/floor/iron/dark,
 /area/station/security/courtroom)
 "fuZ" = (
-/obj/structure/closet/secure_closet/brig/permanent,
+/obj/structure/closet/secure_closet/brig,
 /obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
@@ -32127,7 +32126,7 @@
 /area/station/maintenance/department/medical)
 "gwk" = (
 /obj/machinery/iv_drip,
-/obj/machinery/defibrillator_mount/loaded/directional/south,
+/obj/machinery/defibrillator_mount/directional/south,
 /obj/machinery/stasis{
 	dir = 4
 	},
@@ -43651,11 +43650,7 @@
 /turf/open/floor/iron/dark,
 /area/station/medical/paramedic)
 "iRZ" = (
-/obj/machinery/iv_drip,
-/obj/structure/bed/medical/anchored{
-	dir = 1
-	},
-/obj/machinery/defibrillator_mount/loaded/directional/north,
+/obj/machinery/defibrillator_mount/directional/north,
 /obj/item/radio/intercom/directional/east,
 /obj/machinery/stasis,
 /turf/open/floor/iron/white,
@@ -46117,7 +46112,7 @@
 "jrw" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/airalarm/directional/west,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/cargo,
 /obj/effect/turf_decal/tile/brown/half/contrasted{
 	dir = 4
 	},
@@ -52968,7 +52963,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/med,
 /turf/open/floor/iron,
 /area/station/security/checkpoint/medical)
 "kHl" = (
@@ -55429,7 +55424,7 @@
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
 "ljh" = (
-/obj/structure/closet/secure_closet/brig/permanent,
+/obj/structure/closet/secure_closet/brig,
 /obj/machinery/camera/directional/north{
 	c_tag = "Security - Brig Port"
 	},
@@ -59310,6 +59305,7 @@
 	},
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
+/obj/item/ai_module/core/full/armadyne_safeguard,
 /obj/machinery/camera/autoname/directional/north,
 /turf/open/floor/iron,
 /area/station/ai/upload/chamber)
@@ -63553,7 +63549,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "mRl" = (
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/science,
 /turf/open/floor/iron,
 /area/station/security/checkpoint/science/research)
 "mRm" = (
@@ -68829,7 +68825,7 @@
 	},
 /area/station/hallway/primary/central)
 "nWC" = (
-/obj/machinery/defibrillator_mount/loaded/directional/south,
+/obj/machinery/defibrillator_mount/directional/south,
 /obj/machinery/light/directional/south,
 /obj/structure/table/optable,
 /turf/open/floor/iron,
@@ -73562,7 +73558,7 @@
 /area/station/hallway/secondary/service)
 "oQD" = (
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/cargo,
 /obj/effect/turf_decal/tile/brown/half/contrasted{
 	dir = 8
 	},
@@ -93519,6 +93515,7 @@
 	pixel_x = -4;
 	pixel_y = -5
 	},
+/obj/item/clothing/glasses/nice_goggles,
 /obj/item/clothing/glasses/regular{
 	pixel_x = -3;
 	pixel_y = 3
@@ -94773,7 +94770,7 @@
 /area/station/maintenance/aft/upper)
 "tcz" = (
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/engine,
 /obj/machinery/camera/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/engineering)
@@ -107981,7 +107978,7 @@
 /turf/open/floor/engine/o2,
 /area/station/engineering/atmos)
 "vGH" = (
-/obj/machinery/defibrillator_mount/loaded/directional/north,
+/obj/machinery/defibrillator_mount/directional/north,
 /obj/machinery/light/directional/north,
 /obj/structure/table/optable,
 /turf/open/floor/iron,
@@ -116945,7 +116942,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/central)
 "xuN" = (
-/obj/structure/closet/secure_closet/brig/permanent,
+/obj/structure/closet/secure_closet/brig,
 /obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
@@ -119034,7 +119031,7 @@
 "xRw" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/reagent_dispensers/wall/peppertank/directional/north,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/structure/closet/secure_closet/security/med,
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/medical)
 "xRH" = (

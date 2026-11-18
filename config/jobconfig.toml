@@ -385,6 +385,13 @@
 "Spawn Positions" = 4
 "Total Positions" = 4
 
+[CENTCOM_OFFICIAL]
+"Playtime Requirements" = 250
+"Required Account Age" = 0
+"Required Character Age" = 0
+"Spawn Positions" = 3
+"Total Positions" = 3
+
 [CENTCOM_HEAD_INTERN]
 "Playtime Requirements" = 200
 "Required Account Age" = 0

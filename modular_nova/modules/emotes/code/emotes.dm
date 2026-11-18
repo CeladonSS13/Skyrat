@@ -23,13 +23,11 @@
 	return TRUE
 
 
-// Celadon REMOVAL START
-// /datum/emote/living/nodnod
-// 	key = "nod2"
-// 	key_third_person = "nod2s"
-// 	message = "nods twice."
-// 	message_param = "nods twice at %t."
-// Celadon REMOVAL END
+/datum/emote/living/nodnod
+	key = "nod2"
+	key_third_person = "nod2s"
+	message = "nods twice."
+	message_param = "nods twice at %t."
 
 /datum/emote/living/blush
 	sound = 'modular_nova/modules/emotes/sound/emotes/blush.ogg'
@@ -835,16 +833,14 @@
 /datum/emote/living/carbon/human/blink
 	sound = 'modular_nova/modules/emotes/sound/voice/blink.ogg'
 
-// CELADON REMOVAL START
-// /datum/emote/rolld20
-// 	key = "rolld20"
-// 	affected_by_pitch = FALSE
+/datum/emote/rolld20
+	key = "rolld20"
+	affected_by_pitch = FALSE
 
-// /datum/emote/rolld20/run_emote(mob/user, params, type_override, intentional)
-// 	. = ..()
-// 	var/result = roll(20)
-// 	user.client?.looc_message("[user] rolls a d20 and gets [result].")
-// CELADON REMOVAL END
+/datum/emote/rolld20/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/result = roll(20)
+	user.client?.looc_message("[user] rolls a d20 and gets [result].")
 
 /datum/emote/living/mar
 	key = "mar"

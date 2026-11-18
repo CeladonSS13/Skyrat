@@ -60,9 +60,9 @@
 	// CELADON ADDITION START
 	if(check_holidays(APRIL_FOOLS))
 		playsound(src, pick(
-			'modular_celadon/modules/april_fools_day/beepsky/sounds/gad.ogg',
-			'modular_celadon/modules/april_fools_day/beepsky/sounds/trahnu.ogg',
-			'modular_celadon/modules/april_fools_day/beepsky/sounds/dog_shit.ogg',
+			'modular_z_celadon/modules/april_fools_day/beepsky/sounds/gad.ogg',
+			'modular_z_celadon/modules/april_fools_day/beepsky/sounds/trahnu.ogg',
+			'modular_z_celadon/modules/april_fools_day/beepsky/sounds/dog_shit.ogg',
 		), 100, FALSE)
 	else
 		playsound(src, pick(

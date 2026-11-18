@@ -121,15 +121,13 @@
 			frequency = rand(MIN_EMOTE_PITCH, MAX_EMOTE_PITCH) * (1 + sqrt(abs(user.pitch)) * sign(user.pitch) * EMOTE_TTS_PITCH_MULTIPLIER)
 		else if(vary)
 			frequency = rand(MIN_EMOTE_PITCH, MAX_EMOTE_PITCH)
-		playsound(source = user,soundin = tmp_sound,vol = 50, vary = FALSE, ignore_walls = sound_wall_ignore, frequency = frequency) // NOVA EDIT REMOVAL (DOWNSTREAM REVERTED)
-		// Celadon REMOVAL START
+		//playsound(source = user,soundin = tmp_sound,vol = 50, vary = FALSE, ignore_walls = sound_wall_ignore, frequency = frequency) // NOVA EDIT REMOVAL
 		// NOVA EDIT ADDITION START - Lewd emote prefs
-		// if(running_emote_type & EMOTE_LEWD)
-		// 	playsound_if_pref(source = user, soundin = tmp_sound, vol = sound_volume, vary = FALSE, frequency = frequency, pref_to_check = /datum/preference/toggle/erp/sounds)
-		// else
-		//	playsound(source = user, soundin = tmp_sound, vol = sound_volume, vary = FALSE, ignore_walls = sound_wall_ignore, frequency = frequency)
+		if(running_emote_type & EMOTE_LEWD)
+			playsound_if_pref(source = user, soundin = tmp_sound, vol = sound_volume, vary = FALSE, frequency = frequency, pref_to_check = /datum/preference/toggle/erp/sounds)
+		else
+			playsound(source = user, soundin = tmp_sound, vol = sound_volume, vary = FALSE, ignore_walls = sound_wall_ignore, frequency = frequency)
 		// NOVA EDIT ADDITION END
-		// Celadon REMOVAL END
 
 	var/is_important = running_emote_type & EMOTE_IMPORTANT
 	var/is_visual = running_emote_type & EMOTE_VISIBLE
@@ -148,10 +146,8 @@
 				if(is_visual && viewer.is_blind())
 					continue
 				// NOVA EDIT ADDITION START - Pref checked emotes
-				// Celadon REMOVAL START
-				// if((running_emote_type & EMOTE_LEWD) && !pref_check_emote(viewer))
-				// 	continue
-				// Celadon REMOVAL END
+				if((running_emote_type & EMOTE_LEWD) && !pref_check_emote(viewer))
+					continue
 				// NOVA EDIT ADDITION END
 			if(user.runechat_prefs_check(viewer, EMOTE_MESSAGE))
 				viewer.create_chat_message(
@@ -191,6 +187,7 @@
 			self_message = msg,
 			audible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE|additional_message_flags,
 			separation = space, // NOVA EDIT ADDITION
+			pref_to_check = pref_to_check, // NOVA EDIT ADDITION
 		)
 	// Emote is entirely audible, no visible component
 	else if(is_audible)
@@ -199,6 +196,7 @@
 			self_message = msg,
 			audible_message_flags = EMOTE_MESSAGE|additional_message_flags,
 			separation = space, // NOVA EDIT ADDITION
+			pref_to_check = pref_to_check, // NOVA EDIT ADDITION
 		)
 	// Emote is entirely visible, no audible component
 	else if(is_visual)
@@ -207,6 +205,7 @@
 			self_message = msg,
 			visible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE|additional_message_flags,
 			separation = space, // NOVA EDIT ADDITION
+			pref_to_check = pref_to_check, // NOVA EDIT ADDITION
 		)
 	else
 		CRASH("Emote [type] has no valid emote type set!")
@@ -216,10 +215,8 @@
 	if(hologram)
 		if(is_important)
 			for(var/mob/living/viewer in viewers(world.view, hologram))
-				// Celadon REMOVAL START
-				// if((emote_type & EMOTE_LEWD) && !pref_check_emote(viewer))
-				// 	continue
-				// Celadon REMOVAL END
+				if((emote_type & EMOTE_LEWD) && !pref_check_emote(viewer))
+					continue
 				to_chat(viewer, msg)
 		else if(is_visual && is_audible)
 			hologram.audible_message(
@@ -228,6 +225,7 @@
 				self_message = msg,
 				audible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE,
 				separation = space,
+				pref_to_check = pref_to_check,
 			)
 		else if(is_audible)
 			hologram.audible_message(
@@ -235,6 +233,7 @@
 				self_message = msg,
 				audible_message_flags = EMOTE_MESSAGE,
 				separation = space,
+				pref_to_check = pref_to_check,
 			)
 		else if(is_visual)
 			hologram.visible_message(
@@ -242,6 +241,7 @@
 				self_message = msg,
 				visible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE,
 				separation = space,
+				pref_to_check = pref_to_check,
 			)
 	// NOVA EDIT ADDITION END
 	if(!isnull(user.client))
@@ -252,10 +252,8 @@
 			if(!(get_chat_toggles(ghost.client) & CHAT_GHOSTSIGHT))
 				continue
 			// NOVA EDIT ADDITION START - Pref checked emotes
-			// Celadon REMOVAL START
-			// if(!pref_check_emote(ghost))
-			// 	continue
-			// Celadon REMOVAL END
+			if((emote_type & EMOTE_LEWD) && !pref_check_emote(ghost))
+				continue
 			// NOVA EDIT ADDITION END
 			to_chat(ghost, span_emote("[FOLLOW_LINK(ghost, user)] [dchatmsg]"))
 

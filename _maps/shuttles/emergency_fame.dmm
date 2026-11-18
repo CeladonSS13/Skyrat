@@ -770,7 +770,7 @@
 /obj/structure/table/optable,
 /obj/item/surgical_drapes,
 /obj/machinery/light/directional/west,
-/obj/machinery/defibrillator_mount/loaded/directional/west,
+/obj/machinery/defibrillator_mount/directional/west,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "HZ" = (

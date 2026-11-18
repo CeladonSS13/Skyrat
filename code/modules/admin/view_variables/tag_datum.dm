@@ -1,7 +1,5 @@
 /client/proc/tag_datum(datum/target_datum)
-	if(!check_rights(R_ADMIN))
-		return
-	if(QDELETED(target_datum))
+	if(!holder || QDELETED(target_datum))
 		return
 	holder.add_tagged_datum(target_datum)
 

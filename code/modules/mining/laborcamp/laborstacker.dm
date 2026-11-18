@@ -236,7 +236,7 @@
 /datum/aas_config_entry/security_labor_stacker
 	name = "Security Alert: Labor Camp Release"
 	announcement_lines_map = list(
-		"Message" = "%PERSON вернулся на станцию. Минералы и удостоверение личности заключенного готовы к извлечению."
+		"Message" = "%PERSON returned to the station. Minerals and Prisoner ID card ready for retrieval."
 	)
 	vars_and_tooltips_map = list(
 		"PERSON" = "will be replaced with the name of the prisoner."
