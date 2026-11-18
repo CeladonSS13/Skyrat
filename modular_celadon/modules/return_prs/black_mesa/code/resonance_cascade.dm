@@ -14,8 +14,8 @@
 
 /datum/round_event/portal_storm/resonance_cascade
 	hostile_types = list(
-		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid = 25,
-		/mob/living/simple_animal/hostile/blackmesa/xen/houndeye = 25,
-		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab = 25,
+		/mob/living/basic/blackmesa/xen/bullsquid = 25,
+		/mob/living/basic/blackmesa/xen/houndeye = 25,
+		/mob/living/basic/blackmesa/xen/headcrab = 25,
 		/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/slave = 25
 	)
