@@ -1,5 +1,5 @@
 #ifndef RUST_G_CELADON
-/var/__rust_g_celadon
+GLOBAL_VAR(__rust_g_celadon)
 
 /proc/__detect_rust_g_celadon()
 	if (world.system_type == UNIX)

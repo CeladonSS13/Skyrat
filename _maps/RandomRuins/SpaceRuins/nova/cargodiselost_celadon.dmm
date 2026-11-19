@@ -430,8 +430,6 @@
 /obj/machinery/recharger,
 /obj/item/ammo_workbench_module/lethal_super,
 /obj/item/ammo_workbench_module/lethal_esoteric,
-/obj/item/ammo_workbench_reboot,
-/obj/item/ammo_workbench_reboot,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/cargodise_freighter/vault)
 "fZ" = (
@@ -2684,8 +2682,6 @@
 /obj/structure/safe,
 /obj/item/mod/module/jetpack,
 /obj/item/mod/control/pre_equipped/standard,
-/obj/item/ammo_workbench_reboot,
-/obj/item/ammo_workbench_reboot,
 /obj/item/ammo_workbench_module,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/cargodise_freighter/vault)
