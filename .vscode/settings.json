@@ -27,6 +27,6 @@
 	},
 	"Lua.diagnostics.enable": false,
 	"rust-analyzer.linkedProjects": [
-		"RUST/Cargo.toml",
+		"RUST/Cargo.toml"
 	]
 }
