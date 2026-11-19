@@ -13,5 +13,7 @@
 		"modular_nova/master_files/code/modules/cargo/packs/companies/medical.dm",
 		"modular_nova/master_files/code/modules/cargo/packs/companies/modsuits.dm",
 		"modular_nova/master_files/code/modules/cargo/packs/companies/tools_weapons.dm",
-		"modular_nova/modules/aesthetics/guns/code/energy.dm"]
+		"modular_nova/modules/aesthetics/guns/code/energy.dm",
+		"modular_nova/modules/mapping/code/interlink_helper.dm",
+		"modular_nova/modules/character_directory/code/character_directory.dm"]
 }
