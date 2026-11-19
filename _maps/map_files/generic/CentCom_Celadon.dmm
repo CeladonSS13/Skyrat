@@ -2568,7 +2568,6 @@
 /area/centcom/central_command_areas/evacuation/ship)
 "iC" = (
 /obj/structure/table/reinforced,
-/obj/structure/table/reinforced,
 /obj/item/flashlight/seclite,
 /obj/item/flashlight/seclite,
 /obj/item/clothing/mask/gas/sechailer,
@@ -6664,11 +6663,6 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/crew_wing)
-"wI" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/turf/open/floor/plating,
-/area/centcom/central_command_areas/supply)
 "wJ" = (
 /obj/machinery/light/floor,
 /turf/open/floor/iron/pattern_10{
@@ -7003,15 +6997,13 @@
 	id = "CCSTCUNLOADS";
 	name = "Unloading Doors";
 	pixel_x = -27;
-	pixel_y = 5;
-	layer = 3.3
+	pixel_y = 5
 	},
 /obj/machinery/button/door/indestructible{
 	id = "CCSTCLOADS";
 	name = "Loading Doors";
 	pixel_x = -27;
-	pixel_y = -5;
-	layer = 3.3
+	pixel_y = -5
 	},
 /obj/machinery/computer/cargo{
 	dir = 4;
@@ -7020,8 +7012,7 @@
 /obj/machinery/button/door/indestructible{
 	id = "CCSTCSS";
 	name = "Shuttle Shutters";
-	pixel_x = -38;
-	layer = 3.3
+	pixel_x = -38
 	},
 /turf/open/floor/engine,
 /area/centcom/central_command_areas/supply)
@@ -8259,7 +8250,7 @@
 	roundstart_template = /datum/map_template/shuttle/ferry;
 	width = 20
 	},
-/turf/open/space,
+/turf/open/space/basic,
 /area/space)
 "BS" = (
 /obj/effect/turf_decal/tile/neutral/full,
@@ -9136,7 +9127,7 @@
 	shuttle_id = "emergency_away";
 	width = 50
 	},
-/turf/open/space,
+/turf/open/space/basic,
 /area/space)
 "Fi" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -11195,15 +11186,13 @@
 	id = "CCSTCUNLOADM";
 	name = "Unloading Doors";
 	pixel_x = -27;
-	pixel_y = 5;
-	layer = 3.3
+	pixel_y = 5
 	},
 /obj/machinery/button/door/indestructible{
 	id = "CCSTCLOADM";
 	name = "Loading Doors";
 	pixel_x = -27;
-	pixel_y = -5;
-	layer = 3.3
+	pixel_y = -5
 	},
 /obj/machinery/computer/cargo/express/ghost/centcom{
 	dir = 4
@@ -11317,7 +11306,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/door/poddoor/shutters/window/indestructible/roundend{
 	id = "CCbackupshuttle";
-	name = "BEES windowed shutters";
+	name = "Backup Emergency Escape Shuttle";
 	resistance_flags = 2
 	},
 /turf/open/floor/iron,
@@ -54177,7 +54166,7 @@ ra
 oD
 xH
 jZ
-oD
+Wo
 jZ
 QQ
 oD
@@ -54434,7 +54423,7 @@ ra
 Dk
 uG
 UP
-oD
+Wo
 UP
 Sg
 Dk
@@ -54691,7 +54680,7 @@ oD
 oD
 yb
 hb
-wI
+Wo
 jZ
 BE
 oD

@@ -152,7 +152,7 @@
 	dir = 4
 	},
 /turf/open/floor/engine/hull,
-/area/template_noop)
+/area/space/nearstation)
 "aK" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/line,
 /obj/effect/turf_decal/siding/dark/corner{
@@ -1980,7 +1980,7 @@
 	dir = 8
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "iJ" = (
 /obj/machinery/door/window/survival_pod/left/directional/north{
 	req_access = list("syndicate_leader")
@@ -2431,7 +2431,7 @@
 /obj/structure/transit_tube/crossing/horizontal,
 /obj/structure/lattice,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "ki" = (
 /obj/item/ammo_box/advanced/s12gauge{
 	pixel_x = 9;
@@ -4323,7 +4323,7 @@
 	dir = 1
 	},
 /turf/open/floor/engine/hull,
-/area/template_noop)
+/area/space/nearstation)
 "st" = (
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
@@ -5702,7 +5702,7 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine/hull,
-/area/template_noop)
+/area/space/nearstation)
 "zx" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -6087,7 +6087,7 @@
 	network = list("ds2")
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "Bu" = (
 /obj/machinery/suit_storage_unit/syndicate/deepspace,
 /obj/machinery/power/apc/auto_name/directional/east,
@@ -6778,7 +6778,7 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/burgundy,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "EL" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/plating,
@@ -7868,6 +7868,10 @@
 /obj/item/storage/fancy/egg_box,
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/space/has_grav/nova/des_two/security/prison)
+"Jo" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/space/nearstation)
 "Jr" = (
 /obj/effect/turf_decal/delivery/red,
 /obj/effect/turf_decal/box/white,
@@ -11466,9 +11470,9 @@ kF
 kF
 kF
 kF
-kx
-kx
-kx
+Jo
+Jo
+Jo
 kF
 kF
 kF
@@ -11558,7 +11562,7 @@ wg
 wg
 wg
 EJ
-kx
+Jo
 NB
 NB
 kF
@@ -11590,7 +11594,7 @@ NB
 NB
 NB
 NB
-kx
+Jo
 EJ
 wg
 wg
@@ -11821,7 +11825,7 @@ wg
 (8,1,1) = {"
 wg
 EJ
-kx
+Jo
 NB
 NB
 tg
@@ -12089,7 +12093,7 @@ NB
 NB
 NB
 NB
-kx
+Jo
 EJ
 wg
 "}
@@ -12595,7 +12599,7 @@ wg
 wg
 EJ
 kg
-kx
+Jo
 Bk
 Bk
 XN
@@ -12693,7 +12697,7 @@ Tt
 Tt
 Tt
 vS
-kx
+Jo
 EJ
 wg
 wg
@@ -12760,7 +12764,7 @@ wg
 wg
 VJ
 Bs
-kx
+Jo
 UB
 ou
 dD
@@ -12913,7 +12917,7 @@ Tt
 Tt
 Tt
 vS
-kx
+Jo
 EJ
 wg
 wg
@@ -12925,7 +12929,7 @@ wg
 wg
 EJ
 kg
-kx
+Jo
 Bk
 Bk
 mY
@@ -13519,7 +13523,7 @@ NB
 NB
 NB
 NB
-kx
+Jo
 EJ
 wg
 "}
@@ -13911,7 +13915,7 @@ wg
 (46,1,1) = {"
 wg
 EJ
-kx
+Jo
 NB
 bw
 zV
@@ -14010,7 +14014,7 @@ NB
 NB
 NB
 NB
-kx
+Jo
 EJ
 wg
 wg
@@ -14095,15 +14099,15 @@ bw
 bw
 bw
 Hz
-kx
-kx
-kx
+Jo
+Jo
+Jo
 wg
 wg
 wg
-kx
+Jo
 wg
-kx
+Jo
 wg
 EJ
 ss
@@ -14111,9 +14115,9 @@ aJ
 zv
 EJ
 wg
-kx
+Jo
 wg
-kx
+Jo
 wg
 wg
 wg
@@ -14158,7 +14162,7 @@ wg
 wg
 EJ
 wg
-kx
+Jo
 wg
 wg
 wg
@@ -14166,7 +14170,7 @@ wg
 wg
 wg
 wg
-kx
+Jo
 wg
 EJ
 wg
@@ -14213,7 +14217,7 @@ wg
 wg
 wg
 wg
-kx
+Jo
 wg
 wg
 wg
@@ -14221,7 +14225,7 @@ wg
 wg
 wg
 wg
-kx
+Jo
 wg
 wg
 wg
