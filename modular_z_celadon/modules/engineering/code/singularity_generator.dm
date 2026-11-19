@@ -17,7 +17,7 @@
 	buckle_lying = FALSE
 	buckle_requires_restraints = TRUE
 
-	/// How much energy we have recieved so far.
+	/// How much energy we have received so far.
 	var/energy = 0
 	/// What we create when we reach the required amount of energy.
 	var/creation_type = /obj/singularity

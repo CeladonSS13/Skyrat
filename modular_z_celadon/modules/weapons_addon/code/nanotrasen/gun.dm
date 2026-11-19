@@ -1,9 +1,9 @@
 
 //rifles
 /obj/item/gun/ballistic/automatic/battle_rifle
-    shots_before_degradation = 10
-    max_shots_before_degradation = 10
-    degradation_probability = 10
+	shots_before_degradation = 10
+	max_shots_before_degradation = 10
+	degradation_probability = 10
 
 /obj/item/gun/ballistic/automatic/battle_rifle/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)

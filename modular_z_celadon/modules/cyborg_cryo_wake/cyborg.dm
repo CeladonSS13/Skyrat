@@ -57,7 +57,7 @@
 		return null
 
 	var/list/valid_areas_types = list()
-	for (var/area_type_to_check as anything in areas_to_check)
+	for (var/area_type_to_check in areas_to_check)
 		if (!(area_type_to_check in GLOB.areas_by_type))
 			continue
 
