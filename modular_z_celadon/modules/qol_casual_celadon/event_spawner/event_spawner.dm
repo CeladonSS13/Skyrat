@@ -3,3 +3,4 @@
 	var/infinite = FALSE
 
 /datum/event_spawner_instance
+	var/infinite = FALSE
