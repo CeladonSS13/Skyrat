@@ -30,8 +30,7 @@
 /obj/docking_port/mobile/elevator{
 	dir = 4;
 	shuttle_id = "centcom_supplypod";
-	name = "centcom podbay elevator";
-	dwidth = 3
+	name = "centcom podbay elevator"
 	},
 /turf/open/floor/plating,
 /area/shuttle/centcom/podbay_elevator)

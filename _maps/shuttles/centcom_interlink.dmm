@@ -35,9 +35,6 @@
 	dir = 8;
 	shuttle_id = "centcom_interlink";
 	name = "CentCom-Interlink shuttle";
-	dwidth = 1;
-	height = 6;
-	width = 12;
 	port_direction = 4
 	},
 /turf/open/floor/mineral/titanium/blue,

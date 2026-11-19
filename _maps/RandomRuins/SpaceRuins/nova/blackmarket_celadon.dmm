@@ -749,7 +749,7 @@
 /obj/structure/window/reinforced/plasma/spawner/directional/north,
 /obj/structure/window/reinforced/plasma/spawner/directional/west,
 /obj/machinery/door/window/brigdoor{
-	name = "Main weapon";
+	name = "Main Weapon";
 	req_access = list("away_generic4")
 	},
 /obj/item/gun/ballistic/automatic/sol_smg/evil,

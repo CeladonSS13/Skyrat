@@ -2499,10 +2499,6 @@
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/nova/des_two/research)
-"kx" = (
-/obj/structure/lattice,
-/turf/template_noop,
-/area/template_noop)
 "ky" = (
 /obj/structure/railing/corner{
 	dir = 4
@@ -10369,7 +10365,7 @@
 	},
 /obj/structure/lattice,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "UB" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /obj/structure/cable,
@@ -10552,9 +10548,6 @@
 /obj/machinery/light_switch/directional/south,
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/nova/des_two/service/dorms)
-"VJ" = (
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
-/area/template_noop)
 "VM" = (
 /obj/machinery/light/cold/directional/north,
 /turf/open/floor/mineral/plastitanium/red,
@@ -12751,7 +12744,7 @@ hx
 Gk
 Yd
 pr
-kx
+Jo
 wg
 wg
 wg
@@ -12762,7 +12755,7 @@ wg
 wg
 wg
 wg
-VJ
+NB
 Bs
 Jo
 UB
@@ -12806,7 +12799,7 @@ Tt
 id
 Tt
 Tt
-kx
+Jo
 wg
 wg
 wg
