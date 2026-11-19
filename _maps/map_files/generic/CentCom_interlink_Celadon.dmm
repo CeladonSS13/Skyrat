@@ -14460,7 +14460,6 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "pXB" = (
-/obj/structure/table/wood/fancy/royalblack,
 /obj/item/folder/red{
 	pixel_x = 12;
 	pixel_y = 2
@@ -18133,7 +18132,6 @@
 /turf/open/floor/plating,
 /area/centcom/interlink)
 "uTV" = (
-/obj/structure/table/reinforced/rglass,
 /obj/item/storage/medkit/emergency,
 /obj/structure/table/reinforced/rglass,
 /turf/open/floor/iron/smooth_large,

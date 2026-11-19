@@ -83,7 +83,7 @@
 	contains = list(/obj/item/gun/ballistic/shotgun/automatic/dual_tube)
 
 /datum/supply_pack/centcom/armory/shotgun/katyusha
-	name = "Katyusha NanoTrasen shotgun gunset"
+	name = "Katyusha Nanotrasen shotgun gunset"
 	desc = "A mag-fed shotgun for combat in narrow corridors, nicknamed 'Katyusha' by the blueshields for its versatility. Compatible only with specialized drum magazines."
 	cost = CARGO_CRATE_VALUE * 125
 	contains = list(
@@ -168,19 +168,19 @@
 //rifles
 /datum/supply_pack/centcom/armory/battle_rifle
 	name = "NT BR-38 battle rifle"
-	desc = "A latest prototype designated marksman rifle used by NanoTrasen private security forces."
+	desc = "A latest prototype designated marksman rifle used by Nanotrasen private security forces."
 	cost = CARGO_CRATE_VALUE * 75
 	contains = list(/obj/item/gun/ballistic/automatic/battle_rifle)
 
 /datum/supply_pack/centcom/armory/ar
 	name = "NT-ARG 'Boarder'"
-	desc = "A robust assault rifle used by NanoTrasen fighting forces."
+	desc = "A robust assault rifle used by Nanotrasen fighting forces."
 	cost = CARGO_CRATE_VALUE * 150
 	contains = list(/obj/item/gun/ballistic/automatic/ar)
 
 /datum/supply_pack/centcom/armory/ar/ert
 	name = "NT-ARG-63 'Boarder'"
-	desc = "A robust assault rifle used by NanoTrasen fighting forces, this one was specially made for ERT."
+	desc = "A robust assault rifle used by Nanotrasen fighting forces, this one was specially made for ERT."
 	cost = CARGO_CRATE_VALUE * 200
 	contains = list(/obj/item/gun/ballistic/automatic/ar/modular)
 	access = ACCESS_CENT_SPECOPS_LEADER
@@ -188,25 +188,25 @@
 
 /datum/supply_pack/centcom/armory/ar/ert/military
 	name = "NT M44A Pulse Rifle"
-	desc = "A specialized NanoTrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. Only for NanoTrasen military teams."
+	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. Only for Nanotrasen military teams."
 	cost = CARGO_CRATE_VALUE * 250
 	contains = list(/obj/item/gun/ballistic/automatic/ar/modular/m44a)
 
 /datum/supply_pack/centcom/armory/ar/ert/military/scoped
 	name = "NT M44AS Pulse Rifle"
-	desc = "A specialized NanoTrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. Only for NanoTrasen military teams. This one have a scope."
+	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. Only for Nanotrasen military teams. This one have a scope."
 	cost = CARGO_CRATE_VALUE * 275
 	contains = list(/obj/item/gun/ballistic/automatic/ar/modular/m44a/scoped)
 
 /datum/supply_pack/centcom/armory/ar/ert/military/shotgun
 	name = "NT M44ASG Pulse Rifle"
-	desc = "A specialized NanoTrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. Only for NanoTrasen military teams. This one have a underbarrel 12g shotgun."
+	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. Only for Nanotrasen military teams. This one have a underbarrel 12g shotgun."
 	cost = CARGO_CRATE_VALUE * 275
 	contains = list(/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun)
 
 /datum/supply_pack/centcom/armory/ar/ert/military/grenadelauncher
 	name = "NT M44AGL Pulse Rifle"
-	desc = "A specialized NanoTrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. Only for NanoTrasen military teams. This one have a underbarrel 40mm grenade launcher."
+	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. Only for Nanotrasen military teams. This one have a underbarrel 40mm grenade launcher."
 	cost = CARGO_CRATE_VALUE * 275
 	contains = list(/obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher)
 
@@ -337,14 +337,14 @@
 	contains = list(/obj/item/door_remote/captain)
 
 /datum/supply_pack/centcom/misc/door_remote/nt
-	name = "Door remote - NanoTrasen"
-	desc = "Door remote for NanoTrasen Officials."
+	name = "Door remote - Nanotrasen"
+	desc = "Door remote for Nanotrasen Officials."
 	cost = CARGO_CRATE_VALUE * 50
 	contains = list(/obj/item/door_remote/nanotrasen_consultant)
 
 /datum/supply_pack/centcom/misc/door_remote/omni
 	name = "Door remote - Omni"
-	desc = "Door remote for entire NanoTrasen station."
+	desc = "Door remote for entire Nanotrasen station."
 	cost = CARGO_CRATE_VALUE * 75
 	contains = list(/obj/item/door_remote/omni)
 

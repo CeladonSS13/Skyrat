@@ -251,13 +251,13 @@
 			else if(istype(weapon, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/CC = weapon
 				if(CC.use(1))
-					src.balloon_alert(user, "Wires added.")
+					src.balloon_alert(user, "wires added.")
 					construction_state = PA_CONSTRUCTION_PANEL_OPEN
 					did_something = TRUE
 		if(PA_CONSTRUCTION_PANEL_OPEN)
 			if(weapon.tool_behaviour == TOOL_WIRECUTTER)
 				var/obj/item/stack/cable_coil/cable = new (drop_location(), 1)
-				cable.balloon_alert(user, "Wires removed.")
+				cable.balloon_alert(user, "wires removed.")
 				construction_state = PA_CONSTRUCTION_UNWIRED
 				did_something = TRUE
 			else if(weapon.tool_behaviour == TOOL_SCREWDRIVER)

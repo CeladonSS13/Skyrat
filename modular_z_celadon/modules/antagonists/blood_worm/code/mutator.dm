@@ -56,23 +56,23 @@
 	if(in_use)
 		return FALSE
 	if (!ishuman(user))
-		user.balloon_alert(user, "not human!")
+		user.balloon_alert(user, "error! Not a human!")
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_BLOOD_WORM_HOST))
-		user.balloon_alert(user, "already mutated!")
+		user.balloon_alert(user, "error! Already mutated!")
 		return FALSE
 	if(!no_check)
 		if(!CAN_HAVE_BLOOD(user))
-			user.balloon_alert(user, "Blood not detected!")
+			user.balloon_alert(user, "error! Blood not detected!")
 			return FALSE
 		if(IS_CHANGELING(user))
-			user.balloon_alert(user, "DNA is not suitable!")
+			user.balloon_alert(user, "error! DNA is not suitable!")
 			return FALSE
 		if(isjellyperson(user))
-			user.balloon_alert(user, "DNA is not suitable!")
+			user.balloon_alert(user, "error! DNA is not suitable!")
 			return FALSE
 		if(!synthetic_allowed && issynthetic(user))
-			user.balloon_alert(user, "DNA is not suitable!")
+			user.balloon_alert(user, "error! DNA is not suitable!")
 			return FALSE
 	if (!user.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE))
 		return FALSE

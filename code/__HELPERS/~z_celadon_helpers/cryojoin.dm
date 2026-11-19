@@ -16,7 +16,7 @@
 	if (!cryo_pod_area)
 		return FALSE
 	var/obj/machinery/computer/cryopod/control_comp
-	for(var/cryo_console as anything in GLOB.cryopod_computers)
+	for(var/cryo_console in GLOB.cryopod_computers)
 		var/obj/machinery/computer/cryopod/console = cryo_console
 		var/area/console_area = get_area(cryo_console)
 		if(console_area == cryo_pod_area)

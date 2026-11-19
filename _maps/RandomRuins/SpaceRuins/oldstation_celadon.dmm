@@ -307,7 +307,9 @@
 /turf/open/floor/iron,
 /area/ruin/space/ancientstation/charlie/bridge)
 "bA" = (
-/obj/structure/ai_core/deactivated,
+/obj/structure/ai_core{
+	state = 5
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/ancientstation/delta/ai)
 "bC" = (
@@ -1727,10 +1729,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/ancientstation/delta/rnd)
-"hF" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/closed/wall,
-/area/ruin/space/ancientstation/delta/hall)
 "hI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -2777,6 +2775,7 @@
 /area/ruin/space/ancientstation/charlie/hydro)
 "lV" = (
 /obj/structure/grille/broken,
+/obj/structure/closet/secure_closet/old_med,
 /turf/open/floor/plating/airless,
 /area/ruin/space/ancientstation/beta/medbay)
 "lW" = (
@@ -3126,7 +3125,7 @@
 "nr" = (
 /obj/item/stack/rods,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "ns" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/south,
@@ -3655,10 +3654,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/ancientstation/delta/hall)
-"qw" = (
-/obj/structure/closet/secure_closet/old_med,
-/turf/template_noop,
-/area/template_noop)
 "qx" = (
 /obj/machinery/door/airlock/external/glass/ruin,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
@@ -5343,7 +5338,7 @@
 /obj/item/blood_filter,
 /obj/item/surgicaldrill,
 /obj/item/razor/surgery,
-/obj/item/stack/medical/gauze/twelve,
+/obj/item/stack/medical/wrap/gauze/twelve,
 /obj/item/stack/medical/mesh,
 /obj/item/stack/medical/suture,
 /turf/open/floor/iron/airless,
@@ -10116,7 +10111,7 @@ aa
 aa
 aa
 aa
-qw
+aa
 aa
 aa
 aa
@@ -14082,7 +14077,7 @@ bE
 Po
 bE
 bE
-hF
+LK
 LK
 bE
 bE
