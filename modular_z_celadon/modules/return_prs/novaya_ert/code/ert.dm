@@ -843,6 +843,8 @@
 	acid = 80
 	wound = 25
 
+#define ALERT_AMBER "alert_amber"
+
 /datum/mod_theme/frontline
 	name = "frontline"
 	desc = "A Novaya Rossiyskaya Imperiya Defense Collegia protective suit, designed for fortified positions operation and humanitarian aid."
@@ -857,6 +859,7 @@
 	armor_type = /datum/armor/mod_theme_frontline
 	complexity_max = DEFAULT_MAX_COMPLEXITY
 	charge_drain = DEFAULT_CHARGE_DRAIN * 1.5
+	hardlight_theme = ALERT_AMBER
 	allowed_suit_storage = list(
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
@@ -905,6 +908,8 @@
 			),
 		),
 	)
+
+#undef ALERT_AMBER
 
 /obj/item/mod/control/pre_equipped/frontline
 	theme = /datum/mod_theme/frontline
