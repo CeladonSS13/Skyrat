@@ -843,6 +843,8 @@
 	acid = 80
 	wound = 25
 
+#define ALERT_AMBER "alert_amber"
+
 /datum/mod_theme/frontline
 	name = "frontline"
 	desc = "A Novaya Rossiyskaya Imperiya Defense Collegia protective suit, designed for fortified positions operation and humanitarian aid."
@@ -906,6 +908,8 @@
 			),
 		),
 	)
+
+#undef ALERT_AMBER
 
 /obj/item/mod/control/pre_equipped/frontline
 	theme = /datum/mod_theme/frontline
