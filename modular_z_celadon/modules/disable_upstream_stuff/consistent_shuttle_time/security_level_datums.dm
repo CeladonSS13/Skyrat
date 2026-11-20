@@ -1,5 +1,5 @@
 /datum/security_level/green
-	shuttle_call_time_mod = ALERT_COEFF_NOVA // 15 minutes
+	shuttle_call_time_mod = 1.5 // 15 minutes
 
 /datum/security_level/blue
 	shuttle_call_time_mod = 1 // 10 minutes
