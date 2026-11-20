@@ -28,7 +28,7 @@
 	)
 	result = /obj/item/blood_worm_mutator
 	category = CAT_MISC
-	crafting_flags = parent_type::crafting_flags | CRAFT_MUST_BE_LEARNED
+	crafting_flags = parent_type::crafting_flags | CRAFT_MUST_BE_LEARNED | CRAFT_SKIP_MATERIALS_PARITY
 
 //version which doesn't use meat but can fail in craft, admin
 /obj/item/book/granter/crafting_recipe/blood_worm_recipe/nomeat
