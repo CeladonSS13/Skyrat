@@ -17,13 +17,13 @@
 	shuttle_call_time_mod = 1.5 // 15 minutes
 
 /datum/security_level/delta
-	shuttle_call_time_mod = 0.5 // 5 minutes
+	shuttle_call_time_mod = 1.5 // 15 minutes
 
 /datum/security_level/epsilon
-	shuttle_call_time_mod = 0.5 // 5 minutes
+	shuttle_call_time_mod = 1.5 // 15 minutes
 
 /datum/security_level/gamma
-	shuttle_call_time_mod = 0.5 // 5 minutes
+	shuttle_call_time_mod = 1.5 // 15 minutes
 
 /datum/security_level/federal
-	shuttle_call_time_mod = 0.5 // 5 minutes
+	shuttle_call_time_mod = 1.5 // 15 minutes
