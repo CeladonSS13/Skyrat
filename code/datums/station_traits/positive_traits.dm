@@ -309,6 +309,9 @@
 		/datum/job/telecomms_specialist = /obj/item/organ/ears/cybernetic/xray,
 		/datum/job/bridge_assistant = /obj/item/organ/cyberimp/arm/toolkit/paperwork,
 		// NOVA EDIT ADDITION END
+		// CELADON EDIT START
+		/datum/job/security_medic = /obj/item/organ/lungs/cybernetic/tier3,
+		// CELADON EDIT END
 	)
 
 /datum/station_trait/cybernetic_revolution/New()
