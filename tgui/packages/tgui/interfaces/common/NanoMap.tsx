@@ -3,9 +3,9 @@ import '../../styles/interfaces/NanoMap.scss';
 import { useLocalStorage } from '@uidotdev/usehooks';
 import {
   createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction,
   useContext,
   useEffect,
 } from 'react';
@@ -18,7 +18,7 @@ import {
 } from 'react-zoom-pan-pinch';
 import { Button, Image, Stack } from 'tgui-core/components';
 import { clamp01 } from 'tgui-core/math';
-import { BooleanLike, classes } from 'tgui-core/react';
+import { type BooleanLike, classes } from 'tgui-core/react';
 import { throttle } from 'tgui-core/timer';
 import { resolveAsset } from '../../assets';
 import { Direction } from '../../constants';
