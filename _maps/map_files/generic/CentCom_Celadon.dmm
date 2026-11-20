@@ -14176,9 +14176,6 @@
 /obj/machinery/light/floor,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation/ship)
-"Xs" = (
-/turf/open/space/basic,
-/area/centcom/central_command_areas/evacuation/ship)
 "Xt" = (
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -28356,7 +28353,7 @@ iB
 Wy
 pS
 pS
-Xs
+ra
 pS
 zG
 JD

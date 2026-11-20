@@ -9968,7 +9968,6 @@
 #include "modular_z_celadon\modules\qol_casual_celadon\hotkeys_unbound\mob.dm"
 #include "modular_z_celadon\modules\qol_casual_celadon\mobile_defibs_loaded\defibrillator_mount.dm"
 #include "modular_z_celadon\modules\qol_casual_celadon\nanodrug_pills\medical.dm"
-#include "modular_z_celadon\modules\qol_casual_celadon\rad_collectors_research\engineering_nodes.dm"
 #include "modular_z_celadon\modules\qol_casual_celadon\whetstone_vendor\drinnerware.dm"
 #include "modular_z_celadon\modules\qol_casual_celadon\wooden_tv_construction\computer_circuitboards.dm"
 #include "modular_z_celadon\modules\restrict-species\restrict_species.dm"

@@ -27,7 +27,7 @@
 /datum/quirk/hydraulicleak
 	name = "Hydraulic Leak"
 	desc = "Your body's hydraulic fluids are leaking through their seals."
-	icon = FA_ICON_TINT
+	icon = FA_ICON_OIL_CAN
 	value = -8
 	gain_text = span_danger("You feel your oil slowly disappearing.")
 	lose_text = span_notice("You feel your oil no longer disappearing.")

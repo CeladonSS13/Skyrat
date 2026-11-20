@@ -191,6 +191,7 @@ These are basically advanced cells.
 		/obj/item/stack/sheet/iron = 1,
 		/obj/item/stack/cable_coil = 1,
 		)
+	crafting_flags = parent_type::crafting_flags | CRAFT_SKIP_MATERIALS_PARITY
 	time = 12 SECONDS
 	category = CAT_MISC
 
@@ -201,6 +202,7 @@ These are basically advanced cells.
 	icon_state = "microfusion_makeshift"
 	maxcharge = STANDARD_CELL_CHARGE * 0.5
 	max_attachments = 0
+	custom_materials = null
 
 /obj/item/stock_parts/power_store/cell/microfusion/makeshift/use(amount, force = FALSE)
 	if(prob(fail_prob))
