@@ -1,6 +1,0 @@
-author: "Arceniu"
-delete-after: True
-changes:
-  - bugfix: "Fixed techchapel suit for chaplain"
-  - code_imp: "Changed AAS max Length from 168 to 190"
-  - rscdel: "Deleted shoulder holsters"
