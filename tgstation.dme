@@ -9729,7 +9729,6 @@
 #include "modular_z_celadon\master_files\code\modules\implants\code\medical\medical_nodes.dm"
 #include "modular_z_celadon\master_files\code\modules\implants\code\service\service_designs.dm"
 #include "modular_z_celadon\master_files\code\modules\implants\code\service\service_nodes.dm"
-#include "modular_z_celadon\master_files\code\modules\unit_tests\aas_configs.dm"
 #include "modular_z_celadon\modules\access_upgrader\code\upgrader.dm"
 #include "modular_z_celadon\modules\acid\code\acid.dm"
 #include "modular_z_celadon\modules\add_memory\general_custom_memory.dm"

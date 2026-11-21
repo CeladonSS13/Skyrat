@@ -1,8 +1,8 @@
 /obj/machinery/vending/access/centcom
-	name = "\improper CentDrobe"
+	name = "\improper Advanced CentDrobe"
 	desc = "A one-of-a-kind vending machine for all your centcom aesthetic needs! Now with extended access checking protocol!"
 	icon = 'modular_z_celadon/master_files/icons/obj/machines/vending.dmi'
-	icon_state = "centdrobe-access"
+	icon_state = "centdrobe_access"
 	product_ads = "Show those ERTs who's the most stylish in the briefing room!;File paperwork in style!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Thank you for using the CentDrobe!"
 	light_mask = "wardrobe-light-mask"
@@ -143,6 +143,7 @@
 	return FALSE
 
 /obj/item/vending_refill/wardrobe/centcom_access_wardrobe
-	machine_name = "CentDrobe"
-	icon_state = "refill_centdrobe"
+	icon = 'modular_z_celadon/master_files/icons/obj/vending_restock.dmi'
+	machine_name = "Advanced CentDrobe"
+	icon_state = "refill_centdrobe_access"
 	light_color = LIGHT_COLOR_ELECTRIC_GREEN
