@@ -113,6 +113,10 @@ export const IconCutterTarget = new Juke.Target({
       `modular_nova/**/*.png.toml`,
       `modular_nova/**/*.dmi.toml`,
       // NOVA EDIT ADDITION END
+      // CELADON EDIT START - Making it work in our master files too
+      `modular_z_celadon/**/*.png.toml`,
+      `modular_z_celadon/**/*.dmi.toml`,
+      // CELADON EDIT END
       cutter_path,
     ];
     // Alright we're gonna search out any existing toml files and convert
@@ -124,6 +128,10 @@ export const IconCutterTarget = new Juke.Target({
       ...Juke.glob(`modular_nova/**/*.png.toml`),
       ...Juke.glob(`modular_nova/**/*.dmi.toml`),
       // NOVA EDIT ADDITION END
+      // CELADON EDIT START - Making it work in our master files too
+      ...Juke.glob(`modular_z_celadon/**/*.png.toml`),
+      ...Juke.glob(`modular_z_celadon/**/*.dmi.toml`),
+      // CELADON EDIT END
     ];
     return [
       ...standard_inputs,
@@ -139,6 +147,10 @@ export const IconCutterTarget = new Juke.Target({
       ...Juke.glob(`modular_nova/**/*.png.toml`),
       ...Juke.glob(`modular_nova/**/*.dmi.toml`),
       // NOVA EDIT ADDITION END
+      // CELADON EDIT START - Making it work in our master files too
+      ...Juke.glob(`modular_z_celadon/**/*.png.toml`),
+      ...Juke.glob(`modular_z_celadon/**/*.dmi.toml`),
+      // CELADON EDIT END
     ];
     return folders
       .map((file) => file.replace(`.png.toml`, '.dmi'))

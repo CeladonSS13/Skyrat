@@ -11,14 +11,14 @@
 			"Hybrid Taser Kit" = list(
 				/obj/item/storage/toolbox/guncase/nova/ntcase/pistol, list(
 					/obj/item/gun/energy/e_gun/advtaser = 1,
-					/obj/item/clothing/accessory/holster = 1,
+					/obj/item/storage/belt/holster/energy = 1,
 				)
 			),
 			"Sol Pistol with incapacitator ammo Kit" = list(
 				/obj/item/storage/toolbox/guncase/nova/solfed/pistol, list(
 					/obj/item/gun/ballistic/automatic/pistol/sol/incapacitator_prefilled = 1,
 					/obj/item/ammo_box/magazine/c35sol_pistol/incapacitator = 2,
-					/obj/item/clothing/accessory/holster = 1,
+					/obj/item/storage/belt/holster = 1,
 				)
 			),
 		)

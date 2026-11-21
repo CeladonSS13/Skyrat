@@ -6,5 +6,12 @@
 	for(var/config_type in valid_subtypesof(/datum/aas_config_entry))
 		var/datum/aas_config_entry/entry = allocate(config_type)
 		for(var/key, line in entry.announcement_lines_map)
-			if(length_char(line) > expected_max_length)
-				TEST_FAIL("Announcement line '[key]' in config '[config_type]' exceeds max length of [expected_max_length] characters (actual length: [length(line)])")
+		//CELADON ADD START
+			var/line_length = length_char(line)
+			if(line_length > expected_max_length)
+				TEST_FAIL("Announcement line '[key]' in config '[config_type]' exceeds max length of [expected_max_length] characters (actual length: [line_length])")
+		//CELADON ADD END
+		//CELADON REMOVE START
+		//	if(length_char(line) > expected_max_length)
+		//		TEST_FAIL("Announcement line '[key]' in config '[config_type]' exceeds max length of [expected_max_length] characters (actual length: [length(line)])")
+		//CELADON REMOVE END

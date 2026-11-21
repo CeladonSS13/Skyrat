@@ -200,7 +200,7 @@
 /obj/item/door_remote/nanotrasen_consultant
 	name = "Nanotrasen Consultant's door remote"
 	desc = "Remotely controls airlocks. This remote has specific access. Despite that, holding it makes you feel insecure for some reason."
-	icon = 'modular_z_celadon/modules/rolesedit/icons/jobs/remote.dmi'
+	icon = 'modular_z_celadon/master_files/icons/obj/devices/remote.dmi'
 	department = "ntr"
 	region_access = REGION_CENTCOM_NTR
 	our_domain = list( /area/station/ )
