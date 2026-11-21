@@ -30,8 +30,8 @@
 /obj/item/clothing/head/hooded/techchapel
 	name = "techpriest hood"
 	desc = "A techpriest hood. Seems, someone just tore it from suit"
-	icon = 'icons/obj/clothing/head/chaplain.dmi'
-	worn_icon = 'icons/mob/clothing/head/chaplain.dmi'
+	icon = 'icons/obj/clothing/head/costume.dmi'
+	worn_icon = 'icons/mob/clothing/head/costume.dmi'
 	icon_state = "techpriesthood"
 	body_parts_covered = HEAD
 	inhand_icon_state = null
@@ -41,8 +41,8 @@
 /obj/item/clothing/suit/hooded/chaplainsuit/techchapel
 	name = "techpriest suit"
 	desc = "A techpriest suit"
-	icon = 'icons/obj/clothing/suits/chaplain.dmi'
-	worn_icon = 'icons/mob/clothing/suits/chaplain.dmi'
+	icon = 'icons/obj/clothing/suits/costume.dmi'
+	worn_icon = 'icons/mob/clothing/suits/costume.dmi'
 	icon_state = "techpriest"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
