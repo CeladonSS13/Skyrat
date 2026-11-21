@@ -124,6 +124,7 @@
 		/obj/item/choice_beacon/job_locker/bridge_officer = 1,
 		/obj/item/choice_beacon/coffee = 1,
 	)
+	pda_slot = null
 
 /datum/outfit/job/bridge_assistant/plasmaman
 	name = "Bridge Officer (Plasmaman)"
@@ -263,6 +264,7 @@
 	backpack_contents = list(
 		/obj/item/modular_computer/pda/bridge_assistant_celadon = 1,
 	)
+	pda_slot = null
 
 /datum/outfit/job/bridge_assistant_celadon/plasmaman
 	name = "Bridge Assistant (Plasmaman)"

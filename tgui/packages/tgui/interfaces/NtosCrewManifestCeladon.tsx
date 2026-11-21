@@ -1,9 +1,8 @@
-import React from 'react';
 import { Button, Section } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
 import { NtosWindow } from '../layouts';
-import { CrewManifestCeladon, Manifest } from './CrewManifestCeladon';
+import { CrewManifestCeladon, type Manifest } from './CrewManifestCeladon';
 
 type Data = {
   manifest: Manifest;
@@ -18,11 +17,8 @@ export const NtosCrewManifestCeladon = (props) => {
         <Section
           title="Crew Manifest"
           buttons={
-            <Button
-              icon="print"
-              onClick={() => act('PRG_print')}
-            >
-                Print
+            <Button icon="print" onClick={() => act('PRG_print')}>
+              Print
             </Button>
           }
         >

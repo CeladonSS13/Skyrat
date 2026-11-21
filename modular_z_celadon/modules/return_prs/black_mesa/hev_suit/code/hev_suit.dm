@@ -70,8 +70,8 @@
 		base_icon_state += "-novisor"
 	var/datum/component/seclite_attachable/flight = GetComponent(/datum/component/seclite_attachable)
 	if(flight)
-		var/obj/item/flashlight/flashlight = flight.light
-		if(flashlight.light_on == TRUE)
+		var/obj/item/flashlight/flashlight = flight?.light
+		if(flashlight?.light_on == TRUE)
 			icon_state += "-light"
 			base_icon_state += "-light"
 

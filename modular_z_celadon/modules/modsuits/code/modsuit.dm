@@ -136,6 +136,7 @@
 	tool_behaviors = list(TOOL_WELDER, TOOL_WRENCH, TOOL_SCREWDRIVER, TOOL_CROWBAR, TOOL_MULTITOOL)
 	tool_paths = list(/obj/item/mod/control/pre_equipped/safeguard)
 	time = 60 SECONDS
+	crafting_flags = parent_type::crafting_flags | CRAFT_SKIP_MATERIALS_PARITY
 	category = CAT_CLOTHING
 
 /obj/effect/spawner/random/surplus_military_mod

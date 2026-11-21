@@ -786,22 +786,6 @@
 	. = ..()
 	UnregisterSignal(mod.wearer, COMSIG_LIVING_HEALTH_UPDATE)
 
-/obj/item/mod/module/ert_auto_doc/proc/on_item_interact(datum/source, mob/user, obj/item/thing, params)
-	SIGNAL_HANDLER
-
-	if(charge_boost(thing, user))
-		return COMPONENT_NO_AFTERATTACK
-
-	return NONE
-
-/obj/item/mod/module/ert_auto_doc/on_install()
-	. = ..()
-	RegisterSignal(mod, COMSIG_ATOM_ITEM_INTERACTION, PROC_REF(on_item_interact))
-
-/obj/item/mod/module/ert_auto_doc/on_uninstall(deleting)
-	. = ..()
-	UnregisterSignal(mod, COMSIG_ATOM_ATTACKBY)
-
 /// Drawbacks to make this module less self-sufficient and so it feels "balanced" (there's no balance).
 /obj/item/mod/module/ert_auto_doc/proc/heal_aftereffects(mob/affected_mob)
 	if(!affected_mob)

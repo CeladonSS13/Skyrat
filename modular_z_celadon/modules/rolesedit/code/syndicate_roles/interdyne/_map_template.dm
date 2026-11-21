@@ -1,4 +1,11 @@
 // map files
+
+//disable nova
+/datum/map_template/ruin/lavaland/nova/interdyne_base
+	never_spawn_with = list(/datum/map_template/ruin/icemoon/underground/nova/interdyne_base, /datum/map_template/ruin/lavaland/nova/interdyne_base_celadon, /datum/map_template/ruin/icemoon/underground/nova/interdyne_base_celadon)
+	always_place = FALSE
+	cost = 1000
+
 /datum/map_template/ruin/lavaland/nova/interdyne_base_celadon
 	name = "Lava-Ruin Interdyne Pharmaceutics Nova Sector Base 3c76928 (Celadon)"
 	id = "lava-base_celadon"
@@ -8,6 +15,12 @@
 	allow_duplicates = FALSE
 	never_spawn_with = list(/datum/map_template/ruin/icemoon/underground/nova/interdyne_base_celadon)
 	always_place = TRUE
+
+//disable nova
+/datum/map_template/ruin/icemoon/underground/nova/interdyne_base
+	never_spawn_with = list(/datum/map_template/ruin/lavaland/nova/interdyne_base, /datum/map_template/ruin/lavaland/nova/interdyne_base_celadon, /datum/map_template/ruin/icemoon/underground/nova/interdyne_base_celadon)
+	always_place = FALSE
+	cost = 1000
 
 /datum/map_template/ruin/icemoon/underground/nova/interdyne_base_celadon
 	name = "Ice-ruin Interdyne Pharmaceuticals Nova Sector Base 8817238 (Celadon)"

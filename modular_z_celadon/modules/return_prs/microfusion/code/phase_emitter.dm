@@ -198,6 +198,7 @@
 		/obj/item/shard = 2,
 		/obj/item/stack/cable_coil = 2,
 		)
+	crafting_flags = parent_type::crafting_flags | CRAFT_SKIP_MATERIALS_PARITY
 	time = 20 SECONDS
 	category = CAT_MISC
 
@@ -211,6 +212,7 @@
 	cooling_system_rate = 15
 	integrity = 50
 	color = "#503702"
+	custom_materials = null
 
 /obj/item/microfusion_phase_emitter/enhanced
 	name = "enhanced microfusion phase emitter"
