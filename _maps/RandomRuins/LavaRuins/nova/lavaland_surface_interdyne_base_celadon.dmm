@@ -9,7 +9,12 @@
 	pixel_x = 0;
 	pixel_y = 24
 	},
+/turf/open/floor/iron/freezer,
+/area/ruin/interdyne_planetary_base/serv/rstrm)
+"ah" = (
+/obj/structure/curtain,
 /obj/machinery/duct,
+/obj/structure/drain,
 /turf/open/floor/iron/freezer,
 /area/ruin/interdyne_planetary_base/serv/rstrm)
 "aq" = (
@@ -2198,6 +2203,10 @@
 "sg" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ruin/interdyne_planetary_base)
+"sj" = (
+/obj/machinery/duct,
+/turf/open/floor/iron/freezer,
+/area/ruin/interdyne_planetary_base/serv/rstrm)
 "sk" = (
 /obj/machinery/vending/clothing{
 	onstation = 0;
@@ -3530,7 +3539,6 @@
 	dir = 4;
 	pixel_z = 8
 	},
-/obj/machinery/duct,
 /turf/open/floor/iron/freezer,
 /area/ruin/interdyne_planetary_base/serv/rstrm)
 "Dn" = (
@@ -3664,9 +3672,8 @@
 /turf/open/floor/iron/dark/small,
 /area/ruin/interdyne_planetary_base/med)
 "Ek" = (
-/obj/structure/sink/directional/west,
-/obj/structure/mirror/directional/east,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/duct,
 /turf/open/floor/iron/freezer,
 /area/ruin/interdyne_planetary_base/serv/rstrm)
 "En" = (
@@ -4087,6 +4094,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron/freezer,
 /area/ruin/interdyne_planetary_base/serv/rstrm)
 "GZ" = (
@@ -5013,9 +5021,8 @@
 	},
 /area/ruin/interdyne_planetary_base/cargo)
 "Pi" = (
-/obj/structure/curtain,
-/obj/structure/drain,
-/obj/machinery/duct,
+/obj/structure/sink/directional/east,
+/obj/structure/mirror/directional/west,
 /turf/open/floor/iron/freezer,
 /area/ruin/interdyne_planetary_base/serv/rstrm)
 "Pj" = (
@@ -6342,9 +6349,6 @@
 /turf/open/floor/wood/parquet,
 /area/ruin/interdyne_planetary_base/main/dorms)
 "Zc" = (
-/obj/machinery/dryer{
-	pixel_x = 25
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
@@ -6366,7 +6370,9 @@
 /obj/item/towel,
 /obj/structure/table,
 /obj/item/soap/syndie,
-/obj/machinery/duct,
+/obj/machinery/dryer{
+	pixel_x = -25
+	},
 /turf/open/floor/iron/freezer,
 /area/ruin/interdyne_planetary_base/serv/rstrm)
 "Zk" = (
@@ -7649,7 +7655,7 @@ Ih
 Ih
 bs
 fm
-ja
+fm
 ja
 YN
 ja
@@ -7744,7 +7750,7 @@ ja
 ja
 YN
 ja
-ja
+fm
 fm
 Ys
 vu
@@ -7772,7 +7778,7 @@ OH
 OH
 bs
 fm
-ja
+fm
 ja
 YN
 ja
@@ -7810,11 +7816,11 @@ aa
 Dl
 Ze
 Pi
+ah
 OF
-OH
+DZ
 fm
 fm
-ja
 ja
 ja
 ja
@@ -7850,10 +7856,10 @@ yf
 Zc
 Ek
 GU
-Pi
+sj
+ah
 OF
 OH
-DZ
 fm
 fm
 ja
