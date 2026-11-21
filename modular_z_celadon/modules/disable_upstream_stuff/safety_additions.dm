@@ -1,5 +1,2 @@
-/obj/item/gun/ballistic/give_gun_safeties()
-	return
-
-/obj/item/gun/energy/give_gun_safeties()
-	return
+/datum/component/gun_safety
+	var/safety_currently_on = FALSE
