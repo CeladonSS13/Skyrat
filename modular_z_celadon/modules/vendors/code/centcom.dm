@@ -1,7 +1,8 @@
 /obj/machinery/vending/access/centcom
 	name = "\improper CentDrobe"
 	desc = "A one-of-a-kind vending machine for all your centcom aesthetic needs! Now with extended access checking protocol!"
-	icon_state = "centdrobe"
+	icon = 'modular_z_celadon/master_files/icons/obj/machines/vending.dmi'
+	icon_state = "centdrobe-access"
 	product_ads = "Show those ERTs who's the most stylish in the briefing room!;File paperwork in style!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Thank you for using the CentDrobe!"
 	light_mask = "wardrobe-light-mask"
