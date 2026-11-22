@@ -20,3 +20,6 @@ INFINITE_ACCESS_SLOTS
 ## These flags are automatically enabled if SQL_ENABLED isn't.
 #CENTCOM_LEGACY_SYSTEM
 #NO_READMIN_LEGACY_SYSTEM
+
+# Comment to disable removal of gun safety from guns
+#GUN_SAFETY_DISABLED
