@@ -262,10 +262,6 @@ define_sanity_output.txt
 # Running OpenDream locally
 tgstation.json
 
-# Ignore cached sound files.
-/sound/tts_cache/**/*
-/sound/tts_scrambled/**/*
-
 # Ignore preload config (should be modified on server if you know what you're doing)
 /config/config_preload.txt
 
