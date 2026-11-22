@@ -27,3 +27,8 @@
 2026-11-18:
   Arceniu:
   - server: changed modular_celadon folder to modular_z_celadon folder
+2026-11-21:
+  Arceniu:
+  - bugfix: Fixed techchapel suit for chaplain
+  - code_imp: Changed AAS max Length from 168 to 190
+  - rscdel: Deleted shoulder holsters

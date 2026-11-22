@@ -1,0 +1,4 @@
+author: "Arceniu"
+delete-after: True
+changes:
+  - rscadd: "Returned gun safeties, they are now basically off, but can be turned on"
