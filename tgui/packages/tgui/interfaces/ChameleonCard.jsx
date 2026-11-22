@@ -62,13 +62,6 @@ export const ChameleonCard = (props) => {
               access_wildcard: wildcard,
             })
           }
-          // Celadon ADDITION START
-          extraActions={(action_name, accesses_list) =>
-            act(action_name, {
-              accesses: accesses_list,
-            })
-          }
-          // Celadon ADDITION END
         />
       </Window.Content>
     </Window>

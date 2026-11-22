@@ -11,7 +11,7 @@ import {
 } from 'tgui-core/components';
 
 import { useBackend, useLocalState } from '../../backend';
-import { PreferencesMenuData } from './data';
+import type { PreferencesMenuData } from './data';
 
 const donatorTiers = {
   0: 'Бесплатные',
@@ -112,29 +112,29 @@ export const VoicePage = (props) => {
   );
   const [searchtext, setSearchtext] = useLocalState('searchtext', '');
 
-  let providerCheckboxes = getCheckboxGroup(
+  const providerCheckboxes = getCheckboxGroup(
     providers,
     selectedProviders,
     setSelectedProviders,
     'name',
   );
-  let genderesCheckboxes = getCheckboxGroup(
+  const genderesCheckboxes = getCheckboxGroup(
     genders,
     selectedGenders,
     setSelectedGenders,
   );
-  let categoriesCheckboxes = getCheckboxGroup(
+  const categoriesCheckboxes = getCheckboxGroup(
     categories,
     selectedCategories,
     setSelectedCategories,
   );
-  let donatorLevelsCheckboxes = getCheckboxGroup(
+  const donatorLevelsCheckboxes = getCheckboxGroup(
     donatorLevels,
     selectedDonatorLevels,
     setSelectedDonatorLevels,
   );
 
-  let phrasesSelect = (
+  const phrasesSelect = (
     <Dropdown
       options={phrases}
       selected={selectedPhrase.replace(/(.{25})..+/, '$1...')}
@@ -143,7 +143,7 @@ export const VoicePage = (props) => {
     />
   );
 
-  let searchBar = (
+  const searchBar = (
     <Input
       placeholder="Название..."
       fluid
@@ -172,7 +172,7 @@ export const VoicePage = (props) => {
         seed.name.toLowerCase().includes(searchtext.toLowerCase()),
     );
 
-  let seedsRow = availableSeeds.map((seed) => {
+  const seedsRow = availableSeeds.map((seed) => {
     return (
       <Table.Row
         key={seed.name}

@@ -1,6 +1,10 @@
 import { Box, Slider } from 'tgui-core/components';
 
-import { Feature, FeatureNumericData, FeatureValueProps } from '../../base';
+import type {
+  Feature,
+  FeatureNumericData,
+  FeatureValueProps,
+} from '../../base';
 
 const SLIDER_STEP_SIZE_FOR_SETTINGS_WINDOW_WIDTH = 4.1;
 

@@ -15,7 +15,6 @@ export const AccessList = (props) => {
     wildcardFlags = {},
     extraButtons,
     showBasic,
-    extraActions, // Celadon ADDITION
   } = props;
 
   const [wildcardTab, setWildcardTab] = useSharedState(
@@ -109,10 +108,6 @@ export const AccessList = (props) => {
             showBasic={showBasic}
             basicUsed={selectedTrimAccess.length}
             basicMax={trimAccess.length}
-            // Celadon ADDITION START
-            extraActions={extraActions}
-            accesses={parsedRegions}
-            // Celadon ADDITION END
           />
         </Stack.Item>
         <Stack.Item>
@@ -140,7 +135,7 @@ export const AccessList = (props) => {
 };
 
 export const FormatWildcards = (props) => {
-  const { wildcardSlots = {}, showBasic, basicUsed = 0, basicMax = 0, extraActions, accesses } = props; // Celadon ADDITION, added: extraActions, accesses
+  const { wildcardSlots = {}, showBasic, basicUsed = 0, basicMax = 0 } = props;
 
   const [wildcardTab, setWildcardTab] = useSharedState(
     'wildcardSelected',
@@ -157,61 +152,40 @@ export const FormatWildcards = (props) => {
   }
 
   return (
-    <Stack fill horizontal> {/* Celadon ADDITION*/}
-      <Tabs>
-        {showBasic && (
-          <Tabs.Tab
-            selected={selectedWildcard === 'None'}
-            onClick={() => setWildcardTab('None')}
-          >
-            Trim:
-            <br />
-            {`${basicUsed}/${basicMax}`}
-          </Tabs.Tab>
-        )}
+    <Tabs>
+      {showBasic && (
+        <Tabs.Tab
+          selected={selectedWildcard === 'None'}
+          onClick={() => setWildcardTab('None')}
+        >
+          Trim:
+          <br />
+          {`${basicUsed}/${basicMax}`}
+        </Tabs.Tab>
+      )}
 
-        {Object.keys(wildcardSlots).map((wildcard) => {
-          const wcObj = wildcardSlots[wildcard];
-          let wcLimit = wcObj.limit;
-          const wcUsage = wcObj.usage.length;
-          const wcLeft = wcLimit - wcUsage;
-          if (wcLeft < 0) {
-            wcLimit = '∞';
-          }
-          const wcLeftStr = `${wcUsage}/${wcLimit}`;
-          return (
-            <Tabs.Tab
-              key={wildcard}
-              selected={selectedWildcard === wildcard}
-              onClick={() => setWildcardTab(wildcard)}
-            >
-              {`${wildcard}:`}
-              <br />
-              {wcLeftStr}
-            </Tabs.Tab>
-          );
-        })}
-      </Tabs>
-      {/* Celadon ADDITION START */}
-      <Button
-        onClick={() =>
-          extraActions("select_all", accesses, selectedWildcard)
+      {Object.keys(wildcardSlots).map((wildcard) => {
+        const wcObj = wildcardSlots[wildcard];
+        let wcLimit = wcObj.limit;
+        const wcUsage = wcObj.usage.length;
+        const wcLeft = wcLimit - wcUsage;
+        if (wcLeft < 0) {
+          wcLimit = '∞';
         }
-        height="80%"
-        icon="check">
-          Select All
-      </Button>
-      <Button.Confirm
-        onClick={() =>
-          extraActions("deselect_all", accesses, selectedWildcard)
-        }
-        height="80%"
-        confirmContent="Are you sure?"
-        icon="close">
-          Deselect All
-      </Button.Confirm>
-      {/* Celadon ADDITION END */ }
-    </Stack> // Celadon ADDITION
+        const wcLeftStr = `${wcUsage}/${wcLimit}`;
+        return (
+          <Tabs.Tab
+            key={wildcard}
+            selected={selectedWildcard === wildcard}
+            onClick={() => setWildcardTab(wildcard)}
+          >
+            {`${wildcard}:`}
+            <br />
+            {wcLeftStr}
+          </Tabs.Tab>
+        );
+      })}
+    </Tabs>
   );
 };
 

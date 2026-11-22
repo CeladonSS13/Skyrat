@@ -230,9 +230,9 @@
 
 /mob/living/basic/bot/secbot/generate_speak_list()
 	var/static/list/secbot_lines = list(
-		BEEPSKY_VOICED_CRIMINAL_DETECTED = check_holidays(APRIL_FOOLS) ? 'modular_celadon/modules/april_fools_day/beepsky/sounds/gad.ogg' : 'sound/mobs/non-humanoids/beepsky/criminal.ogg', // CELADON EDIT, original: BEEPSKY_VOICED_CRIMINAL_DETECTED = 'sound/mobs/non-humanoids/beepsky/criminal.ogg',
-		BEEPSKY_VOICED_FREEZE = check_holidays(APRIL_FOOLS) ? 'modular_celadon/modules/april_fools_day/beepsky/sounds/dog_shit.ogg' : 'sound/mobs/non-humanoids/beepsky/freeze.ogg', // CELADON EDIT, original: BEEPSKY_VOICED_FREEZE = 'sound/mobs/non-humanoids/beepsky/freeze.ogg',
-		BEEPSKY_VOICED_JUSTICE = check_holidays(APRIL_FOOLS) ? 'modular_celadon/modules/april_fools_day/beepsky/sounds/trahnu.ogg' : 'sound/mobs/non-humanoids/beepsky/justice.ogg', // CELADON EDIT, original: BEEPSKY_VOICED_JUSTICE = 'sound/mobs/non-humanoids/beepsky/justice.ogg',
+		BEEPSKY_VOICED_CRIMINAL_DETECTED = check_holidays(APRIL_FOOLS) ? 'modular_z_celadon/modules/april_fools_day/beepsky/sounds/gad.ogg' : 'sound/mobs/non-humanoids/beepsky/criminal.ogg', // CELADON EDIT, original: BEEPSKY_VOICED_CRIMINAL_DETECTED = 'sound/mobs/non-humanoids/beepsky/criminal.ogg',
+		BEEPSKY_VOICED_FREEZE = check_holidays(APRIL_FOOLS) ? 'modular_z_celadon/modules/april_fools_day/beepsky/sounds/dog_shit.ogg' : 'sound/mobs/non-humanoids/beepsky/freeze.ogg', // CELADON EDIT, original: BEEPSKY_VOICED_FREEZE = 'sound/mobs/non-humanoids/beepsky/freeze.ogg',
+		BEEPSKY_VOICED_JUSTICE = check_holidays(APRIL_FOOLS) ? 'modular_z_celadon/modules/april_fools_day/beepsky/sounds/trahnu.ogg' : 'sound/mobs/non-humanoids/beepsky/justice.ogg', // CELADON EDIT, original: BEEPSKY_VOICED_JUSTICE = 'sound/mobs/non-humanoids/beepsky/justice.ogg',
 		BEEPSKY_VOICED_YOUR_MOVE = 'sound/mobs/non-humanoids/beepsky/creep.ogg',
 		BEEPSKY_VOICED_I_AM_THE_LAW = 'sound/mobs/non-humanoids/beepsky/iamthelaw.ogg',
 		BEEPSKY_VOICED_SECURE_DAY = 'sound/mobs/non-humanoids/beepsky/secureday.ogg',

@@ -19,15 +19,15 @@ if command -v rg >/dev/null 2>&1; then
 	if [ ! rg -P '' >/dev/null 2>&1 ] ; then
 		pcre2_support=0
 	fi
-	code_files="code/**/**.dm modular_nova/**/**.dm"
-	map_files="_maps/**/**.dmm modular_nova/**/**.dmm"
+	code_files="code/**/**.dm modular_nova/**/**.dm modular_z_celadon/**/**.dm"
+	map_files="_maps/**/**.dmm modular_nova/**/**.dmm modular_z_celadon/**/**.dmm"
 	shuttle_map_files="_maps/shuttles/**.dmm"
 	code_x_515="code/**/!(__byond_version_compat).dm"
 else
 	pcre2_support=0
 	grep=grep
-	code_files="-r --include=code/**/**.dm"
-	map_files="-r --include=_maps/**/**.dmm"
+	code_files="-r --include=code/**/**.dm --include=modular_nova/**/**.dm --include=modular_z_celadon/**/**.dm"
+	map_files="-r --include=_maps/**/**.dmm --include=modular_nova/**/**.dmm --include=modular_z_celadon/**/**.dmm"
 	shuttle_map_files="-r --include=_maps/shuttles/**.dmm"
 	code_x_515="-r --include=code/**/!(__byond_version_compat).dm"
 fi

@@ -6,8 +6,8 @@
 #endif
 
 #ifndef ABSOLUTE_MINIMUM
-//#include "map_files\generic\CentCom.dmm" //Celadon REMOVAL
-#include "map_files\generic\CentCom_code_Celadon.dmm"	//Celadon ADD START
+//#include "map_files\generic\CentCom.dmm"	// Celadon Edit Start
+#include "map_files\generic\CentCom_code_Celadon.dmm"	// Celadon Edit End
 #else
 #include "map_files\generic\CentCom_minimal.dmm"
 #endif

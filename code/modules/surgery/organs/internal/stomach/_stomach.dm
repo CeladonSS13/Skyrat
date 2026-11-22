@@ -221,7 +221,7 @@
 	RegisterSignal(thing, COMSIG_MOVABLE_MOVED, PROC_REF(content_moved))
 	RegisterSignal(thing, COMSIG_QDELETING, PROC_REF(content_deleted))
 	LAZYADD(stomach_contents, thing)
-	ADD_TRAIT(thing, TRAIT_IN_STOMACH, src)	//CELADON ADD
+	ADD_TRAIT(thing, TRAIT_IN_STOMACH, ORGAN_SLOT_STOMACH)	//CELADON ADD
 	thing.forceMove(owner || src) // We assert that if we have no owner, we will not be nullspaced
 	return TRUE
 
@@ -235,7 +235,7 @@
 		return
 	LAZYREMOVE(stomach_contents, source)
 	if(HAS_TRAIT(source, TRAIT_IN_STOMACH))	//CELADON ADD START
-		REMOVE_TRAIT(source, TRAIT_IN_STOMACH, src)	//CELADON ADD END
+		REMOVE_TRAIT(source, TRAIT_IN_STOMACH, ORGAN_SLOT_STOMACH)	//CELADON ADD END
 	UnregisterSignal(source, list(COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
 
 /obj/item/organ/stomach/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)

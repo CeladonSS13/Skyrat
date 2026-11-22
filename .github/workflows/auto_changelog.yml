@@ -11,6 +11,7 @@ permissions:
 jobs:
   auto_changelog:
     runs-on: ubuntu-24.04
+    environment: pull_request
     if: github.event.pull_request.merged == true
     steps:
       - name: Checkout
@@ -19,7 +20,6 @@ jobs:
           ref: ${{ github.event.repository.default_branch }}
 
       - name: Generate App Token
-        environment: pull_request
         id: app-token-generation
         uses: actions/create-github-app-token@v3.2.0
         if: env.APP_PRIVATE_KEY != '' && env.APP_ID != ''

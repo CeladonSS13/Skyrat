@@ -13,8 +13,7 @@
 #define SIGNATURE_FONT "Segoe Script"
 
 /// Emoji icon set
-#define EMOJI_SET 'modular_celadon/master_files/icons/emoji.dmi' // SKYRAT EDIT - ORIGINAL: 'icons/ui_icons/emoji/emoji.dmi'
-// ex666 edit - skyrat: modular_skyrat/master_files/icons/emoji.dmi
+#define EMOJI_SET 'modular_z_celadon/master_files/icons/emoji.dmi' // CELADON EDIT - ORIGINAL: 'icons/ui_icons/emoji/emoji.dmi'
 
 // Font metrics bitfield
 /// Include leading A width and trailing C width in GetWidth() or in DrawText()

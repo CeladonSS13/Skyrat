@@ -157,7 +157,7 @@ export class PreviewView extends Component<PreviewViewProps> {
 
     // return this.props.canEdit !== nextProps.canEdit;
     // Celadon REMOVAL END
-    return this.props.uiVer != nextProps.uiVer; // Celadon ADDITION
+    return this.props.uiVer !== nextProps.uiVer; // Celadon ADDITION
   }
 
   // Creates the partial inline HTML for previewing or reading the paper from
@@ -521,10 +521,15 @@ export class PreviewView extends Component<PreviewViewProps> {
 
     // Celadon ADDITION START
     previewText = previewText
-      .replace("[syndicatelogo]", `<img src="syndicatelogo.png" width='200' height='123'/>`)
-      .replace("[ntlogo]", `<img src="ntlogo.png" width='200' height='123'/>`)
-      .replace("[keepwatching]", `<img src="keepwatching.png" width='380' height='180'/>`)
-    ;
+      .replace(
+        '[syndicatelogo]',
+        `<img src="syndicatelogo.png" width='200' height='123'/>`,
+      )
+      .replace('[ntlogo]', `<img src="ntlogo.png" width='200' height='123'/>`)
+      .replace(
+        '[keepwatching]',
+        `<img src="keepwatching.png" width='380' height='180'/>`,
+      );
     // Celadon ADDITION END
 
     const textHTML = {
