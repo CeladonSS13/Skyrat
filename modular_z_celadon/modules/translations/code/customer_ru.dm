@@ -1,6 +1,3 @@
-/datum/customer_data
-	speech_sound = null
-	var/list/tts_seeds = list("Arthas")
 
 /datum/customer_data/american
 	found_seat_lines = list("Я надеюсь тут найдется местечко, которое выдержит мой вес.", "Надеюсь, я могу проносить сюда оружие.", "Я надеюсь здесь подают тройной жир-бургер делюкс.", "Люблю я здешнюю культуру.")
@@ -12,8 +9,6 @@
 	first_warning_line = "Не стоит со мной шутить!"
 	second_warning_line = "Последнее предупреждение, чувак! Отвали!"
 	self_defense_line = "РЕЖИМ ЖИРОМЕНТАЛЯ АКТИВИРОВАН!"
-	tts_seeds = list("Braum", "Malfurion", "Medivh", "Ozara", "Pudge")
-
 
 /datum/customer_data/italian
 	prefix_file = "strings/names/italian_prefix.txt"
@@ -28,8 +23,6 @@
 	first_warning_line = "Не трогай меня, мамма-мия!"
 	second_warning_line = "Последнее предупреждение! Не прикасайся к моим спагетти!"
 	self_defense_line = "Я замешу тебя так, как моя мамма замешивала свои фирменные фрикадельки!"
-	tts_seeds = list("Barbas", "Clockwerk", "Muradin", "Rasil")
-
 
 /datum/customer_data/french
 	prefix_file = "strings/names/french_prefix.txt"
@@ -44,9 +37,6 @@
 	first_warning_line = "Отвали от меня!"
 	second_warning_line = "Не трогай меня, ты, грязное животное! Последнее предупреждение!"
 	self_defense_line = "Я сломаю тебя словно багет!"
-	speech_sound = null
-	tts_seeds = list("Archmage", "Awilo", "Belloc", "Priest")
-
 
 /datum/customer_data/japanese
 	prefix_file = "strings/names/japanese_prefix.txt"
@@ -61,9 +51,6 @@
 	first_warning_line = "Не трогай меня, извращенец!"
 	second_warning_line = "Я стану супер-сайяном, если ты снова прикоснешься ко мне! Последнее предупреждение!"
 	self_defense_line = "OMAE WA MO, SHINDEROU!"
-	speech_sound = null
-	tts_seeds = list("Ahri", "Chromie", "Eudora", "Luna", "Qiyana")
-
 
 /datum/customer_data/japanese/salaryman
 	clothing_sets = list("japanese_salary")
@@ -76,9 +63,6 @@
 	first_warning_line = "Эй, только мой работодатель имеет право так со мной обращаться."
 	second_warning_line = "Отстань от меня, я пытаюсь сконцентрироваться. Последнее предупреждение!"
 	self_defense_line = "Я не хотел, чтобы это закончилось вот так."
-	speech_sound = null
-	tts_seeds = list("Malkoran", "Narrator", "Overseer", "Rhombus")
-
 
 /datum/customer_data/moth
 	prefix_file = "strings/names/moth_prefix.txt"
@@ -92,9 +76,6 @@
 	first_warning_line = "Проваливай, я пытаюсь получить шляпу!"
 	second_warning_line = "Последнее предупреждение! Я уничтожу тебя!"
 	self_defense_line = "Крылатая атака!"
-	speech_sound = null
-	tts_seeds = list("Ahri", "Chromie", "Eudora", "Luna", "Qiyana")
-
 
 /datum/customer_data/mexican
 	base_icon_state = "mexican"
@@ -109,9 +90,6 @@
 	first_warning_line = "Эй, Амиго! Не трогай меня."
 	second_warning_line = "Комрад, хватит значит хватит! Последнее предупреждение!"
 	self_defense_line = "Пришло время тебе узнать, какой из меня робот. Готов?"
-	speech_sound = null
-	tts_seeds = list("Barney", "Batrider", "Putricide", "Soldier")
-
 
 /datum/customer_data/british
 	base_icon_state = "british"
@@ -120,9 +98,6 @@
 	first_warning_line = "Наша великая Королева приказывает и повелевает всем собравшимся немедленно разойтись."
 	second_warning_line = "И мирно вернуться в свои жилища или к своим законным делам, приложив усилия, содержащиеся в акте, изданном королём Георгом в первый год своего правления для предотвращения бунтов и мятежей. Более предупреждений не будет."
 	self_defense_line = "Боже, храни Королеву."
-	speech_sound = null
-	tts_seeds = list("Ebony", "Ekko", "Emperor", "Loxley")
-
 
 /datum/customer_data/british/gent
 	clothing_sets = list("british_gentleman")
@@ -155,8 +130,6 @@
 	first_warning_line = "Ты бы хорошо вписался туда, откуда я. Но тебе лучше остановиться."
 	second_warning_line = "Сломать-ты-так-сильно-ты-вспомнить-дни-до-этот-момент.exe: запуск..."
 	self_defense_line = "Я был создан, чтобы делать две вещи: заказывать еду и ломать каждую кость в твоем теле."
-	speech_sound = null
-	tts_seeds = list("Glados")
 
 /datum/venue/restaurant/order_food_line(order)
 	var/obj/item/object_to_order = order
@@ -178,9 +151,3 @@
 		)
 	return "Я буду [translation[picked_serving]] [initial(reagent_type.name)]"
 
-
-/mob/living/basic/robot_customer/Initialize(mapload, datum/customer_data/customer_data, datum/venue/attending_venue)
-	. = ..()
-	var/datum/customer_data/customer_info = SSrestaurant.all_customers[customer_data]
-	if(customer_info)
-		tts_seed = pick(customer_info.tts_seeds)

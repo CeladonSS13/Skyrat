@@ -214,7 +214,6 @@ export type CharacterPreferencesData = {
     job_clothes: BooleanLike;
     loadout_index: string; // NOVA EDIT ADDITION: Multiple loadout presets
     background_state: string; // NOVA EDIT ADDITION: Swappable character editor backgrounds
-    tts_seed: string; // CELADON ADDITION
   };
 
   randomization: Record<string, RandomSetting>;
@@ -244,7 +243,6 @@ export type PreferencesMenuData = {
   preview_selection: string;
 
   erp_pref: BooleanLike;
-  tts_seed: string; // CELADON ADDITION
 
   job_alt_titles: Record<string, string>;
 
@@ -280,22 +278,7 @@ export type PreferencesMenuData = {
   active_slot: number;
   name_to_use: string;
 
-  tts_enabled: BooleanLike;
-  providers: Array<{
-    name: string;
-    is_enabled: BooleanLike;
-  }>;
-  seeds: Array<{
-    name: string;
-    value: string;
-    category: string;
-    gender: string;
-    provider: string;
-    donator_level: number;
-  }>;
-  phrases: string[];
-
-  window: Window;
+  window: PrefsWindow;
 };
 
 export type ServerData = {
