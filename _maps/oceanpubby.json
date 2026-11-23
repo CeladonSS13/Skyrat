@@ -7,6 +7,7 @@
 	"space_empty_levels": 0,
 	"wilderness_levels": 0,
 	"planetary": 1,
+	"exclude_from_ci": true,
 	"shuttles": {
 		"emergency": "emergency_pubby",
 		"whiteship": "whiteship_pubby",
