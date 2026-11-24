@@ -1,4 +1,0 @@
-author: "Arceniu"
-delete-after: True
-changes:
-  - config: "gun safety can now be enabled or disabled in config"
