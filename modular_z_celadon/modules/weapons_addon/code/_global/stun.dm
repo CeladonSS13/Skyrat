@@ -4,11 +4,6 @@
 	e_cost = LASER_SHOTS(15, STANDARD_CELL_CHARGE)
 	delay = 15
 
-/obj/item/ammo_casing/energy/electrode/old_electrode
-	e_cost = LASER_SHOTS(5, STANDARD_CELL_CHARGE)
-	projectile_type = /obj/item/ammo_casing/energy/electrode/old_electrode
-	delay = 0
-
 //projectiles
 /obj/projectile/energy/electrode
 	apply_tase_effect = FALSE
