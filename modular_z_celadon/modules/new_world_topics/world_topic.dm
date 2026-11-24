@@ -1,3 +1,4 @@
+/
 /datum/world_topic/status/Run(list/input)
 	. = list()
 
