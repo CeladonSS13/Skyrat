@@ -12,7 +12,6 @@
 		var/number_of_extant_bonuses = LAZYLEN(object.fantasy_modifications)
 
 #define TEST_SUCCESS LAZYLEN(object.fantasy_modifications) == number_of_extant_bonuses
-		TEST_NOTICE(src, "Send object [object.type] for test.")
 		// Try positive
 		object.apply_fantasy_bonuses(bonus = 5)
 		object.remove_fantasy_bonuses(bonus = 5)
