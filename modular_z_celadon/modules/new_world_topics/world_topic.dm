@@ -1,6 +1,6 @@
-/
+
 /datum/world_topic/status/Run(list/input)
-	. = list()
+	. = list(
 
 	.["round_id"] = GLOB.round_id
 	.["players"] = GLOB.clients.len
