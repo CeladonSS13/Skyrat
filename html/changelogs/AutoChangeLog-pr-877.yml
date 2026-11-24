@@ -1,0 +1,5 @@
+author: "Arceniu"
+delete-after: True
+changes:
+  - balance: "reverted taser change"
+  - balance: "reverted basic mob slowdown decrease"
