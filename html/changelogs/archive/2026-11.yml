@@ -37,3 +37,7 @@
   - config: gun safety can now be enabled or disabled in config
   - rscadd: Returned gun safeties, they are now basically off, but can be turned on
   - rscdel: Removed old tts code
+2026-11-25:
+  Arceniu:
+  - balance: reverted taser change
+  - balance: reverted basic mob slowdown decrease
