@@ -195,41 +195,10 @@
 			var/wanted_status = params["status"]
 			if(!wanted_status || !(wanted_status in WANTED_STATUSES()))
 				return FALSE
-
-			// Celadon ADDITION START
-			var/reason_text = tgui_input_text(user, "Comment:", "Add comment", "", MAX_DESC_LEN, encode = FALSE)
-			if(isnull(reason_text))
+			if(wanted_status == WANTED_ARREST && !length(target.crimes))
 				return FALSE
 
-			var/found_rank
-			var/found_name
-			var/mob/living/carbon/human/human_user = user
-			if (human_user)
-				var/obj/item/id_slot = human_user.get_item_by_slot(ITEM_SLOT_ID)
-				if(id_slot)
-					var/id_card = id_slot?.GetID()
-					if(id_card)
-						var/retrieved_job = retrieve_relevant_job(human_user, id_card, TRUE)
-						if (!retrieved_job)
-							retrieved_job = retrieve_relevant_job(human_user, id_card, FALSE)
-						if (retrieved_job)
-							found_rank = retrieved_job
-						var/obj/item/card/id/id_card_casted = id_card
-						if (id_card_casted)
-							found_name = id_card_casted.registered_name
-			if (!found_name)
-				found_name = "Unknown"
-
-			var/datum/crime/new_crime = new(author = "SecHUD", details = "Set status from [target.wanted_status] to [wanted_status] by [found_name][found_rank ? " ([found_rank])" : ""]. Comment: [reason_text]")
-			target.crimes += new_crime
-			investigate_log("SecHUD status change for [target.name] from [target.wanted_status] to [wanted_status] by [key_name(human_user)]. Comment: [reason_text]", INVESTIGATE_RECORDS)
-			// Celadon ADDITION END
-			// Celadon REMOVAL START
-			// if(wanted_status == WANTED_ARREST && !length(target.crimes))
-			// 	return FALSE
-
-			// investigate_log("[target.name] has been set from [target.wanted_status] to [wanted_status] by [key_name(usr)].", INVESTIGATE_RECORDS)
-			// Celadon REMOVAL END
+			investigate_log("[target.name] has been set from [target.wanted_status] to [wanted_status] by [key_name(usr)].", INVESTIGATE_RECORDS)
 			target.wanted_status = wanted_status
 
 			update_matching_security_huds(target.name)

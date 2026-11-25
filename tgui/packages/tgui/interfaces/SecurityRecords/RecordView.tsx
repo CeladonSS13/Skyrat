@@ -121,7 +121,7 @@ const RecordInfo = (props) => {
                 return (
                   <Button
                     color={isSelected ? CRIMESTATUS2COLOR[button] : 'grey'}
-                    // Celadon REMOVAL disabled={button === 'Arrest' && !hasValidCrimes}
+                    disabled={button === 'Arrest' && !hasValidCrimes}
                     icon={isSelected ? 'check' : ''}
                     key={index}
                     onClick={() =>
