@@ -256,7 +256,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	if(include_name)
 		if(M)
 			if(M.real_name)
-				. += ""/([html_encode(M.real_name)])"
+				. += "/([html_encode(M.real_name)])"
 			else if(M.name)
 				. += "/([html_encode(M.name)])"
 		else if(fallback_name)
