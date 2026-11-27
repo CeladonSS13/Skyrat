@@ -20,7 +20,12 @@
 /datum/loadout_item/toys/darksabre
 	is_disabled = TRUE
 
-// setting this things to both flags so they wont appear without config
+// setting this things to both flags so they wont appear
+
+/datum/loadout_item/accessory/pride
+	is_disabled = TRUE
+	erp_item = TRUE
+
 /datum/loadout_item/pocket_items/gay_pride_flag
 	is_disabled = TRUE
 	erp_item = TRUE
