@@ -6,7 +6,7 @@
 /obj/machinery/computer/cargo/express/ghost
 	name = "\improper Soar Industries Express Delivery Console"
 	desc = "A Standard express delivery console, preloaded with a specialized protocol by SOAR Industries. Allowing it to access specialized companies."
-	abstract_type = /obj/machinery/computer/cargo/express/ghost
+//	abstract_type = /obj/machinery/computer/cargo/express/ghost
 	circuit = /obj/item/circuitboard/computer/cargo/express/ghost
 	req_access = list(ACCESS_SYNDICATE)
 	cargo_account = ACCOUNT_CIV /// Change this later to something else, as this is meant to prevent runtiming
