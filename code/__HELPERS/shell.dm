@@ -4,6 +4,10 @@
 #define SHELLEO_ERR ".err"
 #define SHELLEO_OUT ".out"
 /world/proc/shelleo(command)
+	if(IsAdminAdvancedProcCall())
+		message_admins("[key_name_admin(usr)] tried to run shelleo command")
+		alert_to_permissions_elevation_attempt(usr)
+		return
 	var/static/list/shelleo_ids = list()
 	var/stdout = ""
 	var/stderr = ""
