@@ -48,6 +48,9 @@ export type LoadoutItem = {
   nova_stars_only: BooleanLike;
   erp_item: BooleanLike;
   // NOVA EDIT END
+    // CELADON EDIT START
+  is_disabled: BooleanLike;
+  // CELADON EDIT END
 };
 
 // Category of items in the loadout
