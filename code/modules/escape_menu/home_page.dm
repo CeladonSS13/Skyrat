@@ -63,6 +63,7 @@
 	*/
 	// NOVA EDIT REMOVAL END
 
+	/*	[CELADON-EDIT]
 	page_holder.give_screen_object(
 		new /atom/movable/screen/escape_menu/text/clickable(
 			null,
@@ -74,7 +75,7 @@
 			/* on_click_callback = */ CALLBACK(src, PROC_REF(quit_game_prompt)),
 		)
 	)
-
+	*///[/CELADON-EDIT]
 	//Bottom right buttons, from right to left, starting with the button to open the list.
 	page_holder.give_screen_object(new /atom/movable/screen/escape_menu/lobby_button/small(
 		null,
