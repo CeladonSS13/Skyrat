@@ -34,7 +34,7 @@
 
 
 /datum/preference/name/is_valid(value)
-	return istext(value) && !isnull(reject_bad_name(value, allow_numbers))
+	return !isnull(reject_bad_name(value, allow_numbers))
 
 
 /// A character's real name
@@ -196,13 +196,13 @@
 
 
 /datum/preference/name/hacker_alias/is_valid(value)
-	return !isnull(permissive_sanitize_name(value))
+	return !isnull(reject_bad_name(value, allow_numbers = TRUE, cap_after_symbols = FALSE))
 
 
 /datum/preference/name/hacker_alias/deserialize(input, datum/preferences/preferences)
-	return permissive_sanitize_name(input)
+	return reject_bad_name(input, allow_numbers = TRUE, cap_after_symbols = FALSE)
 
 
 /datum/preference/name/hacker_alias/serialize(input)
-	return permissive_sanitize_name(input)
+	return reject_bad_name(input, allow_numbers = TRUE, cap_after_symbols = FALSE)
 
