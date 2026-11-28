@@ -2,7 +2,7 @@
 	var/wildcard_expanded = null //basically cards doesn't have expanded version due to upstreams and possible issues with new added cards
 
 /obj/item/card/id/Initialize(mapload)
-	..()
+	. = ..()
 	if(CONFIG_GET(flag/infinite_access_slots) && wildcard_expanded)
 		wildcard_slots = wildcard_expanded
 	wildcard_expanded = null	//cleans after init
