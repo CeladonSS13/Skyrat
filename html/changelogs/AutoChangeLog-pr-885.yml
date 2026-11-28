@@ -1,4 +1,0 @@
-author: "Arceniu"
-delete-after: True
-changes:
-  - bugfix: "fixed a error with not properly disabled loadout items"

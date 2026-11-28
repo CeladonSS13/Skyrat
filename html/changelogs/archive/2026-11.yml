@@ -41,3 +41,6 @@
   Arceniu:
   - balance: reverted taser change
   - balance: reverted basic mob slowdown decrease
+2026-11-27:
+  Arceniu:
+  - bugfix: fixed a error with not properly disabled loadout items
