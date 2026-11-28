@@ -1,5 +1,5 @@
 /mob/living/silicon/Initialize(mapload)
-	..()
+	. = ..()
 	if (check_holidays(APRIL_FOOLS))
 		death_sound = 'modular_z_celadon/modules/april_fools_day/borgs/sound/windows-xp-shutdown.ogg'
 
